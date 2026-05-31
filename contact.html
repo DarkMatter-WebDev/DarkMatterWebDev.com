@@ -293,37 +293,42 @@
 <h1 class="font-headline-xl text-headline-xl text-starlight-white mb-2">Start Your Project</h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">Tell us what you need and we'll get back to you fast. Prefer to talk? Call or text <a class="text-electric-cyan hover:underline" href="tel:+12394048505">(239) 404-8505</a>.</p>
 </header>
-<form class="glass-card p-8 rounded-xl flex flex-col gap-8 relative overflow-hidden">
+<form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="glass-card p-8 rounded-xl flex flex-col gap-8 relative overflow-hidden">
+<input type="hidden" name="form-name" value="contact"/>
+<p class="hidden" aria-hidden="true">
+<label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off"/></label>
+</p>
 <div class="scanning-line"></div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <div class="flex flex-col gap-2">
-<label class="font-label-mono text-label-mono text-outline uppercase">Your Name</label>
-<input class="bg-transparent border-b border-white/10 p-3 text-starlight-white placeholder:text-outline/40 focus:border-electric-cyan transition-all" placeholder="Jane Smith" type="text"/>
+<label class="font-label-mono text-label-mono text-outline uppercase" for="contact-name">Your Name</label>
+<input id="contact-name" name="name" required class="bg-transparent border-b border-white/10 p-3 text-starlight-white placeholder:text-outline/40 focus:border-electric-cyan transition-all" placeholder="Jane Smith" type="text"/>
 </div>
 <div class="flex flex-col gap-2">
-<label class="font-label-mono text-label-mono text-outline uppercase">Email</label>
-<input class="bg-transparent border-b border-white/10 p-3 text-starlight-white placeholder:text-outline/40 focus:border-electric-cyan transition-all" placeholder="you@example.com" type="email"/>
+<label class="font-label-mono text-label-mono text-outline uppercase" for="contact-email">Email</label>
+<input id="contact-email" name="email" required class="bg-transparent border-b border-white/10 p-3 text-starlight-white placeholder:text-outline/40 focus:border-electric-cyan transition-all" placeholder="you@example.com" type="email"/>
 </div>
 </div>
 <div class="flex flex-col gap-2">
-<label class="font-label-mono text-label-mono text-outline uppercase">Phone <span class="text-outline/50 normal-case">(optional)</span></label>
-<input class="bg-transparent border-b border-white/10 p-3 text-starlight-white placeholder:text-outline/40 focus:border-electric-cyan transition-all" placeholder="(239) 555-0123" type="tel"/>
+<label class="font-label-mono text-label-mono text-outline uppercase" for="contact-phone">Phone <span class="text-outline/50 normal-case">(optional)</span></label>
+<input id="contact-phone" name="phone" class="bg-transparent border-b border-white/10 p-3 text-starlight-white placeholder:text-outline/40 focus:border-electric-cyan transition-all" placeholder="(239) 555-0123" type="tel"/>
 </div>
 <div class="flex flex-col gap-2">
-<label class="font-label-mono text-label-mono text-outline uppercase">What can we build for you?</label>
-<select class="bg-transparent border-b border-white/10 p-3 text-starlight-white appearance-none focus:border-electric-cyan transition-all">
-<option class="bg-void-black text-on-surface">Select an option</option>
-<option class="bg-void-black text-on-surface">A website for my business</option>
-<option class="bg-void-black text-on-surface">Redesign or fix my existing website</option>
-<option class="bg-void-black text-on-surface">An online store (live pricing, cart, checkout)</option>
-<option class="bg-void-black text-on-surface">A custom app or tool to do a specific job</option>
-<option class="bg-void-black text-on-surface">Something else / not sure yet</option>
+<label class="font-label-mono text-label-mono text-outline uppercase" for="contact-project-type">What can we build for you?</label>
+<select id="contact-project-type" name="project-type" required class="bg-transparent border-b border-white/10 p-3 text-starlight-white appearance-none focus:border-electric-cyan transition-all">
+<option value="" disabled selected>Select an option</option>
+<option class="bg-void-black text-on-surface" value="A website for my business">A website for my business</option>
+<option class="bg-void-black text-on-surface" value="Redesign or fix my existing website">Redesign or fix my existing website</option>
+<option class="bg-void-black text-on-surface" value="An online store (live pricing, cart, checkout)">An online store (live pricing, cart, checkout)</option>
+<option class="bg-void-black text-on-surface" value="A custom app or tool to do a specific job">A custom app or tool to do a specific job</option>
+<option class="bg-void-black text-on-surface" value="Something else / not sure yet">Something else / not sure yet</option>
 </select>
 </div>
 <div class="flex flex-col gap-2">
-<label class="font-label-mono text-label-mono text-outline uppercase">Project details</label>
-<textarea class="bg-transparent border-b border-white/10 p-3 text-starlight-white placeholder:text-outline/40 focus:border-electric-cyan transition-all resize-none" placeholder="Tell us a bit about your business and what you're looking for..." rows="4"></textarea>
+<label class="font-label-mono text-label-mono text-outline uppercase" for="contact-message">Project details</label>
+<textarea id="contact-message" name="message" required minlength="1" class="bg-transparent border-b border-white/10 p-3 text-starlight-white placeholder:text-outline/40 focus:border-electric-cyan transition-all resize-none" placeholder="Tell us a bit about your business and what you're looking for..." rows="4"></textarea>
 </div>
+<p class="form-submit-error hidden text-red-400 text-xs font-label-mono"></p>
 <button class="group relative py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple font-headline-md text-starlight-white rounded overflow-hidden hover:neon-glow-cyan transition-all duration-300" type="submit">
 <span class="relative z-10 flex items-center justify-center gap-3">
                             SEND MESSAGE
@@ -427,35 +432,40 @@
 <h1 class="font-headline-xl text-headline-lg-mobile text-starlight-white mb-3">Start Your Project</h1>
 <p class="font-body-lg text-body-md text-on-surface-variant">Tell us what you need — or skip the form and call or text us directly.</p>
 </section>
-<form class="glass-card p-6 rounded-xl flex flex-col gap-7 relative overflow-hidden">
+<form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="glass-card p-6 rounded-xl flex flex-col gap-7 relative overflow-hidden">
+<input type="hidden" name="form-name" value="contact"/>
+<p class="hidden" aria-hidden="true">
+<label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off"/></label>
+</p>
 <div class="scanning-line"></div>
 <div class="flex flex-col gap-2">
-<label class="font-label-mono text-label-mono text-outline uppercase">Your Name</label>
-<input class="bg-transparent border-b border-white/10 p-3 text-starlight-white placeholder:text-outline/40 transition-all" placeholder="Jane Smith" type="text"/>
+<label class="font-label-mono text-label-mono text-outline uppercase" for="contact-name-mobile">Your Name</label>
+<input id="contact-name-mobile" name="name" required class="bg-transparent border-b border-white/10 p-3 text-starlight-white placeholder:text-outline/40 transition-all" placeholder="Jane Smith" type="text"/>
 </div>
 <div class="flex flex-col gap-2">
-<label class="font-label-mono text-label-mono text-outline uppercase">Email</label>
-<input class="bg-transparent border-b border-white/10 p-3 text-starlight-white placeholder:text-outline/40 transition-all" placeholder="you@example.com" type="email"/>
+<label class="font-label-mono text-label-mono text-outline uppercase" for="contact-email-mobile">Email</label>
+<input id="contact-email-mobile" name="email" required class="bg-transparent border-b border-white/10 p-3 text-starlight-white placeholder:text-outline/40 transition-all" placeholder="you@example.com" type="email"/>
 </div>
 <div class="flex flex-col gap-2">
-<label class="font-label-mono text-label-mono text-outline uppercase">Phone <span class="text-outline/50 normal-case">(optional)</span></label>
-<input class="bg-transparent border-b border-white/10 p-3 text-starlight-white placeholder:text-outline/40 transition-all" placeholder="(239) 555-0123" type="tel"/>
+<label class="font-label-mono text-label-mono text-outline uppercase" for="contact-phone-mobile">Phone <span class="text-outline/50 normal-case">(optional)</span></label>
+<input id="contact-phone-mobile" name="phone" class="bg-transparent border-b border-white/10 p-3 text-starlight-white placeholder:text-outline/40 transition-all" placeholder="(239) 555-0123" type="tel"/>
 </div>
 <div class="flex flex-col gap-2">
-<label class="font-label-mono text-label-mono text-outline uppercase">What can we build for you?</label>
-<select class="bg-transparent border-b border-white/10 p-3 text-starlight-white appearance-none transition-all">
-<option class="bg-void-black text-on-surface">Select an option</option>
-<option class="bg-void-black text-on-surface">A website for my business</option>
-<option class="bg-void-black text-on-surface">Redesign or fix my existing website</option>
-<option class="bg-void-black text-on-surface">An online store (live pricing, cart, checkout)</option>
-<option class="bg-void-black text-on-surface">A custom app or tool to do a specific job</option>
-<option class="bg-void-black text-on-surface">Something else / not sure yet</option>
+<label class="font-label-mono text-label-mono text-outline uppercase" for="contact-project-type-mobile">What can we build for you?</label>
+<select id="contact-project-type-mobile" name="project-type" required class="bg-transparent border-b border-white/10 p-3 text-starlight-white appearance-none transition-all">
+<option value="" disabled selected>Select an option</option>
+<option class="bg-void-black text-on-surface" value="A website for my business">A website for my business</option>
+<option class="bg-void-black text-on-surface" value="Redesign or fix my existing website">Redesign or fix my existing website</option>
+<option class="bg-void-black text-on-surface" value="An online store (live pricing, cart, checkout)">An online store (live pricing, cart, checkout)</option>
+<option class="bg-void-black text-on-surface" value="A custom app or tool to do a specific job">A custom app or tool to do a specific job</option>
+<option class="bg-void-black text-on-surface" value="Something else / not sure yet">Something else / not sure yet</option>
 </select>
 </div>
 <div class="flex flex-col gap-2">
-<label class="font-label-mono text-label-mono text-outline uppercase">Project details</label>
-<textarea class="bg-transparent border-b border-white/10 p-3 text-starlight-white placeholder:text-outline/40 transition-all resize-none" placeholder="Tell us a bit about your business and what you're looking for..." rows="4"></textarea>
+<label class="font-label-mono text-label-mono text-outline uppercase" for="contact-message-mobile">Project details</label>
+<textarea id="contact-message-mobile" name="message" required minlength="1" class="bg-transparent border-b border-white/10 p-3 text-starlight-white placeholder:text-outline/40 transition-all resize-none" placeholder="Tell us a bit about your business and what you're looking for..." rows="4"></textarea>
 </div>
+<p class="form-submit-error hidden text-red-400 text-xs font-label-mono"></p>
 <button class="group relative py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple font-headline-md text-starlight-white rounded overflow-hidden transition-all duration-300 active:scale-[0.98]" type="submit">
 <span class="relative z-10 flex items-center justify-center gap-3">
                     SEND MESSAGE
@@ -520,18 +530,89 @@
 <!-- /MOBILE -->
 
 <script>
-        document.querySelectorAll('form').forEach(form => {
-            form.addEventListener('submit', (e) => {
+        document.querySelectorAll('form[data-netlify="true"]').forEach(function (form) {
+            var submitBtnHtml = null;
+
+            function clearErrors() {
+                form.querySelectorAll('.form-field-error').forEach(function (el) { el.remove(); });
+                form.querySelectorAll('.border-red-400').forEach(function (el) { el.classList.remove('border-red-400'); });
+                var formError = form.querySelector('.form-submit-error');
+                if (formError) {
+                    formError.textContent = '';
+                    formError.classList.add('hidden');
+                }
+            }
+
+            function showFieldError(input, message) {
+                input.classList.add('border-red-400');
+                var err = document.createElement('p');
+                err.className = 'form-field-error text-red-400 text-xs font-label-mono mt-1';
+                err.textContent = message;
+                input.parentElement.appendChild(err);
+            }
+
+            function validateForm() {
+                clearErrors();
+                var valid = true;
+                var name = form.querySelector('[name="name"]');
+                var email = form.querySelector('[name="email"]');
+                var projectType = form.querySelector('[name="project-type"]');
+                var message = form.querySelector('[name="message"]');
+
+                if (!name.value.trim()) {
+                    showFieldError(name, 'Please enter your name.');
+                    valid = false;
+                }
+                if (!email.value.trim() || !email.checkValidity()) {
+                    showFieldError(email, 'Please enter a valid email.');
+                    valid = false;
+                }
+                if (!projectType.value) {
+                    showFieldError(projectType, 'Please select what you need.');
+                    valid = false;
+                }
+                if (!message.value.trim()) {
+                    showFieldError(message, 'Please tell us about your project — this field cannot be empty.');
+                    valid = false;
+                }
+                return valid;
+            }
+
+            form.addEventListener('submit', function (e) {
                 e.preventDefault();
-                const btn = form.querySelector('button[type="submit"]');
+                if (!validateForm()) return;
+
+                var btn = form.querySelector('button[type="submit"]');
                 if (!btn) return;
+                if (!submitBtnHtml) submitBtnHtml = btn.innerHTML;
+
                 btn.classList.add('opacity-50', 'pointer-events-none');
                 btn.innerHTML = '<span class="relative z-10 flex items-center justify-center gap-3"><span class="material-symbols-outlined animate-spin">refresh</span> SENDING...</span>';
-                setTimeout(() => {
+
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(new FormData(form)).toString()
+                }).then(function (res) {
+                    if (!res.ok) throw new Error('submit failed');
                     btn.classList.remove('from-electric-cyan', 'to-nebula-purple', 'opacity-50', 'pointer-events-none');
                     btn.classList.add('bg-green-500/20', 'text-green-400', 'border', 'border-green-500');
                     btn.innerHTML = '<span class="relative z-10 flex items-center justify-center gap-3"><span class="material-symbols-outlined">check_circle</span> MESSAGE SENT — WE\'LL BE IN TOUCH</span>';
-                }, 2000);
+                    form.reset();
+                }).catch(function () {
+                    btn.classList.remove('opacity-50', 'pointer-events-none');
+                    btn.innerHTML = submitBtnHtml;
+                    var formError = form.querySelector('.form-submit-error');
+                    if (formError) {
+                        formError.textContent = 'Could not send right now. Please call or text (239) 404-8505.';
+                        formError.classList.remove('hidden');
+                    }
+                });
+            });
+
+            form.querySelectorAll('input, select, textarea').forEach(function (field) {
+                field.addEventListener('input', clearErrors);
+                field.addEventListener('change', clearErrors);
             });
         });
     </script>

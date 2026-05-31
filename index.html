@@ -149,6 +149,26 @@
             50% { opacity: 1; }
         }
         .animate-pulse-cyan { animation: pulse-cyan 3s infinite ease-in-out; }
+        /* Mobile top menu dropdown */
+        .mobile-nav-dropdown {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px) scale(0.96);
+            pointer-events: none;
+            transition:
+                opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+                visibility 0.32s;
+        }
+        .mobile-nav-dropdown.is-open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+        #mobile-menu-btn[aria-expanded="true"] .mobile-menu-line-top { width: 1.25rem; }
+        #mobile-menu-btn[aria-expanded="true"] .mobile-menu-line-mid { width: 1rem; opacity: 0.9; }
+        #mobile-menu-btn[aria-expanded="true"] .mobile-menu-line-bot { width: 0.75rem; opacity: 0.75; }
         /* Ghost rail popover */
         .rail-popover-ghost {
             visibility: hidden;
@@ -473,8 +493,37 @@
 <span class="material-symbols-outlined text-electric-cyan text-2xl">blur_on</span>
 <span class="font-headline-md text-headline-md tracking-tighter text-starlight-white">DARK MATTER</span>
 </a>
-<div class="flex items-center gap-4">
-<div class="h-px w-8 bg-electric-cyan animate-pulse-cyan"></div>
+<div class="relative">
+<button type="button" id="mobile-menu-btn" class="flex flex-col justify-center items-end gap-1.5 w-10 h-10 rounded-lg active:scale-95 transition-transform" aria-expanded="false" aria-controls="mobile-menu-dropdown" aria-label="Open menu">
+<span class="mobile-menu-line-top h-px w-8 bg-electric-cyan animate-pulse-cyan transition-all duration-300"></span>
+<span class="mobile-menu-line-mid h-px w-6 bg-starlight-white/55 transition-all duration-300"></span>
+<span class="mobile-menu-line-bot h-px w-4 bg-starlight-white/35 transition-all duration-300"></span>
+</button>
+<div id="mobile-menu-dropdown" class="mobile-nav-dropdown absolute right-0 top-full mt-3 w-56 z-[60]">
+<div class="glass-card rounded-xl py-2 border border-white/10 shadow-2xl backdrop-blur-xl overflow-hidden">
+<p class="font-label-caps text-[10px] text-outline px-4 pt-2 pb-1 tracking-widest">Menu</p>
+<a href="index.html" class="flex items-center gap-3 px-4 py-3 text-electric-cyan bg-electric-cyan/5 font-label-mono text-sm">
+<span class="material-symbols-outlined text-lg">home</span>
+Home
+</a>
+<a href="services.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-sm transition-colors">
+<span class="material-symbols-outlined text-lg">design_services</span>
+Services
+</a>
+<a href="process.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-sm transition-colors">
+<span class="material-symbols-outlined text-lg">timeline</span>
+Process
+</a>
+<a href="casestudies.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-sm transition-colors">
+<span class="material-symbols-outlined text-lg">workspace_premium</span>
+Work
+</a>
+<a href="contact.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-sm transition-colors">
+<span class="material-symbols-outlined text-lg">mail</span>
+Contact
+</a>
+</div>
+</div>
 </div>
 </div>
 </header>
@@ -616,6 +665,38 @@
 </nav>
 </div>
 <!-- /MOBILE -->
+
+<script>
+(function () {
+  var root = document.querySelector('.md\\:hidden');
+  if (!root) return;
+  var btn = root.querySelector('#mobile-menu-btn');
+  var menu = root.querySelector('#mobile-menu-dropdown');
+  if (!btn || !menu) return;
+  function closeMenu() {
+    menu.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', 'Open menu');
+  }
+  function openMenu() {
+    menu.classList.add('is-open');
+    btn.setAttribute('aria-expanded', 'true');
+    btn.setAttribute('aria-label', 'Close menu');
+  }
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (menu.classList.contains('is-open')) closeMenu();
+    else openMenu();
+  });
+  menu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+  document.addEventListener('click', function (e) {
+    if (!btn.contains(e.target) && !menu.contains(e.target)) closeMenu();
+  });
+  window.addEventListener('resize', closeMenu);
+})();
+</script>
 
 <script>
         // Desktop: side-nav active state + hero parallax (scoped to desktop wrapper)
