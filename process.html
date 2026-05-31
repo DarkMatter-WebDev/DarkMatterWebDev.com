@@ -68,6 +68,21 @@
             width: 100%;
             background-color: #00F0FF;
         }
+        .process-detail-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            color: #c4c7c7;
+        }
+        .process-detail-list li + li { margin-top: 0.625rem; }
+        .process-detail-list .material-symbols-outlined {
+            font-size: 1rem;
+            color: #00F0FF;
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+        }
         /* Mobile */
         .glass-panel {
             background: rgba(255, 255, 255, 0.03);
@@ -273,7 +288,7 @@
 <span class="brand-subtext">Web Services</span>
 </span>
 </a>
-<div class="hidden md:flex gap-8">
+<div class="hidden md:flex gap-10 items-center">
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="index.html">Home</a>
 <div class="relative services-nav-group">
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="services.html">Services</a>
@@ -300,7 +315,7 @@
 <aside class="fixed left-0 top-1/2 -translate-y-1/2 h-auto rounded-r-xl bg-void-black/80 backdrop-blur-2xl border-r border-t border-b border-white/5 p-4 gap-unit z-40 flex flex-col shadow-[0_0_20px_rgba(112,0,255,0.15)]">
 <div class="mb-4">
 <p class="font-label-caps text-[10px] text-outline opacity-50">OUR PROCESS</p>
-<p class="font-label-caps text-nebula-purple">4 STEPS</p>
+<p class="font-label-caps text-nebula-purple">6 STEPS</p>
 </div>
 <div class="flex flex-col gap-4">
 <button type="button" data-step="discover" class="flex flex-col items-center p-2 text-nebula-purple bg-nebula-purple/10 rounded-lg group">
@@ -318,6 +333,14 @@
 <button type="button" data-step="launch" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group">
 <span class="material-symbols-outlined">rocket_launch</span>
 <span class="font-label-caps text-[8px] mt-1">LAUNCH</span>
+</button>
+<button type="button" data-step="secure" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group">
+<span class="material-symbols-outlined">shield</span>
+<span class="font-label-caps text-[8px] mt-1">SECURE</span>
+</button>
+<button type="button" data-step="maintain" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group">
+<span class="material-symbols-outlined">cloud_done</span>
+<span class="font-label-caps text-[8px] mt-1">MAINTAIN</span>
 </button>
 </div>
 </aside>
@@ -347,10 +370,14 @@
                 process.
             </h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
-                Four clear steps take your project from first conversation to launch — so you always know what's happening and what comes next.
+                Six clear steps take your project from first conversation through launch — then we secure, maintain, and support your site so it keeps working for your business.
             </p>
 </header>
-<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter relative">
+<div class="mb-8 flex items-center gap-4">
+<span class="font-label-mono text-label-mono text-electric-cyan bg-electric-cyan/10 px-3 py-1 rounded-full border border-electric-cyan/20">PHASE 01 — BUILD</span>
+<span class="h-[1px] flex-grow bg-white/10"></span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter relative mb-20">
 <div class="absolute top-[4.5rem] left-0 w-full h-[1px] bg-white/10 hidden md:block"></div>
 <div class="protocol-step group cursor-pointer">
 <div class="relative z-20 mb-12">
@@ -429,19 +456,86 @@
 <div class="scanline hidden group-hover:block"></div>
 <span class="font-label-mono text-label-mono text-outline mb-2">STEP 04</span>
 <h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Launch</h3>
-<p class="font-body-md text-on-surface-variant mb-6 flex-grow">
-                        We put your site live, make sure everything works, and show you how to use it. We stick around for hosting, updates, and any support you need.
+<p class="font-body-md text-on-surface-variant mb-4">
+                        We connect your domain, run final checks across devices, and walk you through your new site. Once everything is verified, your site goes live.
                     </p>
+<ul class="process-detail-list mb-6 flex-grow">
+<li><span class="material-symbols-outlined">check</span> DNS &amp; domain configuration</li>
+<li><span class="material-symbols-outlined">check</span> Cross-browser &amp; mobile QA</li>
+<li><span class="material-symbols-outlined">check</span> Analytics &amp; search setup</li>
+<li><span class="material-symbols-outlined">check</span> Handoff walkthrough</li>
+</ul>
 <div class="relative rounded-lg overflow-hidden border border-white/10 aspect-video mb-4">
 <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWfQExRejLLKgr-Kx26j0DNur2gnTuGojt-nfhG9DZCTvjqLOgovypBfPpD-_zwlQqyn42YMosjZ_OINZywHtNAsDd9Egl9kiolEb6K2L7zp_9mxqRns1d_z3P9GD4MNJIoXRRdNTxvTiRWLC6lq0GOfTIOd04IH1zxRuZTNygv_0dAldu3o17y5qFw_BuJ-GOgVd9uqkK4RpRmeS5FJnPEh_G_TWCsdB59YcicOjZq9F-d_Th4Pl3pGcX-WYlqYThmADT1cYRDjQ"/>
 </div>
 <div class="flex flex-wrap gap-2">
 <span class="font-label-caps text-[10px] border border-white/10 px-2 py-1 rounded">GO LIVE</span>
-<span class="font-label-caps text-[10px] border border-white/10 px-2 py-1 rounded">ONGOING SUPPORT</span>
+<span class="font-label-caps text-[10px] border border-white/10 px-2 py-1 rounded">FINAL QA</span>
 </div>
 </div>
 </div>
 </div>
+<div class="mb-8 flex items-center gap-4">
+<span class="font-label-mono text-label-mono text-nebula-purple bg-nebula-purple/10 px-3 py-1 rounded-full border border-nebula-purple/20">PHASE 02 — ONGOING CARE</span>
+<span class="h-[1px] flex-grow bg-white/10"></span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter relative mb-8">
+<div class="protocol-step group cursor-pointer">
+<div class="relative z-20 mb-12">
+<div class="w-16 h-16 rounded-full glass-card flex items-center justify-center border-electric-cyan group-hover:glow-cyan transition-all duration-500">
+<span class="material-symbols-outlined text-electric-cyan text-3xl">shield</span>
+</div>
+</div>
+<div class="glass-card p-8 rounded-xl min-h-[420px] flex flex-col group-hover:translate-y-[-8px] transition-all duration-500">
+<div class="scanline hidden group-hover:block"></div>
+<span class="font-label-mono text-label-mono text-outline mb-2">STEP 05</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Secure</h3>
+<p class="font-body-md text-on-surface-variant mb-4">
+                        We lock down your hosting environment so your business and customer data stay protected — without you chasing security alerts or server settings.
+                    </p>
+<ul class="process-detail-list mb-6 flex-grow">
+<li><span class="material-symbols-outlined">check</span> SSL/HTTPS encryption on every page</li>
+<li><span class="material-symbols-outlined">check</span> Security patches applied promptly</li>
+<li><span class="material-symbols-outlined">check</span> Firewall &amp; malware monitoring</li>
+<li><span class="material-symbols-outlined">check</span> Uptime checks with instant alerts</li>
+<li><span class="material-symbols-outlined">check</span> Secure managed hosting environment</li>
+</ul>
+<div class="flex flex-wrap gap-2">
+<span class="font-label-caps text-[10px] border border-white/10 px-2 py-1 rounded">SSL</span>
+<span class="font-label-caps text-[10px] border border-white/10 px-2 py-1 rounded">MONITORING</span>
+<span class="font-label-caps text-[10px] border border-white/10 px-2 py-1 rounded">PATCHES</span>
+</div>
+</div>
+</div>
+<div class="protocol-step group cursor-pointer">
+<div class="relative z-20 mb-12">
+<div class="w-16 h-16 rounded-full glass-card flex items-center justify-center border-nebula-purple group-hover:glow-purple transition-all duration-500">
+<span class="material-symbols-outlined text-nebula-purple text-3xl">cloud_done</span>
+</div>
+</div>
+<div class="glass-card p-8 rounded-xl min-h-[420px] flex flex-col group-hover:translate-y-[-8px] transition-all duration-500">
+<div class="scanline hidden group-hover:block"></div>
+<span class="font-label-mono text-label-mono text-outline mb-2">STEP 06</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Maintain</h3>
+<p class="font-body-md text-on-surface-variant mb-4">
+                        Your site stays fast, current, and ready for customers. We handle backups, performance, and content updates through a dedicated WhatsApp account we set up for your business.
+                    </p>
+<ul class="process-detail-list mb-6 flex-grow">
+<li><span class="material-symbols-outlined">check</span> Automated backups &amp; quick restore</li>
+<li><span class="material-symbols-outlined">check</span> Performance tuning &amp; speed checks</li>
+<li><span class="material-symbols-outlined">check</span> Content updates via WhatsApp</li>
+<li><span class="material-symbols-outlined">check</span> Software &amp; dependency maintenance</li>
+<li><span class="material-symbols-outlined">check</span> Ongoing care plan support</li>
+</ul>
+<div class="flex flex-wrap gap-2">
+<span class="font-label-caps text-[10px] border border-white/10 px-2 py-1 rounded">BACKUPS</span>
+<span class="font-label-caps text-[10px] border border-white/10 px-2 py-1 rounded">UPDATES</span>
+<span class="font-label-caps text-[10px] border border-white/10 px-2 py-1 rounded">WHATSAPP</span>
+</div>
+</div>
+</div>
+</div>
+<p class="font-body-md text-on-surface-variant text-center max-w-2xl mx-auto mb-8">Secure and Maintain are included in our <a href="services/website-care-plans.html" class="text-electric-cyan hover:underline">Website Care Plans</a> and <a href="services/complete-website-management.html" class="text-electric-cyan hover:underline">Complete Website Management</a> partnership.</p>
 <section class="mt-32 grid grid-cols-1 md:grid-cols-3 gap-gutter">
 <div class="glass-card p-6 rounded-lg flex items-center gap-6">
 <div class="text-electric-cyan">
@@ -522,10 +616,11 @@
 </div>
 <h2 class="font-headline-xl text-headline-lg-mobile text-starlight-white mb-6 uppercase reveal-2">Our Process</h2>
 <p class="font-body-lg text-body-md text-on-surface-variant max-w-2xl mx-auto reveal-3">
-        Four clear steps take your project from first conversation to launch — so you always know what's happening and what comes next.
+        Six clear steps take your project from first conversation through launch — then we secure, maintain, and support your site so it keeps working for your business.
       </p>
 </section>
-<section class="relative">
+<section class="relative mb-16">
+<p class="font-label-mono text-label-mono text-electric-cyan text-center mb-10">PHASE 01 — BUILD</p>
 <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-electric-cyan via-nebula-purple to-transparent -translate-x-1/2 z-0"></div>
 <div class="space-y-24">
 <div class="relative flex flex-col items-center group">
@@ -581,14 +676,75 @@
 </div>
 <div class="w-full mt-8 text-center">
 <h3 class="font-headline-lg text-headline-lg-mobile text-starlight-white mb-4">Launch</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">We put your site live, make sure everything works, and show you how to use it. We stick around for hosting, updates, and any support you need.</p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">We connect your domain, run final checks across devices, and walk you through your new site. Once everything is verified, your site goes live.</p>
+<ul class="process-detail-list text-left max-w-md mx-auto mb-4">
+<li><span class="material-symbols-outlined">check</span> DNS &amp; domain configuration</li>
+<li><span class="material-symbols-outlined">check</span> Cross-browser &amp; mobile QA</li>
+<li><span class="material-symbols-outlined">check</span> Analytics &amp; search setup</li>
+<li><span class="material-symbols-outlined">check</span> Handoff walkthrough</li>
+</ul>
 <div class="mt-6 flex flex-wrap justify-center gap-2">
 <span class="px-3 py-1 rounded bg-starlight-white/5 border border-starlight-white/10 font-label-mono text-[10px] text-on-surface-variant">GO LIVE</span>
-<span class="px-3 py-1 rounded bg-starlight-white/5 border border-starlight-white/10 font-label-mono text-[10px] text-on-surface-variant">ONGOING SUPPORT</span>
+<span class="px-3 py-1 rounded bg-starlight-white/5 border border-starlight-white/10 font-label-mono text-[10px] text-on-surface-variant">FINAL QA</span>
 </div>
 </div>
 </div>
 </div>
+</section>
+<section class="relative mb-16">
+<p class="font-label-mono text-label-mono text-nebula-purple text-center mb-10">PHASE 02 — ONGOING CARE</p>
+<div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-nebula-purple via-electric-cyan to-transparent -translate-x-1/2 z-0"></div>
+<div class="space-y-24">
+<div class="relative flex flex-col items-center group">
+<div class="relative z-20">
+<div class="w-16 h-16 rounded-full bg-void-black border-2 border-electric-cyan flex items-center justify-center shadow-[0_0_20px_rgba(0,240,255,0.5)]">
+<span class="material-symbols-outlined text-electric-cyan">shield</span>
+</div>
+</div>
+<div class="w-full mt-8 text-center">
+<span class="font-label-mono text-label-mono text-outline text-xs mb-2 block">STEP 05</span>
+<h3 class="font-headline-lg text-headline-lg-mobile text-starlight-white mb-4">Secure</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">We lock down your hosting environment so your business and customer data stay protected — without you chasing security alerts or server settings.</p>
+<ul class="process-detail-list text-left max-w-md mx-auto mb-4">
+<li><span class="material-symbols-outlined">check</span> SSL/HTTPS encryption on every page</li>
+<li><span class="material-symbols-outlined">check</span> Security patches applied promptly</li>
+<li><span class="material-symbols-outlined">check</span> Firewall &amp; malware monitoring</li>
+<li><span class="material-symbols-outlined">check</span> Uptime checks with instant alerts</li>
+<li><span class="material-symbols-outlined">check</span> Secure managed hosting environment</li>
+</ul>
+<div class="mt-6 flex flex-wrap justify-center gap-2">
+<span class="px-3 py-1 rounded bg-starlight-white/5 border border-starlight-white/10 font-label-mono text-[10px] text-on-surface-variant">SSL</span>
+<span class="px-3 py-1 rounded bg-starlight-white/5 border border-starlight-white/10 font-label-mono text-[10px] text-on-surface-variant">MONITORING</span>
+<span class="px-3 py-1 rounded bg-starlight-white/5 border border-starlight-white/10 font-label-mono text-[10px] text-on-surface-variant">PATCHES</span>
+</div>
+</div>
+</div>
+<div class="relative flex flex-col items-center group">
+<div class="relative z-20">
+<div class="w-16 h-16 rounded-full bg-void-black border-2 border-nebula-purple flex items-center justify-center shadow-[0_0_20px_rgba(112,0,255,0.5)]">
+<span class="material-symbols-outlined text-nebula-purple">cloud_done</span>
+</div>
+</div>
+<div class="w-full mt-8 text-center">
+<span class="font-label-mono text-label-mono text-outline text-xs mb-2 block">STEP 06</span>
+<h3 class="font-headline-lg text-headline-lg-mobile text-starlight-white mb-4">Maintain</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Your site stays fast, current, and ready for customers. We handle backups, performance, and content updates through a dedicated WhatsApp account we set up for your business.</p>
+<ul class="process-detail-list text-left max-w-md mx-auto mb-4">
+<li><span class="material-symbols-outlined">check</span> Automated backups &amp; quick restore</li>
+<li><span class="material-symbols-outlined">check</span> Performance tuning &amp; speed checks</li>
+<li><span class="material-symbols-outlined">check</span> Content updates via WhatsApp</li>
+<li><span class="material-symbols-outlined">check</span> Software &amp; dependency maintenance</li>
+<li><span class="material-symbols-outlined">check</span> Ongoing care plan support</li>
+</ul>
+<div class="mt-6 flex flex-wrap justify-center gap-2">
+<span class="px-3 py-1 rounded bg-starlight-white/5 border border-starlight-white/10 font-label-mono text-[10px] text-on-surface-variant">BACKUPS</span>
+<span class="px-3 py-1 rounded bg-starlight-white/5 border border-starlight-white/10 font-label-mono text-[10px] text-on-surface-variant">UPDATES</span>
+<span class="px-3 py-1 rounded bg-starlight-white/5 border border-starlight-white/10 font-label-mono text-[10px] text-on-surface-variant">WHATSAPP</span>
+</div>
+</div>
+</div>
+</div>
+<p class="font-body-md text-on-surface-variant text-center text-sm mt-12">Included in our <a href="services/website-care-plans.html" class="text-electric-cyan">Website Care Plans</a> and <a href="services/complete-website-management.html" class="text-electric-cyan">Complete Website Management</a>.</p>
 </section>
 <section class="mt-32">
 <div class="glass-panel p-10 rounded-2xl text-center relative overflow-hidden">
@@ -648,7 +804,9 @@
     discover: { icon: 'search', step: 'STEP 01 — DISCOVER', title: 'Discover', desc: 'We start with a free conversation about your business and goals, then map out a clear plan and a fixed quote.' },
     design:   { icon: 'architecture', step: 'STEP 02 — DESIGN', title: 'Design', desc: 'We design the look and layout around your brand and show you a preview to react to — before any code is written.' },
     build:    { icon: 'terminal', step: 'STEP 03 — BUILD', title: 'Build', desc: 'We build your site with clean, modern code: fast, secure, mobile-friendly, and fully tested.' },
-    launch:   { icon: 'rocket_launch', step: 'STEP 04 — LAUNCH', title: 'Launch', desc: 'We put your site live, make sure everything works, and stick around for hosting, updates, and support.' }
+    launch:   { icon: 'rocket_launch', step: 'STEP 04 — LAUNCH', title: 'Launch', desc: 'We connect your domain, run final QA, and walk you through your new site before it goes live.' },
+    secure:   { icon: 'shield', step: 'STEP 05 — SECURE', title: 'Secure', desc: 'SSL, security patches, firewall monitoring, and uptime alerts — your hosting environment stays locked down.' },
+    maintain: { icon: 'cloud_done', step: 'STEP 06 — MAINTAIN', title: 'Maintain', desc: 'Backups, performance tuning, and content updates via your dedicated WhatsApp account — included in care plans.' }
   };
   var iconEl = document.getElementById('rail-popover-icon');
   var stepEl = document.getElementById('rail-popover-step');

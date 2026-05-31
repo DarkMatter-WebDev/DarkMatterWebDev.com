@@ -18,6 +18,30 @@
 /* Services dropdown */
 .services-nav-group {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+}
+
+/* Main menu links — same height for Services, Process, and siblings */
+nav .hidden.md\:flex {
+  align-items: center;
+}
+
+nav .hidden.md\:flex > a.font-label-mono:not(.bg-gradient-to-r),
+.services-nav-group > a.font-label-mono:first-child {
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid transparent;
+  box-sizing: border-box;
+  line-height: 1.4;
+}
+
+nav .hidden.md\:flex > a.font-label-mono.border-b-2,
+.services-nav-group > a.font-label-mono.border-b-2:first-child {
+  border-bottom-color: #00f0ff;
 }
 
 nav,
