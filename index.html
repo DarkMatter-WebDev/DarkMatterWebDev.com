@@ -3,10 +3,9 @@
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>DARK MATTER | Engineering the Event Horizon</title>
+<title>DARK MATTER | Web Design &amp; Development in Naples, FL</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
       tailwind.config = {
@@ -105,6 +104,10 @@
       }
     </script>
 <style>
+        /* Shared */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
         .grid-overlay {
             background-image: 
                 linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
@@ -116,26 +119,16 @@
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .glow-cyan {
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
-        }
-        .glow-purple {
-            box-shadow: 0 0 20px rgba(112, 0, 255, 0.3);
-        }
-        .edge-glow {
-            border-image: linear-gradient(to bottom right, rgba(255,255,255,0.2), transparent) 1;
-        }
-        .nebula-blur {
-            filter: blur(120px);
-            opacity: 0.4;
-        }
+        /* Desktop accents */
+        .glow-cyan { box-shadow: 0 0 20px rgba(0, 240, 255, 0.3); }
+        .glow-purple { box-shadow: 0 0 20px rgba(112, 0, 255, 0.3); }
+        .edge-glow { border-image: linear-gradient(to bottom right, rgba(255,255,255,0.2), transparent) 1; }
+        .nebula-blur { filter: blur(120px); opacity: 0.4; }
         @keyframes pulse-line {
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
         }
-        .animate-pulse-line {
-            animation: pulse-line 3s infinite linear;
-        }
+        .animate-pulse-line { animation: pulse-line 3s infinite linear; }
         .scanline {
             background: linear-gradient(to bottom, transparent, rgba(0, 240, 255, 0.05) 50%, transparent);
             height: 2px;
@@ -148,9 +141,82 @@
             0% { top: -10%; }
             100% { top: 110%; }
         }
+        /* Mobile accents */
+        .neon-border { box-shadow: 0 0 15px rgba(0, 240, 255, 0.3); }
+        .neon-text-glow { text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
+        @keyframes pulse-cyan {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        .animate-pulse-cyan { animation: pulse-cyan 3s infinite ease-in-out; }
+        /* Ghost rail popover */
+        .rail-popover-ghost {
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateY(-50%) translateX(-10px);
+            transition:
+                visibility 0s linear 0.42s,
+                transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .rail-popover-ghost::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: -15%;
+            width: 28px;
+            height: 130%;
+        }
+        .rail-popover-ghost.is-visible {
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateY(-50%) translateX(0);
+            transition:
+                visibility 0s,
+                transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .rail-popover-ghost-inner {
+            position: relative;
+            overflow: hidden;
+            padding: 0.7rem 1.35rem;
+            border-radius: 9999px;
+            background: rgba(8, 10, 14, 0.24);
+            backdrop-filter: blur(40px) saturate(1.5);
+            -webkit-backdrop-filter: blur(40px) saturate(1.5);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow:
+                0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+                0 12px 36px rgba(0, 0, 0, 0.2),
+                0 0 56px rgba(112, 0, 255, 0.06);
+            transform: scale(0.94) translateZ(0);
+            transform-origin: left center;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            will-change: transform;
+            transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .rail-popover-ghost.is-visible .rail-popover-ghost-inner {
+            transform: scale(1) translateZ(0);
+        }
+        .rail-popover-ghost-inner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(145deg, rgba(0, 240, 255, 0.06) 0%, transparent 42%, rgba(112, 0, 255, 0.05) 100%);
+            pointer-events: none;
+        }
+        .rail-popover-ghost-inner > * { position: relative; z-index: 1; }
+        .rail-popover-ghost .rail-popover-step-label { opacity: 0.72; }
+        .rail-popover-ghost .rail-popover-title { text-shadow: 0 0 28px rgba(255, 255, 255, 0.1); }
+        .rail-popover-ghost .rail-popover-desc { opacity: 0.82; }
     </style>
 </head>
 <body class="bg-void-black text-on-background font-body-md overflow-x-hidden selection:bg-electric-cyan selection:text-void-black">
+
+<!-- ============================================================ -->
+<!-- DESKTOP LAYOUT (>= md / 768px)                               -->
+<!-- ============================================================ -->
+<div class="hidden md:block">
 <!-- Global Grid Overlay -->
 <div class="fixed inset-0 grid-overlay pointer-events-none z-0"></div>
 <!-- Atmospheric Elements -->
@@ -162,10 +228,10 @@
 <span class="font-headline-md text-headline-md tracking-tighter text-starlight-white">DARK MATTER</span>
 </a>
 <div class="hidden md:flex items-center gap-10">
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="services.html">Solutions</a>
+<a class="font-label-mono text-label-mono text-electric-cyan border-b-2 border-electric-cyan pb-1 transition-colors duration-300" href="index.html">Home</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="services.html">Services</a>
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="process.html">Process</a>
-<a class="font-label-mono text-label-mono text-electric-cyan border-b-2 border-electric-cyan pb-1 transition-colors duration-300" href="index.html">Engineering</a>
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="contact.html">Case Studies</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="casestudies.html">Case Studies</a>
 </div>
 <a href="contact.html" class="inline-block bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-mono text-label-mono px-6 py-2 rounded-lg hover:scale-105 active:scale-95 transition-all glow-cyan">
             Start Project
@@ -174,24 +240,39 @@
 <!-- Side Navigation Shell (Project Context) -->
 <aside class="fixed left-0 top-1/2 -translate-y-1/2 h-auto rounded-r-xl bg-void-black/80 backdrop-blur-2xl border-r border-t border-b border-white/5 flex flex-col p-4 gap-unit z-40 shadow-[0_0_20px_rgba(112,0,255,0.15)]">
 <div class="mb-4 flex flex-col">
-<span class="font-label-caps text-[10px] text-outline">CURRENT SPRINT</span>
-<span class="font-label-caps text-label-caps text-starlight-white">ALPHA 0.1</span>
+<span class="font-label-caps text-[10px] text-outline">OUR PROCESS</span>
+<span class="font-label-caps text-label-caps text-starlight-white">4 STEPS</span>
 </div>
 <div class="flex flex-col gap-4">
-<button class="text-nebula-purple bg-nebula-purple/10 p-3 rounded-lg hover:translate-x-1 duration-200" title="Discovery">
+<button type="button" data-step="discover" class="text-nebula-purple bg-nebula-purple/10 p-3 rounded-lg hover:translate-x-1 duration-200" title="Discover">
 <span class="material-symbols-outlined">search</span>
 </button>
-<button class="text-outline hover:bg-white/5 p-3 rounded-lg hover:translate-x-1 duration-200" title="Architecture">
+<button type="button" data-step="design" class="text-outline hover:bg-white/5 p-3 rounded-lg hover:translate-x-1 duration-200" title="Design">
 <span class="material-symbols-outlined">architecture</span>
 </button>
-<button class="text-outline hover:bg-white/5 p-3 rounded-lg hover:translate-x-1 duration-200" title="Development">
+<button type="button" data-step="build" class="text-outline hover:bg-white/5 p-3 rounded-lg hover:translate-x-1 duration-200" title="Build">
 <span class="material-symbols-outlined">terminal</span>
 </button>
-<button class="text-outline hover:bg-white/5 p-3 rounded-lg hover:translate-x-1 duration-200" title="Deployment">
+<button type="button" data-step="launch" class="text-outline hover:bg-white/5 p-3 rounded-lg hover:translate-x-1 duration-200" title="Launch">
 <span class="material-symbols-outlined">rocket_launch</span>
 </button>
 </div>
 </aside>
+<!-- Floating rail info popover -->
+<div id="rail-popover" class="rail-popover-ghost fixed z-[60] w-[min(32rem,calc(100vw-6rem))]" aria-hidden="true">
+<div class="rail-popover-ghost-inner">
+<div class="flex items-center gap-3">
+<span id="rail-popover-icon" class="material-symbols-outlined text-electric-cyan/80 text-lg shrink-0"></span>
+<div class="flex flex-col gap-0.5 min-w-0">
+<div class="flex items-center gap-2 flex-wrap">
+<span id="rail-popover-step" class="font-label-mono text-[10px] tracking-widest text-electric-cyan/70 rail-popover-step-label shrink-0"></span>
+<h4 id="rail-popover-title" class="font-headline-md text-base text-starlight-white/90 rail-popover-title"></h4>
+</div>
+<p id="rail-popover-desc" class="text-on-surface-variant text-xs leading-snug rail-popover-desc"></p>
+</div>
+</div>
+</div>
+</div>
 <main class="relative z-10">
 <!-- Hero Section -->
 <section class="relative min-h-screen flex items-center pt-24 overflow-hidden">
@@ -201,34 +282,35 @@
 <div class="scanline"></div>
 </div>
 <div class="px-margin-desktop w-full max-w-container-max mx-auto">
-<div class="max-w-4xl space-y-8">
+<div class="max-w-4xl space-y-8 md:pl-24">
 <div class="inline-flex items-center gap-3 px-4 py-1 glass-card rounded-full">
 <span class="w-2 h-2 rounded-full bg-electric-cyan animate-pulse"></span>
-<span class="font-label-mono text-label-mono text-starlight-white tracking-widest uppercase">System Online: v2.0.4</span>
+<span class="font-label-mono text-label-mono text-starlight-white tracking-widest uppercase">Now Booking New Projects</span>
 </div>
 <h1 class="font-headline-xl text-headline-xl text-starlight-white leading-tight">
-                        Engineering the <br/>
-<span class="text-transparent bg-clip-text bg-gradient-to-r from-electric-cyan to-nebula-purple">Event Horizon</span>
+                        Websites that <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-electric-cyan to-nebula-purple">grow your business.</span>
 </h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
-                        Next-generation web development for the digital frontier. We build high-performance systems that define the future of interaction and scalability.
+                        We design and build fast, modern websites and custom apps for businesses in Naples and beyond — built to load quickly, look sharp, and turn visitors into customers.
                     </p>
 <div class="flex flex-wrap gap-6 pt-4">
 <a href="contact.html" class="inline-block px-10 py-5 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-mono text-label-mono font-bold rounded-lg hover:scale-105 active:scale-95 transition-all glow-cyan">
-                            INITIATE PROJECT
+                            START YOUR PROJECT
                         </a>
 <a href="services.html" class="inline-block px-10 py-5 glass-card text-starlight-white font-label-mono text-label-mono border border-electric-cyan/30 hover:bg-electric-cyan/10 transition-all">
-                            SYSTEM SPECS
+                            SEE WHAT WE DO
                         </a>
 </div>
+<p class="font-label-mono text-label-mono text-on-surface-variant pt-2">Naples, FL · Call or text <a class="text-electric-cyan hover:underline" href="tel:+12394048505">(239) 404-8505</a></p>
 </div>
 </div>
 <!-- Absolute Positioning for Visual Flair -->
 <div class="absolute right-margin-desktop bottom-24 hidden lg:block">
 <div class="glass-card p-8 rounded-xl w-80 space-y-6">
 <div class="flex justify-between items-end">
-<span class="font-label-caps text-label-caps text-outline">LATENCY</span>
-<span class="font-headline-md text-headline-md text-electric-cyan">14ms</span>
+<span class="font-label-caps text-label-caps text-outline">AVG. LOAD TIME</span>
+<span class="font-headline-md text-headline-md text-electric-cyan">0.9s</span>
 </div>
 <div class="h-[1px] w-full bg-white/10 relative overflow-hidden">
 <div class="absolute inset-0 bg-electric-cyan w-1/3 animate-pulse-line"></div>
@@ -247,43 +329,43 @@
 <div class="max-w-container-max mx-auto">
 <div class="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
 <div class="space-y-4">
-<span class="font-label-caps text-label-caps text-nebula-purple">SYSTEM CAPABILITIES</span>
-<h2 class="font-headline-lg text-headline-lg text-starlight-white">Core Systems</h2>
+<span class="font-label-caps text-label-caps text-nebula-purple">WHAT WE DO</span>
+<h2 class="font-headline-lg text-headline-lg text-starlight-white">What we build</h2>
 </div>
 <p class="font-body-md text-body-md text-on-surface-variant max-w-md">
-                        Architecting robust infrastructures that bridge the gap between imagination and execution.
+                        Everything your business needs to show up online, get found, and win customers.
                     </p>
 </div>
 <!-- Bento Grid -->
 <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
 <div class="md:col-span-8 group cursor-pointer glass-card p-10 rounded-xl hover:border-electric-cyan/40 transition-all duration-500 overflow-hidden relative">
 <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-electric-cyan/5 rounded-full group-hover:scale-150 transition-transform duration-700"></div>
-<span class="material-symbols-outlined text-4xl text-electric-cyan mb-6">dynamic_form</span>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Autonomous Scalability</h3>
+<span class="material-symbols-outlined text-4xl text-electric-cyan mb-6">devices</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Custom Websites</h3>
 <p class="font-body-md text-body-md text-on-surface-variant max-w-lg">
-                            Our architecture handles peak loads with zero manual intervention, utilizing predictive analytics to spin up resources before they're needed.
+                            Fast, mobile-friendly sites designed around your brand and built to turn visitors into leads and sales — no cookie-cutter templates.
                         </p>
 </div>
 <div class="md:col-span-4 group cursor-pointer glass-card p-10 rounded-xl hover:border-nebula-purple/40 transition-all duration-500">
 <span class="material-symbols-outlined text-4xl text-nebula-purple mb-6">security</span>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Hardened Core</h3>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Secure &amp; Reliable</h3>
 <p class="font-body-md text-body-md text-on-surface-variant">
-                            Encryption at rest, in transit, and during computation. Total data sovereignty.
+                            Built with security best practices and hosted on fast, dependable infrastructure so your site stays up and safe.
                         </p>
 </div>
 <div class="md:col-span-4 group cursor-pointer glass-card p-10 rounded-xl hover:border-nebula-purple/40 transition-all duration-500">
-<span class="material-symbols-outlined text-4xl text-nebula-purple mb-6">database</span>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Neural Graph</h3>
+<span class="material-symbols-outlined text-4xl text-nebula-purple mb-6">storefront</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Online Stores</h3>
 <p class="font-body-md text-body-md text-on-surface-variant">
-                            Advanced data relational mapping that mimics cognitive connections for instant recall.
+                            Sell online with product pages, carts, and checkout — including live pricing options, without locked-in platform fees.
                         </p>
 </div>
 <div class="md:col-span-8 group cursor-pointer glass-card p-10 rounded-xl hover:border-electric-cyan/40 transition-all duration-500 flex flex-col md:flex-row gap-8 items-center">
 <div class="flex-1">
 <span class="material-symbols-outlined text-4xl text-electric-cyan mb-6">speed</span>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Sub-Millisecond Execution</h3>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Built for Speed</h3>
 <p class="font-body-md text-body-md text-on-surface-variant">
-                                Optimized binary transmission protocols that bypass traditional bottleneck layers.
+                                Optimized to load fast on every device — better for your visitors and your search rankings.
                             </p>
 </div>
 <div class="w-full md:w-1/3 h-32 relative overflow-hidden bg-void-black rounded-lg border border-white/5">
@@ -300,56 +382,42 @@
 </div>
 </div>
 </section>
-<!-- Launching Soon Progress -->
+<!-- Capacity / Now Booking -->
 <section class="py-24 px-margin-desktop overflow-hidden">
 <div class="max-w-container-max mx-auto glass-card p-12 rounded-2xl relative">
 <div class="absolute top-0 right-0 p-8">
-<span class="font-label-mono text-label-mono text-outline">EST. COMPLETION: Q4 2024</span>
+<span class="font-label-mono text-label-mono text-outline">NAPLES, FL · NOW BOOKING</span>
 </div>
 <div class="space-y-12">
-<div class="space-y-4">
-<span class="font-label-caps text-label-caps text-electric-cyan">PHASE 04: ORBITAL DEPLOYMENT</span>
-<h2 class="font-headline-lg text-headline-lg text-starlight-white">Launching Soon</h2>
-</div>
-<div class="space-y-6">
-<div class="flex justify-between font-label-mono text-label-mono">
-<span class="text-on-surface-variant">System Integration</span>
-<span class="text-starlight-white">84%</span>
-</div>
-<div class="h-4 bg-white/5 rounded-full overflow-hidden border border-white/10 relative">
-<div class="h-full bg-gradient-to-r from-electric-cyan to-nebula-purple rounded-full w-[84%] transition-all duration-1000 relative">
-<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-30"></div>
-</div>
-</div>
+<div class="space-y-4 max-w-xl">
+<span class="font-label-caps text-label-caps text-electric-cyan">AVAILABILITY</span>
+<h2 class="font-headline-lg text-headline-lg text-starlight-white">Now Booking Projects</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">We take on a limited number of projects at a time so every client gets our full attention. Reach out and we'll let you know our next opening.</p>
 </div>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
 <div class="space-y-2">
-<span class="font-label-caps text-[10px] text-outline">MODULE A</span>
 <div class="font-label-mono text-label-mono text-starlight-white flex items-center gap-2">
-<span class="w-2 h-2 rounded-full bg-green-500"></span>
-                                VERIFIED
+<span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Free consult
                             </div>
+<span class="font-label-caps text-[10px] text-outline">No-pressure project chat</span>
 </div>
 <div class="space-y-2">
-<span class="font-label-caps text-[10px] text-outline">MODULE B</span>
 <div class="font-label-mono text-label-mono text-starlight-white flex items-center gap-2">
-<span class="w-2 h-2 rounded-full bg-green-500"></span>
-                                VERIFIED
+<span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Fixed quotes
                             </div>
+<span class="font-label-caps text-[10px] text-outline">Agreed price up front</span>
 </div>
 <div class="space-y-2">
-<span class="font-label-caps text-[10px] text-outline">MODULE C</span>
 <div class="font-label-mono text-label-mono text-starlight-white flex items-center gap-2">
-<span class="w-2 h-2 rounded-full bg-electric-cyan animate-pulse"></span>
-                                SYNCING
+<span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Fast turnaround
                             </div>
+<span class="font-label-caps text-[10px] text-outline">Most sites in weeks</span>
 </div>
 <div class="space-y-2">
-<span class="font-label-caps text-[10px] text-outline">MODULE D</span>
-<div class="font-label-mono text-label-mono text-outline flex items-center gap-2">
-<span class="w-2 h-2 rounded-full bg-surface-container-high"></span>
-                                PENDING
+<div class="font-label-mono text-label-mono text-starlight-white flex items-center gap-2">
+<span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Local support
                             </div>
+<span class="font-label-caps text-[10px] text-outline">Naples-based &amp; responsive</span>
 </div>
 </div>
 </div>
@@ -358,16 +426,16 @@
 <!-- CTA Section -->
 <section class="py-32 px-margin-desktop text-center">
 <div class="max-w-2xl mx-auto space-y-12">
-<h2 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-starlight-white">Beyond the Singularity.</h2>
+<h2 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-starlight-white">Ready to get started?</h2>
 <p class="font-body-lg text-body-lg text-on-surface-variant">
-                    Ready to leave orbit? Our team is standing by to translate your vision into a high-performance digital reality.
+                    Tell us about your business and what you need. We'll get back to you within one business day with a clear plan and a fixed quote.
                 </p>
 <div class="flex flex-col sm:flex-row justify-center gap-6">
 <a href="contact.html" class="inline-block px-12 py-6 bg-starlight-white text-void-black font-label-mono text-label-mono font-bold rounded-lg hover:scale-105 transition-all">
-                        INITIATE PROJECT
+                        START YOUR PROJECT
                     </a>
-<a href="contact.html" class="inline-block px-12 py-6 border border-white/20 text-starlight-white font-label-mono text-label-mono rounded-lg hover:bg-white/5 transition-all">
-                        BOOK CONSULT
+<a href="tel:+12394048505" class="inline-block px-12 py-6 border border-white/20 text-starlight-white font-label-mono text-label-mono rounded-lg hover:bg-white/5 transition-all">
+                        CALL OR TEXT (239) 404-8505
                     </a>
 </div>
 </div>
@@ -377,7 +445,7 @@
 <footer class="w-full mt-auto bg-void-black border-t border-white/5 flex flex-col md:flex-row justify-between items-center px-margin-desktop py-12">
 <div class="flex flex-col gap-2 mb-8 md:mb-0">
 <span class="font-headline-md text-headline-md text-starlight-white">DARK MATTER</span>
-<span class="font-label-mono text-[10px] text-outline tracking-[0.2em] uppercase">Engineering the future</span>
+<span class="font-label-mono text-[10px] text-outline tracking-[0.2em] uppercase">Web design &amp; development · Naples, FL</span>
 </div>
 <div class="flex flex-wrap justify-center gap-10 mb-8 md:mb-0">
 <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="#">Privacy</a>
@@ -386,28 +454,258 @@
 <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="#">Status</a>
 </div>
 <div class="text-right">
-<span class="font-label-mono text-[10px] text-outline">© 2024 DARK MATTER ENGINEERING. ALL RIGHTS RESERVED.</span>
+<span class="font-label-mono text-[10px] text-outline">© 2026 DARK MATTER · NAPLES, FL · CALL OR TEXT (239) 404-8505</span>
 </div>
 </footer>
-<script>
-        // Micro-interaction for the side nav
-        const sideNavButtons = document.querySelectorAll('aside button');
-        sideNavButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                sideNavButtons.forEach(b => b.classList.replace('text-nebula-purple', 'text-outline'));
-                sideNavButtons.forEach(b => b.classList.remove('bg-nebula-purple/10'));
-                btn.classList.replace('text-outline', 'text-nebula-purple');
-                btn.classList.add('bg-nebula-purple/10');
-            });
-        });
+</div>
+<!-- /DESKTOP -->
 
-        // Parallax effect for the hero background
-        window.addEventListener('scroll', () => {
-            const scroll = window.pageYOffset;
-            const heroBg = document.querySelector('section img');
-            if(heroBg) {
-                heroBg.style.transform = `translateY(${scroll * 0.4}px)`;
-            }
-        });
+<!-- ============================================================ -->
+<!-- MOBILE LAYOUT (< md / 768px)                                 -->
+<!-- ============================================================ -->
+<div class="md:hidden">
+<!-- Global Grid Overlay -->
+<div class="fixed inset-0 grid-overlay pointer-events-none z-0"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full bg-surface/10 backdrop-blur-xl z-50 border-b border-starlight-white/10 shadow-[0_0_20px_rgba(0,240,255,0.1)]">
+<div class="flex items-center justify-between px-margin-mobile h-16 w-full mx-auto">
+<a href="index.html" class="flex items-center gap-3">
+<span class="material-symbols-outlined text-electric-cyan text-2xl">blur_on</span>
+<span class="font-headline-md text-headline-md tracking-tighter text-starlight-white">DARK MATTER</span>
+</a>
+<div class="flex items-center gap-4">
+<div class="h-px w-8 bg-electric-cyan animate-pulse-cyan"></div>
+</div>
+</div>
+</header>
+<main class="relative z-10 pt-16 pb-24">
+<!-- Hero Section -->
+<section class="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-[-1]">
+<img alt="Cosmic Landscape" class="w-full h-full object-cover opacity-60" src="https://lh3.googleusercontent.com/aida/AP1WRLsXavbL3GSxw6ju2SqHbq5fKCr9o8R_1jumA-xVlqVxV11qnJXcB5NrI3BI-oR5UakYj-UsYUtsPOXt-X6qebQyga4IwzLRifOeN2AlOfVNMSRXyFlYENNmYjALXxogZmBe2AMLMwtn83Ra7lMAN9JXAnfJx4Iw09cDcWec_LcSiIfVU5SWwqGrP0-lFx3rhK9vvqDnIICr-GGQS72SHzMEIujwfzWpfLzOsTpdqaZO82J6heb2Na2GIBA"/>
+<div class="absolute inset-0 bg-gradient-to-b from-void-black via-transparent to-void-black"></div>
+</div>
+<!-- Atmosphere Blurs -->
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-nebula-purple/20 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-electric-cyan/10 rounded-full blur-[150px]"></div>
+<div class="container mx-auto px-margin-mobile text-center max-w-4xl">
+<div class="glass-card p-12 rounded-xl relative overflow-hidden group">
+<span class="inline-block px-4 py-1 border border-electric-cyan/30 rounded-full font-label-mono text-label-mono text-electric-cyan mb-8 uppercase tracking-widest bg-electric-cyan/5">
+                        Now Booking New Projects
+                    </span>
+<h1 class="font-headline-xl text-headline-lg-mobile text-starlight-white mb-6 leading-tight tracking-tight">
+                        WEBSITES THAT <br/>
+<span class="text-electric-cyan neon-text-glow">GROW YOUR BUSINESS</span>
+</h1>
+<p class="font-body-lg text-body-md text-on-surface-variant max-w-2xl mx-auto mb-10">
+                        We design and build fast, modern websites and custom apps for businesses in Naples and beyond — built to load quickly, look sharp, and turn visitors into customers.
+                    </p>
+<div class="flex flex-col gap-6">
+<a href="contact.html" class="w-full px-10 py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-caps text-label-caps rounded-sm transition-all active:scale-95">
+                            START YOUR PROJECT
+                        </a>
+<a href="services.html" class="w-full px-10 py-4 border border-electric-cyan/40 text-electric-cyan font-label-caps text-label-caps rounded-sm transition-all backdrop-blur-sm">
+                            SEE WHAT WE DO
+                        </a>
+<p class="font-label-mono text-label-mono text-on-surface-variant pt-2">Naples, FL · Call or text <a class="text-electric-cyan hover:underline" href="tel:+12394048505">(239) 404-8505</a></p>
+</div>
+</div>
+</div>
+</section>
+<!-- Status Section -->
+<section class="py-24 relative">
+<div class="mx-auto px-margin-mobile">
+<div class="grid grid-cols-1 gap-8">
+<div class="glass-card p-10 rounded-lg flex flex-col justify-between group">
+<div>
+<div class="flex items-center gap-4 mb-6">
+<div class="w-3 h-3 bg-electric-cyan rounded-full animate-pulse shadow-[0_0_10px_#00F0FF]"></div>
+<h3 class="font-headline-md text-headline-md text-starlight-white">Now Booking</h3>
+</div>
+<p class="font-body-md text-on-surface-variant">
+                                We design and build fast, modern websites for businesses in Naples and beyond. Tell us what you need and we'll map out the build — no templates, no fuss.
+                            </p>
+</div>
+<div class="mt-12 flex items-center justify-between">
+<div class="space-y-1">
+<p class="font-label-mono text-[10px] text-on-surface-variant/40">CURRENT AVAILABILITY</p>
+<div class="w-40 h-1 bg-white/5 relative">
+<div class="absolute left-0 top-0 h-full w-[88%] bg-electric-cyan shadow-[0_0_8px_#00F0FF]"></div>
+</div>
+</div>
+<span class="font-label-mono text-electric-cyan">88%</span>
+</div>
+</div>
+<div class="glass-card p-10 rounded-lg bg-nebula-purple/5 border-nebula-purple/20">
+<span class="material-symbols-outlined text-nebula-purple text-4xl mb-6">hub</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">What We Build</h3>
+<p class="font-body-md text-on-surface-variant mb-6 text-sm">
+                            Websites, online stores, and custom apps for local businesses — designed around your goals, not a template.
+                        </p>
+<ul class="space-y-3 font-label-mono text-[11px] text-on-surface-variant/80">
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-nebula-purple"></span> Custom websites &amp; redesigns</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-nebula-purple"></span> Online stores with cart &amp; checkout</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-nebula-purple"></span> Custom apps &amp; tools</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-nebula-purple"></span> Hosting &amp; ongoing support</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Mission Content -->
+<section class="py-24 border-y border-starlight-white/5 bg-surface-container-lowest/30">
+<div class="mx-auto px-margin-mobile text-center">
+<h2 class="font-headline-lg text-headline-lg-mobile text-starlight-white mb-10">Why DARK MATTER</h2>
+<div class="grid grid-cols-1 gap-12 text-left">
+<p class="font-body-lg text-on-surface-variant">
+                        We're a Naples-based web studio that builds custom websites and apps for local businesses — no templates, no jargon, no runaround.
+                    </p>
+<p class="font-body-lg text-on-surface-variant">
+                        You work directly with the person building your site. We keep things simple, give you a fixed quote up front, and make sure your site looks great and loads fast on every device.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Contact CTA -->
+<section class="py-24 px-margin-mobile relative overflow-hidden">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-electric-cyan/5 rounded-full blur-[180px] pointer-events-none"></div>
+<div class="mx-auto glass-card p-10 rounded-xl relative z-10 text-center">
+<h2 class="font-headline-lg text-headline-md text-starlight-white mb-4">Let's build it.</h2>
+<p class="font-body-md text-on-surface-variant mb-8">Naples-based web development. Call or text and we'll get started.</p>
+<a href="tel:+12394048505" class="inline-block w-full py-5 mb-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-sm transition-all active:scale-[0.98] duration-200">
+                    CALL OR TEXT (239) 404-8505
+                </a>
+<a href="contact.html" class="inline-block w-full py-5 bg-starlight-white text-void-black font-label-caps text-label-caps rounded-sm transition-colors active:scale-[0.98] duration-200">
+                    SEND A MESSAGE
+                </a>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-margin-mobile flex flex-col items-center gap-6 mb-20 border-t border-starlight-white/5 bg-void-black relative z-10">
+<div class="flex items-center gap-3 mb-4 opacity-80">
+<span class="material-symbols-outlined text-electric-cyan text-xl">blur_on</span>
+<span class="font-headline-md text-headline-md tracking-tighter text-starlight-white">DARK MATTER</span>
+</div>
+<p class="font-label-caps text-[10px] text-on-primary-container/60 tracking-widest text-center max-w-lg">
+            © 2026 DARK MATTER · NAPLES, FL · CALL OR TEXT (239) 404-8505
+        </p>
+</footer>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface/10 backdrop-blur-2xl border-t border-starlight-white/10 shadow-[0_-10px_30px_rgba(112,0,255,0.15)] rounded-t-xl">
+<a href="index.html" class="flex flex-col items-center justify-center text-electric-cyan drop-shadow-[0_0_8px_rgba(0,240,255,0.8)] active:scale-90 transition-transform">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="font-label-caps text-[10px]">Home</span>
+</a>
+<a href="services.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-transform hover:text-starlight-white">
+<span class="material-symbols-outlined mb-1">design_services</span>
+<span class="font-label-caps text-[10px]">Services</span>
+</a>
+<a href="process.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-transform hover:text-starlight-white">
+<span class="material-symbols-outlined mb-1">timeline</span>
+<span class="font-label-caps text-[10px]">Process</span>
+</a>
+<a href="casestudies.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-transform hover:text-starlight-white">
+<span class="material-symbols-outlined mb-1">workspace_premium</span>
+<span class="font-label-caps text-[10px]">Work</span>
+</a>
+<a href="contact.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-transform hover:text-starlight-white">
+<span class="material-symbols-outlined mb-1">mail</span>
+<span class="font-label-caps text-[10px]">Contact</span>
+</a>
+</nav>
+</div>
+<!-- /MOBILE -->
+
+<script>
+        // Desktop: side-nav active state + hero parallax (scoped to desktop wrapper)
+        const desktopRoot = document.querySelector('.hidden.md\\:block');
+        if (desktopRoot) {
+            const sideNavButtons = desktopRoot.querySelectorAll('aside button');
+            sideNavButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    sideNavButtons.forEach(b => { b.classList.remove('text-nebula-purple', 'bg-nebula-purple/10'); b.classList.add('text-outline'); });
+                    btn.classList.remove('text-outline');
+                    btn.classList.add('text-nebula-purple', 'bg-nebula-purple/10');
+                });
+            });
+            const heroBg = desktopRoot.querySelector('section img');
+            window.addEventListener('scroll', () => {
+                if (heroBg) heroBg.style.transform = `translateY(${window.pageYOffset * 0.4}px)`;
+            });
+        }
     </script>
+<script>
+(function () {
+  var root = document.querySelector('.hidden.md\\:block') || document;
+  var pop = document.getElementById('rail-popover');
+  if (!pop) return;
+  var CLOSE_DELAY = 200;
+  var closeTimer = null;
+  var steps = {
+    discover: { icon: 'search', step: 'STEP 01 — DISCOVER', title: 'Discover', desc: 'We start with a free conversation about your business and goals, then map out a clear plan and a fixed quote.' },
+    design:   { icon: 'architecture', step: 'STEP 02 — DESIGN', title: 'Design', desc: 'We design the look and layout around your brand and show you a preview to react to — before any code is written.' },
+    build:    { icon: 'terminal', step: 'STEP 03 — BUILD', title: 'Build', desc: 'We build your site with clean, modern code: fast, secure, mobile-friendly, and fully tested.' },
+    launch:   { icon: 'rocket_launch', step: 'STEP 04 — LAUNCH', title: 'Launch', desc: 'We put your site live, make sure everything works, and stick around for hosting, updates, and support.' }
+  };
+  var iconEl = document.getElementById('rail-popover-icon');
+  var stepEl = document.getElementById('rail-popover-step');
+  var titleEl = document.getElementById('rail-popover-title');
+  var descEl = document.getElementById('rail-popover-desc');
+  function positionFor(trigger) {
+    var r = trigger.getBoundingClientRect();
+    pop.style.left = (r.right + 12) + 'px';
+    pop.style.top = (r.top + r.height / 2) + 'px';
+  }
+  function showFor(trigger) {
+    clearTimeout(closeTimer);
+    var key = trigger.getAttribute('data-step');
+    var data = steps[key];
+    if (!data) return;
+    iconEl.textContent = data.icon;
+    stepEl.textContent = data.step;
+    titleEl.textContent = data.title;
+    descEl.textContent = data.desc;
+    positionFor(trigger);
+    pop.setAttribute('data-active', key);
+    if (pop.classList.contains('is-visible')) {
+      pop.setAttribute('aria-hidden', 'false');
+      return;
+    }
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        positionFor(trigger);
+        pop.classList.add('is-visible');
+        pop.setAttribute('aria-hidden', 'false');
+      });
+    });
+  }
+  function scheduleClose() {
+    clearTimeout(closeTimer);
+    closeTimer = setTimeout(function () {
+      pop.classList.remove('is-visible');
+      pop.setAttribute('aria-hidden', 'true');
+      pop.removeAttribute('data-active');
+    }, CLOSE_DELAY);
+  }
+  function hideNow() {
+    clearTimeout(closeTimer);
+    pop.classList.remove('is-visible');
+    pop.setAttribute('aria-hidden', 'true');
+    pop.removeAttribute('data-active');
+  }
+  root.querySelectorAll('aside [data-step]').forEach(function (t) {
+    t.style.cursor = 'pointer';
+    if (!t.hasAttribute('tabindex')) t.setAttribute('tabindex', '0');
+    t.addEventListener('mouseenter', function () { showFor(t); });
+    t.addEventListener('mouseleave', scheduleClose);
+    t.addEventListener('focus', function () { showFor(t); });
+    t.addEventListener('blur', scheduleClose);
+  });
+  pop.addEventListener('mouseenter', function () { clearTimeout(closeTimer); });
+  pop.addEventListener('mouseleave', scheduleClose);
+  window.addEventListener('resize', hideNow);
+  window.addEventListener('scroll', hideNow, true);
+})();
+</script>
 </body></html>

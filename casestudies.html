@@ -3,7 +3,7 @@
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Services | DARK MATTER</title>
+<title>Case Studies | DARK MATTER</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -13,55 +13,32 @@
             color: #e3e2e2;
             overflow-x: hidden;
         }
-        /* Desktop */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
         }
-        .neon-glow-cyan { box-shadow: 0 0 20px rgba(0, 240, 255, 0.15); }
-        .neon-glow-purple { box-shadow: 0 0 20px rgba(112, 0, 255, 0.15); }
         .grid-overlay {
             background-image: 
                 linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             background-size: 80px 80px;
         }
-        .scanline {
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(to right, transparent, #00F0FF, transparent);
-            position: absolute;
-            opacity: 0.3;
-            animation: scan 8s linear infinite;
-        }
-        @keyframes scan {
-            0% { top: -10%; }
-            100% { top: 110%; }
-        }
-        .gradient-text-nebula {
-            background: linear-gradient(135deg, #00F0FF 0%, #7000FF 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        /* Mobile */
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .glass-card {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .glass-card:hover {
-            background: rgba(255, 255, 255, 0.07);
-            border-color: rgba(0, 240, 255, 0.4);
-            transform: translateY(-8px);
+        .neon-glow-cyan { box-shadow: 0 0 20px rgba(0, 240, 255, 0.15); }
+        .gradient-text-nebula {
+            background: linear-gradient(135deg, #00F0FF 0%, #7000FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .glow-cyan { box-shadow: 0 0 20px rgba(0, 240, 255, 0.15); }
-        .glow-purple { box-shadow: 0 0 20px rgba(112, 0, 255, 0.15); }
         /* Ghost rail popover */
         .rail-popover-ghost {
             visibility: hidden;
@@ -235,16 +212,16 @@
 <a href="index.html" class="font-headline-md text-headline-md tracking-tighter text-starlight-white font-bold">DARK MATTER</a>
 <div class="hidden md:flex gap-10 items-center">
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="index.html">Home</a>
-<a class="font-label-mono text-label-mono text-electric-cyan border-b-2 border-electric-cyan pb-1 transition-colors duration-300" href="services.html">Services</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="services.html">Services</a>
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="process.html">Process</a>
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="casestudies.html">Case Studies</a>
+<a class="font-label-mono text-label-mono text-electric-cyan border-b-2 border-electric-cyan pb-1 transition-colors duration-300" href="casestudies.html">Case Studies</a>
 <a href="contact.html" class="ml-4 inline-block px-6 py-2 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-lg hover:opacity-90 active:scale-95 transition-all">Start Project</a>
 </div>
 </nav>
 <aside class="fixed left-0 top-1/2 -translate-y-1/2 h-auto rounded-r-xl bg-void-black/80 backdrop-blur-2xl border-r border-t border-b border-white/5 flex flex-col p-4 gap-unit z-40 shadow-[0_0_20px_rgba(112,0,255,0.15)]">
 <div class="flex flex-col items-center gap-6">
-<button type="button" data-step="discover" class="p-3 text-nebula-purple bg-nebula-purple/10 rounded-lg group relative">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">search</span>
+<button type="button" data-step="discover" class="p-3 text-outline hover:bg-white/5 rounded-lg transition-all group relative">
+<span class="material-symbols-outlined">search</span>
 <span class="absolute left-full ml-4 px-2 py-1 bg-surface border border-white/10 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Discover</span>
 </button>
 <button type="button" data-step="design" class="p-3 text-outline hover:bg-white/5 rounded-lg transition-all group relative">
@@ -255,9 +232,9 @@
 <span class="material-symbols-outlined">terminal</span>
 <span class="absolute left-full ml-4 px-2 py-1 bg-surface border border-white/10 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Build</span>
 </button>
-<button type="button" data-step="launch" class="p-3 text-outline hover:bg-white/5 rounded-lg transition-all group relative">
-<span class="material-symbols-outlined">rocket_launch</span>
-<span class="absolute left-full ml-4 px-2 py-1 bg-surface border border-white/10 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Launch</span>
+<button type="button" data-step="launch" class="p-3 text-electric-cyan bg-electric-cyan/10 rounded-lg group relative">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<span class="absolute left-full ml-4 px-2 py-1 bg-surface border border-white/10 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Launched</span>
 </button>
 </div>
 </aside>
@@ -277,112 +254,142 @@
 </div>
 </div>
 <main class="relative z-10 pt-32 pb-24 px-margin-desktop max-w-container-max mx-auto md:pl-28">
-<section class="mb-24">
+<section class="mb-20">
 <div class="max-w-3xl">
-<h4 class="font-label-caps text-label-caps text-electric-cyan mb-4 tracking-[0.2em]">OUR SERVICES</h4>
-<h1 class="font-headline-xl text-headline-xl text-starlight-white mb-8">Services built for <span class="gradient-text-nebula">your business.</span></h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">From a brand-new website to an online store or a custom app, we design and build it around your goals — fast, mobile-friendly, and easy to find. No templates, no jargon.</p>
+<h4 class="font-label-caps text-label-caps text-electric-cyan mb-4 tracking-[0.2em]">SELECTED WORK</h4>
+<h1 class="font-headline-xl text-headline-xl text-starlight-white mb-8">Case <span class="gradient-text-nebula">Studies.</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">Real sites for real Southwest Florida businesses. Each build is engineered to load fast, look sharp, and turn visitors into customers.</p>
 </div>
 </section>
-<section class="mb-32">
-<div class="flex items-end justify-between mb-12">
+
+<!-- Featured Case Study: Naples Antiques LLC -->
+<section class="mb-24">
+<div class="flex items-end justify-between mb-8">
 <div>
-<h2 class="font-headline-lg text-headline-lg text-starlight-white">What we offer</h2>
+<h2 class="font-headline-lg text-headline-lg text-starlight-white">Naples Antiques LLC</h2>
 <div class="h-1 w-24 bg-electric-cyan mt-2"></div>
 </div>
-<div class="font-label-mono text-label-mono text-outline">01 // SERVICES</div>
+<div class="font-label-mono text-label-mono text-electric-cyan">01 // FEATURED</div>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-<div class="glass-panel p-8 rounded-xl group hover:border-electric-cyan/50 transition-all duration-500 relative overflow-hidden">
-<div class="absolute top-0 right-0 p-4 font-label-mono text-label-mono text-white/10">01</div>
-<div class="w-12 h-12 mb-8 bg-electric-cyan/10 rounded-lg flex items-center justify-center text-electric-cyan group-hover:neon-glow-cyan transition-all">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">blur_on</span>
+<div class="glass-panel rounded-2xl overflow-hidden">
+<div class="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-void-black/60">
+<span class="w-3 h-3 rounded-full bg-red-500/70"></span>
+<span class="w-3 h-3 rounded-full bg-yellow-500/70"></span>
+<span class="w-3 h-3 rounded-full bg-green-500/70"></span>
+<span class="ml-3 font-label-mono text-[11px] text-outline truncate">naplesantiquesllc.com</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Web Design</h3>
-<p class="text-on-surface-variant mb-8 leading-relaxed">A clean, modern look built around your brand. We design pages that are easy to use and guide visitors toward calling, booking, or buying.</p>
-<ul class="space-y-3 font-label-mono text-label-mono text-outline mb-8">
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-electric-cyan"></span> Custom, on-brand design</li>
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-electric-cyan"></span> Mobile &amp; tablet friendly</li>
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-electric-cyan"></span> Built to convert visitors</li>
+<div class="bg-primary-container overflow-hidden group">
+<img alt="Naples Antiques LLC homepage" class="w-full h-[420px] object-cover object-center group-hover:scale-[1.02] transition-transform duration-700" loading="lazy" src="assets/naples-hero.png"/>
+</div>
+<div class="p-12 grid grid-cols-1 lg:grid-cols-2 gap-12">
+<div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">WEB DESIGN &amp; BUILD</span>
+<span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">CUSTOM E-COMMERCE</span>
+<span class="font-label-caps text-[10px] px-2 py-1 bg-white/5 text-on-surface-variant border border-white/10 rounded">NAPLES · FORT MYERS</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Estate jewelry &amp; antiques, built to convert.</h3>
+<p class="text-on-surface-variant mb-6 leading-relaxed">A fast, trust-first storefront for a Southwest Florida estate jewelry and antiques buyer. We paired a conversion-focused homepage with a fully custom shop — live precious-metal pricing, product galleries, and a cart &amp; checkout that runs <span class="text-starlight-white">without Shopify or its monthly fees</span>.</p>
+<p class="text-on-surface-variant mb-8 leading-relaxed">Visitors can browse priced inventory, add pieces to a cart, or convert instantly with one-tap call &amp; text and a "send photos for an offer" flow.</p>
+<div class="flex flex-wrap gap-4">
+<a href="https://naplesantiquesllc.com" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-lg hover:scale-105 active:scale-95 transition-all">
+                            Visit Live Site
+                            <span class="material-symbols-outlined text-base">arrow_outward</span>
+</a>
+<a href="contact.html" class="inline-block px-8 py-3 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-lg hover:bg-white/5 transition-all">Start a Project Like This</a>
+</div>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps text-electric-cyan mb-5 tracking-[0.15em]">WHAT IT DELIVERS</h4>
+<ul class="space-y-3 font-label-mono text-label-mono text-on-surface-variant">
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Live gold &amp; silver spot pricing with a configurable spot multiplier</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Custom cart &amp; checkout — no Shopify, no monthly platform fees</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Product pages with image galleries, specs &amp; availability badges</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> One-tap Call &amp; Text plus "send photos for an offer" lead flow</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Trust-first design: verified reviews, confidential service</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Local SEO across Naples, Fort Myers &amp; Marco Island</li>
 </ul>
-<a href="contact.html" class="block text-center w-full py-3 border border-white/10 rounded-lg font-label-caps text-label-caps hover:bg-white/5 transition-all">Start a Project</a>
 </div>
-<div class="glass-panel p-8 rounded-xl group hover:border-nebula-purple/50 transition-all duration-500 relative overflow-hidden">
-<div class="absolute top-0 right-0 p-4 font-label-mono text-label-mono text-white/10">02</div>
-<div class="w-12 h-12 mb-8 bg-nebula-purple/10 rounded-lg flex items-center justify-center text-nebula-purple group-hover:neon-glow-purple transition-all">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">hub</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Development &amp; Online Stores</h3>
-<p class="text-on-surface-variant mb-8 leading-relaxed">From simple sites to online stores and custom apps. We build carts, checkout, and features like live pricing — without locked-in platform fees.</p>
-<ul class="space-y-3 font-label-mono text-label-mono text-outline mb-8">
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nebula-purple"></span> Online stores &amp; checkout</li>
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nebula-purple"></span> Live pricing &amp; product galleries</li>
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nebula-purple"></span> Custom apps &amp; tools</li>
-</ul>
-<a href="contact.html" class="block text-center w-full py-3 border border-white/10 rounded-lg font-label-caps text-label-caps hover:bg-white/5 transition-all">Start a Project</a>
 </div>
-<div class="glass-panel p-8 rounded-xl group hover:border-white/50 transition-all duration-500 relative overflow-hidden">
-<div class="absolute top-0 right-0 p-4 font-label-mono text-label-mono text-white/10">03</div>
-<div class="w-12 h-12 mb-8 bg-white/5 rounded-lg flex items-center justify-center text-starlight-white group-hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">insights</span>
+
+<!-- Reinforcer screenshots / capabilities -->
+<div class="mt-12">
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">A closer look</h3>
+<p class="text-on-surface-variant mb-8 max-w-2xl leading-relaxed">The same features we can build into your site — live pricing, a real shopping cart, and rich product pages, all without locked-in platform fees.</p>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<div class="glass-card rounded-xl overflow-hidden">
+<img alt="Live precious-metal pricing on product cards" class="w-full h-64 object-cover object-top border-b border-white/10" loading="lazy" src="assets/naples-pricing.png"/>
+<div class="p-7">
+<div class="flex items-center gap-3 mb-3">
+<span class="material-symbols-outlined text-electric-cyan">monitoring</span>
+<h4 class="font-headline-md text-[20px] text-starlight-white">Live precious-metal pricing</h4>
 </div>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">SEO &amp; Local Search</h3>
-<p class="text-on-surface-variant mb-8 leading-relaxed">Help the right customers find you on Google. We set up your site to load fast and rank for searches in your area.</p>
-<ul class="space-y-3 font-label-mono text-label-mono text-outline mb-8">
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-white"></span> Google &amp; local search setup</li>
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-white"></span> Fast-loading pages</li>
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-white"></span> Reviews &amp; map listings</li>
-</ul>
-<a href="contact.html" class="block text-center w-full py-3 border border-white/10 rounded-lg font-label-caps text-label-caps hover:bg-white/5 transition-all">Start a Project</a>
+<p class="text-on-surface-variant leading-relaxed">Prices update automatically from live gold &amp; silver spot using a configurable multiplier (e.g. 1.25× spot), with graceful "market closed" states so listings always look accurate.</p>
+</div>
+</div>
+<div class="glass-card rounded-xl overflow-hidden">
+<img alt="Product detail page with cart and pricing" class="w-full h-64 object-cover object-top border-b border-white/10" loading="lazy" src="assets/naples-product.png"/>
+<div class="p-7">
+<div class="flex items-center gap-3 mb-3">
+<span class="material-symbols-outlined text-nebula-purple">shopping_cart</span>
+<h4 class="font-headline-md text-[20px] text-starlight-white">Cart &amp; checkout, Shopify-free</h4>
+</div>
+<p class="text-on-surface-variant leading-relaxed">Full product pages with image galleries, exact scrap value, add-to-cart and favorites — a complete storefront with no Shopify subscription and no per-sale platform fees.</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mt-gutter">
+<div class="glass-card rounded-xl p-6">
+<span class="material-symbols-outlined text-electric-cyan mb-3">photo_library</span>
+<h5 class="font-label-caps text-label-caps text-starlight-white mb-2">PRODUCT GALLERIES</h5>
+<p class="text-on-surface-variant text-sm leading-relaxed">Multi-image galleries with specs like karat, weight &amp; dimensions.</p>
+</div>
+<div class="glass-card rounded-xl p-6">
+<span class="material-symbols-outlined text-electric-cyan mb-3">call</span>
+<h5 class="font-label-caps text-label-caps text-starlight-white mb-2">INQUIRE &amp; BUY FLOWS</h5>
+<p class="text-on-surface-variant text-sm leading-relaxed">Add-to-cart, inquire, and one-tap call/text on every listing.</p>
+</div>
+<div class="glass-card rounded-xl p-6">
+<span class="material-symbols-outlined text-electric-cyan mb-3">travel_explore</span>
+<h5 class="font-label-caps text-label-caps text-starlight-white mb-2">LOCAL SEO</h5>
+<p class="text-on-surface-variant text-sm leading-relaxed">Built to rank across Naples, Fort Myers &amp; Marco Island searches.</p>
+</div>
 </div>
 </div>
 </section>
-<section class="mb-32">
-<div class="glass-panel rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-2">
-<div class="p-12 lg:p-20 flex flex-col justify-center">
-<h4 class="font-label-caps text-label-caps text-nebula-purple mb-4 tracking-[0.2em]">ALL IN ONE PLACE</h4>
-<h2 class="font-headline-lg text-headline-lg text-starlight-white mb-6">Design, build &amp; support together</h2>
-<p class="text-body-lg text-on-surface-variant mb-10 leading-relaxed">You don't have to juggle a designer, a developer, and a host. We handle the whole thing — and stick around to keep your site fast, secure, and up to date.</p>
-<div class="grid grid-cols-2 gap-8 mb-12">
-<div>
-<div class="font-headline-md text-headline-md text-electric-cyan mb-1">99.9%</div>
-<div class="font-label-mono text-label-caps text-outline uppercase">Uptime</div>
+
+<!-- Upcoming / placeholder slots -->
+<section class="mb-24">
+<div class="flex items-end justify-between mb-8">
+<h2 class="font-headline-lg text-headline-lg text-starlight-white">More Work, Loading</h2>
+<div class="font-label-mono text-label-mono text-outline">02 // QUEUE</div>
 </div>
-<div>
-<div class="font-headline-md text-headline-md text-nebula-purple mb-1">1-on-1</div>
-<div class="font-label-mono text-label-caps text-outline uppercase">Direct Support</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="glass-panel p-10 rounded-xl border-dashed border-white/15 flex flex-col items-start">
+<span class="material-symbols-outlined text-4xl text-nebula-purple mb-6">pending</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-3">Project 02 — In Progress</h3>
+<p class="text-on-surface-variant leading-relaxed">The next build is underway. Check back soon, or be the project featured here.</p>
 </div>
-</div>
-<div class="flex gap-4">
-<a href="contact.html" class="inline-block px-8 py-3 bg-starlight-white text-void-black font-label-caps text-label-caps rounded-lg hover:bg-opacity-90 transition-all">Start Your Project</a>
-<a href="process.html" class="inline-block px-8 py-3 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-lg hover:bg-white/5 transition-all">Our Process</a>
-</div>
-</div>
-<div class="relative h-[400px] lg:h-auto bg-primary-container group overflow-hidden">
-<div class="scanline"></div>
-<img alt="Cosmic Data Hub" class="w-full h-full object-cover opacity-60 grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtMTYE9TQgNJVDiHTwzle-zqjnm7u4INi0e8FMZyBc8eOViJpYKWTT1eWlMjWBVhGGCg0WUoDgIzzTm9-8bMO38B70ecp6oqaGz7fsK3BEe8UJbfebceX97vaC1sZ0joLBJbj8HMr8WiwtVsj0YnPvTODsXMzN_cUnX3LVVXks_Tp3H-oBxNK4ERp3B5DUfpdTQUutw4YsodgGzjb8xGZYOZdHK3kWKMd2R-00pibBlxcp1YsYqIwBNQwB5Dv5INMRTKb5OguwESw"/>
-<div class="absolute inset-0 bg-gradient-to-r from-void-black via-transparent to-transparent"></div>
-<div class="absolute bottom-10 left-10 glass-panel p-6 rounded-xl max-w-xs animate-pulse">
-<div class="flex items-center gap-3 mb-2">
-<span class="w-3 h-3 rounded-full bg-green-500"></span>
-<span class="font-label-mono text-label-mono">Now booking</span>
-</div>
-<div class="font-label-caps text-label-caps text-outline">NAPLES, FL · CALL OR TEXT (239) 404-8505</div>
-</div>
+<div class="glass-panel p-10 rounded-xl border-dashed border-white/15 flex flex-col items-start">
+<span class="material-symbols-outlined text-4xl text-electric-cyan mb-6">add_circle</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-3">Your Project Here</h3>
+<p class="text-on-surface-variant leading-relaxed mb-6">Have something to build? Let's make your site the next case study.</p>
+<a href="contact.html" class="inline-block px-6 py-2.5 border border-electric-cyan/40 text-electric-cyan font-label-caps text-label-caps rounded-lg hover:bg-electric-cyan/10 transition-all">Get Started</a>
 </div>
 </div>
 </section>
-<section class="mb-32 text-center">
-<h2 class="font-headline-lg text-headline-lg text-starlight-white mb-12">Ready when you are</h2>
-<div class="relative h-[500px] w-full rounded-2xl overflow-hidden glass-panel">
-<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&amp;w=2068&amp;auto=format&amp;fit=crop')] bg-cover bg-center opacity-20 grayscale"></div>
-<div class="absolute inset-0 flex flex-col items-center justify-center p-8 bg-void-black/40">
-<div class="inline-block px-4 py-1 bg-electric-cyan/10 border border-electric-cyan/20 rounded-full font-label-mono text-label-mono text-electric-cyan mb-8">
-                        NOW BOOKING · NAPLES, FL
-                    </div>
-<h3 class="font-headline-xl text-headline-xl text-starlight-white mb-6">Let's build your site.</h3>
-<p class="max-w-xl text-on-surface-variant text-body-lg mb-12">Tell us what you need and we'll put together a clear plan and a fixed quote — call or text <a class="text-electric-cyan hover:underline" href="tel:+12394048505">(239) 404-8505</a>.</p>
-<a href="contact.html" class="inline-block px-12 py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-xl text-lg font-bold hover:scale-105 active:scale-95 transition-all shadow-2xl">Start Your Project</a>
+
+<!-- CTA -->
+<section class="text-center">
+<div class="glass-panel rounded-2xl p-16 relative overflow-hidden">
+<h2 class="font-headline-xl text-headline-lg text-starlight-white mb-6">Want to be next?</h2>
+<p class="max-w-xl mx-auto text-on-surface-variant text-body-lg mb-10">Based in Naples, FL. Call or text and we'll talk through your project — no pressure, no jargon.</p>
+<div class="flex flex-wrap justify-center gap-4">
+<a href="tel:+12394048505" class="inline-flex items-center gap-2 px-10 py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-xl font-bold hover:scale-105 active:scale-95 transition-all shadow-2xl">
+<span class="material-symbols-outlined text-base">call</span> Call or Text (239) 404-8505
+                    </a>
+<a href="contact.html" class="inline-block px-10 py-4 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-xl hover:bg-white/5 transition-all">Send a Message</a>
 </div>
 </div>
 </section>
@@ -405,14 +412,6 @@
 <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="#">Status</a>
 </div>
 </div>
-<div class="flex gap-4">
-<button class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-outline hover:border-electric-cyan hover:text-electric-cyan transition-all">
-<span class="material-symbols-outlined text-[20px]">public</span>
-</button>
-<button class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-outline hover:border-nebula-purple hover:text-nebula-purple transition-all">
-<span class="material-symbols-outlined text-[20px]">code</span>
-</button>
-</div>
 </div>
 </footer>
 </div>
@@ -425,101 +424,105 @@
 <div class="fixed inset-0 grid-overlay z-0 pointer-events-none opacity-20"></div>
 <header class="fixed top-0 w-full z-50 bg-surface/10 backdrop-blur-xl border-b border-starlight-white/10 shadow-[0_0_20px_rgba(0,240,255,0.1)] flex items-center justify-between px-margin-mobile h-16">
 <a href="index.html" class="flex items-center gap-3">
-<span class="material-symbols-outlined text-electric-cyan text-headline-md">blur_on</span>
+<span class="material-symbols-outlined text-electric-cyan text-2xl">blur_on</span>
 <span class="font-headline-md text-headline-md tracking-tighter text-starlight-white">DARK MATTER</span>
 </a>
 </header>
-<main class="relative z-10 pt-28 pb-28 px-margin-mobile mx-auto">
-<div class="mb-12 flex flex-col gap-4">
+<main class="relative z-10 pt-28 pb-28 px-margin-mobile">
+<div class="mb-10 flex flex-col gap-4">
 <div class="flex items-center gap-4">
 <div class="h-[1px] w-12 bg-electric-cyan"></div>
-<span class="font-label-mono text-label-mono text-electric-cyan tracking-widest uppercase">Our Services</span>
+<span class="font-label-mono text-label-mono text-electric-cyan tracking-widest uppercase">Selected Work</span>
 </div>
-<h2 class="font-headline-xl text-headline-lg-mobile text-starlight-white">What We Do</h2>
-<p class="font-body-lg text-body-md text-on-surface-variant">
-                We design and build websites, online stores, and custom apps for local businesses — fast, mobile-friendly, and easy to find.
-            </p>
+<h2 class="font-headline-xl text-headline-lg-mobile text-starlight-white">Case Studies</h2>
+<p class="font-body-lg text-body-md text-on-surface-variant">Real sites for real Southwest Florida businesses — built to load fast and turn visitors into customers.</p>
 </div>
-<div class="grid grid-cols-1 gap-gutter">
-<div class="glass-card group p-8 rounded-xl flex flex-col h-full relative overflow-hidden">
-<div class="mb-8 p-4 rounded-lg bg-starlight-white/5 w-fit border border-starlight-white/10">
-<span class="material-symbols-outlined text-electric-cyan text-4xl" style="font-variation-settings: 'FILL' 1;">layers</span>
+
+<!-- Featured: Naples Antiques LLC -->
+<div class="glass-card rounded-xl overflow-hidden mb-8">
+<div class="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-void-black/60">
+<span class="w-2.5 h-2.5 rounded-full bg-red-500/70"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500/70"></span>
+<span class="ml-2 font-label-mono text-[10px] text-outline truncate">naplesantiquesllc.com</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Web Design</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-8 flex-grow">
-                    A clean, modern look built around your brand and designed to guide visitors toward calling, booking, or buying.
-                </p>
-<div class="flex flex-col gap-6">
-<div class="flex flex-wrap gap-2">
-<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">CUSTOM DESIGN</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-starlight-white/5 text-on-surface-variant border border-starlight-white/10 rounded">MOBILE FRIENDLY</span>
+<img alt="Naples Antiques LLC homepage" class="w-full h-56 object-cover object-center" loading="lazy" src="assets/naples-hero.png"/>
+<div class="p-7">
+<div class="flex items-center gap-2 mb-4">
+<span class="font-label-mono text-[10px] text-electric-cyan">01 // FEATURED</span>
 </div>
-<a class="text-center rounded-full bg-void-black border border-electric-cyan/30 px-6 py-3 font-label-mono text-label-mono text-starlight-white" href="contact.html">Start a Project</a>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Naples Antiques LLC</h3>
+<div class="flex flex-wrap gap-2 mb-5">
+<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">WEB DESIGN</span>
+<span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">CUSTOM E-COMMERCE</span>
 </div>
-</div>
-<div class="glass-card group p-8 rounded-xl flex flex-col h-full relative overflow-hidden">
-<div class="mb-8 p-4 rounded-lg bg-starlight-white/5 w-fit border border-starlight-white/10">
-<span class="material-symbols-outlined text-nebula-purple text-4xl" style="font-variation-settings: 'FILL' 1;">hub</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Development &amp; Stores</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-8 flex-grow">
-                    From simple sites to online stores and custom apps — carts, checkout, and live pricing without locked-in platform fees.
-                </p>
-<div class="flex flex-col gap-6">
-<div class="flex flex-wrap gap-2">
-<span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">ONLINE STORES</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-starlight-white/5 text-on-surface-variant border border-starlight-white/10 rounded">CUSTOM APPS</span>
-</div>
-<a class="text-center rounded-full bg-void-black border border-electric-cyan/30 px-6 py-3 font-label-mono text-label-mono text-starlight-white" href="contact.html">Start a Project</a>
-</div>
-</div>
-<div class="glass-card group p-8 rounded-xl flex flex-col h-full relative overflow-hidden">
-<div class="mb-8 p-4 rounded-lg bg-starlight-white/5 w-fit border border-starlight-white/10">
-<span class="material-symbols-outlined text-electric-cyan text-4xl" style="font-variation-settings: 'FILL' 1;">waves</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">SEO &amp; Local Search</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-8 flex-grow">
-                    Help the right customers find you on Google. We set up your site to load fast and rank for searches in your area.
-                </p>
-<div class="flex flex-col gap-6">
-<div class="flex flex-wrap gap-2">
-<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">GOOGLE SETUP</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-starlight-white/5 text-on-surface-variant border border-starlight-white/10 rounded">LOCAL SEARCH</span>
-</div>
-<a class="text-center rounded-full bg-void-black border border-electric-cyan/30 px-6 py-3 font-label-mono text-label-mono text-starlight-white" href="contact.html">Start a Project</a>
-</div>
-</div>
-</div>
-<section class="mt-16 relative rounded-2xl overflow-hidden glass-card p-8 border border-starlight-white/5">
-<h3 class="font-headline-lg text-headline-lg-mobile text-starlight-white mb-6">All in one place</h3>
-<p class="font-body-lg text-body-md text-on-surface-variant mb-8">
-                Design, build, and support — all handled by us. You work with one person, get a fixed quote up front, and we keep your site running after launch.
-            </p>
-<ul class="space-y-4">
-<li class="flex items-center gap-3 font-label-mono text-label-mono text-electric-cyan">
-<span class="material-symbols-outlined text-sm">check_circle</span> One point of contact
-                </li>
-<li class="flex items-center gap-3 font-label-mono text-label-mono text-electric-cyan">
-<span class="material-symbols-outlined text-sm">check_circle</span> Fixed quote up front
-                </li>
-<li class="flex items-center gap-3 font-label-mono text-label-mono text-electric-cyan">
-<span class="material-symbols-outlined text-sm">check_circle</span> Hosting &amp; ongoing support
-                </li>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">A trust-first storefront for a Southwest Florida estate jewelry and antiques buyer — with live precious-metal pricing, product galleries, and a cart &amp; checkout built <span class="text-starlight-white">without Shopify or its monthly fees</span>.</p>
+<ul class="space-y-2 font-label-mono text-[12px] text-on-surface-variant mb-7">
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> Live gold &amp; silver spot pricing</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> Custom cart &amp; checkout, Shopify-free</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> One-tap Call &amp; Text + photo offers</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> Local SEO across SW Florida</li>
 </ul>
-</section>
+<a href="https://naplesantiquesllc.com" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-sm active:scale-[0.98] transition-all">
+                    Visit Live Site <span class="material-symbols-outlined text-base">arrow_outward</span>
+</a>
+</div>
+</div>
+
+<!-- Mobile reinforcers -->
+<div class="glass-card rounded-xl overflow-hidden mb-4">
+<img alt="Live precious-metal pricing on product cards" class="w-full h-44 object-cover object-top border-b border-white/10" loading="lazy" src="assets/naples-pricing.png"/>
+<div class="p-6">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-electric-cyan text-lg">monitoring</span>
+<h4 class="font-headline-md text-[18px] text-starlight-white">Live metal pricing</h4>
+</div>
+<p class="font-body-md text-[14px] text-on-surface-variant">Prices update from live gold &amp; silver spot with a configurable multiplier and "market closed" states.</p>
+</div>
+</div>
+<div class="glass-card rounded-xl overflow-hidden mb-8">
+<img alt="Product detail page with cart and pricing" class="w-full h-44 object-cover object-top border-b border-white/10" loading="lazy" src="assets/naples-product.png"/>
+<div class="p-6">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-nebula-purple text-lg">shopping_cart</span>
+<h4 class="font-headline-md text-[18px] text-starlight-white">Cart &amp; checkout, Shopify-free</h4>
+</div>
+<p class="font-body-md text-[14px] text-on-surface-variant">Product galleries, exact scrap value, add-to-cart and favorites — no Shopify subscription or per-sale fees.</p>
+</div>
+</div>
+
+<!-- Placeholder slots -->
+<div class="glass-card rounded-xl p-7 border-dashed border-white/15 mb-4">
+<span class="material-symbols-outlined text-3xl text-nebula-purple mb-4">pending</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Project 02 — In Progress</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">The next build is underway. Check back soon.</p>
+</div>
+<div class="glass-card rounded-xl p-7 border-dashed border-white/15 mb-10">
+<span class="material-symbols-outlined text-3xl text-electric-cyan mb-4">add_circle</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Your Project Here</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-5">Let's make your site the next case study.</p>
+<a href="contact.html" class="inline-block px-6 py-2.5 border border-electric-cyan/40 text-electric-cyan font-label-caps text-label-caps rounded-lg">Get Started</a>
+</div>
+
+<!-- CTA -->
+<div class="glass-card rounded-xl p-8 text-center">
+<h2 class="font-headline-lg text-headline-md text-starlight-white mb-3">Want to be next?</h2>
+<p class="font-body-md text-on-surface-variant mb-6">Based in Naples, FL. Call or text us.</p>
+<a href="tel:+12394048505" class="flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-sm active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-base">call</span> Call or Text (239) 404-8505
+            </a>
+</div>
 </main>
-<footer class="w-full py-12 px-margin-mobile flex flex-col items-center gap-6 mb-20 border-t border-starlight-white/5 bg-void-black">
+<footer class="w-full py-12 px-margin-mobile flex flex-col items-center gap-4 mb-20 border-t border-starlight-white/5 bg-void-black">
 <div class="font-headline-md text-headline-md text-starlight-white tracking-tighter">DARK MATTER</div>
-<div class="font-label-caps text-label-caps text-on-primary-container opacity-60 text-center">
-            © 2026 DARK MATTER · NAPLES, FL · CALL OR TEXT (239) 404-8505
-        </div>
+<div class="font-label-caps text-[10px] text-on-primary-container opacity-60 text-center tracking-widest">© 2026 DARK MATTER · NAPLES, FL · CALL OR TEXT (239) 404-8505</div>
 </footer>
 <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface/10 backdrop-blur-2xl border-t border-starlight-white/10 shadow-[0_-10px_30px_rgba(112,0,255,0.15)] rounded-t-xl">
 <a class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-all hover:text-starlight-white" href="index.html">
 <span class="material-symbols-outlined">home</span>
 <span class="font-label-caps text-[10px] mt-1">Home</span>
 </a>
-<a class="flex flex-col items-center justify-center text-electric-cyan drop-shadow-[0_0_8px_rgba(0,240,255,0.8)] active:scale-90 transition-all" href="services.html">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-all hover:text-starlight-white" href="services.html">
 <span class="material-symbols-outlined">design_services</span>
 <span class="font-label-caps text-[10px] mt-1">Services</span>
 </a>
@@ -527,7 +530,7 @@
 <span class="material-symbols-outlined">timeline</span>
 <span class="font-label-caps text-[10px] mt-1">Process</span>
 </a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-all hover:text-starlight-white" href="casestudies.html">
+<a class="flex flex-col items-center justify-center text-electric-cyan drop-shadow-[0_0_8px_rgba(0,240,255,0.8)] active:scale-90 transition-all" href="casestudies.html">
 <span class="material-symbols-outlined">workspace_premium</span>
 <span class="font-label-caps text-[10px] mt-1">Work</span>
 </a>
@@ -550,7 +553,7 @@
     discover: { icon: 'search', step: 'STEP 01 — DISCOVER', title: 'Discover', desc: 'We start with a free conversation about your business and goals, then map out a clear plan and a fixed quote.' },
     design:   { icon: 'architecture', step: 'STEP 02 — DESIGN', title: 'Design', desc: 'We design the look and layout around your brand and show you a preview to react to — before any code is written.' },
     build:    { icon: 'terminal', step: 'STEP 03 — BUILD', title: 'Build', desc: 'We build your site with clean, modern code: fast, secure, mobile-friendly, and fully tested.' },
-    launch:   { icon: 'rocket_launch', step: 'STEP 04 — LAUNCH', title: 'Launch', desc: 'We put your site live, make sure everything works, and stick around for hosting, updates, and support.' }
+    launch:   { icon: 'workspace_premium', step: 'STEP 04 — LAUNCH', title: 'Launch', desc: 'We put your site live, make sure everything works, and stick around for hosting, updates, and support. Naples Antiques LLC is one we launched.' }
   };
   var iconEl = document.getElementById('rail-popover-icon');
   var stepEl = document.getElementById('rail-popover-step');
