@@ -108,6 +108,65 @@
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
+        .hero-video-bg {
+            background: #050505;
+            will-change: transform;
+        }
+        .hero-video {
+            object-fit: contain;
+            object-position: center center;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            filter: none;
+            opacity: 1;
+        }
+        .hero-video-fill {
+            position: absolute;
+            inset: 0;
+            object-fit: cover;
+            object-position: center 45%;
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-width: 100%;
+            min-height: 100%;
+            transform: scale(1.12);
+            transform-origin: center center;
+        }
+        .hero-headline-band {
+            padding-top: clamp(5.5rem, 11vh, 7rem);
+            padding-bottom: clamp(0.75rem, 2vh, 1.25rem);
+        }
+        .hero-video-stage {
+            min-height: clamp(22rem, 52vh, 36rem);
+            flex: 1 1 auto;
+        }
+        .hero-bottom-band {
+            padding-top: clamp(1.25rem, 4vh, 2.5rem);
+            padding-bottom: clamp(2rem, 6vh, 4rem);
+        }
+        .hero-headline-wide {
+            width: 100%;
+            max-width: none;
+            font-size: clamp(1.85rem, 5.4vw, 5rem);
+            line-height: 1.12;
+            letter-spacing: -0.025em;
+        }
+        .hero-headline-line {
+            display: block;
+        }
+        @media (min-width: 768px) {
+            .hero-headline-line {
+                white-space: nowrap;
+            }
+        }
+        .hero-headline-line-accent {
+            background: linear-gradient(to right, #00F0FF, #7000FF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
         .grid-overlay {
             background-image: 
                 linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
@@ -295,38 +354,39 @@
 </div>
 <main class="relative z-10">
 <!-- Hero Section -->
-<section class="relative min-h-screen flex items-center pt-24 overflow-hidden">
-<div class="absolute inset-0 z-[-1]">
-<img alt="Deep space star field over mountains" class="w-full h-full object-cover opacity-60" src="https://lh3.googleusercontent.com/aida/AP1WRLsXavbL3GSxw6ju2SqHbq5fKCr9o8R_1jumA-xVlqVxV11qnJXcB5NrI3BI-oR5UakYj-UsYUtsPOXt-X6qebQyga4IwzLRifOeN2AlOfVNMSRXyFlYENNmYjALXxogZmBe2AMLMwtn83Ra7lMAN9JXAnfJx4Iw09cDcWec_LcSiIfVU5SWwqGrP0-lFx3rhK9vvqDnIICr-GGQS72SHzMEIujwfzWpfLzOsTpdqaZO82J6heb2Na2GIBA"/>
-<div class="absolute inset-0 bg-gradient-to-t from-void-black via-transparent to-void-black"></div>
+<section class="relative min-h-screen flex flex-col overflow-hidden">
+<div class="absolute inset-0 z-0 hero-video-bg">
+<video class="hero-video" autoplay muted loop playsinline preload="none" aria-hidden="true" data-hero-video></video>
+<div class="absolute inset-0 bg-gradient-to-b from-void-black/90 via-transparent to-void-black/85"></div>
 <div class="scanline"></div>
 </div>
-<div class="px-margin-desktop w-full max-w-container-max mx-auto">
-<div class="max-w-4xl space-y-8 md:pl-24">
-<div class="inline-flex items-center gap-3 px-4 py-1 glass-card rounded-full">
+<div class="hero-headline-band relative z-10 w-full mx-auto px-margin-desktop text-center">
+<div class="inline-flex items-center gap-3 px-4 py-1 glass-card rounded-full mx-auto mb-6">
 <span class="w-2 h-2 rounded-full bg-electric-cyan animate-pulse"></span>
 <span class="font-label-mono text-label-mono text-starlight-white tracking-widest uppercase">Now Booking New Projects</span>
 </div>
-<h1 class="font-headline-xl text-headline-xl text-starlight-white leading-tight">
-                        Websites that <br/>
-<span class="text-transparent bg-clip-text bg-gradient-to-r from-electric-cyan to-nebula-purple">grow your business.</span>
+<h1 class="hero-headline-wide font-headline-xl font-bold text-starlight-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.85)]">
+<span class="hero-headline-line">Websites that flow like spacetime.</span>
+<span class="hero-headline-line hero-headline-line-accent">Built to defy ordinary gravity.</span>
 </h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
-                        We design and build fast, modern websites and custom apps for businesses in Naples and beyond — built to load quickly, look sharp, and turn visitors into customers.
+</div>
+<div class="hero-video-stage relative z-0" aria-hidden="true"></div>
+<div class="hero-bottom-band relative z-10 w-full max-w-[min(100%,56rem)] mx-auto px-margin-desktop text-center">
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-[min(100%,48rem)] mx-auto drop-shadow-[0_2px_16px_rgba(0,0,0,0.75)]">
+                        Fast, modern websites and custom apps for your businesses — digital gravity wells that draw the eye and turn visitors into customers.
                     </p>
-<div class="flex flex-wrap gap-6 pt-4">
-<a href="contact.html" class="inline-block px-10 py-5 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-mono text-label-mono font-bold rounded-lg hover:scale-105 active:scale-95 transition-all glow-cyan">
+<div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-4 pt-10">
+<a href="contact.html" class="inline-block px-12 py-5 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-mono text-label-mono font-bold rounded-lg hover:scale-105 active:scale-95 transition-all glow-cyan">
                             START YOUR PROJECT
                         </a>
-<a href="services.html" class="inline-block px-10 py-5 glass-card text-starlight-white font-label-mono text-label-mono border border-electric-cyan/30 hover:bg-electric-cyan/10 transition-all">
+<a href="services.html" class="inline-block px-12 py-5 glass-card text-starlight-white font-label-mono text-label-mono border border-electric-cyan/30 hover:bg-electric-cyan/10 transition-all">
                             SEE WHAT WE DO
                         </a>
 </div>
-<p class="font-label-mono text-label-mono text-on-surface-variant pt-2">Naples, FL · Call or text <a class="text-electric-cyan hover:underline" href="tel:+12394048505">(239) 404-8505</a></p>
-</div>
+<p class="font-label-mono text-label-mono text-on-surface-variant pt-8 tracking-wide">Naples, FL · Call or text <a class="text-electric-cyan hover:underline" href="tel:+12394048505">(239) 404-8505</a></p>
 </div>
 <!-- Absolute Positioning for Visual Flair -->
-<div class="absolute right-margin-desktop bottom-24 hidden lg:block">
+<div class="absolute right-margin-desktop top-[42%] hidden xl:block pointer-events-none z-[1]">
 <div class="glass-card p-8 rounded-xl w-80 space-y-6">
 <div class="flex justify-between items-end">
 <span class="font-label-caps text-label-caps text-outline">AVG. LOAD TIME</span>
@@ -529,36 +589,34 @@ Contact
 </header>
 <main class="relative z-10 pt-16 pb-24">
 <!-- Hero Section -->
-<section class="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden">
-<div class="absolute inset-0 z-[-1]">
-<img alt="Cosmic Landscape" class="w-full h-full object-cover opacity-60" src="https://lh3.googleusercontent.com/aida/AP1WRLsXavbL3GSxw6ju2SqHbq5fKCr9o8R_1jumA-xVlqVxV11qnJXcB5NrI3BI-oR5UakYj-UsYUtsPOXt-X6qebQyga4IwzLRifOeN2AlOfVNMSRXyFlYENNmYjALXxogZmBe2AMLMwtn83Ra7lMAN9JXAnfJx4Iw09cDcWec_LcSiIfVU5SWwqGrP0-lFx3rhK9vvqDnIICr-GGQS72SHzMEIujwfzWpfLzOsTpdqaZO82J6heb2Na2GIBA"/>
-<div class="absolute inset-0 bg-gradient-to-b from-void-black via-transparent to-void-black"></div>
+<section class="relative min-h-[100vh] flex flex-col overflow-hidden">
+<div class="absolute inset-0 z-0 hero-video-bg overflow-hidden">
+<video class="hero-video hero-video-fill" autoplay muted loop playsinline preload="none" aria-hidden="true" data-hero-video></video>
+<div class="absolute inset-0 bg-gradient-to-b from-void-black/90 via-transparent to-void-black/85"></div>
 </div>
-<!-- Atmosphere Blurs -->
-<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-nebula-purple/20 rounded-full blur-[120px]"></div>
-<div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-electric-cyan/10 rounded-full blur-[150px]"></div>
-<div class="container mx-auto px-margin-mobile text-center max-w-4xl">
-<div class="glass-card p-12 rounded-xl relative overflow-hidden group">
-<span class="inline-block px-4 py-1 border border-electric-cyan/30 rounded-full font-label-mono text-label-mono text-electric-cyan mb-8 uppercase tracking-widest bg-electric-cyan/5">
+<div class="hero-headline-band relative z-10 w-full mx-auto px-margin-mobile text-center pt-20">
+<span class="inline-block px-4 py-1 border border-electric-cyan/30 rounded-full font-label-mono text-label-mono text-electric-cyan mb-5 uppercase tracking-widest bg-void-black/40 backdrop-blur-sm">
                         Now Booking New Projects
                     </span>
-<h1 class="font-headline-xl text-headline-lg-mobile text-starlight-white mb-6 leading-tight tracking-tight">
-                        WEBSITES THAT <br/>
-<span class="text-electric-cyan neon-text-glow">GROW YOUR BUSINESS</span>
+<h1 class="hero-headline-wide font-headline-xl font-bold text-starlight-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.85)]">
+<span class="hero-headline-line">Websites that flow like spacetime.</span>
+<span class="hero-headline-line hero-headline-line-accent">Built to defy ordinary gravity.</span>
 </h1>
-<p class="font-body-lg text-body-md text-on-surface-variant max-w-2xl mx-auto mb-10">
-                        We design and build fast, modern websites and custom apps for businesses in Naples and beyond — built to load quickly, look sharp, and turn visitors into customers.
+</div>
+<div class="hero-video-stage relative z-0" aria-hidden="true"></div>
+<div class="hero-bottom-band relative z-10 w-full max-w-xl mx-auto px-margin-mobile text-center pb-8">
+<p class="font-body-lg text-body-md text-on-surface-variant drop-shadow-[0_2px_16px_rgba(0,0,0,0.75)]">
+                        Fast, modern websites and custom apps for your businesses — digital gravity wells that draw the eye and turn visitors into customers.
                     </p>
-<div class="flex flex-col gap-6">
-<a href="contact.html" class="w-full px-10 py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-caps text-label-caps rounded-sm transition-all active:scale-95">
+<div class="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-4 pt-8">
+<a href="contact.html" class="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-caps text-label-caps rounded-sm transition-all active:scale-95">
                             START YOUR PROJECT
                         </a>
-<a href="services.html" class="w-full px-10 py-4 border border-electric-cyan/40 text-electric-cyan font-label-caps text-label-caps rounded-sm transition-all backdrop-blur-sm">
+<a href="services.html" class="w-full sm:w-auto px-10 py-4 border border-electric-cyan/40 text-electric-cyan font-label-caps text-label-caps rounded-sm transition-all backdrop-blur-sm">
                             SEE WHAT WE DO
                         </a>
-<p class="font-label-mono text-label-mono text-on-surface-variant pt-2">Naples, FL · Call or text <a class="text-electric-cyan hover:underline" href="tel:+12394048505">(239) 404-8505</a></p>
 </div>
-</div>
+<p class="font-label-mono text-label-mono text-on-surface-variant pt-6 tracking-wide">Naples, FL · Call or text <a class="text-electric-cyan hover:underline" href="tel:+12394048505">(239) 404-8505</a></p>
 </div>
 </section>
 <!-- Status Section -->
@@ -699,22 +757,87 @@ Contact
 </script>
 
 <script>
-        // Desktop: side-nav active state + hero parallax (scoped to desktop wrapper)
-        const desktopRoot = document.querySelector('.hidden.md\\:block');
-        if (desktopRoot) {
-            const sideNavButtons = desktopRoot.querySelectorAll('aside button');
-            sideNavButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    sideNavButtons.forEach(b => { b.classList.remove('text-nebula-purple', 'bg-nebula-purple/10'); b.classList.add('text-outline'); });
-                    btn.classList.remove('text-outline');
-                    btn.classList.add('text-nebula-purple', 'bg-nebula-purple/10');
+        (function () {
+            var heroSources = '<source src="assets/hero-black-hole.mp4" type="video/mp4"/><source src="assets/hero-black-hole.webm" type="video/webm"/>';
+            var desktopRoot = document.querySelector('.hidden.md\\:block');
+            var mobileRoot = document.querySelector('.md\\:hidden');
+            var desktopVideo = desktopRoot ? desktopRoot.querySelector('[data-hero-video]') : null;
+            var mobileVideo = mobileRoot ? mobileRoot.querySelector('[data-hero-video]') : null;
+            var heroMq = window.matchMedia('(min-width: 768px)');
+
+            function sourcesFor() {
+                return heroSources;
+            }
+
+            function tierKey() {
+                return '4k';
+            }
+
+            function activeHeroVideo() {
+                return heroMq.matches ? desktopVideo : mobileVideo;
+            }
+
+            function mountHeroVideo() {
+                var active = activeHeroVideo();
+                [desktopVideo, mobileVideo].forEach(function (video) {
+                    if (!video) return;
+                    if (video === active) {
+                        var key = tierKey();
+                        if (video.getAttribute('data-hero-tier') !== key) {
+                            video.innerHTML = sourcesFor();
+                            video.setAttribute('data-hero-tier', key);
+                            video.load();
+                        }
+                        video.preload = 'metadata';
+                        video.loop = true;
+                        video.playbackRate = 1;
+                        video.play().catch(function () {});
+                    } else {
+                        video.pause();
+                        video.innerHTML = '';
+                        video.removeAttribute('data-hero-tier');
+                        video.preload = 'none';
+                        video.load();
+                    }
                 });
+                return active;
+            }
+
+            if (desktopRoot) {
+                const sideNavButtons = desktopRoot.querySelectorAll('aside button');
+                sideNavButtons.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        sideNavButtons.forEach(b => { b.classList.remove('text-nebula-purple', 'bg-nebula-purple/10'); b.classList.add('text-outline'); });
+                        btn.classList.remove('text-outline');
+                        btn.classList.add('text-nebula-purple', 'bg-nebula-purple/10');
+                    });
+                });
+            }
+
+            var heroBg = mountHeroVideo();
+            heroMq.addEventListener('change', function () {
+                heroBg = mountHeroVideo();
+                applyHeroParallax();
             });
-            const heroBg = desktopRoot.querySelector('section img');
-            window.addEventListener('scroll', () => {
-                if (heroBg) heroBg.style.transform = `translateY(${window.pageYOffset * 0.4}px)`;
-            });
-        }
+
+            function heroParallaxRoot() {
+                return heroMq.matches ? desktopRoot : mobileRoot;
+            }
+
+            function applyHeroParallax() {
+                var root = heroParallaxRoot();
+                var bg = root ? root.querySelector('.hero-video-bg') : null;
+                var offset = window.pageYOffset * 0.4;
+                if (bg) {
+                    bg.style.transform = 'translateY(' + offset + 'px)';
+                }
+                if (desktopVideo) desktopVideo.style.transform = '';
+                if (mobileVideo) mobileVideo.style.transform = '';
+            }
+
+            window.addEventListener('scroll', applyHeroParallax, { passive: true });
+            applyHeroParallax();
+        })();
     </script>
 <script>
 (function () {
