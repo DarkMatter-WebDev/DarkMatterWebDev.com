@@ -1,0 +1,90 @@
+@import url('logo.css');
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Services dropdown */
+.services-nav-group {
+  position: relative;
+}
+
+nav,
+nav .hidden.md\:flex,
+.services-nav-group {
+  overflow: visible;
+}
+
+.services-nav-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding-top: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  pointer-events: none;
+  z-index: 80;
+}
+
+/* Invisible bridge so hover is not lost between trigger and menu */
+.services-nav-menu::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+}
+
+.services-nav-group:hover .services-nav-menu,
+.services-nav-group:focus-within .services-nav-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.services-nav-panel {
+  background: rgba(8, 10, 14, 0.97);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.65);
+  border-radius: 0.75rem;
+  padding: 0.5rem 0;
+  min-width: 15rem;
+  overflow: hidden;
+}
+
+.services-nav-panel a {
+  display: block;
+  padding: 0.625rem 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: #c4c7c7;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.services-nav-panel a:hover {
+  color: #00f0ff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.services-nav-panel a.text-electric-cyan {
+  color: #00f0ff;
+  background: rgba(0, 240, 255, 0.06);
+}

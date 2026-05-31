@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Discovery & Consultation | DARK MATTER</title>
+<meta name="description" content="Free discovery and consultation for managed website services in Southwest Florida."/>
+<link href="../assets/nav.css" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+.glass-card { background: rgba(255,255,255,0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); }
+.grid-overlay { background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 80px 80px; }
+.rail-popover-ghost { visibility:hidden; pointer-events:none; transform:translateY(-50%) translateX(-10px); transition: visibility 0s linear 0.42s, transform 0.42s cubic-bezier(0.22,1,0.36,1); }
+.rail-popover-ghost.is-visible { visibility:visible; pointer-events:auto; transform:translateY(-50%) translateX(0); transition: visibility 0s, transform 0.42s cubic-bezier(0.22,1,0.36,1); }
+.rail-popover-ghost-inner { padding:0.7rem 1.35rem; border-radius:9999px; background:rgba(8,10,14,0.24); backdrop-filter:blur(40px); border:1px solid rgba(255,255,255,0.06); }
+</style>
+<script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"void-black":"#050505","electric-cyan":"#00F0FF","nebula-purple":"#7000FF","starlight-white":"#FFFFFF","on-surface-variant":"#c4c7c7","outline":"#8e9192","surface":"#121414"},spacing:{"margin-desktop":"64px","margin-mobile":"20px","gutter":"24px","container-max":"1440px"},fontFamily:{"headline-xl":["Space Grotesk"],"headline-lg":["Space Grotesk"],"headline-md":["Space Grotesk"],"body-md":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"label-mono":["JetBrains Mono"],"label-caps":["JetBrains Mono"]},fontSize:{"headline-xl":["64px",{lineHeight:"1.1",fontWeight:"700"}],"headline-lg":["40px",{lineHeight:"1.2",fontWeight:"600"}],"headline-md":["24px",{lineHeight:"1.3",fontWeight:"500"}],"body-lg":["18px",{lineHeight:"1.6"}],"body-md":["16px",{lineHeight:"1.6"}],"label-mono":["14px",{letterSpacing:"0.05em"}],"label-caps":["12px",{letterSpacing:"0.1em",fontWeight:"700"}]}}}}</script>
+</head>
+<body class="bg-void-black text-starlight-white font-body-md overflow-x-hidden">
+<div class="hidden md:block">
+<div class="fixed inset-0 grid-overlay pointer-events-none z-0"></div>
+<nav class="fixed top-0 w-full z-50 bg-surface/10 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-margin-desktop py-4">
+<a href="../index.html" class="flex flex-col leading-none">
+<span class="font-headline-md text-headline-md tracking-tighter text-starlight-white">DARK MATTER</span>
+<span class="brand-subtext">Web Services</span>
+</a>
+<div class="hidden md:flex items-center gap-10">
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan" href="../index.html">Home</a>
+<div class="relative services-nav-group">
+<a class="font-label-mono text-label-mono text-electric-cyan border-b-2 border-electric-cyan pb-1" href="../services.html">Services</a>
+<div class="services-nav-menu">
+<div class="services-nav-panel">
+<a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="../services/complete-website-management.html">Complete Website Management</a><a class="block px-4 py-2.5 font-label-mono text-sm text-electric-cyan hover:bg-white/5 transition-colors" href="../services/discovery-consultation.html">Discovery & Consultation</a><a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="../services/website-design.html">Website Design</a><a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="../services/brand-rebranding.html">Brand & Rebranding</a><a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="../services/managed-hosting.html">Managed Hosting</a><a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="../services/website-care-plans.html">Website Care Plans</a><a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="../services/seo-foundations.html">SEO Foundations</a><a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="../services/custom-development.html">Custom Development</a>
+</div>
+</div>
+</div>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan" href="../process.html">Process</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan" href="../casestudies.html">Portfolio</a>
+<a href="../contact.html" class="inline-block bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-mono px-6 py-2 rounded-lg">Schedule Consultation</a>
+</div>
+</nav>
+<aside class="fixed left-0 top-1/2 -translate-y-1/2 rounded-r-xl bg-void-black/80 backdrop-blur-2xl border-r border-t border-b border-white/5 flex flex-col p-4 gap-4 z-40">
+<div class="mb-2"><span class="font-label-caps text-[10px] text-outline block">HOW IT WORKS</span><span class="font-label-caps text-label-caps text-starlight-white">4 STEPS</span></div>
+<button type="button" data-step="discover" class="text-nebula-purple bg-nebula-purple/10 p-3 rounded-lg hover:translate-x-1 duration-200" title="Discovery"><span class="material-symbols-outlined">search</span></button>
+<button type="button" data-step="build" class="text-outline hover:bg-white/5 p-3 rounded-lg hover:translate-x-1 duration-200" title="Build"><span class="material-symbols-outlined">web</span></button>
+<button type="button" data-step="manage" class="text-outline hover:bg-white/5 p-3 rounded-lg hover:translate-x-1 duration-200" title="Manage"><span class="material-symbols-outlined">cloud_done</span></button>
+<button type="button" data-step="support" class="text-outline hover:bg-white/5 p-3 rounded-lg hover:translate-x-1 duration-200" title="Support"><span class="material-symbols-outlined">forum</span></button>
+</aside>
+<div id="rail-popover" class="rail-popover-ghost fixed z-[60] w-[min(32rem,calc(100vw-6rem))]" aria-hidden="true"><div class="rail-popover-ghost-inner flex items-center gap-3"><span id="rail-popover-icon" class="material-symbols-outlined text-electric-cyan/80 text-lg"></span><div><span id="rail-popover-step" class="font-label-mono text-[10px] text-electric-cyan/70 block"></span><h4 id="rail-popover-title" class="font-headline-md text-base text-starlight-white/90"></h4><p id="rail-popover-desc" class="text-on-surface-variant text-xs"></p></div></div></div>
+<main class="relative z-10 pt-32 pb-24 px-margin-desktop md:pl-28">
+<section class="max-w-container-max mx-auto mb-16">
+<span class="font-label-caps text-label-caps text-electric-cyan tracking-widest">STEP 01</span>
+<h1 class="font-headline-xl text-headline-xl text-starlight-white mt-4 mb-6">Start with a clear plan.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl leading-relaxed">Every project begins with discovery — a straightforward conversation about your business, your customers, and what your website needs to accomplish. No jargon, no pressure.</p>
+<div class="flex flex-wrap gap-4 mt-10">
+<a href="../contact.html" class="px-10 py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-mono font-bold rounded-lg">Schedule a Consultation</a>
+<a href="../services.html" class="px-10 py-4 glass-card border border-white/10 font-label-mono rounded-lg hover:bg-white/5">All Services</a>
+</div>
+</section>
+<section class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-gutter mb-20">
+<div class="glass-card p-10 rounded-xl">
+<span class="material-symbols-outlined text-5xl text-electric-cyan mb-6">search</span>
+<h2 class="font-headline-lg text-headline-lg text-starlight-white mb-4">Discovery & Consultation</h2>
+<p class="font-body-md text-on-surface-variant">Part of Dark Matter's managed website services for Southwest Florida businesses — professional, responsive, and built for the long term.</p>
+</div>
+<ul class="glass-card p-10 rounded-xl space-y-4"><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Free initial consultation</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Business goals and audience review</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Website and branding assessment</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Clear scope and fixed pricing</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Timeline you can plan around</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Honest recommendations — not a hard sell</li></ul>
+</section>
+<section class="max-w-container-max mx-auto glass-card p-12 rounded-2xl text-center">
+<h2 class="font-headline-lg text-headline-lg text-starlight-white mb-4">Ready to get started?</h2>
+<p class="font-body-md text-on-surface-variant mb-8 max-w-xl mx-auto">Tell us about your business. We'll recommend the right service — or the Complete Website Management partnership if you want everything handled.</p>
+<a href="../contact.html" class="inline-block px-12 py-5 bg-starlight-white text-void-black font-label-mono font-bold rounded-lg">Schedule a Consultation</a>
+</section>
+</main>
+<footer class="border-t border-white/5 px-margin-desktop py-10 text-center"><span class="font-label-mono text-[10px] text-outline">© 2026 DARK MATTER · Managed Website Services · Southwest Florida</span></footer>
+</div>
+<div class="md:hidden min-h-screen pt-20 px-margin-mobile pb-24">
+<a href="../index.html" class="font-label-mono text-sm text-electric-cyan mb-8 inline-block">← Back to Home</a>
+<span class="font-label-caps text-label-caps text-electric-cyan">STEP 01</span>
+<h1 class="font-headline-lg text-3xl font-bold mt-3 mb-4">Discovery & Consultation</h1>
+<p class="font-body-md text-on-surface-variant mb-8">Every project begins with discovery — a straightforward conversation about your business, your customers, and what your website needs to accomplish. No jargon, no pressure.</p>
+<ul class="space-y-3 mb-10"><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Free initial consultation</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Business goals and audience review</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Website and branding assessment</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Clear scope and fixed pricing</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Timeline you can plan around</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Honest recommendations — not a hard sell</li></ul>
+<a href="../contact.html" class="block text-center py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps rounded-sm">Schedule a Consultation</a>
+</div>
+<script src="../assets/rail.js"></script>
+</body></html>

@@ -4,6 +4,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Services | DARK MATTER</title>
+<link href="assets/nav.css" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -232,33 +233,42 @@
 <div class="absolute -bottom-[20%] -right-[10%] w-[60%] h-[60%] bg-electric-cyan/5 blur-[120px] rounded-full"></div>
 </div>
 <nav class="fixed top-0 w-full bg-surface/10 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-margin-desktop py-4 z-50">
-<a href="index.html" class="font-headline-md text-headline-md tracking-tighter text-starlight-white font-bold">DARK MATTER</a>
+<a href="index.html" class="flex flex-col leading-none">
+<span class="font-headline-md text-headline-md tracking-tighter text-starlight-white font-bold">DARK MATTER</span>
+<span class="brand-subtext">Web Services</span>
+</a>
 <div class="hidden md:flex gap-10 items-center">
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="index.html">Home</a>
+<div class="relative services-nav-group">
 <a class="font-label-mono text-label-mono text-electric-cyan border-b-2 border-electric-cyan pb-1 transition-colors duration-300" href="services.html">Services</a>
+<div class="services-nav-menu">
+<div class="services-nav-panel">
+<a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="services/complete-website-management.html">Complete Website Management</a>
+<a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="services/discovery-consultation.html">Discovery &amp; Consultation</a>
+<a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="services/website-design.html">Website Design</a>
+<a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="services/brand-rebranding.html">Brand &amp; Rebranding</a>
+<a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="services/managed-hosting.html">Managed Hosting</a>
+<a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="services/website-care-plans.html">Website Care Plans</a>
+<a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="services/seo-foundations.html">SEO Foundations</a>
+<a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="services/custom-development.html">Custom Development</a>
+</div>
+</div>
+</div>
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="process.html">Process</a>
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="casestudies.html">Case Studies</a>
-<a href="contact.html" class="ml-4 inline-block px-6 py-2 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-lg hover:opacity-90 active:scale-95 transition-all">Start Project</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="casestudies.html">Portfolio</a>
+<a href="contact.html" class="ml-4 inline-block px-6 py-2 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-lg hover:opacity-90 active:scale-95 transition-all">Schedule Consultation</a>
 </div>
 </nav>
 <aside class="fixed left-0 top-1/2 -translate-y-1/2 h-auto rounded-r-xl bg-void-black/80 backdrop-blur-2xl border-r border-t border-b border-white/5 flex flex-col p-4 gap-unit z-40 shadow-[0_0_20px_rgba(112,0,255,0.15)]">
-<div class="flex flex-col items-center gap-6">
-<button type="button" data-step="discover" class="p-3 text-nebula-purple bg-nebula-purple/10 rounded-lg group relative">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">search</span>
-<span class="absolute left-full ml-4 px-2 py-1 bg-surface border border-white/10 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Discover</span>
-</button>
-<button type="button" data-step="design" class="p-3 text-outline hover:bg-white/5 rounded-lg transition-all group relative">
-<span class="material-symbols-outlined">architecture</span>
-<span class="absolute left-full ml-4 px-2 py-1 bg-surface border border-white/10 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Design</span>
-</button>
-<button type="button" data-step="build" class="p-3 text-outline hover:bg-white/5 rounded-lg transition-all group relative">
-<span class="material-symbols-outlined">terminal</span>
-<span class="absolute left-full ml-4 px-2 py-1 bg-surface border border-white/10 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Build</span>
-</button>
-<button type="button" data-step="launch" class="p-3 text-outline hover:bg-white/5 rounded-lg transition-all group relative">
-<span class="material-symbols-outlined">rocket_launch</span>
-<span class="absolute left-full ml-4 px-2 py-1 bg-surface border border-white/10 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Launch</span>
-</button>
+<div class="mb-4 flex flex-col">
+<span class="font-label-caps text-[10px] text-outline">HOW IT WORKS</span>
+<span class="font-label-caps text-label-caps text-starlight-white">4 STEPS</span>
+</div>
+<div class="flex flex-col gap-4">
+<button type="button" data-step="discover" class="text-outline hover:bg-white/5 p-3 rounded-lg hover:translate-x-1 duration-200" title="Discovery"><span class="material-symbols-outlined">search</span></button>
+<button type="button" data-step="build" class="text-outline hover:bg-white/5 p-3 rounded-lg hover:translate-x-1 duration-200" title="Build"><span class="material-symbols-outlined">web</span></button>
+<button type="button" data-step="manage" class="text-outline hover:bg-white/5 p-3 rounded-lg hover:translate-x-1 duration-200" title="Manage"><span class="material-symbols-outlined">cloud_done</span></button>
+<button type="button" data-step="support" class="text-outline hover:bg-white/5 p-3 rounded-lg hover:translate-x-1 duration-200" title="Support"><span class="material-symbols-outlined">forum</span></button>
 </div>
 </aside>
 <!-- Floating rail info popover -->
@@ -279,83 +289,89 @@
 <main class="relative z-10 pt-32 pb-24 px-margin-desktop max-w-container-max mx-auto md:pl-28">
 <section class="mb-24">
 <div class="max-w-3xl">
-<h4 class="font-label-caps text-label-caps text-electric-cyan mb-4 tracking-[0.2em]">OUR SERVICES</h4>
-<h1 class="font-headline-xl text-headline-xl text-starlight-white mb-8">Services built for <span class="gradient-text-nebula">your business.</span></h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">From a brand-new website to an online store or a custom app, we design and build it around your goals — fast, mobile-friendly, and easy to find. No templates, no jargon.</p>
+<h4 class="font-label-caps text-label-caps text-electric-cyan mb-4 tracking-[0.2em]">MANAGED WEBSITE SERVICES</h4>
+<h1 class="font-headline-xl text-headline-xl text-starlight-white mb-8">Your outsourced <span class="gradient-text-nebula">website department.</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">We build, host, secure, and manage professional websites for Southwest Florida businesses — plus complete rebranding, care plans, and ongoing support. Choose a service below or start with our flagship Complete Website Management partnership.</p>
 </div>
 </section>
 <section class="mb-32">
 <div class="flex items-end justify-between mb-12">
 <div>
-<h2 class="font-headline-lg text-headline-lg text-starlight-white">What we offer</h2>
+<h2 class="font-headline-lg text-headline-lg text-starlight-white">All services</h2>
 <div class="h-1 w-24 bg-electric-cyan mt-2"></div>
 </div>
-<div class="font-label-mono text-label-mono text-outline">01 // SERVICES</div>
+<div class="font-label-mono text-label-mono text-outline">8 SERVICES</div>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-<div class="glass-panel p-8 rounded-xl group hover:border-electric-cyan/50 transition-all duration-500 relative overflow-hidden">
-<div class="absolute top-0 right-0 p-4 font-label-mono text-label-mono text-white/10">01</div>
-<div class="w-12 h-12 mb-8 bg-electric-cyan/10 rounded-lg flex items-center justify-center text-electric-cyan group-hover:neon-glow-cyan transition-all">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">blur_on</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Web Design</h3>
-<p class="text-on-surface-variant mb-8 leading-relaxed">A clean, modern look built around your brand. We design pages that are easy to use and guide visitors toward calling, booking, or buying.</p>
-<ul class="space-y-3 font-label-mono text-label-mono text-outline mb-8">
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-electric-cyan"></span> Custom, on-brand design</li>
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-electric-cyan"></span> Mobile &amp; tablet friendly</li>
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-electric-cyan"></span> Built to convert visitors</li>
-</ul>
-<a href="contact.html" class="block text-center w-full py-3 border border-white/10 rounded-lg font-label-caps text-label-caps hover:bg-white/5 transition-all">Start a Project</a>
-</div>
-<div class="glass-panel p-8 rounded-xl group hover:border-nebula-purple/50 transition-all duration-500 relative overflow-hidden">
-<div class="absolute top-0 right-0 p-4 font-label-mono text-label-mono text-white/10">02</div>
-<div class="w-12 h-12 mb-8 bg-nebula-purple/10 rounded-lg flex items-center justify-center text-nebula-purple group-hover:neon-glow-purple transition-all">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">hub</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Development &amp; Online Stores</h3>
-<p class="text-on-surface-variant mb-8 leading-relaxed">From simple sites to online stores and custom apps. We build carts, checkout, and features like live pricing — without locked-in platform fees.</p>
-<ul class="space-y-3 font-label-mono text-label-mono text-outline mb-8">
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nebula-purple"></span> Online stores &amp; checkout</li>
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nebula-purple"></span> Live pricing &amp; product galleries</li>
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-nebula-purple"></span> Custom apps &amp; tools</li>
-</ul>
-<a href="contact.html" class="block text-center w-full py-3 border border-white/10 rounded-lg font-label-caps text-label-caps hover:bg-white/5 transition-all">Start a Project</a>
-</div>
-<div class="glass-panel p-8 rounded-xl group hover:border-white/50 transition-all duration-500 relative overflow-hidden">
-<div class="absolute top-0 right-0 p-4 font-label-mono text-label-mono text-white/10">03</div>
-<div class="w-12 h-12 mb-8 bg-white/5 rounded-lg flex items-center justify-center text-starlight-white group-hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">insights</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">SEO &amp; Local Search</h3>
-<p class="text-on-surface-variant mb-8 leading-relaxed">Help the right customers find you on Google. We set up your site to load fast and rank for searches in your area.</p>
-<ul class="space-y-3 font-label-mono text-label-mono text-outline mb-8">
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-white"></span> Google &amp; local search setup</li>
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-white"></span> Fast-loading pages</li>
-<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-white"></span> Reviews &amp; map listings</li>
-</ul>
-<a href="contact.html" class="block text-center w-full py-3 border border-white/10 rounded-lg font-label-caps text-label-caps hover:bg-white/5 transition-all">Start a Project</a>
-</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<a href="services/complete-website-management.html" class="glass-panel p-8 rounded-xl group hover:border-electric-cyan/50 transition-all duration-500 block border border-electric-cyan/20">
+<span class="material-symbols-outlined text-4xl text-electric-cyan mb-6">cloud_done</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Complete Website Management</h3>
+<p class="text-on-surface-variant mb-4 leading-relaxed">Our all-in-one partnership — design, hosting, security, maintenance, and updates handled for you.</p>
+<span class="font-label-mono text-label-mono text-electric-cyan text-sm">Learn more →</span>
+</a>
+<a href="services/discovery-consultation.html" class="glass-panel p-8 rounded-xl group hover:border-electric-cyan/50 transition-all duration-500 block">
+<span class="material-symbols-outlined text-4xl text-electric-cyan mb-6">search</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Discovery &amp; Consultation</h3>
+<p class="text-on-surface-variant mb-4 leading-relaxed">Start with a free conversation about your business, goals, and what your website needs.</p>
+<span class="font-label-mono text-label-mono text-electric-cyan text-sm">Learn more →</span>
+</a>
+<a href="services/website-design.html" class="glass-panel p-8 rounded-xl group hover:border-electric-cyan/50 transition-all duration-500 block">
+<span class="material-symbols-outlined text-4xl text-electric-cyan mb-6">web</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Website Design</h3>
+<p class="text-on-surface-variant mb-4 leading-relaxed">Professional custom websites built around your brand — mobile-friendly and built to convert.</p>
+<span class="font-label-mono text-label-mono text-electric-cyan text-sm">Learn more →</span>
+</a>
+<a href="services/brand-rebranding.html" class="glass-panel p-8 rounded-xl group hover:border-nebula-purple/50 transition-all duration-500 block">
+<span class="material-symbols-outlined text-4xl text-nebula-purple mb-6">palette</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Brand &amp; Rebranding</h3>
+<p class="text-on-surface-variant mb-4 leading-relaxed">Complete rebranding — modernized logos, visual identity, and brand assets.</p>
+<span class="font-label-mono text-label-mono text-electric-cyan text-sm">Learn more →</span>
+</a>
+<a href="services/managed-hosting.html" class="glass-panel p-8 rounded-xl group hover:border-nebula-purple/50 transition-all duration-500 block">
+<span class="material-symbols-outlined text-4xl text-nebula-purple mb-6">cloud</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Managed Hosting</h3>
+<p class="text-on-surface-variant mb-4 leading-relaxed">Fast, secure hosting with SSL, backups, monitoring, and ongoing maintenance.</p>
+<span class="font-label-mono text-label-mono text-electric-cyan text-sm">Learn more →</span>
+</a>
+<a href="services/website-care-plans.html" class="glass-panel p-8 rounded-xl group hover:border-electric-cyan/50 transition-all duration-500 block">
+<span class="material-symbols-outlined text-4xl text-electric-cyan mb-6">support_agent</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Website Care Plans</h3>
+<p class="text-on-surface-variant mb-4 leading-relaxed">Ongoing updates via a dedicated WhatsApp account — from $79/month.</p>
+<span class="font-label-mono text-label-mono text-electric-cyan text-sm">Learn more →</span>
+</a>
+<a href="services/seo-foundations.html" class="glass-panel p-8 rounded-xl group hover:border-nebula-purple/50 transition-all duration-500 block">
+<span class="material-symbols-outlined text-4xl text-nebula-purple mb-6">travel_explore</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">SEO Foundations</h3>
+<p class="text-on-surface-variant mb-4 leading-relaxed">Technical SEO, local visibility, and search engine best practices built in.</p>
+<span class="font-label-mono text-label-mono text-electric-cyan text-sm">Learn more →</span>
+</a>
+<a href="services/custom-development.html" class="glass-panel p-8 rounded-xl group hover:border-electric-cyan/50 transition-all duration-500 block">
+<span class="material-symbols-outlined text-4xl text-electric-cyan mb-6">code</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Custom Development</h3>
+<p class="text-on-surface-variant mb-4 leading-relaxed">Integrations, automations, online stores, and advanced functionality when you need more.</p>
+<span class="font-label-mono text-label-mono text-electric-cyan text-sm">Learn more →</span>
+</a>
 </div>
 </section>
 <section class="mb-32">
 <div class="glass-panel rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-2">
 <div class="p-12 lg:p-20 flex flex-col justify-center">
-<h4 class="font-label-caps text-label-caps text-nebula-purple mb-4 tracking-[0.2em]">ALL IN ONE PLACE</h4>
-<h2 class="font-headline-lg text-headline-lg text-starlight-white mb-6">Design, build &amp; support together</h2>
-<p class="text-body-lg text-on-surface-variant mb-10 leading-relaxed">You don't have to juggle a designer, a developer, and a host. We handle the whole thing — and stick around to keep your site fast, secure, and up to date.</p>
+<h4 class="font-label-caps text-label-caps text-nebula-purple mb-4 tracking-[0.2em]">FLAGSHIP SERVICE</h4>
+<h2 class="font-headline-lg text-headline-lg text-starlight-white mb-6">Complete Website Management</h2>
+<p class="text-body-lg text-on-surface-variant mb-10 leading-relaxed">Stop juggling a designer, developer, and host. One partnership covers your website design, hosting, security, maintenance, and updates — we set up a dedicated WhatsApp account for your business so you can message us whenever you need changes.</p>
 <div class="grid grid-cols-2 gap-8 mb-12">
 <div>
-<div class="font-headline-md text-headline-md text-electric-cyan mb-1">99.9%</div>
-<div class="font-label-mono text-label-caps text-outline uppercase">Uptime</div>
+<div class="font-headline-md text-headline-md text-electric-cyan mb-1">All-in-one</div>
+<div class="font-label-mono text-label-caps text-outline uppercase">Design + Host + Support</div>
 </div>
 <div>
-<div class="font-headline-md text-headline-md text-nebula-purple mb-1">1-on-1</div>
-<div class="font-label-mono text-label-caps text-outline uppercase">Direct Support</div>
+<div class="font-headline-md text-headline-md text-nebula-purple mb-1">WhatsApp</div>
+<div class="font-label-mono text-label-caps text-outline uppercase">Dedicated Account</div>
 </div>
 </div>
-<div class="flex gap-4">
-<a href="contact.html" class="inline-block px-8 py-3 bg-starlight-white text-void-black font-label-caps text-label-caps rounded-lg hover:bg-opacity-90 transition-all">Start Your Project</a>
-<a href="process.html" class="inline-block px-8 py-3 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-lg hover:bg-white/5 transition-all">Our Process</a>
+<div class="flex gap-4 flex-wrap">
+<a href="services/complete-website-management.html" class="inline-block px-8 py-3 bg-starlight-white text-void-black font-label-caps text-label-caps rounded-lg hover:bg-opacity-90 transition-all">Explore Management</a>
+<a href="contact.html" class="inline-block px-8 py-3 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-lg hover:bg-white/5 transition-all">Schedule Consultation</a>
 </div>
 </div>
 <div class="relative h-[400px] lg:h-auto bg-primary-container group overflow-hidden">
@@ -380,9 +396,9 @@
 <div class="inline-block px-4 py-1 bg-electric-cyan/10 border border-electric-cyan/20 rounded-full font-label-mono text-label-mono text-electric-cyan mb-8">
                         NOW BOOKING · NAPLES, FL
                     </div>
-<h3 class="font-headline-xl text-headline-xl text-starlight-white mb-6">Let's build your site.</h3>
-<p class="max-w-xl text-on-surface-variant text-body-lg mb-12">Tell us what you need and we'll put together a clear plan and a fixed quote — call or text <a class="text-electric-cyan hover:underline" href="tel:+12394048505">(239) 404-8505</a>.</p>
-<a href="contact.html" class="inline-block px-12 py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-xl text-lg font-bold hover:scale-105 active:scale-95 transition-all shadow-2xl">Start Your Project</a>
+<h3 class="font-headline-lg text-headline-xl text-starlight-white mb-6">Ready for managed website services?</h3>
+<p class="max-w-xl text-on-surface-variant text-body-lg mb-12">Schedule a free consultation or explore <a class="text-electric-cyan hover:underline" href="services/complete-website-management.html">Complete Website Management</a>. Call or text <a class="text-electric-cyan hover:underline" href="tel:+12394048505">(239) 404-8505</a>.</p>
+<a href="contact.html" class="inline-block px-12 py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-xl text-lg font-bold hover:scale-105 active:scale-95 transition-all shadow-2xl">Schedule a Consultation</a>
 </div>
 </div>
 </section>
@@ -390,7 +406,10 @@
 <footer class="w-full mt-auto bg-void-black border-t border-white/5">
 <div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-12 w-full gap-8">
 <div class="flex flex-col gap-4">
+<div class="flex flex-col leading-none">
 <div class="font-headline-md text-headline-md text-starlight-white font-bold">DARK MATTER</div>
+<span class="brand-subtext">Web Services</span>
+</div>
 <div class="font-label-mono text-label-mono text-outline">© 2026 DARK MATTER · NAPLES, FL · CALL OR TEXT (239) 404-8505</div>
 </div>
 <div class="flex gap-12">
@@ -426,7 +445,10 @@
 <header class="fixed top-0 w-full z-50 bg-surface/10 backdrop-blur-xl border-b border-starlight-white/10 shadow-[0_0_20px_rgba(0,240,255,0.1)] flex items-center justify-between px-margin-mobile h-16">
 <a href="index.html" class="flex items-center gap-3">
 <span class="material-symbols-outlined text-electric-cyan text-headline-md">blur_on</span>
+<span class="flex flex-col leading-none">
 <span class="font-headline-md text-headline-md tracking-tighter text-starlight-white">DARK MATTER</span>
+<span class="brand-subtext">Web Services</span>
+</span>
 </a>
 </header>
 <main class="relative z-10 pt-28 pb-28 px-margin-mobile mx-auto">
@@ -509,7 +531,10 @@
 </section>
 </main>
 <footer class="w-full py-12 px-margin-mobile flex flex-col items-center gap-6 mb-20 border-t border-starlight-white/5 bg-void-black">
+<div class="flex flex-col leading-none items-center">
 <div class="font-headline-md text-headline-md text-starlight-white tracking-tighter">DARK MATTER</div>
+<span class="brand-subtext brand-subtext--center">Web Services</span>
+</div>
 <div class="font-label-caps text-label-caps text-on-primary-container opacity-60 text-center">
             © 2026 DARK MATTER · NAPLES, FL · CALL OR TEXT (239) 404-8505
         </div>
@@ -539,77 +564,5 @@
 </div>
 <!-- /MOBILE -->
 
-<script>
-(function () {
-  var root = document.querySelector('.hidden.md\\:block') || document;
-  var pop = document.getElementById('rail-popover');
-  if (!pop) return;
-  var CLOSE_DELAY = 200;
-  var closeTimer = null;
-  var steps = {
-    discover: { icon: 'search', step: 'STEP 01 — DISCOVER', title: 'Discover', desc: 'We start with a free conversation about your business and goals, then map out a clear plan and a fixed quote.' },
-    design:   { icon: 'architecture', step: 'STEP 02 — DESIGN', title: 'Design', desc: 'We design the look and layout around your brand and show you a preview to react to — before any code is written.' },
-    build:    { icon: 'terminal', step: 'STEP 03 — BUILD', title: 'Build', desc: 'We build your site with clean, modern code: fast, secure, mobile-friendly, and fully tested.' },
-    launch:   { icon: 'rocket_launch', step: 'STEP 04 — LAUNCH', title: 'Launch', desc: 'We put your site live, make sure everything works, and stick around for hosting, updates, and support.' }
-  };
-  var iconEl = document.getElementById('rail-popover-icon');
-  var stepEl = document.getElementById('rail-popover-step');
-  var titleEl = document.getElementById('rail-popover-title');
-  var descEl = document.getElementById('rail-popover-desc');
-  function positionFor(trigger) {
-    var r = trigger.getBoundingClientRect();
-    pop.style.left = (r.right + 12) + 'px';
-    pop.style.top = (r.top + r.height / 2) + 'px';
-  }
-  function showFor(trigger) {
-    clearTimeout(closeTimer);
-    var key = trigger.getAttribute('data-step');
-    var data = steps[key];
-    if (!data) return;
-    iconEl.textContent = data.icon;
-    stepEl.textContent = data.step;
-    titleEl.textContent = data.title;
-    descEl.textContent = data.desc;
-    positionFor(trigger);
-    pop.setAttribute('data-active', key);
-    if (pop.classList.contains('is-visible')) {
-      pop.setAttribute('aria-hidden', 'false');
-      return;
-    }
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        positionFor(trigger);
-        pop.classList.add('is-visible');
-        pop.setAttribute('aria-hidden', 'false');
-      });
-    });
-  }
-  function scheduleClose() {
-    clearTimeout(closeTimer);
-    closeTimer = setTimeout(function () {
-      pop.classList.remove('is-visible');
-      pop.setAttribute('aria-hidden', 'true');
-      pop.removeAttribute('data-active');
-    }, CLOSE_DELAY);
-  }
-  function hideNow() {
-    clearTimeout(closeTimer);
-    pop.classList.remove('is-visible');
-    pop.setAttribute('aria-hidden', 'true');
-    pop.removeAttribute('data-active');
-  }
-  root.querySelectorAll('aside [data-step]').forEach(function (t) {
-    t.style.cursor = 'pointer';
-    if (!t.hasAttribute('tabindex')) t.setAttribute('tabindex', '0');
-    t.addEventListener('mouseenter', function () { showFor(t); });
-    t.addEventListener('mouseleave', scheduleClose);
-    t.addEventListener('focus', function () { showFor(t); });
-    t.addEventListener('blur', scheduleClose);
-  });
-  pop.addEventListener('mouseenter', function () { clearTimeout(closeTimer); });
-  pop.addEventListener('mouseleave', scheduleClose);
-  window.addEventListener('resize', hideNow);
-  window.addEventListener('scroll', hideNow, true);
-})();
-</script>
+<script src="assets/rail.js"></script>
 </body></html>
