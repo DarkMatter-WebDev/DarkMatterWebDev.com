@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>THE PROTOCOL | DARK MATTER</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #050505;
+            color: #e3e2e2;
+            overflow-x: hidden;
+        }
+
+        .grid-overlay {
+            background-size: 80px 80px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            pointer-events: none;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.3) 0%, transparent 100%);
+        }
+
+        .glow-cyan {
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+        }
+
+        .glow-purple {
+            box-shadow: 0 0 20px rgba(112, 0, 255, 0.15);
+        }
+
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, rgba(0, 240, 255, 0.5), transparent);
+            position: absolute;
+            animation: scan 4s linear infinite;
+            z-index: 10;
+        }
+
+        @keyframes scan {
+            from { top: -10%; }
+            to { top: 110%; }
+        }
+
+        .gradient-text-primary {
+            background: linear-gradient(135deg, #00F0FF 0%, #7000FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nebula-blur {
+            filter: blur(120px);
+            opacity: 0.15;
+            position: absolute;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .protocol-step:hover .step-line {
+            width: 100%;
+            background-color: #00F0FF;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#e3e2e2",
+                        "deep-space-grey": "#1A1A1A",
+                        "primary-container": "#050505",
+                        "on-surface": "#e3e2e2",
+                        "void-black": "#050505",
+                        "on-surface-variant": "#c4c7c7",
+                        "surface-container-high": "#292a2a",
+                        "on-tertiary-container": "#00848d",
+                        "surface": "#121414",
+                        "surface-container-low": "#1a1c1c",
+                        "on-tertiary-fixed-variant": "#004f54",
+                        "tertiary": "#00dbe9",
+                        "electric-cyan": "#00F0FF",
+                        "surface-bright": "#383939",
+                        "on-tertiary": "#00363a",
+                        "on-primary": "#313030",
+                        "surface-container-highest": "#343535",
+                        "on-secondary-container": "#ddcdff",
+                        "secondary": "#d1bcff",
+                        "surface-container": "#1f2020",
+                        "background": "#121414",
+                        "outline": "#8e9192",
+                        "surface-container-lowest": "#0d0e0f",
+                        "primary-fixed": "#e5e2e1",
+                        "on-secondary": "#3c0090",
+                        "on-error": "#690005",
+                        "on-primary-fixed": "#1c1b1b",
+                        "on-primary-container": "#797777",
+                        "tertiary-fixed-dim": "#00dbe9",
+                        "on-error-container": "#ffdad6",
+                        "surface-dim": "#121414",
+                        "surface-tint": "#c9c6c5",
+                        "tertiary-container": "#000607",
+                        "on-primary-fixed-variant": "#474646",
+                        "nebula-purple": "#7000FF",
+                        "inverse-primary": "#5f5e5e",
+                        "on-secondary-fixed-variant": "#5700c9",
+                        "secondary-container": "#7000ff",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#7df4ff",
+                        "error": "#ffb4ab",
+                        "inverse-on-surface": "#2f3131",
+                        "primary-fixed-dim": "#c9c6c5",
+                        "secondary-fixed-dim": "#d1bcff",
+                        "primary": "#c9c6c5",
+                        "on-secondary-fixed": "#23005b",
+                        "starlight-white": "#FFFFFF",
+                        "surface-variant": "#343535",
+                        "inverse-surface": "#e3e2e2",
+                        "on-tertiary-fixed": "#002022",
+                        "outline-variant": "#444748",
+                        "secondary-fixed": "#e9ddff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Space Grotesk"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-mono": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-mono": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-body-md text-body-md min-h-screen relative selection:bg-electric-cyan selection:text-void-black">
+<div class="fixed inset-0 grid-overlay z-0 opacity-20"></div>
+<div class="nebula-blur w-[600px] h-[600px] bg-electric-cyan top-[-200px] left-[-200px]"></div>
+<div class="nebula-blur w-[500px] h-[500px] bg-nebula-purple bottom-[-100px] right-[-100px]"></div>
+<!-- Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 bg-surface/10 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-margin-desktop py-4">
+<a href="index.html" class="font-headline-md text-headline-md tracking-tighter text-starlight-white flex items-center gap-2">
+<span class="w-8 h-8 rounded-full border-2 border-electric-cyan flex items-center justify-center">
+<span class="w-4 h-4 bg-electric-cyan rounded-full animate-pulse"></span>
+</span>
+            DARK MATTER
+        </a>
+<div class="hidden md:flex gap-8">
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="services.html">Solutions</a>
+<a class="font-label-mono text-label-mono text-electric-cyan border-b-2 border-electric-cyan pb-1" href="process.html">Process</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="index.html">Engineering</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="contact.html">Case Studies</a>
+</div>
+<a href="contact.html" class="inline-block bg-gradient-to-r from-electric-cyan to-nebula-purple px-6 py-2 rounded-lg font-label-mono text-label-mono text-starlight-white font-bold hover:scale-105 active:scale-95 transition-all">
+            Start Project
+        </a>
+</nav>
+<!-- Project Side Tracker (SideNavBar Logic) -->
+<aside class="fixed left-0 top-1/2 -translate-y-1/2 h-auto rounded-r-xl bg-void-black/80 backdrop-blur-2xl border-r border-t border-b border-white/5 p-4 gap-unit z-40 flex flex-col shadow-[0_0_20px_rgba(112,0,255,0.15)]">
+<div class="mb-4">
+<p class="font-label-caps text-[10px] text-outline opacity-50">SYSTEM STATUS</p>
+<p class="font-label-caps text-nebula-purple">PHASE: ALPHA</p>
+</div>
+<div class="flex flex-col gap-4">
+<button class="flex flex-col items-center p-2 text-nebula-purple bg-nebula-purple/10 rounded-lg group">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="font-label-caps text-[8px] mt-1">DISC</span>
+</button>
+<button class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group">
+<span class="material-symbols-outlined">architecture</span>
+<span class="font-label-caps text-[8px] mt-1">ARCH</span>
+</button>
+<button class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-label-caps text-[8px] mt-1">DEV</span>
+</button>
+<button class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group">
+<span class="material-symbols-outlined">rocket_launch</span>
+<span class="font-label-caps text-[8px] mt-1">DEPL</span>
+</button>
+</div>
+</aside>
+<main class="pt-32 pb-20 px-margin-desktop relative z-10">
+<!-- Header Section -->
+<header class="max-w-4xl mb-24">
+<div class="flex items-center gap-4 mb-6">
+<span class="font-label-mono text-label-mono text-electric-cyan bg-electric-cyan/10 px-3 py-1 rounded-full border border-electric-cyan/20">SYSTEM: THE PROTOCOL v4.0</span>
+<span class="h-[1px] flex-grow bg-white/10"></span>
+</div>
+<h1 class="font-headline-xl text-headline-xl mb-8 tracking-tighter">
+                Engineering <span class="gradient-text-primary">Impossible</span><br/>
+                Digital Realities.
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                Our development cycle is a rigid framework designed to take chaotic abstract concepts and condense them into high-performance digital engines.
+            </p>
+</header>
+<!-- The Interactive Timeline / Sequential Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter relative">
+<!-- Background Connecting Line -->
+<div class="absolute top-[4.5rem] left-0 w-full h-[1px] bg-white/10 hidden md:block"></div>
+<!-- Stage 1: Singularity -->
+<div class="protocol-step group cursor-pointer">
+<div class="relative z-20 mb-12">
+<div class="w-16 h-16 rounded-full glass-card flex items-center justify-center border-electric-cyan group-hover:glow-cyan transition-all duration-500">
+<span class="material-symbols-outlined text-electric-cyan text-3xl">flare</span>
+</div>
+<div class="step-line absolute top-1/2 left-16 h-[2px] w-0 bg-white/20 transition-all duration-700 hidden md:block"></div>
+</div>
+<div class="glass-card p-8 rounded-xl min-h-[400px] flex flex-col group-hover:translate-y-[-8px] transition-all duration-500">
+<div class="scanline hidden group-hover:block"></div>
+<span class="font-label-mono text-label-mono text-outline mb-2">01. MODULE</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">SINGULARITY</h3>
+<p class="font-body-md text-on-surface-variant mb-6 flex-grow">
+                        Deep discovery phase where requirements collapse into a core objective. We analyze architecture, constraints, and atmospheric parameters.
+                    </p>
+<div class="relative rounded-lg overflow-hidden border border-white/10 aspect-video mb-4">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100" data-alt="A macro scientific visualization of a bright white light point in the center of a deep black void, with subtle cyan gas textures swirling around it. The image has a clean, technical UI aesthetic with 1px grid overlays and a futuristic scientific atmosphere. The mood is mysterious yet highly precise and focused." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFcZsVWmxpFxSkYNDl0fDT-8JEZbdWPlo-8fhXkNQY7TOdFzHCVmuO3gEvuylhNjKjJtpVZm1TfB39YTpIHgPOhbl6qpaarsd3txpus1-mqfaIIo3MIbR2vif8-2pQClcxVDxrRb2jXAN6zZ4793HJahxR0c25P3hWFY7grFZcrD3RVBoCZ1ziSMOvHh0p3Dx--qgf4dV_hCxVYL-tU0I8z9L2OJTv6fgUqmMdAXQAwYPTZjeYVHDjObH2QqyA_aES7aaj9sL_4Dc"/>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="font-label-caps text-[10px] border border-white/10 px-2 py-1 rounded">RESEARCH</span>
+<span class="font-label-caps text-[10px] border border-white/10 px-2 py-1 rounded">AUDIT</span>
+</div>
+</div>
+</div>
+<!-- Stage 2: Accretion -->
+<div class="protocol-step group cursor-pointer md:mt-16">
+<div class="relative z-20 mb-12">
+<div class="w-16 h-16 rounded-full glass-card flex items-center justify-center border-nebula-purple group-hover:glow-purple transition-all duration-500">
+<span class="material-symbols-outlined text-nebula-purple text-3xl">auto_awesome_motion</span>
+</div>
+</div>
+<div class="glass-card p-8 rounded-xl min-h-[400px] flex flex-col group-hover:translate-y-[-8px] transition-all duration-500">
+<div class="scanline hidden group-hover:block"></div>
+<span class="font-label-mono text-label-mono text-outline mb-2">02. MODULE</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">ACCRETION</h3>
+<p class="font-body-md text-on-surface-variant mb-6 flex-grow">
+                        Design and structural components begin to cluster. Visual language and UX systems are defined as gravity pulls ideas into form.
+                    </p>
+<div class="relative rounded-lg overflow-hidden border border-white/10 aspect-video mb-4">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100" data-alt="Abstract 3D rendering of glass plates and translucent cubes floating in a dark vacuum, illuminated by a deep purple edge glow. The scene features technical blueprint lines and floating typography fragments in a minimal grid layout. High-end glassmorphism aesthetic with deep shadows and vibrant purple highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBliSX8E84AIw9hig0ASkNW6e0NoBXQBdRbjjqFJTmxKtp4x7Srh8b7KXkKjgjQ88taJYQsG9CKBK9dqoJW3Y9OsbONrlhiI9SgDaCe51nIRfKkCn9uzWMwJOETZc61RU0amm5H3ZjON7r9Aie4BAHqhjcQedS-Hz9_d3U834zH19H39rUyDYQ5cE4J3SSbVLsuXb-9aQE8Z5mA1SI6Rrbmrz34owRkYPQIiRj9cutvEEjEKsjJVuwGSiZnFL2C0MvuYVIVjEqIGyE"/>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="font-label-caps text-[10px] border border-white/10 px-2 py-1 rounded">UX/UI</span>
+<span class="font-label-caps text-[10px] border border-white/10 px-2 py-1 rounded">LOGIC</span>
+</div>
+</div>
+</div>
+<!-- Stage 3: Expansion -->
+<div class="protocol-step group cursor-pointer">
+<div class="relative z-20 mb-12">
+<div class="w-16 h-16 rounded-full glass-card flex items-center justify-center border-electric-cyan group-hover:glow-cyan transition-all duration-500">
+<span class="material-symbols-outlined text-electric-cyan text-3xl">terminal</span>
+</div>
+</div>
+<div class="glass-card p-8 rounded-xl min-h-[400px] flex flex-col group-hover:translate-y-[-8px] transition-all duration-500">
+<div class="scanline hidden group-hover:block"></div>
+<span class="font-label-mono text-label-mono text-outline mb-2">03. MODULE</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">EXPANSION</h3>
+<p class="font-body-md text-on-surface-variant mb-6 flex-grow">
+                        Engineering at scale. Code manifests across the infrastructure. We deploy React, Tailwind, and custom engines into the dark void.
+                    </p>
+<div class="relative rounded-lg overflow-hidden border border-white/10 aspect-video mb-4">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100" data-alt="Digital landscape of neon cyan circuitry flowing like data streams through a dark motherboard. The composition is dynamic and expansive, suggesting massive scale and high-speed processing. The lighting is cold and clinical, featuring bright cyan highlights against a deep space black background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6nCBJaG8xaYmJg-I-NjJERunYTDLk6tqF1S-2hthbjSgUwb-W4Htfc_NNj-vWFgl6IMj6-eXgr1Zlei6xjGiFd2mwWsCIuMgVkTgceWPS0C_xxk5Whu4kJDDpgC5tCteMpE_fBOZVoIF8Cz6kwYEN80Osh34lyt5tYNb2stb_WWFlfUnl9Qew8C5_IJXe-DIWQGY1rXMC7nFeh04cisWKdcHRzej-eIvJ4Y-dicOZXk3fo44khxbRFtqaL9lmWyJaSbo_CtroER0"/>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="font-label-caps text-[10px] border border-white/10 px-2 py-1 rounded">ENGINEERING</span>
+<span class="font-label-caps text-[10px] border border-white/10 px-2 py-1 rounded">API</span>
+</div>
+</div>
+</div>
+<!-- Stage 4: Emission -->
+<div class="protocol-step group cursor-pointer md:mt-16">
+<div class="relative z-20 mb-12">
+<div class="w-16 h-16 rounded-full glass-card flex items-center justify-center border-nebula-purple group-hover:glow-purple transition-all duration-500">
+<span class="material-symbols-outlined text-nebula-purple text-3xl">rocket_launch</span>
+</div>
+</div>
+<div class="glass-card p-8 rounded-xl min-h-[400px] flex flex-col group-hover:translate-y-[-8px] transition-all duration-500">
+<div class="scanline hidden group-hover:block"></div>
+<span class="font-label-mono text-label-mono text-outline mb-2">04. MODULE</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">EMISSION</h3>
+<p class="font-body-md text-on-surface-variant mb-6 flex-grow">
+                        Release to the production environment. High-fidelity optimization, performance tuning, and global deployment of the product.
+                    </p>
+<div class="relative rounded-lg overflow-hidden border border-white/10 aspect-video mb-4">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100" data-alt="A cinematic view of a digital globe or planet emitting a powerful purple aura as it launches into a network of glowing nodes. The image is hyper-detailed with lens flares and cosmic dust particles. It conveys a sense of power, global reach, and finality in a futuristic technological context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWfQExRejLLKgr-Kx26j0DNur2gnTuGojt-nfhG9DZCTvjqLOgovypBfPpD-_zwlQqyn42YMosjZ_OINZywHtNAsDd9Egl9kiolEb6K2L7zp_9mxqRns1d_z3P9GD4MNJIoXRRdNTxvTiRWLC6lq0GOfTIOd04IH1zxRuZTNygv_0dAldu3o17y5qFw_BuJ-GOgVd9uqkK4RpRmeS5FJnPEh_G_TWCsdB59YcicOjZq9F-d_Th4Pl3pGcX-WYlqYThmADT1cYRDjQ"/>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="font-label-caps text-[10px] border border-white/10 px-2 py-1 rounded">DEPLOY</span>
+<span class="font-label-caps text-[10px] border border-white/10 px-2 py-1 rounded">SCALE</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Technical Dashboard Footer Section -->
+<section class="mt-32 grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="glass-card p-6 rounded-lg flex items-center gap-6">
+<div class="text-electric-cyan">
+<p class="font-label-caps text-[10px]">UPTIME</p>
+<p class="font-headline-md">99.98%</p>
+</div>
+<div class="flex-grow h-12 bg-white/5 rounded relative overflow-hidden">
+<div class="absolute inset-0 flex items-center justify-around px-2">
+<div class="w-[2px] h-6 bg-electric-cyan/40"></div>
+<div class="w-[2px] h-8 bg-electric-cyan"></div>
+<div class="w-[2px] h-4 bg-electric-cyan/40"></div>
+<div class="w-[2px] h-7 bg-electric-cyan"></div>
+<div class="w-[2px] h-3 bg-electric-cyan/40"></div>
+<div class="w-[2px] h-9 bg-electric-cyan"></div>
+</div>
+</div>
+</div>
+<div class="glass-card p-6 rounded-lg flex items-center gap-6">
+<div class="text-nebula-purple">
+<p class="font-label-caps text-[10px]">VELOCITY</p>
+<p class="font-headline-md">84.2 Gbit</p>
+</div>
+<div class="flex-grow h-12 bg-white/5 rounded relative overflow-hidden">
+<div class="h-full bg-nebula-purple/20 w-3/4 animate-pulse"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="font-label-mono text-[10px]">OPTIMIZING...</span>
+</div>
+</div>
+</div>
+<div class="glass-card p-6 rounded-lg flex items-center gap-6">
+<div class="text-starlight-white">
+<p class="font-label-caps text-[10px]">LATEST COMMIT</p>
+<p class="font-headline-md">#7E92A</p>
+</div>
+<div class="flex-grow h-12 bg-white/5 rounded flex items-center justify-center">
+<span class="font-label-mono text-[10px] text-outline">v2.4.0-STABLE</span>
+</div>
+</div>
+</section>
+</main>
+<footer class="w-full mt-auto border-t border-white/5 bg-void-black flex flex-col md:flex-row justify-between items-center px-margin-desktop py-8 z-50 transition-opacity duration-500">
+<div class="font-headline-md text-headline-md text-starlight-white mb-4 md:mb-0">DARK MATTER</div>
+<div class="font-label-mono text-label-mono text-outline text-center md:text-left mb-4 md:mb-0">
+            © 2024 DARK MATTER ENGINEERING. ALL RIGHTS RESERVED.
+        </div>
+<div class="flex gap-6">
+<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="#">Privacy</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="#">Security</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="#">Terms</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="#">Status</a>
+</div>
+</footer>
+<!-- Interactive JS for technical dashboard effects -->
+<script>
+        document.querySelectorAll('.protocol-step').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // Simple typing effect for technical status
+        const terminalText = "INITIATING PROTOCOL STAGE: SINGULARITY... RESOLVING DEPENDENCIES... DONE.";
+        console.log("%c DARK MATTER ", "background: #00F0FF; color: #050505; font-weight: bold; padding: 4px; border-radius: 4px;");
+        console.log(terminalText);
+    </script>
+</body></html>

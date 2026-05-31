@@ -1,0 +1,9 @@
+# Original Stitch exports (kept locally, not deployed). Remove this line to track them.
+_source/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

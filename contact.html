@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Send Signal | DARK MATTER</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Plus+Jakarta+Sans:wght@300..800&amp;family=JetBrains+Mono:wght@100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #050505;
+            color: #e3e2e2;
+            overflow-x: hidden;
+        }
+
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 80px 80px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .glass-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+        }
+
+        .neon-glow-cyan {
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+        }
+
+        .neon-glow-purple {
+            box-shadow: 0 0 15px rgba(112, 0, 255, 0.3);
+        }
+
+        .scanning-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00F0FF, transparent);
+            animation: scan 4s linear infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes scan {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+
+        .uplink-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.5); }
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-bottom: 1px solid #00F0FF !important;
+            box-shadow: 0 4px 12px -2px rgba(0, 240, 255, 0.2);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#e3e2e2",
+                        "deep-space-grey": "#1A1A1A",
+                        "primary-container": "#050505",
+                        "on-surface": "#e3e2e2",
+                        "void-black": "#050505",
+                        "on-surface-variant": "#c4c7c7",
+                        "surface-container-high": "#292a2a",
+                        "on-tertiary-container": "#00848d",
+                        "surface": "#121414",
+                        "surface-container-low": "#1a1c1c",
+                        "on-tertiary-fixed-variant": "#004f54",
+                        "tertiary": "#00dbe9",
+                        "electric-cyan": "#00F0FF",
+                        "surface-bright": "#383939",
+                        "on-tertiary": "#00363a",
+                        "on-primary": "#313030",
+                        "surface-container-highest": "#343535",
+                        "on-secondary-container": "#ddcdff",
+                        "secondary": "#d1bcff",
+                        "surface-container": "#1f2020",
+                        "background": "#121414",
+                        "outline": "#8e9192",
+                        "surface-container-lowest": "#0d0e0f",
+                        "primary-fixed": "#e5e2e1",
+                        "on-secondary": "#3c0090",
+                        "on-error": "#690005",
+                        "on-primary-fixed": "#1c1b1b",
+                        "on-primary-container": "#797777",
+                        "tertiary-fixed-dim": "#00dbe9",
+                        "on-error-container": "#ffdad6",
+                        "surface-dim": "#121414",
+                        "surface-tint": "#c9c6c5",
+                        "tertiary-container": "#000607",
+                        "on-primary-fixed-variant": "#474646",
+                        "nebula-purple": "#7000FF",
+                        "inverse-primary": "#5f5e5e",
+                        "on-secondary-fixed-variant": "#5700c9",
+                        "secondary-container": "#7000ff",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#7df4ff",
+                        "error": "#ffb4ab",
+                        "inverse-on-surface": "#2f3131",
+                        "primary-fixed-dim": "#c9c6c5",
+                        "secondary-fixed-dim": "#d1bcff",
+                        "primary": "#c9c6c5",
+                        "on-secondary-fixed": "#23005b",
+                        "starlight-white": "#FFFFFF",
+                        "surface-variant": "#343535",
+                        "inverse-surface": "#e3e2e2",
+                        "on-tertiary-fixed": "#002022",
+                        "outline-variant": "#444748",
+                        "secondary-fixed": "#e9ddff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Space Grotesk"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-mono": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-mono": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-body-md text-on-surface selection:bg-electric-cyan selection:text-void-black">
+<div class="grid-overlay"></div>
+<!-- Navigation Shell -->
+<nav class="fixed top-0 w-full bg-surface/10 backdrop-blur-xl border-b border-white/10 z-50 flex justify-between items-center px-margin-desktop py-4">
+<a href="index.html" class="font-headline-md text-headline-md tracking-tighter text-starlight-white flex items-center gap-2">
+<span class="w-3 h-3 bg-nebula-purple rounded-full animate-pulse"></span>
+            DARK MATTER
+        </a>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="services.html">Solutions</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="process.html">Process</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="index.html">Engineering</a>
+<a class="font-label-mono text-label-mono text-electric-cyan border-b-2 border-electric-cyan pb-1 transition-colors duration-300" href="contact.html">Case Studies</a>
+<a href="contact.html" class="inline-block bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-caps text-label-caps px-6 py-2.5 rounded hover:scale-105 active:scale-95 transition-all">
+                Start Project
+            </a>
+</div>
+</nav>
+<!-- Side Progress Indicator -->
+<aside class="fixed left-0 top-1/2 -translate-y-1/2 h-auto bg-void-black/80 backdrop-blur-2xl border-r border-t border-b border-white/5 p-4 gap-unit z-40 rounded-r-xl flex flex-col shadow-[0_0_20px_rgba(112,0,255,0.15)]">
+<div class="flex flex-col items-center gap-6">
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="material-symbols-outlined text-outline group-hover:text-nebula-purple transition-colors">search</span>
+<span class="font-label-caps text-[10px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">DISC</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="material-symbols-outlined text-outline group-hover:text-nebula-purple transition-colors">architecture</span>
+<span class="font-label-caps text-[10px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">ARCH</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="material-symbols-outlined text-outline group-hover:text-nebula-purple transition-colors">terminal</span>
+<span class="font-label-caps text-[10px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">DEV</span>
+</div>
+<div class="flex flex-col items-center gap-1 group cursor-pointer">
+<span class="material-symbols-outlined text-nebula-purple bg-nebula-purple/10 p-2 rounded-lg">rocket_launch</span>
+<span class="font-label-caps text-[10px] text-nebula-purple">SEND</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="min-h-screen pt-32 pb-16 px-margin-desktop">
+<div class="container-max mx-auto h-full flex flex-col md:flex-row gap-12 items-stretch">
+<!-- Left Side: Futuristic Contact Form -->
+<section class="flex-1 flex flex-col gap-8">
+<header>
+<div class="inline-block bg-electric-cyan/10 px-3 py-1 rounded-full mb-4 border border-electric-cyan/20">
+<span class="font-label-caps text-label-caps text-electric-cyan">ESTABLISHING CONNECTION...</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-starlight-white mb-2">Send Signal</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">Initiate a direct uplink to our engineering core. Every message is encrypted and prioritized for immediate assessment.</p>
+</header>
+<form class="glass-card p-8 rounded-xl flex flex-col gap-8 relative overflow-hidden">
+<div class="scanning-line"></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="font-label-mono text-label-mono text-outline uppercase">Identifier</label>
+<input class="bg-transparent border-b border-white/10 p-3 font-label-mono text-electric-cyan placeholder:text-outline/30 focus:border-electric-cyan transition-all" placeholder="USER_NAME" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-mono text-label-mono text-outline uppercase">Uplink Vector</label>
+<input class="bg-transparent border-b border-white/10 p-3 font-label-mono text-electric-cyan placeholder:text-outline/30 focus:border-electric-cyan transition-all" placeholder="EMAIL@DOMAIN.COM" type="email"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-mono text-label-mono text-outline uppercase">Mission Objectives</label>
+<select class="bg-transparent border-b border-white/10 p-3 font-label-mono text-electric-cyan appearance-none focus:border-electric-cyan transition-all">
+<option class="bg-void-black text-on-surface">SELECT PROTOCOL</option>
+<option class="bg-void-black text-on-surface">Web Infrastructure (v2.0)</option>
+<option class="bg-void-black text-on-surface">Neural Interface Dev</option>
+<option class="bg-void-black text-on-surface">Data Visualization Layer</option>
+<option class="bg-void-black text-on-surface">Security Audit</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-mono text-label-mono text-outline uppercase">Transmission Content</label>
+<textarea class="bg-transparent border-b border-white/10 p-3 font-label-mono text-electric-cyan placeholder:text-outline/30 focus:border-electric-cyan transition-all resize-none" placeholder="INPUT RAW DATA..." rows="4"></textarea>
+</div>
+<div class="flex items-center gap-4">
+<input class="bg-transparent border-white/20 text-nebula-purple focus:ring-nebula-purple rounded-sm" id="nd" type="checkbox"/>
+<label class="font-label-mono text-xs text-outline" for="nd">ENABLE END-TO-END QUANTUM ENCRYPTION (E2EE)</label>
+</div>
+<button class="group relative py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple font-headline-md text-starlight-white rounded overflow-hidden hover:neon-glow-cyan transition-all duration-300" type="submit">
+<span class="relative z-10 flex items-center justify-center gap-3">
+                            TRANSMIT SIGNAL
+                            <span class="material-symbols-outlined animate-bounce-x">arrow_forward</span>
+</span>
+<div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</button>
+</form>
+<div class="flex gap-8">
+<div class="flex flex-col">
+<span class="font-label-caps text-outline">COORDINATES</span>
+<span class="font-label-mono text-starlight-white">37.7749° N, 122.4194° W</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-outline">FREQUENCY</span>
+<span class="font-label-mono text-starlight-white">5.8 GHZ (DEEP SPACE)</span>
+</div>
+</div>
+</section>
+<!-- Right Side: Global Uplinks Map / Status -->
+<section class="flex-1 relative flex flex-col gap-6">
+<div class="glass-card rounded-xl h-full w-full overflow-hidden relative border border-white/10 group">
+<!-- Map Simulation -->
+<div class="absolute inset-0 grayscale opacity-20 pointer-events-none bg-[url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5ce?q=80&amp;w=2072&amp;auto=format&amp;fit=crop')] bg-cover bg-center"></div>
+<!-- Network UI Overlay -->
+<div class="absolute inset-0 p-8 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="flex flex-col">
+<span class="font-label-caps text-electric-cyan">NETWORK TOPOLOGY</span>
+<span class="font-headline-md text-starlight-white">Global Uplinks [ACTIVE]</span>
+</div>
+<div class="flex gap-2">
+<span class="w-2 h-2 rounded-full bg-electric-cyan uplink-pulse"></span>
+<span class="font-label-mono text-xs text-electric-cyan">SYNC: 100%</span>
+</div>
+</div>
+<!-- Uplink Nodes -->
+<div class="absolute top-[20%] left-[30%] w-4 h-4">
+<div class="absolute inset-0 bg-electric-cyan rounded-full animate-ping opacity-75"></div>
+<div class="absolute inset-0 bg-electric-cyan rounded-full"></div>
+</div>
+<div class="absolute top-[45%] left-[65%] w-4 h-4">
+<div class="absolute inset-0 bg-nebula-purple rounded-full animate-ping opacity-75" style="animation-delay: 1s"></div>
+<div class="absolute inset-0 bg-nebula-purple rounded-full"></div>
+</div>
+<div class="absolute top-[70%] left-[15%] w-4 h-4">
+<div class="absolute inset-0 bg-electric-cyan rounded-full animate-ping opacity-75" style="animation-delay: 0.5s"></div>
+<div class="absolute inset-0 bg-electric-cyan rounded-full"></div>
+</div>
+<!-- Technical Readout Panel -->
+<div class="glass-card p-6 rounded-lg self-end w-2/3 border border-white/10 shadow-xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+<div class="flex flex-col gap-4">
+<div class="flex justify-between items-center border-b border-white/5 pb-2">
+<span class="font-label-caps text-xs text-outline">NODE IDENTITY</span>
+<span class="font-label-mono text-xs text-starlight-white">ORBITAL_CENTRAL_01</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center text-[10px] font-label-mono text-outline">
+<span>LATENCY</span>
+<span class="text-electric-cyan">14ms</span>
+</div>
+<div class="w-full bg-white/5 h-1 rounded-full overflow-hidden">
+<div class="bg-electric-cyan h-full w-[85%]"></div>
+</div>
+<div class="flex justify-between items-center text-[10px] font-label-mono text-outline">
+<span>THROUGHPUT</span>
+<span class="text-nebula-purple">1.2 TB/S</span>
+</div>
+<div class="w-full bg-white/5 h-1 rounded-full overflow-hidden">
+<div class="bg-nebula-purple h-full w-[62%]"></div>
+</div>
+</div>
+<div class="flex justify-between mt-2">
+<div class="w-8 h-8 rounded border border-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-xs text-outline">radar</span>
+</div>
+<div class="w-8 h-8 rounded border border-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-xs text-outline">wifi_tethering</span>
+</div>
+<div class="w-8 h-8 rounded border border-white/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-xs text-outline">public</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Atmospheric Map Elements -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none overflow-hidden">
+<svg class="w-full h-full opacity-30" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M10,20 L30,45 L65,45 L70,70" fill="none" stroke="#00F0FF" stroke-width="0.2"></path>
+<circle cx="10" cy="20" fill="#00F0FF" r="0.5"></circle>
+<circle cx="70" cy="70" fill="#00F0FF" r="0.5"></circle>
+</svg>
+</div>
+</div>
+<!-- Secondary Visuals: Connection Status -->
+<div class="grid grid-cols-2 gap-4 h-32">
+<div class="glass-card rounded-lg flex items-center justify-center gap-4 group cursor-help">
+<div class="relative">
+<span class="material-symbols-outlined text-nebula-purple text-3xl">language</span>
+<div class="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-void-black animate-pulse"></div>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-xs text-outline">SYSTEM STATUS</span>
+<span class="font-label-mono text-starlight-white">NOMINAL</span>
+</div>
+</div>
+<div class="glass-card rounded-lg flex items-center justify-center gap-4 group cursor-help">
+<span class="material-symbols-outlined text-electric-cyan text-3xl group-hover:rotate-180 transition-transform duration-700">security</span>
+<div class="flex flex-col">
+<span class="font-label-caps text-xs text-outline">ENCRYPTION</span>
+<span class="font-label-mono text-starlight-white">AES-256V3</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full mt-auto bg-void-black border-t border-white/5 flex flex-col md:flex-row justify-between items-center px-margin-desktop py-8">
+<div class="font-label-mono text-label-mono text-outline mb-4 md:mb-0">
+            © 2024 DARK MATTER ENGINEERING. ALL RIGHTS RESERVED.
+        </div>
+<div class="flex gap-8">
+<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="#">Privacy</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="#">Security</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="#">Terms</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="#">Status</a>
+</div>
+</footer>
+<!-- Background Gradient Glows -->
+<div class="fixed top-[20%] right-[-10%] w-[50vw] h-[50vw] bg-nebula-purple/5 blur-[120px] rounded-full z-[-1]"></div>
+<div class="fixed bottom-[10%] left-[-10%] w-[40vw] h-[40vw] bg-electric-cyan/5 blur-[120px] rounded-full z-[-1]"></div>
+<script>
+        // Micro-interactions for input fields
+        const inputs = document.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                // Future: Add sound effect or subtle vibration
+            });
+        });
+
+        // Simple form validation visual
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="relative z-10 flex items-center justify-center gap-3"><span class="material-symbols-outlined animate-spin">refresh</span> UPLINKING...</span>';
+            btn.classList.add('opacity-50', 'pointer-events-none');
+            
+            setTimeout(() => {
+                btn.innerHTML = '<span class="relative z-10 flex items-center justify-center gap-3"><span class="material-symbols-outlined">check_circle</span> TRANSMISSION SUCCESSFUL</span>';
+                btn.classList.remove('from-electric-cyan', 'to-nebula-purple');
+                btn.classList.add('bg-green-500/20', 'text-green-400', 'border', 'border-green-500');
+            }, 2000);
+        });
+    </script>
+</body></html>
