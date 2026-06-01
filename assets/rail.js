@@ -14,12 +14,23 @@
     maintain: 'website-care-plans'
   };
 
-  var steps = {
-    design: { icon: 'architecture', step: 'STEP 01 — DESIGN', title: 'Design', desc: 'We start by learning what you need, then shape the structure, visuals, and user experience before anything gets built.' },
-    build: { icon: 'terminal', step: 'STEP 02 — BUILD', title: 'Build', desc: 'We build the site or web app with clean code, mobile performance, accessibility, and security best practices baked in.' },
-    launch: { icon: 'rocket_launch', step: 'STEP 03 — LAUNCH', title: 'Launch', desc: 'We connect the domain, configure hosting and SSL, run final QA, and walk you through the finished site before it goes live.' },
-    maintain: { icon: 'cloud_done', step: 'STEP 04 — MAINTAIN', title: 'Maintain', desc: 'After launch, we handle updates, backups, monitoring, improvements, and support through your care plan.' }
+  var stepsByLang = {
+    en: {
+      design: { icon: 'architecture', step: 'STEP 01 - DESIGN', title: 'Design', desc: 'We start by learning what you need, then shape the structure, visuals, and user experience before anything gets built.' },
+      build: { icon: 'terminal', step: 'STEP 02 - BUILD', title: 'Build', desc: 'We build the site or web app with clean code, mobile performance, accessibility, and security best practices baked in.' },
+      launch: { icon: 'rocket_launch', step: 'STEP 03 - LAUNCH', title: 'Launch', desc: 'We connect the domain, configure hosting and SSL, run final QA, and walk you through the finished site before it goes live.' },
+      maintain: { icon: 'cloud_done', step: 'STEP 04 - MAINTAIN', title: 'Maintain', desc: 'After launch, we handle updates, backups, monitoring, improvements, and support through your care plan.' }
+    },
+    es: {
+      design: { icon: 'architecture', step: 'PASO 01 - DISEÑO', title: 'Diseño', desc: 'Empezamos por entender lo que necesitas y luego damos forma a la estructura, los visuales y la experiencia de usuario antes de construir nada.' },
+      build: { icon: 'terminal', step: 'PASO 02 - CONSTRUCCIÓN', title: 'Construcción', desc: 'Construimos el sitio o la aplicación web con código limpio, rendimiento móvil, accesibilidad y buenas prácticas de seguridad incluidas.' },
+      launch: { icon: 'rocket_launch', step: 'PASO 03 - LANZAMIENTO', title: 'Lanzamiento', desc: 'Conectamos el dominio, configuramos el hosting y el SSL, hacemos las pruebas finales y te mostramos el sitio terminado antes de publicarlo.' },
+      maintain: { icon: 'cloud_done', step: 'PASO 04 - MANTENIMIENTO', title: 'Mantenimiento', desc: 'Después del lanzamiento nos encargamos de las actualizaciones, copias de seguridad, monitoreo, mejoras y soporte a través de tu plan de mantenimiento.' }
+    }
   };
+
+  var lang = (document.documentElement.getAttribute('lang') || 'en').toLowerCase().indexOf('es') === 0 ? 'es' : 'en';
+  var steps = stepsByLang[lang];
 
   var iconEl = document.getElementById('rail-popover-icon');
   var stepEl = document.getElementById('rail-popover-step');
@@ -92,7 +103,7 @@
     if (path.indexOf('discovery-consultation') !== -1 || path.indexOf('website-design') !== -1 || path.indexOf('brand-rebranding') !== -1) return 'design';
     if (path.indexOf('custom-development') !== -1) return 'build';
     if (path.indexOf('process') !== -1 || path.indexOf('managed-hosting') !== -1 || path.indexOf('complete-website-management') !== -1) return 'launch';
-    if (path.indexOf('website-care-plans') !== -1) return 'maintain';
+    if (path.indexOf('website-care-plans') !== -1 || path.indexOf('in-home-services') !== -1 || path.indexOf('office-network-setup') !== -1) return 'maintain';
     if (path.indexOf('index.html') !== -1 || /\/$/.test(path)) return 'design';
     return null;
   }
