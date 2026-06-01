@@ -1,5 +1,33 @@
 @import url('logo.css');
 
+/* Logo lockup — row layout so icon sits left of wordmark (not stacked) */
+.site-brand {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.625rem;
+  text-decoration: none;
+  color: inherit;
+  max-width: 100%;
+}
+
+.site-brand .brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 2rem;
+  width: 2rem;
+  height: 2rem;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.site-brand > .flex.flex-col {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined';
   font-weight: normal;

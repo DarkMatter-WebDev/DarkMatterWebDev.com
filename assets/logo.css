@@ -19,33 +19,45 @@
 }
 
 .site-brand {
-  display: flex;
+  display: inline-flex;
+  flex-direction: row;
   align-items: center;
+  flex-wrap: nowrap;
   gap: 0.625rem;
   text-decoration: none;
   color: inherit;
+  max-width: 100%;
 }
 
 .brand-mark {
-  font-size: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 2rem;
   width: 2rem;
   height: 2rem;
-  flex-shrink: 0;
+  font-size: 2rem;
   line-height: 1;
 }
 
 /* Shimmering gradient wordmark — nav logo (built-by / landing page style) */
 .brand-mystical {
+  display: inline-block;
   background: linear-gradient(120deg, #FFFFFF 0%, #00F0FF 38%, #7000FF 88%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  color: transparent;
   animation: brand-shimmer 6s ease-in-out infinite;
 }
 
 .brand-mystical--glow {
-  filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.55)) drop-shadow(0 0 22px rgba(112, 0, 255, 0.4));
+  /* drop-shadow breaks gradient text on mobile WebKit — use text-shadow instead */
+  filter: none;
+  text-shadow:
+    0 0 10px rgba(0, 240, 255, 0.55),
+    0 0 22px rgba(112, 0, 255, 0.4);
 }
 
 @keyframes brand-shimmer {
