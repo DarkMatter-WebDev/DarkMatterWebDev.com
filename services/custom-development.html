@@ -2,8 +2,8 @@
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Custom Development | DARK MATTER</title>
-<meta name="description" content="Custom web development, integrations, and automations for businesses that need more."/>
+<title>Custom Business Web Apps | DARK MATTER</title>
+<meta name="description" content="Custom business web apps, client portals, integrations, automations, and reporting tools for businesses that need more."/>
 <link href="../assets/nav.css" rel="stylesheet"/>
 <link href="../assets/powered-by-badge.css" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -12,6 +12,20 @@
 <style>
 .glass-card { background: rgba(255,255,255,0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); }
 .grid-overlay { background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 80px 80px; }
+.app-preview { background: linear-gradient(145deg, rgba(255,255,255,0.055), rgba(255,255,255,0.018)); border: 1px solid rgba(255,255,255,0.11); box-shadow: 0 22px 70px rgba(0,0,0,0.34); }
+.app-window { background: rgba(5,5,5,0.78); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; overflow: hidden; }
+.app-topbar { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:0.85rem 1rem; border-bottom:1px solid rgba(255,255,255,0.08); background:rgba(255,255,255,0.035); }
+.app-dot { width:0.55rem; height:0.55rem; border-radius:9999px; display:inline-block; background:rgba(255,255,255,0.22); }
+.app-metric { background: rgba(255,255,255,0.045); border:1px solid rgba(255,255,255,0.08); border-radius:0.65rem; padding:1rem; min-height:6.5rem; }
+.app-row { display:grid; grid-template-columns: 1.2fr 0.9fr 0.7fr 0.55fr; gap:0.75rem; align-items:center; padding:0.8rem 0; border-bottom:1px solid rgba(255,255,255,0.07); }
+.app-row:last-child { border-bottom:0; }
+.app-pill { display:inline-flex; align-items:center; justify-content:center; width:max-content; max-width:100%; border-radius:9999px; border:1px solid rgba(0,240,255,0.26); color:#00F0FF; background:rgba(0,240,255,0.08); padding:0.28rem 0.65rem; font-size:0.72rem; font-family:'JetBrains Mono', monospace; white-space:nowrap; }
+.flow-node { border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.04); border-radius:0.75rem; padding:1rem; }
+.flow-line { height:1px; background:linear-gradient(to right, rgba(0,240,255,0), rgba(0,240,255,0.85), rgba(112,0,255,0)); }
+.role-grid { display:grid; grid-template-columns: 1fr repeat(3, 5.5rem); gap:0.6rem; align-items:center; }
+.role-cell { border-bottom:1px solid rgba(255,255,255,0.07); min-height:2.9rem; display:flex; align-items:center; }
+.role-check { color:#00F0FF; font-family:'Material Symbols Outlined'; font-size:1.15rem; }
+.role-muted { color:rgba(196,199,199,0.36); font-family:'Material Symbols Outlined'; font-size:1.15rem; }
 .rail-popover-ghost { visibility:hidden; pointer-events:none; transform:translateY(-50%) translateX(-10px); transition: visibility 0s linear 0.42s, transform 0.42s cubic-bezier(0.22,1,0.36,1); }
 .rail-popover-ghost.is-visible { visibility:visible; pointer-events:auto; transform:translateY(-50%) translateX(0); transition: visibility 0s, transform 0.42s cubic-bezier(0.22,1,0.36,1); }
 .rail-popover-ghost-inner { padding:0.7rem 1.35rem; border-radius:9999px; background:rgba(8,10,14,0.24); backdrop-filter:blur(40px); border:1px solid rgba(255,255,255,0.06); }
@@ -35,7 +49,7 @@
 <a class="font-label-mono text-label-mono text-electric-cyan border-b-2 border-electric-cyan pb-1" href="../services.html">Services</a>
 <div class="services-nav-menu">
 <div class="services-nav-panel">
-<a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="../services/complete-website-management.html">Complete Website Management</a><a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="../services/discovery-consultation.html">Discovery & Consultation</a><a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="../services/website-design.html">Website Design</a><a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="../services/brand-rebranding.html">Brand & Rebranding</a><a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="../services/managed-hosting.html">Managed Hosting</a><a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="../services/website-care-plans.html">Website Care Plans</a><a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="../services/seo-foundations.html">SEO Foundations</a><a class="block px-4 py-2.5 font-label-mono text-sm text-electric-cyan hover:bg-white/5 transition-colors" href="../services/custom-development.html">Custom Development</a>
+<a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="../services/complete-website-management.html">Complete Website Management</a><a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="../services/discovery-consultation.html">Discovery & Consultation</a><a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="../services/website-design.html">Website Design</a><a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="../services/brand-rebranding.html">Brand & Rebranding</a><a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="../services/managed-hosting.html">Managed Hosting</a><a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="../services/website-care-plans.html">Website Care Plans</a><a class="block px-4 py-2.5 font-label-mono text-sm text-on-surface-variant hover:text-electric-cyan hover:bg-white/5 transition-colors" href="../services/seo-foundations.html">SEO Foundations</a><a class="block px-4 py-2.5 font-label-mono text-sm text-electric-cyan hover:bg-white/5 transition-colors" href="../services/custom-development.html">Custom Business Web Apps</a>
 </div>
 </div>
 </div>
@@ -44,19 +58,36 @@
 <a href="../contact.html" class="inline-block bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-mono px-6 py-2 rounded-lg">Schedule Consultation</a>
 </div>
 </nav>
-<aside class="fixed left-0 top-1/2 -translate-y-1/2 rounded-r-xl bg-void-black/80 backdrop-blur-2xl border-r border-t border-b border-white/5 flex flex-col p-4 gap-4 z-40">
-<div class="mb-2"><span class="font-label-caps text-[10px] text-outline block">HOW IT WORKS</span><span class="font-label-caps text-label-caps text-starlight-white">4 STEPS</span></div>
-<button type="button" data-step="discover" class="text-outline hover:bg-white/5 p-3 rounded-lg hover:translate-x-1 duration-200" title="Discovery"><span class="material-symbols-outlined">search</span></button>
-<button type="button" data-step="build" class="text-nebula-purple bg-nebula-purple/10 p-3 rounded-lg hover:translate-x-1 duration-200" title="Build"><span class="material-symbols-outlined">web</span></button>
-<button type="button" data-step="manage" class="text-outline hover:bg-white/5 p-3 rounded-lg hover:translate-x-1 duration-200" title="Manage"><span class="material-symbols-outlined">cloud_done</span></button>
-<button type="button" data-step="support" class="text-outline hover:bg-white/5 p-3 rounded-lg hover:translate-x-1 duration-200" title="Support"><span class="material-symbols-outlined">forum</span></button>
+<aside class="fixed left-0 top-1/2 -translate-y-1/2 h-auto rounded-r-xl bg-void-black/80 backdrop-blur-2xl border-r border-t border-b border-white/5 p-4 gap-unit z-40 flex flex-col shadow-[0_0_20px_rgba(112,0,255,0.15)]">
+<div class="mb-4">
+<p class="font-label-caps text-[10px] text-outline opacity-50">OUR PROCESS</p>
+<p class="font-label-caps text-nebula-purple">4 STEPS</p>
+</div>
+<div class="flex flex-col gap-4">
+<button type="button" data-step="design" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Design">
+<span class="material-symbols-outlined">architecture</span>
+<span class="font-label-caps text-[8px] mt-1">DESIGN</span>
+</button>
+<button type="button" data-step="build" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Build">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-label-caps text-[8px] mt-1">BUILD</span>
+</button>
+<button type="button" data-step="launch" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Launch">
+<span class="material-symbols-outlined">rocket_launch</span>
+<span class="font-label-caps text-[8px] mt-1">LAUNCH</span>
+</button>
+<button type="button" data-step="maintain" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Maintain">
+<span class="material-symbols-outlined">cloud_done</span>
+<span class="font-label-caps text-[8px] mt-1">MAINTAIN</span>
+</button>
+</div>
 </aside>
 <div id="rail-popover" class="rail-popover-ghost fixed z-[60] w-[min(32rem,calc(100vw-6rem))]" aria-hidden="true"><div class="rail-popover-ghost-inner flex items-center gap-3"><span id="rail-popover-icon" class="material-symbols-outlined text-electric-cyan/80 text-lg"></span><div><span id="rail-popover-step" class="font-label-mono text-[10px] text-electric-cyan/70 block"></span><h4 id="rail-popover-title" class="font-headline-md text-base text-starlight-white/90"></h4><p id="rail-popover-desc" class="text-on-surface-variant text-xs"></p></div></div></div>
 <main class="relative z-10 pt-32 pb-24 px-margin-desktop md:pl-28">
 <section class="max-w-container-max mx-auto mb-16">
-<span class="font-label-caps text-label-caps text-electric-cyan tracking-widest">ADVANCED</span>
-<h1 class="font-headline-xl text-headline-xl text-starlight-white mt-4 mb-6">When your business needs more.</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl leading-relaxed">Some businesses need beyond a standard website — custom integrations, automations, online stores, or specialized tools. We build advanced functionality on a solid, maintainable foundation.</p>
+<span class="font-label-caps text-label-caps text-electric-cyan tracking-widest">BUSINESS WEB APPS</span>
+<h1 class="font-headline-xl text-headline-xl text-starlight-white mt-4 mb-6">Websites your team can log into.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl leading-relaxed">Some businesses need more than a brochure site. We build secure web apps and client portals where owners, staff, and customers can sign in, manage records, add customers, generate reports, and keep daily operations moving.</p>
 <div class="flex flex-wrap gap-4 mt-10">
 <a href="../contact.html" class="px-10 py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-mono font-bold rounded-lg">Schedule a Consultation</a>
 <a href="../services.html" class="px-10 py-4 glass-card border border-white/10 font-label-mono rounded-lg hover:bg-white/5">All Services</a>
@@ -65,19 +96,95 @@
 <section class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-gutter mb-20">
 <div class="glass-card p-10 rounded-xl">
 <span class="material-symbols-outlined text-5xl text-electric-cyan mb-6">code</span>
-<h2 class="font-headline-lg text-headline-lg text-starlight-white mb-4">Custom Development</h2>
-<p class="font-body-md text-on-surface-variant">Part of Dark Matter's managed website services for Southwest Florida businesses — professional, responsive, and built for the long term.</p>
+<h2 class="font-headline-lg text-headline-lg text-starlight-white mb-4">Custom Business Web Apps</h2>
+<p class="font-body-md text-on-surface-variant">Part of Dark Matter's managed website services for Southwest Florida businesses &mdash; professional, responsive, and built for the long term.</p>
 </div>
-<ul class="glass-card p-10 rounded-xl space-y-4"><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Custom features and integrations</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Online stores and checkout flows</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>API connections and automations</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Live pricing and dynamic content</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Scalable, clean code</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Ongoing management available</li></ul>
+<ul class="glass-card p-10 rounded-xl space-y-4"><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Owner, staff, and customer logins</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Customer records, dashboards, and reports</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Online stores, checkout flows, and payments</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>API connections and automations</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Role-based access and admin tools</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Ongoing management and help desk support available</li></ul>
+</section>
+<section class="max-w-container-max mx-auto mb-20">
+<div class="max-w-3xl mb-10">
+<span class="font-label-caps text-label-caps text-nebula-purple tracking-widest">WHAT THAT CAN LOOK LIKE</span>
+<h2 class="font-headline-lg text-headline-lg text-starlight-white mt-3 mb-4">A private operating system for your business.</h2>
+<p class="font-body-md text-on-surface-variant">These are example layouts, but the idea is simple: your website can become the place where your team tracks work, pulls reports, connects tools, and controls who can see or change sensitive information.</p>
+</div>
+<div class="space-y-8">
+<article class="app-preview rounded-2xl p-8 grid grid-cols-1 xl:grid-cols-[0.78fr_1.22fr] gap-8 items-center">
+<div>
+<span class="material-symbols-outlined text-electric-cyan text-4xl mb-5">dashboard</span>
+<h3 class="font-headline-md text-2xl text-starlight-white mb-3">Customer records, dashboards, and reports</h3>
+<p class="font-body-md text-on-surface-variant mb-5">Give owners and managers one clean place to see leads, jobs, invoices, service notes, and performance numbers without digging through spreadsheets.</p>
+<ul class="space-y-3 text-sm text-on-surface-variant">
+<li class="flex gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check</span>Track customers, projects, appointments, or service tickets</li>
+<li class="flex gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check</span>Filter by location, status, staff member, or date range</li>
+<li class="flex gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check</span>Export monthly reports for owners, accountants, or managers</li>
+</ul>
+</div>
+<div class="app-window">
+<div class="app-topbar">
+<div class="flex items-center gap-2"><span class="app-dot"></span><span class="app-dot"></span><span class="app-dot"></span></div>
+<span class="font-label-mono text-xs text-on-surface-variant">Operations Dashboard</span>
+<span class="app-pill">Live</span>
+</div>
+<div class="p-5">
+<div class="grid grid-cols-3 gap-3 mb-5">
+<div class="app-metric"><p class="font-label-caps text-[10px] text-outline mb-3">New Leads</p><p class="font-headline-md text-3xl text-starlight-white">42</p><p class="font-label-mono text-xs text-electric-cyan mt-2">+18% this month</p></div>
+<div class="app-metric"><p class="font-label-caps text-[10px] text-outline mb-3">Open Jobs</p><p class="font-headline-md text-3xl text-starlight-white">16</p><p class="font-label-mono text-xs text-on-surface-variant mt-2">6 due this week</p></div>
+<div class="app-metric"><p class="font-label-caps text-[10px] text-outline mb-3">Revenue</p><p class="font-headline-md text-3xl text-starlight-white">$84k</p><p class="font-label-mono text-xs text-nebula-purple mt-2">Report ready</p></div>
+</div>
+<div class="font-label-caps text-[10px] text-outline mb-2 grid grid-cols-[1.2fr_0.9fr_0.7fr_0.55fr] gap-3"><span>Customer</span><span>Service</span><span>Status</span><span>Total</span></div>
+<div class="text-sm text-on-surface-variant">
+<div class="app-row"><span class="text-starlight-white">Naples Family Dental</span><span>Monthly care</span><span class="app-pill">Active</span><span>$980</span></div>
+<div class="app-row"><span class="text-starlight-white">Harbor Point Marina</span><span>Fleet request</span><span class="app-pill">Review</span><span>$2.4k</span></div>
+<div class="app-row"><span class="text-starlight-white">Estate Management Co.</span><span>Inspection</span><span class="app-pill">Booked</span><span>$720</span></div>
+</div>
+</div>
+</div>
+</article>
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+<article class="app-preview rounded-2xl p-8">
+<span class="material-symbols-outlined text-nebula-purple text-4xl mb-5">sync_alt</span>
+<h3 class="font-headline-md text-2xl text-starlight-white mb-3">API connections and automations</h3>
+<p class="font-body-md text-on-surface-variant mb-6">Connect your web app to the tools you already use, then let routine work happen automatically after a form, payment, booking, or status change.</p>
+<div class="app-window p-5">
+<div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3 mb-4">
+<div class="flow-node"><p class="font-label-caps text-[10px] text-electric-cyan mb-2">Website Form</p><p class="text-sm text-on-surface-variant">New estimate request submitted</p></div>
+<div class="flow-line w-12"></div>
+<div class="flow-node"><p class="font-label-caps text-[10px] text-nebula-purple mb-2">CRM</p><p class="text-sm text-on-surface-variant">Lead created and assigned</p></div>
+</div>
+<div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
+<div class="flow-node"><p class="font-label-caps text-[10px] text-electric-cyan mb-2">Payment</p><p class="text-sm text-on-surface-variant">Deposit marked paid</p></div>
+<div class="flow-line w-12"></div>
+<div class="flow-node"><p class="font-label-caps text-[10px] text-nebula-purple mb-2">Team Alerts</p><p class="text-sm text-on-surface-variant">Manager notified, job checklist opened</p></div>
+</div>
+</div>
+</article>
+<article class="app-preview rounded-2xl p-8">
+<span class="material-symbols-outlined text-electric-cyan text-4xl mb-5">admin_panel_settings</span>
+<h3 class="font-headline-md text-2xl text-starlight-white mb-3">Role-based access and admin tools</h3>
+<p class="font-body-md text-on-surface-variant mb-6">Let each person log in with the right level of access. Owners see the whole business, managers handle operations, and customers only see their own portal.</p>
+<div class="app-window p-5">
+<div class="role-grid font-label-caps text-[10px] text-outline mb-2">
+<span>Permission</span><span>Owner</span><span>Staff</span><span>Client</span>
+</div>
+<div class="role-grid text-sm text-on-surface-variant">
+<span class="role-cell text-starlight-white">View financial reports</span><span class="role-cell role-check">check</span><span class="role-cell role-muted">remove</span><span class="role-cell role-muted">remove</span>
+<span class="role-cell text-starlight-white">Update customer records</span><span class="role-cell role-check">check</span><span class="role-cell role-check">check</span><span class="role-cell role-muted">remove</span>
+<span class="role-cell text-starlight-white">Upload documents</span><span class="role-cell role-check">check</span><span class="role-cell role-check">check</span><span class="role-cell role-check">check</span>
+<span class="role-cell text-starlight-white">Manage user accounts</span><span class="role-cell role-check">check</span><span class="role-cell role-muted">remove</span><span class="role-cell role-muted">remove</span>
+</div>
+</div>
+</article>
+</div>
+</div>
 </section>
 <section class="max-w-container-max mx-auto glass-card p-12 rounded-2xl text-center">
 <h2 class="font-headline-lg text-headline-lg text-starlight-white mb-4">Ready to get started?</h2>
-<p class="font-body-md text-on-surface-variant mb-8 max-w-xl mx-auto">Tell us about your business. We'll recommend the right service — or the Complete Website Management partnership if you want everything handled.</p>
+<p class="font-body-md text-on-surface-variant mb-8 max-w-xl mx-auto">Tell us about your business. We'll recommend the right service &mdash; or the Complete Website Management partnership if you want everything handled.</p>
 <a href="../contact.html" class="inline-block px-12 py-5 bg-starlight-white text-void-black font-label-mono font-bold rounded-lg">Schedule a Consultation</a>
 </section>
 </main>
 <div class="site-powered-by-bar w-full bg-void-black border-t border-white/5 py-8 px-margin-mobile md:px-margin-desktop flex justify-center">
-<a class="dm-powered-badge" href="../built-by.html" aria-label="Website powered by Dark Matter Web Services — view referral landing page">
+<a class="dm-powered-badge" href="../built-by.html" aria-label="Website powered by Dark Matter Web Services &mdash; view referral landing page">
 <svg class="dm-powered-badge__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z"/>
 </svg>
@@ -95,7 +202,7 @@
 <div class="font-headline-md text-headline-md text-starlight-white font-bold">DARK MATTER</div>
 <span class="brand-subtext">Web Services</span>
 </div>
-<div class="font-label-mono text-label-mono text-outline">© 2026 DARK MATTER · NAPLES, FL · CALL OR TEXT (239) 404-8505</div>
+<div class="font-label-mono text-label-mono text-outline">&copy; 2026 DARK MATTER &middot; NAPLES, FL &middot; CALL OR TEXT (239) 404-8505</div>
 </div>
 <div class="flex gap-12">
 <div class="flex flex-col gap-4">
@@ -113,11 +220,20 @@
 </footer>
 </div>
 <div class="md:hidden min-h-screen pt-20 px-margin-mobile pb-24">
-<a href="../index.html" class="font-label-mono text-sm text-electric-cyan mb-8 inline-block">← Back to Home</a>
-<span class="font-label-caps text-label-caps text-electric-cyan">ADVANCED</span>
-<h1 class="font-headline-lg text-3xl font-bold mt-3 mb-4">Custom Development</h1>
-<p class="font-body-md text-on-surface-variant mb-8">Some businesses need beyond a standard website — custom integrations, automations, online stores, or specialized tools. We build advanced functionality on a solid, maintainable foundation.</p>
-<ul class="space-y-3 mb-10"><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Custom features and integrations</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Online stores and checkout flows</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>API connections and automations</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Live pricing and dynamic content</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Scalable, clean code</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Ongoing management available</li></ul>
+<a href="../index.html" class="font-label-mono text-sm text-electric-cyan mb-8 inline-block">&larr; Back to Home</a>
+<span class="font-label-caps text-label-caps text-electric-cyan">BUSINESS WEB APPS</span>
+<h1 class="font-headline-lg text-3xl font-bold mt-3 mb-4">Custom Business Web Apps</h1>
+<p class="font-body-md text-on-surface-variant mb-8">Secure web apps and portals where owners, staff, and customers can log in, manage records, add customers, generate reports, and run business workflows.</p>
+<ul class="space-y-3 mb-10"><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Owner, staff, and customer logins</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Customer records, dashboards, and reports</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Online stores, checkout flows, and payments</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>API connections and automations</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Role-based access and admin tools</li><li class="flex items-start gap-3 font-body-md text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span>Ongoing management and help desk support available</li></ul>
+<section class="mb-12">
+<span class="font-label-caps text-label-caps text-nebula-purple">WHAT THAT CAN LOOK LIKE</span>
+<h2 class="font-headline-md text-2xl text-starlight-white mt-3 mb-4">A private operating system for your business.</h2>
+<div class="space-y-5">
+<div class="app-preview rounded-xl p-5"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-3">dashboard</span><h3 class="font-headline-md text-lg text-starlight-white mb-2">Dashboards and reports</h3><p class="font-body-md text-on-surface-variant text-sm mb-4">Track customers, jobs, invoices, service notes, and monthly performance in one login.</p><div class="app-window p-4"><div class="grid grid-cols-2 gap-3"><div class="app-metric min-h-0"><p class="font-label-caps text-[10px] text-outline">Leads</p><p class="font-headline-md text-2xl text-starlight-white">42</p></div><div class="app-metric min-h-0"><p class="font-label-caps text-[10px] text-outline">Open Jobs</p><p class="font-headline-md text-2xl text-starlight-white">16</p></div></div></div></div>
+<div class="app-preview rounded-xl p-5"><span class="material-symbols-outlined text-nebula-purple text-3xl mb-3">sync_alt</span><h3 class="font-headline-md text-lg text-starlight-white mb-2">Automations</h3><p class="font-body-md text-on-surface-variant text-sm">A form submission can create a lead, notify your manager, update a spreadsheet, and open the next checklist.</p></div>
+<div class="app-preview rounded-xl p-5"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-3">admin_panel_settings</span><h3 class="font-headline-md text-lg text-starlight-white mb-2">Admin access</h3><p class="font-body-md text-on-surface-variant text-sm">Owners, staff, and customers each see only the tools and records they are supposed to use.</p></div>
+</div>
+</section>
 <a href="../contact.html" class="block text-center py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps rounded-sm">Schedule a Consultation</a>
 </div>
 <script src="../assets/rail.js"></script>

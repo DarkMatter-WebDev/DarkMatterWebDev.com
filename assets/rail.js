@@ -8,17 +8,17 @@
   var closeTimer = null;
 
   var stepSlugs = {
-    discover: 'discovery-consultation',
-    build: 'website-design',
-    manage: 'complete-website-management',
-    support: 'website-care-plans'
+    design: 'website-design',
+    build: 'custom-development',
+    launch: 'process',
+    maintain: 'website-care-plans'
   };
 
   var steps = {
-    discover: { icon: 'search', step: 'STEP 01 — DISCOVERY', title: 'Discovery', desc: 'We learn about your business, your goals, and what your website needs to accomplish.' },
-    build: { icon: 'web', step: 'STEP 02 — BUILD', title: 'Build', desc: 'We design and launch your professional website — mobile-friendly, fast, and built to represent your brand.' },
-    manage: { icon: 'cloud_done', step: 'STEP 03 — MANAGE', title: 'Manage', desc: 'We host, monitor, and secure your website with backups and ongoing maintenance.' },
-    support: { icon: 'forum', step: 'STEP 04 — SUPPORT', title: 'Support', desc: 'Need changes? Send us a message and we\'ll handle them — no portals, no hassle.' }
+    design: { icon: 'architecture', step: 'STEP 01 — DESIGN', title: 'Design', desc: 'We start by learning what you need, then shape the structure, visuals, and user experience before anything gets built.' },
+    build: { icon: 'terminal', step: 'STEP 02 — BUILD', title: 'Build', desc: 'We build the site or web app with clean code, mobile performance, accessibility, and security best practices baked in.' },
+    launch: { icon: 'rocket_launch', step: 'STEP 03 — LAUNCH', title: 'Launch', desc: 'We connect the domain, configure hosting and SSL, run final QA, and walk you through the finished site before it goes live.' },
+    maintain: { icon: 'cloud_done', step: 'STEP 04 — MAINTAIN', title: 'Maintain', desc: 'After launch, we handle updates, backups, monitoring, improvements, and support through your care plan.' }
   };
 
   var iconEl = document.getElementById('rail-popover-icon');
@@ -31,6 +31,7 @@
   }
 
   function stepHref(key) {
+    if (key === 'launch') return inServicesDir() ? '../process.html' : 'process.html';
     var slug = stepSlugs[key];
     if (!slug) return null;
     return inServicesDir() ? slug + '.html' : 'services/' + slug + '.html';
@@ -87,12 +88,18 @@
     if (href) window.location.href = href;
   }
 
+  function activeKeyFromPath(path) {
+    if (path.indexOf('discovery-consultation') !== -1 || path.indexOf('website-design') !== -1 || path.indexOf('brand-rebranding') !== -1) return 'design';
+    if (path.indexOf('custom-development') !== -1) return 'build';
+    if (path.indexOf('process') !== -1 || path.indexOf('managed-hosting') !== -1 || path.indexOf('complete-website-management') !== -1) return 'launch';
+    if (path.indexOf('website-care-plans') !== -1) return 'maintain';
+    if (path.indexOf('index.html') !== -1 || /\/$/.test(path)) return 'design';
+    return null;
+  }
+
   function setActiveFromPath() {
     var path = window.location.pathname.replace(/\\/g, '/');
-    var activeKey = null;
-    Object.keys(stepSlugs).forEach(function (key) {
-      if (path.indexOf(stepSlugs[key]) !== -1) activeKey = key;
-    });
+    var activeKey = activeKeyFromPath(path);
     if (!activeKey) return;
     root.querySelectorAll('aside [data-step]').forEach(function (b) {
       b.classList.remove('text-nebula-purple', 'bg-nebula-purple/10');
