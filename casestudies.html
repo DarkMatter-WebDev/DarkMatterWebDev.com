@@ -5,6 +5,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Case Studies | DARK MATTER</title>
 <link href="assets/nav.css" rel="stylesheet"/>
+<link href="assets/powered-by-badge.css" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -142,26 +143,12 @@
             0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(112, 0, 255, 0.45); }
             50% { opacity: 0.85; box-shadow: 0 0 0 6px rgba(112, 0, 255, 0); }
         }
-        .screenshot-in-progress {
+        .screenshot-live {
             position: relative;
         }
-        .screenshot-in-progress::after {
-            content: 'IN PROGRESS';
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            z-index: 2;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            padding: 0.35rem 0.65rem;
-            border-radius: 9999px;
-            color: #fff;
-            background: rgba(112, 0, 255, 0.85);
-            border: 1px solid rgba(0, 240, 255, 0.35);
-            box-shadow: 0 0 18px rgba(112, 0, 255, 0.45);
-            backdrop-filter: blur(8px);
+        .elite-fleet-callout {
+            border: 1px solid rgba(0, 240, 255, 0.25);
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.06) 0%, rgba(112, 0, 255, 0.08) 100%);
         }
         .elite-feature-hero {
             display: block;
@@ -453,41 +440,14 @@
 </div>
 </section>
 
-<!-- Upcoming / in-progress -->
-<section class="mb-24">
+<!-- Elite Yacht Detailing — live -->
+<section class="mb-24" id="elite-yacht">
 <div class="flex items-end justify-between mb-8">
 <div>
 <h2 class="font-headline-lg text-headline-lg text-starlight-white">Elite Yacht Detailing</h2>
-<div class="h-1 w-24 bg-nebula-purple mt-2"></div>
+<div class="h-1 w-24 bg-electric-cyan mt-2"></div>
 </div>
-<div class="font-label-mono text-label-mono text-nebula-purple">02 // IN PROGRESS</div>
-</div>
-
-<!-- Build progress -->
-<div class="glass-card rounded-xl p-6 md:p-8 mb-8 border border-nebula-purple/25 neon-glow-cyan">
-<div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-5">
-<div>
-<span class="font-label-caps text-label-caps text-nebula-purple tracking-[0.2em]">BUILD STATUS</span>
-<h3 class="font-headline-md text-headline-md text-starlight-white mt-1">Actively in development</h3>
-<p class="text-on-surface-variant text-sm mt-1 font-label-mono">Homepage, services, gallery &amp; consultation flows — design &amp; build phase</p>
-</div>
-<div class="flex items-center gap-3 shrink-0">
-<span class="build-status-pulse inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-nebula-purple/20 border border-nebula-purple/40 text-nebula-purple font-label-caps text-[10px] tracking-widest">
-<span class="w-2 h-2 rounded-full bg-nebula-purple animate-pulse"></span>
-BUILDING
-</span>
-<span class="font-headline-md text-2xl text-electric-cyan font-bold tabular-nums">68%</span>
-</div>
-</div>
-<div class="build-progress-track" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" aria-label="Elite Yacht Detailing website build progress">
-<div class="build-progress-fill"></div>
-</div>
-<div class="flex flex-wrap gap-x-6 gap-y-2 mt-4 font-label-mono text-[11px] text-outline">
-<span class="text-electric-cyan">✓ Brand &amp; logo</span>
-<span class="text-electric-cyan">✓ Page designs</span>
-<span class="text-nebula-purple">◉ Content &amp; polish</span>
-<span>○ Launch prep</span>
-</div>
+<div class="font-label-mono text-label-mono text-electric-cyan">02 // LIVE</div>
 </div>
 
 <div class="glass-panel rounded-2xl overflow-hidden">
@@ -496,105 +456,121 @@ BUILDING
 <span class="w-3 h-3 rounded-full bg-yellow-500/70"></span>
 <span class="w-3 h-3 rounded-full bg-green-500/70"></span>
 <span class="ml-3 font-label-mono text-[11px] text-outline truncate">eliteyachtdetailing.com</span>
-<span class="ml-auto font-label-caps text-[10px] px-2 py-0.5 bg-nebula-purple/20 text-nebula-purple border border-nebula-purple/30 rounded">PREVIEW — NOT LIVE</span>
+<span class="ml-auto font-label-caps text-[10px] px-2 py-0.5 bg-electric-cyan/15 text-electric-cyan border border-electric-cyan/30 rounded">LIVE</span>
 </div>
-<div class="bg-void-black overflow-hidden relative screenshot-in-progress">
-<img alt="Luxury yacht on Southwest Florida waters — Elite Yacht Detailing project hero" class="elite-feature-hero" decoding="async" fetchpriority="high" src="assets/portfolio/elite/yacht.jpg"/>
+<div class="bg-void-black overflow-hidden relative">
+<img alt="Sunseeker 630 S — Elite Yacht Detailing fleet showcase" class="elite-feature-hero" decoding="async" fetchpriority="high" src="assets/portfolio/elite/hero-yacht.jpg"/>
 </div>
 <div class="p-12 grid grid-cols-1 lg:grid-cols-2 gap-12">
 <div>
 <div class="flex flex-wrap gap-2 mb-6">
 <span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">WEB DESIGN &amp; BUILD</span>
 <span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">BRAND IDENTITY</span>
+<span class="font-label-caps text-[10px] px-2 py-1 bg-white/5 text-on-surface-variant border border-white/10 rounded">CUSTOM DEVELOPMENT</span>
 <span class="font-label-caps text-[10px] px-2 py-1 bg-white/5 text-on-surface-variant border border-white/10 rounded">SWFL · YACHT SERVICES</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Luxury maritime detailing, built to feel elite.</h3>
-<p class="text-on-surface-variant mb-6 leading-relaxed">A premium website for a Southwest Florida yacht detailing business — custom logo, a <span class="text-starlight-white">Nautical Prestige</span> design system, and a glassmorphism UI that mirrors the polish of a freshly detailed hull.</p>
-<p class="text-on-surface-variant mb-8 leading-relaxed">Home, services, portfolio gallery, and free consultation flows — engineered for high-net-worth vessel owners who expect precision in every touchpoint.</p>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">The Art of the Reflection — live in Naples.</h3>
+<p class="text-on-surface-variant mb-6 leading-relaxed">A premium dual-layout site for a Southwest Florida yacht detailing business — custom logo, cinematic homepage with real SWFL work video, interactive before/after restoration slider, and a full services &amp; technical catalogue built for high-net-worth vessel owners.</p>
+<p class="text-on-surface-variant mb-8 leading-relaxed">Separate desktop and mobile experiences, mirror-finish gallery, consultation booking, and a dedicated <span class="text-starlight-white">Fleet</span> section showcasing 400+ vessels serviced across the Gulf Coast.</p>
 <div class="flex flex-wrap gap-4">
-<span class="inline-flex items-center gap-2 px-8 py-3 bg-nebula-purple/15 border border-nebula-purple/40 text-nebula-purple font-label-caps text-label-caps rounded-lg">
-<span class="material-symbols-outlined text-base">engineering</span>
-In Progress — 68%
-</span>
+<a href="https://eliteyachtdetailing.com" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-lg hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-base">open_in_new</span>
+Visit Live Site
+</a>
 <a href="contact.html" class="inline-block px-8 py-3 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-lg hover:bg-white/5 transition-all">Start a Project Like This</a>
 </div>
 </div>
 <div>
-<h4 class="font-label-caps text-label-caps text-nebula-purple mb-5 tracking-[0.15em]">WHAT WE'RE BUILDING</h4>
+<h4 class="font-label-caps text-label-caps text-electric-cyan mb-5 tracking-[0.15em]">WHAT WE DELIVERED</h4>
 <ul class="space-y-3 font-label-mono text-label-mono text-on-surface-variant">
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-nebula-purple text-base">check_circle</span> Custom logo &amp; Nautical Prestige brand system</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-nebula-purple text-base">check_circle</span> Cinematic homepage with service bento grid</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-nebula-purple text-base">check_circle</span> Services, gallery &amp; free consultation pages</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-nebula-purple text-base">check_circle</span> Before/after portfolio showcase</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-nebula-purple text-base">check_circle</span> Mobile-optimized luxury UI with booking CTAs</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-nebula-purple text-base">check_circle</span> Local SEO for SWFL yacht detailing searches</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Custom logo &amp; luxury brand system (Playfair + nautical palette)</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Desktop &amp; mobile site variants with device-aware routing</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Drag-to-compare before/after restoration (Aviara case study)</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Fleet gallery with uniform vessel tiles &amp; ghost hover previews</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Fleet Login portal UI — client management foundation (launching soon)</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Services, process, technical specs, mirror gallery &amp; contact flows</li>
 </ul>
 </div>
 </div>
 </div>
 
-<div class="mt-12">
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Page previews <span class="font-label-caps text-[10px] text-nebula-purple align-middle ml-2">ALL IN PROGRESS</span></h3>
-<p class="text-on-surface-variant mb-8 max-w-2xl leading-relaxed">Live captures from the in-progress build — each page is designed, styled, and being refined before launch.</p>
+<!-- Fleet login & management highlight -->
+<div class="glass-card elite-fleet-callout rounded-xl p-8 md:p-10 mt-10 mb-12">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+<div>
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-electric-cyan text-3xl">sailing</span>
+<span class="font-label-caps text-label-caps text-electric-cyan tracking-[0.2em]">FLEET LOGIN &amp; MANAGEMENT</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Built for captains, fleet managers &amp; marina programs.</h3>
+<p class="text-on-surface-variant leading-relaxed mb-4">We implemented a dedicated <strong class="text-starlight-white font-normal">Fleet Login</strong> area linked from the fleet page and site footer — a secure client portal preview for recurring fleet and marina accounts. Sign-in is staged for launch; the full UX is in place today.</p>
+<ul class="space-y-2 font-label-mono text-[13px] text-on-surface-variant">
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-nebula-purple text-sm">arrow_forward</span> Multi-vessel scheduling across fleet or marina slip assignments</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-nebula-purple text-sm">arrow_forward</span> Service history, ceramic coating records &amp; before/after documentation</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-nebula-purple text-sm">arrow_forward</span> Priority contact lane for captains &amp; fleet managers in SWFL</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-nebula-purple text-sm">arrow_forward</span> Invoices &amp; approved maintenance protocols for recurring programs</li>
+</ul>
+<a href="https://eliteyachtdetailing.com/desktop/fleet-login.html" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-6 font-label-mono text-sm text-electric-cyan hover:underline">
+<span class="material-symbols-outlined text-base">login</span>
+Preview Fleet Login portal →
+</a>
+</div>
+<div class="rounded-xl overflow-hidden border border-white/10 bg-void-black/40">
+<img alt="Elite Yacht Detailing fleet page — vessel gallery and fleet login entry" class="w-full h-auto block" loading="lazy" src="assets/portfolio/elite/screenshot-fleet.jpg"/>
+</div>
+</div>
+</div>
+
+<div class="mt-4">
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Site highlights</h3>
+<p class="text-on-surface-variant mb-8 max-w-2xl leading-relaxed">Captures from the live build — homepage cinema, fleet gallery, restoration compare, and the fleet client portal preview.</p>
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
 <div class="glass-card rounded-xl overflow-hidden">
-<div class="screenshot-in-progress border-b border-white/10">
-<img alt="Elite Yacht Detailing homepage preview" class="w-full h-auto block" loading="lazy" src="assets/portfolio/elite/screenshot-home.png"/>
+<div class="border-b border-white/10">
+<img alt="Elite Yacht Detailing homepage — The Art of the Reflection" class="w-full h-auto block" loading="lazy" src="assets/portfolio/elite/screenshot-home.png"/>
 </div>
 <div class="p-6">
-<div class="flex items-center justify-between gap-3 mb-2">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-nebula-purple">home</span>
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-electric-cyan">home</span>
 <h4 class="font-headline-md text-[18px] text-starlight-white">Homepage</h4>
 </div>
-<span class="font-label-caps text-[9px] text-nebula-purple">WIP</span>
-</div>
-<p class="text-on-surface-variant text-sm leading-relaxed">Cinematic hero, logo lockup, service bento grid, and dual CTAs for consultation booking.</p>
+<p class="text-on-surface-variant text-sm leading-relaxed">Cinematic hero, real SWFL detailing video, drag-to-compare mirror finish, and fleet CTAs.</p>
 </div>
 </div>
 <div class="glass-card rounded-xl overflow-hidden">
-<div class="screenshot-in-progress border-b border-white/10">
-<img alt="Elite Yacht Detailing services page preview" class="w-full h-auto block" loading="lazy" src="assets/portfolio/elite/screenshot-services.png"/>
+<div class="border-b border-white/10">
+<img alt="Elite Yacht Detailing fleet gallery — 400+ vessels serviced" class="w-full h-auto block" loading="lazy" src="assets/portfolio/elite/screenshot-gallery.png"/>
 </div>
 <div class="p-6">
-<div class="flex items-center justify-between gap-3 mb-2">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-electric-cyan">design_services</span>
-<h4 class="font-headline-md text-[18px] text-starlight-white">Services</h4>
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-nebula-purple">sailing</span>
+<h4 class="font-headline-md text-[18px] text-starlight-white">Fleet gallery</h4>
 </div>
-<span class="font-label-caps text-[9px] text-nebula-purple">WIP</span>
-</div>
-<p class="text-on-surface-variant text-sm leading-relaxed">Hull polishing, ceramic coating, maintenance wash &amp; interior detailing with rich photography.</p>
+<p class="text-on-surface-variant text-sm leading-relaxed">400+ vessels serviced — uniform client tiles, featured Sunseeker 630 S, and stats for SWFL coverage.</p>
 </div>
 </div>
 <div class="glass-card rounded-xl overflow-hidden">
-<div class="screenshot-in-progress border-b border-white/10">
-<img alt="Elite Yacht Detailing portfolio gallery preview" class="w-full h-auto block" loading="lazy" src="assets/portfolio/elite/screenshot-gallery.png"/>
+<div class="border-b border-white/10">
+<img alt="Before and after hull restoration compare slider" class="w-full h-auto block" loading="lazy" src="assets/portfolio/elite/screenshot-compare.jpg"/>
 </div>
 <div class="p-6">
-<div class="flex items-center justify-between gap-3 mb-2">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-nebula-purple">photo_library</span>
-<h4 class="font-headline-md text-[18px] text-starlight-white">Portfolio gallery</h4>
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-electric-cyan">compare</span>
+<h4 class="font-headline-md text-[18px] text-starlight-white">Before / after compare</h4>
 </div>
-<span class="font-label-caps text-[9px] text-nebula-purple">WIP</span>
-</div>
-<p class="text-on-surface-variant text-sm leading-relaxed">Before/after showcase for hull restoration, brightwork, teak decks, and interior results.</p>
+<p class="text-on-surface-variant text-sm leading-relaxed">Interactive drag slider — oxidized gelcoat vs. mirror ceramic finish on a real Aviara restoration.</p>
 </div>
 </div>
 <div class="glass-card rounded-xl overflow-hidden">
-<div class="screenshot-in-progress border-b border-white/10">
-<img alt="Elite Yacht Detailing free consultation page preview" class="w-full h-auto block" loading="lazy" src="assets/portfolio/elite/screenshot-consultation.png"/>
+<div class="border-b border-white/10">
+<img alt="Elite Yacht Detailing services catalogue" class="w-full h-auto block" loading="lazy" src="assets/portfolio/elite/screenshot-services.png"/>
 </div>
 <div class="p-6">
-<div class="flex items-center justify-between gap-3 mb-2">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-electric-cyan">calendar_month</span>
-<h4 class="font-headline-md text-[18px] text-starlight-white">Free consultation</h4>
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-nebula-purple">design_services</span>
+<h4 class="font-headline-md text-[18px] text-starlight-white">Services &amp; technical</h4>
 </div>
-<span class="font-label-caps text-[9px] text-nebula-purple">WIP</span>
-</div>
-<p class="text-on-surface-variant text-sm leading-relaxed">Lead capture flow with yacht imagery and a streamlined booking experience for new clients.</p>
+<p class="text-on-surface-variant text-sm leading-relaxed">14-stage purification process, ceramic coating specs, maintenance programs, and consultation booking.</p>
 </div>
 </div>
 </div>
@@ -628,6 +604,18 @@ In Progress — 68%
 </div>
 </section>
 </main>
+<div class="site-powered-by-bar w-full bg-void-black border-t border-white/5 py-8 px-margin-mobile md:px-margin-desktop flex justify-center">
+<a class="dm-powered-badge" href="built-by.html" aria-label="Website powered by Dark Matter Web Services — view referral landing page">
+<svg class="dm-powered-badge__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z"/>
+</svg>
+<span class="dm-powered-badge__lockup">
+<span class="dm-powered-badge__label">Website powered by</span>
+<span class="dm-powered-badge__name">DARK MATTER</span>
+<span class="dm-powered-badge__subtext">Web Services</span>
+</span>
+</a>
+</div>
 <footer class="w-full mt-auto bg-void-black border-t border-white/5">
 <div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-12 w-full gap-8">
 <div class="flex flex-col gap-4">
@@ -732,58 +720,45 @@ In Progress — 68%
 </div>
 
 <!-- Project 02: Elite Yacht Detailing -->
-<div class="glass-card rounded-xl p-5 mb-4 border border-nebula-purple/25">
-<span class="font-label-caps text-label-caps text-nebula-purple tracking-widest">BUILD STATUS</span>
-<div class="flex items-center justify-between gap-3 mt-2 mb-3">
-<h3 class="font-headline-md text-base text-starlight-white">In Progress</h3>
-<span class="font-headline-md text-xl text-electric-cyan font-bold">68%</span>
-</div>
-<div class="build-progress-track mb-3" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100">
-<div class="build-progress-fill"></div>
-</div>
-<p class="font-label-mono text-[10px] text-outline">Brand ✓ · Pages ✓ · Polish ◉ · Launch ○</p>
-</div>
-<div class="glass-card rounded-xl overflow-hidden mb-8">
+<div class="glass-card rounded-xl overflow-hidden mb-8 border border-electric-cyan/20">
 <div class="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-void-black/60">
 <span class="w-2.5 h-2.5 rounded-full bg-red-500/70"></span>
 <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></span>
 <span class="w-2.5 h-2.5 rounded-full bg-green-500/70"></span>
 <span class="ml-2 font-label-mono text-[10px] text-outline truncate">eliteyachtdetailing.com</span>
-<span class="ml-auto font-label-caps text-[9px] px-1.5 py-0.5 bg-nebula-purple/20 text-nebula-purple border border-nebula-purple/30 rounded">IN PROGRESS</span>
+<span class="ml-auto font-label-caps text-[9px] px-1.5 py-0.5 bg-electric-cyan/15 text-electric-cyan border border-electric-cyan/30 rounded">LIVE</span>
 </div>
-<div class="screenshot-in-progress bg-void-black overflow-hidden">
-<img alt="Luxury yacht — Elite Yacht Detailing project hero" class="elite-feature-hero" decoding="async" src="assets/portfolio/elite/yacht.jpg"/>
+<div class="bg-void-black overflow-hidden">
+<img alt="Sunseeker 630 S — Elite Yacht Detailing" class="elite-feature-hero" decoding="async" src="assets/portfolio/elite/hero-yacht.jpg"/>
 </div>
 <div class="p-7">
 <div class="flex items-center gap-2 mb-4">
-<span class="font-label-mono text-[10px] text-nebula-purple">02 // IN PROGRESS</span>
+<span class="font-label-mono text-[10px] text-electric-cyan">02 // LIVE</span>
 </div>
 <h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Elite Yacht Detailing</h3>
 <div class="flex flex-wrap gap-2 mb-5">
 <span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">WEB DESIGN</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">BRAND IDENTITY</span>
+<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">FLEET PORTAL</span>
 </div>
-<p class="font-body-md text-body-md text-on-surface-variant mb-5">A premium SWFL yacht detailing site with custom logo, Nautical Prestige design system, services pages, portfolio gallery, and consultation booking.</p>
-<p class="font-label-caps text-[10px] text-nebula-purple mb-3 tracking-widest">PAGE PREVIEWS — WIP</p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Live luxury yacht detailing site for Naples — cinematic homepage, before/after compare slider, fleet gallery (400+ vessels), and a Fleet Login client portal for recurring marina &amp; fleet programs.</p>
+<p class="font-label-caps text-[10px] text-electric-cyan mb-3 tracking-widest">FLEET LOGIN &amp; MANAGEMENT</p>
+<p class="font-body-md text-on-surface-variant text-sm mb-5">Portal preview with multi-vessel scheduling, service history, coating records, and priority captain contact — sign-in launching soon; full UX built now.</p>
 <div class="space-y-3 mb-5">
-<div class="screenshot-in-progress rounded-lg overflow-hidden border border-white/10">
-<img alt="Services page preview" class="w-full h-auto block" loading="lazy" src="assets/portfolio/elite/screenshot-services.png"/>
+<div class="rounded-lg overflow-hidden border border-white/10">
+<img alt="Fleet gallery preview" class="w-full h-auto block" loading="lazy" src="assets/portfolio/elite/screenshot-gallery.png"/>
 </div>
-<div class="screenshot-in-progress rounded-lg overflow-hidden border border-white/10">
-<img alt="Gallery page preview" class="w-full h-auto block" loading="lazy" src="assets/portfolio/elite/screenshot-gallery.png"/>
-</div>
-<div class="screenshot-in-progress rounded-lg overflow-hidden border border-white/10">
-<img alt="Consultation page preview" class="w-full h-auto block" loading="lazy" src="assets/portfolio/elite/screenshot-consultation.png"/>
+<div class="rounded-lg overflow-hidden border border-white/10">
+<img alt="Before/after compare" class="w-full h-auto block" loading="lazy" src="assets/portfolio/elite/screenshot-compare.jpg"/>
 </div>
 </div>
 <ul class="space-y-2 font-label-mono text-[12px] text-on-surface-variant mb-7">
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-nebula-purple text-sm">check_circle</span> Custom logo &amp; brand system</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-nebula-purple text-sm">check_circle</span> Services, gallery &amp; booking flows</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-nebula-purple text-sm">check_circle</span> Before/after portfolio showcase</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> Desktop + mobile site variants</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> Fleet gallery &amp; client portal UI</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> Drag-to-compare restoration showcase</li>
 </ul>
-<span class="flex items-center justify-center gap-2 w-full py-4 bg-nebula-purple/15 border border-nebula-purple/40 text-nebula-purple font-label-caps text-label-caps rounded-sm">
-<span class="material-symbols-outlined text-base">engineering</span> Building — 68% Complete
-</span>
+<a href="https://eliteyachtdetailing.com" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-sm active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-base">open_in_new</span> Visit Live Site
+</a>
 </div>
 </div>
 
@@ -804,6 +779,18 @@ In Progress — 68%
             </a>
 </div>
 </main>
+<div class="site-powered-by-bar w-full bg-void-black border-t border-white/5 py-8 px-margin-mobile flex justify-center relative z-10">
+<a class="dm-powered-badge" href="built-by.html" aria-label="Website powered by Dark Matter Web Services — view referral landing page">
+<svg class="dm-powered-badge__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z"/>
+</svg>
+<span class="dm-powered-badge__lockup">
+<span class="dm-powered-badge__label">Website powered by</span>
+<span class="dm-powered-badge__name">DARK MATTER</span>
+<span class="dm-powered-badge__subtext">Web Services</span>
+</span>
+</a>
+</div>
 <footer class="w-full py-12 px-margin-mobile flex flex-col items-center gap-4 mb-20 border-t border-starlight-white/5 bg-void-black">
 <div class="flex flex-col leading-none items-center">
 <div class="font-headline-md text-headline-md text-starlight-white tracking-tighter">DARK MATTER</div>
