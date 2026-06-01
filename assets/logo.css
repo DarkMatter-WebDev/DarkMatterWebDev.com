@@ -17,3 +17,45 @@
 .brand-subtext--center {
   transform-origin: center center;
 }
+
+.site-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-mark {
+  font-size: 2rem;
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* Shimmering gradient wordmark — nav logo (built-by / landing page style) */
+.brand-mystical {
+  background: linear-gradient(120deg, #FFFFFF 0%, #00F0FF 38%, #7000FF 88%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: brand-shimmer 6s ease-in-out infinite;
+}
+
+.brand-mystical--glow {
+  filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.55)) drop-shadow(0 0 22px rgba(112, 0, 255, 0.4));
+}
+
+@keyframes brand-shimmer {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-mystical {
+    animation: none;
+    background-position: 0% center;
+  }
+}
