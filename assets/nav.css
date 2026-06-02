@@ -140,10 +140,21 @@ nav .hidden.md\:flex,
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.services-nav-heading .material-symbols-outlined {
-  font-size: 0.9rem;
-  color: #00f0ff;
-  opacity: 0.75;
+.services-nav-heading .material-symbols-outlined,
+.services-nav-heading-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: 0 0 1rem !important;
+  width: 1rem !important;
+  height: 1rem !important;
+  font-size: 1rem !important;
+  line-height: 1 !important;
+  color: #00f0ff !important;
+  opacity: 0.78 !important;
+  vertical-align: middle !important;
+  transform: translateY(0) !important;
+  font-variation-settings: 'FILL' 0, 'wght' 350, 'GRAD' 0, 'opsz' 20 !important;
 }
 
 .services-nav-panel a {

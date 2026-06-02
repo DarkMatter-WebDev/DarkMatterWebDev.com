@@ -8,7 +8,7 @@
 <link rel="alternate" hreflang="en" href="/casestudies.html"/>
 <link rel="alternate" hreflang="es" href="/es/casestudies.html"/>
 <link rel="alternate" hreflang="x-default" href="/casestudies.html"/>
-<link href="../assets/nav.css" rel="stylesheet"/>
+<link href="../assets/nav.css?v=20260601-menu-icons" rel="stylesheet"/>
 <link href="../assets/powered-by-badge.css" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -393,7 +393,7 @@
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="services.html">Servicios</a>
 <div class="services-nav-menu">
 <div class="services-nav-panel">
-<div class="services-nav-heading"><span class="material-symbols-outlined">language</span>Servicios en Línea</div>
+<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Servicios en Línea</div>
 <a href="services/complete-website-management.html">Gestión Completa de Sitios Web</a>
 <a href="services/discovery-consultation.html">Descubrimiento y Consulta</a>
 <a href="services/website-design.html">Diseño de Sitios Web</a>
@@ -402,7 +402,7 @@
 <a href="services/website-care-plans.html">Planes de Mantenimiento Web</a>
 <a href="services/seo-foundations.html">Fundamentos de SEO</a>
 <a href="services/custom-development.html">Aplicaciones Web Empresariales a Medida</a>
-<div class="services-nav-heading"><span class="material-symbols-outlined">home_pin</span>Servicios a Domicilio y de Oficina</div>
+<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">home_pin</span>Servicios a Domicilio y de Oficina</div>
 <a href="services/in-home-services.html">Servicios Técnicos a Domicilio</a>
 <a href="services/office-network-setup.html">Configuración de Redes de Oficina</a>
 </div>
@@ -418,23 +418,27 @@
 <a href="contact.html" class="ml-4 inline-block px-6 py-2 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-lg hover:opacity-90 active:scale-95 transition-all">Inicia tu Proyecto</a>
 </div>
 </nav>
-<aside class="fixed left-0 top-1/2 -translate-y-1/2 h-auto rounded-r-xl bg-void-black/80 backdrop-blur-2xl border-r border-t border-b border-white/5 flex flex-col p-4 gap-unit z-40 shadow-[0_0_20px_rgba(112,0,255,0.15)]">
-<div class="flex flex-col items-center gap-6">
-<button type="button" data-step="discover" class="p-3 text-outline hover:bg-white/5 rounded-lg transition-all group relative">
-<span class="material-symbols-outlined">search</span>
-<span class="absolute left-full ml-4 px-2 py-1 bg-surface border border-white/10 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Descubrir</span>
-</button>
-<button type="button" data-step="design" class="p-3 text-outline hover:bg-white/5 rounded-lg transition-all group relative">
+<aside class="fixed left-0 top-1/2 -translate-y-1/2 h-auto rounded-r-xl bg-void-black/80 backdrop-blur-2xl border-r border-t border-b border-white/5 p-4 gap-unit z-40 flex flex-col shadow-[0_0_20px_rgba(112,0,255,0.15)]">
+<div class="mb-4">
+<p class="font-label-caps text-[10px] text-outline opacity-50">NUESTRO PROCESO</p>
+<p class="font-label-caps text-nebula-purple">4 PASOS</p>
+</div>
+<div class="flex flex-col gap-4">
+<button type="button" data-step="design" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Diseño">
 <span class="material-symbols-outlined">architecture</span>
-<span class="absolute left-full ml-4 px-2 py-1 bg-surface border border-white/10 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Diseño</span>
+<span class="font-label-caps text-[8px] mt-1">DISEÑO</span>
 </button>
-<button type="button" data-step="build" class="p-3 text-outline hover:bg-white/5 rounded-lg transition-all group relative">
+<button type="button" data-step="build" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Construcción">
 <span class="material-symbols-outlined">terminal</span>
-<span class="absolute left-full ml-4 px-2 py-1 bg-surface border border-white/10 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Construcción</span>
+<span class="font-label-caps text-[8px] mt-1">CONSTRUCCIÓN</span>
 </button>
-<button type="button" data-step="launch" class="p-3 text-electric-cyan bg-electric-cyan/10 rounded-lg group relative">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
-<span class="absolute left-full ml-4 px-2 py-1 bg-surface border border-white/10 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Lanzado</span>
+<button type="button" data-step="launch" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Lanzamiento">
+<span class="material-symbols-outlined">rocket_launch</span>
+<span class="font-label-caps text-[8px] mt-1">LANZAMIENTO</span>
+</button>
+<button type="button" data-step="maintain" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Mantenimiento">
+<span class="material-symbols-outlined">cloud_done</span>
+<span class="font-label-caps text-[8px] mt-1">MANTENIMIENTO</span>
 </button>
 </div>
 </aside>
@@ -1009,77 +1013,5 @@ Vista previa del portal de Acceso de Flota →
 </div>
 <!-- /MOBILE -->
 
-<script>
-(function () {
-  var root = document.querySelector('.hidden.md\\:block') || document;
-  var pop = document.getElementById('rail-popover');
-  if (!pop) return;
-  var CLOSE_DELAY = 200;
-  var closeTimer = null;
-  var steps = {
-    discover: { icon: 'search', step: 'PASO 01 — DESCUBRIMIENTO', title: 'Descubrimiento', desc: 'Empezamos con una conversación gratuita sobre tu negocio y tus objetivos, y luego trazamos un plan claro y un presupuesto fijo.' },
-    design:   { icon: 'architecture', step: 'PASO 02 — DISEÑO', title: 'Diseño', desc: 'Diseñamos la apariencia y el diseño en torno a tu marca y te mostramos una vista previa para que opines, antes de escribir una sola línea de código.' },
-    build:    { icon: 'terminal', step: 'PASO 03 — CONSTRUCCIÓN', title: 'Construcción', desc: 'Construimos tu sitio con código limpio y moderno: rápido, seguro, adaptado a móviles y completamente probado.' },
-    launch:   { icon: 'workspace_premium', step: 'PASO 04 — LANZAMIENTO', title: 'Lanzamiento', desc: 'Publicamos tu sitio, nos aseguramos de que todo funcione y nos quedamos para el hosting, las actualizaciones y el soporte. Naples Antiques LLC es uno de los que lanzamos.' }
-  };
-  var iconEl = document.getElementById('rail-popover-icon');
-  var stepEl = document.getElementById('rail-popover-step');
-  var titleEl = document.getElementById('rail-popover-title');
-  var descEl = document.getElementById('rail-popover-desc');
-  function positionFor(trigger) {
-    var r = trigger.getBoundingClientRect();
-    pop.style.left = (r.right + 12) + 'px';
-    pop.style.top = (r.top + r.height / 2) + 'px';
-  }
-  function showFor(trigger) {
-    clearTimeout(closeTimer);
-    var key = trigger.getAttribute('data-step');
-    var data = steps[key];
-    if (!data) return;
-    iconEl.textContent = data.icon;
-    stepEl.textContent = data.step;
-    titleEl.textContent = data.title;
-    descEl.textContent = data.desc;
-    positionFor(trigger);
-    pop.setAttribute('data-active', key);
-    if (pop.classList.contains('is-visible')) {
-      pop.setAttribute('aria-hidden', 'false');
-      return;
-    }
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        positionFor(trigger);
-        pop.classList.add('is-visible');
-        pop.setAttribute('aria-hidden', 'false');
-      });
-    });
-  }
-  function scheduleClose() {
-    clearTimeout(closeTimer);
-    closeTimer = setTimeout(function () {
-      pop.classList.remove('is-visible');
-      pop.setAttribute('aria-hidden', 'true');
-      pop.removeAttribute('data-active');
-    }, CLOSE_DELAY);
-  }
-  function hideNow() {
-    clearTimeout(closeTimer);
-    pop.classList.remove('is-visible');
-    pop.setAttribute('aria-hidden', 'true');
-    pop.removeAttribute('data-active');
-  }
-  root.querySelectorAll('aside [data-step]').forEach(function (t) {
-    t.style.cursor = 'pointer';
-    if (!t.hasAttribute('tabindex')) t.setAttribute('tabindex', '0');
-    t.addEventListener('mouseenter', function () { showFor(t); });
-    t.addEventListener('mouseleave', scheduleClose);
-    t.addEventListener('focus', function () { showFor(t); });
-    t.addEventListener('blur', scheduleClose);
-  });
-  pop.addEventListener('mouseenter', function () { clearTimeout(closeTimer); });
-  pop.addEventListener('mouseleave', scheduleClose);
-  window.addEventListener('resize', hideNow);
-  window.addEventListener('scroll', hideNow, true);
-})();
-</script>
+<script src="../assets/rail.js?v=20260601-rail-es"></script>
 </body></html>

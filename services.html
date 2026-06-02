@@ -9,7 +9,7 @@
 <link rel="alternate" hreflang="en" href="/services.html"/>
 <link rel="alternate" hreflang="es" href="/es/services.html"/>
 <link rel="alternate" hreflang="x-default" href="/services.html"/>
-<link href="assets/nav.css" rel="stylesheet"/>
+<link href="assets/nav.css?v=20260601-menu-icons" rel="stylesheet"/>
 <link href="assets/powered-by-badge.css" rel="stylesheet"/>
 <link href="assets/care-plans.css" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -253,7 +253,7 @@
 <a class="font-label-mono text-label-mono text-electric-cyan border-b-2 border-electric-cyan pb-1 transition-colors duration-300" href="services.html">Services</a>
 <div class="services-nav-menu">
 <div class="services-nav-panel">
-<div class="services-nav-heading"><span class="material-symbols-outlined">language</span>Online Services</div>
+<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Online Services</div>
 <a href="services/complete-website-management.html">Complete Website Management</a>
 <a href="services/discovery-consultation.html">Discovery &amp; Consultation</a>
 <a href="services/website-design.html">Website Design</a>
@@ -262,7 +262,7 @@
 <a href="services/website-care-plans.html">Website Care Plans</a>
 <a href="services/seo-foundations.html">SEO Foundations</a>
 <a href="services/custom-development.html">Custom Business Web Apps</a>
-<div class="services-nav-heading"><span class="material-symbols-outlined">home_pin</span>In-Home &amp; Office Services</div>
+<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">home_pin</span>In-Home &amp; Office Services</div>
 <a href="services/in-home-services.html">In-Home Tech Services</a>
 <a href="services/office-network-setup.html">Office Network Setup</a>
 </div>
@@ -318,14 +318,46 @@
 </div>
 </div>
 <main class="relative z-10 pt-32 pb-24 px-margin-desktop max-w-container-max mx-auto md:pl-28">
-<section class="mb-24">
-<div class="max-w-3xl">
+<section class="mb-20">
+<div class="max-w-3xl mb-12">
 <h4 class="font-label-caps text-label-caps text-electric-cyan mb-4 tracking-[0.2em]">ONLINE &amp; ON-SITE SERVICES</h4>
 <h1 class="font-headline-xl text-headline-xl text-starlight-white mb-8">Your outsourced <span class="gradient-text-nebula">website department.</span></h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">We build, host, secure, and manage professional websites for Southwest Florida businesses &mdash; plus custom business web apps, care plans, rebranding, and local on-site tech setup for homes and offices. Choose a service below or start with our flagship Complete Website Management partnership.</p>
 </div>
+<div class="glass-panel rounded-2xl p-8 border border-electric-cyan/20">
+<div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-8">
+<div>
+<span class="font-label-caps text-label-caps text-electric-cyan tracking-widest">START HERE</span>
+<h2 class="font-headline-lg text-headline-lg text-starlight-white mt-3">What do you need help with?</h2>
+</div>
+<p class="font-body-md text-on-surface-variant max-w-xl">Pick the closest option. Each path takes you to the right group of services without needing to know the technical name first.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<a href="#online-services" class="glass-panel p-7 rounded-xl group hover:border-electric-cyan/50 transition-all duration-300 block border border-white/10">
+<span class="material-symbols-outlined text-4xl text-electric-cyan mb-5">language</span>
+<span class="font-label-caps text-[10px] text-electric-cyan tracking-widest">WEBSITES &amp; ONLINE</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mt-3 mb-3">I need a website or online help</h3>
+<p class="text-on-surface-variant leading-relaxed mb-5">Web design, hosting, updates, SEO, care plans, branding, and online business support.</p>
+<span class="inline-flex items-center gap-2 font-label-mono text-sm text-electric-cyan">View online services <span aria-hidden="true">&rarr;</span></span>
+</a>
+<a href="#local-services" class="glass-panel p-7 rounded-xl group hover:border-electric-cyan/50 transition-all duration-300 block border border-electric-cyan/30 bg-electric-cyan/5">
+<span class="material-symbols-outlined text-4xl text-electric-cyan mb-5">home_pin</span>
+<span class="font-label-caps text-[10px] text-electric-cyan tracking-widest">LOCAL / IN PERSON</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mt-3 mb-3">I need in-person tech setup</h3>
+<p class="text-on-surface-variant leading-relaxed mb-5">In-home visits, office setup, Wi-Fi, printers, devices, workstations, and local troubleshooting.</p>
+<span class="inline-flex items-center gap-2 font-label-mono text-sm text-electric-cyan">Find local services <span aria-hidden="true">&rarr;</span></span>
+</a>
+<a href="services/custom-development.html" class="glass-panel p-7 rounded-xl group hover:border-nebula-purple/50 transition-all duration-300 block border border-white/10">
+<span class="material-symbols-outlined text-4xl text-nebula-purple mb-5">admin_panel_settings</span>
+<span class="font-label-caps text-[10px] text-nebula-purple tracking-widest">BUSINESS TOOLS</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mt-3 mb-3">I need a business app or portal</h3>
+<p class="text-on-surface-variant leading-relaxed mb-5">Staff logins, customer records, dashboards, reports, automations, and admin tools.</p>
+<span class="inline-flex items-center gap-2 font-label-mono text-sm text-electric-cyan">Explore web apps <span aria-hidden="true">&rarr;</span></span>
+</a>
+</div>
+</div>
 </section>
-<section class="mb-32">
+<section id="online-services" class="mb-32 scroll-mt-28">
 <div class="flex items-end justify-between mb-12">
 <div>
 <h2 class="font-headline-lg text-headline-lg text-starlight-white">Online services</h2>
@@ -574,7 +606,30 @@
                 We design websites, build business web apps, and help with local in-home or office technology setup for Southwest Florida businesses.
             </p>
 </div>
-<div class="grid grid-cols-1 gap-gutter">
+<section class="mb-12 glass-card p-5 rounded-xl space-y-4">
+<div>
+<span class="font-label-caps text-[10px] text-electric-cyan tracking-widest">START HERE</span>
+<h3 class="font-headline-md text-xl text-starlight-white mt-2">What do you need help with?</h3>
+</div>
+<div class="grid grid-cols-1 gap-3">
+<a href="#online-services-mobile" class="glass-card p-5 rounded-lg border border-white/10 block">
+<span class="material-symbols-outlined text-electric-cyan text-2xl mb-2">language</span>
+<h4 class="font-headline-md text-base text-starlight-white">Website or online help</h4>
+<p class="font-body-md text-on-surface-variant text-sm mt-1">Design, hosting, updates, SEO, and care plans.</p>
+</a>
+<a href="#local-services-mobile" class="glass-card p-5 rounded-lg border border-electric-cyan/30 bg-electric-cyan/5 block">
+<span class="material-symbols-outlined text-electric-cyan text-2xl mb-2">home_pin</span>
+<h4 class="font-headline-md text-base text-starlight-white">In-person tech setup</h4>
+<p class="font-body-md text-on-surface-variant text-sm mt-1">Wi-Fi, printers, devices, home offices, and local office setup.</p>
+</a>
+<a href="services/custom-development.html" class="glass-card p-5 rounded-lg border border-white/10 block">
+<span class="material-symbols-outlined text-nebula-purple text-2xl mb-2">admin_panel_settings</span>
+<h4 class="font-headline-md text-base text-starlight-white">Business app or portal</h4>
+<p class="font-body-md text-on-surface-variant text-sm mt-1">Staff logins, records, dashboards, reports, and automations.</p>
+</a>
+</div>
+</section>
+<div id="online-services-mobile" class="grid grid-cols-1 gap-gutter scroll-mt-24">
 <div class="glass-card group p-8 rounded-xl flex flex-col h-full relative overflow-hidden">
 <div class="mb-8 p-4 rounded-lg bg-starlight-white/5 w-fit border border-starlight-white/10">
 <span class="material-symbols-outlined text-electric-cyan text-4xl" style="font-variation-settings: 'FILL' 1;">layers</span>
@@ -623,7 +678,7 @@
 <a class="text-center rounded-full bg-void-black border border-electric-cyan/30 px-6 py-3 font-label-mono text-label-mono text-starlight-white" href="contact.html">Start a Project</a>
 </div>
 </div>
-<div class="glass-card group p-8 rounded-xl flex flex-col h-full relative overflow-hidden">
+<div id="local-services-mobile" class="glass-card group p-8 rounded-xl flex flex-col h-full relative overflow-hidden scroll-mt-24">
 <div class="mb-8 p-4 rounded-lg bg-starlight-white/5 w-fit border border-starlight-white/10">
 <span class="material-symbols-outlined text-nebula-purple text-4xl" style="font-variation-settings: 'FILL' 1;">home_pin</span>
 </div>
@@ -715,5 +770,5 @@
 </div>
 <!-- /MOBILE -->
 
-<script src="assets/rail.js"></script>
+<script src="assets/rail.js?v=20260601-rail-es"></script>
 </body></html>

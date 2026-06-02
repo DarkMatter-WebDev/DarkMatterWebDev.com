@@ -2,6 +2,10 @@
 
 ## 2026-06-01 (Spanish site)
 
+- Unified Spanish Contact and Case Studies pages with the shared four-step process rail and removed their stale inline rail scripts.
+- Added `?v=20260601-rail-es` cache-busting to every `assets/rail.js` script link across English and Spanish pages.
+- Updated `services.html` and `es/services.html` so visitors first see three plain-language service paths: website/online help, local in-person tech setup, and business app/portal.
+- Fixed desktop Services dropdown heading icons by strengthening `assets/nav.css`, adding explicit `services-nav-heading-icon` classes, and cache-busting `nav.css` links across English and Spanish pages.
 - Added a full Latin American Spanish version of the site as a parallel `es/` mirror (16 pages: 6 top-level + 10 service pages), each an exact translated copy of its English desktop + mobile layouts.
 - Added an `EN / ES` language toggle to the desktop nav and mobile header of every page.
 - Added first-visit browser-language auto-detection (Spanish browsers are sent to `es/`) with the explicit choice remembered in `localStorage` (`dm_lang`).

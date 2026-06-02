@@ -51,7 +51,7 @@ There is no app server, database, build pipeline, package manager, or framework 
 - Top-level pages provide the main site navigation and conversion flow.
 - Service pages under `services/` share the same general visual system and navigation pattern.
 - The Services dropdown is grouped into Online Services and In-Home & Office Services.
-- `assets/rail.js` controls the shared floating process rail interaction.
+- `assets/rail.js` controls the shared floating process rail interaction and is loaded with a version query string to avoid stale deployed behavior after rail changes.
 - `assets/care-plans.css`, `assets/nav.css`, `assets/logo.css`, and badge CSS files hold reusable styling.
 - Some page behavior is implemented inline in the relevant HTML files.
 

@@ -30,3 +30,6 @@
 - Added In-Home Tech Services and Office Network Setup pages.
 - Built the full Spanish (`es/`) site mirror with language switcher, browser auto-detect, bilingual rail.js, hreflang alternates, and the `I18N.md` spec.
 - Fixed the Spanish homepage hero headline clipping on desktop (allowed balanced wrapping + trimmed the font-size clamp in `es/index.html`).
+- Fixed desktop Services dropdown heading icon styling and cache-busted `assets/nav.css` across English and Spanish pages.
+- Added a three-choice Services page gateway for website/online help, in-person tech setup, and business app/portal paths.
+- Unified Contact and Case Studies onto the shared four-step process rail and cache-busted `assets/rail.js` across the site.

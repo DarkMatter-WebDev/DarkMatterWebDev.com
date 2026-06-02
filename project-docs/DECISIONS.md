@@ -98,3 +98,16 @@ Alternatives Considered:
 - Keep one flat Services dropdown.
 - Create a separate top-level navigation item for Local Services.
 - Delay local services until pricing is finalized.
+
+## 2026-06-01
+
+Decision:
+Make the Services landing page start with three plain-language paths: website/online help, local in-person tech setup, and business app/portal.
+
+Reason:
+Older or less technical visitors may not know terms like hosting, SEO, care plans, or custom web apps. A small set of human-readable choices helps them quickly find the right direction, especially the local/in-person installation option.
+
+Alternatives Considered:
+- Keep the Services page as a full service grid only.
+- Use two categories: online and local.
+- Split into many detailed service categories at the top.

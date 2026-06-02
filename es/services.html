@@ -9,7 +9,7 @@
 <link rel="alternate" hreflang="en" href="/services.html"/>
 <link rel="alternate" hreflang="es" href="/es/services.html"/>
 <link rel="alternate" hreflang="x-default" href="/services.html"/>
-<link href="../assets/nav.css" rel="stylesheet"/>
+<link href="../assets/nav.css?v=20260601-menu-icons" rel="stylesheet"/>
 <link href="../assets/powered-by-badge.css" rel="stylesheet"/>
 <link href="../assets/care-plans.css" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -253,7 +253,7 @@
 <a class="font-label-mono text-label-mono text-electric-cyan border-b-2 border-electric-cyan pb-1 transition-colors duration-300" href="services.html">Servicios</a>
 <div class="services-nav-menu">
 <div class="services-nav-panel">
-<div class="services-nav-heading"><span class="material-symbols-outlined">language</span>Servicios en Línea</div>
+<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Servicios en Línea</div>
 <a href="services/complete-website-management.html">Gestión Completa de Sitios Web</a>
 <a href="services/discovery-consultation.html">Descubrimiento y Consulta</a>
 <a href="services/website-design.html">Diseño de Sitios Web</a>
@@ -262,7 +262,7 @@
 <a href="services/website-care-plans.html">Planes de Mantenimiento Web</a>
 <a href="services/seo-foundations.html">Fundamentos de SEO</a>
 <a href="services/custom-development.html">Aplicaciones Web Empresariales a Medida</a>
-<div class="services-nav-heading"><span class="material-symbols-outlined">home_pin</span>Servicios a Domicilio y de Oficina</div>
+<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">home_pin</span>Servicios a Domicilio y de Oficina</div>
 <a href="services/in-home-services.html">Servicios Técnicos a Domicilio</a>
 <a href="services/office-network-setup.html">Configuración de Redes de Oficina</a>
 </div>
@@ -318,14 +318,46 @@
 </div>
 </div>
 <main class="relative z-10 pt-32 pb-24 px-margin-desktop max-w-container-max mx-auto md:pl-28">
-<section class="mb-24">
-<div class="max-w-3xl">
+<section class="mb-20">
+<div class="max-w-3xl mb-12">
 <h4 class="font-label-caps text-label-caps text-electric-cyan mb-4 tracking-[0.2em]">SERVICIOS EN LÍNEA Y A DOMICILIO</h4>
 <h1 class="font-headline-xl text-headline-xl text-starlight-white mb-8">Tu departamento de <span class="gradient-text-nebula">sitios web externo.</span></h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">Creamos, alojamos, aseguramos y administramos sitios web profesionales para negocios del suroeste de Florida &mdash; además de aplicaciones web empresariales a medida, planes de mantenimiento, rediseño de marca y configuración técnica local a domicilio para hogares y oficinas. Elige un servicio a continuación o comienza con nuestra alianza insignia de Gestión Completa de Sitios Web.</p>
 </div>
+<div class="glass-panel rounded-2xl p-8 border border-electric-cyan/20">
+<div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-8">
+<div>
+<span class="font-label-caps text-label-caps text-electric-cyan tracking-widest">EMPIEZA AQUÍ</span>
+<h2 class="font-headline-lg text-headline-lg text-starlight-white mt-3">¿Con qué necesitas ayuda?</h2>
+</div>
+<p class="font-body-md text-on-surface-variant max-w-xl">Elige la opción más cercana. Cada camino te lleva al grupo correcto de servicios sin tener que saber el nombre técnico primero.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<a href="#online-services" class="glass-panel p-7 rounded-xl group hover:border-electric-cyan/50 transition-all duration-300 block border border-white/10">
+<span class="material-symbols-outlined text-4xl text-electric-cyan mb-5">language</span>
+<span class="font-label-caps text-[10px] text-electric-cyan tracking-widest">SITIOS WEB Y EN LÍNEA</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mt-3 mb-3">Necesito un sitio web o ayuda en línea</h3>
+<p class="text-on-surface-variant leading-relaxed mb-5">Diseño web, hosting, actualizaciones, SEO, planes de mantenimiento, marca y soporte online para negocios.</p>
+<span class="inline-flex items-center gap-2 font-label-mono text-sm text-electric-cyan">Ver servicios en línea <span aria-hidden="true">&rarr;</span></span>
+</a>
+<a href="#local-services" class="glass-panel p-7 rounded-xl group hover:border-electric-cyan/50 transition-all duration-300 block border border-electric-cyan/30 bg-electric-cyan/5">
+<span class="material-symbols-outlined text-4xl text-electric-cyan mb-5">home_pin</span>
+<span class="font-label-caps text-[10px] text-electric-cyan tracking-widest">LOCAL / EN PERSONA</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mt-3 mb-3">Necesito instalación técnica en persona</h3>
+<p class="text-on-surface-variant leading-relaxed mb-5">Visitas a domicilio, configuración de oficina, Wi-Fi, impresoras, dispositivos, estaciones de trabajo y ayuda local.</p>
+<span class="inline-flex items-center gap-2 font-label-mono text-sm text-electric-cyan">Buscar servicios locales <span aria-hidden="true">&rarr;</span></span>
+</a>
+<a href="services/custom-development.html" class="glass-panel p-7 rounded-xl group hover:border-nebula-purple/50 transition-all duration-300 block border border-white/10">
+<span class="material-symbols-outlined text-4xl text-nebula-purple mb-5">admin_panel_settings</span>
+<span class="font-label-caps text-[10px] text-nebula-purple tracking-widest">HERRAMIENTAS DE NEGOCIO</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mt-3 mb-3">Necesito una aplicación o portal</h3>
+<p class="text-on-surface-variant leading-relaxed mb-5">Accesos para personal, registros de clientes, paneles, reportes, automatizaciones y herramientas administrativas.</p>
+<span class="inline-flex items-center gap-2 font-label-mono text-sm text-electric-cyan">Explorar aplicaciones web <span aria-hidden="true">&rarr;</span></span>
+</a>
+</div>
+</div>
 </section>
-<section class="mb-32">
+<section id="online-services" class="mb-32 scroll-mt-28">
 <div class="flex items-end justify-between mb-12">
 <div>
 <h2 class="font-headline-lg text-headline-lg text-starlight-white">Servicios en línea</h2>
@@ -574,7 +606,30 @@
                 Diseñamos sitios web, creamos aplicaciones web empresariales y ayudamos con la configuración de tecnología local a domicilio o de oficina para negocios del suroeste de Florida.
             </p>
 </div>
-<div class="grid grid-cols-1 gap-gutter">
+<section class="mb-12 glass-card p-5 rounded-xl space-y-4">
+<div>
+<span class="font-label-caps text-[10px] text-electric-cyan tracking-widest">EMPIEZA AQUÍ</span>
+<h3 class="font-headline-md text-xl text-starlight-white mt-2">¿Con qué necesitas ayuda?</h3>
+</div>
+<div class="grid grid-cols-1 gap-3">
+<a href="#online-services-mobile" class="glass-card p-5 rounded-lg border border-white/10 block">
+<span class="material-symbols-outlined text-electric-cyan text-2xl mb-2">language</span>
+<h4 class="font-headline-md text-base text-starlight-white">Sitio web o ayuda en línea</h4>
+<p class="font-body-md text-on-surface-variant text-sm mt-1">Diseño, hosting, actualizaciones, SEO y planes de mantenimiento.</p>
+</a>
+<a href="#local-services-mobile" class="glass-card p-5 rounded-lg border border-electric-cyan/30 bg-electric-cyan/5 block">
+<span class="material-symbols-outlined text-electric-cyan text-2xl mb-2">home_pin</span>
+<h4 class="font-headline-md text-base text-starlight-white">Instalación técnica en persona</h4>
+<p class="font-body-md text-on-surface-variant text-sm mt-1">Wi-Fi, impresoras, dispositivos, oficinas en casa y configuración local.</p>
+</a>
+<a href="services/custom-development.html" class="glass-card p-5 rounded-lg border border-white/10 block">
+<span class="material-symbols-outlined text-nebula-purple text-2xl mb-2">admin_panel_settings</span>
+<h4 class="font-headline-md text-base text-starlight-white">Aplicación o portal de negocio</h4>
+<p class="font-body-md text-on-surface-variant text-sm mt-1">Accesos, registros, paneles, reportes y automatizaciones.</p>
+</a>
+</div>
+</section>
+<div id="online-services-mobile" class="grid grid-cols-1 gap-gutter scroll-mt-24">
 <div class="glass-card group p-8 rounded-xl flex flex-col h-full relative overflow-hidden">
 <div class="mb-8 p-4 rounded-lg bg-starlight-white/5 w-fit border border-starlight-white/10">
 <span class="material-symbols-outlined text-electric-cyan text-4xl" style="font-variation-settings: 'FILL' 1;">layers</span>
@@ -623,7 +678,7 @@
 <a class="text-center rounded-full bg-void-black border border-electric-cyan/30 px-6 py-3 font-label-mono text-label-mono text-starlight-white" href="contact.html">Inicia un Proyecto</a>
 </div>
 </div>
-<div class="glass-card group p-8 rounded-xl flex flex-col h-full relative overflow-hidden">
+<div id="local-services-mobile" class="glass-card group p-8 rounded-xl flex flex-col h-full relative overflow-hidden scroll-mt-24">
 <div class="mb-8 p-4 rounded-lg bg-starlight-white/5 w-fit border border-starlight-white/10">
 <span class="material-symbols-outlined text-nebula-purple text-4xl" style="font-variation-settings: 'FILL' 1;">home_pin</span>
 </div>
@@ -715,5 +770,5 @@
 </div>
 <!-- /MOBILE -->
 
-<script src="../assets/rail.js"></script>
+<script src="../assets/rail.js?v=20260601-rail-es"></script>
 </body></html>

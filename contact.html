@@ -8,7 +8,7 @@
 <link rel="alternate" hreflang="en" href="/contact.html"/>
 <link rel="alternate" hreflang="es" href="/es/contact.html"/>
 <link rel="alternate" hreflang="x-default" href="/contact.html"/>
-<link href="assets/nav.css" rel="stylesheet"/>
+<link href="assets/nav.css?v=20260601-menu-icons" rel="stylesheet"/>
 <link href="assets/powered-by-badge.css" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Plus+Jakarta+Sans:wght@300..800&amp;family=JetBrains+Mono:wght@100..800&amp;display=swap" rel="stylesheet"/>
@@ -253,7 +253,7 @@
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="services.html">Services</a>
 <div class="services-nav-menu">
 <div class="services-nav-panel">
-<div class="services-nav-heading"><span class="material-symbols-outlined">language</span>Online Services</div>
+<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Online Services</div>
 <a href="services/complete-website-management.html">Complete Website Management</a>
 <a href="services/discovery-consultation.html">Discovery &amp; Consultation</a>
 <a href="services/website-design.html">Website Design</a>
@@ -262,7 +262,7 @@
 <a href="services/website-care-plans.html">Website Care Plans</a>
 <a href="services/seo-foundations.html">SEO Foundations</a>
 <a href="services/custom-development.html">Custom Business Web Apps</a>
-<div class="services-nav-heading"><span class="material-symbols-outlined">home_pin</span>In-Home &amp; Office Services</div>
+<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">home_pin</span>In-Home &amp; Office Services</div>
 <a href="services/in-home-services.html">In-Home Tech Services</a>
 <a href="services/office-network-setup.html">Office Network Setup</a>
 </div>
@@ -280,24 +280,28 @@
             </a>
 </div>
 </nav>
-<aside class="fixed left-0 top-1/2 -translate-y-1/2 h-auto bg-void-black/80 backdrop-blur-2xl border-r border-t border-b border-white/5 p-4 gap-unit z-40 rounded-r-xl flex flex-col shadow-[0_0_20px_rgba(112,0,255,0.15)]">
-<div class="flex flex-col items-center gap-6">
-<div data-step="discover" class="flex flex-col items-center gap-1 group cursor-pointer">
-<span class="material-symbols-outlined text-outline group-hover:text-nebula-purple transition-colors">search</span>
-<span class="font-label-caps text-[10px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">FIND</span>
+<aside class="fixed left-0 top-1/2 -translate-y-1/2 h-auto rounded-r-xl bg-void-black/80 backdrop-blur-2xl border-r border-t border-b border-white/5 p-4 gap-unit z-40 flex flex-col shadow-[0_0_20px_rgba(112,0,255,0.15)]">
+<div class="mb-4">
+<p class="font-label-caps text-[10px] text-outline opacity-50">OUR PROCESS</p>
+<p class="font-label-caps text-nebula-purple">4 STEPS</p>
 </div>
-<div data-step="design" class="flex flex-col items-center gap-1 group cursor-pointer">
-<span class="material-symbols-outlined text-outline group-hover:text-nebula-purple transition-colors">architecture</span>
-<span class="font-label-caps text-[10px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">DESIGN</span>
-</div>
-<div data-step="build" class="flex flex-col items-center gap-1 group cursor-pointer">
-<span class="material-symbols-outlined text-outline group-hover:text-nebula-purple transition-colors">terminal</span>
-<span class="font-label-caps text-[10px] text-outline opacity-0 group-hover:opacity-100 transition-opacity">BUILD</span>
-</div>
-<div data-step="launch" class="flex flex-col items-center gap-1 group cursor-pointer">
-<span class="material-symbols-outlined text-nebula-purple bg-nebula-purple/10 p-2 rounded-lg">rocket_launch</span>
-<span class="font-label-caps text-[10px] text-nebula-purple">SEND</span>
-</div>
+<div class="flex flex-col gap-4">
+<button type="button" data-step="design" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Design">
+<span class="material-symbols-outlined">architecture</span>
+<span class="font-label-caps text-[8px] mt-1">DESIGN</span>
+</button>
+<button type="button" data-step="build" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Build">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-label-caps text-[8px] mt-1">BUILD</span>
+</button>
+<button type="button" data-step="launch" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Launch">
+<span class="material-symbols-outlined">rocket_launch</span>
+<span class="font-label-caps text-[8px] mt-1">LAUNCH</span>
+</button>
+<button type="button" data-step="maintain" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Maintain">
+<span class="material-symbols-outlined">cloud_done</span>
+<span class="font-label-caps text-[8px] mt-1">MAINTAIN</span>
+</button>
 </div>
 </aside>
 <!-- Floating rail info popover -->
@@ -685,77 +689,5 @@
             });
         });
     </script>
-<script>
-(function () {
-  var root = document.querySelector('.hidden.md\\:block') || document;
-  var pop = document.getElementById('rail-popover');
-  if (!pop) return;
-  var CLOSE_DELAY = 200;
-  var closeTimer = null;
-  var steps = {
-    discover: { icon: 'search', step: 'STEP 01 — DISCOVER', title: 'Discover', desc: 'We start with a free conversation about your business and goals, then map out a clear plan and a fixed quote.' },
-    design:   { icon: 'architecture', step: 'STEP 02 — DESIGN', title: 'Design', desc: 'We design the look and layout around your brand and show you a preview to react to — before any code is written.' },
-    build:    { icon: 'terminal', step: 'STEP 03 — BUILD', title: 'Build', desc: 'We build your site with clean, modern code: fast, secure, mobile-friendly, and fully tested.' },
-    launch:   { icon: 'rocket_launch', step: 'STEP 04 — LAUNCH', title: 'Launch', desc: 'We put your site live, make sure everything works, and stick around for hosting, updates, and support.' }
-  };
-  var iconEl = document.getElementById('rail-popover-icon');
-  var stepEl = document.getElementById('rail-popover-step');
-  var titleEl = document.getElementById('rail-popover-title');
-  var descEl = document.getElementById('rail-popover-desc');
-  function positionFor(trigger) {
-    var r = trigger.getBoundingClientRect();
-    pop.style.left = (r.right + 12) + 'px';
-    pop.style.top = (r.top + r.height / 2) + 'px';
-  }
-  function showFor(trigger) {
-    clearTimeout(closeTimer);
-    var key = trigger.getAttribute('data-step');
-    var data = steps[key];
-    if (!data) return;
-    iconEl.textContent = data.icon;
-    stepEl.textContent = data.step;
-    titleEl.textContent = data.title;
-    descEl.textContent = data.desc;
-    positionFor(trigger);
-    pop.setAttribute('data-active', key);
-    if (pop.classList.contains('is-visible')) {
-      pop.setAttribute('aria-hidden', 'false');
-      return;
-    }
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        positionFor(trigger);
-        pop.classList.add('is-visible');
-        pop.setAttribute('aria-hidden', 'false');
-      });
-    });
-  }
-  function scheduleClose() {
-    clearTimeout(closeTimer);
-    closeTimer = setTimeout(function () {
-      pop.classList.remove('is-visible');
-      pop.setAttribute('aria-hidden', 'true');
-      pop.removeAttribute('data-active');
-    }, CLOSE_DELAY);
-  }
-  function hideNow() {
-    clearTimeout(closeTimer);
-    pop.classList.remove('is-visible');
-    pop.setAttribute('aria-hidden', 'true');
-    pop.removeAttribute('data-active');
-  }
-  root.querySelectorAll('aside [data-step]').forEach(function (t) {
-    t.style.cursor = 'pointer';
-    if (!t.hasAttribute('tabindex')) t.setAttribute('tabindex', '0');
-    t.addEventListener('mouseenter', function () { showFor(t); });
-    t.addEventListener('mouseleave', scheduleClose);
-    t.addEventListener('focus', function () { showFor(t); });
-    t.addEventListener('blur', scheduleClose);
-  });
-  pop.addEventListener('mouseenter', function () { clearTimeout(closeTimer); });
-  pop.addEventListener('mouseleave', scheduleClose);
-  window.addEventListener('resize', hideNow);
-  window.addEventListener('scroll', hideNow, true);
-})();
-</script>
+<script src="assets/rail.js?v=20260601-rail-es"></script>
 </body></html>
