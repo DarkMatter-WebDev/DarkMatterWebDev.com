@@ -27,7 +27,7 @@ Dark Matter Web Services is a marketing website for managed website services, cu
 - Shared CSS in `assets/*.css`.
 - Shared JavaScript in `assets/rail.js` plus inline page scripts where needed.
 - Material Symbols icons loaded from Google Fonts.
-- Netlify Forms on `contact.html`.
+- Netlify Forms on `contact.html` and the Website Preference Builder.
 - Static image/video assets in `assets/`.
 
 ## Deployment
@@ -60,3 +60,10 @@ Before ending any meaningful work session:
 3. Record important decisions in `project-docs/DECISIONS.md`.
 4. Add meaningful changes to `project-docs/CHANGELOG.md`.
 5. Update `project-docs/ARCHITECTURE.md` if structure, hosting, integrations, auth, or deployment changed.
+
+## Memory File Size Guidance
+
+- Keep memory files concise and current; prefer summaries over long historical detail.
+- Let core files grow to roughly 250-350 lines before trimming.
+- When trimming, preserve current architecture, active decisions, current tasks, and the last 30-60 days of meaningful changes.
+- Move old detail into feature notes only if it is still useful; otherwise summarize it in one short bullet or remove it.

@@ -3,6 +3,18 @@
 ## 2026-06-01
 
 Decision:
+Use "Nuestro portafolio" as the Spanish label for the portfolio/case-study area.
+
+Reason:
+It sounds warmer and clearer than "Casos de Éxito" for older or less technical clients, while still pointing visitors to completed work.
+
+Alternatives Considered:
+- Casos de Éxito
+- Portafolio
+
+## 2026-06-01
+
+Decision:
 Ship the Spanish site as a parallel set of fully-translated static pages under `es/` (mirroring filenames), rather than a JavaScript in-place string-swap on shared pages.
 
 Reason:

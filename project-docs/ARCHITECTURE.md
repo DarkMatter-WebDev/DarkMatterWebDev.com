@@ -51,7 +51,9 @@ There is no app server, database, build pipeline, package manager, or framework 
 - Top-level pages provide the main site navigation and conversion flow.
 - Service pages under `services/` share the same general visual system and navigation pattern.
 - The Services dropdown is grouped into Online Services and In-Home & Office Services.
+- On mobile top-level pages, `assets/nav.css` moves the five-item tab bar to the top and `assets/mobile-services-nav.js` turns the Services tab into a grouped service picker.
 - `assets/rail.js` controls the shared floating process rail interaction and is loaded with a version query string to avoid stale deployed behavior after rail changes.
+- `assets/site-hero.js` applies the shared black-hole MP4 page hero treatment to non-home pages by moving each page's intro/title block into an overlaid video hero at runtime. It is cache-busted with a version query string.
 - `assets/care-plans.css`, `assets/nav.css`, `assets/logo.css`, and badge CSS files hold reusable styling.
 - Some page behavior is implemented inline in the relevant HTML files.
 
@@ -72,7 +74,7 @@ If custom business web apps are built later, document their data model here befo
 
 ## API Integrations
 
-- Netlify Forms are used for contact form submissions on `contact.html`.
+- Netlify Forms are used for contact form submissions on `contact.html` and Website Preference Builder submissions on `preference-builder.html` / `es/preference-builder.html`.
 - No other confirmed external API integrations are documented in the current codebase.
 
 ## Authentication Flow
@@ -95,7 +97,7 @@ Current architecture is a static Netlify-hosted site:
 Visitor browser
   -> Netlify static hosting
     -> HTML/CSS/JS/assets
-    -> Netlify Forms for contact submission
+    -> Netlify Forms for contact and website-preference submissions
 ```
 
 ## Local Development

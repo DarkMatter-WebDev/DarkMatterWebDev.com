@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>(function(){try{if(localStorage.getItem('dm_lang')==="en"){location.replace("../preference-builder.html");}}catch(e){}})();</script>
+<title>Solicitud de Mockup Web Gratis | DARK MATTER</title>
+<meta name="description" content="Solicita una idea visual gratis para tu sitio web. Comparte estilo, estructura y preferencias de marca y recibe respuesta dentro de 48 horas."/>
+<link rel="alternate" hreflang="en" href="/preference-builder.html"/>
+<link rel="alternate" hreflang="es" href="/es/preference-builder.html"/>
+<link rel="alternate" hreflang="x-default" href="/preference-builder.html"/>
+<link href="../assets/nav.css?v=20260601-mobile-topnav" rel="stylesheet"/>
+<link href="../assets/powered-by-badge.css" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+html,body{background:#050505;color:#e3e2e2;overflow-x:hidden}
+.grid-overlay{background-image:linear-gradient(to right,rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.05) 1px,transparent 1px);background-size:80px 80px}
+.glass-card{background:rgba(255,255,255,.035);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1)}
+.gradient-text{background:linear-gradient(135deg,#00f0ff,#7000ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.choice-card{position:relative;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.035);transition:border-color .2s ease,transform .2s ease,background .2s ease}
+.choice-card:hover,.choice-card.is-selected{border-color:rgba(0,240,255,.65);background:rgba(0,240,255,.07);transform:translateY(-2px)}
+.choice-card.is-selected:after{content:"check";font-family:"Material Symbols Outlined";position:absolute;top:.75rem;right:.75rem;color:#00f0ff;font-size:1.1rem}
+.preview-swatch{position:relative;height:6.8rem;border-radius:.5rem;border:1px solid rgba(255,255,255,.1);overflow:hidden;background:#090b0f}
+.preview-swatch:before{content:"";position:absolute;left:.75rem;right:.75rem;top:.75rem;height:.55rem;border-radius:999px;background:rgba(255,255,255,.16);box-shadow:0 1.3rem 0 rgba(255,255,255,.08),0 2.6rem 0 rgba(255,255,255,.06)}
+.preview-swatch:after{content:"";position:absolute;right:.75rem;bottom:.75rem;width:34%;height:42%;border-radius:.45rem;border:1px solid rgba(255,255,255,.16)}
+.preview-minimal{background:linear-gradient(135deg,#f7fafb,#dbe7ea);box-shadow:inset 0 0 0 999px rgba(255,255,255,.04)}
+.preview-minimal:before{background:#273238;box-shadow:0 1.3rem 0 rgba(39,50,56,.22),0 2.6rem 0 rgba(39,50,56,.14)}
+.preview-minimal:after{background:rgba(39,50,56,.1);border-color:rgba(39,50,56,.2)}
+.preview-bold{background:linear-gradient(90deg,#060606 0 62%,#7000ff 62% 100%)}
+.preview-bold:before{background:#fff;box-shadow:0 1.3rem 0 rgba(255,255,255,.38),0 2.6rem 0 rgba(0,240,255,.55)}
+.preview-bold:after{background:#00f0ff;border-color:rgba(255,255,255,.7)}
+.preview-elegant{background:linear-gradient(135deg,#101722,#241823 55%,#8a693d)}
+.preview-elegant:before{background:#f4d39b;box-shadow:0 1.3rem 0 rgba(244,211,155,.32),0 2.6rem 0 rgba(255,255,255,.12)}
+.preview-elegant:after{background:rgba(244,211,155,.16);border-color:rgba(244,211,155,.42)}
+.preview-futuristic{background:radial-gradient(circle at 78% 28%,rgba(0,240,255,.62),transparent 30%),radial-gradient(circle at 24% 80%,rgba(112,0,255,.7),transparent 34%),linear-gradient(135deg,#050505,#10131a)}
+.preview-futuristic:before{background:#00f0ff;box-shadow:0 1.3rem 0 rgba(0,240,255,.32),0 2.6rem 0 rgba(112,0,255,.45)}
+.preview-futuristic:after{background:rgba(0,240,255,.12);border-color:rgba(0,240,255,.45);box-shadow:0 0 20px rgba(0,240,255,.22)}
+.summary-row{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px solid rgba(255,255,255,.08);padding:.8rem 0}
+.summary-row:last-child{border-bottom:0}
+.progress-bar{height:.45rem;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden}
+.progress-bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,#00f0ff,#7000ff);transition:width .25s ease}
+.builder-status{border:1px solid rgba(0,240,255,.16);background:rgba(0,240,255,.055);border-radius:.75rem;padding:.9rem 1rem}
+.builder-submit-card{background:linear-gradient(135deg,rgba(0,240,255,.08),rgba(112,0,255,.08));border:1px solid rgba(0,240,255,.24)}
+.builder-step-card{background:linear-gradient(145deg,rgba(255,255,255,.062),rgba(255,255,255,.026));border-color:rgba(255,255,255,.18);box-shadow:0 18px 50px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.06)}
+.builder-step-card:nth-child(even){border-color:rgba(0,240,255,.2)}
+.builder-step-card:nth-child(odd){border-color:rgba(112,0,255,.22)}
+</style>
+<script>
+tailwind.config={darkMode:"class",theme:{extend:{colors:{"void-black":"#050505","surface":"#121414","on-surface":"#e3e2e2","on-surface-variant":"#c4c7c7","starlight-white":"#fff","electric-cyan":"#00F0FF","nebula-purple":"#7000FF","outline":"#8e9192"},fontFamily:{"headline-xl":["Space Grotesk"],"headline-lg":["Space Grotesk"],"headline-md":["Space Grotesk"],"body-md":["Plus Jakarta Sans"],"label-mono":["JetBrains Mono"],"label-caps":["JetBrains Mono"]},fontSize:{"headline-xl":["64px",{lineHeight:"1.1",fontWeight:"700"}],"headline-lg":["40px",{lineHeight:"1.2",fontWeight:"600"}],"headline-md":["24px",{lineHeight:"1.3",fontWeight:"500"}],"body-md":["16px",{lineHeight:"1.6",fontWeight:"400"}],"label-mono":["14px",{lineHeight:"1.4",letterSpacing:".05em",fontWeight:"500"}],"label-caps":["12px",{lineHeight:"1.2",letterSpacing:".1em",fontWeight:"700"}]},spacing:{"margin-desktop":"64px","margin-mobile":"20px","gutter":"24px","container-max":"1440px"}}}};
+</script>
+</head>
+<body class="font-body-md text-body-md bg-void-black text-on-surface selection:bg-electric-cyan selection:text-void-black">
+<div class="fixed inset-0 grid-overlay opacity-20 pointer-events-none"></div>
+<div class="fixed inset-0 overflow-hidden pointer-events-none"><div class="absolute -top-40 -left-32 w-[34rem] h-[34rem] rounded-full bg-electric-cyan/10 blur-[120px]"></div><div class="absolute bottom-0 right-0 w-[38rem] h-[38rem] rounded-full bg-nebula-purple/12 blur-[140px]"></div></div>
+<nav class="fixed top-0 w-full bg-surface/10 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 z-50">
+<a href="index.html" class="site-brand inline-flex items-center gap-2.5 flex-nowrap shrink-0">
+<span class="material-symbols-outlined brand-mark text-electric-cyan" aria-hidden="true">blur_on</span>
+<span class="flex flex-col leading-none"><span class="font-headline-md text-headline-md tracking-tighter brand-mystical brand-mystical--glow">DARK MATTER</span><span class="brand-subtext">Servicios Web</span></span>
+</a>
+<div class="hidden md:flex gap-10 items-center">
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors" href="index.html">Inicio</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors" href="services.html">Servicios</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors" href="process.html">Proceso</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors" href="casestudies.html">Nuestro portafolio</a>
+<div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0"><a href="../preference-builder.html" hreflang="en" lang="en" aria-label="Switch to English" onclick="try{localStorage.setItem('dm_lang','en')}catch(e){}" class="text-on-surface-variant hover:text-electric-cyan transition-colors">EN</a><span class="text-outline/50">/</span><span class="text-electric-cyan" aria-current="true">ES</span></div>
+</div>
+<a href="contact.html" class="hidden sm:inline-block px-5 py-2 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-lg font-bold">Inicia Proyecto</a>
+</nav>
+<main class="relative z-10 pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<section class="grid grid-cols-1 lg:grid-cols-[1.08fr_.92fr] gap-12 items-end mb-16">
+<div>
+<span class="font-label-caps text-label-caps text-electric-cyan tracking-[.22em]">MOCKUP WEB GRATIS</span>
+<h1 class="font-headline-xl text-[clamp(2.4rem,6vw,4.8rem)] text-starlight-white mt-5 mb-6">Quieres un <span class="gradient-text">mockup gratis</span> de tu idea web?</h1>
+<p class="text-on-surface-variant text-lg max-w-3xl leading-relaxed">Cuentanos que estilo, estructura y sensacion quieres. Revisaremos tus opciones, prepararemos una idea visual tipo captura de pantalla y te responderemos dentro de 48 horas para hablarlo directamente.</p>
+</div>
+<aside class="glass-card rounded-xl p-6">
+<div class="flex items-center justify-between mb-4"><h2 class="font-headline-md text-starlight-white">Blueprint en Vivo</h2><span class="font-label-mono text-xs text-electric-cyan" id="progress-text">0%</span></div>
+<div class="progress-bar mb-5"><span id="progress-bar"></span></div>
+<div class="summary-row"><span class="text-on-surface-variant">Estilo visual</span><span class="font-label-mono text-electric-cyan" id="summary-style">Sin definir</span></div>
+<div class="summary-row"><span class="text-on-surface-variant">Industria</span><span class="font-label-mono text-electric-cyan" id="summary-industry">Sin definir</span></div>
+<div class="summary-row"><span class="text-on-surface-variant">Voz de marca</span><span class="font-label-mono text-electric-cyan" id="summary-voice">Sin definir</span></div>
+<div class="summary-row"><span class="text-on-surface-variant">PÃ¡ginas</span><span class="font-label-mono text-electric-cyan" id="summary-pages">1 seleccionada</span></div>
+<div class="builder-status mt-5 flex gap-3">
+<span class="material-symbols-outlined text-electric-cyan shrink-0">pending_actions</span>
+<p class="text-sm text-on-surface-variant leading-relaxed"><span class="text-starlight-white">Arma el brief.</span> Estas opciones nos ayudan a crear un primer mockup gratis que se ajuste a tu negocio antes de hablar detalles.</p>
+</div>
+</aside>
+</section>
+<form id="preference-form" name="website-preferences" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+<input type="hidden" name="form-name" value="website-preferences">
+<p class="hidden"><label>No llenar este campo: <input name="bot-field"></label></p>
+<input type="hidden" name="language" value="es">
+<input type="hidden" name="visual_style" id="form-style" value="">
+<input type="hidden" name="industry" id="form-industry" value="">
+<input type="hidden" name="primary_goal" id="form-goal" value="">
+<input type="hidden" name="brand_voice" id="form-voice" value="">
+<input type="hidden" name="selected_pages" id="form-pages" value="Pagina principal">
+<section class="space-y-8 mb-10">
+<div class="glass-card builder-step-card rounded-xl p-6 md:p-8">
+<div class="flex items-center gap-3 mb-6"><span class="w-8 h-8 rounded-full bg-electric-cyan/15 text-electric-cyan grid place-items-center font-label-mono">1</span><h2 class="font-headline-lg text-starlight-white">Preferencias Visuales</h2></div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<button type="button" class="choice-card rounded-xl p-4 text-left" data-field="style" data-value="Minimalista"><div class="preview-swatch preview-minimal mb-4"></div><h3 class="font-headline-md text-starlight-white">Minimalista</h3><p class="text-sm text-on-surface-variant mt-2">Limpio, tranquilo, amplio.</p></button>
+<button type="button" class="choice-card rounded-xl p-4 text-left" data-field="style" data-value="Audaz"><div class="preview-swatch preview-bold mb-4"></div><h3 class="font-headline-md text-starlight-white">Audaz</h3><p class="text-sm text-on-surface-variant mt-2">Alto contraste y directo.</p></button>
+<button type="button" class="choice-card rounded-xl p-4 text-left" data-field="style" data-value="Elegante"><div class="preview-swatch preview-elegant mb-4"></div><h3 class="font-headline-md text-starlight-white">Elegante</h3><p class="text-sm text-on-surface-variant mt-2">Premium, refinado, cÃ¡lido.</p></button>
+<button type="button" class="choice-card rounded-xl p-4 text-left" data-field="style" data-value="Futurista"><div class="preview-swatch preview-futuristic mb-4"></div><h3 class="font-headline-md text-starlight-white">Futurista</h3><p class="text-sm text-on-surface-variant mt-2">TecnolÃ³gico y energÃ©tico.</p></button>
+</div>
+</div>
+<div class="glass-card builder-step-card rounded-xl p-6 md:p-8">
+<div class="flex items-center gap-3 mb-6"><span class="w-8 h-8 rounded-full bg-nebula-purple/15 text-nebula-purple grid place-items-center font-label-mono">2</span><h2 class="font-headline-lg text-starlight-white">Estructura</h2></div>
+<label class="font-label-caps text-label-caps text-outline block mb-2">Industria</label>
+<select id="industry-select" name="industry_select" class="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-on-surface focus:border-electric-cyan focus:ring-0 mb-6">
+<option value="">Selecciona industria</option><option>Negocio local de servicios</option><option>Oficina profesional</option><option>Retail o e-commerce</option><option>Restaurante u hospitalidad</option><option>Marca personal</option><option>Comunidad o nonprofit</option>
+</select>
+<label class="font-label-caps text-label-caps text-outline block mb-3">Objetivo principal</label>
+<div class="grid grid-cols-1 gap-3">
+<button type="button" class="choice-card rounded-lg p-4 text-left" data-field="goal" data-value="Generar prospectos">Generar prospectos</button>
+<button type="button" class="choice-card rounded-lg p-4 text-left" data-field="goal" data-value="Vender productos o reservas">Vender productos o reservas</button>
+<button type="button" class="choice-card rounded-lg p-4 text-left" data-field="goal" data-value="Mostrar portafolio y confianza">Mostrar portafolio y confianza</button>
+</div>
+</div>
+</section>
+<section class="space-y-8 mb-10">
+<div class="glass-card builder-step-card rounded-xl p-6 md:p-8">
+<div class="flex items-center gap-3 mb-6"><span class="w-8 h-8 rounded-full bg-electric-cyan/15 text-electric-cyan grid place-items-center font-label-mono">3</span><h2 class="font-headline-lg text-starlight-white">Opciones de Blueprint</h2></div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="page-options">
+<label class="choice-card rounded-lg p-4 cursor-pointer"><input type="checkbox" name="page_options[]" value="Pagina principal" checked class="mr-3 text-electric-cyan bg-transparent border-white/20">PÃ¡gina principal</label>
+<label class="choice-card rounded-lg p-4 cursor-pointer"><input type="checkbox" name="page_options[]" value="Resumen de servicios" class="mr-3 text-electric-cyan bg-transparent border-white/20">Resumen de servicios</label>
+<label class="choice-card rounded-lg p-4 cursor-pointer"><input type="checkbox" name="page_options[]" value="Portafolio / casos" class="mr-3 text-electric-cyan bg-transparent border-white/20">Portafolio / casos</label>
+<label class="choice-card rounded-lg p-4 cursor-pointer"><input type="checkbox" name="page_options[]" value="Acerca del equipo" class="mr-3 text-electric-cyan bg-transparent border-white/20">Acerca del equipo</label>
+<label class="choice-card rounded-lg p-4 cursor-pointer"><input type="checkbox" name="page_options[]" value="Contacto / cotizacion" class="mr-3 text-electric-cyan bg-transparent border-white/20">Contacto / cotizaciÃ³n</label>
+<label class="choice-card rounded-lg p-4 cursor-pointer"><input type="checkbox" name="page_options[]" value="Portal o login" class="mr-3 text-electric-cyan bg-transparent border-white/20">Portal o login</label>
+</div>
+</div>
+<div class="glass-card builder-step-card rounded-xl p-6 md:p-8">
+<div class="flex items-center gap-3 mb-6"><span class="w-8 h-8 rounded-full bg-nebula-purple/15 text-nebula-purple grid place-items-center font-label-mono">4</span><h2 class="font-headline-lg text-starlight-white">Alma de Marca</h2></div>
+<label class="font-label-caps text-label-caps text-outline block mb-2">Nombre del negocio</label>
+<input id="business-name" name="business_name" class="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-on-surface focus:border-electric-cyan focus:ring-0 mb-4" placeholder="Nombre de tu negocio"/>
+<label class="font-label-caps text-label-caps text-outline block mb-2">MisiÃ³n o vibra</label>
+<textarea id="project-notes" name="project_notes" class="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-on-surface focus:border-electric-cyan focus:ring-0 mb-5" rows="3" placeholder="CuÃ©ntanos quÃ© debe sentir o hacer la gente al visitar el sitio."></textarea>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<button type="button" class="choice-card rounded-lg p-4 text-left" data-field="voice" data-value="Profesional"><span class="material-symbols-outlined text-electric-cyan align-middle mr-2">verified_user</span>Profesional</button>
+<button type="button" class="choice-card rounded-lg p-4 text-left" data-field="voice" data-value="Cercana"><span class="material-symbols-outlined text-electric-cyan align-middle mr-2">sentiment_satisfied</span>Cercana</button>
+<button type="button" class="choice-card rounded-lg p-4 text-left" data-field="voice" data-value="Audaz"><span class="material-symbols-outlined text-nebula-purple align-middle mr-2">rocket_launch</span>Audaz</button>
+<button type="button" class="choice-card rounded-lg p-4 text-left" data-field="voice" data-value="Minimal"><span class="material-symbols-outlined text-nebula-purple align-middle mr-2">all_inclusive</span>Minimal</button>
+</div>
+</div>
+</section>
+<section class="builder-submit-card rounded-xl p-6 md:p-8">
+<div class="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-8 lg:items-start">
+<div>
+<span class="font-label-caps text-label-caps text-nebula-purple">SOLICITUD DE MOCKUP GRATIS</span>
+<h2 class="font-headline-lg text-starlight-white mt-2 mb-3">Envia tus opciones y te responderemos dentro de 48 horas.</h2>
+<p class="text-on-surface-variant max-w-3xl">Agrega tus datos y envia el brief a Dark Matter. Lo usaremos para preparar una idea visual tipo captura de pantalla y luego te contactaremos para hablarlo directamente.</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-5">
+<label class="block"><span class="font-label-caps text-[10px] text-outline block mb-2">Tu nombre</span><input id="contact-name" name="contact_name" required class="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-on-surface focus:border-electric-cyan focus:ring-0" placeholder="Nombre"></label>
+<label class="block"><span class="font-label-caps text-[10px] text-outline block mb-2">Email</span><input id="contact-email" name="email" type="email" required class="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-on-surface focus:border-electric-cyan focus:ring-0" placeholder="tu@email.com"></label>
+<label class="block"><span class="font-label-caps text-[10px] text-outline block mb-2">Telefono</span><input id="contact-phone" name="phone" type="tel" class="w-full bg-black/30 border border-white/10 rounded-lg p-3 text-on-surface focus:border-electric-cyan focus:ring-0" placeholder="Opcional"></label>
+</div>
+<p id="form-status" class="text-sm text-on-surface-variant mt-4">Puedes enviarlo cuando tus datos de contacto y opciones principales esten completos.</p>
+</div>
+<div class="flex flex-col sm:flex-row lg:flex-col gap-3">
+<button id="preference-submit" type="submit" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-electric-cyan text-void-black font-label-mono font-bold cursor-pointer opacity-100 transition hover:shadow-[0_0_24px_rgba(0,240,255,.28)]">Solicitar Mockup Gratis <span class="material-symbols-outlined">send</span></button>
+<a href="contact.html" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg border border-white/10 text-electric-cyan font-label-mono hover:bg-white/5">Contactar Ahora <span aria-hidden="true">&rarr;</span></a>
+</div>
+</div>
+<div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-3 text-sm text-on-surface-variant">
+<div class="glass-card rounded-lg p-4"><span class="font-label-caps text-[10px] text-electric-cyan">GRATIS</span><p class="mt-2">Una idea visual rapida basada en tus selecciones.</p></div>
+<div class="glass-card rounded-lg p-4"><span class="font-label-caps text-[10px] text-electric-cyan">48 HORAS</span><p class="mt-2">Revisaremos el brief y te responderemos directamente.</p></div>
+<div class="glass-card rounded-lg p-4"><span class="font-label-caps text-[10px] text-electric-cyan">SIGUIENTE</span><p class="mt-2">Podemos hablar sobre el mockup, cambios y opciones de construccion.</p></div>
+</div>
+</section>
+</form>
+</main>
+<script>
+const state={style:"Sin definir",industry:"Sin definir",voice:"Sin definir",pages:1,goal:""};
+function setSelected(button){document.querySelectorAll('[data-field="'+button.dataset.field+'"]').forEach(b=>b.classList.remove('is-selected'));button.classList.add('is-selected');}
+function selectedPages(){return Array.from(document.querySelectorAll('#page-options input[type="checkbox"]:checked')).map(input=>input.value);}
+function syncFormFields(){document.getElementById("form-style").value=state.style==="Sin definir"?"":state.style;document.getElementById("form-industry").value=state.industry==="Sin definir"?"":state.industry;document.getElementById("form-goal").value=state.goal;document.getElementById("form-voice").value=state.voice==="Sin definir"?"":state.voice;document.getElementById("form-pages").value=selectedPages().join(", ");}
+function isReady(){return state.style!=="Sin definir"&&state.industry!=="Sin definir"&&state.voice!=="Sin definir"&&state.goal&&state.pages>0&&document.getElementById("contact-name").value.trim()&&document.getElementById("contact-email").checkValidity();}
+function updateSubmitState(){const status=document.getElementById("form-status");status.textContent=isReady()?"Listo para enviar. Revisaremos tu solicitud y te responderemos dentro de 48 horas.":"Puedes enviarlo cuando tus datos de contacto y opciones principales esten completos.";}
+function updateSummary(){document.getElementById("summary-style").textContent=state.style;document.getElementById("summary-industry").textContent=state.industry;document.getElementById("summary-voice").textContent=state.voice;document.getElementById("summary-pages").textContent=state.pages+(state.pages===1?" seleccionada":" seleccionadas");let score=0;if(state.style!=="Sin definir")score+=25;if(state.industry!=="Sin definir")score+=25;if(state.voice!=="Sin definir")score+=25;if(state.goal)score+=15;if(state.pages>1)score+=10;else score+=5;score=Math.min(score,100);document.getElementById("progress-bar").style.width=score+"%";document.getElementById("progress-text").textContent=score+"%";syncFormFields();updateSubmitState();}
+document.querySelectorAll("[data-field]").forEach(button=>button.addEventListener("click",()=>{state[button.dataset.field]=button.dataset.value;setSelected(button);updateSummary();}));
+document.getElementById("industry-select").addEventListener("change",e=>{state.industry=e.target.value||"Sin definir";updateSummary();});
+document.querySelectorAll('#page-options input[type="checkbox"]').forEach(input=>input.addEventListener("change",()=>{state.pages=selectedPages().length;updateSummary();}));
+document.querySelectorAll("#contact-name,#contact-email").forEach(input=>input.addEventListener("input",updateSubmitState));
+document.getElementById("preference-form").addEventListener("submit",event=>{event.preventDefault();syncFormFields();const form=event.currentTarget;const submit=document.getElementById("preference-submit");const status=document.getElementById("form-status");if(!isReady()){status.textContent="Elige estilo, industria, objetivo principal, voz de marca, y escribe tu nombre y email antes de enviar.";return;}submit.disabled=true;submit.classList.add("cursor-not-allowed","opacity-60");status.textContent="Enviando tu solicitud de mockup gratis...";fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(new FormData(form)).toString()}).then(response=>{if(!response.ok)throw new Error("Form submission failed");status.textContent="Solicitud enviada. La revisaremos y te responderemos dentro de 48 horas.";submit.querySelector(".material-symbols-outlined").textContent="check_circle";}).catch(()=>{status.textContent="Algo salio mal. Intenta otra vez o usa el boton de contacto.";submit.disabled=false;submit.classList.remove("cursor-not-allowed","opacity-60");});});
+updateSummary();
+</script>
+</body>
+</html>
+

@@ -8,7 +8,7 @@
   var closeTimer = null;
 
   var stepSlugs = {
-    design: 'website-design',
+    design: 'preference-builder',
     build: 'custom-development',
     launch: 'process',
     maintain: 'website-care-plans'
@@ -43,6 +43,7 @@
 
   function stepHref(key) {
     if (key === 'launch') return inServicesDir() ? '../process.html' : 'process.html';
+    if (key === 'design') return inServicesDir() ? '../preference-builder.html' : 'preference-builder.html';
     var slug = stepSlugs[key];
     if (!slug) return null;
     return inServicesDir() ? slug + '.html' : 'services/' + slug + '.html';
@@ -100,9 +101,11 @@
   }
 
   function activeKeyFromPath(path) {
+    if (path.indexOf('preference-builder') !== -1) return 'design';
     if (path.indexOf('discovery-consultation') !== -1 || path.indexOf('website-design') !== -1 || path.indexOf('brand-rebranding') !== -1) return 'design';
     if (path.indexOf('custom-development') !== -1) return 'build';
-    if (path.indexOf('process') !== -1 || path.indexOf('managed-hosting') !== -1 || path.indexOf('complete-website-management') !== -1) return 'launch';
+    if (path.indexOf('process') !== -1) return null;
+    if (path.indexOf('managed-hosting') !== -1 || path.indexOf('complete-website-management') !== -1) return 'launch';
     if (path.indexOf('website-care-plans') !== -1 || path.indexOf('in-home-services') !== -1 || path.indexOf('office-network-setup') !== -1) return 'maintain';
     if (path.indexOf('index.html') !== -1 || /\/$/.test(path)) return 'design';
     return null;
@@ -111,11 +114,11 @@
   function setActiveFromPath() {
     var path = window.location.pathname.replace(/\\/g, '/');
     var activeKey = activeKeyFromPath(path);
-    if (!activeKey) return;
     root.querySelectorAll('aside [data-step]').forEach(function (b) {
       b.classList.remove('text-nebula-purple', 'bg-nebula-purple/10');
       b.classList.add('text-outline');
     });
+    if (!activeKey) return;
     var activeBtn = root.querySelector('aside [data-step="' + activeKey + '"]');
     if (activeBtn) {
       activeBtn.classList.remove('text-outline');
