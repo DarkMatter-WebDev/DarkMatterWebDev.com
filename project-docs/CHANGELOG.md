@@ -3,7 +3,9 @@
 
 ## 2026-06-03
 
-- Added a larger animated power-up loading panel to `spoof.html`, with six colorful moving progress bars, pulsing status cells, and longer scroll timing before the final reveal.
+- Added Dark Matter favicon/app icon assets, a `site.webmanifest`, and a 1200x630 Open Graph preview image, then wired favicon, Open Graph, and Twitter card metadata across 41 live English and Spanish HTML pages.
+- Renamed the hidden JPSurette Easter egg page to `jpsurette.html`, updated homepage links, and removed the old page label from project references.
+- Added a larger animated power-up loading panel to `jpsurette.html`, with six colorful moving progress bars, pulsing status cells, and longer scroll timing before the final reveal.
 - Added JPS Surette Photography as the third homepage portfolio teaser and Case Studies entry in English and Spanish.
 - Added optimized JPS Surette WebP previews (`home.webp`, `combat.webp`, `events.webp`, `architecture.webp`) plus tall mini page previews (`home-tall.webp`, `events-tall.webp`).
 - Wired the JPS Surette case-study live-preview button to `https://jpsurette.netlify.app/` and marked the case study as in progress with desktop/mobile progress bars.
@@ -15,15 +17,15 @@
 - Split the deeper Portfolio project sections into dedicated detail pages for NaplesEstateJewelry.co, EliteYachtDetailing.com, and JPSurette.com in English and Spanish, and changed the summary CTAs to "See more details about this project" / "Ver más detalles de este proyecto."
 - Added animated green live-site widgets to all English and Spanish Portfolio project detail pages.
 - Fixed remaining Spanish Portfolio question-mark accent artifacts in Naples project copy, project-detail CTA copy, and footer separators.
-- Added a direct-link-only `spoof.html` gag page for JPSurette.com with no site navigation; the page starts as a 1999-style photography site with filler copy and keep-scrolling prompts, then scroll-reveals a modern loading section and a subtle final link to the JPS project detail page.
-- Revised early `spoof.html` copy to remove obvious joke giveaways while keeping the final "Okay, just kidding" reveal.
-- Adjusted `spoof.html` visual/copy tone toward a sincere rough first-draft website while preserving the long scroll and reveal sequence.
-- Added large draft image placeholders to `spoof.html` beneath the placeholder-note section.
-- Added a floating animated "wait a second..." pause stage to `spoof.html` before the main loading reveal.
-- Smoothed the `spoof.html` old-to-modern transition with a gray-to-blue-green gradient fade.
-- Removed the experimental person/arm handoff visual from the final `spoof.html` project reveal.
+- Added a direct-link-only `jpsurette.html` Easter egg page for JPSurette.com with no site navigation; the page starts as a 1999-style photography site with filler copy and keep-scrolling prompts, then scroll-reveals a modern loading section and a subtle final link to the JPS project detail page.
+- Revised early `jpsurette.html` copy to remove obvious joke giveaways while keeping the final "Okay, just kidding" reveal.
+- Adjusted `jpsurette.html` visual/copy tone toward a sincere rough first-draft website while preserving the long scroll and reveal sequence.
+- Added large draft image placeholders to `jpsurette.html` beneath the placeholder-note section.
+- Added a floating animated "wait a second..." pause stage to `jpsurette.html` before the main loading reveal.
+- Smoothed the `jpsurette.html` old-to-modern transition with a gray-to-blue-green gradient fade.
+- Removed the experimental person/arm handoff visual from the final `jpsurette.html` project reveal.
 - Added colorful gradient outline/glow treatments to the photo and visual-highlight cards on all Portfolio project detail pages in English and Spanish.
-- Added a tiny rainbow Easter egg link to `spoof.html` at the actual bottom-left end of the English and Spanish homepages.
+- Added a tiny rainbow Easter egg link to `jpsurette.html` at the actual bottom-left end of the English and Spanish homepages.
 - Rebranded the Naples portfolio/case-study entry from Naples Antiques LLC to Naples Estate Jewelry across English and Spanish homepage teasers and Case Studies pages.
 - Captured three new lightweight WebP screenshots from the imported Naples Estate Jewelry project (`home.webp`, `shop.webp`, `product.webp`) and wired them into the portfolio.
 - Removed the old unused Naples PNG screenshots from `assets/`.

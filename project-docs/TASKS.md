@@ -82,4 +82,5 @@
 - Updated Case Studies project labels to domain-style website names and restyled all full-page mini previews as borderless floating screenshots.
 - Split Portfolio project details into dedicated English and Spanish pages with summary-page buttons linking to the deeper project views.
 - Added prominent green live-site CTAs to each Portfolio project detail page in English and Spanish.
-- Added the animated colorful power-up loading panel and longer reveal timing to `spoof.html`.
+- Added the animated colorful power-up loading panel and longer reveal timing to `jpsurette.html`.
+- Added sitewide favicon, app icon, manifest, and link-preview Open Graph/Twitter metadata.

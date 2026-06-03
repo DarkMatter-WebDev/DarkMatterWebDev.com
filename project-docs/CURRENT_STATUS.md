@@ -35,9 +35,10 @@ Last updated: 2026-06-03
 - Portfolio project summaries now link to separate English/Spanish detail pages for Naples Estate Jewelry, Elite Yacht Detailing, and JPS Surette, keeping the main Portfolio page lighter while preserving deeper screenshots and feature explanations on project pages.
 - Each Portfolio project detail page has an animated green live-site widget near the project title in English and Spanish.
 - Portfolio project detail photo/highlight cards now use colorful gradient outline treatments across Naples Estate Jewelry, Elite Yacht Detailing, and JPS Surette in English and Spanish.
-- A standalone, unlinked `spoof.html` gag page exists for direct-link-only preview; it starts as a 1999-style JPSurette.com photography page with extra filler/keep-scrolling copy, scroll-reveals a modern loading interlude, and routes its quiet final "Okay, just kidding" link to the JPSurette.com Portfolio detail page.
-- The `spoof.html` loading interlude now includes a longer scroll runway plus an animated colorful power-up panel with multiple progress channels and pulsing status cells.
-- The English and Spanish homepages include a tiny bottom-left rainbow Easter egg link to `spoof.html` at the actual bottom of the page, visible only after scrolling all the way down.
+- A standalone, unlinked `jpsurette.html` Easter egg page exists for direct-link preview; it starts as a 1999-style JPSurette.com photography page with extra filler/keep-scrolling copy, scroll-reveals a modern loading interlude, and routes its quiet final "Okay, just kidding" link to the JPSurette.com Portfolio detail page.
+- The `jpsurette.html` loading interlude includes a longer scroll runway plus an animated colorful power-up panel with multiple progress channels and pulsing status cells.
+- The English and Spanish homepages include a tiny bottom-left rainbow Easter egg link to `jpsurette.html` at the actual bottom of the page, visible only after scrolling all the way down.
+- Sitewide browser/link-preview metadata is in place across live English and Spanish pages, using `assets/favicon.svg`, PNG touch/app icons, `site.webmanifest`, and the 1200x630 Open Graph image `assets/darkmatter-og-image.png`.
 - `scripts/validate-site.ps1` is available for static-site integrity checks.
 - Temporary full client source folders placed in the project root (for example `naplesestatejewelry/` or `jpsurette/`) are not deployable Dark Matter pages; remove them or exclude them before treating a full validator run as authoritative.
 - Local preview has been used at `http://127.0.0.1:4173/` (note: a stale preview server may already hold port 4173 — use an alternate port such as 4188 if new pages 404).
@@ -107,13 +108,13 @@ Last updated: 2026-06-03
 - Updated sitewide top-menu labels from Case Studies / Nuestro portafolio to Portfolio / Portafolio without renaming the `casestudies.html` page.
 - Split detailed Portfolio project content into dedicated English and Spanish project pages and changed summary buttons to "See more details about this project" / "Ver más detalles de este proyecto."
 - Replaced the plain green Portfolio live-site buttons with animated live-site widgets using shared `assets/portfolio-live-widget.css`.
-- Expanded `spoof.html` with more retro filler copy, keep-scrolling prompts, and a subtler final "Okay, just kidding. Here's the real project." link to the JPSurette.com detail page.
-- Softened the early `spoof.html` copy so it reads like a sincere rough website draft while preserving the final "Okay, just kidding" reveal.
-- Shifted `spoof.html` styling/copy toward a rough basic WordPress-style first draft while preserving the same long scroll structure and reveal timing.
-- Added large "Your picture here" draft placeholders to `spoof.html` so the rough draft requires more scrolling before the reveal.
-- Added an animated standalone "wait a second..." pause stage before the main modern loading block on `spoof.html`.
-- Smoothed the `spoof.html` visual transition from the gray rough-draft section into the modern blue-green loading reveal with a longer gradient fade.
-- Removed the experimental handoff illustration from `spoof.html`; the final "Okay, just kidding" project link is clean by itself again.
+- Expanded `jpsurette.html` with more retro filler copy, keep-scrolling prompts, and a subtler final "Okay, just kidding. Here's the real project." link to the JPSurette.com detail page.
+- Softened the early `jpsurette.html` copy so it reads like a sincere rough website draft while preserving the final "Okay, just kidding" reveal.
+- Shifted `jpsurette.html` styling/copy toward a rough basic WordPress-style first draft while preserving the same long scroll structure and reveal timing.
+- Added large "Your picture here" draft placeholders to `jpsurette.html` so the rough draft requires more scrolling before the reveal.
+- Added an animated standalone "wait a second..." pause stage before the main modern loading block on `jpsurette.html`.
+- Smoothed the `jpsurette.html` visual transition from the gray rough-draft section into the modern blue-green loading reveal with a longer gradient fade.
+- Removed the experimental handoff illustration from `jpsurette.html`; the final "Okay, just kidding" project link is clean by itself again.
 - Added colorful gradient outline treatments to Portfolio detail-page photo/highlight cards across all three projects and both language versions.
 - Changed the homepage rainbow Easter egg from a floating fixed dot to a normal bottom-of-page link so it only appears after scrolling to the very end.
 - Swept Spanish Portfolio pages for literal question-mark accent artifacts and corrected the remaining project-detail copy/footer issues.
