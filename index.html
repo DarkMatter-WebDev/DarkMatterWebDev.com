@@ -9,7 +9,7 @@
 <link rel="alternate" hreflang="en" href="/index.html"/>
 <link rel="alternate" hreflang="es" href="/es/index.html"/>
 <link rel="alternate" hreflang="x-default" href="/index.html"/>
-<link href="assets/nav.css?v=20260601-mobile-topnav" rel="stylesheet"/>
+<link href="assets/nav.css?v=20260602-menu-center" rel="stylesheet"/>
 <link href="assets/powered-by-badge.css" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Bebas+Neue&amp;display=swap" rel="stylesheet"/>
@@ -359,6 +359,36 @@
         .rail-popover-ghost .rail-popover-step-label { opacity: 0.72; }
         .rail-popover-ghost .rail-popover-title { text-shadow: 0 0 28px rgba(255, 255, 255, 0.1); }
         .rail-popover-ghost .rail-popover-desc { opacity: 0.82; }
+        .spoof-easter-egg {
+            position: relative;
+            display: block;
+            width: 16px;
+            height: 16px;
+            margin: 0 0 12px 12px;
+            border-radius: 9999px;
+            background: conic-gradient(from 90deg, #ff3b8f, #ffd400, #39ff88, #00f0ff, #7000ff, #ff3b8f);
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.22), 0 0 18px rgba(0, 240, 255, 0.26);
+            opacity: 0.72;
+            transition: transform 0.28s ease, opacity 0.28s ease, box-shadow 0.28s ease;
+            animation: easter-egg-spin 8s linear infinite;
+        }
+        .spoof-easter-egg:hover,
+        .spoof-easter-egg:focus-visible {
+            opacity: 1;
+            transform: scale(1.35);
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5), 0 0 28px rgba(57, 255, 136, 0.4);
+            outline: none;
+        }
+        @keyframes easter-egg-spin {
+            to { filter: hue-rotate(360deg); }
+        }
+        @media (max-width: 767px) {
+            .spoof-easter-egg {
+                margin: 0 0 88px 10px;
+                width: 14px;
+                height: 14px;
+            }
+        }
         [id^="step-"] { scroll-margin-top: 6rem; }
     </style>
 </head>
@@ -390,7 +420,7 @@
 <div class="services-nav-panel">
 <div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Online Services</div>
 <a href="services/complete-website-management.html">Complete Website Management</a>
-<a href="services/discovery-consultation.html">Discovery &amp; Consultation</a>
+<a href="services/discovery-consultation.html">Consultation</a>
 <a href="services/website-design.html">Website Design</a>
 <a href="services/brand-rebranding.html">Brand &amp; Rebranding</a>
 <a href="services/managed-hosting.html">Managed Hosting</a>
@@ -412,7 +442,7 @@
 </div>
 </div>
 <a href="contact.html" class="inline-block bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-mono text-label-mono px-6 py-2 rounded-lg hover:scale-105 active:scale-95 transition-all glow-cyan">
-            Schedule Consultation
+            Contact Us
         </a>
 </nav>
 <!-- Side Navigation Shell (Project Context) -->
@@ -480,7 +510,7 @@
                     </p>
 <div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-4 pt-10">
 <a href="contact.html" class="inline-block px-12 py-5 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-mono text-label-mono font-bold rounded-lg hover:scale-105 active:scale-95 transition-all glow-cyan">
-                            SCHEDULE A CONSULTATION
+                            Contact Us
                         </a>
 <a href="services.html" class="inline-block px-12 py-5 glass-card text-starlight-white font-label-mono text-label-mono border border-electric-cyan/30 hover:bg-electric-cyan/10 transition-all">
                             VIEW OUR SERVICES
@@ -490,7 +520,7 @@
 </div>
 <!-- Absolute Positioning for Visual Flair -->
 <div class="absolute right-margin-desktop top-[50%] hidden xl:block pointer-events-none z-[1]">
-<div class="glass-card whatsapp-hero-card p-3.5 rounded-lg w-72 space-y-2.5">
+<a href="process.html#client-whatsapp-queue" class="glass-card whatsapp-hero-card p-3.5 rounded-lg w-72 space-y-2.5 block pointer-events-auto hover:border-[#25D366]/50 transition-all" aria-label="Learn how dedicated WhatsApp update requests work">
 <div class="flex items-center gap-2.5">
 <span class="whatsapp-logo-mark" aria-hidden="true">
 <svg viewBox="0 0 32 32" class="w-6 h-6" fill="currentColor">
@@ -505,8 +535,8 @@
 <div class="whatsapp-message">
 <p class="font-body-md text-starlight-white text-[13px] leading-snug">"Update our hours and add these photos."</p>
 </div>
-<p class="font-label-mono text-[9px] text-on-surface-variant tracking-wide leading-snug"><span class="text-[#25D366]">●</span> Messages and media queue automatically.</p>
-</div>
+<p class="font-label-mono text-[9px] text-on-surface-variant tracking-wide leading-snug"><span class="text-[#25D366]">?</span> Messages and media queue automatically.</p>
+</a>
 </div>
 </section>
 <!-- Services Section -->
@@ -525,12 +555,12 @@
 <div class="group glass-card p-10 rounded-xl hover:border-electric-cyan/40 transition-all duration-500">
 <a href="services/complete-website-management.html" class="block"><span class="material-symbols-outlined text-4xl text-electric-cyan mb-6">cloud_done</span>
 <h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Complete Website Management</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Our all-in-one partnership &mdash; we design, host, secure, maintain, and update your website. We set up a dedicated WhatsApp account so you can message us anytime.</p></a>
+<p class="font-body-md text-body-md text-on-surface-variant">Our all-in-one partnership &mdash; we design, host, secure, maintain, and update your website so you are not stuck making one AI fix that breaks five other things.</p></a>
 </div>
 <div class="group glass-card p-10 rounded-xl hover:border-electric-cyan/40 transition-all duration-500">
 <a href="services/website-design.html" class="block"><span class="material-symbols-outlined text-4xl text-electric-cyan mb-6">devices</span>
 <h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Website Design</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Professional custom websites designed around your brand and built to turn visitors into customers.</p></a>
+<p class="font-body-md text-body-md text-on-surface-variant">Professional custom websites designed around your brand, refined beyond quick AI drafts, and built to turn visitors into customers.</p></a>
 </div>
 <div class="group glass-card p-10 rounded-xl hover:border-nebula-purple/40 transition-all duration-500">
 <a href="services/brand-rebranding.html" class="block"><span class="material-symbols-outlined text-4xl text-nebula-purple mb-6">palette</span>
@@ -540,7 +570,7 @@
 <div class="group glass-card p-10 rounded-xl hover:border-nebula-purple/40 transition-all duration-500">
 <a href="services/managed-hosting.html" class="block"><span class="material-symbols-outlined text-4xl text-nebula-purple mb-6">cloud</span>
 <h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Managed Hosting</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Fast, secure hosting with monitoring, backups, and ongoing maintenance included.</p></a>
+<p class="font-body-md text-body-md text-on-surface-variant">Fast, secure hosting with monitoring, backups, and ongoing maintenance from someone accountable when a change needs to be made safely.</p></a>
 </div>
 <div class="group glass-card p-10 rounded-xl hover:border-electric-cyan/40 transition-all duration-500">
 <a href="services/website-care-plans.html" class="block"><span class="material-symbols-outlined text-4xl text-electric-cyan mb-6">support_agent</span>
@@ -612,7 +642,7 @@
 <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
 <span class="font-label-caps text-label-caps text-nebula-purple">WEBSITE CARE PLANS</span>
 <h2 class="font-headline-lg text-headline-lg text-starlight-white">Business website management, simplified</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">Professional website hosting and ongoing support &mdash; from basic updates to full team help desk coverage.</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Professional website hosting and ongoing support &mdash; useful when AI can suggest a change, but you need someone to make sure it does not quietly break the site.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter">
 <div class="glass-card p-8 rounded-xl flex flex-col hover:border-white/20 transition-all">
@@ -745,11 +775,11 @@ Message Us on WhatsApp
 </div>
 <a href="casestudies.html" class="font-label-mono text-label-mono text-electric-cyan hover:underline">View full portfolio &rarr;</a>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter">
 <a href="casestudies.html" class="group glass-card rounded-xl overflow-hidden hover:border-electric-cyan/40 transition-all">
-<img alt="Naples Antiques LLC website" class="w-full h-64 object-cover object-center group-hover:scale-[1.02] transition-transform duration-700" loading="lazy" src="assets/naples-hero.png"/>
+<img alt="Naples Estate Jewelry website" class="w-full h-64 object-cover object-center group-hover:scale-[1.02] transition-transform duration-700" loading="lazy" src="assets/portfolio/naples-estate-jewelry/home.webp"/>
 <div class="p-8">
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Naples Antiques LLC</h3>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Naples Estate Jewelry</h3>
 <p class="font-body-md text-body-md text-on-surface-variant mb-4">Professional e-commerce website with live precious-metal pricing, mobile-responsive design, and fast performance.</p>
 <div class="flex flex-wrap gap-3 font-label-caps text-[10px] text-electric-cyan">
 <span class="px-2 py-1 bg-electric-cyan/10 rounded">E-Commerce</span>
@@ -773,13 +803,29 @@ Message Us on WhatsApp
 </div>
 </div>
 </a>
+
+<a href="casestudies.html#case-jps" class="group glass-card rounded-xl overflow-hidden hover:border-nebula-purple/40 transition-all border border-nebula-purple/10">
+<img alt="JPS Surette Photography portfolio website" class="w-full h-64 object-cover object-center group-hover:scale-[1.02] transition-transform duration-700" loading="lazy" src="assets/portfolio/jpsurette/home.webp"/>
+<div class="p-8">
+<div class="flex items-center gap-2 mb-2">
+<span class="font-label-caps text-[10px] px-2 py-0.5 bg-nebula-purple/15 text-nebula-purple border border-nebula-purple/30 rounded">IN PROGRESS</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">JPS Surette Photography</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">High-contrast photography portfolio for combat sports, event galleries, architecture, real estate, editorial, and commercial work.</p>
+<div class="flex flex-wrap gap-3 font-label-caps text-[10px] text-nebula-purple">
+<span class="px-2 py-1 bg-nebula-purple/10 rounded">Photography</span>
+<span class="px-2 py-1 bg-nebula-purple/10 rounded">Event Galleries</span>
+<span class="px-2 py-1 bg-nebula-purple/10 rounded">Portfolio</span>
+</div>
+</div>
+</a>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter mt-gutter">
 <div class="glass-card p-10 rounded-xl flex flex-col justify-center md:col-span-2">
 <span class="material-symbols-outlined text-4xl text-nebula-purple mb-6">workspace_premium</span>
 <h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Your business belongs here</h3>
 <p class="font-body-md text-body-md text-on-surface-variant mb-6">We build professional websites for law firms, medical offices, contractors, jewelry stores, and local businesses across Southwest Florida &mdash; including full rebrands with modernized logos and visual identity.</p>
-<a href="contact.html" class="inline-block px-8 py-4 border border-electric-cyan/40 text-electric-cyan font-label-mono text-label-mono rounded-lg hover:bg-electric-cyan/10 transition-all w-fit">Schedule a Consultation</a>
+<a href="contact.html" class="inline-block px-8 py-4 border border-electric-cyan/40 text-electric-cyan font-label-mono text-label-mono rounded-lg hover:bg-electric-cyan/10 transition-all w-fit">Contact Us</a>
 </div>
 </div>
 </div>
@@ -812,7 +858,7 @@ Message Us on WhatsApp
                 </p>
 <div class="flex flex-col sm:flex-row justify-center gap-6">
 <a href="contact.html" class="inline-block px-12 py-6 bg-starlight-white text-void-black font-label-mono text-label-mono font-bold rounded-lg hover:scale-105 transition-all">
-                        SCHEDULE A CONSULTATION
+                        Contact Us
                     </a>
 <a href="https://wa.me/12394048505" target="_blank" rel="noopener noreferrer" class="inline-block px-12 py-6 border border-white/20 text-starlight-white font-label-mono text-label-mono rounded-lg hover:bg-white/5 transition-all">
                         MESSAGE ON WHATSAPP
@@ -850,7 +896,7 @@ Message Us on WhatsApp
 <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="#care-plans">Website Care Plans</a>
 <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="services.html">SEO Services</a>
 <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="contact.html">Contact</a>
-<a class="font-label-mono text-label-mono text-electric-cyan hover:underline transition-colors duration-300" href="contact.html">Schedule Consultation</a>
+<a class="font-label-mono text-label-mono text-electric-cyan hover:underline transition-colors duration-300" href="contact.html">Contact Us</a>
 </div>
 <div class="text-left lg:text-right">
 <span class="font-label-mono text-[10px] text-outline block">&copy; 2026 DARK MATTER &middot; Southwest Florida</span>
@@ -909,7 +955,7 @@ All Services
 <a href="services/website-design.html" class="block px-4 py-2.5 pl-12 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-xs transition-colors">Website Design</a>
 <a href="services/brand-rebranding.html" class="block px-4 py-2.5 pl-12 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-xs transition-colors">Brand &amp; Rebranding</a>
 <a href="services/website-care-plans.html" class="block px-4 py-2.5 pl-12 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-xs transition-colors">Website Care Plans</a>
-<a href="services/discovery-consultation.html" class="block px-4 py-2.5 pl-12 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-xs transition-colors">Discovery &amp; Consultation</a>
+<a href="services/discovery-consultation.html" class="block px-4 py-2.5 pl-12 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-xs transition-colors">Consultation</a>
 <a href="services/managed-hosting.html" class="block px-4 py-2.5 pl-12 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-xs transition-colors">Managed Hosting</a>
 <a href="services/seo-foundations.html" class="block px-4 py-2.5 pl-12 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-xs transition-colors">SEO Foundations</a>
 <a href="services/custom-development.html" class="block px-4 py-2.5 pl-12 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-xs transition-colors">Custom Business Web Apps</a>
@@ -936,7 +982,7 @@ Contact
 </a>
 <a href="contact.html" class="flex items-center gap-3 px-4 py-3 text-void-black bg-gradient-to-r from-electric-cyan to-nebula-purple font-label-mono text-sm mx-2 my-1 rounded-lg">
 <span class="material-symbols-outlined text-lg">calendar_month</span>
-Schedule Consultation
+Contact Us
 </a>
 </div>
 </div>
@@ -967,7 +1013,7 @@ Schedule Consultation
                     </p>
 <div class="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-4 pt-8">
 <a href="contact.html" class="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-caps text-label-caps rounded-sm transition-all active:scale-95">
-                            SCHEDULE A CONSULTATION
+                            Contact Us
                         </a>
 <a href="services.html" class="w-full sm:w-auto px-10 py-4 border border-electric-cyan/40 text-electric-cyan font-label-caps text-label-caps rounded-sm transition-all backdrop-blur-sm">
                             VIEW OUR SERVICES
@@ -984,11 +1030,11 @@ Schedule Consultation
 <h2 class="font-headline-lg text-headline-lg-mobile text-starlight-white">Everything your business needs online and on site</h2>
 </div>
 <div class="grid grid-cols-1 gap-4">
-<a href="services/complete-website-management.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-4">cloud_done</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Complete Website Management</h3><p class="font-body-md text-on-surface-variant text-sm">All-in-one &mdash; design, hosting, security, maintenance, and updates.</p></a>
-<a href="services/website-design.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-4">devices</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Website Design</h3><p class="font-body-md text-on-surface-variant text-sm">Professional custom websites designed around your brand and built to convert.</p></a>
+<a href="services/complete-website-management.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-4">cloud_done</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Complete Website Management</h3><p class="font-body-md text-on-surface-variant text-sm">All-in-one &mdash; design, hosting, security, maintenance, and careful updates.</p></a>
+<a href="services/website-design.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-4">devices</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Website Design</h3><p class="font-body-md text-on-surface-variant text-sm">Custom websites refined beyond quick AI drafts and built to convert.</p></a>
 <a href="services/brand-rebranding.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-nebula-purple text-3xl mb-4">palette</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Brand &amp; Rebranding</h3><p class="font-body-md text-on-surface-variant text-sm">Complete rebranding &mdash; modernized logos, visual identity, colors, typography, and brand assets.</p></a>
-<a href="services/managed-hosting.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-nebula-purple text-3xl mb-4">cloud</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Managed Hosting</h3><p class="font-body-md text-on-surface-variant text-sm">Fast, secure hosting with monitoring, backups, and ongoing maintenance.</p></a>
-<a href="services/website-care-plans.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-4">support_agent</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Website Care Plans</h3><p class="font-body-md text-on-surface-variant text-sm">Ongoing updates and support through a simple messaging process.</p></a>
+<a href="services/managed-hosting.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-nebula-purple text-3xl mb-4">cloud</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Managed Hosting</h3><p class="font-body-md text-on-surface-variant text-sm">Fast, secure hosting with monitoring, backups, and safe maintenance.</p></a>
+<a href="services/website-care-plans.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-4">support_agent</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Website Care Plans</h3><p class="font-body-md text-on-surface-variant text-sm">Ongoing updates that are handled carefully, not guessed into production.</p></a>
 <a href="services/seo-foundations.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-nebula-purple text-3xl mb-4">travel_explore</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">SEO Foundations</h3><p class="font-body-md text-on-surface-variant text-sm">Technical SEO, optimization, and local business visibility.</p></a>
 <a href="services/custom-development.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-4">code</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Custom Business Web Apps</h3><p class="font-body-md text-on-surface-variant text-sm">Staff logins, customer records, reports, integrations, and custom tools.</p></a>
 <a href="services/in-home-services.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-4">home_pin</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">In-Home Tech Services</h3><p class="font-body-md text-on-surface-variant text-sm">Wi-Fi, devices, printers, smart equipment, and home office setup.</p></a>
@@ -1049,8 +1095,8 @@ Schedule Consultation
 <div class="space-y-6">
 <span class="font-label-caps text-label-caps text-electric-cyan">OUR WORK</span>
 <a href="casestudies.html" class="block glass-card rounded-lg overflow-hidden">
-<img alt="Naples Antiques LLC" class="w-full h-44 object-cover" loading="lazy" src="assets/naples-hero.png"/>
-<div class="p-6"><h3 class="font-headline-md text-starlight-white mb-2">Naples Antiques LLC</h3><p class="font-body-md text-on-surface-variant text-sm">Professional e-commerce with live pricing and mobile-responsive design.</p></div>
+<img alt="Naples Estate Jewelry" class="w-full h-44 object-cover" loading="lazy" src="assets/portfolio/naples-estate-jewelry/home.webp"/>
+<div class="p-6"><h3 class="font-headline-md text-starlight-white mb-2">Naples Estate Jewelry</h3><p class="font-body-md text-on-surface-variant text-sm">Professional e-commerce with live pricing and mobile-responsive design.</p></div>
 </a>
 <a href="casestudies.html#elite-yacht" class="block glass-card rounded-lg overflow-hidden border border-electric-cyan/15">
 <img alt="Elite Yacht Detailing" class="w-full h-44 object-cover object-center" loading="lazy" src="assets/portfolio/elite/hero-yacht.jpg"/>
@@ -1059,6 +1105,10 @@ Schedule Consultation
 <h3 class="font-headline-md text-starlight-white mb-2">Elite Yacht Detailing</h3>
 <p class="font-body-md text-on-surface-variant text-sm">Luxury yacht site with fleet gallery, before/after compare, and Fleet Login client portal.</p>
 </div>
+</a>
+<a href="casestudies.html#case-jps" class="block glass-card rounded-lg overflow-hidden border border-nebula-purple/15">
+<img alt="JPS Surette Photography" class="w-full h-44 object-cover object-center" loading="lazy" src="assets/portfolio/jpsurette/home.webp"/>
+<div class="p-6"><div class="mb-2"><span class="font-label-caps text-[9px] px-2 py-0.5 bg-nebula-purple/15 text-nebula-purple border border-nebula-purple/30 rounded">IN PROGRESS</span></div><h3 class="font-headline-md text-starlight-white mb-2">JPS Surette Photography</h3><p class="font-body-md text-on-surface-variant text-sm">Photography portfolio with combat sports, event-gallery direction, architecture, and commercial work.</p></div>
 </a>
 <a href="casestudies.html" class="font-label-mono text-sm text-electric-cyan hover:underline block pt-2">View full portfolio &rarr;</a>
 </div>
@@ -1077,7 +1127,7 @@ Schedule Consultation
 <h2 class="font-headline-lg text-headline-md text-starlight-white mb-4">Ready to stop worrying about your website?</h2>
 <p class="font-body-md text-on-surface-variant mb-8 text-sm">Schedule a free consultation and learn how managed website services work for your business.</p>
 <a href="contact.html" class="inline-block w-full py-5 mb-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-sm transition-all active:scale-[0.98] duration-200">
-                    SCHEDULE A CONSULTATION
+                    Contact Us
                 </a>
 <a href="https://wa.me/12394048505" target="_blank" rel="noopener noreferrer" class="inline-block w-full py-5 border border-[#25D366]/40 text-starlight-white font-label-caps text-label-caps rounded-sm transition-colors active:scale-[0.98] duration-200">
                     MESSAGE ON WHATSAPP
@@ -1111,7 +1161,7 @@ Schedule Consultation
 <a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="services.html">Website Design</a>
 <a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="#care-plans">Care Plans</a>
 <a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="contact.html">Contact</a>
-<a class="font-label-mono text-[11px] text-electric-cyan" href="contact.html">Schedule Consultation</a>
+<a class="font-label-mono text-[11px] text-electric-cyan" href="contact.html">Contact Us</a>
 </div>
 <p class="font-label-caps text-[10px] text-on-primary-container/60 tracking-widest text-center max-w-lg">
             &copy; 2026 DARK MATTER &middot; Managed Website Services &middot; Southwest Florida
@@ -1198,7 +1248,9 @@ Schedule Consultation
 
 <script>
         (function () {
-            var heroSources = '<source src="assets/hero-black-hole.mp4" type="video/mp4"/>';
+            var heroSources =
+                '<source src="assets/Hero-Black-Hole-mobile-720p.mp4" type="video/mp4" media="(max-width: 767px)"/>' +
+                '<source src="assets/Hero-Black-Hole-desktop-1080p.mp4" type="video/mp4"/>';
             var desktopRoot = document.querySelector('.hidden.md\\:block');
             var mobileRoot = document.querySelector('.md\\:hidden');
             var desktopVideo = desktopRoot ? desktopRoot.querySelector('[data-hero-video]') : null;
@@ -1268,7 +1320,9 @@ Schedule Consultation
             applyHeroParallax();
         })();
     </script>
-<script src="assets/mobile-services-nav.js?v=20260601-mobile-services2"></script>
-<script src="assets/site-hero.js?v=20260601-video-hero7"></script>
-<script src="assets/rail.js?v=20260601-rail-design-builder"></script>
+<a class="spoof-easter-egg" href="spoof.html" aria-label="Open hidden photography page" title=" "></a>
+<script src="assets/mobile-services-nav.js?v=20260602-consultation"></script>
+<script src="assets/rail.js?v=20260602-rail-active"></script>
 </body></html>
+
+

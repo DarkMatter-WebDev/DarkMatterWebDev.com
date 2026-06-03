@@ -12,6 +12,7 @@ Free mockup request page that helps potential clients choose website preferences
 - Linked from the Custom Business Web Apps page in both languages.
 - Linked from the shared floating process rail Design step in both languages.
 - Linked from the Process and Website Design pages in desktop and mobile layouts.
+- Uses the standard Dark Matter site shell: desktop Services dropdown, mobile language header, mobile Services popout support, bottom mobile tab bar, powered-by badge, and footer.
 - Lets users choose:
   - Visual style
   - Industry / structure direction
@@ -20,6 +21,8 @@ Free mockup request page that helps potential clients choose website preferences
   - Brand voice / brand soul notes
 - Shows a live blueprint summary and progress indicator.
 - Frames the offer as a free website mockup idea with a direct follow-up within 48 hours.
+- Uses a lightweight tinted hero treatment with the live blueprint card; the MP4 hero is no longer loaded on this page.
+- Hero includes a down-arrow cue that directs visitors to fill out the form below.
 - Uses Netlify Forms with form name `website-preferences`.
 - Hidden fields stay synced with selected visual style, industry, primary goal, brand voice, page options, and language.
 - Bottom panel collects contact name, email, and optional phone; the submit button stays visually live and prompts users if required choices are missing.

@@ -1,12 +1,14 @@
 # Architecture
 
-Last updated: 2026-06-01
+Last updated: 2026-06-02
 
 ## System Design
 
 This project is currently a static marketing website. Pages are hand-authored HTML files with Tailwind CSS loaded from the CDN, shared CSS assets, static media, and small JavaScript enhancements.
 
 There is no app server, database, build pipeline, package manager, or framework documented in this workspace at this time.
+
+Long-term recommendation: keep the marketing site as static output, but migrate away from hand-authored duplicated HTML toward generated static HTML using reusable layouts/components and structured content. The current recommendation is documented in `project-docs/STRUCTURE_RECOMMENDATIONS.md`: Astro is the preferred marketing-site path, with React/Next-style app architecture reserved for future authenticated portals, dashboards, or business apps.
 
 ## Folder Structure
 
@@ -44,6 +46,8 @@ There is no app server, database, build pipeline, package manager, or framework 
       (Spanish mirror of every service page, same filenames)
   project-docs/
     project memory and documentation
+  scripts/
+    validate-site.ps1
 ```
 
 ## Page Model
@@ -53,7 +57,9 @@ There is no app server, database, build pipeline, package manager, or framework 
 - The Services dropdown is grouped into Online Services and In-Home & Office Services.
 - On mobile top-level pages, `assets/nav.css` moves the five-item tab bar to the top and `assets/mobile-services-nav.js` turns the Services tab into a grouped service picker.
 - `assets/rail.js` controls the shared floating process rail interaction and is loaded with a version query string to avoid stale deployed behavior after rail changes.
-- `assets/site-hero.js` applies the shared black-hole MP4 page hero treatment to non-home pages by moving each page's intro/title block into an overlaid video hero at runtime. It is cache-busted with a version query string.
+- The black-hole MP4 hero is homepage-only. The English and Spanish homepages mount responsive optimized sources inline: a 1080p desktop encode and a 720p mobile encode. Non-home pages do not load the MP4 hero.
+- Non-home English and Spanish pages load `assets/cosmic-web.css`, which applies a fixed, faded cosmic-web background layer using the compressed local WebP asset `assets/cosmic-web-hero.webp`. Service pages can set `cosmic-tint-*` body classes to vary the hero tint through CSS variables, hue rotation, and stronger accent overlays without creating additional image files.
+- `assets/site-hero.js` remains in assets as a previous shared-hero helper, but current HTML pages do not load it.
 - `assets/care-plans.css`, `assets/nav.css`, `assets/logo.css`, and badge CSS files hold reusable styling.
 - Some page behavior is implemented inline in the relevant HTML files.
 
@@ -113,3 +119,19 @@ Then open:
 ```text
 http://127.0.0.1:4173/index.html
 ```
+
+Static integrity check:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\validate-site.ps1
+```
+
+The validator checks for old public email strings, visible mojibake markers in deployable site files, broken internal `href`/`src`/`action` targets, missing same-page anchors, missing English/Spanish page pairs, and visible email mentions that are not wrapped in a `mailto:` link.
+
+## Future Structure Direction
+
+- Keep using `scripts/validate-site.ps1` before migration so the current site stays protected while changes continue.
+- Prefer Astro static generation for the marketing website: shared header, footer, Services menu, process rail, language switcher, page hero, service cards, care-plan cards, and bilingual content sources.
+- Keep URL compatibility with the existing static pages during migration.
+- Keep future authenticated apps separate from the marketing site unless there is a deliberate architecture decision to combine them.
+- Document any future framework decision in `DECISIONS.md` before implementation.

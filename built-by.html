@@ -9,7 +9,8 @@
 <link rel="alternate" hreflang="en" href="/built-by.html"/>
 <link rel="alternate" hreflang="es" href="/es/built-by.html"/>
 <link rel="alternate" hreflang="x-default" href="/built-by.html"/>
-<link href="assets/nav.css?v=20260601-mobile-topnav" rel="stylesheet"/>
+<link href="assets/nav.css?v=20260602-menu-center" rel="stylesheet"/>
+<link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/>
 <link href="assets/powered-by-badge.css" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
@@ -51,8 +52,7 @@
 <div class="nebula-blur w-[500px] h-[500px] bg-electric-cyan -top-32 -left-32"></div>
 <div class="nebula-blur w-[400px] h-[400px] bg-nebula-purple bottom-0 right-0"></div>
 
-<header class="fixed top-0 w-full z-50 bg-surface/10 backdrop-blur-xl border-b border-white/10">
-<div class="max-w-container-max mx-auto flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4">
+<nav class="hidden md:flex fixed top-0 w-full bg-surface/10 backdrop-blur-xl border-b border-white/10 z-50 justify-between items-center px-margin-desktop py-4">
 <a href="index.html" class="site-brand inline-flex items-center gap-2.5 flex-nowrap shrink-0">
 <span class="material-symbols-outlined brand-mark text-electric-cyan" aria-hidden="true">blur_on</span>
 <span class="flex flex-col leading-none">
@@ -60,14 +60,49 @@
 <span class="brand-subtext">Web Services</span>
 </span>
 </a>
-<div class="flex items-center gap-4">
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="index.html">Home</a>
+<div class="relative services-nav-group">
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="services.html">Services</a>
+<div class="services-nav-menu">
+<div class="services-nav-panel">
+<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Online Services</div>
+<a href="services/complete-website-management.html">Complete Website Management</a>
+<a href="services/discovery-consultation.html">Consultation</a>
+<a href="services/website-design.html">Website Design</a>
+<a href="services/brand-rebranding.html">Brand &amp; Rebranding</a>
+<a href="services/managed-hosting.html">Managed Hosting</a>
+<a href="services/website-care-plans.html">Website Care Plans</a>
+<a href="services/seo-foundations.html">SEO Foundations</a>
+<a href="services/custom-development.html">Custom Business Web Apps</a>
+<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">home_pin</span>In-Home &amp; Office Services</div>
+<a href="services/in-home-services.html">In-Home Tech Services</a>
+<a href="services/office-network-setup.html">Office Network Setup</a>
+</div>
+</div>
+</div>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="process.html">Process</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="casestudies.html">Portfolio</a>
 <div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0">
 <span class="text-electric-cyan" aria-current="true">EN</span>
 <span class="text-outline/50">/</span>
 <a href="es/built-by.html" hreflang="es" lang="es" aria-label="Cambiar a español" onclick="try{localStorage.setItem('dm_lang','es')}catch(e){}" class="text-on-surface-variant hover:text-electric-cyan transition-colors duration-300">ES</a>
 </div>
-<a href="contact.html" class="hidden sm:inline-block bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-mono text-sm font-bold px-5 py-2.5 rounded-lg hover:opacity-90 transition-opacity">Schedule Consultation</a>
+<a href="contact.html" class="inline-block bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-caps text-label-caps px-6 py-2.5 rounded hover:scale-105 active:scale-95 transition-all">Contact Us</a>
 </div>
+</nav>
+<header class="md:hidden fixed top-0 w-full bg-surface/10 backdrop-blur-xl z-50 border-b border-starlight-white/10 shadow-[0_0_20px_rgba(0,240,255,0.1)] flex items-center justify-between px-margin-mobile h-16">
+<a href="index.html" class="site-brand inline-flex items-center gap-2.5 flex-nowrap shrink-0">
+<span class="material-symbols-outlined brand-mark text-electric-cyan" aria-hidden="true">blur_on</span>
+<span class="flex flex-col leading-none">
+<span class="font-headline-md text-headline-md tracking-tighter brand-mystical brand-mystical--glow">DARK MATTER</span>
+<span class="brand-subtext">Web Services</span>
+</span>
+</a>
+<div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0">
+<span class="text-electric-cyan" aria-current="true">EN</span>
+<span class="text-outline/50">/</span>
+<a href="es/built-by.html" hreflang="es" lang="es" aria-label="Cambiar a español" onclick="try{localStorage.setItem('dm_lang','es')}catch(e){}" class="text-on-surface-variant hover:text-electric-cyan transition-colors duration-300">ES</a>
 </div>
 </header>
 
@@ -165,9 +200,30 @@ You arrived from a site held together by <strong class="text-starlight-white fon
 </span>
 </a>
 </div>
-<footer class="relative z-10 border-t border-white/5 px-margin-mobile md:px-margin-desktop py-8 text-center">
+<footer class="relative z-10 border-t border-white/5 px-margin-mobile md:px-margin-desktop py-8 text-center mb-20 md:mb-0">
 <span class="font-label-mono text-[10px] text-outline">© 2026 DARK MATTER · Managed Website Services · Southwest Florida</span>
 </footer>
-<script src="assets/mobile-services-nav.js?v=20260601-mobile-services2"></script>
-<script src="assets/site-hero.js?v=20260601-video-hero7"></script>
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface/10 backdrop-blur-2xl border-t border-starlight-white/10 rounded-t-xl shadow-[0_-10px_30px_rgba(112,0,255,0.15)]">
+<a href="index.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-[10px] mt-1">Home</span>
+</a>
+<a href="services.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90" data-mobile-services-trigger>
+<span class="material-symbols-outlined">design_services</span>
+<span class="font-label-caps text-[10px] mt-1">Services</span>
+</a>
+<a href="process.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90">
+<span class="material-symbols-outlined">timeline</span>
+<span class="font-label-caps text-[10px] mt-1">Process</span>
+</a>
+<a href="casestudies.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90">
+<span class="material-symbols-outlined">workspace_premium</span>
+<span class="font-label-caps text-[10px] mt-1">Work</span>
+</a>
+<a href="contact.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90">
+<span class="material-symbols-outlined">mail</span>
+<span class="font-label-caps text-[10px] mt-1">Contact</span>
+</a>
+</nav><script src="assets/mobile-services-nav.js?v=20260602-consultation"></script>
 </body></html>
+

@@ -31,7 +31,7 @@
       local: 'In-Home & Office',
       links: [
         ['Complete Website Management', service('complete-website-management')],
-        ['Discovery & Consultation', service('discovery-consultation')],
+        ['Consultation', service('discovery-consultation')],
         ['Website Design', service('website-design')],
         ['Brand & Rebranding', service('brand-rebranding')],
         ['Managed Hosting', service('managed-hosting')],
@@ -50,7 +50,7 @@
       local: 'A Domicilio y Oficina',
       links: [
         ['Gestión Completa de Sitios Web', service('complete-website-management')],
-        ['Descubrimiento y Consulta', service('discovery-consultation')],
+        ['Consulta', service('discovery-consultation')],
         ['Diseño de Sitios Web', service('website-design')],
         ['Marca y Rediseño', service('brand-rebranding')],
         ['Hosting Administrado', service('managed-hosting')],

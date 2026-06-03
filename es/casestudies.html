@@ -8,7 +8,8 @@
 <link rel="alternate" hreflang="en" href="/casestudies.html"/>
 <link rel="alternate" hreflang="es" href="/es/casestudies.html"/>
 <link rel="alternate" hreflang="x-default" href="/casestudies.html"/>
-<link href="../assets/nav.css?v=20260601-mobile-topnav" rel="stylesheet"/>
+<link href="../assets/nav.css?v=20260602-menu-center" rel="stylesheet"/>
+<link href="../assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/>
 <link href="../assets/powered-by-badge.css" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -230,6 +231,11 @@
             animation: progress-shimmer 2.4s ease-in-out infinite;
             box-shadow: 0 0 16px rgba(112, 0, 255, 0.55), 0 0 28px rgba(0, 240, 255, 0.25);
         }
+        .build-progress-fill--green {
+            background: linear-gradient(90deg, #39ff88 0%, #00f0ff 48%, #39ff88 95%);
+            background-size: 200% 100%;
+            box-shadow: 0 0 16px rgba(57, 255, 136, 0.55), 0 0 28px rgba(0, 240, 255, 0.25);
+        }
         .build-progress-fill::after {
             content: '';
             position: absolute;
@@ -393,9 +399,9 @@
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="services.html">Servicios</a>
 <div class="services-nav-menu">
 <div class="services-nav-panel">
-<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Servicios en Línea</div>
+<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Servicios en Lnea</div>
 <a href="services/complete-website-management.html">Gestión Completa de Sitios Web</a>
-<a href="services/discovery-consultation.html">Descubrimiento y Consulta</a>
+<a href="services/discovery-consultation.html">Consulta</a>
 <a href="services/website-design.html">Diseño de Sitios Web</a>
 <a href="services/brand-rebranding.html">Marca y Rediseño</a>
 <a href="services/managed-hosting.html">Hosting Administrado</a>
@@ -404,18 +410,18 @@
 <a href="services/custom-development.html">Aplicaciones Web Empresariales a Medida</a>
 <div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">home_pin</span>Servicios a Domicilio y de Oficina</div>
 <a href="services/in-home-services.html">Servicios Técnicos a Domicilio</a>
-<a href="services/office-network-setup.html">Configuración de Redes de Oficina</a>
+<a href="services/office-network-setup.html">Configuracin de Redes de Oficina</a>
 </div>
 </div>
 </div>
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="process.html">Proceso</a>
-<a class="font-label-mono text-label-mono text-electric-cyan border-b-2 border-electric-cyan pb-1 transition-colors duration-300" href="casestudies.html">Nuestro portafolio</a>
+<a class="font-label-mono text-label-mono text-electric-cyan border-b-2 border-electric-cyan pb-1 transition-colors duration-300" href="casestudies.html">Portafolio</a>
 <div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0">
 <a href="../casestudies.html" hreflang="en" lang="en" aria-label="Switch to English" onclick="try{localStorage.setItem('dm_lang','en')}catch(e){}" class="text-on-surface-variant hover:text-electric-cyan transition-colors duration-300">EN</a>
 <span class="text-outline/50">/</span>
 <span class="text-electric-cyan" aria-current="true">ES</span>
 </div>
-<a href="contact.html" class="ml-4 inline-block px-6 py-2 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-lg hover:opacity-90 active:scale-95 transition-all">Inicia tu Proyecto</a>
+<a href="contact.html" class="ml-4 inline-block px-6 py-2 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-lg hover:opacity-90 active:scale-95 transition-all">Contáctanos</a>
 </div>
 </nav>
 <aside class="fixed left-0 top-1/2 -translate-y-1/2 h-auto rounded-r-xl bg-void-black/80 backdrop-blur-2xl border-r border-t border-b border-white/5 p-4 gap-unit z-40 flex flex-col shadow-[0_0_20px_rgba(112,0,255,0.15)]">
@@ -458,7 +464,7 @@
 </div>
 </div>
 <main class="relative z-10 pt-32 pb-24 px-margin-desktop max-w-container-max mx-auto md:pl-28">
-<section class="mb-20">
+<section class="mb-8">
 <div class="max-w-3xl">
 <h4 class="font-label-caps text-label-caps text-electric-cyan mb-4 tracking-[0.2em]">NUESTRO PORTAFOLIO</h4>
 <h1 class="font-headline-xl text-headline-xl text-starlight-white mb-8">Nuestro <span class="gradient-text-nebula">portafolio</span></h1>
@@ -467,42 +473,57 @@
 </section>
 
 <!-- Portfolio gallery -->
-<section class="mb-24">
+<section class="mb-20">
 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter">
 <a href="#case-naples" class="portfolio-tile">
 <div class="portfolio-tile__media">
-<img src="../assets/naples-hero.png" alt="Página de inicio de Naples Antiques LLC" class="portfolio-tile__img" loading="lazy"/>
-<span class="portfolio-tile__badge">01 · DESTACADO</span>
+<img src="../assets/portfolio/naples-estate-jewelry/home.webp" alt="Página de inicio de Naples Estate Jewelry" class="portfolio-tile__img" loading="lazy"/>
+<span class="portfolio-tile__badge">01  DESTACADO</span>
 </div>
 <div class="p-7 flex flex-col gap-4 flex-1">
 <div class="flex flex-wrap gap-2">
 <span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">DISEÑO WEB</span>
 <span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">E-COMMERCE A MEDIDA</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-starlight-white">Naples Antiques LLC</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed flex-1">Tienda de joyería de patrimonio y antigüedades centrada en la confianza — precios de metales preciosos en vivo y un carrito y pago a medida sin cuotas de Shopify.</p>
+<h3 class="font-headline-md text-headline-md text-starlight-white">NaplesEstateJewelry.co</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed flex-1">Tienda de joyería de patrimonio y antigüedades centrada en la confianza  precios de metales preciosos en vivo y un carrito y pago a medida sin cuotas de Shopify.</p>
 <span class="portfolio-tile__cta">Ver caso de éxito <span class="material-symbols-outlined">arrow_forward</span></span>
 </div>
 </a>
 <a href="#elite-yacht" class="portfolio-tile">
 <div class="portfolio-tile__media">
 <img src="../assets/portfolio/elite/screenshot-home.png" alt="Página de inicio en vivo de Elite Yacht Detailing" class="portfolio-tile__img" loading="lazy"/>
-<span class="portfolio-tile__badge">02 · EN VIVO</span>
+<span class="portfolio-tile__badge">02  EN VIVO</span>
 </div>
 <div class="p-7 flex flex-col gap-4 flex-1">
 <div class="flex flex-wrap gap-2">
 <span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">DISEÑO WEB</span>
 <span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">PORTAL DE FLOTA</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-starlight-white">Elite Yacht Detailing</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed flex-1">Sitio de detallado de yates de lujo en SWFL — página de inicio cinematográfica, control deslizante antes/después, galería de flota de más de 400 embarcaciones y un portal de cliente Fleet Login.</p>
+<h3 class="font-headline-md text-headline-md text-starlight-white">EliteYachtDetailing.com</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed flex-1">Sitio de detallado de yates de lujo en SWFL  página de inicio cinematográfica, control deslizante antes/después, galería de flota de más de 400 embarcaciones y un portal de cliente Fleet Login.</p>
+<span class="portfolio-tile__cta">Ver caso de éxito <span class="material-symbols-outlined">arrow_forward</span></span>
+</div>
+</a>
+<a href="#case-jps" class="portfolio-tile">
+<div class="portfolio-tile__media">
+<img src="../assets/portfolio/jpsurette/home.webp" alt="Página de inicio de JPS Surette Photography" class="portfolio-tile__img" loading="lazy"/>
+<span class="portfolio-tile__badge">03 &middot; VISTA PREVIA</span>
+</div>
+<div class="p-7 flex flex-col gap-4 flex-1">
+<div class="flex flex-wrap gap-2">
+<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">PORTAFOLIO</span>
+<span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">GALERÍAS DE EVENTOS</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-starlight-white">JPSurette.com</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed flex-1">Portafolio fotográfico de alto contraste para deportes de combate, eventos, arquitectura, bienes raíces, editorial y trabajo comercial.</p>
 <span class="portfolio-tile__cta">Ver caso de éxito <span class="material-symbols-outlined">arrow_forward</span></span>
 </div>
 </a>
 <a href="contact.html" class="portfolio-tile portfolio-tile--open p-8 gap-4">
 <span class="material-symbols-outlined text-4xl text-electric-cyan">add_circle</span>
-<h3 class="font-headline-md text-headline-md text-starlight-white">Tu Proyecto Aquí</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed">Sé la próxima construcción de la galería — desde servicios locales hasta e-commerce y apps empresariales a medida.</p>
+<h3 class="font-headline-md text-headline-md text-starlight-white">Tu Proyecto Aqu</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Sé la próxima construcción de la galería  desde servicios locales hasta e-commerce y apps empresariales a medida.</p>
 <span class="portfolio-tile__cta" style="opacity:1;transform:none;">Iniciar un proyecto <span class="material-symbols-outlined">arrow_forward</span></span>
 </a>
 </div>
@@ -516,12 +537,13 @@
 </div>
 </section>
 
-<!-- Featured Case Study: Naples Antiques LLC -->
+<!-- Featured Case Study: Naples Estate Jewelry -->
 <section class="mb-24 scroll-mt-28" id="case-naples">
 <div class="flex items-end justify-between mb-8">
 <div>
-<h2 class="font-headline-lg text-headline-lg text-starlight-white">Naples Antiques LLC</h2>
-<div class="h-1 w-24 bg-electric-cyan mt-2"></div>
+<h2 class="font-headline-lg text-headline-lg text-starlight-white">NaplesEstateJewelry.co</h2>
+<p class="mt-3 max-w-xl text-on-surface-variant text-sm leading-relaxed">E-commerce de joyería de patrimonio y reventa local de lujo.</p>
+<div class="h-1 w-24 bg-electric-cyan mt-3"></div>
 </div>
 <div class="font-label-mono text-label-mono text-electric-cyan">01 // DESTACADO</div>
 </div>
@@ -530,27 +552,27 @@
 <span class="w-3 h-3 rounded-full bg-red-500/70"></span>
 <span class="w-3 h-3 rounded-full bg-yellow-500/70"></span>
 <span class="w-3 h-3 rounded-full bg-green-500/70"></span>
-<span class="ml-3 font-label-mono text-[11px] text-outline truncate">naplesantiquesllc.com</span>
+<span class="ml-3 font-label-mono text-[11px] text-outline truncate">NaplesEstateJewelry.co</span>
 </div>
 <div class="bg-primary-container overflow-hidden group">
-<img alt="Página de inicio de Naples Antiques LLC" class="w-full h-[420px] object-cover object-center group-hover:scale-[1.02] transition-transform duration-700" loading="lazy" src="../assets/naples-hero.png"/>
+<img alt="Página de inicio de Naples Estate Jewelry" class="w-full h-[420px] object-cover object-center group-hover:scale-[1.02] transition-transform duration-700" loading="lazy" src="../assets/portfolio/naples-estate-jewelry/home.webp"/>
 </div>
 <div class="p-12 grid grid-cols-1 lg:grid-cols-2 gap-12">
 <div>
 <div class="flex flex-wrap gap-2 mb-6">
 <span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">DISEÑO Y CONSTRUCCIÓN WEB</span>
 <span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">E-COMMERCE A MEDIDA</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-white/5 text-on-surface-variant border border-white/10 rounded">NAPLES · FORT MYERS</span>
+<span class="font-label-caps text-[10px] px-2 py-1 bg-white/5 text-on-surface-variant border border-white/10 rounded">NAPLES  FORT MYERS</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Joyería de patrimonio y antigüedades, hecho para convertir.</h3>
-<p class="text-on-surface-variant mb-6 leading-relaxed">Una tienda rápida y centrada en la confianza para un comprador de joyería de patrimonio y antigüedades del suroeste de Florida. Combinamos una página de inicio enfocada en la conversión con una tienda totalmente a medida: precios de metales preciosos en vivo, galerías de productos y un carrito y pago que funciona <span class="text-starlight-white">sin Shopify ni sus cuotas mensuales</span>.</p>
-<p class="text-on-surface-variant mb-8 leading-relaxed">Los visitantes pueden explorar el inventario con precios, agregar piezas al carrito o convertir al instante con llamada y mensaje de un toque y un flujo de «enviar fotos para una oferta».</p>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Joyera de patrimonio y antigüedades, hecho para convertir.</h3>
+<p class="text-on-surface-variant mb-6 leading-relaxed">Una tienda rpida y centrada en la confianza para un comprador de joyería de patrimonio y antigüedades del suroeste de Florida. Combinamos una página de inicio enfocada en la conversión con una tienda totalmente a medida: precios de metales preciosos en vivo, galerías de productos y un carrito y pago que funciona <span class="text-starlight-white">sin Shopify ni sus cuotas mensuales</span>.</p>
+<p class="text-on-surface-variant mb-8 leading-relaxed">Los visitantes pueden explorar el inventario con precios, agregar piezas al carrito o convertir al instante con llamada y mensaje de un toque y un flujo de enviar fotos para una oferta.</p>
 <div class="flex flex-wrap gap-4">
-<a href="https://naplesantiquesllc.com" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-lg hover:scale-105 active:scale-95 transition-all">
+<a href="https://NaplesEstateJewelry.co" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-lg hover:scale-105 active:scale-95 transition-all">
                             Visitar Sitio en Vivo
                             <span class="material-symbols-outlined text-base">arrow_outward</span>
 </a>
-<a href="contact.html" class="inline-block px-8 py-3 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-lg hover:bg-white/5 transition-all">Inicia un Proyecto Como Este</a>
+<a href="portfolio-naplesestatejewelry.html" class="inline-flex items-center gap-2 px-8 py-3 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-lg hover:bg-white/5 transition-all">Ver más detalles de este proyecto<span class="material-symbols-outlined text-base">arrow_forward</span></a>
 </div>
 </div>
 <div>
@@ -559,7 +581,7 @@
 <li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Precios spot de oro y plata en vivo con un multiplicador de spot configurable</li>
 <li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Carrito y pago a medida: sin Shopify, sin cuotas mensuales de plataforma</li>
 <li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Páginas de producto con galerías de imágenes, especificaciones e indicadores de disponibilidad</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Llamada y mensaje de un toque más un flujo de contactos de «enviar fotos para una oferta»</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Llamada y mensaje de un toque más un flujo de contactos de enviar fotos para una oferta</li>
 <li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Diseño centrado en la confianza: reseñas verificadas, servicio confidencial</li>
 <li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> SEO local en Naples, Fort Myers y Marco Island</li>
 </ul>
@@ -567,58 +589,15 @@
 </div>
 </div>
 
-<!-- Reinforcer screenshots / capabilities -->
-<div class="mt-12">
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Una mirada más de cerca</h3>
-<p class="text-on-surface-variant mb-8 max-w-2xl leading-relaxed">Las mismas funciones que podemos integrar en tu sitio: precios en vivo, un carrito de compras real y páginas de producto completas, todo sin cuotas de plataforma que te aten.</p>
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
-<div class="glass-card rounded-xl overflow-hidden">
-<img alt="Precios de metales preciosos en vivo en las tarjetas de producto" class="w-full h-64 object-cover object-top border-b border-white/10" loading="lazy" src="../assets/naples-pricing.png"/>
-<div class="p-7">
-<div class="flex items-center gap-3 mb-3">
-<span class="material-symbols-outlined text-electric-cyan">monitoring</span>
-<h4 class="font-headline-md text-[20px] text-starlight-white">Precios de metales preciosos en vivo</h4>
-</div>
-<p class="text-on-surface-variant leading-relaxed">Los precios se actualizan automáticamente desde el spot de oro y plata en vivo usando un multiplicador configurable (p. ej. 1.25× spot), con estados elegantes de «mercado cerrado» para que los listados siempre se vean precisos.</p>
-</div>
-</div>
-<div class="glass-card rounded-xl overflow-hidden">
-<img alt="Página de detalle de producto con carrito y precios" class="w-full h-64 object-cover object-top border-b border-white/10" loading="lazy" src="../assets/naples-product.png"/>
-<div class="p-7">
-<div class="flex items-center gap-3 mb-3">
-<span class="material-symbols-outlined text-nebula-purple">shopping_cart</span>
-<h4 class="font-headline-md text-[20px] text-starlight-white">Carrito y pago, sin Shopify</h4>
-</div>
-<p class="text-on-surface-variant leading-relaxed">Páginas de producto completas con galerías de imágenes, valor exacto de chatarra, agregar al carrito y favoritos: una tienda completa sin suscripción de Shopify ni cuotas de plataforma por venta.</p>
-</div>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mt-gutter">
-<div class="glass-card rounded-xl p-6">
-<span class="material-symbols-outlined text-electric-cyan mb-3">photo_library</span>
-<h5 class="font-label-caps text-label-caps text-starlight-white mb-2">GALERÍAS DE PRODUCTOS</h5>
-<p class="text-on-surface-variant text-sm leading-relaxed">Galerías de múltiples imágenes con especificaciones como quilates, peso y dimensiones.</p>
-</div>
-<div class="glass-card rounded-xl p-6">
-<span class="material-symbols-outlined text-electric-cyan mb-3">call</span>
-<h5 class="font-label-caps text-label-caps text-starlight-white mb-2">FLUJOS DE CONSULTA Y COMPRA</h5>
-<p class="text-on-surface-variant text-sm leading-relaxed">Agregar al carrito, consultar y llamada/mensaje de un toque en cada listado.</p>
-</div>
-<div class="glass-card rounded-xl p-6">
-<span class="material-symbols-outlined text-electric-cyan mb-3">travel_explore</span>
-<h5 class="font-label-caps text-label-caps text-starlight-white mb-2">SEO LOCAL</h5>
-<p class="text-on-surface-variant text-sm leading-relaxed">Diseñado para posicionar en búsquedas de Naples, Fort Myers y Marco Island.</p>
-</div>
-</div>
-</div>
 </section>
 
-<!-- Elite Yacht Detailing — live -->
-<section class="mb-24 scroll-mt-28" id="elite-yacht">
+<!-- Elite Yacht Detailing  live -->
+<section class="mb-24 scroll-mt-28 max-w-[1264px] mx-auto" id="elite-yacht">
 <div class="flex items-end justify-between mb-8">
 <div>
-<h2 class="font-headline-lg text-headline-lg text-starlight-white">Elite Yacht Detailing</h2>
-<div class="h-1 w-24 bg-electric-cyan mt-2"></div>
+<h2 class="font-headline-lg text-headline-lg text-starlight-white">EliteYachtDetailing.com</h2>
+<p class="mt-3 max-w-xl text-on-surface-variant text-sm leading-relaxed">Sitio de detallado de yates de lujo y portal de servicios de flota.</p>
+<div class="h-1 w-24 bg-electric-cyan mt-3"></div>
 </div>
 <div class="font-label-mono text-label-mono text-electric-cyan">02 // EN VIVO</div>
 </div>
@@ -628,11 +607,11 @@
 <span class="w-3 h-3 rounded-full bg-red-500/70"></span>
 <span class="w-3 h-3 rounded-full bg-yellow-500/70"></span>
 <span class="w-3 h-3 rounded-full bg-green-500/70"></span>
-<span class="ml-3 font-label-mono text-[11px] text-outline truncate">eliteyachtdetailing.com</span>
+<span class="ml-3 font-label-mono text-[11px] text-outline truncate">EliteYachtDetailing.com</span>
 <span class="ml-auto font-label-caps text-[10px] px-2 py-0.5 bg-electric-cyan/15 text-electric-cyan border border-electric-cyan/30 rounded">EN VIVO</span>
 </div>
 <div class="bg-void-black overflow-hidden relative">
-<img alt="Sunseeker 630 S — muestra de la flota de Elite Yacht Detailing" class="elite-feature-hero" decoding="async" fetchpriority="high" src="../assets/portfolio/elite/hero-yacht.jpg"/>
+<img alt="Sunseeker 630 S  muestra de la flota de Elite Yacht Detailing" class="elite-feature-hero" decoding="async" fetchpriority="high" src="../assets/portfolio/elite/hero-yacht.jpg"/>
 </div>
 <div class="p-12 grid grid-cols-1 lg:grid-cols-2 gap-12">
 <div>
@@ -640,17 +619,17 @@
 <span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">DISEÑO Y CONSTRUCCIÓN WEB</span>
 <span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">IDENTIDAD DE MARCA</span>
 <span class="font-label-caps text-[10px] px-2 py-1 bg-white/5 text-on-surface-variant border border-white/10 rounded">DESARROLLO A MEDIDA</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-white/5 text-on-surface-variant border border-white/10 rounded">SWFL · SERVICIOS DE YATES</span>
+<span class="font-label-caps text-[10px] px-2 py-1 bg-white/5 text-on-surface-variant border border-white/10 rounded">SWFL  SERVICIOS DE YATES</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">El Arte del Reflejo — en vivo en Naples.</h3>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">El Arte del Reflejo  en vivo en Naples.</h3>
 <p class="text-on-surface-variant mb-6 leading-relaxed">Un sitio premium de doble diseño para un negocio de detallado de yates del suroeste de Florida: logo a medida, página de inicio cinematográfica con video de trabajo real en SWFL, control deslizante interactivo de restauración antes/después y un catálogo completo de servicios y aspectos técnicos creado para propietarios de embarcaciones de alto patrimonio.</p>
 <p class="text-on-surface-variant mb-8 leading-relaxed">Experiencias separadas de escritorio y móvil, galería de acabado espejo, reserva de consultas y una sección dedicada de <span class="text-starlight-white">Flota</span> que muestra más de 400 embarcaciones atendidas en toda la Costa del Golfo.</p>
 <div class="flex flex-wrap gap-4">
-<a href="https://eliteyachtdetailing.com" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-lg hover:scale-105 active:scale-95 transition-all">
+<a href="https://EliteYachtDetailing.com" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-lg hover:scale-105 active:scale-95 transition-all">
 <span class="material-symbols-outlined text-base">open_in_new</span>
 Visitar Sitio en Vivo
 </a>
-<a href="contact.html" class="inline-block px-8 py-3 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-lg hover:bg-white/5 transition-all">Inicia un Proyecto Como Este</a>
+<a href="portfolio-eliteyachtdetailing.html" class="inline-flex items-center gap-2 px-8 py-3 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-lg hover:bg-white/5 transition-all">Ver más detalles de este proyecto<span class="material-symbols-outlined text-base">arrow_forward</span></a>
 </div>
 </div>
 <div>
@@ -667,88 +646,68 @@ Visitar Sitio en Vivo
 </div>
 </div>
 
-<!-- Fleet login & management highlight -->
-<div class="glass-card elite-fleet-callout rounded-xl p-8 md:p-10 mt-10 mb-12">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+</section>
+
+<!-- JPS Surette Photography -->
+<section class="mb-24 scroll-mt-28 max-w-[1264px] mx-auto" id="case-jps">
+<div class="flex items-end justify-between mb-8">
 <div>
-<div class="flex items-center gap-3 mb-4">
-<span class="material-symbols-outlined text-electric-cyan text-3xl">sailing</span>
-<span class="font-label-caps text-label-caps text-electric-cyan tracking-[0.2em]">ACCESO Y GESTIÓN DE FLOTA</span>
+<h2 class="font-headline-lg text-headline-lg text-starlight-white">JPSurette.com</h2>
+<p class="mt-3 max-w-xl text-on-surface-variant text-sm leading-relaxed">Portafolio fotográfico y vista previa de galerías de eventos.</p>
+<div class="h-1 w-24 bg-nebula-purple mt-3"></div>
 </div>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Creado para capitanes, administradores de flota y programas de marina.</h3>
-<p class="text-on-surface-variant leading-relaxed mb-4">Implementamos un área dedicada de <strong class="text-starlight-white font-normal">Acceso de Flota</strong> enlazada desde la página de flota y el pie del sitio: una vista previa de portal de cliente seguro para cuentas recurrentes de flota y marina. El inicio de sesión está preparado para el lanzamiento; la experiencia completa ya está lista hoy.</p>
-<ul class="space-y-2 font-label-mono text-[13px] text-on-surface-variant">
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-nebula-purple text-sm">arrow_forward</span> Programación de múltiples embarcaciones en asignaciones de flota o de amarres de marina</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-nebula-purple text-sm">arrow_forward</span> Historial de servicio, registros de recubrimiento cerámico y documentación antes/después</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-nebula-purple text-sm">arrow_forward</span> Vía de contacto prioritaria para capitanes y administradores de flota en SWFL</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-nebula-purple text-sm">arrow_forward</span> Facturas y protocolos de mantenimiento aprobados para programas recurrentes</li>
-</ul>
-<a href="https://eliteyachtdetailing.com/desktop/fleet-login.html" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-6 font-label-mono text-sm text-electric-cyan hover:underline">
-<span class="material-symbols-outlined text-base">login</span>
-Vista previa del portal de Acceso de Flota →
+<div class="font-label-mono text-label-mono text-electric-cyan">03 // EN PROGRESO</div>
+</div>
+<div class="glass-panel rounded-2xl overflow-hidden">
+<div class="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-void-black/60">
+<span class="w-3 h-3 rounded-full bg-red-500/70"></span>
+<span class="w-3 h-3 rounded-full bg-yellow-500/70"></span>
+<span class="w-3 h-3 rounded-full bg-green-500/70"></span>
+<span class="ml-3 font-label-mono text-[11px] text-outline truncate">JPSurette.com</span>
+<span class="ml-auto font-label-caps text-[10px] px-2 py-0.5 bg-[#39ff88]/10 text-[#39ff88] border border-[#39ff88]/35 rounded">EN PROGRESO</span>
+</div>
+<div class="bg-void-black overflow-hidden group">
+<img alt="Página de inicio de JPS Surette Photography" class="w-full h-[420px] object-cover object-center group-hover:scale-[1.02] transition-transform duration-700" loading="lazy" src="../assets/portfolio/jpsurette/home.webp"/>
+</div>
+<div class="p-12 grid grid-cols-1 lg:grid-cols-2 gap-12">
+<div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="font-label-caps text-[10px] px-2 py-1 bg-[#39ff88]/10 text-[#39ff88] border border-[#39ff88]/30 rounded">PORTAFOLIO</span>
+<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">DIRECCIÓN DE GALERÍAS</span>
+<span class="font-label-caps text-[10px] px-2 py-1 bg-white/5 text-on-surface-variant border border-white/10 rounded">MARCA FOTOGRÁFICA</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Intensidad de combate, precisión arquitectónica y una base de galerías lista para crecer.</h3>
+<p class="text-on-surface-variant mb-6 leading-relaxed">Un portafolio oscuro y de alto contraste para un fotógrafo de Boston que trabaja en deportes de combate, arquitectura, bienes raíces, editorial y encargos comerciales. El diseño es directo y físico: tipografía grande, espaciado disciplinado y secciones guiadas por imágenes.</p>
+<p class="text-on-surface-variant mb-8 leading-relaxed">La siguiente fase apunta a galerías de eventos: archivos después de peleas, acceso público o privado, y futuros flujos de descarga o compra para atletas, gimnasios, promotores, familias y marcas.</p>
+<div class="glass-card rounded-lg p-5 mb-7 border border-[#39ff88]/25 bg-[#39ff88]/5">
+<div class="flex items-center justify-between gap-4 mb-3">
+<span class="font-label-caps text-[10px] text-[#39ff88] tracking-[0.18em]">PROYECTO EN PROGRESO</span>
+<span class="font-label-mono text-[11px] text-electric-cyan">68%</span>
+</div>
+<div class="build-progress-track" aria-label="Progreso del caso JPS Surette"><div class="build-progress-fill build-progress-fill--green"></div></div>
+<p class="text-on-surface-variant text-xs leading-relaxed mt-3">La vista previa ya está en línea; los detalles finales de galerías, login y entrega de eventos pueden seguir evolucionando con la aprobación del cliente.</p>
+</div>
+<div class="flex flex-wrap gap-4">
+<a href="https://jpsurette.netlify.app/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-lg hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-base">open_in_new</span>
+Ver Vista Previa en Vivo
 </a>
-</div>
-<div class="rounded-xl overflow-hidden border border-white/10 bg-void-black/40">
-<img alt="Página de flota de Elite Yacht Detailing — galería de embarcaciones y entrada de acceso de flota" class="w-full h-auto block" loading="lazy" src="../assets/portfolio/elite/screenshot-fleet.jpg"/>
+<a href="portfolio-jpsurette.html" class="inline-flex items-center gap-2 px-8 py-3 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-lg hover:bg-white/5 transition-all">Ver más detalles de este proyecto<span class="material-symbols-outlined text-base">arrow_forward</span></a>
 </div>
 </div>
-</div>
-
-<div class="mt-4">
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Aspectos destacados del sitio</h3>
-<p class="text-on-surface-variant mb-8 max-w-2xl leading-relaxed">Capturas del sitio en vivo: cine de la página de inicio, galería de flota, comparación de restauración y la vista previa del portal de cliente de flota.</p>
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
-<div class="glass-card rounded-xl overflow-hidden">
-<div class="border-b border-white/10">
-<img alt="Página de inicio de Elite Yacht Detailing — El Arte del Reflejo" class="w-full h-auto block" loading="lazy" src="../assets/portfolio/elite/screenshot-home.png"/>
-</div>
-<div class="p-6">
-<div class="flex items-center gap-3 mb-2">
-<span class="material-symbols-outlined text-electric-cyan">home</span>
-<h4 class="font-headline-md text-[18px] text-starlight-white">Página de inicio</h4>
-</div>
-<p class="text-on-surface-variant text-sm leading-relaxed">Hero cinematográfico, video real de detallado en SWFL, acabado espejo de arrastrar para comparar y llamadas a la acción de flota.</p>
-</div>
-</div>
-<div class="glass-card rounded-xl overflow-hidden">
-<div class="border-b border-white/10">
-<img alt="Galería de flota de Elite Yacht Detailing — más de 400 embarcaciones atendidas" class="w-full h-auto block" loading="lazy" src="../assets/portfolio/elite/screenshot-gallery.png"/>
-</div>
-<div class="p-6">
-<div class="flex items-center gap-3 mb-2">
-<span class="material-symbols-outlined text-nebula-purple">sailing</span>
-<h4 class="font-headline-md text-[18px] text-starlight-white">Galería de flota</h4>
-</div>
-<p class="text-on-surface-variant text-sm leading-relaxed">Más de 400 embarcaciones atendidas: mosaicos uniformes de clientes, Sunseeker 630 S destacado y estadísticas de cobertura en SWFL.</p>
-</div>
-</div>
-<div class="glass-card rounded-xl overflow-hidden">
-<div class="border-b border-white/10">
-<img alt="Control deslizante de comparación antes y después de la restauración del casco" class="w-full h-auto block" loading="lazy" src="../assets/portfolio/elite/screenshot-compare.jpg"/>
-</div>
-<div class="p-6">
-<div class="flex items-center gap-3 mb-2">
-<span class="material-symbols-outlined text-electric-cyan">compare</span>
-<h4 class="font-headline-md text-[18px] text-starlight-white">Comparación antes / después</h4>
-</div>
-<p class="text-on-surface-variant text-sm leading-relaxed">Control deslizante interactivo: gelcoat oxidado vs. acabado cerámico espejo en una restauración real de Aviara.</p>
-</div>
-</div>
-<div class="glass-card rounded-xl overflow-hidden">
-<div class="border-b border-white/10">
-<img alt="Catálogo de servicios de Elite Yacht Detailing" class="w-full h-auto block" loading="lazy" src="../assets/portfolio/elite/screenshot-services.png"/>
-</div>
-<div class="p-6">
-<div class="flex items-center gap-3 mb-2">
-<span class="material-symbols-outlined text-nebula-purple">design_services</span>
-<h4 class="font-headline-md text-[18px] text-starlight-white">Servicios y técnico</h4>
-</div>
-<p class="text-on-surface-variant text-sm leading-relaxed">Proceso de purificación de 14 etapas, especificaciones de recubrimiento cerámico, programas de mantenimiento y reserva de consultas.</p>
+<div>
+<h4 class="font-label-caps text-label-caps text-electric-cyan mb-5 tracking-[0.15em]">QUÉ MUESTRA</h4>
+<ul class="space-y-3 font-label-mono text-label-mono text-on-surface-variant">
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Página de inicio dividida entre deportes de combate y arquitectura/bienes raíces</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Portafolio de combate con ritmo visual de alto impacto</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Concepto de Fight Night Archive para galerías después de eventos</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Página de arquitectura y bienes raíces basada en estructura, luz y detalle material</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Rutas de servicio para fotografía editorial, comercial, de producto y eventos privados</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Sitio estático listo para Netlify, con formulario de contacto y espacio para futuros flujos de galería/login</li>
+</ul>
 </div>
 </div>
 </div>
-</div>
-
 </section>
 
 <!-- CTA -->
@@ -758,7 +717,7 @@ Vista previa del portal de Acceso de Flota →
 <p class="max-w-xl mx-auto text-on-surface-variant text-body-lg mb-10">Ubicados en Naples, FL. Llama o envía un mensaje y conversaremos sobre tu proyecto, sin presión y sin tecnicismos.</p>
 <div class="flex flex-wrap justify-center gap-4">
 <a href="tel:+12394048505" class="inline-flex items-center gap-2 px-10 py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-xl font-bold hover:scale-105 active:scale-95 transition-all shadow-2xl">
-<span class="material-symbols-outlined text-base">call</span> Llama o Envía un Mensaje (239) 404-8505
+<span class="material-symbols-outlined text-base">call</span> Llama o Enva un Mensaje (239) 404-8505
                     </a>
 <a href="contact.html" class="inline-block px-10 py-4 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-xl hover:bg-white/5 transition-all">Enviar Mensaje</a>
 </div>
@@ -766,7 +725,7 @@ Vista previa del portal de Acceso de Flota →
 </section>
 </main>
 <div class="site-powered-by-bar w-full bg-void-black border-t border-white/5 py-8 px-margin-mobile md:px-margin-desktop flex justify-center">
-<a class="dm-powered-badge" href="built-by.html" aria-label="Sitio web desarrollado por Dark Matter Servicios Web — ver página de referidos">
+<a class="dm-powered-badge" href="built-by.html" aria-label="Sitio web desarrollado por Dark Matter Servicios Web  ver página de referidos">
 <svg class="dm-powered-badge__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z"/>
 </svg>
@@ -784,7 +743,7 @@ Vista previa del portal de Acceso de Flota →
 <div class="font-headline-md text-headline-md text-starlight-white font-bold">DARK MATTER</div>
 <span class="brand-subtext">Servicios Web</span>
 </div>
-<div class="font-label-mono text-label-mono text-outline">© 2026 DARK MATTER · NAPLES, FL · LLAMA O ENVÍA UN MENSAJE (239) 404-8505</div>
+<div class="font-label-mono text-label-mono text-outline"> 2026 DARK MATTER  NAPLES, FL  LLAMA O ENVA UN MENSAJE (239) 404-8505 &middot; CORREO <a class="text-electric-cyan hover:underline" href="mailto:darkmatterwebsites@gmail.com">darkmatterwebsites@gmail.com</a></div>
 </div>
 <div class="flex gap-12">
 <div class="flex flex-col gap-4">
@@ -794,7 +753,7 @@ Vista previa del portal de Acceso de Flota →
 </div>
 <div class="flex flex-col gap-4">
 <span class="font-label-caps text-label-caps text-starlight-white">RECURSOS</span>
-<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="#">Términos</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="#">Trminos</a>
 <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="#">Estado</a>
 </div>
 </div>
@@ -823,7 +782,7 @@ Vista previa del portal de Acceso de Flota →
 </div>
 </header>
 <main class="relative z-10 pt-28 pb-28 px-margin-mobile">
-<div class="mb-10 flex flex-col gap-4">
+<div class="mb-6 flex flex-col gap-4">
 <div class="flex items-center gap-4">
 <div class="h-[1px] w-12 bg-electric-cyan"></div>
 <span class="font-label-mono text-label-mono text-electric-cyan tracking-widest uppercase">Trabajo Seleccionado</span>
@@ -836,11 +795,11 @@ Vista previa del portal de Acceso de Flota →
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
 <a href="#m-case-naples" class="portfolio-tile active:scale-[0.98]">
 <div class="portfolio-tile__media">
-<img src="../assets/naples-hero.png" alt="Página de inicio de Naples Antiques LLC" class="portfolio-tile__img" loading="lazy"/>
-<span class="portfolio-tile__badge">01 · DESTACADO</span>
+<img src="../assets/portfolio/naples-estate-jewelry/home.webp" alt="Página de inicio de Naples Estate Jewelry" class="portfolio-tile__img" loading="lazy"/>
+<span class="portfolio-tile__badge">01  DESTACADO</span>
 </div>
 <div class="p-5 flex flex-col gap-3">
-<h3 class="font-headline-md text-[18px] text-starlight-white">Naples Antiques LLC</h3>
+<h3 class="font-headline-md text-[18px] text-starlight-white">NaplesEstateJewelry.co</h3>
 <p class="font-body-md text-[13px] text-on-surface-variant">Tienda de joyería de patrimonio con precios de metales en vivo y un carrito y pago sin Shopify.</p>
 <span class="font-label-mono text-[11px] text-electric-cyan inline-flex items-center gap-1">Ver caso de éxito <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
 </div>
@@ -848,36 +807,48 @@ Vista previa del portal de Acceso de Flota →
 <a href="#m-case-elite" class="portfolio-tile active:scale-[0.98]">
 <div class="portfolio-tile__media">
 <img src="../assets/portfolio/elite/screenshot-home.png" alt="Página de inicio en vivo de Elite Yacht Detailing" class="portfolio-tile__img" loading="lazy"/>
-<span class="portfolio-tile__badge">02 · EN VIVO</span>
+<span class="portfolio-tile__badge">02  EN VIVO</span>
 </div>
 <div class="p-5 flex flex-col gap-3">
-<h3 class="font-headline-md text-[18px] text-starlight-white">Elite Yacht Detailing</h3>
-<p class="font-body-md text-[13px] text-on-surface-variant">Sitio de detallado de yates de lujo — comparación antes/después, galería de más de 400 embarcaciones y portal Fleet Login.</p>
+<h3 class="font-headline-md text-[18px] text-starlight-white">EliteYachtDetailing.com</h3>
+<p class="font-body-md text-[13px] text-on-surface-variant">Sitio de detallado de yates de lujo  comparación antes/después, galería de más de 400 embarcaciones y portal Fleet Login.</p>
+<span class="font-label-mono text-[11px] text-electric-cyan inline-flex items-center gap-1">Ver caso de éxito <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+</div>
+</a>
+<a href="#m-case-jps" class="portfolio-tile active:scale-[0.98]">
+<div class="portfolio-tile__media">
+<img src="../assets/portfolio/jpsurette/home.webp" alt="Página de inicio de JPS Surette Photography" class="portfolio-tile__img" loading="lazy"/>
+<span class="portfolio-tile__badge">03 &middot; EN PROGRESO</span>
+</div>
+<div class="p-5 flex flex-col gap-3">
+<h3 class="font-headline-md text-[18px] text-starlight-white">JPSurette.com</h3>
+<p class="font-body-md text-[13px] text-on-surface-variant">Portafolio fotográfico con deportes de combate, eventos, arquitectura y trabajo comercial.</p>
 <span class="font-label-mono text-[11px] text-electric-cyan inline-flex items-center gap-1">Ver caso de éxito <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
 </div>
 </a>
 <a href="contact.html" class="portfolio-tile portfolio-tile--open p-6 gap-3 active:scale-[0.98]">
 <span class="material-symbols-outlined text-3xl text-electric-cyan">add_circle</span>
-<h3 class="font-headline-md text-[18px] text-starlight-white">Tu Proyecto Aquí</h3>
+<h3 class="font-headline-md text-[18px] text-starlight-white">Tu Proyecto Aqu</h3>
 <p class="font-body-md text-[13px] text-on-surface-variant">Sé la próxima construcción de la galería.</p>
 <span class="font-label-mono text-[11px] text-electric-cyan inline-flex items-center gap-1">Iniciar un proyecto <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
 </a>
 </div>
 
-<!-- Featured: Naples Antiques LLC -->
+<!-- Featured: Naples Estate Jewelry -->
 <div id="m-case-naples" class="glass-card rounded-xl overflow-hidden mb-8 scroll-mt-24">
 <div class="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-void-black/60">
 <span class="w-2.5 h-2.5 rounded-full bg-red-500/70"></span>
 <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></span>
 <span class="w-2.5 h-2.5 rounded-full bg-green-500/70"></span>
-<span class="ml-2 font-label-mono text-[10px] text-outline truncate">naplesantiquesllc.com</span>
+<span class="ml-2 font-label-mono text-[10px] text-outline truncate">NaplesEstateJewelry.co</span>
 </div>
-<img alt="Página de inicio de Naples Antiques LLC" class="w-full h-56 object-cover object-center" loading="lazy" src="../assets/naples-hero.png"/>
+<img alt="Página de inicio de Naples Estate Jewelry" class="w-full h-56 object-cover object-center" loading="lazy" src="../assets/portfolio/naples-estate-jewelry/home.webp"/>
 <div class="p-7">
 <div class="flex items-center gap-2 mb-4">
 <span class="font-label-mono text-[10px] text-electric-cyan">01 // DESTACADO</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Naples Antiques LLC</h3>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">NaplesEstateJewelry.co</h3>
+<p class="font-label-caps text-[10px] text-electric-cyan tracking-[0.14em] mb-4">E-commerce de joyería</p>
 <div class="flex flex-wrap gap-2 mb-5">
 <span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">DISEÑO WEB</span>
 <span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">E-COMMERCE A MEDIDA</span>
@@ -889,31 +860,10 @@ Vista previa del portal de Acceso de Flota →
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> Llamada y mensaje de un toque + ofertas por foto</li>
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> SEO local en el suroeste de Florida</li>
 </ul>
-<a href="https://naplesantiquesllc.com" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-sm active:scale-[0.98] transition-all">
+<a href="https://NaplesEstateJewelry.co" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-sm active:scale-[0.98] transition-all">
                     Visitar Sitio en Vivo <span class="material-symbols-outlined text-base">arrow_outward</span>
 </a>
-</div>
-</div>
-
-<!-- Mobile reinforcers -->
-<div class="glass-card rounded-xl overflow-hidden mb-4">
-<img alt="Precios de metales preciosos en vivo en las tarjetas de producto" class="w-full h-44 object-cover object-top border-b border-white/10" loading="lazy" src="../assets/naples-pricing.png"/>
-<div class="p-6">
-<div class="flex items-center gap-2 mb-2">
-<span class="material-symbols-outlined text-electric-cyan text-lg">monitoring</span>
-<h4 class="font-headline-md text-[18px] text-starlight-white">Precios de metales en vivo</h4>
-</div>
-<p class="font-body-md text-[14px] text-on-surface-variant">Los precios se actualizan desde el spot de oro y plata en vivo con un multiplicador configurable y estados de «mercado cerrado».</p>
-</div>
-</div>
-<div class="glass-card rounded-xl overflow-hidden mb-8">
-<img alt="Página de detalle de producto con carrito y precios" class="w-full h-44 object-cover object-top border-b border-white/10" loading="lazy" src="../assets/naples-product.png"/>
-<div class="p-6">
-<div class="flex items-center gap-2 mb-2">
-<span class="material-symbols-outlined text-nebula-purple text-lg">shopping_cart</span>
-<h4 class="font-headline-md text-[18px] text-starlight-white">Carrito y pago, sin Shopify</h4>
-</div>
-<p class="font-body-md text-[14px] text-on-surface-variant">Galerías de productos, valor exacto de chatarra, agregar al carrito y favoritos: sin suscripción de Shopify ni cuotas por venta.</p>
+<a href="portfolio-naplesestatejewelry.html" class="mt-3 flex items-center justify-center gap-2 w-full py-4 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-sm active:scale-[0.98] transition-all">Ver más detalles de este proyecto <span class="material-symbols-outlined text-base">arrow_forward</span></a>
 </div>
 </div>
 
@@ -923,23 +873,24 @@ Vista previa del portal de Acceso de Flota →
 <span class="w-2.5 h-2.5 rounded-full bg-red-500/70"></span>
 <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></span>
 <span class="w-2.5 h-2.5 rounded-full bg-green-500/70"></span>
-<span class="ml-2 font-label-mono text-[10px] text-outline truncate">eliteyachtdetailing.com</span>
+<span class="ml-2 font-label-mono text-[10px] text-outline truncate">EliteYachtDetailing.com</span>
 <span class="ml-auto font-label-caps text-[9px] px-1.5 py-0.5 bg-electric-cyan/15 text-electric-cyan border border-electric-cyan/30 rounded">EN VIVO</span>
 </div>
 <div class="bg-void-black overflow-hidden">
-<img alt="Sunseeker 630 S — Elite Yacht Detailing" class="elite-feature-hero" decoding="async" src="../assets/portfolio/elite/hero-yacht.jpg"/>
+<img alt="Sunseeker 630 S  Elite Yacht Detailing" class="elite-feature-hero" decoding="async" src="../assets/portfolio/elite/hero-yacht.jpg"/>
 </div>
 <div class="p-7">
 <div class="flex items-center gap-2 mb-4">
 <span class="font-label-mono text-[10px] text-electric-cyan">02 // EN VIVO</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Elite Yacht Detailing</h3>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">EliteYachtDetailing.com</h3>
+<p class="font-label-caps text-[10px] text-electric-cyan tracking-[0.14em] mb-4">Detallado de yates de lujo</p>
 <div class="flex flex-wrap gap-2 mb-5">
 <span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">DISEÑO WEB</span>
 <span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">PORTAL DE FLOTA</span>
 </div>
 <p class="font-body-md text-body-md text-on-surface-variant mb-4">Sitio en vivo de detallado de yates de lujo para Naples: página de inicio cinematográfica, control deslizante de comparación antes/después, galería de flota (más de 400 embarcaciones) y un portal de cliente de Acceso de Flota para programas recurrentes de marina y flota.</p>
-<p class="font-label-caps text-[10px] text-electric-cyan mb-3 tracking-widest">ACCESO Y GESTIÓN DE FLOTA</p>
+<p class="font-label-caps text-[10px] text-electric-cyan mb-3 tracking-widest">ACCESO Y GESTIN DE FLOTA</p>
 <p class="font-body-md text-on-surface-variant text-sm mb-5">Vista previa del portal con programación de múltiples embarcaciones, historial de servicio, registros de recubrimiento y contacto prioritario con el capitán; inicio de sesión próximamente; experiencia completa ya creada.</p>
 <div class="space-y-3 mb-5">
 <div class="rounded-lg overflow-hidden border border-white/10">
@@ -954,9 +905,49 @@ Vista previa del portal de Acceso de Flota →
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> Galería de flota e interfaz del portal de cliente</li>
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> Muestra de restauración de arrastrar para comparar</li>
 </ul>
-<a href="https://eliteyachtdetailing.com" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-sm active:scale-[0.98] transition-all">
+<a href="https://EliteYachtDetailing.com" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-sm active:scale-[0.98] transition-all">
 <span class="material-symbols-outlined text-base">open_in_new</span> Visitar Sitio en Vivo
 </a>
+<a href="portfolio-eliteyachtdetailing.html" class="mt-3 flex items-center justify-center gap-2 w-full py-4 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-sm active:scale-[0.98] transition-all">Ver más detalles de este proyecto <span class="material-symbols-outlined text-base">arrow_forward</span></a>
+</div>
+</div>
+
+<!-- Project 03: JPS Surette Photography -->
+<div id="m-case-jps" class="glass-card rounded-xl overflow-hidden mb-8 border border-nebula-purple/20 scroll-mt-24">
+<div class="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-void-black/60">
+<span class="w-2.5 h-2.5 rounded-full bg-red-500/70"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-green-500/70"></span>
+<span class="ml-2 font-label-mono text-[10px] text-outline truncate">JPSurette.com</span>
+<span class="ml-auto font-label-caps text-[9px] px-1.5 py-0.5 bg-[#39ff88]/10 text-[#39ff88] border border-[#39ff88]/35 rounded">EN PROGRESO</span>
+</div>
+<img alt="Página de inicio de JPS Surette Photography" class="w-full h-56 object-cover object-center" loading="lazy" src="../assets/portfolio/jpsurette/home.webp"/>
+<div class="p-7">
+<div class="flex items-center gap-2 mb-4"><span class="font-label-mono text-[10px] text-electric-cyan">03 // EN PROGRESO</span></div>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">JPSurette.com</h3>
+<p class="font-label-caps text-[10px] text-nebula-purple tracking-[0.14em] mb-4">Portafolio fotográfico</p>
+<div class="flex flex-wrap gap-2 mb-5">
+<span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">PORTAFOLIO</span>
+<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">GALERÍAS</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-5">Sitio de fotografía de alto contraste para deportes de combate, eventos, arquitectura, bienes raíces, editorial y encargos comerciales.</p>
+<div class="glass-card rounded-lg p-4 mb-5 border border-[#39ff88]/25 bg-[#39ff88]/5">
+<div class="flex items-center justify-between gap-3 mb-2"><span class="font-label-caps text-[9px] text-[#39ff88] tracking-[0.16em]">EN PROGRESO</span><span class="font-label-mono text-[10px] text-electric-cyan">68%</span></div>
+<div class="build-progress-track" aria-label="Progreso móvil de JPS Surette"><div class="build-progress-fill build-progress-fill--green"></div></div>
+</div>
+<div class="space-y-3 mb-5">
+<div class="rounded-lg overflow-hidden border border-white/10"><img alt="Portafolio de combate de JPS" class="w-full h-auto block" loading="lazy" src="../assets/portfolio/jpsurette/combat.webp"/></div>
+<div class="rounded-lg overflow-hidden border border-white/10"><img alt="Dirección de galerías de eventos de JPS" class="w-full h-auto block" loading="lazy" src="../assets/portfolio/jpsurette/events.webp"/></div>
+</div>
+<ul class="space-y-2 font-label-mono text-[12px] text-on-surface-variant mb-7">
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> Rutas de combate y arquitectura</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> Archivo de eventos y dirección de galerías</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> Formulario de contacto listo para Netlify</li>
+</ul>
+<a href="https://jpsurette.netlify.app/" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-sm active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-base">open_in_new</span> Ver Vista Previa en Vivo
+</a>
+<a href="portfolio-jpsurette.html" class="mt-3 flex items-center justify-center gap-2 w-full py-4 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-sm active:scale-[0.98] transition-all">Ver más detalles de este proyecto <span class="material-symbols-outlined text-base">arrow_forward</span></a>
 </div>
 </div>
 
@@ -965,12 +956,12 @@ Vista previa del portal de Acceso de Flota →
 <h2 class="font-headline-lg text-headline-md text-starlight-white mb-3">¿Quieres ser el próximo?</h2>
 <p class="font-body-md text-on-surface-variant mb-6">Ubicados en Naples, FL. Llama o envía un mensaje.</p>
 <a href="tel:+12394048505" class="flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-sm active:scale-[0.98] transition-all">
-<span class="material-symbols-outlined text-base">call</span> Llama o Envía un Mensaje (239) 404-8505
+<span class="material-symbols-outlined text-base">call</span> Llama o Enva un Mensaje (239) 404-8505
             </a>
 </div>
 </main>
 <div class="site-powered-by-bar w-full bg-void-black border-t border-white/5 py-8 px-margin-mobile flex justify-center relative z-10">
-<a class="dm-powered-badge" href="built-by.html" aria-label="Sitio web desarrollado por Dark Matter Servicios Web — ver página de referidos">
+<a class="dm-powered-badge" href="built-by.html" aria-label="Sitio web desarrollado por Dark Matter Servicios Web  ver página de referidos">
 <svg class="dm-powered-badge__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z"/>
 </svg>
@@ -986,7 +977,7 @@ Vista previa del portal de Acceso de Flota →
 <div class="font-headline-md text-headline-md text-starlight-white tracking-tighter">DARK MATTER</div>
 <span class="brand-subtext brand-subtext--center">Servicios Web</span>
 </div>
-<div class="font-label-caps text-[10px] text-on-primary-container opacity-60 text-center tracking-widest">© 2026 DARK MATTER · NAPLES, FL · LLAMA O ENVÍA UN MENSAJE (239) 404-8505</div>
+<div class="font-label-caps text-[10px] text-on-primary-container opacity-60 text-center tracking-widest"> 2026 DARK MATTER  NAPLES, FL  LLAMA O ENVA UN MENSAJE (239) 404-8505 &middot; CORREO <a class="text-electric-cyan hover:underline" href="mailto:darkmatterwebsites@gmail.com">darkmatterwebsites@gmail.com</a></div>
 </footer>
 <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface/10 backdrop-blur-2xl border-t border-starlight-white/10 shadow-[0_-10px_30px_rgba(112,0,255,0.15)] rounded-t-xl">
 <a class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-all hover:text-starlight-white" href="index.html">
@@ -1013,7 +1004,8 @@ Vista previa del portal de Acceso de Flota →
 </div>
 <!-- /MOBILE -->
 
-<script src="../assets/mobile-services-nav.js?v=20260601-mobile-services2"></script>
-<script src="../assets/site-hero.js?v=20260601-video-hero7"></script>
-<script src="../assets/rail.js?v=20260601-rail-design-builder"></script>
+<script src="../assets/mobile-services-nav.js?v=20260602-consultation"></script>
+<script src="../assets/rail.js?v=20260602-rail-active"></script>
 </body></html>
+
+

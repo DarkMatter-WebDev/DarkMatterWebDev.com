@@ -8,7 +8,8 @@
 <link rel="alternate" hreflang="en" href="/services/in-home-services.html"/>
 <link rel="alternate" hreflang="es" href="/es/services/in-home-services.html"/>
 <link rel="alternate" hreflang="x-default" href="/services/in-home-services.html"/>
-<link href="../../assets/nav.css?v=20260601-mobile-topnav" rel="stylesheet"/>
+<link href="../../assets/nav.css?v=20260602-menu-center" rel="stylesheet"/>
+<link href="../../assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/>
 <link href="../../assets/powered-by-badge.css" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
@@ -22,7 +23,7 @@
 </style>
 <script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"void-black":"#050505","electric-cyan":"#00F0FF","nebula-purple":"#7000FF","starlight-white":"#FFFFFF","on-surface-variant":"#c4c7c7","outline":"#8e9192","surface":"#121414"},spacing:{"margin-desktop":"64px","margin-mobile":"20px","gutter":"24px","container-max":"1440px"},fontFamily:{"headline-xl":["Space Grotesk"],"headline-lg":["Space Grotesk"],"headline-md":["Space Grotesk"],"body-md":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"label-mono":["JetBrains Mono"],"label-caps":["JetBrains Mono"]},fontSize:{"headline-xl":["64px",{lineHeight:"1.1",fontWeight:"700"}],"headline-lg":["40px",{lineHeight:"1.2",fontWeight:"600"}],"headline-md":["24px",{lineHeight:"1.3",fontWeight:"500"}],"body-lg":["18px",{lineHeight:"1.6"}],"body-md":["16px",{lineHeight:"1.6"}],"label-mono":["14px",{letterSpacing:"0.05em"}],"label-caps":["12px",{letterSpacing:"0.1em",fontWeight:"700"}]}}}}</script>
 </head>
-<body class="bg-void-black text-starlight-white font-body-md overflow-x-hidden">
+<body class="bg-void-black text-starlight-white font-body-md overflow-x-hidden cosmic-tint-in-home">
 <div class="hidden md:block">
 <div class="fixed inset-0 grid-overlay pointer-events-none z-0"></div>
 <nav class="fixed top-0 w-full z-50 bg-surface/10 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-margin-desktop py-4">
@@ -35,7 +36,7 @@
 <div class="relative services-nav-group"><a class="font-label-mono text-label-mono text-electric-cyan border-b-2 border-electric-cyan pb-1" href="../services.html">Servicios</a><div class="services-nav-menu"><div class="services-nav-panel">
 <div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Servicios en Línea</div>
 <a href="../services/complete-website-management.html">Gestión Completa de Sitios Web</a>
-<a href="../services/discovery-consultation.html">Descubrimiento y Consulta</a>
+<a href="../services/discovery-consultation.html">Consulta</a>
 <a href="../services/website-design.html">Diseño de Sitios Web</a>
 <a href="../services/brand-rebranding.html">Marca y Rediseño</a>
 <a href="../services/managed-hosting.html">Hosting Administrado</a>
@@ -49,13 +50,13 @@
 </div>
 </div>
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan" href="../process.html">Proceso</a>
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan" href="../casestudies.html">Nuestro portafolio</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan" href="../casestudies.html">Portafolio</a>
 <div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0">
 <a href="../../services/in-home-services.html" hreflang="en" lang="en" aria-label="Switch to English" onclick="try{localStorage.setItem('dm_lang','en')}catch(e){}" class="text-on-surface-variant hover:text-electric-cyan transition-colors duration-300">EN</a>
 <span class="text-outline/50">/</span>
 <span class="text-electric-cyan" aria-current="true">ES</span>
 </div>
-<a href="../contact.html" class="inline-block bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-mono px-6 py-2 rounded-lg">Agenda una Consulta</a>
+<a href="../contact.html" class="inline-block bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-mono px-6 py-2 rounded-lg">Contáctanos</a>
 </div>
 </nav>
 <aside class="fixed left-0 top-1/2 -translate-y-1/2 h-auto rounded-r-xl bg-void-black/80 backdrop-blur-2xl border-r border-t border-b border-white/5 p-4 gap-unit z-40 flex flex-col shadow-[0_0_20px_rgba(112,0,255,0.15)]">
@@ -98,7 +99,8 @@
 <ul class="space-y-3 mb-10"><li class="flex gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan">check</span>Configuración de Wi-Fi y redes</li><li class="flex gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan">check</span>Instalación de computadoras, impresoras y dispositivos</li><li class="flex gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan">check</span>Soporte para oficina en casa y oficinas pequeñas</li></ul>
 <a href="../contact.html" class="block text-center py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps rounded-sm">Agenda una Visita</a>
 </div>
-<script src="../../assets/mobile-services-nav.js?v=20260601-mobile-services2"></script>
-<script src="../../assets/site-hero.js?v=20260601-video-hero7"></script>
-<script src="../../assets/rail.js?v=20260601-rail-design-builder"></script>
+<script src="../../assets/mobile-services-nav.js?v=20260602-consultation"></script>
+<script src="../../assets/rail.js?v=20260602-rail-active"></script>
 </body></html>
+
+

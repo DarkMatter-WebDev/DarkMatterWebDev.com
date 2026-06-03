@@ -9,15 +9,41 @@
 <link rel="alternate" hreflang="en" href="/preference-builder.html"/>
 <link rel="alternate" hreflang="es" href="/es/preference-builder.html"/>
 <link rel="alternate" hreflang="x-default" href="/preference-builder.html"/>
-<link href="assets/nav.css?v=20260601-mobile-topnav" rel="stylesheet"/>
+<link href="assets/nav.css?v=20260602-menu-center" rel="stylesheet"/>
+<link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/>
 <link href="assets/powered-by-badge.css" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Bebas+Neue&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <style>
 html,body{background:#050505;color:#e3e2e2;overflow-x:hidden}
+.preference-loading{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:1.25rem;background:radial-gradient(circle at 70% 20%,rgba(112,0,255,.2),transparent 34%),radial-gradient(circle at 16% 72%,rgba(0,240,255,.12),transparent 30%),#050505;color:#fff;transition:opacity .35s ease,visibility .35s ease}
+.preference-loading__card{width:min(100%,24rem);border:1px solid rgba(0,240,255,.24);border-radius:1rem;background:rgba(8,10,14,.84);padding:1.25rem;box-shadow:0 22px 70px rgba(0,0,0,.4)}
+.preference-loading__bar{height:.35rem;margin-top:1rem;border-radius:999px;overflow:hidden;background:rgba(255,255,255,.1)}
+.preference-loading__bar span{display:block;width:42%;height:100%;border-radius:inherit;background:linear-gradient(90deg,#00f0ff,#7000ff);animation:pref-load 1.1s ease-in-out infinite}
+.preference-loading__eyebrow{font-family:"JetBrains Mono",monospace;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#00f0ff}
+.preference-loading__title{margin:.45rem 0 .35rem;font-family:"Space Grotesk",system-ui,sans-serif;font-size:1.35rem;font-weight:700;line-height:1.15}
+.preference-loading__text{margin:0;color:#c4c7c7;font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:.92rem;line-height:1.5}
+body.pref-ready .preference-loading{opacity:0;visibility:hidden;pointer-events:none}
+@keyframes pref-load{0%{transform:translateX(-105%)}100%{transform:translateX(245%)}}
 .grid-overlay{background-image:linear-gradient(to right,rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.05) 1px,transparent 1px);background-size:80px 80px}
 .glass-card{background:rgba(255,255,255,.035);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1)}
+.glow-cyan{box-shadow:0 0 20px rgba(0,240,255,.3)}
 .gradient-text{background:linear-gradient(135deg,#00f0ff,#7000ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mockup-hero{position:relative;width:100vw;margin-left:calc(50% - 50vw);min-height:clamp(34rem,76vh,48rem);overflow:hidden;align-items:center;border-bottom:1px solid rgba(255,255,255,.08);padding:10rem max(20px,calc((100vw - 1440px)/2 + 64px)) 6rem;background:#050608}
+.mockup-hero:after{content:"";position:absolute;inset:auto 0 0;height:42%;background:linear-gradient(to bottom,rgba(5,6,8,0),#050608 82%);z-index:2;pointer-events:none}
+.mockup-hero-media{position:absolute;inset:0;z-index:0;overflow:hidden}
+.mockup-hero-media video{width:100%;height:100%;object-fit:cover;filter:hue-rotate(18deg) saturate(1.34) contrast(1.08);transform:scale(1.02);opacity:.84}
+.mockup-hero-scrim{position:absolute;inset:0;z-index:1;background:radial-gradient(circle at 66% 38%,rgba(112,0,255,.28),transparent 34%),radial-gradient(circle at 24% 72%,rgba(0,240,255,.16),transparent 32%),linear-gradient(90deg,rgba(5,6,8,.92) 0%,rgba(5,6,8,.64) 44%,rgba(5,6,8,.34) 100%),linear-gradient(180deg,rgba(5,6,8,.48) 0%,rgba(5,6,8,.16) 48%,rgba(5,6,8,.88) 100%)}
+.mockup-hero-grid{position:absolute;inset:0;z-index:1;opacity:.24;background-image:linear-gradient(to right,rgba(255,255,255,.09) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.09) 1px,transparent 1px);background-size:90px 90px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.86),rgba(0,0,0,.28));pointer-events:none}
+.mockup-hero>*:not(.mockup-hero-media):not(.mockup-hero-scrim):not(.mockup-hero-grid){position:relative;z-index:3}
+.mockup-hero h1,.mockup-hero h2{color:#fff;text-shadow:0 2px 28px rgba(0,0,0,.78)}
+.mockup-hero p{text-shadow:0 1px 18px rgba(0,0,0,.72)}
+.mockup-hero .glass-card{background:rgba(8,10,14,.28);backdrop-filter:blur(22px);border-color:rgba(255,255,255,.13)}
+.hero-form-cue{display:inline-flex;align-items:center;gap:.65rem;margin-top:1.6rem;padding:.9rem 1.1rem;border-radius:999px;border:1px solid rgba(0,240,255,.32);background:rgba(0,240,255,.07);color:#00f0ff;font-family:"JetBrains Mono";font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 0 28px rgba(0,240,255,.08);transition:transform .2s ease,background .2s ease,border-color .2s ease}
+.hero-form-cue:hover{transform:translateY(2px);background:rgba(0,240,255,.12);border-color:rgba(0,240,255,.58)}
+.hero-form-cue .material-symbols-outlined{font-size:1.15rem;animation:cue-bounce 1.8s ease-in-out infinite}
+@keyframes cue-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
 .choice-card{position:relative;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.035);transition:border-color .2s ease,transform .2s ease,background .2s ease}
 .choice-card:hover,.choice-card.is-selected{border-color:rgba(0,240,255,.65);background:rgba(0,240,255,.07);transform:translateY(-2px)}
 .choice-card.is-selected:after{content:"check";font-family:"Material Symbols Outlined";position:absolute;top:.75rem;right:.75rem;color:#00f0ff;font-size:1.1rem}
@@ -45,34 +71,126 @@ html,body{background:#050505;color:#e3e2e2;overflow-x:hidden}
 .builder-step-card{background:linear-gradient(145deg,rgba(255,255,255,.062),rgba(255,255,255,.026));border-color:rgba(255,255,255,.18);box-shadow:0 18px 50px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.06)}
 .builder-step-card:nth-child(even){border-color:rgba(0,240,255,.2)}
 .builder-step-card:nth-child(odd){border-color:rgba(112,0,255,.22)}
+.preference-builder-form{scroll-margin-top:7rem}
+@media (min-width:768px){.preference-builder-form{padding-left:7.5rem}}
+.rail-popover-ghost{visibility:hidden;pointer-events:none;transform:translateY(-50%) translateX(-10px);transition:visibility 0s linear .42s,transform .42s cubic-bezier(.22,1,.36,1)}
+.rail-popover-ghost:before{content:"";position:absolute;left:-24px;top:-15%;width:28px;height:130%}
+.rail-popover-ghost.is-visible{visibility:visible;pointer-events:auto;transform:translateY(-50%) translateX(0);transition:visibility 0s,transform .42s cubic-bezier(.22,1,.36,1)}
+.rail-popover-ghost-inner{position:relative;overflow:hidden;padding:.7rem 1.35rem;border-radius:9999px;background:rgba(8,10,14,.24);backdrop-filter:blur(40px) saturate(1.5);-webkit-backdrop-filter:blur(40px) saturate(1.5);border:1px solid rgba(255,255,255,.06);box-shadow:0 0 0 1px rgba(255,255,255,.03) inset,0 12px 36px rgba(0,0,0,.2),0 0 56px rgba(112,0,255,.06);transform:scale(.94) translateZ(0);transform-origin:left center;backface-visibility:hidden;-webkit-backface-visibility:hidden;will-change:transform;transition:transform .42s cubic-bezier(.22,1,.36,1)}
+.rail-popover-ghost.is-visible .rail-popover-ghost-inner{transform:scale(1) translateZ(0)}
+.rail-popover-ghost-inner:before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(145deg,rgba(0,240,255,.06) 0%,transparent 42%,rgba(112,0,255,.05) 100%);pointer-events:none}
+.rail-popover-ghost-inner>*{position:relative;z-index:1}
+.rail-popover-ghost .rail-popover-step-label{opacity:.72}
+.rail-popover-ghost .rail-popover-title{text-shadow:0 0 28px rgba(255,255,255,.1)}
+.rail-popover-ghost .rail-popover-desc{opacity:.82}
+@media (max-width:767px){.grid-overlay,.ambient-glow-layer{display:none}.glass-card{backdrop-filter:none;-webkit-backdrop-filter:none}.mockup-hero{min-height:auto;padding:7.5rem 20px 3.5rem;background:radial-gradient(circle at 70% 18%,rgba(112,0,255,.28),transparent 32%),radial-gradient(circle at 8% 64%,rgba(0,240,255,.14),transparent 30%),#050608}.mockup-hero-media video{display:none}.mockup-hero .glass-card{background:rgba(8,10,14,.72);backdrop-filter:none;-webkit-backdrop-filter:none}.mockup-hero h1{font-size:clamp(2.35rem,11vw,3.8rem)!important;line-height:1.04!important}.mockup-hero p{font-size:1rem;line-height:1.55}.builder-step-card{box-shadow:0 10px 28px rgba(0,0,0,.28)}.choice-card:hover,.choice-card.is-selected{transform:none}}
 </style>
 <script>
+window.tailwind=window.tailwind||{};
 tailwind.config={darkMode:"class",theme:{extend:{colors:{"void-black":"#050505","surface":"#121414","on-surface":"#e3e2e2","on-surface-variant":"#c4c7c7","starlight-white":"#fff","electric-cyan":"#00F0FF","nebula-purple":"#7000FF","outline":"#8e9192"},fontFamily:{"headline-xl":["Space Grotesk"],"headline-lg":["Space Grotesk"],"headline-md":["Space Grotesk"],"body-md":["Plus Jakarta Sans"],"label-mono":["JetBrains Mono"],"label-caps":["JetBrains Mono"]},fontSize:{"headline-xl":["64px",{lineHeight:"1.1",fontWeight:"700"}],"headline-lg":["40px",{lineHeight:"1.2",fontWeight:"600"}],"headline-md":["24px",{lineHeight:"1.3",fontWeight:"500"}],"body-md":["16px",{lineHeight:"1.6",fontWeight:"400"}],"label-mono":["14px",{lineHeight:"1.4",letterSpacing:".05em",fontWeight:"500"}],"label-caps":["12px",{lineHeight:"1.2",letterSpacing:".1em",fontWeight:"700"}]},spacing:{"margin-desktop":"64px","margin-mobile":"20px","gutter":"24px","container-max":"1440px"}}}};
 </script>
 </head>
 <body class="font-body-md text-body-md bg-void-black text-on-surface selection:bg-electric-cyan selection:text-void-black">
+<div class="preference-loading" role="status" aria-live="polite">
+<div class="preference-loading__card">
+<div class="preference-loading__eyebrow">Free mockup request</div>
+<div class="preference-loading__title">Building your preference form...</div>
+<p class="preference-loading__text">This page can take a moment on mobile. Your options will appear below shortly.</p>
+<div class="preference-loading__bar" aria-hidden="true"><span></span></div>
+</div>
+</div>
 <div class="fixed inset-0 grid-overlay opacity-20 pointer-events-none"></div>
-<div class="fixed inset-0 overflow-hidden pointer-events-none"><div class="absolute -top-40 -left-32 w-[34rem] h-[34rem] rounded-full bg-electric-cyan/10 blur-[120px]"></div><div class="absolute bottom-0 right-0 w-[38rem] h-[38rem] rounded-full bg-nebula-purple/12 blur-[140px]"></div></div>
-<nav class="fixed top-0 w-full bg-surface/10 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 z-50">
+<div class="ambient-glow-layer fixed inset-0 overflow-hidden pointer-events-none"><div class="absolute -top-40 -left-32 w-[34rem] h-[34rem] rounded-full bg-electric-cyan/10 blur-[120px]"></div><div class="absolute bottom-0 right-0 w-[38rem] h-[38rem] rounded-full bg-nebula-purple/12 blur-[140px]"></div></div>
+<nav class="hidden md:flex fixed top-0 w-full bg-surface/10 backdrop-blur-xl border-b border-white/10 justify-between items-center px-margin-desktop py-4 z-50">
 <a href="index.html" class="site-brand inline-flex items-center gap-2.5 flex-nowrap shrink-0">
 <span class="material-symbols-outlined brand-mark text-electric-cyan" aria-hidden="true">blur_on</span>
 <span class="flex flex-col leading-none"><span class="font-headline-md text-headline-md tracking-tighter brand-mystical brand-mystical--glow">DARK MATTER</span><span class="brand-subtext">Web Services</span></span>
 </a>
-<div class="hidden md:flex gap-10 items-center">
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors" href="index.html">Home</a>
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors" href="services.html">Services</a>
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors" href="process.html">Process</a>
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors" href="casestudies.html">Portfolio</a>
-<div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0"><span class="text-electric-cyan" aria-current="true">EN</span><span class="text-outline/50">/</span><a href="es/preference-builder.html" hreflang="es" lang="es" aria-label="Cambiar a español" onclick="try{localStorage.setItem('dm_lang','es')}catch(e){}" class="text-on-surface-variant hover:text-electric-cyan transition-colors">ES</a></div>
+<div class="flex gap-10 items-center">
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="index.html">Home</a>
+<div class="relative services-nav-group">
+<a class="font-label-mono text-label-mono text-electric-cyan border-b-2 border-electric-cyan pb-1 transition-colors duration-300" href="services.html">Services</a>
+<div class="services-nav-menu">
+<div class="services-nav-panel">
+<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Online Services</div>
+<a href="services/complete-website-management.html">Complete Website Management</a>
+<a href="services/discovery-consultation.html">Consultation</a>
+<a href="services/website-design.html">Website Design</a>
+<a href="services/brand-rebranding.html">Brand &amp; Rebranding</a>
+<a href="services/managed-hosting.html">Managed Hosting</a>
+<a href="services/website-care-plans.html">Website Care Plans</a>
+<a href="services/seo-foundations.html">SEO Foundations</a>
+<a href="services/custom-development.html">Custom Business Web Apps</a>
+<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">home_pin</span>In-Home &amp; Office Services</div>
+<a href="services/in-home-services.html">In-Home Tech Services</a>
+<a href="services/office-network-setup.html">Office Network Setup</a>
 </div>
-<a href="contact.html" class="hidden sm:inline-block px-5 py-2 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-lg font-bold">Start Project</a>
+</div>
+</div>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="process.html">Process</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="casestudies.html">Portfolio</a>
+<div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0"><span class="text-electric-cyan" aria-current="true">EN</span><span class="text-outline/50">/</span><a href="es/preference-builder.html" hreflang="es" lang="es" aria-label="Cambiar a español" onclick="try{localStorage.setItem('dm_lang','es')}catch(e){}" class="text-on-surface-variant hover:text-electric-cyan transition-colors duration-300">ES</a></div>
+<a href="contact.html" class="inline-block bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-mono text-label-mono px-6 py-2 rounded-lg hover:scale-105 active:scale-95 transition-all glow-cyan">Contact Us</a>
+</div>
 </nav>
-<main class="relative z-10 pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-<section class="grid grid-cols-1 lg:grid-cols-[1.08fr_.92fr] gap-12 items-end mb-16">
+<div class="md:hidden">
+<header class="fixed top-0 w-full z-50 bg-surface/10 backdrop-blur-xl border-b border-starlight-white/10 shadow-[0_0_20px_rgba(0,240,255,0.1)] flex items-center justify-between px-margin-mobile h-16">
+<a href="index.html" class="site-brand inline-flex items-center gap-2.5 flex-nowrap shrink-0">
+<span class="material-symbols-outlined brand-mark text-electric-cyan" aria-hidden="true">blur_on</span>
+<span class="flex flex-col leading-none"><span class="font-headline-md text-headline-md tracking-tighter brand-mystical brand-mystical--glow">DARK MATTER</span><span class="brand-subtext">Web Services</span></span>
+</a>
+<div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0">
+<span class="text-electric-cyan" aria-current="true">EN</span>
+<span class="text-outline/50">/</span>
+<a href="es/preference-builder.html" hreflang="es" lang="es" aria-label="Cambiar a español" onclick="try{localStorage.setItem('dm_lang','es')}catch(e){}" class="text-on-surface-variant hover:text-electric-cyan transition-colors duration-300">ES</a>
+</div>
+</header>
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface/10 backdrop-blur-2xl border-t border-starlight-white/10 shadow-[0_-10px_30px_rgba(112,0,255,0.15)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-all hover:text-starlight-white" href="index.html"><span class="material-symbols-outlined">home</span><span class="font-label-caps text-[10px] mt-1">Home</span></a>
+<a class="flex flex-col items-center justify-center text-electric-cyan drop-shadow-[0_0_8px_rgba(0,240,255,0.8)] active:scale-90 transition-all" href="services.html"><span class="material-symbols-outlined">design_services</span><span class="font-label-caps text-[10px] mt-1">Services</span></a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-all hover:text-starlight-white" href="process.html"><span class="material-symbols-outlined">timeline</span><span class="font-label-caps text-[10px] mt-1">Process</span></a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-all hover:text-starlight-white" href="casestudies.html"><span class="material-symbols-outlined">workspace_premium</span><span class="font-label-caps text-[10px] mt-1">Work</span></a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-all hover:text-starlight-white" href="contact.html"><span class="material-symbols-outlined">mail</span><span class="font-label-caps text-[10px] mt-1">Contact</span></a>
+</nav>
+</div>
+<div class="hidden md:block" data-process-rail>
+<aside class="fixed left-0 top-1/2 -translate-y-1/2 h-auto rounded-r-xl bg-void-black/80 backdrop-blur-2xl border-r border-t border-b border-white/5 p-4 gap-unit z-40 flex flex-col shadow-[0_0_20px_rgba(112,0,255,0.15)]">
+<div class="mb-4">
+<p class="font-label-caps text-[10px] text-outline opacity-50">OUR PROCESS</p>
+<p class="font-label-caps text-nebula-purple">4 STEPS</p>
+</div>
+<div class="flex flex-col gap-4">
+<button type="button" data-step="design" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Design"><span class="material-symbols-outlined">architecture</span><span class="font-label-caps text-[8px] mt-1">DESIGN</span></button>
+<button type="button" data-step="build" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Build"><span class="material-symbols-outlined">terminal</span><span class="font-label-caps text-[8px] mt-1">BUILD</span></button>
+<button type="button" data-step="launch" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Launch"><span class="material-symbols-outlined">rocket_launch</span><span class="font-label-caps text-[8px] mt-1">LAUNCH</span></button>
+<button type="button" data-step="maintain" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Maintain"><span class="material-symbols-outlined">cloud_done</span><span class="font-label-caps text-[8px] mt-1">MAINTAIN</span></button>
+</div>
+</aside>
+<div id="rail-popover" class="rail-popover-ghost fixed z-[60] w-[min(32rem,calc(100vw-6rem))]" aria-hidden="true">
+<div class="rail-popover-ghost-inner">
+<div class="flex items-center gap-3">
+<span id="rail-popover-icon" class="material-symbols-outlined text-electric-cyan/80 text-lg shrink-0"></span>
+<div class="flex flex-col gap-0.5 min-w-0">
+<div class="flex items-center gap-2 flex-wrap">
+<span id="rail-popover-step" class="font-label-mono text-[10px] tracking-widest text-electric-cyan/70 rail-popover-step-label shrink-0"></span>
+<h4 id="rail-popover-title" class="font-headline-md text-base text-starlight-white/90 rail-popover-title"></h4>
+</div>
+<p id="rail-popover-desc" class="text-on-surface-variant text-xs leading-snug rail-popover-desc"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<main class="relative z-10 pt-0 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<section class="mockup-hero grid grid-cols-1 lg:grid-cols-[1.08fr_.92fr] gap-12 mb-16">
+<div class="mockup-hero-media" aria-hidden="true"></div>
+<div class="mockup-hero-scrim" aria-hidden="true"></div>
+<div class="mockup-hero-grid" aria-hidden="true"></div>
 <div>
 <span class="font-label-caps text-label-caps text-electric-cyan tracking-[.22em]">FREE WEBSITE MOCKUP</span>
 <h1 class="font-headline-xl text-[clamp(2.4rem,6vw,4.8rem)] text-starlight-white mt-5 mb-6">Want a <span class="gradient-text">free mockup</span> of your website idea?</h1>
 <p class="text-on-surface-variant text-lg max-w-3xl leading-relaxed">Tell us what style, structure, and feeling you want. We will review your choices, create a quick screenshot-style concept, and get back to you within 48 hours so we can talk through it directly.</p>
+<a href="#preference-form" class="hero-form-cue">Fill out the form below <span class="material-symbols-outlined" aria-hidden="true">arrow_downward</span></a>
 </div>
 <aside class="glass-card rounded-xl p-6">
 <div class="flex items-center justify-between mb-4"><h2 class="font-headline-md text-starlight-white">Live Blueprint</h2><span class="font-label-mono text-xs text-electric-cyan" id="progress-text">0%</span></div>
@@ -87,7 +205,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"void-black":"#050505",
 </div>
 </aside>
 </section>
-<form id="preference-form" name="website-preferences" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+<form id="preference-form" class="preference-builder-form" name="website-preferences" method="POST" data-netlify="true" netlify-honeypot="bot-field">
 <input type="hidden" name="form-name" value="website-preferences">
 <p class="hidden"><label>Do not fill this out: <input name="bot-field"></label></p>
 <input type="hidden" name="language" value="en">
@@ -172,7 +290,30 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"void-black":"#050505",
 </section>
 </form>
 </main>
+<div class="site-powered-by-bar w-full bg-void-black border-t border-white/5 py-8 px-margin-mobile flex justify-center relative z-10">
+<a class="dm-powered-badge" href="built-by.html" aria-label="Website powered by Dark Matter Web Services &mdash; view referral landing page">
+<svg class="dm-powered-badge__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z"/>
+</svg>
+<span class="dm-powered-badge__lockup">
+<span class="dm-powered-badge__label">Website powered by</span>
+<span class="dm-powered-badge__name">DARK MATTER</span>
+<span class="dm-powered-badge__subtext">Web Services</span>
+</span>
+</a>
+</div>
+<footer class="w-full py-12 px-margin-mobile flex flex-col items-center gap-6 mb-20 md:mb-0 border-t border-starlight-white/5 bg-void-black relative z-10">
+<div class="flex flex-col leading-none items-center">
+<div class="font-headline-md text-headline-md text-starlight-white tracking-tighter">DARK MATTER</div>
+<span class="brand-subtext brand-subtext--center">Web Services</span>
+</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant/70 text-center">
+&copy; 2026 DARK MATTER &middot; NAPLES, FL &middot; CALL OR TEXT (239) 404-8505 &middot; <a class="text-electric-cyan hover:underline" href="mailto:darkmatterwebsites@gmail.com">darkmatterwebsites@gmail.com</a>
+</div>
+</footer>
 <script>
+window.addEventListener("load",function(){setTimeout(function(){document.body.classList.add("pref-ready");},250);});
+setTimeout(function(){document.body.classList.add("pref-ready");},7000);
 const state={style:"Not set",industry:"Not set",voice:"Not set",pages:1,goal:""};
 function setSelected(button){document.querySelectorAll('[data-field="'+button.dataset.field+'"]').forEach(b=>b.classList.remove('is-selected'));button.classList.add('is-selected');}
 function selectedPages(){return Array.from(document.querySelectorAll('#page-options input[type="checkbox"]:checked')).map(input=>input.value);}
@@ -187,5 +328,7 @@ document.querySelectorAll("#contact-name,#contact-email").forEach(input=>input.a
 document.getElementById("preference-form").addEventListener("submit",event=>{event.preventDefault();syncFormFields();const form=event.currentTarget;const submit=document.getElementById("preference-submit");const status=document.getElementById("form-status");if(!isReady()){status.textContent="Please choose a style, industry, primary goal, brand voice, and enter your name and email before sending.";return;}submit.disabled=true;submit.classList.add("cursor-not-allowed","opacity-60");status.textContent="Sending your free mockup request...";fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(new FormData(form)).toString()}).then(response=>{if(!response.ok)throw new Error("Form submission failed");status.textContent="Request sent. We will review it and get back to you within 48 hours.";submit.querySelector(".material-symbols-outlined").textContent="check_circle";}).catch(()=>{status.textContent="Something went wrong. Please try again or use the contact button.";submit.disabled=false;submit.classList.remove("cursor-not-allowed","opacity-60");});});
 updateSummary();
 </script>
+<script src="assets/mobile-services-nav.js?v=20260602-consultation"></script>
+<script src="assets/rail.js?v=20260602-rail-active"></script>
 </body>
 </html>

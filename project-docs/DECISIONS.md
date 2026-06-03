@@ -1,5 +1,18 @@
 # Decisions
 
+## 2026-06-02
+
+Decision:
+Use a local compressed WebP version of ESA/Hubble's "The Cosmic Web (Artist's Impression)" as the shared visual background for non-home pages.
+
+Reason:
+It reinforces the Dark Matter brand with an actual cosmic-web/dark-matter visual while avoiding heavy MP4 loading on every page. Keeping the file local prevents hotlinking and gives predictable performance.
+
+Alternatives Considered:
+- Keep non-home pages as plain grid/black backgrounds.
+- Reuse the homepage black-hole MP4 on all pages.
+- Use a remote image URL instead of a local optimized asset.
+
 ## 2026-06-01
 
 Decision:

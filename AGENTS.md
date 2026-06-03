@@ -19,5 +19,10 @@ Before ending a meaningful work session:
 4. Add meaningful changes to `project-docs/CHANGELOG.md`.
 5. Update `project-docs/ARCHITECTURE.md` if structure, hosting, integrations, auth, or deployment changed.
 
-Never store passwords, secret keys, recovery codes, or private credentials in project docs. `project-docs/CLIENTS.md` may contain references to credential locations only.
+After broad HTML/CSS/JS edits, run the static-site validator:
 
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\validate-site.ps1
+```
+
+Never store passwords, secret keys, recovery codes, or private credentials in project docs. `project-docs/CLIENTS.md` may contain references to credential locations only.

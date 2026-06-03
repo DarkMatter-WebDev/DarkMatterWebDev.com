@@ -9,7 +9,7 @@
 <link rel="alternate" hreflang="en" href="/index.html"/>
 <link rel="alternate" hreflang="es" href="/es/index.html"/>
 <link rel="alternate" hreflang="x-default" href="/index.html"/>
-<link href="../assets/nav.css?v=20260601-mobile-topnav" rel="stylesheet"/>
+<link href="../assets/nav.css?v=20260602-menu-center" rel="stylesheet"/>
 <link href="../assets/powered-by-badge.css" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Bebas+Neue&amp;display=swap" rel="stylesheet"/>
@@ -364,6 +364,36 @@
         .rail-popover-ghost .rail-popover-step-label { opacity: 0.72; }
         .rail-popover-ghost .rail-popover-title { text-shadow: 0 0 28px rgba(255, 255, 255, 0.1); }
         .rail-popover-ghost .rail-popover-desc { opacity: 0.82; }
+        .spoof-easter-egg {
+            position: relative;
+            display: block;
+            width: 16px;
+            height: 16px;
+            margin: 0 0 12px 12px;
+            border-radius: 9999px;
+            background: conic-gradient(from 90deg, #ff3b8f, #ffd400, #39ff88, #00f0ff, #7000ff, #ff3b8f);
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.22), 0 0 18px rgba(0, 240, 255, 0.26);
+            opacity: 0.72;
+            transition: transform 0.28s ease, opacity 0.28s ease, box-shadow 0.28s ease;
+            animation: easter-egg-spin 8s linear infinite;
+        }
+        .spoof-easter-egg:hover,
+        .spoof-easter-egg:focus-visible {
+            opacity: 1;
+            transform: scale(1.35);
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5), 0 0 28px rgba(57, 255, 136, 0.4);
+            outline: none;
+        }
+        @keyframes easter-egg-spin {
+            to { filter: hue-rotate(360deg); }
+        }
+        @media (max-width: 767px) {
+            .spoof-easter-egg {
+                margin: 0 0 88px 10px;
+                width: 14px;
+                height: 14px;
+            }
+        }
         [id^="step-"] { scroll-margin-top: 6rem; }
     </style>
 </head>
@@ -393,9 +423,9 @@
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="services.html">Servicios</a>
 <div class="services-nav-menu">
 <div class="services-nav-panel">
-<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Servicios en Línea</div>
+<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Servicios en Lnea</div>
 <a href="services/complete-website-management.html">Gestión Completa de Sitios Web</a>
-<a href="services/discovery-consultation.html">Descubrimiento y Consulta</a>
+<a href="services/discovery-consultation.html">Consulta</a>
 <a href="services/website-design.html">Diseño de Sitios Web</a>
 <a href="services/brand-rebranding.html">Marca y Rediseño</a>
 <a href="services/managed-hosting.html">Hosting Administrado</a>
@@ -404,12 +434,12 @@
 <a href="services/custom-development.html">Aplicaciones Web Empresariales a Medida</a>
 <div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">home_pin</span>Servicios a Domicilio y de Oficina</div>
 <a href="services/in-home-services.html">Servicios Técnicos a Domicilio</a>
-<a href="services/office-network-setup.html">Configuración de Redes de Oficina</a>
+<a href="services/office-network-setup.html">Configuracin de Redes de Oficina</a>
 </div>
 </div>
 </div>
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="process.html">Proceso</a>
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="casestudies.html">Nuestro portafolio</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="casestudies.html">Portafolio</a>
 <div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0">
 <a href="../index.html" hreflang="en" lang="en" aria-label="Switch to English" onclick="try{localStorage.setItem('dm_lang','en')}catch(e){}" class="text-on-surface-variant hover:text-electric-cyan transition-colors duration-300">EN</a>
 <span class="text-outline/50">/</span>
@@ -417,7 +447,7 @@
 </div>
 </div>
 <a href="contact.html" class="inline-block bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-mono text-label-mono px-6 py-2 rounded-lg hover:scale-105 active:scale-95 transition-all glow-cyan">
-            Agenda una Consulta
+            Contáctanos
         </a>
 </nav>
 <!-- Side Navigation Shell (Project Context) -->
@@ -429,11 +459,11 @@
 <div class="flex flex-col gap-4">
 <button type="button" data-step="design" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Diseño">
 <span class="material-symbols-outlined">architecture</span>
-<span class="font-label-caps text-[8px] mt-1">DISEÑO</span>
+<span class="font-label-caps text-[8px] mt-1">DISEO</span>
 </button>
 <button type="button" data-step="build" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Construcción">
 <span class="material-symbols-outlined">terminal</span>
-<span class="font-label-caps text-[8px] mt-1">CONSTRUCCIÓN</span>
+<span class="font-label-caps text-[8px] mt-1">CONSTRUCCIN</span>
 </button>
 <button type="button" data-step="launch" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Lanzamiento">
 <span class="material-symbols-outlined">rocket_launch</span>
@@ -471,7 +501,7 @@
 <div class="hero-headline-band relative z-10 w-full mx-auto px-margin-desktop text-center">
 <div class="inline-flex items-center gap-3 px-4 py-1 glass-card rounded-full mx-auto mb-6">
 <span class="w-2 h-2 rounded-full bg-electric-cyan animate-pulse"></span>
-<span class="font-label-mono text-label-mono text-starlight-white tracking-widest uppercase">Tu Solución Completa de TI</span>
+<span class="font-label-mono text-label-mono text-starlight-white tracking-widest uppercase">Tu Solucin Completa de TI</span>
 </div>
 <h1 class="hero-headline-wide font-headline-xl font-bold text-starlight-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.85)]">
 <span class="hero-headline-line">Sitios web que fluyen con el espacio-tiempo.</span>
@@ -481,21 +511,21 @@
 <div class="hero-video-stage relative z-0" aria-hidden="true"></div>
 <div class="hero-bottom-band relative z-10 w-full max-w-[min(100%,56rem)] mx-auto px-margin-desktop text-center">
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-[min(100%,48rem)] mx-auto drop-shadow-[0_2px_16px_rgba(0,0,0,0.75)]">
-                        Tu equipo de sitios web administrados para el suroeste de Florida &mdash; creamos, alojamos y mantenemos tu sitio, gestionamos las actualizaciones por mensaje y ofrecemos rediseño de marca completo con logotipos modernizados cuando estés listo para una nueva imagen.
+                        Tu equipo de sitios web administrados para el suroeste de Florida &mdash; creamos, alojamos y mantenemos tu sitio, gestionamos las actualizaciones por mensaje y ofrecemos rediseño de marca completo con logotipos modernizados cuando ests listo para una nueva imagen.
                     </p>
 <div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-4 pt-10">
 <a href="contact.html" class="inline-block px-12 py-5 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-mono text-label-mono font-bold rounded-lg hover:scale-105 active:scale-95 transition-all glow-cyan">
-                            AGENDA UNA CONSULTA
+                            Contáctanos
                         </a>
 <a href="services.html" class="inline-block px-12 py-5 glass-card text-starlight-white font-label-mono text-label-mono border border-electric-cyan/30 hover:bg-electric-cyan/10 transition-all">
                             VER NUESTROS SERVICIOS
                         </a>
 </div>
-<p class="font-label-mono text-label-mono text-on-surface-variant pt-8 tracking-wide">El suroeste de Florida &middot; Llama o envía un mensaje <a class="text-electric-cyan hover:underline" href="tel:+12394048505">(239) 404-8505</a></p>
+<p class="font-label-mono text-label-mono text-on-surface-variant pt-8 tracking-wide">El suroeste de Florida &middot; Llama o enva un mensaje <a class="text-electric-cyan hover:underline" href="tel:+12394048505">(239) 404-8505</a></p>
 </div>
 <!-- Absolute Positioning for Visual Flair -->
 <div class="absolute right-margin-desktop top-[50%] hidden xl:block pointer-events-none z-[1]">
-<div class="glass-card whatsapp-hero-card p-3.5 rounded-lg w-72 space-y-2.5">
+<a href="process.html#client-whatsapp-queue" class="glass-card whatsapp-hero-card p-3.5 rounded-lg w-72 space-y-2.5 block pointer-events-auto hover:border-[#25D366]/50 transition-all" aria-label="Conoce cómo funcionan las solicitudes de actualización por WhatsApp">
 <div class="flex items-center gap-2.5">
 <span class="whatsapp-logo-mark" aria-hidden="true">
 <svg viewBox="0 0 32 32" class="w-6 h-6" fill="currentColor">
@@ -510,8 +540,8 @@
 <div class="whatsapp-message">
 <p class="font-body-md text-starlight-white text-[13px] leading-snug">"Cambien el horario y agreguen estas fotos."</p>
 </div>
-<p class="font-label-mono text-[9px] text-on-surface-variant tracking-wide leading-snug"><span class="text-[#25D366]">●</span> Mensajes y archivos quedan en cola.</p>
-</div>
+<p class="font-label-mono text-[9px] text-on-surface-variant tracking-wide leading-snug"><span class="text-[#25D366]">✓</span> Mensajes y archivos quedan en cola.</p>
+</a>
 </div>
 </section>
 <!-- Services Section -->
@@ -519,8 +549,8 @@
 <div class="max-w-container-max mx-auto">
 <div class="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
 <div class="space-y-4">
-<span class="font-label-caps text-label-caps text-nebula-purple">SERVICIOS EN LÍNEA Y PRESENCIALES</span>
-<h2 class="font-headline-lg text-headline-lg text-starlight-white">Todo lo que tu negocio necesita en línea y en sitio</h2>
+<span class="font-label-caps text-label-caps text-nebula-purple">SERVICIOS EN LNEA Y PRESENCIALES</span>
+<h2 class="font-headline-lg text-headline-lg text-starlight-white">Todo lo que tu negocio necesita en lnea y en sitio</h2>
 </div>
 <p class="font-body-md text-body-md text-on-surface-variant max-w-md">
                         Sitios web, hosting, mantenimiento continuo, aplicaciones web empresariales a medida, rediseño de marca completo y configuración técnica local para hogares y oficinas.
@@ -530,12 +560,12 @@
 <div class="group glass-card p-10 rounded-xl hover:border-electric-cyan/40 transition-all duration-500">
 <a href="services/complete-website-management.html" class="block"><span class="material-symbols-outlined text-4xl text-electric-cyan mb-6">cloud_done</span>
 <h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Gestión Completa de Sitios Web</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Nuestra alianza todo en uno &mdash; diseñamos, alojamos, aseguramos, mantenemos y actualizamos tu sitio web. Configuramos una cuenta de WhatsApp dedicada para que puedas escribirnos en cualquier momento.</p></a>
+<p class="font-body-md text-body-md text-on-surface-variant">Nuestra alianza todo en uno &mdash; diseamos, alojamos, aseguramos, mantenemos y actualizamos tu sitio web para que no tengas que arreglar una cosa con IA y romper cinco ms.</p></a>
 </div>
 <div class="group glass-card p-10 rounded-xl hover:border-electric-cyan/40 transition-all duration-500">
 <a href="services/website-design.html" class="block"><span class="material-symbols-outlined text-4xl text-electric-cyan mb-6">devices</span>
 <h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Diseño de Sitios Web</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Sitios web profesionales y personalizados, diseñados en torno a tu marca y creados para convertir visitantes en clientes.</p></a>
+<p class="font-body-md text-body-md text-on-surface-variant">Sitios web profesionales y personalizados, diseñados en torno a tu marca, refinados más allá de un borrador rápido de IA y creados para convertir visitantes en clientes.</p></a>
 </div>
 <div class="group glass-card p-10 rounded-xl hover:border-nebula-purple/40 transition-all duration-500">
 <a href="services/brand-rebranding.html" class="block"><span class="material-symbols-outlined text-4xl text-nebula-purple mb-6">palette</span>
@@ -545,12 +575,12 @@
 <div class="group glass-card p-10 rounded-xl hover:border-nebula-purple/40 transition-all duration-500">
 <a href="services/managed-hosting.html" class="block"><span class="material-symbols-outlined text-4xl text-nebula-purple mb-6">cloud</span>
 <h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Hosting Administrado</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Hosting rápido y seguro con monitoreo, copias de seguridad y mantenimiento continuo incluidos.</p></a>
+<p class="font-body-md text-body-md text-on-surface-variant">Hosting rápido y seguro con monitoreo, copias de seguridad y mantenimiento continuo, con alguien responsable cuando un cambio debe hacerse bien.</p></a>
 </div>
 <div class="group glass-card p-10 rounded-xl hover:border-electric-cyan/40 transition-all duration-500">
 <a href="services/website-care-plans.html" class="block"><span class="material-symbols-outlined text-4xl text-electric-cyan mb-6">support_agent</span>
 <h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Planes de Mantenimiento Web</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Actualizaciones y soporte continuos a través de una cuenta de WhatsApp dedicada que configuramos para tu negocio.</p></a>
+<p class="font-body-md text-body-md text-on-surface-variant">Actualizaciones y soporte continuos a travs de una cuenta de WhatsApp dedicada que configuramos para tu negocio.</p></a>
 </div>
 <div class="group glass-card p-10 rounded-xl hover:border-nebula-purple/40 transition-all duration-500">
 <a href="services/seo-foundations.html" class="block"><span class="material-symbols-outlined text-4xl text-nebula-purple mb-6">travel_explore</span>
@@ -569,8 +599,8 @@
 </div>
 <div class="group glass-card p-10 rounded-xl hover:border-nebula-purple/40 transition-all duration-500">
 <a href="services/office-network-setup.html" class="block"><span class="material-symbols-outlined text-4xl text-nebula-purple mb-6">lan</span>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Configuración de Redes de Oficina</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Wi-Fi para oficinas pequeñas, estaciones de trabajo, impresoras compartidas, limpieza de la red y notas de entrega claras.</p></a>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Configuracin de Redes de Oficina</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Wi-Fi para oficinas pequeas, estaciones de trabajo, impresoras compartidas, limpieza de la red y notas de entrega claras.</p></a>
 </div>
 </div>
 </div>
@@ -579,9 +609,9 @@
 <section id="process" class="py-24 px-margin-desktop overflow-hidden">
 <div class="max-w-container-max mx-auto">
 <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
-<span class="font-label-caps text-label-caps text-electric-cyan">CÓMO FUNCIONA</span>
+<span class="font-label-caps text-label-caps text-electric-cyan">CMO FUNCIONA</span>
 <h2 class="font-headline-lg text-headline-lg text-starlight-white">Del descubrimiento al soporte continuo</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">Un proceso sencillo diseñado para dueños de negocios ocupados &mdash; no para desarrolladores.</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Un proceso sencillo diseado para dueos de negocios ocupados &mdash; no para desarrolladores.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
 <div id="step-discover" class="glass-card p-8 rounded-xl text-center hover:border-electric-cyan/30 transition-all">
@@ -606,7 +636,7 @@
 <span class="font-label-mono text-label-mono text-electric-cyan mb-4 block">04</span>
 <span class="material-symbols-outlined text-3xl text-nebula-purple mb-4">forum</span>
 <h3 class="font-headline-md text-headline-md text-starlight-white mb-3">Soporte</h3>
-<p class="font-body-md text-body-md text-on-surface-variant text-sm">Configuramos una cuenta de WhatsApp dedicada para tu negocio. Escríbenos ahí cuando necesites cambios &mdash; sin portales, sin complicaciones.</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Configuramos una cuenta de WhatsApp dedicada para tu negocio. Escrbenos ah cuando necesites cambios &mdash; sin portales, sin complicaciones.</p>
 </div>
 </div>
 </div>
@@ -617,7 +647,7 @@
 <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
 <span class="font-label-caps text-label-caps text-nebula-purple">PLANES DE MANTENIMIENTO WEB</span>
 <h2 class="font-headline-lg text-headline-lg text-starlight-white">La gestión de sitios web empresariales, simplificada</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">Hosting profesional de sitios web y soporte continuo &mdash; desde actualizaciones básicas hasta cobertura completa de mesa de ayuda para equipos.</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Hosting profesional y soporte continuo &mdash; til cuando la IA puede sugerir un cambio, pero necesitas que alguien se asegure de que no rompa el sitio.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter">
 <div class="glass-card p-8 rounded-xl flex flex-col hover:border-white/20 transition-all">
@@ -639,7 +669,7 @@
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Todo lo de Esencial</li>
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Hasta 20 actualizaciones de contenido al mes</li>
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Tiempos de respuesta prioritarios</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Asistencia en la publicación de contenido</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Asistencia en la publicacin de contenido</li>
 </ul>
 <a href="contact.html" class="text-center py-3 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-mono text-label-mono font-bold rounded-lg hover:scale-[1.02] transition-all">Comenzar</a>
 </div>
@@ -680,7 +710,7 @@
 <h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Concierge Empresarial</h3>
 <p class="font-headline-lg text-headline-lg text-nebula-purple mb-6">A medida</p>
 <ul class="space-y-3 font-body-md text-body-md text-on-surface-variant text-sm flex-1 mb-8">
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-nebula-purple text-base shrink-0">check</span> Soporte estratégico dedicado</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-nebula-purple text-base shrink-0">check</span> Soporte estratgico dedicado</li>
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-nebula-purple text-base shrink-0">check</span> Respuesta de emergencia 24/7</li>
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-nebula-purple text-base shrink-0">check</span> Alianza de gestión de sitios web</li>
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-nebula-purple text-base shrink-0">check</span> Acuerdos de servicio a medida</li>
@@ -701,12 +731,12 @@
 <p class="font-body-md text-body-md text-on-surface-variant">Configuramos una cuenta de WhatsApp dedicada para cada cliente &mdash; escríbenos ahí cuando necesites cambiar algo en tu sitio web.</p>
 <a href="https://wa.me/12394048505" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-4 bg-[#25D366]/10 border border-[#25D366]/40 text-starlight-white font-label-mono text-label-mono rounded-lg hover:bg-[#25D366]/20 transition-all">
 <span class="material-symbols-outlined text-[#25D366]">chat</span>
-Escríbenos por WhatsApp
+Escrbenos por WhatsApp
 </a>
 </div>
 <div class="space-y-4">
 <p class="font-label-caps text-label-caps text-outline mb-2">EJEMPLOS</p>
-<div class="glass-card p-5 rounded-lg border border-white/5"><p class="font-body-md text-body-md text-on-surface-variant italic">"Actualicen nuestro horario de atención."</p></div>
+<div class="glass-card p-5 rounded-lg border border-white/5"><p class="font-body-md text-body-md text-on-surface-variant italic">"Actualicen nuestro horario de atencin."</p></div>
 <div class="glass-card p-5 rounded-lg border border-white/5"><p class="font-body-md text-body-md text-on-surface-variant italic">"Agreguen estas fotos nuevas."</p></div>
 <div class="glass-card p-5 rounded-lg border border-white/5"><p class="font-body-md text-body-md text-on-surface-variant italic">"Creen una página para nuestra promoción."</p></div>
 <div class="glass-card p-5 rounded-lg border border-white/5"><p class="font-body-md text-body-md text-on-surface-variant italic">"Estamos listos para un rediseño de marca completo &mdash; logo nuevo y todo."</p></div>
@@ -733,7 +763,7 @@ Escríbenos por WhatsApp
 <p class="font-label-caps text-[10px] text-outline mt-1">Negocio de Servicios Local &middot; el suroeste de Florida</p>
 </div>
 <div class="glass-card p-8 rounded-xl">
-<p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">"Confiables, atentos y fáciles de tratar. Necesitábamos cambios antes de una temporada alta y tuvieron todo actualizado en un día."</p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">"Confiables, atentos y fciles de tratar. Necesitbamos cambios antes de una temporada alta y tuvieron todo actualizado en un da."</p>
 <p class="font-label-mono text-label-mono text-starlight-white">&mdash; Administrador de Oficina</p>
 <p class="font-label-caps text-[10px] text-outline mt-1">Servicios Profesionales &middot; Florida</p>
 </div>
@@ -750,16 +780,16 @@ Escríbenos por WhatsApp
 </div>
 <a href="casestudies.html" class="font-label-mono text-label-mono text-electric-cyan hover:underline">Ver portafolio completo &rarr;</a>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter">
 <a href="casestudies.html" class="group glass-card rounded-xl overflow-hidden hover:border-electric-cyan/40 transition-all">
-<img alt="Sitio web de Naples Antiques LLC" class="w-full h-64 object-cover object-center group-hover:scale-[1.02] transition-transform duration-700" loading="lazy" src="../assets/naples-hero.png"/>
+<img alt="Sitio web de Naples Estate Jewelry" class="w-full h-64 object-cover object-center group-hover:scale-[1.02] transition-transform duration-700" loading="lazy" src="../assets/portfolio/naples-estate-jewelry/home.webp"/>
 <div class="p-8">
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Naples Antiques LLC</h3>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Naples Estate Jewelry</h3>
 <p class="font-body-md text-body-md text-on-surface-variant mb-4">Sitio web de comercio electrónico profesional con precios de metales preciosos en vivo, diseño adaptable a móviles y alto rendimiento.</p>
 <div class="flex flex-wrap gap-3 font-label-caps text-[10px] text-electric-cyan">
-<span class="px-2 py-1 bg-electric-cyan/10 rounded">Comercio Electrónico</span>
+<span class="px-2 py-1 bg-electric-cyan/10 rounded">Comercio Electrnico</span>
 <span class="px-2 py-1 bg-electric-cyan/10 rounded">Precios en Vivo</span>
-<span class="px-2 py-1 bg-electric-cyan/10 rounded">Listo para Móviles</span>
+<span class="px-2 py-1 bg-electric-cyan/10 rounded">Listo para Mviles</span>
 </div>
 </div>
 </a>
@@ -778,13 +808,29 @@ Escríbenos por WhatsApp
 </div>
 </div>
 </a>
+
+<a href="casestudies.html#case-jps" class="group glass-card rounded-xl overflow-hidden hover:border-nebula-purple/40 transition-all border border-nebula-purple/10">
+<img alt="Sitio portafolio de JPS Surette Photography" class="w-full h-64 object-cover object-center group-hover:scale-[1.02] transition-transform duration-700" loading="lazy" src="../assets/portfolio/jpsurette/home.webp"/>
+<div class="p-8">
+<div class="flex items-center gap-2 mb-2">
+<span class="font-label-caps text-[10px] px-2 py-0.5 bg-nebula-purple/15 text-nebula-purple border border-nebula-purple/30 rounded">EN PROGRESO</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">JPS Surette Photography</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Portafolio fotográfico de alto contraste para deportes de combate, galerías de eventos, arquitectura, bienes ra?ces, editorial y trabajos comerciales.</p>
+<div class="flex flex-wrap gap-3 font-label-caps text-[10px] text-nebula-purple">
+<span class="px-2 py-1 bg-nebula-purple/10 rounded">Fotograf?a</span>
+<span class="px-2 py-1 bg-nebula-purple/10 rounded">Galerías</span>
+<span class="px-2 py-1 bg-nebula-purple/10 rounded">Portafolio</span>
+</div>
+</div>
+</a>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter mt-gutter">
 <div class="glass-card p-10 rounded-xl flex flex-col justify-center md:col-span-2">
 <span class="material-symbols-outlined text-4xl text-nebula-purple mb-6">workspace_premium</span>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Tu negocio pertenece aquí</h3>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Tu negocio pertenece aqu</h3>
 <p class="font-body-md text-body-md text-on-surface-variant mb-6">Creamos sitios web profesionales para bufetes de abogados, consultorios médicos, contratistas, joyerías y negocios locales en todo el suroeste de Florida &mdash; incluyendo rediseños de marca completos con logotipos modernizados e identidad visual.</p>
-<a href="contact.html" class="inline-block px-8 py-4 border border-electric-cyan/40 text-electric-cyan font-label-mono text-label-mono rounded-lg hover:bg-electric-cyan/10 transition-all w-fit">Agenda una Consulta</a>
+<a href="contact.html" class="inline-block px-8 py-4 border border-electric-cyan/40 text-electric-cyan font-label-mono text-label-mono rounded-lg hover:bg-electric-cyan/10 transition-all w-fit">Contáctanos</a>
 </div>
 </div>
 </div>
@@ -800,7 +846,7 @@ Escríbenos por WhatsApp
 <p class="font-body-md text-body-md text-on-surface-variant">Combinamos comunicación directa, servicio personalizado y relaciones a largo plazo con la experiencia técnica para crear, alojar y administrar sitios web que representan a tu negocio de forma profesional.</p>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-gutter">
-<div class="glass-card p-6 rounded-xl"><span class="material-symbols-outlined text-electric-cyan mb-3">forum</span><h3 class="font-headline-md text-base text-starlight-white mb-2">Comunicación Directa</h3><p class="font-body-md text-body-md text-on-surface-variant text-sm">Habla con personas reales que conocen tu sitio web &mdash; no con una fila de tickets.</p></div>
+<div class="glass-card p-6 rounded-xl"><span class="material-symbols-outlined text-electric-cyan mb-3">forum</span><h3 class="font-headline-md text-base text-starlight-white mb-2">Comunicacin Directa</h3><p class="font-body-md text-body-md text-on-surface-variant text-sm">Habla con personas reales que conocen tu sitio web &mdash; no con una fila de tickets.</p></div>
 <div class="glass-card p-6 rounded-xl"><span class="material-symbols-outlined text-electric-cyan mb-3">handshake</span><h3 class="font-headline-md text-base text-starlight-white mb-2">Alianza a Largo Plazo</h3><p class="font-body-md text-body-md text-on-surface-variant text-sm">Estamos aquí después del lanzamiento para actualizaciones, soporte y crecimiento.</p></div>
 <div class="glass-card p-6 rounded-xl"><span class="material-symbols-outlined text-electric-cyan mb-3">verified_user</span><h3 class="font-headline-md text-base text-starlight-white mb-2">Soporte Confiable</h3><p class="font-body-md text-body-md text-on-surface-variant text-sm">Hosting, seguridad, copias de seguridad y mantenimiento &mdash; nos encargamos.</p></div>
 <div class="glass-card p-6 rounded-xl"><span class="material-symbols-outlined text-electric-cyan mb-3">engineering</span><h3 class="font-headline-md text-base text-starlight-white mb-2">Experiencia Técnica</h3><p class="font-body-md text-body-md text-on-surface-variant text-sm">Diseño web profesional en Florida con estándares modernos integrados.</p></div>
@@ -813,14 +859,14 @@ Escríbenos por WhatsApp
 <div class="max-w-2xl mx-auto space-y-12">
 <h2 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-starlight-white">¿Listo para dejar de preocuparte por tu sitio web?</h2>
 <p class="font-body-lg text-body-lg text-on-surface-variant">
-                    Agenda una consulta gratuita. Conoceremos tu negocio y te mostraremos cómo los servicios de sitios web administrados pueden funcionar para ti.
+                    Contáctanos. Conoceremos tu negocio y te mostraremos cómo los servicios de sitios web administrados pueden funcionar para ti.
                 </p>
 <div class="flex flex-col sm:flex-row justify-center gap-6">
 <a href="contact.html" class="inline-block px-12 py-6 bg-starlight-white text-void-black font-label-mono text-label-mono font-bold rounded-lg hover:scale-105 transition-all">
-                        AGENDA UNA CONSULTA
+                        Contáctanos
                     </a>
 <a href="https://wa.me/12394048505" target="_blank" rel="noopener noreferrer" class="inline-block px-12 py-6 border border-white/20 text-starlight-white font-label-mono text-label-mono rounded-lg hover:bg-white/5 transition-all">
-                        ESCRÍBENOS POR WHATSAPP
+                        ESCRBENOS POR WHATSAPP
                     </a>
 </div>
 </div>
@@ -855,11 +901,11 @@ Escríbenos por WhatsApp
 <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="#care-plans">Planes de Mantenimiento Web</a>
 <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="services.html">Servicios de SEO</a>
 <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="contact.html">Contacto</a>
-<a class="font-label-mono text-label-mono text-electric-cyan hover:underline transition-colors duration-300" href="contact.html">Agenda una Consulta</a>
+<a class="font-label-mono text-label-mono text-electric-cyan hover:underline transition-colors duration-300" href="contact.html">Contáctanos</a>
 </div>
 <div class="text-left lg:text-right">
 <span class="font-label-mono text-[10px] text-outline block">&copy; 2026 DARK MATTER &middot; el suroeste de Florida</span>
-<span class="font-label-mono text-[10px] text-outline block mt-1">Llama o envía un mensaje (239) 404-8505</span>
+<span class="font-label-mono text-[10px] text-outline block mt-1">Llama o enva un mensaje (239) 404-8505</span>
 </div>
 </div>
 </footer>
@@ -889,14 +935,14 @@ Escríbenos por WhatsApp
 <span class="text-electric-cyan" aria-current="true">ES</span>
 </div>
 <div class="relative">
-<button type="button" id="mobile-menu-btn" class="flex flex-col justify-center items-end gap-1.5 w-10 h-10 rounded-lg active:scale-95 transition-transform" aria-expanded="false" aria-controls="mobile-menu-dropdown" aria-label="Abrir menú">
+<button type="button" id="mobile-menu-btn" class="flex flex-col justify-center items-end gap-1.5 w-10 h-10 rounded-lg active:scale-95 transition-transform" aria-expanded="false" aria-controls="mobile-menu-dropdown" aria-label="Abrir men">
 <span class="mobile-menu-line-top h-px w-8 bg-electric-cyan animate-pulse-cyan transition-all duration-300"></span>
 <span class="mobile-menu-line-mid h-px w-6 bg-starlight-white/55 transition-all duration-300"></span>
 <span class="mobile-menu-line-bot h-px w-4 bg-starlight-white/35 transition-all duration-300"></span>
 </button>
 <div id="mobile-menu-dropdown" class="mobile-nav-dropdown absolute right-0 top-full mt-3 w-64 z-[60]">
 <div class="mobile-nav-dropdown-panel rounded-xl py-2 overflow-hidden">
-<p class="font-label-caps text-[10px] text-outline px-4 pt-2 pb-1 tracking-widest">Menú</p>
+<p class="font-label-caps text-[10px] text-outline px-4 pt-2 pb-1 tracking-widest">Men</p>
 <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-electric-cyan bg-electric-cyan/5 font-label-mono text-sm">
 <span class="material-symbols-outlined text-lg">home</span>
 Inicio
@@ -906,7 +952,7 @@ Inicio
 Todos los Servicios
 </a>
 <button type="button" class="mobile-acc-toggle w-full flex items-center justify-between gap-3 px-4 py-3 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-sm transition-colors border-t border-white/5 mt-1" aria-expanded="false" aria-controls="m-acc-online">
-<span class="flex items-center gap-3"><span class="material-symbols-outlined text-lg">language</span>Servicios en Línea</span>
+<span class="flex items-center gap-3"><span class="material-symbols-outlined text-lg">language</span>Servicios en Lnea</span>
 <span class="material-symbols-outlined text-base mobile-acc-chevron">expand_more</span>
 </button>
 <div id="m-acc-online" class="mobile-acc-panel">
@@ -914,7 +960,7 @@ Todos los Servicios
 <a href="services/website-design.html" class="block px-4 py-2.5 pl-12 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-xs transition-colors">Diseño de Sitios Web</a>
 <a href="services/brand-rebranding.html" class="block px-4 py-2.5 pl-12 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-xs transition-colors">Marca y Rediseño</a>
 <a href="services/website-care-plans.html" class="block px-4 py-2.5 pl-12 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-xs transition-colors">Planes de Mantenimiento Web</a>
-<a href="services/discovery-consultation.html" class="block px-4 py-2.5 pl-12 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-xs transition-colors">Descubrimiento y Consulta</a>
+<a href="services/discovery-consultation.html" class="block px-4 py-2.5 pl-12 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-xs transition-colors">Consulta</a>
 <a href="services/managed-hosting.html" class="block px-4 py-2.5 pl-12 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-xs transition-colors">Hosting Administrado</a>
 <a href="services/seo-foundations.html" class="block px-4 py-2.5 pl-12 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-xs transition-colors">Fundamentos de SEO</a>
 <a href="services/custom-development.html" class="block px-4 py-2.5 pl-12 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-xs transition-colors">Aplicaciones Web Empresariales a Medida</a>
@@ -925,7 +971,7 @@ Todos los Servicios
 </button>
 <div id="m-acc-local" class="mobile-acc-panel">
 <a href="services/in-home-services.html" class="block px-4 py-2.5 pl-12 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-xs transition-colors">Servicios Técnicos a Domicilio</a>
-<a href="services/office-network-setup.html" class="block px-4 py-2.5 pl-12 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-xs transition-colors">Configuración de Redes de Oficina</a>
+<a href="services/office-network-setup.html" class="block px-4 py-2.5 pl-12 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-xs transition-colors">Configuracin de Redes de Oficina</a>
 </div>
 <a href="process.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-sm transition-colors">
 <span class="material-symbols-outlined text-lg">timeline</span>
@@ -941,7 +987,7 @@ Contacto
 </a>
 <a href="contact.html" class="flex items-center gap-3 px-4 py-3 text-void-black bg-gradient-to-r from-electric-cyan to-nebula-purple font-label-mono text-sm mx-2 my-1 rounded-lg">
 <span class="material-symbols-outlined text-lg">calendar_month</span>
-Agenda una Consulta
+Contáctanos
 </a>
 </div>
 </div>
@@ -958,7 +1004,7 @@ Agenda una Consulta
 </div>
 <div class="hero-headline-band relative z-10 w-full mx-auto px-margin-mobile text-center pt-20">
 <span class="inline-block px-4 py-1 border border-electric-cyan/30 rounded-full font-label-mono text-label-mono text-electric-cyan mb-5 uppercase tracking-widest bg-void-black/40 backdrop-blur-sm">
-                        Tu Solución Completa de TI
+                        Tu Solucin Completa de TI
                     </span>
 <h1 class="hero-headline-wide font-headline-xl font-bold text-starlight-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.85)]">
 <span class="hero-headline-line">Sitios web que fluyen con el espacio-tiempo.</span>
@@ -972,7 +1018,7 @@ Agenda una Consulta
                     </p>
 <div class="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-4 pt-8">
 <a href="contact.html" class="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-caps text-label-caps rounded-sm transition-all active:scale-95">
-                            AGENDA UNA CONSULTA
+                            Contáctanos
                         </a>
 <a href="services.html" class="w-full sm:w-auto px-10 py-4 border border-electric-cyan/40 text-electric-cyan font-label-caps text-label-caps rounded-sm transition-all backdrop-blur-sm">
                             VER NUESTROS SERVICIOS
@@ -985,26 +1031,26 @@ Agenda una Consulta
 <section class="py-16 px-margin-mobile bg-surface-container-lowest">
 <div class="space-y-8">
 <div class="space-y-3">
-<span class="font-label-caps text-label-caps text-nebula-purple">SERVICIOS EN LÍNEA Y PRESENCIALES</span>
-<h2 class="font-headline-lg text-headline-lg-mobile text-starlight-white">Todo lo que tu negocio necesita en línea y en sitio</h2>
+<span class="font-label-caps text-label-caps text-nebula-purple">SERVICIOS EN LNEA Y PRESENCIALES</span>
+<h2 class="font-headline-lg text-headline-lg-mobile text-starlight-white">Todo lo que tu negocio necesita en lnea y en sitio</h2>
 </div>
 <div class="grid grid-cols-1 gap-4">
-<a href="services/complete-website-management.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-4">cloud_done</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Gestión Completa de Sitios Web</h3><p class="font-body-md text-on-surface-variant text-sm">Todo en uno &mdash; diseño, hosting, seguridad, mantenimiento y actualizaciones.</p></a>
-<a href="services/website-design.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-4">devices</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Diseño de Sitios Web</h3><p class="font-body-md text-on-surface-variant text-sm">Sitios web profesionales y personalizados, diseñados en torno a tu marca y creados para convertir.</p></a>
+<a href="services/complete-website-management.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-4">cloud_done</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Gestión Completa de Sitios Web</h3><p class="font-body-md text-on-surface-variant text-sm">Todo en uno &mdash; diseño, hosting, seguridad, mantenimiento y actualizaciones cuidadosas.</p></a>
+<a href="services/website-design.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-4">devices</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Diseño de Sitios Web</h3><p class="font-body-md text-on-surface-variant text-sm">Sitios a medida refinados más allá de borradores rápidos de IA y creados para convertir.</p></a>
 <a href="services/brand-rebranding.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-nebula-purple text-3xl mb-4">palette</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Marca y Rediseño</h3><p class="font-body-md text-on-surface-variant text-sm">Rediseño de marca completo &mdash; logotipos modernizados, identidad visual, colores, tipografía y recursos de marca.</p></a>
-<a href="services/managed-hosting.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-nebula-purple text-3xl mb-4">cloud</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Hosting Administrado</h3><p class="font-body-md text-on-surface-variant text-sm">Hosting rápido y seguro con monitoreo, copias de seguridad y mantenimiento continuo.</p></a>
-<a href="services/website-care-plans.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-4">support_agent</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Planes de Mantenimiento Web</h3><p class="font-body-md text-on-surface-variant text-sm">Actualizaciones y soporte continuos a través de un sencillo proceso de mensajería.</p></a>
+<a href="services/managed-hosting.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-nebula-purple text-3xl mb-4">cloud</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Hosting Administrado</h3><p class="font-body-md text-on-surface-variant text-sm">Hosting rápido y seguro con monitoreo, copias de seguridad y mantenimiento seguro.</p></a>
+<a href="services/website-care-plans.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-4">support_agent</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Planes de Mantenimiento Web</h3><p class="font-body-md text-on-surface-variant text-sm">Actualizaciones continuas hechas con cuidado, no por prueba y error.</p></a>
 <a href="services/seo-foundations.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-nebula-purple text-3xl mb-4">travel_explore</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Fundamentos de SEO</h3><p class="font-body-md text-on-surface-variant text-sm">SEO técnico, optimización y visibilidad para negocios locales.</p></a>
 <a href="services/custom-development.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-4">code</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Aplicaciones Web Empresariales a Medida</h3><p class="font-body-md text-on-surface-variant text-sm">Inicios de sesión para el personal, registros de clientes, reportes, integraciones y herramientas a medida.</p></a>
 <a href="services/in-home-services.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-4">home_pin</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Servicios Técnicos a Domicilio</h3><p class="font-body-md text-on-surface-variant text-sm">Wi-Fi, dispositivos, impresoras, equipos inteligentes y configuración de oficina en casa.</p></a>
-<a href="services/office-network-setup.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-nebula-purple text-3xl mb-4">lan</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Configuración de Redes de Oficina</h3><p class="font-body-md text-on-surface-variant text-sm">Wi-Fi para oficinas pequeñas, estaciones de trabajo, dispositivos compartidos y limpieza de la red.</p></a>
+<a href="services/office-network-setup.html" class="glass-card p-8 rounded-lg block hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-nebula-purple text-3xl mb-4">lan</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Configuracin de Redes de Oficina</h3><p class="font-body-md text-on-surface-variant text-sm">Wi-Fi para oficinas pequeas, estaciones de trabajo, dispositivos compartidos y limpieza de la red.</p></a>
 </div>
 </div>
 </section>
 <!-- How It Works (Mobile) -->
 <section class="py-16 px-margin-mobile">
 <div class="space-y-8">
-<div class="text-center space-y-3"><span class="font-label-caps text-label-caps text-electric-cyan">CÓMO FUNCIONA</span><h2 class="font-headline-lg text-headline-lg-mobile text-starlight-white">Del descubrimiento al soporte</h2></div>
+<div class="text-center space-y-3"><span class="font-label-caps text-label-caps text-electric-cyan">CMO FUNCIONA</span><h2 class="font-headline-lg text-headline-lg-mobile text-starlight-white">Del descubrimiento al soporte</h2></div>
 <div class="grid grid-cols-1 gap-4">
 <div class="glass-card p-6 rounded-lg flex gap-4"><span class="font-label-mono text-electric-cyan">01</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1"><a href="services/discovery-consultation.html" class="hover:text-electric-cyan">Descubrimiento</a></h3><p class="font-body-md text-on-surface-variant text-sm">Conocemos tu negocio y tus objetivos.</p></div></div>
 <div class="glass-card p-6 rounded-lg flex gap-4"><span class="font-label-mono text-electric-cyan">02</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1"><a href="services/website-design.html" class="hover:text-electric-cyan">Construcción</a></h3><p class="font-body-md text-on-surface-variant text-sm">Diseñamos y lanzamos tu sitio web profesional.</p></div></div>
@@ -1019,7 +1065,7 @@ Agenda una Consulta
 <div class="space-y-3"><span class="font-label-caps text-label-caps text-nebula-purple">PLANES DE MANTENIMIENTO WEB</span><h2 class="font-headline-lg text-headline-lg-mobile text-starlight-white">Planes para cada negocio</h2></div>
 <div class="grid grid-cols-1 gap-4">
 <div class="glass-card p-6 rounded-lg"><h3 class="font-headline-md text-starlight-white">Esencial &middot; $79/mes</h3><p class="font-body-md text-on-surface-variant text-sm mt-2">Hosting, SSL, copias de seguridad, monitoreo, cuenta de WhatsApp dedicada y hasta 5 actualizaciones al mes.</p></div>
-<div class="glass-card p-6 rounded-lg border border-electric-cyan/30"><h3 class="font-headline-md text-starlight-white">Crecimiento &middot; $149/mes</h3><p class="font-body-md text-on-surface-variant text-sm mt-2">Todo lo de Esencial más 20 actualizaciones al mes y respuesta prioritaria.</p></div>
+<div class="glass-card p-6 rounded-lg border border-electric-cyan/30"><h3 class="font-headline-md text-starlight-white">Crecimiento &middot; $149/mes</h3><p class="font-body-md text-on-surface-variant text-sm mt-2">Todo lo de Esencial ms 20 actualizaciones al mes y respuesta prioritaria.</p></div>
 <div class="glass-card p-6 rounded-lg"><h3 class="font-headline-md text-starlight-white">Negocios &middot; $299/mes</h3><p class="font-body-md text-on-surface-variant text-sm mt-2">Actualizaciones ilimitadas razonables, páginas de aterrizaje y actualizaciones básicas de SEO.</p></div>
 <div class="glass-card p-6 rounded-lg"><h3 class="font-headline-md text-starlight-white">Ejecutivo &middot; $599/mes</h3><p class="font-body-md text-on-surface-variant text-sm mt-2">Gestión continua de contenido, revisiones trimestrales y tiempos de entrega prioritarios.</p></div>
 <div class="glass-card p-6 rounded-lg border border-electric-cyan/30 bg-electric-cyan/5"><h3 class="font-headline-md text-starlight-white">Mesa de Ayuda para Equipos &middot; $1,500+/mes</h3><p class="font-body-md text-on-surface-variant text-sm mt-2">Soporte para cuentas del personal, usuarios de aplicaciones web, reportes, accesos y preguntas diarias sobre el flujo de trabajo.</p></div>
@@ -1035,10 +1081,10 @@ Agenda una Consulta
 <h2 class="font-headline-lg text-headline-md text-starlight-white">Solo Envíanos un Mensaje</h2>
 <p class="font-body-md text-on-surface-variant text-sm">Sin portales de soporte. Sin sistemas complicados. Configuramos una cuenta de WhatsApp dedicada para tu negocio &mdash; escríbenos ahí y nos encargamos.</p>
 <div class="space-y-3">
-<p class="font-body-md text-on-surface-variant text-sm italic glass-card p-4 rounded-lg">"Actualicen nuestro horario de atención."</p>
+<p class="font-body-md text-on-surface-variant text-sm italic glass-card p-4 rounded-lg">"Actualicen nuestro horario de atencin."</p>
 <p class="font-body-md text-on-surface-variant text-sm italic glass-card p-4 rounded-lg">"Agreguen estas fotos nuevas."</p>
 </div>
-<a href="https://wa.me/12394048505" target="_blank" rel="noopener noreferrer" class="block text-center py-4 bg-[#25D366]/10 border border-[#25D366]/40 text-starlight-white font-label-caps text-label-caps rounded-sm">Escríbenos por WhatsApp</a>
+<a href="https://wa.me/12394048505" target="_blank" rel="noopener noreferrer" class="block text-center py-4 bg-[#25D366]/10 border border-[#25D366]/40 text-starlight-white font-label-caps text-label-caps rounded-sm">Escrbenos por WhatsApp</a>
 </div>
 </section>
 <!-- Testimonials (Mobile) -->
@@ -1054,8 +1100,8 @@ Agenda una Consulta
 <div class="space-y-6">
 <span class="font-label-caps text-label-caps text-electric-cyan">NUESTRO TRABAJO</span>
 <a href="casestudies.html" class="block glass-card rounded-lg overflow-hidden">
-<img alt="Naples Antiques LLC" class="w-full h-44 object-cover" loading="lazy" src="../assets/naples-hero.png"/>
-<div class="p-6"><h3 class="font-headline-md text-starlight-white mb-2">Naples Antiques LLC</h3><p class="font-body-md text-on-surface-variant text-sm">Comercio electrónico profesional con precios en vivo y diseño adaptable a móviles.</p></div>
+<img alt="Naples Estate Jewelry" class="w-full h-44 object-cover" loading="lazy" src="../assets/portfolio/naples-estate-jewelry/home.webp"/>
+<div class="p-6"><h3 class="font-headline-md text-starlight-white mb-2">Naples Estate Jewelry</h3><p class="font-body-md text-on-surface-variant text-sm">Comercio electrónico profesional con precios en vivo y diseño adaptable a móviles.</p></div>
 </a>
 <a href="casestudies.html#elite-yacht" class="block glass-card rounded-lg overflow-hidden border border-electric-cyan/15">
 <img alt="Elite Yacht Detailing" class="w-full h-44 object-cover object-center" loading="lazy" src="../assets/portfolio/elite/hero-yacht.jpg"/>
@@ -1064,6 +1110,10 @@ Agenda una Consulta
 <h3 class="font-headline-md text-starlight-white mb-2">Elite Yacht Detailing</h3>
 <p class="font-body-md text-on-surface-variant text-sm">Sitio de yates de lujo con galería de la flota, comparación antes/después y portal de clientes Fleet Login.</p>
 </div>
+</a>
+<a href="casestudies.html#case-jps" class="block glass-card rounded-lg overflow-hidden border border-nebula-purple/15">
+<img alt="JPS Surette Photography" class="w-full h-44 object-cover object-center" loading="lazy" src="../assets/portfolio/jpsurette/home.webp"/>
+<div class="p-6"><div class="mb-2"><span class="font-label-caps text-[9px] px-2 py-0.5 bg-nebula-purple/15 text-nebula-purple border border-nebula-purple/30 rounded">EN PROGRESO</span></div><h3 class="font-headline-md text-starlight-white mb-2">JPS Surette Photography</h3><p class="font-body-md text-on-surface-variant text-sm">Portafolio fotográfico con deportes de combate, dirección de galerías, arquitectura y trabajo comercial.</p></div>
 </a>
 <a href="casestudies.html" class="font-label-mono text-sm text-electric-cyan hover:underline block pt-2">Ver portafolio completo &rarr;</a>
 </div>
@@ -1080,12 +1130,12 @@ Agenda una Consulta
 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-electric-cyan/5 rounded-full blur-[180px] pointer-events-none"></div>
 <div class="mx-auto glass-card p-10 rounded-xl relative z-10 text-center">
 <h2 class="font-headline-lg text-headline-md text-starlight-white mb-4">¿Listo para dejar de preocuparte por tu sitio web?</h2>
-<p class="font-body-md text-on-surface-variant mb-8 text-sm">Agenda una consulta gratuita y descubre cómo funcionan los servicios de sitios web administrados para tu negocio.</p>
+<p class="font-body-md text-on-surface-variant mb-8 text-sm">Contáctanos y descubre cómo funcionan los servicios de sitios web administrados para tu negocio.</p>
 <a href="contact.html" class="inline-block w-full py-5 mb-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-sm transition-all active:scale-[0.98] duration-200">
-                    AGENDA UNA CONSULTA
+                    Contáctanos
                 </a>
 <a href="https://wa.me/12394048505" target="_blank" rel="noopener noreferrer" class="inline-block w-full py-5 border border-[#25D366]/40 text-starlight-white font-label-caps text-label-caps rounded-sm transition-colors active:scale-[0.98] duration-200">
-                    ESCRÍBENOS POR WHATSAPP
+                    ESCRBENOS POR WHATSAPP
                 </a>
 </div>
 </section>
@@ -1116,7 +1166,7 @@ Agenda una Consulta
 <a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="services.html">Diseño de Sitios Web</a>
 <a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="#care-plans">Planes de Mantenimiento</a>
 <a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="contact.html">Contacto</a>
-<a class="font-label-mono text-[11px] text-electric-cyan" href="contact.html">Agenda una Consulta</a>
+<a class="font-label-mono text-[11px] text-electric-cyan" href="contact.html">Contáctanos</a>
 </div>
 <p class="font-label-caps text-[10px] text-on-primary-container/60 tracking-widest text-center max-w-lg">
             &copy; 2026 DARK MATTER &middot; Servicios de Sitios Web Administrados &middot; el suroeste de Florida
@@ -1166,13 +1216,13 @@ Agenda una Consulta
   function closeMenu() {
     menu.classList.remove('is-open');
     btn.setAttribute('aria-expanded', 'false');
-    btn.setAttribute('aria-label', 'Abrir menú');
+    btn.setAttribute('aria-label', 'Abrir men');
     collapseAccordions();
   }
   function openMenu() {
     menu.classList.add('is-open');
     btn.setAttribute('aria-expanded', 'true');
-    btn.setAttribute('aria-label', 'Cerrar menú');
+    btn.setAttribute('aria-label', 'Cerrar men');
   }
   btn.addEventListener('click', function (e) {
     e.stopPropagation();
@@ -1203,7 +1253,9 @@ Agenda una Consulta
 
 <script>
         (function () {
-            var heroSources = '<source src="../assets/hero-black-hole.mp4" type="video/mp4"/>';
+            var heroSources =
+                '<source src="../assets/Hero-Black-Hole-mobile-720p.mp4" type="video/mp4" media="(max-width: 767px)"/>' +
+                '<source src="../assets/Hero-Black-Hole-desktop-1080p.mp4" type="video/mp4"/>';
             var desktopRoot = document.querySelector('.hidden.md\\:block');
             var mobileRoot = document.querySelector('.md\\:hidden');
             var desktopVideo = desktopRoot ? desktopRoot.querySelector('[data-hero-video]') : null;
@@ -1273,7 +1325,9 @@ Agenda una Consulta
             applyHeroParallax();
         })();
     </script>
-<script src="../assets/mobile-services-nav.js?v=20260601-mobile-services2"></script>
-<script src="../assets/site-hero.js?v=20260601-video-hero7"></script>
-<script src="../assets/rail.js?v=20260601-rail-design-builder"></script>
+<a class="spoof-easter-egg" href="../spoof.html" aria-label="Abrir página de fotografía oculta" title=" "></a>
+<script src="../assets/mobile-services-nav.js?v=20260602-consultation"></script>
+<script src="../assets/rail.js?v=20260602-rail-active"></script>
 </body></html>
+
+

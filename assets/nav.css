@@ -78,6 +78,41 @@ nav .hidden.md\:flex,
   overflow: visible;
 }
 
+@media (min-width: 768px) {
+  nav.fixed.top-0.w-full {
+    justify-content: center !important;
+  }
+
+  nav.fixed.top-0.w-full > .site-brand {
+    position: absolute;
+    left: var(--dm-nav-side-offset, 4rem);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  nav.fixed.top-0.w-full > a.bg-gradient-to-r,
+  nav.fixed.top-0.w-full > .hidden.md\:flex > a.bg-gradient-to-r,
+  nav.fixed.top-0.w-full > .flex.gap-10.items-center > a.bg-gradient-to-r {
+    position: absolute;
+    right: var(--dm-nav-side-offset, 4rem);
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 0 !important;
+  }
+
+  nav.fixed.top-0.w-full > a.bg-gradient-to-r:hover,
+  nav.fixed.top-0.w-full > .hidden.md\:flex > a.bg-gradient-to-r:hover,
+  nav.fixed.top-0.w-full > .flex.gap-10.items-center > a.bg-gradient-to-r:hover {
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  nav.fixed.top-0.w-full > a.bg-gradient-to-r:active,
+  nav.fixed.top-0.w-full > .hidden.md\:flex > a.bg-gradient-to-r:active,
+  nav.fixed.top-0.w-full > .flex.gap-10.items-center > a.bg-gradient-to-r:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+}
+
 .services-nav-menu {
   position: absolute;
   top: 100%;
@@ -85,8 +120,12 @@ nav .hidden.md\:flex,
   padding-top: 8px;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-4px);
-  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  transform: translateY(-0.65rem) scale(0.985);
+  transform-origin: top left;
+  transition:
+    opacity 0.36s ease,
+    transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0.36s;
   pointer-events: none;
   z-index: 80;
 }
@@ -105,7 +144,11 @@ nav .hidden.md\:flex,
 .services-nav-group:focus-within .services-nav-menu {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+  transition:
+    opacity 0.3s ease,
+    transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s;
   pointer-events: auto;
 }
 
@@ -164,7 +207,7 @@ nav .hidden.md\:flex,
   font-size: 0.875rem;
   line-height: 1.4;
   color: #c4c7c7;
-  transition: color 0.15s ease, background-color 0.15s ease;
+  transition: color 0.24s ease, background-color 0.24s ease;
 }
 
 .services-nav-panel a:hover {
@@ -249,15 +292,23 @@ nav .hidden.md\:flex,
     box-shadow: 0 24px 70px rgba(0, 0, 0, 0.72), 0 0 26px rgba(0, 240, 255, 0.12);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-0.45rem);
+    transform: translateY(-0.7rem) scale(0.985);
+    transform-origin: top center;
     pointer-events: none;
-    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+    transition:
+      opacity 0.3s ease,
+      transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 0s linear 0.3s;
   }
 
   .mobile-services-popout.is-open {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+    transition:
+      opacity 0.28s ease,
+      transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 0s;
     pointer-events: auto;
   }
 
