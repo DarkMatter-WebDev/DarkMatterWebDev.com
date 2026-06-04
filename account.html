@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>(function(){try{var p=localStorage.getItem('dm_lang');var u="es/account.html";if(p==="es"){location.replace(u);return;}if(!p&&(navigator.language||navigator.userLanguage||"").toLowerCase().indexOf("es")===0){location.replace(u);}}catch(e){}})();</script>
+<title>Client Login | DARK MATTER</title>
+<meta name="description" content="Client login for Dark Matter Web Services accounts, active services, support status, and recurring billing information."/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png"/>
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<meta name="theme-color" content="#050505"/>
+<meta property="og:site_name" content="Dark Matter Web Services"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Client Login | DARK MATTER"/>
+<meta property="og:description" content="Client login for Dark Matter Web Services accounts, active services, support status, and recurring billing information."/>
+<meta property="og:url" content="https://darkmatterwebdev.com/account.html"/>
+<meta property="og:image" content="https://darkmatterwebdev.com/assets/darkmatter-og-image-modern.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="Dark Matter Web Services - managed websites and local IT support"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Client Login | DARK MATTER"/>
+<meta name="twitter:description" content="Client login for Dark Matter Web Services accounts, active services, support status, and recurring billing information."/>
+<meta name="twitter:image" content="https://darkmatterwebdev.com/assets/darkmatter-og-image-modern.png"/>
+<link rel="alternate" hreflang="en" href="/account.html"/>
+<link rel="alternate" hreflang="es" href="/es/account.html"/>
+<link rel="alternate" hreflang="x-default" href="/account.html"/>
+<link href="assets/nav.css?v=20260604-menu-consistency" rel="stylesheet"/>
+<link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/>
+<link href="assets/powered-by-badge.css" rel="stylesheet"/>
+<link href="assets/client-portal.css?v=20260604-input-visible" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config={darkMode:"class",theme:{extend:{colors:{"electric-cyan":"#00F0FF","nebula-purple":"#7000FF","void-black":"#050505","starlight-white":"#FFFFFF","surface":"#121414","on-surface-variant":"#c4c7c7","outline":"#8e9192"},fontFamily:{"headline":["Space Grotesk","sans-serif"],"body":["Plus Jakarta Sans","sans-serif"],"mono":["JetBrains Mono","monospace"]}}}};
+</script>
+<style>
+body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",sans-serif;overflow-x:hidden}.grid-overlay{position:fixed;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.05) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:-1}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24}.nav-login-link{display:inline-flex;align-items:center;gap:.35rem;color:#00f0ff}
+</style>
+</head>
+<body class="bg-void-black">
+<div class="fixed inset-0 grid-overlay"></div>
+<nav class="hidden md:flex fixed top-0 w-full z-50 bg-surface/10 backdrop-blur-xl border-b border-white/10 justify-between items-center px-16 py-4">
+<a href="index.html" class="site-brand inline-flex items-center gap-2.5 flex-nowrap shrink-0">
+<span class="material-symbols-outlined brand-mark text-electric-cyan" aria-hidden="true">blur_on</span>
+<span class="flex flex-col leading-none"><span class="font-headline text-2xl tracking-tighter brand-mystical brand-mystical--glow">DARK MATTER</span><span class="brand-subtext">Web Services</span></span>
+</a>
+<div class="hidden md:flex items-center gap-10">
+<a class="font-mono text-sm text-on-surface-variant hover:text-electric-cyan transition-colors" href="index.html">Home</a>
+<div class="relative services-nav-group">
+<a class="font-mono text-sm text-on-surface-variant hover:text-electric-cyan transition-colors" href="services.html">Services</a>
+<div class="services-nav-menu"><div class="services-nav-panel">
+<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon" aria-hidden="true">language</span>Online Services</div>
+<a href="services/complete-website-management.html">Complete Website Management</a>
+<a href="services/discovery-consultation.html">Consultation</a>
+<a href="services/website-design.html">Website Design</a>
+<a href="services/brand-rebranding.html">Brand &amp; Rebranding</a>
+<a href="services/managed-hosting.html">Managed Hosting</a>
+<a href="services/website-care-plans.html">Website Care Plans</a>
+<a href="services/seo-foundations.html">SEO Foundations</a>
+<a href="services/custom-development.html">Custom Business Web Apps</a>
+<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon" aria-hidden="true">home_pin</span>In-Home &amp; Office Services</div>
+<a href="services/in-home-services.html">In-Home Tech Services</a>
+<a href="services/office-network-setup.html">Office Network Setup</a>
+</div></div>
+</div>
+<a class="font-mono text-sm text-on-surface-variant hover:text-electric-cyan transition-colors" href="downloads.html">Downloads</a>
+<a class="font-mono text-sm text-on-surface-variant hover:text-electric-cyan transition-colors" href="process.html">Process</a>
+<a class="font-mono text-sm text-on-surface-variant hover:text-electric-cyan transition-colors" href="casestudies.html">Portfolio</a>
+<a class="font-mono text-sm nav-login-link" href="account.html"><span class="material-symbols-outlined text-base">account_circle</span>Login</a>
+<div class="lang-switch flex items-center gap-1.5 font-mono text-sm shrink-0"><span class="text-electric-cyan" aria-current="true">EN</span><span class="text-outline/50">/</span><a href="es/account.html" hreflang="es" lang="es" onclick="try{localStorage.setItem('dm_lang','es')}catch(e){}" class="text-on-surface-variant hover:text-electric-cyan transition-colors">ES</a></div>
+</div>
+<a href="contact.html" class="inline-block bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-mono text-sm px-6 py-2 rounded-lg hover:scale-105 active:scale-95 transition-all">Contact Us</a>
+</nav>
+<header class="md:hidden fixed top-0 w-full bg-surface/10 backdrop-blur-xl z-50 border-b border-white/10">
+<div class="flex items-center justify-between h-16 px-4">
+<a href="index.html" class="site-brand inline-flex items-center gap-2.5"><span class="material-symbols-outlined brand-mark text-electric-cyan">blur_on</span><span class="flex flex-col leading-none"><span class="font-headline text-xl brand-mystical brand-mystical--glow">DARK MATTER</span><span class="brand-subtext">Web Services</span></span></a>
+<div class="font-mono text-sm"><span class="text-electric-cyan">EN</span><span class="text-outline/50"> / </span><a href="es/account.html" class="text-on-surface-variant">ES</a></div>
+</div>
+</header>
+<main class="client-portal-shell">
+<section class="client-portal-grid">
+<div class="client-portal-card client-portal-panel" data-client-intro>
+<div class="client-portal-kicker">Login Portal</div>
+<h1 class="client-portal-title client-portal-title--split"><span>Your <span class="client-portal-brand-wordmark">Dark Matter</span></span><small>client wormhole</small></h1>
+<div class="client-wormhole-visual" aria-hidden="true">
+<div class="client-wormhole-ring"></div>
+<div class="client-wormhole-ring"></div>
+<div class="client-wormhole-ring"></div>
+<div class="client-wormhole-core"><span class="material-symbols-outlined">lock</span></div>
+<div class="client-wormhole-grid"></div>
+</div>
+<p class="client-portal-copy">Step through the login portal into your private Dark Matter workspace. Once your account is linked, the wormhole opens to your services, website health, traffic notes, ad details and activity, support requests, billing details, and preference settings.</p>
+<div class="client-portal-setup"><strong>Portal status:</strong> The gateway is live. Website health, service records, and billing details appear after your account is linked in Dark Matter's client system.</div>
+</div>
+<div class="client-portal-card client-portal-panel" data-auth-panel>
+<div class="client-portal-kicker">Secure Crossing</div>
+<h2 class="text-3xl font-headline text-white mt-3 mb-3">Open the login portal</h2>
+<p class="client-auth-copy">Use your verified email to pass through the client wormhole and land inside your account dashboard.</p>
+<form class="client-portal-form" data-client-login-form>
+<label class="client-portal-label">Email address<input class="client-portal-input" type="email" name="email" autocomplete="username" required data-client-email placeholder="client@example.com"/></label>
+<label class="client-portal-label">Password<input class="client-portal-input" type="password" name="password" autocomplete="current-password" data-client-password placeholder="Password"/></label>
+<label class="client-remember-row"><input type="checkbox" checked data-client-remember/> <span>Keep me signed in</span></label>
+<div class="client-portal-actions">
+<button class="client-portal-button" type="submit" data-client-action><span class="material-symbols-outlined">login</span>Sign In</button>
+<button class="client-portal-button client-portal-button--ghost" type="button" data-client-action data-client-magic><span class="material-symbols-outlined">mail</span>Email Link</button>
+</div>
+</form>
+<div class="client-portal-status" data-client-status></div>
+<p class="client-muted mt-4">After a successful sign-in, your browser or password manager may offer to save this login.</p>
+<div class="client-signup-prompt"><span>New here?</span><button class="client-portal-button client-portal-button--secondary" type="button" data-client-signup-open><span class="material-symbols-outlined">person_add</span>Create Account</button></div>
+<p class="client-muted mt-4">Create an account with your email, then Dark Matter will connect your services, website status, and billing records after your account is approved.</p>
+</div>
+<div class="client-portal-card client-portal-panel client-dashboard" data-client-dashboard>
+<div class="client-dashboard-header">
+<div><div class="client-portal-kicker">Account</div><h2 class="text-3xl font-headline text-white mt-2 mb-1">Client dashboard</h2><div class="client-dashboard-email" data-account-email></div></div>
+<button class="client-portal-button client-portal-button--ghost" type="button" data-client-signout>Sign Out</button>
+</div>
+<section class="client-command-center" aria-label="Client account workspace">
+<div class="client-command-copy">
+<div class="client-portal-kicker">Command Center</div>
+<h3>Your website workspace</h3>
+<p>Jump straight into the things clients usually need: website health, traffic, services, billing, and quick update requests.</p>
+</div>
+<div class="client-command-orb" aria-hidden="true"><span class="material-symbols-outlined">hub</span></div>
+</section>
+<nav class="client-dashboard-actions" aria-label="Client dashboard shortcuts">
+<a class="client-mini-button" href="#client-website-status"><span class="material-symbols-outlined">health_and_safety</span>Status</a>
+<a class="client-mini-button client-mini-button--blue" href="#client-website-traffic"><span class="material-symbols-outlined">query_stats</span>Traffic</a>
+<a class="client-mini-button client-mini-button--green" href="#client-active-services"><span class="material-symbols-outlined">apps</span>Services</a>
+<a class="client-mini-button client-mini-button--violet" href="#client-billing"><span class="material-symbols-outlined">credit_card</span>Billing</a>
+<a class="client-mini-button client-mini-button--hot" href="#client-contact"><span class="material-symbols-outlined">edit_note</span>Request</a>
+</nav>
+<div class="client-workspace-grid">
+<a class="client-workspace-card client-workspace-card--status" href="#client-website-status"><span class="material-symbols-outlined">shield_locked</span><strong>Keep the site healthy</strong><small>Hosting, SSL, backups, updates, and readiness checks.</small></a>
+<a class="client-workspace-card client-workspace-card--traffic" href="#client-website-traffic"><span class="material-symbols-outlined">monitoring</span><strong>Watch the signal</strong><small>Traffic summaries, popular pages, referral notes, and sources.</small></a>
+<a class="client-workspace-card client-workspace-card--request" href="#client-contact"><span class="material-symbols-outlined">send</span><strong>Send a change</strong><small>Ask a question or queue website updates directly from your account.</small></a>
+<a class="client-workspace-card client-workspace-card--settings" href="account-settings.html"><span class="material-symbols-outlined">tune</span><strong>Site preferences</strong><small>Set your website preferences, account settings, update style, and service defaults.</small></a>
+<a class="client-workspace-card client-workspace-card--ads" href="Sean's Google Ads Services/index.html"><span class="material-symbols-outlined">ads_click</span><strong>Sean's Google Ads</strong><small>Open the dedicated Google Ads service for campaign setup, management, and growth.</small></a>
+<a class="client-workspace-card client-workspace-card--orbit" href="preference-builder.html"><span class="material-symbols-outlined">rocket_launch</span><strong>Plan the next upgrade</strong><small>Map a new page, feature, redesign, or idea before we build it into your site.</small></a>
+</div>
+<section class="client-ad-status-panel" aria-label="Google Ads activity and status">
+<div>
+<div class="client-portal-kicker">Google Ads Workspace</div>
+<h3>Ad activity &amp; status</h3>
+<p>Track campaign notes, setup progress, lead activity, budget reminders, and Sean's next recommended cleanup items from your client portal.</p>
+</div>
+<a class="client-google-button" href="account-ads-status.html"><span class="material-symbols-outlined">ads_click</span><span>Open ad status</span></a>
+</section>
+<div class="client-metric-grid">
+<div class="client-metric"><span class="client-muted">Services</span><strong data-metric-services>0</strong></div>
+<div class="client-metric"><span class="client-muted">Website Health</span><strong data-metric-health>Pending</strong></div>
+<div class="client-metric"><span class="client-muted">Visitors</span><strong data-metric-visitors>Pending</strong></div>
+<div class="client-metric"><span class="client-muted">Page Views</span><strong data-metric-pageviews>Pending</strong></div>
+<div class="client-metric"><span class="client-muted">Billing</span><strong data-metric-billing>Pending</strong></div>
+<div class="client-metric"><span class="client-muted">Support</span><strong data-metric-support>Pending</strong></div>
+</div>
+<section id="client-website-status">
+<div class="client-section-heading"><h3 class="text-xl font-headline text-white">Website status</h3><span class="client-muted">Health, hosting, backups, and update readiness.</span></div>
+<div class="client-health-grid" data-client-website-status></div>
+</section>
+<section id="client-website-traffic">
+<div class="client-section-heading"><h3 class="text-xl font-headline text-white">Website traffic</h3><span class="client-muted">Visitor activity, popular pages, and referral notes.</span></div>
+<div class="client-stats-grid" data-client-website-stats></div>
+</section>
+<section id="client-active-services"><h3 class="text-xl font-headline text-white mb-3">Active services</h3><div class="client-list" data-client-services></div></section>
+<section id="client-billing"><h3 class="text-xl font-headline text-white mb-3">Recurring billing</h3><div class="client-list" data-client-billing></div><button class="client-portal-button client-portal-button--ghost mt-4" type="button" disabled><span class="material-symbols-outlined">credit_card</span>Billing Portal Coming Soon</button></section>
+<section class="client-request-panel" id="client-contact">
+<span class="client-anchor-alias" id="client-request" aria-hidden="true"></span>
+<div class="client-section-heading"><h3 class="text-xl font-headline text-white">Request a change or ask a question</h3><span class="client-muted">Send website updates, content changes, quick questions, or support notes directly from your account.</span></div>
+<form class="client-portal-form" name="client-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-client-request-form>
+<input type="hidden" name="form-name" value="client-request"/>
+<p class="hidden"><label>Do not fill this out <input name="bot-field"/></label></p>
+<input type="hidden" name="client_email" data-request-email/>
+<label class="client-portal-label">Request type<span class="client-select-wrap"><select class="client-portal-input" name="request_type" required><option value="Website update">Website update</option><option value="Question">Question</option><option value="Billing question">Billing question</option><option value="Technical support">Technical support</option></select><span class="material-symbols-outlined client-select-arrow">expand_more</span></span></label>
+<label class="client-portal-label">Subject<input class="client-portal-input" type="text" name="subject" required placeholder="Update homepage hours, add photos, billing question..."/></label>
+<label class="client-portal-label">Details<textarea class="client-portal-input client-portal-textarea" name="details" required placeholder="Tell us what you need changed or what question you have."></textarea></label>
+<button class="client-portal-button" type="submit"><span class="material-symbols-outlined">send</span>Submit Request</button>
+<div class="client-portal-status" data-request-status></div>
+</form>
+</section>
+</div>
+</section>
+</main>
+<div class="client-modal" data-client-signup-modal hidden>
+<div class="client-modal__backdrop" data-client-signup-close></div>
+<section class="client-modal__panel client-portal-card client-portal-panel" role="dialog" aria-modal="true" aria-labelledby="signup-title">
+<button class="client-modal__close" type="button" aria-label="Close signup" data-client-signup-close><span class="material-symbols-outlined">close</span></button>
+<div class="client-portal-kicker">Create Account</div>
+<h2 id="signup-title" class="text-3xl font-headline text-white mt-3 mb-3">Create your client account.</h2>
+<p class="client-muted mb-5">Use the email you want connected to your Dark Matter services. After signup, we will attach your website records, support details, and billing information.</p>
+<form class="client-portal-form" data-client-signup-form novalidate>
+<label class="client-portal-label">Full name<input class="client-portal-input" type="text" autocomplete="name" required data-signup-name placeholder="Your name"/></label>
+<label class="client-portal-label">Phone<input class="client-portal-input" type="tel" autocomplete="tel" data-signup-phone placeholder="Best phone number"/></label>
+<label class="client-portal-label">Email address<input class="client-portal-input" type="email" autocomplete="email" required data-signup-email placeholder="client@example.com"/></label>
+<label class="client-portal-label">Password<input class="client-portal-input" type="password" autocomplete="new-password" required minlength="6" data-signup-password placeholder="Create a password"/></label>
+<label class="client-portal-label">Confirm password<input class="client-portal-input" type="password" autocomplete="new-password" required minlength="6" data-signup-password-confirm placeholder="Type it again"/></label>
+<button class="client-portal-button client-portal-button--secondary" type="submit" data-signup-submit><span class="material-symbols-outlined">person_add</span>Create Account</button>
+</form>
+<div class="client-portal-status" data-signup-status></div>
+</section>
+</div>
+<script src="assets/supabase-config.js"></script>
+<script>
+window.DM_CLIENT_PORTAL_COPY = {
+  notConfigured: "Client portal setup is ready. Add your Supabase URL and anon key in assets/supabase-config.js to enable login.",
+  checkEmail: "Check your email for the secure login link.",
+  accountCreated: "Account created. Check your email to confirm your login, then we will connect your client records.",
+  accountCreatedSignedIn: "Account created. You are signed in now.",
+  signupSuccessUrl: "/account-created.html",
+  nameRequired: "Enter your full name.",
+  emailRequired: "Enter your email address.",
+  emailInvalid: "Enter a valid email address.",
+  passwordRequired: "Create a password.",
+  passwordTooShort: "Password must be at least 6 characters.",
+  passwordConfirmRequired: "Confirm your password.",
+  passwordMismatch: "Passwords do not match.",
+  noServices: "No active services are connected to this account yet.",
+  noBilling: "No recurring billing records are connected yet.",
+  noWebsiteStatus: "No website health records are connected to this account yet.",
+  noWebsiteStats: "No traffic stats are connected to this account yet.",
+  visitors: "Visitors",
+  pageViews: "Page views",
+  topPage: "Top page",
+  topReferrer: "Top referrer",
+  source: "Source",
+  requestSending: "Sending your request...",
+  requestSent: "Request sent. We will review it and follow up soon."
+};
+</script>
+<script type="module" src="assets/client-portal.js?v=20260604-ad-status"></script>
+</body></html>

@@ -16,18 +16,18 @@
 <meta property="og:title" content="DARK MATTER | Managed Website Services &#183; Southwest Florida"/>
 <meta property="og:description" content="Managed website services, custom business web apps, local in-home tech setup, office networking, and complete rebranding for Southwest Florida businesses."/>
 <meta property="og:url" content="https://darkmatterwebdev.com/index.html"/>
-<meta property="og:image" content="https://darkmatterwebdev.com/assets/darkmatter-og-image.png"/>
+<meta property="og:image" content="https://darkmatterwebdev.com/assets/darkmatter-og-image-modern.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <meta property="og:image:alt" content="Dark Matter Web Services - managed websites and local IT support"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="DARK MATTER | Managed Website Services &#183; Southwest Florida"/>
 <meta name="twitter:description" content="Managed website services, custom business web apps, local in-home tech setup, office networking, and complete rebranding for Southwest Florida businesses."/>
-<meta name="twitter:image" content="https://darkmatterwebdev.com/assets/darkmatter-og-image.png"/>
+<meta name="twitter:image" content="https://darkmatterwebdev.com/assets/darkmatter-og-image-modern.png"/>
 <link rel="alternate" hreflang="en" href="/index.html"/>
 <link rel="alternate" hreflang="es" href="/es/index.html"/>
 <link rel="alternate" hreflang="x-default" href="/index.html"/>
-<link href="assets/nav.css?v=20260602-menu-center" rel="stylesheet"/>
+<link href="assets/nav.css?v=20260604-menu-consistency" rel="stylesheet"/>
 <link href="assets/powered-by-badge.css" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Bebas+Neue&amp;display=swap" rel="stylesheet"/>
@@ -401,6 +401,13 @@
             to { filter: hue-rotate(360deg); }
         }
         @media (max-width: 767px) {
+            @media (orientation: portrait) and (max-width: 430px) and (min-height: 780px) and (max-aspect-ratio: 9 / 19) {
+                .hero-video-fill {
+                    object-fit: cover;
+                    object-position: center 45%;
+                    transform: scale(1.005);
+                }
+            }
             .jpsurette-easter-egg {
                 margin: 0 0 88px 10px;
                 width: 14px;
@@ -451,8 +458,10 @@
 </div>
 </div>
 </div>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="downloads.html">Downloads</a>
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="process.html">Process</a>
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="casestudies.html">Portfolio</a>
+<a class="font-label-mono text-label-mono text-electric-cyan hover:underline transition-colors duration-300 inline-flex items-center gap-1.5" href="account.html"><span class="material-symbols-outlined text-base">account_circle</span>Client Login</a>
 <div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0">
 <span class="text-electric-cyan" aria-current="true">EN</span>
 <span class="text-outline/50">/</span>
@@ -662,7 +671,7 @@
 <h2 class="font-headline-lg text-headline-lg text-starlight-white">Business website management, simplified</h2>
 <p class="font-body-md text-body-md text-on-surface-variant">Professional website hosting and ongoing support &mdash; useful when AI can suggest a change, but you need someone to make sure it does not quietly break the site.</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter">
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-gutter">
 <div class="glass-card p-8 rounded-xl flex flex-col hover:border-white/20 transition-all">
 <h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Essential</h3>
 <p class="font-headline-lg text-headline-lg text-electric-cyan mb-6">$79<span class="font-body-md text-body-md text-on-surface-variant">/mo</span></p>
@@ -682,7 +691,7 @@
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Everything in Essential</li>
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Up to 20 content updates monthly</li>
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Priority response times</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Content publishing assistance</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Occasional blog post publishing</li>
 </ul>
 <a href="contact.html" class="text-center py-3 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-mono text-label-mono font-bold rounded-lg hover:scale-[1.02] transition-all">Get Started</a>
 </div>
@@ -693,7 +702,7 @@
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Everything in Growth</li>
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Unlimited reasonable content updates</li>
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Landing page creation</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Basic SEO updates</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> SEO updates &amp; periodic blog posts</li>
 </ul>
 <a href="contact.html" class="text-center py-3 border border-white/20 text-starlight-white font-label-mono text-label-mono rounded-lg hover:bg-white/5 transition-all">Get Started</a>
 </div>
@@ -702,7 +711,7 @@
 <p class="font-headline-lg text-headline-lg text-electric-cyan mb-6">$599<span class="font-body-md text-body-md text-on-surface-variant">/mo</span></p>
 <ul class="space-y-3 font-body-md text-body-md text-on-surface-variant text-sm flex-1 mb-8">
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Everything in Business</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Ongoing content management</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Ongoing content &amp; blog management</li>
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Quarterly website reviews</li>
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Priority turnaround</li>
 </ul>
@@ -793,7 +802,7 @@ Message Us on WhatsApp
 </div>
 <a href="casestudies.html" class="font-label-mono text-label-mono text-electric-cyan hover:underline">View full portfolio &rarr;</a>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter">
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-gutter">
 <a href="casestudies.html" class="group glass-card rounded-xl overflow-hidden hover:border-electric-cyan/40 transition-all">
 <img alt="Naples Estate Jewelry website" class="w-full h-64 object-cover object-center group-hover:scale-[1.02] transition-transform duration-700" loading="lazy" src="assets/portfolio/naples-estate-jewelry/home.webp"/>
 <div class="p-8">
@@ -834,6 +843,21 @@ Message Us on WhatsApp
 <span class="px-2 py-1 bg-nebula-purple/10 rounded">Photography</span>
 <span class="px-2 py-1 bg-nebula-purple/10 rounded">Event Galleries</span>
 <span class="px-2 py-1 bg-nebula-purple/10 rounded">Portfolio</span>
+</div>
+</div>
+</a>
+<a href="casestudies.html#case-seansads" class="group glass-card rounded-xl overflow-hidden hover:border-electric-cyan/40 transition-all border border-electric-cyan/10">
+<img alt="SeansAds.com Google Ads mini-site" class="w-full h-64 object-cover object-top group-hover:scale-[1.02] transition-transform duration-700" loading="lazy" src="assets/portfolio/seansads/home.webp"/>
+<div class="p-8">
+<div class="flex items-center gap-2 mb-2">
+<span class="font-label-caps text-[10px] px-2 py-0.5 bg-electric-cyan/15 text-electric-cyan border border-electric-cyan/30 rounded">LAUNCH READY</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">SeansAds.com</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Standalone Google Ads mini-site with bilingual pages, service pricing, Sean's portfolio content, and Dark Matter portal routing.</p>
+<div class="flex flex-wrap gap-3 font-label-caps text-[10px] text-electric-cyan">
+<span class="px-2 py-1 bg-electric-cyan/10 rounded">Google Ads</span>
+<span class="px-2 py-1 bg-electric-cyan/10 rounded">Mini-Site</span>
+<span class="px-2 py-1 bg-electric-cyan/10 rounded">Bilingual</span>
 </div>
 </div>
 </a>
@@ -994,6 +1018,10 @@ Process
 <span class="material-symbols-outlined text-lg">workspace_premium</span>
 Work
 </a>
+<a href="account.html" class="flex items-center gap-3 px-4 py-3 text-electric-cyan hover:text-starlight-white hover:bg-white/5 font-label-mono text-sm transition-colors">
+<span class="material-symbols-outlined text-lg">account_circle</span>
+Client Login
+</a>
 <a href="contact.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-sm transition-colors">
 <span class="material-symbols-outlined text-lg">mail</span>
 Contact
@@ -1078,9 +1106,9 @@ Contact Us
 <div class="space-y-3"><span class="font-label-caps text-label-caps text-nebula-purple">WEBSITE CARE PLANS</span><h2 class="font-headline-lg text-headline-lg-mobile text-starlight-white">Plans for every business</h2></div>
 <div class="grid grid-cols-1 gap-4">
 <div class="glass-card p-6 rounded-lg"><h3 class="font-headline-md text-starlight-white">Essential &middot; $79/mo</h3><p class="font-body-md text-on-surface-variant text-sm mt-2">Hosting, SSL, backups, monitoring, dedicated WhatsApp account, up to 5 updates monthly.</p></div>
-<div class="glass-card p-6 rounded-lg border border-electric-cyan/30"><h3 class="font-headline-md text-starlight-white">Growth &middot; $149/mo</h3><p class="font-body-md text-on-surface-variant text-sm mt-2">Everything in Essential plus 20 updates monthly and priority response.</p></div>
-<div class="glass-card p-6 rounded-lg"><h3 class="font-headline-md text-starlight-white">Business &middot; $299/mo</h3><p class="font-body-md text-on-surface-variant text-sm mt-2">Unlimited reasonable updates, landing pages, and basic SEO updates.</p></div>
-<div class="glass-card p-6 rounded-lg"><h3 class="font-headline-md text-starlight-white">Executive &middot; $599/mo</h3><p class="font-body-md text-on-surface-variant text-sm mt-2">Ongoing content management, quarterly reviews, and priority turnaround.</p></div>
+<div class="glass-card p-6 rounded-lg border border-electric-cyan/30"><h3 class="font-headline-md text-starlight-white">Growth &middot; $149/mo</h3><p class="font-body-md text-on-surface-variant text-sm mt-2">Everything in Essential plus 20 updates monthly, priority response, and occasional blog post publishing.</p></div>
+<div class="glass-card p-6 rounded-lg"><h3 class="font-headline-md text-starlight-white">Business &middot; $299/mo</h3><p class="font-body-md text-on-surface-variant text-sm mt-2">Unlimited reasonable updates, landing pages, SEO updates, and periodic blog posts.</p></div>
+<div class="glass-card p-6 rounded-lg"><h3 class="font-headline-md text-starlight-white">Executive &middot; $599/mo</h3><p class="font-body-md text-on-surface-variant text-sm mt-2">Ongoing content/blog management, quarterly reviews, and priority turnaround.</p></div>
 <div class="glass-card p-6 rounded-lg border border-electric-cyan/30 bg-electric-cyan/5"><h3 class="font-headline-md text-starlight-white">Team Help Desk &middot; $1,500+/mo</h3><p class="font-body-md text-on-surface-variant text-sm mt-2">Support for staff accounts, web app users, reports, access, and daily workflow questions.</p></div>
 <div class="glass-card p-6 rounded-lg bg-nebula-purple/5"><h3 class="font-headline-md text-starlight-white">Enterprise Concierge</h3><p class="font-body-md text-on-surface-variant text-sm mt-2">Custom pricing &mdash; dedicated support and 24/7 emergency response.</p></div>
 </div>
@@ -1127,6 +1155,10 @@ Contact Us
 <a href="casestudies.html#case-jps" class="block glass-card rounded-lg overflow-hidden border border-nebula-purple/15">
 <img alt="JPS Surette Photography" class="w-full h-44 object-cover object-center" loading="lazy" src="assets/portfolio/jpsurette/home.webp"/>
 <div class="p-6"><div class="mb-2"><span class="font-label-caps text-[9px] px-2 py-0.5 bg-nebula-purple/15 text-nebula-purple border border-nebula-purple/30 rounded">IN PROGRESS</span></div><h3 class="font-headline-md text-starlight-white mb-2">JPS Surette Photography</h3><p class="font-body-md text-on-surface-variant text-sm">Photography portfolio with combat sports, event-gallery direction, architecture, and commercial work.</p></div>
+</a>
+<a href="casestudies.html#case-seansads" class="block glass-card rounded-lg overflow-hidden border border-electric-cyan/15">
+<img alt="SeansAds.com Google Ads mini-site" class="w-full h-44 object-cover object-top" loading="lazy" src="assets/portfolio/seansads/home.webp"/>
+<div class="p-6"><div class="mb-2"><span class="font-label-caps text-[9px] px-2 py-0.5 bg-electric-cyan/15 text-electric-cyan border border-electric-cyan/30 rounded">LAUNCH READY</span></div><h3 class="font-headline-md text-starlight-white mb-2">SeansAds.com</h3><p class="font-body-md text-on-surface-variant text-sm">Standalone Google Ads mini-site with bilingual pages, pricing paths, and Dark Matter portal routing.</p></div>
 </a>
 <a href="casestudies.html" class="font-label-mono text-sm text-electric-cyan hover:underline block pt-2">View full portfolio &rarr;</a>
 </div>
@@ -1195,6 +1227,7 @@ Contact Us
 <span class="material-symbols-outlined mb-1">design_services</span>
 <span class="font-label-caps text-[10px]">Services</span>
 </a>
+<a href="downloads.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90"><span class="material-symbols-outlined">download</span><span class="font-label-caps text-[9px] mt-1">Downloads</span></a>
 <a href="process.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-transform hover:text-starlight-white">
 <span class="material-symbols-outlined mb-1">timeline</span>
 <span class="font-label-caps text-[10px]">Process</span>
@@ -1342,5 +1375,3 @@ Contact Us
 <script src="assets/mobile-services-nav.js?v=20260602-consultation"></script>
 <script src="assets/rail.js?v=20260602-rail-active"></script>
 </body></html>
-
-

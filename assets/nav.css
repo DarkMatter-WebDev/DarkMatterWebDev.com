@@ -79,6 +79,12 @@ nav .hidden.md\:flex,
 }
 
 @media (min-width: 768px) {
+  nav.fixed.top-0.w-full > .hidden.md\:flex,
+  nav.fixed.top-0.w-full > .flex.gap-10.items-center,
+  nav.fixed.top-0.w-full > .flex.gap-8.items-center {
+    gap: 2.5rem !important;
+  }
+
   nav.fixed.top-0.w-full {
     justify-content: center !important;
   }
@@ -94,8 +100,18 @@ nav .hidden.md\:flex,
   nav.fixed.top-0.w-full > .hidden.md\:flex > a.bg-gradient-to-r,
   nav.fixed.top-0.w-full > .flex.gap-10.items-center > a.bg-gradient-to-r {
     position: absolute;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
     right: var(--dm-nav-side-offset, 4rem);
     top: 50%;
+    min-height: 2.225rem;
+    padding: 0.5rem 1.5rem !important;
+    border-radius: 0.5rem !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 0.875rem !important;
+    line-height: 1.4 !important;
+    letter-spacing: 0.05em !important;
     transform: translateY(-50%);
     margin-left: 0 !important;
   }
@@ -236,7 +252,8 @@ nav .hidden.md\:flex,
   }
 
   .md\:hidden > nav.fixed.bottom-0,
-  .md\:hidden nav.fixed.bottom-0 {
+  .md\:hidden nav.fixed.bottom-0,
+  nav.fixed.bottom-0.md\:hidden {
     top: 4rem !important;
     bottom: auto !important;
     height: 3.05rem !important;
@@ -248,7 +265,9 @@ nav .hidden.md\:flex,
   }
 
   .md\:hidden nav.fixed.bottom-0 a,
-  .md\:hidden nav.fixed.bottom-0 button {
+  .md\:hidden nav.fixed.bottom-0 button,
+  nav.fixed.bottom-0.md\:hidden a,
+  nav.fixed.bottom-0.md\:hidden button {
     min-width: 0;
     flex: 1 1 0;
     height: 100%;
@@ -256,11 +275,14 @@ nav .hidden.md\:flex,
     font-size: 0.62rem;
   }
 
-  .md\:hidden nav.fixed.bottom-0 .material-symbols-outlined {
+  .md\:hidden nav.fixed.bottom-0 .material-symbols-outlined,
+  nav.fixed.bottom-0.md\:hidden .material-symbols-outlined {
     font-size: 1.15rem !important;
+    margin-bottom: 0.05rem !important;
   }
 
-  .md\:hidden nav.fixed.bottom-0 .font-label-caps {
+  .md\:hidden nav.fixed.bottom-0 .font-label-caps,
+  nav.fixed.bottom-0.md\:hidden .font-label-caps {
     font-size: 0.52rem !important;
     line-height: 1.1 !important;
     margin-top: 0.05rem !important;

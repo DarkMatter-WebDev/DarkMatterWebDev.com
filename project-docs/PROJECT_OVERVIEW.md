@@ -48,8 +48,9 @@ At the beginning of every future AI session:
 2. Read `project-docs/CURRENT_STATUS.md`.
 3. Read `project-docs/TASKS.md`.
 4. Read `project-docs/DECISIONS.md`.
-5. Summarize the current project state before making changes.
-6. Ask for clarification only when the local docs and code do not provide a safe answer.
+5. Read `project-docs/HANDOFF.md`.
+6. Summarize the current project state before making changes.
+7. Ask for clarification only when the local docs and code do not provide a safe answer.
 
 ## Session Shutdown Protocol
 

@@ -32,9 +32,9 @@ Use this file to track client website operations. Never store actual passwords, 
 
 ## Prospective / Example Case Study Clients
 
-### Naples Antiques LLC
+### Naples Estate Jewelry
 
-- Domain: Not documented in this workspace.
+- Domain: `NaplesEstateJewelry.co` is used as the displayed Portfolio domain; production/hosting details are not documented.
 - Hosting details: Not documented.
 - GitHub repo: Not documented.
 - Netlify site: Not documented.
@@ -46,7 +46,7 @@ Use this file to track client website operations. Never store actual passwords, 
 
 ### Elite Yacht Detailing
 
-- Domain: Not documented in this workspace.
+- Domain: `EliteYachtDetailing.com` is used as the displayed Portfolio domain; production/hosting details are not documented.
 - Hosting details: Not documented.
 - GitHub repo: Not documented.
 - Netlify site: Not documented.
@@ -56,3 +56,14 @@ Use this file to track client website operations. Never store actual passwords, 
 - Billing status: Not documented.
 - Notes: Featured case study assets exist under `assets/portfolio/elite/`.
 
+### JPS Surette
+
+- Domain: `JPSurette.com` is used as the displayed Portfolio domain.
+- Hosting details: Live preview link currently points to `https://jpsurette.netlify.app/`.
+- GitHub repo: Not documented.
+- Netlify site: Not documented beyond the preview URL.
+- Maintenance plan: Not documented.
+- Login/credential locations: Not documented.
+- Outstanding requests: Update the case study from in-progress to final/live-complete when approved.
+- Billing status: Not documented.
+- Notes: Featured case study assets exist under `assets/portfolio/jpsurette/`; hidden Easter egg page exists at `jpsurette.html`.

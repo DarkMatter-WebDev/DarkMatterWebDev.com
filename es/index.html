@@ -14,20 +14,20 @@
 <meta property="og:site_name" content="Dark Matter Web Services"/>
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="DARK MATTER | Servicios de Sitios Web Administrados &#183; el suroeste de Florida"/>
-<meta property="og:description" content="Servicios de sitios web administrados, aplicaciones web empresariales a medida, configuraci&#195;&#179;n t&#195;&#169;cnica a domicilio local, redes de oficina y redise&#195;&#177;o completo de marca para negocios del suroeste de Florida."/>
-<meta property="og:url" content="https://darkmatterwebdev.com/es\index.html"/>
-<meta property="og:image" content="https://darkmatterwebdev.com/assets/darkmatter-og-image.png"/>
+<meta property="og:description" content="Servicios de sitios web administrados, aplicaciones web empresariales a medida, configuraci?n t?cnica a domicilio local, redes de oficina y redise?o completo de marca para negocios del suroeste de Florida."/>
+<meta property="og:url" content="https://darkmatterwebdev.com/es/index.html"/>
+<meta property="og:image" content="https://darkmatterwebdev.com/assets/darkmatter-og-image-modern.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <meta property="og:image:alt" content="Dark Matter Web Services - managed websites and local IT support"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="DARK MATTER | Servicios de Sitios Web Administrados &#183; el suroeste de Florida"/>
-<meta name="twitter:description" content="Servicios de sitios web administrados, aplicaciones web empresariales a medida, configuraci&#195;&#179;n t&#195;&#169;cnica a domicilio local, redes de oficina y redise&#195;&#177;o completo de marca para negocios del suroeste de Florida."/>
-<meta name="twitter:image" content="https://darkmatterwebdev.com/assets/darkmatter-og-image.png"/>
+<meta name="twitter:description" content="Servicios de sitios web administrados, aplicaciones web empresariales a medida, configuraci?n t?cnica a domicilio local, redes de oficina y redise?o completo de marca para negocios del suroeste de Florida."/>
+<meta name="twitter:image" content="https://darkmatterwebdev.com/assets/darkmatter-og-image-modern.png"/>
 <link rel="alternate" hreflang="en" href="/index.html"/>
 <link rel="alternate" hreflang="es" href="/es/index.html"/>
 <link rel="alternate" hreflang="x-default" href="/index.html"/>
-<link href="../assets/nav.css?v=20260602-menu-center" rel="stylesheet"/>
+<link href="../assets/nav.css?v=20260604-menu-consistency" rel="stylesheet"/>
 <link href="../assets/powered-by-badge.css" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Bebas+Neue&amp;display=swap" rel="stylesheet"/>
@@ -406,6 +406,13 @@
             to { filter: hue-rotate(360deg); }
         }
         @media (max-width: 767px) {
+            @media (orientation: portrait) and (max-width: 430px) and (min-height: 780px) and (max-aspect-ratio: 9 / 19) {
+                .hero-video-fill {
+                    object-fit: cover;
+                    object-position: center 45%;
+                    transform: scale(1.005);
+                }
+            }
             .jpsurette-easter-egg {
                 margin: 0 0 88px 10px;
                 width: 14px;
@@ -456,8 +463,10 @@
 </div>
 </div>
 </div>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="downloads.html">Descargas</a>
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="process.html">Proceso</a>
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="casestudies.html">Portafolio</a>
+<a class="font-label-mono text-label-mono text-electric-cyan hover:underline transition-colors duration-300 inline-flex items-center gap-1.5" href="account.html"><span class="material-symbols-outlined text-base">account_circle</span>Acceso</a>
 <div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0">
 <a href="../index.html" hreflang="en" lang="en" aria-label="Switch to English" onclick="try{localStorage.setItem('dm_lang','en')}catch(e){}" class="text-on-surface-variant hover:text-electric-cyan transition-colors duration-300">EN</a>
 <span class="text-outline/50">/</span>
@@ -667,7 +676,7 @@
 <h2 class="font-headline-lg text-headline-lg text-starlight-white">La gestión de sitios web empresariales, simplificada</h2>
 <p class="font-body-md text-body-md text-on-surface-variant">Hosting profesional y soporte continuo &mdash; til cuando la IA puede sugerir un cambio, pero necesitas que alguien se asegure de que no rompa el sitio.</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter">
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-gutter">
 <div class="glass-card p-8 rounded-xl flex flex-col hover:border-white/20 transition-all">
 <h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Esencial</h3>
 <p class="font-headline-lg text-headline-lg text-electric-cyan mb-6">$79<span class="font-body-md text-body-md text-on-surface-variant">/mes</span></p>
@@ -687,7 +696,7 @@
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Todo lo de Esencial</li>
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Hasta 20 actualizaciones de contenido al mes</li>
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Tiempos de respuesta prioritarios</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Asistencia en la publicacin de contenido</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Publicacion ocasional de articulos</li>
 </ul>
 <a href="contact.html" class="text-center py-3 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-mono text-label-mono font-bold rounded-lg hover:scale-[1.02] transition-all">Comenzar</a>
 </div>
@@ -698,7 +707,7 @@
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Todo lo de Crecimiento</li>
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Actualizaciones de contenido ilimitadas razonables</li>
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Creación de páginas de aterrizaje</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Actualizaciones básicas de SEO</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> SEO y articulos periodicos</li>
 </ul>
 <a href="contact.html" class="text-center py-3 border border-white/20 text-starlight-white font-label-mono text-label-mono rounded-lg hover:bg-white/5 transition-all">Comenzar</a>
 </div>
@@ -707,7 +716,7 @@
 <p class="font-headline-lg text-headline-lg text-electric-cyan mb-6">$599<span class="font-body-md text-body-md text-on-surface-variant">/mes</span></p>
 <ul class="space-y-3 font-body-md text-body-md text-on-surface-variant text-sm flex-1 mb-8">
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Todo lo de Negocios</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Gestión continua de contenido</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Gestion continua de contenido y blog</li>
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Revisiones trimestrales del sitio web</li>
 <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base shrink-0">check</span> Tiempos de entrega prioritarios</li>
 </ul>
@@ -798,7 +807,7 @@ Escrbenos por WhatsApp
 </div>
 <a href="casestudies.html" class="font-label-mono text-label-mono text-electric-cyan hover:underline">Ver portafolio completo &rarr;</a>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter">
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-gutter">
 <a href="casestudies.html" class="group glass-card rounded-xl overflow-hidden hover:border-electric-cyan/40 transition-all">
 <img alt="Sitio web de Naples Estate Jewelry" class="w-full h-64 object-cover object-center group-hover:scale-[1.02] transition-transform duration-700" loading="lazy" src="../assets/portfolio/naples-estate-jewelry/home.webp"/>
 <div class="p-8">
@@ -839,6 +848,21 @@ Escrbenos por WhatsApp
 <span class="px-2 py-1 bg-nebula-purple/10 rounded">Fotograf?a</span>
 <span class="px-2 py-1 bg-nebula-purple/10 rounded">Galerías</span>
 <span class="px-2 py-1 bg-nebula-purple/10 rounded">Portafolio</span>
+</div>
+</div>
+</a>
+<a href="casestudies.html#case-seansads" class="group glass-card rounded-xl overflow-hidden hover:border-electric-cyan/40 transition-all border border-electric-cyan/10">
+<img alt="Mini-sitio de Google Ads SeansAds.com" class="w-full h-64 object-cover object-top group-hover:scale-[1.02] transition-transform duration-700" loading="lazy" src="../assets/portfolio/seansads/home.webp"/>
+<div class="p-8">
+<div class="flex items-center gap-2 mb-2">
+<span class="font-label-caps text-[10px] px-2 py-0.5 bg-electric-cyan/15 text-electric-cyan border border-electric-cyan/30 rounded">LISTO</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">SeansAds.com</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Mini-sitio independiente de Google Ads con paginas bilingues, precios de servicio, portafolio de Sean y enlace al portal Dark Matter.</p>
+<div class="flex flex-wrap gap-3 font-label-caps text-[10px] text-electric-cyan">
+<span class="px-2 py-1 bg-electric-cyan/10 rounded">Google Ads</span>
+<span class="px-2 py-1 bg-electric-cyan/10 rounded">Mini-Sitio</span>
+<span class="px-2 py-1 bg-electric-cyan/10 rounded">Bilingue</span>
 </div>
 </div>
 </a>
@@ -999,6 +1023,10 @@ Proceso
 <span class="material-symbols-outlined text-lg">workspace_premium</span>
 Trabajo
 </a>
+<a href="account.html" class="flex items-center gap-3 px-4 py-3 text-electric-cyan hover:text-starlight-white hover:bg-white/5 font-label-mono text-sm transition-colors">
+<span class="material-symbols-outlined text-lg">account_circle</span>
+Acceso
+</a>
 <a href="contact.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-sm transition-colors">
 <span class="material-symbols-outlined text-lg">mail</span>
 Contacto
@@ -1084,8 +1112,8 @@ Contáctanos
 <div class="grid grid-cols-1 gap-4">
 <div class="glass-card p-6 rounded-lg"><h3 class="font-headline-md text-starlight-white">Esencial &middot; $79/mes</h3><p class="font-body-md text-on-surface-variant text-sm mt-2">Hosting, SSL, copias de seguridad, monitoreo, cuenta de WhatsApp dedicada y hasta 5 actualizaciones al mes.</p></div>
 <div class="glass-card p-6 rounded-lg border border-electric-cyan/30"><h3 class="font-headline-md text-starlight-white">Crecimiento &middot; $149/mes</h3><p class="font-body-md text-on-surface-variant text-sm mt-2">Todo lo de Esencial ms 20 actualizaciones al mes y respuesta prioritaria.</p></div>
-<div class="glass-card p-6 rounded-lg"><h3 class="font-headline-md text-starlight-white">Negocios &middot; $299/mes</h3><p class="font-body-md text-on-surface-variant text-sm mt-2">Actualizaciones ilimitadas razonables, páginas de aterrizaje y actualizaciones básicas de SEO.</p></div>
-<div class="glass-card p-6 rounded-lg"><h3 class="font-headline-md text-starlight-white">Ejecutivo &middot; $599/mes</h3><p class="font-body-md text-on-surface-variant text-sm mt-2">Gestión continua de contenido, revisiones trimestrales y tiempos de entrega prioritarios.</p></div>
+<div class="glass-card p-6 rounded-lg"><h3 class="font-headline-md text-starlight-white">Negocios &middot; $299/mes</h3><p class="font-body-md text-on-surface-variant text-sm mt-2">Actualizaciones ilimitadas razonables, paginas de aterrizaje, SEO y articulos periodicos.</p></div>
+<div class="glass-card p-6 rounded-lg"><h3 class="font-headline-md text-starlight-white">Ejecutivo &middot; $599/mes</h3><p class="font-body-md text-on-surface-variant text-sm mt-2">Gestion continua de contenido/blog, revisiones trimestrales y tiempos de entrega prioritarios.</p></div>
 <div class="glass-card p-6 rounded-lg border border-electric-cyan/30 bg-electric-cyan/5"><h3 class="font-headline-md text-starlight-white">Mesa de Ayuda para Equipos &middot; $1,500+/mes</h3><p class="font-body-md text-on-surface-variant text-sm mt-2">Soporte para cuentas del personal, usuarios de aplicaciones web, reportes, accesos y preguntas diarias sobre el flujo de trabajo.</p></div>
 <div class="glass-card p-6 rounded-lg bg-nebula-purple/5"><h3 class="font-headline-md text-starlight-white">Concierge Empresarial</h3><p class="font-body-md text-on-surface-variant text-sm mt-2">Precios a medida &mdash; soporte dedicado y respuesta de emergencia 24/7.</p></div>
 </div>
@@ -1132,6 +1160,10 @@ Contáctanos
 <a href="casestudies.html#case-jps" class="block glass-card rounded-lg overflow-hidden border border-nebula-purple/15">
 <img alt="JPS Surette Photography" class="w-full h-44 object-cover object-center" loading="lazy" src="../assets/portfolio/jpsurette/home.webp"/>
 <div class="p-6"><div class="mb-2"><span class="font-label-caps text-[9px] px-2 py-0.5 bg-nebula-purple/15 text-nebula-purple border border-nebula-purple/30 rounded">EN PROGRESO</span></div><h3 class="font-headline-md text-starlight-white mb-2">JPS Surette Photography</h3><p class="font-body-md text-on-surface-variant text-sm">Portafolio fotográfico con deportes de combate, dirección de galerías, arquitectura y trabajo comercial.</p></div>
+</a>
+<a href="casestudies.html#case-seansads" class="block glass-card rounded-lg overflow-hidden border border-electric-cyan/15">
+<img alt="Mini-sitio de Google Ads SeansAds.com" class="w-full h-44 object-cover object-top" loading="lazy" src="../assets/portfolio/seansads/home.webp"/>
+<div class="p-6"><div class="mb-2"><span class="font-label-caps text-[9px] px-2 py-0.5 bg-electric-cyan/15 text-electric-cyan border border-electric-cyan/30 rounded">LISTO</span></div><h3 class="font-headline-md text-starlight-white mb-2">SeansAds.com</h3><p class="font-body-md text-on-surface-variant text-sm">Mini-sitio de Google Ads con paginas bilingues, precios y enlace al portal de Dark Matter.</p></div>
 </a>
 <a href="casestudies.html" class="font-label-mono text-sm text-electric-cyan hover:underline block pt-2">Ver portafolio completo &rarr;</a>
 </div>
@@ -1200,6 +1232,7 @@ Contáctanos
 <span class="material-symbols-outlined mb-1">design_services</span>
 <span class="font-label-caps text-[10px]">Servicios</span>
 </a>
+<a href="downloads.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90"><span class="material-symbols-outlined">download</span><span class="font-label-caps text-[9px] mt-1">Descargas</span></a>
 <a href="process.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-transform hover:text-starlight-white">
 <span class="material-symbols-outlined mb-1">timeline</span>
 <span class="font-label-caps text-[10px]">Proceso</span>
@@ -1347,5 +1380,3 @@ Contáctanos
 <script src="../assets/mobile-services-nav.js?v=20260602-consultation"></script>
 <script src="../assets/rail.js?v=20260602-rail-active"></script>
 </body></html>
-
-

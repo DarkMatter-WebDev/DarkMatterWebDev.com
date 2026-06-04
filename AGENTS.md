@@ -8,6 +8,7 @@ At the start of a session, read these files before making changes:
 2. `project-docs/CURRENT_STATUS.md`
 3. `project-docs/TASKS.md`
 4. `project-docs/DECISIONS.md`
+5. `project-docs/HANDOFF.md`
 
 Then summarize the current project state and proceed with the user's request.
 

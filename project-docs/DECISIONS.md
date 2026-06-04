@@ -1,5 +1,45 @@
 # Decisions
 
+## 2026-06-04
+
+Decision:
+Add Downloads as a top-level Dark Matter navigation item directly after Services.
+
+Reason:
+Dark Matter is beginning to publish created web apps as downloadable/request-access products, and Services is the natural adjacent category for users looking for offerings. The first listing is request-access/coming-soon because no verified package file is present in the repo yet.
+
+Alternatives Considered:
+- Put Downloads under the Services dropdown only.
+- Link directly to a nonexistent installer/download file.
+- Wait to add the page until the first package is uploaded.
+
+## 2026-06-04
+
+Decision:
+List SeansAds.com in the Dark Matter Portfolio as a launch-ready project, not as a live public site, until the final domain and Netlify deployment are connected.
+
+Reason:
+The standalone Sean's Google Ads mini-site is built and previewable locally, but the production SeansAds.com launch has not been verified in this workspace. "Launch ready" keeps the portfolio accurate while still showing the project as a finished Dark Matter build.
+
+Alternatives Considered:
+- Mark it as live and link directly to `https://SeansAds.com`.
+- Leave it out of the public Portfolio until the domain is connected.
+- Treat it only as an internal Sean's Google Ads cross-promo rather than a Dark Matter project.
+
+## 2026-06-03
+
+Decision:
+Begin the client account area with Supabase Auth and Supabase tables while keeping the marketing site static.
+
+Reason:
+Supabase gives Dark Matter a managed login layer, hosted database, magic links, email/password auth, and Row Level Security without forcing the whole marketing site into a full application framework immediately. It fits the current Netlify/static workflow and can later support client services, support coverage, billing summaries, and client workspace features.
+
+Alternatives Considered:
+- Firebase Auth / Firestore
+- Custom authentication
+- Waiting for an Astro/React migration before adding login
+- Keeping client account information manual/offline for now
+
 ## 2026-06-02
 
 Decision:
@@ -16,44 +56,10 @@ Alternatives Considered:
 ## 2026-06-01
 
 Decision:
-Use "Nuestro portafolio" as the Spanish label for the portfolio/case-study area.
+Use Markdown files under `project-docs/` as the project's persistent memory system, with `CLIENTS.md` for client operations and `HANDOFF.md` for quick context transfer.
 
 Reason:
-It sounds warmer and clearer than "Casos de Éxito" for older or less technical clients, while still pointing visitors to completed work.
-
-Alternatives Considered:
-- Casos de Éxito
-- Portafolio
-
-## 2026-06-01
-
-Decision:
-Ship the Spanish site as a parallel set of fully-translated static pages under `es/` (mirroring filenames), rather than a JavaScript in-place string-swap on shared pages.
-
-Reason:
-It matches the existing hand-authored static architecture, gives real Spanish URLs (better SEO/sharing via `hreflang`), works without JavaScript, and keeps each language's markup independently editable. Target dialect is neutral Latin American Spanish.
-
-Alternatives Considered:
-- Single set of files with a JS i18n dictionary toggling text in place (larger refactor, JS-dependent, no distinct URLs).
-- A server/build-time templating system (no build pipeline exists in this project).
-
-Decision:
-Default to English, auto-detect Spanish browsers on first visit (redirect to `es/`), and remember the user's explicit choice in `localStorage` (`dm_lang`).
-
-Reason:
-Most chrome and the canonical URLs are English-first, but Spanish-speaking visitors get their language automatically while a manual `EN / ES` toggle always wins and persists. Detection sets no storage, so there is no redirect loop.
-
-Alternatives Considered:
-- Manual toggle only (no auto-detect).
-- Auto-detect with no persistence.
-
-## 2026-06-01
-
-Decision:
-Use Markdown files under `project-docs/` as the project's persistent memory system.
-
-Reason:
-Markdown is lightweight, easy for humans and AI agents to read, works without a database or external tool, and can be kept with the website source.
+Markdown is lightweight, human-readable, AI-readable, and can be kept with the website source. The handoff file prevents future agents from digging through long chat history.
 
 Alternatives Considered:
 - Keeping context only in chat history.
@@ -63,14 +69,38 @@ Alternatives Considered:
 ## 2026-06-01
 
 Decision:
-Add `CLIENTS.md` to the project memory system.
+Ship the Spanish site as a parallel set of fully translated static pages under `es/`, mirroring filenames, instead of using a JavaScript in-place string swap.
 
 Reason:
-Dark Matter may manage multiple client websites over time, and client operational details need a clear place that does not store passwords.
+It matches the hand-authored static architecture, gives real Spanish URLs, improves SEO/sharing via `hreflang`, works without JavaScript, and keeps each language independently editable. Target dialect is neutral Latin American Spanish.
 
 Alternatives Considered:
-- Tracking client details only in `CURRENT_STATUS.md`.
-- Creating separate ad hoc notes per client.
+- Single set of files with a JavaScript i18n dictionary.
+- Server/build-time templating.
+
+## 2026-06-01
+
+Decision:
+Default to English, auto-detect Spanish browsers on first visit, and remember explicit language choice in `localStorage` (`dm_lang`).
+
+Reason:
+Most canonical URLs are English-first, but Spanish-speaking visitors can land on the Spanish mirror automatically. Manual EN/ES toggle always wins and persists.
+
+Alternatives Considered:
+- Manual toggle only.
+- Auto-detect with no persistence.
+
+## 2026-06-01
+
+Decision:
+Use "Nuestro portafolio" as the Spanish label for the portfolio/case-study area.
+
+Reason:
+It sounds warmer and clearer than "Casos de Éxito" for older or less technical clients while still pointing visitors to completed work.
+
+Alternatives Considered:
+- Casos de Éxito
+- Portafolio
 
 ## 2026-06-01
 
@@ -92,7 +122,7 @@ Decision:
 Add a premium Team Help Desk tier at `$1,500+/mo`.
 
 Reason:
-Supporting an entire business team, individual user accounts, and app users is significantly more involved than basic website updates and should be priced as a premium operational support plan.
+Supporting an entire business team, individual user accounts, and app users is significantly more involved than basic website updates and should be priced as premium operational support.
 
 Alternatives Considered:
 - Include help desk support inside lower care plans.
@@ -117,7 +147,7 @@ Decision:
 Group service navigation into Online Services and In-Home & Office Services.
 
 Reason:
-Dark Matter is expanding beyond website-only work into local technology setup, including in-home installations, home offices, office networks, Wi-Fi, printers, devices, and workstation setup. Grouping the menu keeps the existing web services clear while creating room for local service growth.
+Dark Matter is expanding beyond website-only work into local technology setup, including in-home installations, home offices, office networks, Wi-Fi, printers, devices, and workstation setup. Grouping the menu keeps web services clear while creating room for local service growth.
 
 Alternatives Considered:
 - Keep one flat Services dropdown.

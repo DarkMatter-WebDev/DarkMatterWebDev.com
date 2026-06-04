@@ -1,86 +1,85 @@
-﻿# Tasks
+# Tasks
+
+Last updated: 2026-06-04
 
 ## Backlog
 
-- Review service page copy for consistency after the Custom Business Web Apps positioning update.
-- Add confirmed production deployment details when available.
-- Add real client entries to `project-docs/CLIENTS.md` when client data is confirmed.
-- Consider a dedicated custom web app pricing section or estimate range.
-- Define local/on-site service pricing, travel area, and minimum visit policy.
-- Decide whether In-Home Tech Services should include residential support, business-only home offices, or both.
-- Review mobile layouts for each top-level page and service page.
-- Review expanded Website Care Plan package-detail copy for final pricing, annual discount language, support boundaries, and wording.
-- After deployment, confirm Netlify detects `website-preferences` submissions from the Website Preference Builder and sends the configured email notification.
-- Periodically trim project memory docs when core files approach 250-350 lines, keeping current state and recent history.
-- Document any future app authentication, database, and API choices in `ARCHITECTURE.md`.
-- Have a native Spanish speaker review flagged translation choices (e.g., "Iguala mensual de soporte" for retainer, "joyería de patrimonio", quotation-mark style « » vs " ").
-- When adding any new page or editing copy, create/update the matching `es/` mirror per `project-docs/I18N.md`.
-- Plan a staged migration from hand-authored static HTML to Astro-generated static HTML with shared layouts, components, and structured bilingual content.
+- Keep English and Spanish pages mirrored after every content, navigation, or layout change.
+- Review all service pages for final mobile/desktop polish.
+- Review Website Care Plan pricing, annual discount language, support boundaries, and legal wording.
+- Add production deployment details when the live domain and Netlify site name are confirmed.
+- Add real client entries to `project-docs/CLIENTS.md` when operational details are confirmed.
+- Define local/on-site service pricing, travel area, minimum visit policy, and residential vs business scope.
+- Add clearer starting prices or estimate language for in-home and office setup visits.
+- Add a dedicated custom business web app pricing/estimate section.
+- Add the real downloadable package, installer, or hosted handoff asset for the Auction House & Consignment Store Complete Management Software listing.
+- Decide whether hidden `jpsurette.html` should stay English-only, get an `es/` mirror, or be added as a validator exception.
+- Update the JPS Surette case study from in-progress to final/live-complete once approved.
+- Choose final domain/hosting destination for `Sean's Google Ads Services/`.
+- Add approved Google Ads portfolio examples, screenshots, or campaign summaries when Sean has public work cleared.
+- Have a native Spanish speaker review translation choices before a major public launch.
 - Add a poster image and documented loading rules for the optimized homepage hero MP4s.
-- Move repeated navigation, Services dropdown, footer, language switcher, process rail markup, service data, and care-plan data into reusable sources during the future Astro migration.
-- Delete or move imported client source folders such as `naplesestatejewelry/` and `jpsurette/` before running the full recursive static-site validator as a final deploy check.
-- Update the JPS Surette case study from in-progress to final/live-complete once the project is approved.
+- Plan a staged migration from hand-authored static HTML to Astro-generated static HTML with shared layouts, components, and structured bilingual content.
+
+## Client Portal / Supabase Backlog
+
+- Run `supabase/client-portal-schema.sql` in Supabase SQL editor.
+- Configure Supabase Auth redirect URLs and email templates for `/account.html`, `/es/account.html`, `account-created.html`, and `es/account-created.html`.
+- Create test users plus matching rows in `client_profiles`, `client_services`, `client_billing`, `client_website_status`, and `client_website_stats`.
+- Verify Row Level Security policies restrict reads to `user_id = auth.uid()`.
+- Decide whether public signups should require manual approval/client-row linking.
+- Confirm Netlify detects the `client-request` form after deployment and sends notifications correctly.
+- Decide whether first traffic summaries come from Netlify Web Analytics, Google Analytics, Search Console, Plausible, or manual/admin updates.
+- Add a secure Netlify Function or equivalent backend endpoint for Stripe Customer Portal sessions before enabling recurring billing management.
+- Build out the placeholder account settings/preferences workflow.
+- Build out the placeholder Google Ads activity/status workflow with real campaign/client data.
 
 ## In Progress
 
 - Maintain project memory files as part of every meaningful work session.
 
-## Completed
+## Recently Completed
 
-- Created `project-docs/` memory framework.
-- Added root `AGENTS.md` to point future agents to the memory files.
-- Created project overview, current status, architecture, decisions, tasks, changelog, client tracker, feature notes, and meeting notes.
-- Added Custom Business Web Apps messaging to the site.
-- Added premium Team Help Desk support tier.
-- Standardized the floating process rail to four steps.
-- Fixed visible encoding artifacts found during recent page review.
-- Added grouped Online Services / In-Home & Office Services navigation.
-- Added In-Home Tech Services and Office Network Setup pages.
-- Built the full Spanish (`es/`) site mirror with language switcher, browser auto-detect, bilingual rail.js, hreflang alternates, and the `I18N.md` spec.
-- Fixed the Spanish homepage hero headline clipping on desktop (allowed balanced wrapping + trimmed the font-size clamp in `es/index.html`).
-- Fixed desktop Services dropdown heading icon styling and cache-busted `assets/nav.css` across English and Spanish pages.
-- Added a three-choice Services page gateway for website/online help, in-person tech setup, and business app/portal paths.
-- Unified Contact and Case Studies onto the shared four-step process rail and cache-busted `assets/rail.js` across the site.
-- Tested a shared black-hole MP4 hero treatment on non-home pages with `assets/site-hero.js`, then superseded it with homepage-only video loading.
-- Tuned and matched English/Spanish mobile homepage MP4 hero framing to show more of the black-hole scene while maintaining full-bleed coverage.
-- Rebalanced Spanish desktop homepage hero spacing so the black-hole video height/position matches the English homepage more closely.
-- Moved the mobile tab bar to the top, slimmed it down, removed the visible hamburger dropdown, and added the Services popout menu.
-- Updated Spanish portfolio navigation/page labels to use "Nuestro portafolio".
-- Redesigned the desktop homepage WhatsApp update card with a branded WhatsApp logo/message visual.
-- Added the first-pass Website Preference Builder in English and Spanish and linked it from Services / Custom Business Web Apps.
-- Converted the Website Preference Builder into a Netlify Forms intake flow with synced hidden preference fields, contact fields, and AJAX submission in English and Spanish.
-- Added the four-step process rail to the Website Preference Builder and optimized rail active-state/link behavior across English and Spanish pages.
-- Swept and fixed Spanish-site mojibake/character rendering artifacts across page copy, service dropdowns, and the shared process rail.
-- Renamed the service label to Consultation / Consulta across both language versions and reframed the page as strategic business technology consulting.
-- Optimized the Website Preference Builder for mobile by removing the heavy MP4 hero download below tablet width, deferring the Tailwind CDN compiler, and adding a visible loading overlay while keeping the form available.
-- Added desktop spacing to the Website Preference Builder so the floating process rail no longer blocks the Visual Preferences section.
-- Smoothed and slowed the Services dropdown/menu animations across desktop and mobile.
-- Updated the top-right project CTA wording to Contact Us / Contáctanos and added `darkmatterwebsites@gmail.com` to site contact areas in English and Spanish.
-- Added AI-era positioning copy to English and Spanish website design, hosting, management, and care-plan messaging.
-- Added `project-docs/STRUCTURE_RECOMMENDATIONS.md` with a full site-structure audit and recommended staged migration path.
-- Added `scripts/validate-site.ps1` to check old email strings, mojibake markers, broken internal links, missing same-page anchors, missing English/Spanish page pairs, and non-clickable email mentions.
-- Turned Website Care Plan package tiles into jump links with matching detail sections in English and Spanish, plus stronger tinted card styling.
-- Expanded Website Care Plan detail panels with month-to-month/yearly prices, richer inclusions, best-fit guidance, mobile pricing cues, and distinct visual accents for each tier.
-- Simplified the Website Care Plans page opening in English and Spanish by removing the extra hero/decision-box sections.
-- Matched Website Care Plan preview tile colors to the corresponding detailed tier sections in English and Spanish.
-- Normalized Contact Us / Contáctanos CTA wording across English and Spanish pages.
-- Tightened Case Studies / Nuestro portafolio intro-to-gallery spacing in English and Spanish.
-- Wired optimized 1080p desktop and 720p mobile homepage hero MP4 files into English and Spanish homepages, and removed MP4 hero loading from non-home pages.
-- Updated the Website Preference Builder shell so English and Spanish versions use the standard desktop Services dropdown, mobile header/tab navigation, powered-by badge, and footer.
-- Centered the desktop main navigation consistently across English and Spanish pages with shared nav CSS.
-- Added a compressed cosmic-web WebP background treatment to non-home English and Spanish pages while keeping the homepage MP4-only.
-- Added distinct cosmic-web tint themes to each English and Spanish service subpage.
-- Completed a no-quality-loss media sweep and losslessly optimized safe PNG-format portfolio screenshots.
-- Linked the homepage WhatsApp update card to the Process page and added the dedicated WhatsApp update-queue explanation in English and Spanish.
-- Standardized the Built By referral page navigation across English and Spanish.
-- Rebranded the Naples case study to Naples Estate Jewelry in English and Spanish.
-- Replaced the old Naples portfolio screenshots with three lightweight WebP captures from the imported Naples Estate Jewelry project.
-- Removed the old unused `assets/naples-hero.png`, `assets/naples-pricing.png`, and `assets/naples-product.png` files.
-- Added JPS Surette Photography as the third portfolio/case-study entry in English and Spanish.
-- Wired the JPS Surette case study live-preview link to `https://jpsurette.netlify.app/` and marked the case study as in progress with progress bars.
-- Added tall full-page mini previews to the JPS Surette and Naples Estate Jewelry case-study detail sections.
-- Updated Case Studies project labels to domain-style website names and restyled all full-page mini previews as borderless floating screenshots.
-- Split Portfolio project details into dedicated English and Spanish pages with summary-page buttons linking to the deeper project views.
-- Added prominent green live-site CTAs to each Portfolio project detail page in English and Spanish.
-- Added the animated colorful power-up loading panel and longer reveal timing to `jpsurette.html`.
-- Added sitewide favicon, app icon, manifest, and link-preview Open Graph/Twitter metadata.
+- Added periodic blog/content publishing hooks to Dark Matter Website Care Plan tiers in English and Spanish, including homepage, Services-page summaries, and detailed care-plan pages.
+- Normalized Dark Matter menu rendering across English and Spanish pages, including Downloads, by adding the missing theme config to Downloads pages, forcing shared desktop nav gap/CTA sizing, and cache-busting `assets/nav.css`.
+- Added the standard Dark Matter mobile header/top-tab menu shell to the English and Spanish Downloads pages and tightened mobile content/card edge spacing for consistency.
+- Leveled the Downloads/Descargas navigation item by normalizing shared mobile tab icon spacing, covering the Downloads page mobile-nav markup, and cache-busting `assets/nav.css` across the site.
+- Added a skinny/tall portrait mobile rule on the Dark Matter homepage hero video in English and Spanish so the video zooms out only slightly while staying in cover mode.
+- Applied the compact mobile button/header treatment across Sean's Google Ads subpages, including shared detail pages and contact pages, so language/contact/back-home controls are much smaller.
+- Greatly compacted the Sean's Google Ads homepage mobile top action controls in English and Spanish so other services, portal login, language switcher, and contact fit in one short row.
+- Added a Dark Matter Downloads area in English and Spanish, placed `Downloads` / `Descargas` directly after Services in the main menu, and listed Auction House & Consignment Store Complete Management Software as the first request-access app.
+- Tightened Sean's Google Ads mobile typography, buttons, gutters, and contact header behavior; added a mobile-only draggable grid-orb control for touch interaction with the background.
+- Added SeansAds.com as the fourth Dark Matter Portfolio project in English and Spanish, including homepage teasers, case-study summary sections, mobile cards, dedicated detail pages, and WebP preview assets.
+- Fixed account/login portal form field visibility so typed text shows against the intended dark input background.
+- Audited and cleaned Sean's Google Ads mini-site media assets for GitHub/Netlify upload, leaving only the used lossless portrait WebP and social preview PNG.
+- Cleaned up the Sean's Google Ads portfolio card copy around the Naples Estate Jewelry profile in English and Spanish.
+- Added Naples Estate Jewelry & Antiques as the first Sean's Google Ads portfolio research profile, with honest SEO benchmark ranges pending verified analytics.
+- Added a Covenant Jewelry Buyers public-data research brief and Google Ads campaign-structure notes to Sean's Google Ads portfolio in English and Spanish.
+- Rebuilt the main Dark Matter social/share preview image with a modern logo-led design and updated sitewide metadata to use it.
+- Added Sean's Google Ads social/share preview image metadata across the standalone English and Spanish mini-site for Netlify launch.
+- Stylized the Dark Matter wordmark on the account login portal card in English and Spanish.
+- Linked the main SEO Foundations cards/checklists and foundation-map visual blocks to the account login in English and Spanish.
+- Replaced Sean Cochrane's About-page portrait with the supplied transparent lossless WebP cutout in English and Spanish.
+- Smoothed the account/client portal wormhole core so the floating blue circle moves less and eases more naturally on hover.
+- Expanded the SEO Foundations service page in English and Spanish with a visual foundation-map block before the Sean's Google Ads cross-promo.
+- Added stronger hover motion to the account/client portal wormhole core and dashboard command orb, plus the `#client-contact` account request/contact anchor with a `#client-request` alias.
+- Updated Sean's Google Ads mini-site co-branding from "presents" to "partnered with," routed top-right Contact Us links to the Dark Matter account dashboard contact area, and standardized mini-site portal login labels.
+- Created `project-docs/HANDOFF.md` and compressed startup docs for the next agent.
+- Added Google Ads ad-details/activity tracking language to the Login Portal and a Google-styled ad activity/status workspace panel with lightweight English/Spanish placeholder pages.
+- Added a second row of logged-in account dashboard action cards for site preferences, Sean's Google Ads, and next-upgrade planning.
+- Created lightweight English/Spanish account settings placeholder pages.
+- Added an optimized WebP portrait and styled bio card to Sean Cochrane's Google Ads About page in English and Spanish.
+- Expanded Sean Cochrane's Google Ads About page bio in English and Spanish.
+- Reframed the Dark Matter account login screen as a Login Portal / client wormhole with animated spacetime visuals.
+- Expanded the logged-in account dashboard into a full-width workspace with quick buttons and interactive cards.
+- Routed standalone Google Ads pricing-tier CTAs to the Dark Matter account portal in English and Spanish.
+- Added the standalone bilingual Google Ads mini-site with contact, About, Portfolio, focus-detail, and pricing-tier pages.
+- Added first-pass Supabase-ready client portal pages, shared CSS/JS, public config, Netlify client-request form, signup modal, email confirmation pages, and starter SQL.
+- Split Portfolio project details into dedicated English and Spanish project pages.
+- Added JPS Surette as the third Portfolio entry and marked it in progress.
+- Rebranded Naples portfolio/case-study entry to Naples Estate Jewelry and harvested optimized screenshots.
+- Added sitewide favicon/app icon/manifest/Open Graph metadata.
+- Wired optimized homepage MP4 files and removed MP4 hero loading from non-home pages.
+- Added compressed cosmic-web background treatment for non-home pages.
+- Built the full Spanish site mirror and bilingual navigation/process rail.
+- Added `scripts/validate-site.ps1` as the static-site integrity check.

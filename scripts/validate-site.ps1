@@ -207,6 +207,9 @@ $rootHtml = $pageHtmlFiles | Where-Object {
 
 foreach ($file in $rootHtml) {
     $relative = Get-RelativePath $file.FullName
+    if ($relative -match "^Sean's Google Ads Services[\\/]") {
+        continue
+    }
     $spanish = Join-Path $rootPath (Join-Path "es" $relative)
     if (-not (Test-Path -LiteralPath $spanish)) {
         Add-Issue "missing-es-pair" $file.FullName 0 "Missing Spanish mirror: es/$($relative -replace '\\', '/')"

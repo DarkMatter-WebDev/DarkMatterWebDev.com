@@ -1,8 +1,77 @@
 # Changelog
 
+## 2026-06-04
+
+- Added periodic blog/content publishing hooks to Website Care Plan tier copy across `index.html`, `services.html`, `services/website-care-plans.html`, and Spanish mirrors, positioning Growth as occasional approved blog publishing and Business/Executive as stronger SEO/content cadence options.
+- Normalized menu rendering across Dark Matter English and Spanish pages, especially Downloads, by adding the missing theme config to Downloads pages, enforcing shared desktop nav gap/CTA sizing in `assets/nav.css`, and cache-busting the stylesheet sitewide.
+- Added the standard mobile header/top-tab menu shell to `downloads.html` and `es/downloads.html`, including the services popout trigger, and tightened mobile content/card spacing to match the rest of the site.
+- Leveled the Downloads/Descargas navigation item across desktop and mobile by normalizing shared mobile tab icon spacing, adding coverage for the Downloads page mobile-nav markup, and cache-busting `assets/nav.css`.
+- Added a narrow/tall portrait mobile media rule to the English and Spanish Dark Matter homepage hero video so exceptionally skinny devices use a tiny zoom-out while keeping `object-fit: cover`.
+- Applied the same compact mobile upper-button treatment across Sean's Google Ads shared detail pages and contact pages, shrinking language/contact controls and the Back to Google Ads home pill in English and Spanish.
+- Greatly shrank the Sean's Google Ads homepage mobile header/action controls in English and Spanish, turning the other-services link, Dark Matter portal login, EN/ES switcher, and Contact Us link into a compact one-row strip.
+- Added bilingual Dark Matter Downloads pages (`downloads.html`, `es/downloads.html`) and inserted `Downloads` / `Descargas` directly after Services in the main desktop/mobile navigation; the first app listing is Auction House & Consignment Store Complete Management Software with request-access CTAs until a real package is added.
+- Polished Sean's Google Ads mobile layouts across the standalone English/Spanish mini-site by reducing mobile headline/button sizing, improving gutters, fixing the contact-page mobile header stack, and adding a mobile-only draggable grid-orb control that lets touch users bend the background without activating links.
+- Added SeansAds.com as the fourth Dark Matter Portfolio project in English and Spanish, including desktop/mobile homepage teasers, Portfolio gallery cards, full case-study summary sections, dedicated project detail pages, and compressed WebP mini-site previews.
+- Fixed account/login portal input visibility by overriding Tailwind Forms white input backgrounds so typed text and caret are visible in English and Spanish previews.
+- Audited Sean's Google Ads mini-site media assets, confirmed the active portrait and social preview are already losslessly optimized or compatibility-safe, and removed unused older portrait/social preview variants from the mini-site asset folder.
+- Cleaned up awkward imported copy on Sean's Google Ads portfolio cards so the Naples Estate Jewelry profile reads as polished portfolio-facing content in English and Spanish.
+- Added Naples Estate Jewelry & Antiques / NaplesAntiquesLLC.com to Sean's Google Ads portfolio before Covenant Buyers, with researched service-area/category notes, ad-structure guidance, and clearly labeled SEO target benchmarks pending verified analytics.
+- Added a Covenant Jewelry Buyers public-research portfolio brief to Sean's Google Ads portfolio pages in English and Spanish, including campaign-fit notes, ad-structure ideas, and source links.
+- Replaced the main Dark Matter website Open Graph/Twitter preview image with a modern branded 1200x630 card and updated sitewide metadata to the new cache-busting asset path.
+- Added a dedicated 1200x630 Sean's Google Ads social preview image and wired Open Graph/Twitter preview metadata across all English and Spanish mini-site pages for Netlify sharing.
+- Stylized the Dark Matter wordmark inside the account login portal card with a clipped glow gradient and energy underline in English and Spanish.
+- Made the main SEO Foundations cards/checklists and the foundation-map/search-results visual blocks clickable on English and Spanish service pages, routing each to the account login.
+- Replaced Sean Cochrane's About-page portrait with the supplied transparent PNG converted to lossless WebP, preserving the cutout alpha channel and updating English/Spanish image dimensions.
+- Smoothed the Dark Matter account wormhole core hover animation so the floating blue circle moves more slowly with a much smaller drift, and refreshed the account CSS cache version in English and Spanish.
+- Expanded the SEO Foundations service page in English and Spanish with a visual foundation-map section covering speed, structure, local signals, indexability, and measurement before the Sean's Google Ads cross-promo.
+- Added strong CSS hover interactions to the Dark Matter account wormhole core and dashboard command orb, including faster rings/grid glow and reduced-motion fallbacks; account request/contact sections now expose `#client-contact` while preserving `#client-request` as an alias.
+- Updated Sean's Google Ads mini-site co-branding to "Dark Matter Web Services partnered with," changed top-right `Talk to Sean` / `Hablar con Sean` links to `Contact Us` pointing at the Dark Matter account dashboard contact anchor, and standardized mini-site account/login labels to "Log in through Dark Matter Portal."
+- Made the About Sean Cochrane and Google Ads Portfolio cards on the standalone Google Ads homepages more prominent with a red/yellow animated spotlight treatment.
+- Replaced Sean Cochrane's About-page portrait source with the supplied 599x1041 PNG compressed to lossless WebP, and wired it into the floating portrait treatment.
+- Added `project-docs/HANDOFF.md`, compressed required startup docs (`CURRENT_STATUS.md`, `TASKS.md`, `DECISIONS.md`), updated startup instructions to include the handoff file, and refreshed client tracker entries for current Portfolio projects.
+- Added Google Ads ad-details/activity language to the Dark Matter Login Portal and created Google-styled English/Spanish account ad-status placeholder pages linked from the logged-in workspace.
+- Added Sean Cochrane's optimized WebP portrait to the Google Ads About pages in English and Spanish, styled as a compact glowing bio card beside the contact details.
+- Added a second row of logged-in account dashboard action cards for site preferences/settings, Sean's Google Ads, and planning the next website upgrade; created lightweight English/Spanish account settings placeholder pages for the future settings workflow.
+- Expanded Sean Cochrane's Google Ads About page bio in English and Spanish, adding Naples, Florida, Boston-area/Massachusetts background, HVAC experience, business values, community impact, and Christian faith.
+- Reframed the Dark Matter account login screen as a "Login Portal" / client wormhole in English and Spanish, adding animated spacetime-style rings, a warped grid, and gateway copy around the sign-in form.
+- Expanded the authenticated Dark Matter client account area into a full-width dashboard workspace in English and Spanish, adding a command-center panel, compact shortcut buttons, and interactive cards for status, traffic, services, billing, and update requests.
+- Routed standalone Google Ads pricing-tier primary buttons to the Dark Matter client account portal in English and Spanish (`account.html` / `es/account.html`) and standardized their text to "Choose this plan" / "Elegir este plan."
+- Moved the standalone Google Ads contact page's back link out of the top-right header controls and into the same left-aligned "Back to Google Ads home" row used by other detail pages, mirrored in Spanish.
 
 ## 2026-06-03
 
+- Moved the standalone Google Ads subpage "Back to Google Ads home" buttons out of the header and into a left-aligned row below the menu/above the hero content across English and Spanish internal pages.
+- Added a colorful Sean's Google Ads promo/link block to the SEO Foundations service page in English and Spanish, including compact mobile versions, positioned above the final "Ready to get started" CTA.
+- Added `Log in through Dark Matter` / `Acceder por Dark Matter` links to the standalone Google Ads homepage header and Dark Matter CTA section, routing customers to the existing Supabase-backed Dark Matter account pages in English and Spanish.
+- Removed "Services" from the visible Sean Google Ads mini-site brand across English and Spanish pages; the display brand is now `Sean's Google Ads` / `Google Ads de Sean` while the source folder name remains unchanged for path stability.
+- Added bilingual About Sean and Google Ads Portfolio pages to the standalone Google Ads mini-site, linked them from the English/Spanish homepages, updated the Google Ads contact email to `SCochrane495@gmail.com`, and included Sean Cochrane's owner bio, Massachusetts background, and Seagate Baptist Church link.
+- Updated standalone Google Ads focus/pricing detail pages so the top "Back to Google Ads home" buttons use a solid cyan-green treatment and all top Talk to Sean buttons share the animated landing-page CTA styling in English and Spanish.
+- Added Dark Matter homepage links to the DM mark and a powered-by Dark Matter footer badge across all English and Spanish pages in the standalone Google Ads mini-site.
+- Locked the standalone Google Ads mini-site EN/ES toggle layout so English and Spanish pages keep matching header/action positions while only the active slider moves.
+- Added Spanish (`es/`) mirrors for all nine standalone Google Ads mini-site pages, translated visible copy and metadata, corrected Spanish internal/main-site links, and added EN/ES language toggles plus hreflang alternates across English and Spanish mini-site pages.
+- Added seven linked Google Ads detail pages for Campaign Setup, Landing Page Alignment, Ongoing Cleanup, Launch Package, Ads Essential, Ads Growth, and Ads Dominance, using shared detail CSS/JS for the standalone mini-site.
+- Converted the Google Ads homepage focus cards and pricing cards into links to their respective detail pages, and added stronger motion to the `Talk to Sean` button.
+- Increased motion on the Google Ads landing page's `Talk to Sean` and `Request an Ads Consultation` buttons with shared flowing gradient, shine, float, and glow animations.
+- Replaced the two-card Google Ads pricing area with four colorful interactive pricing cards: Launch Package, Ads Essential, Ads Growth, and Ads Dominance.
+- Added a purple top navigation CTA on the Google Ads landing page for broader Dark Matter services and animated the `Talk to Sean` button with moving gradient/glow treatment.
+- Added a large bottom CTA to the standalone Google Ads landing page that advertises broader Dark Matter website, app, and local IT services while preserving the page's visual style.
+- Added a Dark Matter Web Services co-branded header lockup to the standalone Google Ads landing and contact pages while preserving the existing Google-colored Sean's Google Ads service mark.
+- Updated the Google Ads contact page phone number and click-to-call link to `1-617-860-9914`.
+- Added `Sean's Google Ads Services/contact.html` as a dedicated Google Ads contact page with public call/text and email links plus a focused Netlify-detected inquiry form; routed the Google Ads landing page's consultation CTAs to it.
+- Replaced the CSS-only Google Ads landing-page grid warp with a canvas-drawn mesh that redraws and bends the actual grid lines around the cursor while respecting reduced-motion preferences.
+- Added a standalone `Sean's Google Ads Services/index.html` landing page for a future separate Google Ads service domain, plus English/Spanish Services page links on desktop and mobile.
+- Updated `scripts/validate-site.ps1` so the standalone Google Ads mini-project is not treated as a normal bilingual Dark Matter page mirror.
+- Added the public Supabase project URL and publishable key to `assets/supabase-config.js`; the client portal now initializes instead of remaining in setup mode.
+- Added a first-pass Supabase-ready client portal at `account.html` and `es/account.html`, with shared portal CSS/JS, public config placeholders, setup-mode login protection, English/Spanish navigation links, and starter SQL in `supabase/client-portal-schema.sql`.
+- Expanded the client portal with website health/status cards, a `client_website_status` Supabase table, and a Netlify-backed `client-request` form so logged-in clients can submit questions or website changes from their account.
+- Added website traffic/stat cards and a `client_website_stats` Supabase table for visitors, page views, top page, top referrer, conversion notes, and analytics source summaries.
+- Moved account creation into a focused signup modal using Supabase Auth sign-up, with English and Spanish copy explaining that Dark Matter links services and billing records after approval.
+- Expanded the signup modal with basic intake fields and password confirmation; signup metadata now includes name and phone.
+- Added English and Spanish email-confirmation success pages after signup, including Gmail/Outlook/mail-app buttons and a functional sign-in form for users returning after confirming their email.
+- Added `project-docs/features/client-portal.md` and updated architecture/tasks/decisions to document planned Supabase tables, Row Level Security, auth redirects, and the future secure Stripe billing portal function.
+- Fixed the homepage hero MP4 loader in English and Spanish by restoring missing JavaScript ternary operators that prevented video sources from mounting.
+- Removed the imported root client folders after confirming portfolio assets were already harvested into `assets/portfolio/`; the live Dark Matter project now has 102 files.
+- Repaired Open Graph/Twitter metadata encoding and normalized social `og:url` paths after the sitewide metadata pass.
 - Added Dark Matter favicon/app icon assets, a `site.webmanifest`, and a 1200x630 Open Graph preview image, then wired favicon, Open Graph, and Twitter card metadata across 41 live English and Spanish HTML pages.
 - Renamed the hidden JPSurette Easter egg page to `jpsurette.html`, updated homepage links, and removed the old page label from project references.
 - Added a larger animated power-up loading panel to `jpsurette.html`, with six colorful moving progress bars, pulsing status cells, and longer scroll timing before the final reveal.

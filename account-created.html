@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>(function(){try{var p=localStorage.getItem('dm_lang');var q=location.search||"";var u="es/account-created.html"+q;if(p==="es"){location.replace(u);return;}if(!p&&(navigator.language||navigator.userLanguage||"").toLowerCase().indexOf("es")===0){location.replace(u);}}catch(e){}})();</script>
+<title>Check Your Email | DARK MATTER</title>
+<meta name="description" content="Your Dark Matter client account was created. Confirm your email address before signing in for the first time."/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png"/>
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<meta name="theme-color" content="#050505"/>
+<meta property="og:site_name" content="Dark Matter Web Services"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Check Your Email | DARK MATTER"/>
+<meta property="og:description" content="Confirm your email address before signing in to your Dark Matter client account."/>
+<meta property="og:url" content="https://darkmatterwebdev.com/account-created.html"/>
+<meta property="og:image" content="https://darkmatterwebdev.com/assets/darkmatter-og-image-modern.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Check Your Email | DARK MATTER"/>
+<meta name="twitter:description" content="Confirm your email address before signing in to your Dark Matter client account."/>
+<meta name="twitter:image" content="https://darkmatterwebdev.com/assets/darkmatter-og-image-modern.png"/>
+<link rel="alternate" hreflang="en" href="/account-created.html"/>
+<link rel="alternate" hreflang="es" href="/es/account-created.html"/>
+<link rel="alternate" hreflang="x-default" href="/account-created.html"/>
+<link href="assets/nav.css?v=20260604-menu-consistency" rel="stylesheet"/>
+<link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/>
+<link href="assets/powered-by-badge.css" rel="stylesheet"/>
+<link href="assets/client-portal.css" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"electric-cyan":"#00F0FF","nebula-purple":"#7000FF","void-black":"#050505","starlight-white":"#FFFFFF","surface":"#121414","on-surface-variant":"#c4c7c7","outline":"#8e9192"},fontFamily:{"headline":["Space Grotesk","sans-serif"],"body":["Plus Jakarta Sans","sans-serif"],"mono":["JetBrains Mono","monospace"]}}}};</script>
+<style>body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",sans-serif;overflow-x:hidden}.grid-overlay{position:fixed;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.05) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:-1}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24}</style>
+</head>
+<body class="bg-void-black">
+<div class="fixed inset-0 grid-overlay"></div>
+<main class="client-portal-shell">
+<section class="client-portal-grid">
+<div class="client-portal-card client-portal-panel client-success-panel">
+<div class="client-portal-kicker">Account Created</div>
+<div class="client-success-icon"><span class="material-symbols-outlined">mark_email_read</span></div>
+<h1 class="client-portal-title">Check your email.</h1>
+<p class="client-portal-copy">Your account was created successfully. Before you can sign in for the first time, open the confirmation email from Supabase or Dark Matter and click the verification link.</p>
+<div class="client-portal-setup"><strong>Next step:</strong> After confirming your email, return here and sign in below. If you checked email on another device, this page can stay open.</div>
+<div class="client-email-actions">
+<a class="client-portal-button client-portal-button--secondary" href="https://mail.google.com/" target="_blank" rel="noopener"><span class="material-symbols-outlined">mail</span>Open Gmail</a>
+<a class="client-portal-button client-portal-button--ghost" href="https://outlook.live.com/mail/" target="_blank" rel="noopener"><span class="material-symbols-outlined">alternate_email</span>Open Outlook</a>
+<a class="client-portal-button client-portal-button--ghost" href="mailto:"><span class="material-symbols-outlined">drafts</span>Open Email App</a>
+</div>
+</div>
+<div class="client-portal-card client-portal-panel" data-auth-panel>
+<div class="client-portal-kicker">After Confirmation</div>
+<h2 class="text-3xl font-headline text-white mt-3 mb-5">Sign in here</h2>
+<form class="client-portal-form" data-client-login-form>
+<label class="client-portal-label">Email address<input class="client-portal-input" type="email" name="email" autocomplete="username" required data-client-email placeholder="client@example.com"/></label>
+<label class="client-portal-label">Password<input class="client-portal-input" type="password" name="password" autocomplete="current-password" data-client-password placeholder="Password"/></label>
+<label class="client-remember-row"><input type="checkbox" checked data-client-remember/> <span>Keep me signed in</span></label>
+<div class="client-portal-actions">
+<button class="client-portal-button" type="submit" data-client-action><span class="material-symbols-outlined">login</span>Sign In</button>
+<button class="client-portal-button client-portal-button--ghost" type="button" data-client-action data-client-magic><span class="material-symbols-outlined">mail</span>Email Link</button>
+</div>
+</form>
+<div class="client-portal-status" data-client-status></div>
+<p class="client-muted mt-4">After a successful sign-in, your browser or password manager may offer to save this login.</p>
+<p class="client-muted mt-5">If sign-in fails, the email confirmation probably has not been completed yet.</p>
+</div>
+</section>
+</main>
+<script src="assets/supabase-config.js"></script>
+<script>
+window.DM_CLIENT_PORTAL_COPY = {
+  checkEmail: "Check your email for the secure login link.",
+  signedIn: "Signed in. Your client dashboard will be available once your records are linked.",
+  error: "Something went wrong. Please try again."
+};
+</script>
+<script type="module" src="assets/client-portal.js"></script>
+</body></html>
