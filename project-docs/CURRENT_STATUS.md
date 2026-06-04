@@ -43,7 +43,7 @@ This file is intentionally concise for handoff. Historical detail lives in `CHAN
 - Dedicated Portfolio detail pages exist in English and Spanish for all four projects.
 - Portfolio screenshots have been harvested into `assets/portfolio/`; imported full client source folders have been removed.
 - JPS Surette is still marked in progress and links to `https://jpsurette.netlify.app/`.
-- SeansAds.com is represented as a launch-ready standalone Google Ads mini-site and currently opens the local `Sean's Google Ads Services/` preview until the final domain/Netlify deployment is connected.
+- SeansAds.com is live at `https://seansads.com/` as a standalone Google Ads mini-site hosted separately from Dark Matter. Dark Matter portfolio/account/service links now point to the live Sean's Ads domain.
 - A hidden direct-link-only Easter egg page exists at `jpsurette.html`; it intentionally has no Spanish mirror.
 
 ## Client Portal
@@ -55,6 +55,7 @@ This file is intentionally concise for handoff. Historical detail lives in `CHAN
 - Starter SQL lives at `supabase/client-portal-schema.sql`.
 - Login wormhole and dashboard command orbs have interactive hover motion in `assets/client-portal.css`; the login wormhole core now uses slower, lower-amplitude movement with reduced-motion fallbacks.
 - Account request/contact sections use `#client-contact` as the primary anchor and keep `#client-request` as a legacy alias.
+- The public account portal includes a Sean's Ads handoff note for users arriving from `https://seansads.com/`.
 - Logged-in dashboard currently includes:
   - website health/status cards
   - traffic/stat cards
@@ -70,10 +71,10 @@ This file is intentionally concise for handoff. Historical detail lives in `CHAN
 ## Google Ads Mini-Site
 
 - Standalone mini-site path: `Sean's Google Ads Services/`.
-- It is intended for separate hosting/domain use but currently runs inside this project preview.
+- It is hosted separately from Dark Matter at `https://seansads.com/`; this repository keeps the source folder for edits and future uploads.
 - Includes English/Spanish home, contact, About Sean, Portfolio, focus-detail pages, and pricing-tier pages.
-- Google Ads tier pages route primary "Choose this plan" CTAs to the Dark Matter account portal.
-- Mini-site top-right contact links route to the Dark Matter account dashboard contact anchor; account/login buttons use "Log in through Dark Matter Portal."
+- Google Ads tier pages route primary "Choose this plan" CTAs to the Dark Matter account portal with `?source=seansads` source tagging.
+- Mini-site top-right contact links route to the Dark Matter account dashboard contact anchor with `?source=seansads`; account/login buttons use "Log in through Dark Matter Portal."
 - Sean Cochrane bio and supplied transparent lossless WebP portrait cutout are present on About pages, styled as a floating motion portrait.
 - Sean's Google Ads mini-site has a dedicated 1200x630 social preview asset and Open Graph/Twitter preview metadata across English and Spanish pages.
 - The mini-site has its own navigation, detail CSS/JS, EN/ES toggle, Dark Matter co-branding, and powered-by footer.
@@ -91,7 +92,8 @@ This file is intentionally concise for handoff. Historical detail lives in `CHAN
   - choose the first source for traffic summaries
 - Add a secure Netlify Function or equivalent backend before enabling Stripe recurring billing portal management.
 - Add the real downloadable package, installer, or hosted handoff asset for the Auction House & Consignment Store app before changing the Downloads CTA from request-access/coming-soon.
-- Decide final hosting/domain destination for `Sean's Google Ads Services/`.
+- Keep cross-domain links accurate between Dark Matter and the separate live Sean's Ads site.
+- Keep Spanish pages free of mojibake/question-mark artifacts after broad copy edits.
 - Keep static-site validation as the safety net before and after broad HTML/CSS/JS edits.
 - Consider a future Astro migration for reusable layouts/components and structured bilingual content.
 

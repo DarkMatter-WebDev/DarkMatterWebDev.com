@@ -83,7 +83,7 @@ Long-term recommendation: keep the marketing site as static output, but migrate 
 - Some page behavior is implemented inline in the relevant HTML files.
 - `account.html` and `es/account.html` are the first client login/account pages. They load `assets/supabase-config.js`, `assets/client-portal.js`, and `assets/client-portal.css`.
 - `account-settings.html` / `es/account-settings.html` and `account-ads-status.html` / `es/account-ads-status.html` are lightweight client-portal workspace placeholder pages for future settings/preferences and Google Ads campaign activity/status workflows.
-- `Sean's Google Ads Services/` is a standalone mini landing-page project intended for separate hosting/domain use. It has its own English/Spanish mirror under `Sean's Google Ads Services/es/`, shared detail styling/mesh script (`detail.css`, `detail.js`), and language toggles independent of the main site's `localStorage` language redirect system.
+- `Sean's Google Ads Services/` is a standalone mini landing-page project hosted separately at `https://seansads.com/`. It has its own English/Spanish mirror under `Sean's Google Ads Services/es/`, shared detail styling/mesh script (`detail.css`, `detail.js`), and language toggles independent of the main site's `localStorage` language redirect system. Links from Dark Matter into the mini-site should use absolute `https://seansads.com/...` URLs; links from the mini-site back to Dark Matter should use absolute `https://darkmatterwebdev.com/...` URLs.
 
 ## Internationalization (English / Spanish)
 
@@ -135,6 +135,7 @@ The marketing copy also advertises custom business web apps that can include own
 - `netlify.toml` indicates Netlify deployment support.
 - Static assets are served directly.
 - Forms rely on Netlify form handling.
+- Sean's Ads is a separate static deployment at `https://seansads.com/`; do not use parent-folder links from that mini-site to reach Dark Matter pages.
 
 ## Deployment Architecture
 

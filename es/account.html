@@ -77,6 +77,7 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 </div>
 <p class="client-portal-copy">Entra por el portal de acceso a tu espacio privado de Dark Matter. Cuando tu cuenta este vinculada, el wormhole abre el camino a tus servicios, salud del sitio, notas de trafico, detalles y actividad de anuncios, solicitudes de soporte, facturacion y preferencias.</p>
 <div class="client-portal-setup"><strong>Estado del portal:</strong> La entrada ya esta activa. La salud del sitio, los servicios y los detalles de facturacion aparecen cuando tu cuenta se vincula al sistema de clientes de Dark Matter.</div>
+<div class="client-portal-setup"><strong>¿Vienes desde Google Ads de Sean?</strong> Inicia sesión o crea una cuenta aquí; luego usa el área de contacto o el espacio de Google Ads para elegir un plan y enviar detalles de la campaña.</div>
 </div>
 <div class="client-portal-card client-portal-panel" data-auth-panel>
 <div class="client-portal-kicker">Cruce Seguro</div>
@@ -121,14 +122,14 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <a class="client-workspace-card client-workspace-card--traffic" href="#client-website-traffic"><span class="material-symbols-outlined">monitoring</span><strong>Ver la senal</strong><small>Resumenes de trafico, paginas populares, referencias y fuentes.</small></a>
 <a class="client-workspace-card client-workspace-card--request" href="#client-contact"><span class="material-symbols-outlined">send</span><strong>Enviar un cambio</strong><small>Haz una pregunta o pon actualizaciones del sitio en cola desde tu cuenta.</small></a>
 <a class="client-workspace-card client-workspace-card--settings" href="account-settings.html"><span class="material-symbols-outlined">tune</span><strong>Preferencias del sitio</strong><small>Configura preferencias del sitio, ajustes de cuenta, estilo de actualizaciones y valores predeterminados.</small></a>
-<a class="client-workspace-card client-workspace-card--ads" href="../Sean's Google Ads Services/es/index.html"><span class="material-symbols-outlined">ads_click</span><strong>Google Ads de Sean</strong><small>Abre el servicio dedicado de Google Ads para configuracion, administracion y crecimiento.</small></a>
+<a class="client-workspace-card client-workspace-card--ads" href="https://seansads.com/es/index.html"><span class="material-symbols-outlined">ads_click</span><strong>Google Ads de Sean</strong><small>Abre el servicio dedicado de Google Ads para configuracion, administracion y crecimiento.</small></a>
 <a class="client-workspace-card client-workspace-card--orbit" href="preference-builder.html"><span class="material-symbols-outlined">rocket_launch</span><strong>Planear la proxima mejora</strong><small>Define una nueva pagina, funcion, rediseno o idea antes de construirla en tu sitio.</small></a>
 </div>
 <section class="client-ad-status-panel" aria-label="Actividad y estado de Google Ads">
 <div>
 <div class="client-portal-kicker">Espacio de Google Ads</div>
 <h3>Actividad y estado de anuncios</h3>
-<p>Revisa notas de campana, progreso de configuracion, actividad de prospectos, recordatorios de presupuesto y los proximos puntos de limpieza recomendados por Sean.</p>
+<p>Revisa notas de campaña, progreso de configuracion, actividad de prospectos, recordatorios de presupuesto y los proximos puntos de limpieza recomendados por Sean.</p>
 </div>
 <a class="client-google-button" href="account-ads-status.html"><span class="material-symbols-outlined">ads_click</span><span>Abrir estado de anuncios</span></a>
 </section>
@@ -159,7 +160,7 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <input type="hidden" name="client_email" data-request-email/>
 <label class="client-portal-label">Tipo de solicitud<span class="client-select-wrap"><select class="client-portal-input" name="request_type" required><option value="Website update">Actualización del sitio</option><option value="Question">Pregunta</option><option value="Billing question">Pregunta de facturación</option><option value="Technical support">Soporte técnico</option></select><span class="material-symbols-outlined client-select-arrow">expand_more</span></span></label>
 <label class="client-portal-label">Asunto<input class="client-portal-input" type="text" name="subject" required placeholder="Actualizar horarios, agregar fotos, pregunta de pago..."/></label>
-<label class="client-portal-label">Detalles<textarea class="client-portal-input client-portal-textarea" name="details" required placeholder="Cuéntanos qué necesitas cambiar o qué pregunta tienes."></textarea></label>
+<label class="client-portal-label">Detalles<textárea class="client-portal-input client-portal-textárea" name="details" required placeholder="Cuéntanos qué necesitas cambiar o qué pregunta tienes."></textárea></label>
 <button class="client-portal-button" type="submit"><span class="material-symbols-outlined">send</span>Enviar Solicitud</button>
 <div class="client-portal-status" data-request-status></div>
 </form>
@@ -191,7 +192,7 @@ window.DM_CLIENT_PORTAL_COPY = {
   notConfigured: "La base del portal está lista. Agrega la URL de Supabase y la anon key en assets/supabase-config.js para activar el acceso.",
   checkEmail: "Revisa tu correo para el enlace seguro de acceso.",
   accountCreated: "Cuenta creada. Revisa tu correo para confirmar el acceso; luego conectaremos tus registros de cliente.",
-  accountCreatedSignedIn: "Cuenta creada. Ya iniciaste sesion.",
+  accountCreatedSignedIn: "Cuenta creada. Ya iniciaste sesión.",
   signupSuccessUrl: "/es/account-created.html",
   nameRequired: "Ingresa tu nombre completo.",
   emailRequired: "Ingresa tu correo electronico.",

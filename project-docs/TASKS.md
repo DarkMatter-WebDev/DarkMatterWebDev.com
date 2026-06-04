@@ -15,7 +15,6 @@ Last updated: 2026-06-04
 - Add the real downloadable package, installer, or hosted handoff asset for the Auction House & Consignment Store Complete Management Software listing.
 - Decide whether hidden `jpsurette.html` should stay English-only, get an `es/` mirror, or be added as a validator exception.
 - Update the JPS Surette case study from in-progress to final/live-complete once approved.
-- Choose final domain/hosting destination for `Sean's Google Ads Services/`.
 - Add approved Google Ads portfolio examples, screenshots, or campaign summaries when Sean has public work cleared.
 - Have a native Spanish speaker review translation choices before a major public launch.
 - Add a poster image and documented loading rules for the optimized homepage hero MP4s.
@@ -40,7 +39,9 @@ Last updated: 2026-06-04
 
 ## Recently Completed
 
+- Tightened the Sean's Ads to Dark Matter portal handoff by adding `?source=seansads` to Sean's Ads portal/contact/pricing links, clarifying pricing CTAs, adding an account-portal handoff note, and sweeping Spanish pages for visible question-mark/mojibake artifacts.
 - Added periodic blog/content publishing hooks to Dark Matter Website Care Plan tiers in English and Spanish, including homepage, Services-page summaries, and detailed care-plan pages.
+- Updated Dark Matter and Sean's Ads cross-domain links for the live separate `https://seansads.com/` deployment, including English/Spanish account, Services, SEO Foundations, Portfolio, mini-site Dark Matter return links, favicon, and social preview image paths.
 - Normalized Dark Matter menu rendering across English and Spanish pages, including Downloads, by adding the missing theme config to Downloads pages, forcing shared desktop nav gap/CTA sizing, and cache-busting `assets/nav.css`.
 - Added the standard Dark Matter mobile header/top-tab menu shell to the English and Spanish Downloads pages and tightened mobile content/card edge spacing for consistency.
 - Leveled the Downloads/Descargas navigation item by normalizing shared mobile tab icon spacing, covering the Downloads page mobile-nav markup, and cache-busting `assets/nav.css` across the site.

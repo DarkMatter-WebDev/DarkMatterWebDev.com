@@ -2,6 +2,8 @@
 
 ## 2026-06-04
 
+- Tightened the live Sean's Ads to Dark Matter account-portal flow by adding `?source=seansads` to Sean's Ads account/contact/pricing handoff links, making pricing CTAs explicitly open the Dark Matter Portal, adding Sean's Ads handoff notes to English/Spanish account pages, and cleaning remaining Spanish question-mark/mojibake artifacts in page copy and metadata.
+- Updated links for the live separate SeansAds.com deployment: Dark Matter account, Services, SEO Foundations, Portfolio, and SeansAds project pages now point to `https://seansads.com/` or `/es/index.html`; Sean's Ads source now uses absolute `https://darkmatterwebdev.com/...` return/account/service/powered-by links plus standalone favicon and absolute social-preview image URLs.
 - Added periodic blog/content publishing hooks to Website Care Plan tier copy across `index.html`, `services.html`, `services/website-care-plans.html`, and Spanish mirrors, positioning Growth as occasional approved blog publishing and Business/Executive as stronger SEO/content cadence options.
 - Normalized menu rendering across Dark Matter English and Spanish pages, especially Downloads, by adding the missing theme config to Downloads pages, enforcing shared desktop nav gap/CTA sizing in `assets/nav.css`, and cache-busting the stylesheet sitewide.
 - Added the standard mobile header/top-tab menu shell to `downloads.html` and `es/downloads.html`, including the services popout trigger, and tightened mobile content/card spacing to match the rest of the site.

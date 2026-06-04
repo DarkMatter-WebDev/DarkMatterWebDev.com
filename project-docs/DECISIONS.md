@@ -3,6 +3,19 @@
 ## 2026-06-04
 
 Decision:
+Treat Sean's Ads as a separate live site at `https://seansads.com/`, not as a folder-relative mini-site inside Dark Matter.
+
+Reason:
+Sean's Ads is now hosted on a completely separate server from Dark Matter. Links between the two properties must use full cross-domain URLs so deployed pages do not resolve incorrectly.
+
+Alternatives Considered:
+- Keep local folder-relative links such as `../account.html` and `../services.html`.
+- Route Dark Matter portfolio links to the local preview folder.
+- Wait to update links until another deployment pass.
+
+## 2026-06-04
+
+Decision:
 Add Downloads as a top-level Dark Matter navigation item directly after Services.
 
 Reason:
