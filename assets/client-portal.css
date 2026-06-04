@@ -124,6 +124,10 @@
   line-height: 1.7;
 }
 
+.client-copy-mobile {
+  display: none;
+}
+
 .client-auth-copy {
   margin: 0 0 1.35rem;
   color: rgba(227, 226, 226, 0.68);
@@ -1212,6 +1216,16 @@
   color: #ffffff;
 }
 
+.client-source-banner a {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.25rem;
+  color: #39ff88;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
 @keyframes client-dashboard-spin {
   to {
     transform: rotate(1turn);
@@ -1317,11 +1331,79 @@
 
 @media (max-width: 860px) {
   .client-portal-shell {
-    padding: 5.5rem 1rem 6rem;
+    padding: 4.75rem 1rem 5rem;
   }
 
   .client-portal-grid {
     grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  .client-portal-panel {
+    padding: 1rem;
+  }
+
+  .client-portal-title {
+    margin: 0.35rem 0 0.55rem;
+    font-size: clamp(1.9rem, 10vw, 2.65rem);
+    letter-spacing: -0.035em;
+  }
+
+  .client-portal-title--split {
+    gap: 0.18rem;
+  }
+
+  .client-portal-title--split small {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+  }
+
+  .client-wormhole-visual {
+    height: 7.2rem;
+    margin: 0.65rem 0 0.8rem;
+    border-radius: 0.85rem;
+  }
+
+  .client-wormhole-ring {
+    width: 48%;
+  }
+
+  .client-wormhole-ring:nth-child(2) {
+    width: 34%;
+  }
+
+  .client-wormhole-ring:nth-child(3) {
+    width: 20%;
+  }
+
+  .client-wormhole-core {
+    width: 3.35rem;
+  }
+
+  .client-wormhole-core .material-symbols-outlined {
+    font-size: 1.65rem;
+  }
+
+  .client-copy-full,
+  .client-portal-setup {
+    display: none;
+  }
+
+  .client-copy-mobile {
+    display: inline;
+  }
+
+  .client-portal-copy {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+
+  .client-source-banner {
+    margin-top: 0.75rem;
+    padding: 0.75rem;
+    font-size: 0.82rem;
+    line-height: 1.45;
   }
 
   .client-metric-grid {

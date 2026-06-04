@@ -23,6 +23,9 @@ Read this after:
 
 ## Most Recent Work
 
+- Updated the account portal Sean's Ads source banner so it links back to `seansads.com` / `seansads.com/es/index.html`, and added mobile-only CSS to shrink the unauthenticated intro/wormhole block, hide the portal-status note, and show shorter mobile intro copy.
+- Swept English/Spanish site copy for legitimate question marks removed during earlier Spanish artifact cleanup. Restored clear missing `?` punctuation on Built By, Contact, Process, Website Design, Complete Website Management, and Brand/Rebranding copy, and fixed malformed `textárea` tags in Spanish account and Sean's Ads contact forms.
+- Ran a follow-up English punctuation sweep and restored missing `?` punctuation on the Dark Matter Built By headline (`Like this site?`) and Contact lead (`Prefer to talk?`).
 - Updated the SDMS full profile pages so the top menu/button layout includes the full Dark Matter homepage-style set: Home/Inicio, Services/Servicios with dropdown, Apps, Process/Proceso, Portfolio/Portafolio, Client Login/Acceso, EN/ES, and Contact Us/Contactanos.
 - Added Secondhand Dealer Management System (SDMS) as the second Dark Matter Apps listing in English and Spanish. The Apps gallery tile jumps to a lower detail section, and that section links to full profile pages at `secondhand-dealer-management-system.html` and `es/secondhand-dealer-management-system.html`.
 - Reworked the Dark Matter Apps pages into a compact gallery-first layout with app tiles that jump to detailed sections below, mirrored in English and Spanish.

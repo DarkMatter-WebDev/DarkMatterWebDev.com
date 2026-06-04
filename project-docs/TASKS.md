@@ -40,6 +40,9 @@ Last updated: 2026-06-04
 
 ## Recently Completed
 
+- Added a back-to-Sean's-Google-Ads link to the source-triggered account portal banner and compacted the unauthenticated portal intro/wormhole block on mobile.
+- Swept the project for legitimate question marks removed during earlier Spanish artifact cleanup, restoring clear Spanish and matching English question punctuation and correcting malformed `textárea` tags.
+- Ran a second English-focused punctuation sweep and restored missing question marks on the Dark Matter Built By and Contact page copy.
 - Updated the SDMS full profile pages so their top navigation includes the full Dark Matter homepage-style menu/button set in English and Spanish.
 - Added Secondhand Dealer Management System (SDMS) as the second Dark Matter Apps listing in English and Spanish, including a gallery tile, lower detail section, and dedicated full profile pages.
 - Reworked the Dark Matter Apps pages into a compact gallery-first layout with app tiles that jump to detailed sections below, mirrored in English and Spanish.

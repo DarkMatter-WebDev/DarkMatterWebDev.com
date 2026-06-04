@@ -31,6 +31,7 @@ This file is intentionally concise for handoff. Historical detail lives in `CHAN
 - Contact and client request forms use Netlify form markup.
 - WhatsApp update-queue messaging is integrated on the homepage and Process page.
 - Browser/link-preview metadata is in place with favicon, app icons, manifest, and a modern Dark Matter Open Graph image.
+- English and Spanish punctuation/form-tag artifacts from earlier cleanup sweeps have been rechecked; legitimate closing question marks were restored on affected pages, and malformed `textárea` tags were corrected back to `textarea`.
 - Apps pages exist at `downloads.html` and `es/downloads.html` for Dark Matter-created web apps. They use the standard Dark Matter mobile header/tab shell and services popout, open with a compact app-gallery tile view, and jump down to detailed app sections. Current listings are Auction House & Consignment Store Complete Management Software and Secondhand Dealer Management System (SDMS). SDMS also has full profile pages at `secondhand-dealer-management-system.html` and `es/secondhand-dealer-management-system.html`, with the full Dark Matter homepage-style top menu/button set.
 
 ## Portfolio / Case Studies
@@ -55,7 +56,7 @@ This file is intentionally concise for handoff. Historical detail lives in `CHAN
 - Starter SQL lives at `supabase/client-portal-schema.sql`.
 - Login wormhole and dashboard command orbs have interactive hover motion in `assets/client-portal.css`; the login wormhole core now uses slower, lower-amplitude movement with reduced-motion fallbacks.
 - Account request/contact sections use `#client-contact` as the primary anchor and keep `#client-request` as a legacy alias.
-- The public account portal shows a small green Sean's Ads Google Ads console notifier only when users arrive with `?source=seansads` or a `seansads.com` referrer.
+- The public account portal shows a small green Sean's Ads Google Ads console notifier only when users arrive with `?source=seansads` or a `seansads.com` referrer. The notifier includes a link back to Sean's Google Ads, and the unauthenticated intro/wormhole block is compacted on mobile.
 - Logged-in dashboard currently includes:
   - website health/status cards
   - traffic/stat cards
