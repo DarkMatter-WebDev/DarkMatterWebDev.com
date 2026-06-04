@@ -1,4 +1,4 @@
-# Architecture
+﻿# Architecture
 
 Last updated: 2026-06-04
 
@@ -16,7 +16,7 @@ Long-term recommendation: keep the marketing site as static output, but migrate 
 /
   index.html
   services.html
-  downloads.html
+  apps.html
   secondhand-dealer-management-system.html
   process.html
   casestudies.html
@@ -45,7 +45,7 @@ Long-term recommendation: keep the marketing site as static output, but migrate 
     office-network-setup.html
   es/
     (Spanish mirror of every top-level page)
-    index.html, services.html, downloads.html, secondhand-dealer-management-system.html, process.html, casestudies.html,
+    index.html, services.html, apps.html, secondhand-dealer-management-system.html, process.html, casestudies.html,
     contact.html, built-by.html, account.html, account-settings.html,
     account-ads-status.html
     services/
@@ -72,7 +72,7 @@ Long-term recommendation: keep the marketing site as static output, but migrate 
 ## Page Model
 
 - Top-level pages provide the main site navigation and conversion flow.
-- `downloads.html` / `es/downloads.html` are static Dark Matter app-library pages for downloadable or request-access web apps. Until a real package file exists, app CTAs should not point to fake downloads. App-library detail pages can also have paired full profile pages, such as `secondhand-dealer-management-system.html` / `es/secondhand-dealer-management-system.html`, when the lower-page preview needs a deeper third-page profile.
+- `apps.html` / `es/apps.html` are static Dark Matter app-library gallery pages for hosted, downloadable, or request-access web apps. App gallery cards link directly to separate full profile pages, and the old `/downloads.html` and `/es/downloads.html` URLs are redirected in `netlify.toml`. App CTAs should point only to real hosted apps, real packages, or contact/request flows. The Auction House app links to `https://auctionconsignmentapp.netlify.app/`, uses screenshots under `assets/apps/`, and has paired full profile pages at `auction-house-consignment-store-software.html` / `es/auction-house-consignment-store-software.html`. SDMS has paired full profile pages at `secondhand-dealer-management-system.html` / `es/secondhand-dealer-management-system.html`.
 - Service pages under `services/` share the same general visual system and navigation pattern.
 - The Services dropdown is grouped into Online Services and In-Home & Office Services.
 - On mobile top-level pages, `assets/nav.css` moves the five-item tab bar to the top and `assets/mobile-services-nav.js` turns the Services tab into a grouped service picker.

@@ -1,15 +1,23 @@
-# Changelog
+﻿# Changelog
 
 ## 2026-06-04
 
+- Added a Contact-page CTA button to the Apps page customization/language banner in English and Spanish.
+- Renamed the Dark Matter app-library files from `downloads.html` / `es/downloads.html` to `apps.html` / `es/apps.html`, updated internal links and metadata, preserved app-card anchors, and added Netlify redirects from the old Downloads URLs.
+- Simplified the Dark Matter Apps page into a gallery-only preview page in English and Spanish, removed the large lower app detail blocks, linked each tile directly to its full profile page, and added a fully customizable business/language banner beneath the gallery.
+- Added the powered-by Dark Matter banner and footer shell to the Apps page and both app profile pages in English and Spanish.
+- Added tag printing support to the Auction House & Consignment Store Software listing and full profile pages in English and Spanish, including on-the-fly tag/template customization for labels, fields, barcodes, QR codes, prices, branding, and print-ready formats.
+- Added language/localization customization messaging to the Auction House & Consignment Store Software full profile pages in English and Spanish, covering translated labels, regional terminology, and bilingual workflows.
+- Added full Auction House & Consignment Store Software profile pages in English and Spanish, with full-size app-flow screenshots, demo-login request messaging, customization/layout/module options, and Apps-page screenshot cards that link to profile anchors.
+- Updated the Dark Matter Apps auction listing to point to the live hosted Auction Consignment app, added cropped app-flow screenshots, refreshed features around consignors/events/transfers/reports, and added full customization messaging for brand, layout, feature, report, field, workflow, and module changes.
 - Added a return link to Sean's Google Ads inside the source-triggered green account portal banner and compacted the unauthenticated account portal intro/wormhole block on mobile.
 - Restored legitimate question marks that had been removed during earlier Spanish punctuation cleanup, including the Spanish Built By headline and matching English/Spanish CTA sentences, and corrected malformed `textárea` tags in Spanish form markup.
 - Ran a follow-up English punctuation sweep and restored missing question marks on the Dark Matter Built By and Contact pages.
 - Updated the SDMS full profile pages to use the full Dark Matter homepage-style top menu/button set in English and Spanish, including the services dropdown, Client Login/Acceso, EN/ES, and Contact Us/Contactanos.
 - Added Secondhand Dealer Management System (SDMS) as the second Dark Matter Apps listing in English and Spanish, replacing the reserved tile with a compliance-focused gallery tile, adding lower-page detail sections, and creating dedicated full profile pages with modules, demo data, technology stack, reporting, and future premium features.
 - Reworked the Dark Matter Apps pages into a compact gallery-first layout with app tiles that jump to detailed sections below, mirrored in English and Spanish.
-- Renamed the Dark Matter `downloads.html` / `es/downloads.html` page titles, metadata, hero eyebrow, and notes from Downloads/Descargas language to Apps while keeping the existing file URLs.
-- Changed the Dark Matter main navigation label from `Downloads` / `Descargas` to `Apps` across English and Spanish desktop/mobile menus while leaving `downloads.html` page URLs and metadata unchanged.
+- Earlier in the Apps rollout, renamed the Dark Matter app-library page titles, metadata, hero eyebrow, and notes from Downloads/Descargas language to Apps while the files were still using the old Downloads URL.
+- Changed the Dark Matter main navigation label from `Downloads` / `Descargas` to `Apps` across English and Spanish desktop/mobile menus.
 - Unified the Sean's Ads header action bar across all English and Spanish mini-site pages so the top controls match the homepage format: other services, Dark Matter Portal login, EN/ES toggle, and Contact Us / Contáctanos.
 - Routed the Sean's Ads top-right `Contact Us` / `Contáctanos` header buttons to the local Contact Sean page across English and Spanish mini-site pages instead of the Dark Matter account portal contact anchor.
 - Doubled the Sean's Ads header service-name text size across English/Spanish homepage, contact pages, and shared detail pages (`Sean's Google Ads` / `Google Ads de Sean`) while preserving the existing Google `G` mark size.
@@ -23,12 +31,12 @@
 - Updated links for the live separate SeansAds.com deployment: Dark Matter account, Services, SEO Foundations, Portfolio, and SeansAds project pages now point to `https://seansads.com/` or `/es/index.html`; Sean's Ads source now uses absolute `https://darkmatterwebdev.com/...` return/account/service/powered-by links plus standalone favicon and absolute social-preview image URLs.
 - Added periodic blog/content publishing hooks to Website Care Plan tier copy across `index.html`, `services.html`, `services/website-care-plans.html`, and Spanish mirrors, positioning Growth as occasional approved blog publishing and Business/Executive as stronger SEO/content cadence options.
 - Normalized menu rendering across Dark Matter English and Spanish pages, especially Downloads, by adding the missing theme config to Downloads pages, enforcing shared desktop nav gap/CTA sizing in `assets/nav.css`, and cache-busting the stylesheet sitewide.
-- Added the standard mobile header/top-tab menu shell to `downloads.html` and `es/downloads.html`, including the services popout trigger, and tightened mobile content/card spacing to match the rest of the site.
+- Added the standard mobile header/top-tab menu shell to `apps.html` and `es/apps.html`, including the services popout trigger, and tightened mobile content/card spacing to match the rest of the site.
 - Leveled the Downloads/Descargas navigation item across desktop and mobile by normalizing shared mobile tab icon spacing, adding coverage for the Downloads page mobile-nav markup, and cache-busting `assets/nav.css`.
 - Added a narrow/tall portrait mobile media rule to the English and Spanish Dark Matter homepage hero video so exceptionally skinny devices use a tiny zoom-out while keeping `object-fit: cover`.
 - Applied the same compact mobile upper-button treatment across Sean's Google Ads shared detail pages and contact pages, shrinking language/contact controls and the Back to Google Ads home pill in English and Spanish.
 - Greatly shrank the Sean's Google Ads homepage mobile header/action controls in English and Spanish, turning the other-services link, Dark Matter portal login, EN/ES switcher, and Contact Us link into a compact one-row strip.
-- Added bilingual Dark Matter Downloads pages (`downloads.html`, `es/downloads.html`) and inserted `Downloads` / `Descargas` directly after Services in the main desktop/mobile navigation; the first app listing is Auction House & Consignment Store Complete Management Software with request-access CTAs until a real package is added.
+- Added bilingual Dark Matter Downloads pages (`apps.html`, `es/apps.html`) and inserted `Downloads` / `Descargas` directly after Services in the main desktop/mobile navigation; the first app listing is Auction House & Consignment Store Complete Management Software with request-access CTAs until a real package is added.
 - Polished Sean's Google Ads mobile layouts across the standalone English/Spanish mini-site by reducing mobile headline/button sizing, improving gutters, fixing the contact-page mobile header stack, and adding a mobile-only draggable grid-orb control that lets touch users bend the background without activating links.
 - Added SeansAds.com as the fourth Dark Matter Portfolio project in English and Spanish, including desktop/mobile homepage teasers, Portfolio gallery cards, full case-study summary sections, dedicated project detail pages, and compressed WebP mini-site previews.
 - Fixed account/login portal input visibility by overriding Tailwind Forms white input backgrounds so typed text and caret are visible in English and Spanish previews.

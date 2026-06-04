@@ -1,4 +1,4 @@
-# Current Status
+﻿# Current Status
 
 Last updated: 2026-06-04
 
@@ -7,7 +7,7 @@ This file is intentionally concise for handoff. Historical detail lives in `CHAN
 ## Current Project Shape
 
 - Dark Matter Web Services is a static, bilingual marketing site with English pages at the project root and Spanish mirrors under `es/`.
-- Main pages include homepage, Services, Apps (`downloads.html`), Process, Portfolio (`casestudies.html`), Contact, Built By, Website Preference Builder, Account/Login Portal, and individual Portfolio/detail pages.
+- Main pages include homepage, Services, Apps (`apps.html`), Process, Portfolio (`casestudies.html`), Contact, Built By, Website Preference Builder, Account/Login Portal, and individual Portfolio/detail pages.
 - Service pages live under `services/` with Spanish mirrors under `es/services/`.
 - Shared styling and behavior live mostly in `assets/`, including `nav.css`, `cosmic-web.css`, `care-plans.css`, `client-portal.css`, `rail.js`, `mobile-services-nav.js`, and Supabase/account portal scripts.
 - A standalone bilingual Google Ads mini-site exists in `Sean's Google Ads Services/`, with Spanish pages in `Sean's Google Ads Services/es/`.
@@ -22,7 +22,7 @@ This file is intentionally concise for handoff. Historical detail lives in `CHAN
 - Non-home pages use the compressed cosmic-web WebP background through `assets/cosmic-web.css`.
 - The sitewide floating process rail is a four-step system: Design, Build, Launch, Maintain.
 - Main navigation uses `Portfolio` / `Portafolio`; the underlying page is still `casestudies.html`.
-- Main navigation includes `Apps` directly after `Services` / `Servicios`; the underlying app-library URLs remain `downloads.html` and `es/downloads.html`.
+- Main navigation includes `Apps` directly after `Services` / `Servicios`; the canonical app-library URLs are `apps.html` and `es/apps.html`, with Netlify redirects from the old `downloads.html` paths.
 - Services are grouped into Online Services and In-Home & Office Services.
 - The Services page opens with three plain-language paths: website/online help, in-person tech setup, and business app/portal.
 - SEO Foundations includes an expanded visual foundation-map section before the Sean's Google Ads cross-promo.
@@ -32,7 +32,7 @@ This file is intentionally concise for handoff. Historical detail lives in `CHAN
 - WhatsApp update-queue messaging is integrated on the homepage and Process page.
 - Browser/link-preview metadata is in place with favicon, app icons, manifest, and a modern Dark Matter Open Graph image.
 - English and Spanish punctuation/form-tag artifacts from earlier cleanup sweeps have been rechecked; legitimate closing question marks were restored on affected pages, and malformed `textárea` tags were corrected back to `textarea`.
-- Apps pages exist at `downloads.html` and `es/downloads.html` for Dark Matter-created web apps. They use the standard Dark Matter mobile header/tab shell and services popout, open with a compact app-gallery tile view, and jump down to detailed app sections. Current listings are Auction House & Consignment Store Complete Management Software and Secondhand Dealer Management System (SDMS). SDMS also has full profile pages at `secondhand-dealer-management-system.html` and `es/secondhand-dealer-management-system.html`, with the full Dark Matter homepage-style top menu/button set.
+- Apps pages exist at `apps.html` and `es/apps.html` for Dark Matter-created web apps. They use the standard Dark Matter mobile header/tab shell and services popout, now act as a compact gallery-only app preview page, link each app tile directly to its separate full profile page, and include a banner noting apps are fully customizable for each business and language. Current listings are Auction House & Consignment Store Complete Management Software and Secondhand Dealer Management System (SDMS). The auction app links to the live hosted app at `https://auctionconsignmentapp.netlify.app/`, includes cropped app-flow screenshots on its profile page, and explains that full brand, feature, layout, report, field, module, language/localization, and tag-printing customization is available. The auction app has full profile pages at `auction-house-consignment-store-software.html` and `es/auction-house-consignment-store-software.html`; SDMS has full profile pages at `secondhand-dealer-management-system.html` and `es/secondhand-dealer-management-system.html`; these app pages include the powered-by banner and footer shell.
 
 ## Portfolio / Case Studies
 
@@ -97,7 +97,7 @@ This file is intentionally concise for handoff. Historical detail lives in `CHAN
   - confirm Netlify detects `client-request`
   - choose the first source for traffic summaries
 - Add a secure Netlify Function or equivalent backend before enabling Stripe recurring billing portal management.
-- Add the real downloadable package, installer, or hosted handoff asset for the Auction House & Consignment Store app before changing the Downloads CTA from request-access/coming-soon.
+- Keep auction app screenshots current if the hosted `https://auctionconsignmentapp.netlify.app/` UI changes.
 - Keep cross-domain links accurate between Dark Matter and the separate live Sean's Ads site.
 - Keep Spanish pages free of mojibake/question-mark artifacts after broad copy edits.
 - Keep static-site validation as the safety net before and after broad HTML/CSS/JS edits.

@@ -1,4 +1,4 @@
-# Handoff Notes
+﻿# Handoff Notes
 
 Last updated: 2026-06-04
 
@@ -23,14 +23,22 @@ Read this after:
 
 ## Most Recent Work
 
+- Added a green CTA button to the Apps page customization/language banner: `Customize Yours Now` on `apps.html` and `Personaliza la tuya ahora` on `es/apps.html`, both linking to the local Contact page.
+- Renamed the app-library files to `apps.html` and `es/apps.html`, updated all internal HTML links/metadata from `downloads.html`, preserved the `#app-auction-consignment` and `#app-secondhand-dealer` anchors on the gallery cards, and added Netlify 301 redirects from `/downloads.html` and `/es/downloads.html`.
+- Simplified `apps.html` and `es/apps.html` so they are gallery-only app preview pages. Removed the large lower detail sections and old in-page smooth-scroll behavior, changed app tiles to direct full-profile links, and added a banner under the gallery saying the apps are fully customizable for the business and language.
+- Added bottom-of-page powered-by Dark Matter banners and footer shells to `apps.html`, `es/apps.html`, `auction-house-consignment-store-software.html`, `es/auction-house-consignment-store-software.html`, `secondhand-dealer-management-system.html`, and `es/secondhand-dealer-management-system.html`.
+- Added tag printing support to the Auction House & Consignment Store Software Apps listing and full profile pages in English and Spanish, including item tags, label templates, barcodes, QR codes, prices, fields, branding, and print-ready formats that can be customized on the fly.
+- Added explicit language/localization customization messaging to the Auction House & Consignment Store Software full profile pages in English and Spanish, so custom versions now mention different languages, translated labels, regional terminology, and bilingual workflows.
+- Added dedicated Auction House & Consignment Store Software profile pages (`auction-house-consignment-store-software.html`, `es/auction-house-consignment-store-software.html`) with full-size app-flow screenshots, guided demo-login messaging, and customization/layout/module options. The Apps page screenshot cards now link to anchors on this profile page, and the auction CTAs now read `Open full app profile` and `Request live app demo`.
+- Updated the Apps page auction listing to link to `https://auctionconsignmentapp.netlify.app/`, added cropped screenshots from the live app flow, refreshed auction app feature copy, and added messaging that full brand, layout, feature, field, report, workflow, and module customization is available.
 - Updated the account portal Sean's Ads source banner so it links back to `seansads.com` / `seansads.com/es/index.html`, and added mobile-only CSS to shrink the unauthenticated intro/wormhole block, hide the portal-status note, and show shorter mobile intro copy.
 - Swept English/Spanish site copy for legitimate question marks removed during earlier Spanish artifact cleanup. Restored clear missing `?` punctuation on Built By, Contact, Process, Website Design, Complete Website Management, and Brand/Rebranding copy, and fixed malformed `textárea` tags in Spanish account and Sean's Ads contact forms.
 - Ran a follow-up English punctuation sweep and restored missing `?` punctuation on the Dark Matter Built By headline (`Like this site?`) and Contact lead (`Prefer to talk?`).
 - Updated the SDMS full profile pages so the top menu/button layout includes the full Dark Matter homepage-style set: Home/Inicio, Services/Servicios with dropdown, Apps, Process/Proceso, Portfolio/Portafolio, Client Login/Acceso, EN/ES, and Contact Us/Contactanos.
 - Added Secondhand Dealer Management System (SDMS) as the second Dark Matter Apps listing in English and Spanish. The Apps gallery tile jumps to a lower detail section, and that section links to full profile pages at `secondhand-dealer-management-system.html` and `es/secondhand-dealer-management-system.html`.
 - Reworked the Dark Matter Apps pages into a compact gallery-first layout with app tiles that jump to detailed sections below, mirrored in English and Spanish.
-- Renamed the Dark Matter `downloads.html` / `es/downloads.html` page-facing title/metadata/hero labels from Downloads/Descargas to Apps. The physical URLs remain unchanged.
-- Changed the Dark Matter main navigation label from `Downloads` / `Descargas` to `Apps` across English and Spanish desktop/mobile menus. Page URLs remain `downloads.html` / `es/downloads.html`.
+- Earlier, the Dark Matter app-library page-facing title/metadata/hero labels changed from Downloads/Descargas to Apps while the physical URLs still used `downloads.html`; those files are now renamed to `apps.html` / `es/apps.html`.
+- Changed the Dark Matter main navigation label from `Downloads` / `Descargas` to `Apps` across English and Spanish desktop/mobile menus.
 - Unified Sean's Ads header action bars across all English and Spanish mini-site pages. Every page now matches the homepage pattern with other services, Dark Matter Portal login, EN/ES toggle, and Contact Us / Contáctanos.
 - Routed Sean's Ads top-right `Contact Us` / `Contáctanos` header buttons to the local Contact Sean page across English and Spanish mini-site pages. Account/login and pricing CTAs still hand off to the Dark Matter portal with `?source=seansads`.
 - Doubled the Sean's Ads header service-name text size across homepage, contact, and shared detail pages in English and Spanish. The Google `G` mark size was left unchanged.
@@ -45,7 +53,7 @@ Read this after:
 
 - Main homepage: `index.html`, `es/index.html`
 - Services: `services.html`, `services/*.html`, `es/services.html`, `es/services/*.html`
-- Apps: `downloads.html`, `es/downloads.html`, `secondhand-dealer-management-system.html`, `es/secondhand-dealer-management-system.html`
+- Apps: `apps.html`, `es/apps.html`, `secondhand-dealer-management-system.html`, `es/secondhand-dealer-management-system.html`
 - Portfolio summary: `casestudies.html`, `es/casestudies.html`
 - Portfolio detail pages: `portfolio-*.html`, `es/portfolio-*.html`
 - Client portal: `account.html`, `es/account.html`

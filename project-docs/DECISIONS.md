@@ -3,6 +3,19 @@
 ## 2026-06-04
 
 Decision:
+Use `apps.html` / `es/apps.html` as the canonical Dark Matter app-library URLs, with Netlify redirects from the old `downloads.html` paths.
+
+Reason:
+The page is now publicly presented as Apps, and the physical filename should match the navigation label and user-facing purpose.
+
+Alternatives Considered:
+- Keep `downloads.html` as the physical file while only changing page labels.
+- Rename the page without redirects.
+- Create a new Apps page while leaving the old Downloads page active.
+
+## 2026-06-04
+
+Decision:
 Treat Sean's Ads as a separate live site at `https://seansads.com/`, not as a folder-relative mini-site inside Dark Matter.
 
 Reason:
@@ -16,15 +29,15 @@ Alternatives Considered:
 ## 2026-06-04
 
 Decision:
-Add Downloads as a top-level Dark Matter navigation item directly after Services.
+Add Apps as a top-level Dark Matter navigation item directly after Services.
 
 Reason:
-Dark Matter is beginning to publish created web apps as downloadable/request-access products, and Services is the natural adjacent category for users looking for offerings. The first listing is request-access/coming-soon because no verified package file is present in the repo yet.
+Dark Matter is beginning to publish created web apps as hosted, downloadable, or request-access products, and Services is the natural adjacent category for users looking for offerings. App CTAs should point to a real hosted app, a real package, or a contact/request flow. The auction listing now points to the live hosted Auction Consignment app.
 
 Alternatives Considered:
-- Put Downloads under the Services dropdown only.
+- Put Apps under the Services dropdown only.
 - Link directly to a nonexistent installer/download file.
-- Wait to add the page until the first package is uploaded.
+- Wait to add the page until every app has a final public package.
 
 ## 2026-06-04
 

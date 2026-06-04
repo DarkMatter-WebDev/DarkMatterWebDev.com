@@ -1,4 +1,4 @@
-# Tasks
+﻿# Tasks
 
 Last updated: 2026-06-04
 
@@ -12,7 +12,7 @@ Last updated: 2026-06-04
 - Define local/on-site service pricing, travel area, minimum visit policy, and residential vs business scope.
 - Add clearer starting prices or estimate language for in-home and office setup visits.
 - Add a dedicated custom business web app pricing/estimate section.
-- Add the real downloadable package, installer, or hosted handoff asset for the Auction House & Consignment Store Complete Management Software listing.
+- Keep the Auction House & Consignment Store Software listing and screenshots current with the hosted `https://auctionconsignmentapp.netlify.app/` app.
 - Add a real hosted demo, screenshots, or downloadable package for the Secondhand Dealer Management System (SDMS) listing when product assets exist.
 - Decide whether hidden `jpsurette.html` should stay English-only, get an `es/` mirror, or be added as a validator exception.
 - Update the JPS Surette case study from in-progress to final/live-complete once approved.
@@ -40,13 +40,21 @@ Last updated: 2026-06-04
 
 ## Recently Completed
 
+- Added a `Customize Yours Now` / `Personaliza la tuya ahora` CTA button to the Apps page customization/language banner, linking to Contact in English and Spanish.
+- Renamed the Dark Matter app-library files from `downloads.html` / `es/downloads.html` to `apps.html` / `es/apps.html`, updated internal links and metadata, preserved app-card hash anchors, and added Netlify redirects from the old Downloads URLs.
+- Simplified the Apps page into a gallery-only preview page, removed the lower detail sections, linked app tiles directly to full profile pages, and added a custom business/language banner in English and Spanish.
+- Added the powered-by Dark Matter banner and footer shell to the Apps page plus the Auction House & Consignment Store Software and SDMS full profile pages in English and Spanish.
+- Added tag printing and on-the-fly tag/template customization details to the Auction House & Consignment Store Software listing and full profile pages in English and Spanish.
+- Added language/localization customization messaging to the Auction House & Consignment Store Software full profile pages in English and Spanish.
+- Added full Auction House & Consignment Store Software profile pages in English and Spanish, linked app-flow screenshot cards to profile anchors, renamed the auction CTA to `Open full app profile`, and changed the demo CTA to `Request live app demo`.
+- Linked the Auction House & Consignment Store Software listing to the live hosted app, added cropped app-flow screenshots, refreshed features, and added full customization messaging.
 - Added a back-to-Sean's-Google-Ads link to the source-triggered account portal banner and compacted the unauthenticated portal intro/wormhole block on mobile.
 - Swept the project for legitimate question marks removed during earlier Spanish artifact cleanup, restoring clear Spanish and matching English question punctuation and correcting malformed `textárea` tags.
 - Ran a second English-focused punctuation sweep and restored missing question marks on the Dark Matter Built By and Contact page copy.
 - Updated the SDMS full profile pages so their top navigation includes the full Dark Matter homepage-style menu/button set in English and Spanish.
 - Added Secondhand Dealer Management System (SDMS) as the second Dark Matter Apps listing in English and Spanish, including a gallery tile, lower detail section, and dedicated full profile pages.
 - Reworked the Dark Matter Apps pages into a compact gallery-first layout with app tiles that jump to detailed sections below, mirrored in English and Spanish.
-- Renamed the Dark Matter `downloads.html` / `es/downloads.html` page-facing title/metadata/hero labels from Downloads/Descargas to Apps while keeping file URLs unchanged.
+- Renamed the Dark Matter `apps.html` / `es/apps.html` page-facing title/metadata/hero labels from Downloads/Descargas to Apps while keeping file URLs unchanged.
 - Changed the Dark Matter main navigation label from `Downloads` / `Descargas` to `Apps` across English and Spanish desktop/mobile menus.
 - Unified Sean's Ads header action bars across all English and Spanish mini-site pages so every page matches the homepage top-button format.
 - Routed Sean's Ads top-right `Contact Us` / `Contáctanos` header buttons to the local Contact Sean page across English and Spanish mini-site pages.
