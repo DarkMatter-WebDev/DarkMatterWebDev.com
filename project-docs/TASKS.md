@@ -13,6 +13,7 @@ Last updated: 2026-06-04
 - Add clearer starting prices or estimate language for in-home and office setup visits.
 - Add a dedicated custom business web app pricing/estimate section.
 - Add the real downloadable package, installer, or hosted handoff asset for the Auction House & Consignment Store Complete Management Software listing.
+- Add a real hosted demo, screenshots, or downloadable package for the Secondhand Dealer Management System (SDMS) listing when product assets exist.
 - Decide whether hidden `jpsurette.html` should stay English-only, get an `es/` mirror, or be added as a validator exception.
 - Update the JPS Surette case study from in-progress to final/live-complete once approved.
 - Add approved Google Ads portfolio examples, screenshots, or campaign summaries when Sean has public work cleared.
@@ -39,6 +40,17 @@ Last updated: 2026-06-04
 
 ## Recently Completed
 
+- Updated the SDMS full profile pages so their top navigation includes the full Dark Matter homepage-style menu/button set in English and Spanish.
+- Added Secondhand Dealer Management System (SDMS) as the second Dark Matter Apps listing in English and Spanish, including a gallery tile, lower detail section, and dedicated full profile pages.
+- Reworked the Dark Matter Apps pages into a compact gallery-first layout with app tiles that jump to detailed sections below, mirrored in English and Spanish.
+- Renamed the Dark Matter `downloads.html` / `es/downloads.html` page-facing title/metadata/hero labels from Downloads/Descargas to Apps while keeping file URLs unchanged.
+- Changed the Dark Matter main navigation label from `Downloads` / `Descargas` to `Apps` across English and Spanish desktop/mobile menus.
+- Unified Sean's Ads header action bars across all English and Spanish mini-site pages so every page matches the homepage top-button format.
+- Routed Sean's Ads top-right `Contact Us` / `Contáctanos` header buttons to the local Contact Sean page across English and Spanish mini-site pages.
+- Doubled the Sean's Ads header service-name text size across English/Spanish homepage, contact pages, and shared detail pages while keeping the Google `G` mark size unchanged.
+- Added Sean's portrait as the small icon on the Sean's Ads homepage `About Sean Cochrane` card in English and Spanish.
+- Replaced the Sean's Ads header brand badge with a multicolor Google `G` SVG across all English and Spanish mini-site pages while keeping the existing logo size.
+- Made the Sean's Ads contact page mobile hero, Call/Text card, and Email card much smaller in English and Spanish.
 - Added a source-triggered green Google Ads console notifier on the English and Spanish account portal that only appears for visitors coming from Sean's Ads.
 - Translated remaining Spanish Sean's Ads UI labels, including homepage portal/contact CTAs, subpage contact CTAs, co-branding line, language-toggle aria labels, and related Spanish accent polish.
 - Tightened the Sean's Ads to Dark Matter portal handoff by adding `?source=seansads` to Sean's Ads portal/contact/pricing links, clarifying pricing CTAs, adding an account-portal handoff note, and sweeping Spanish pages for visible question-mark/mojibake artifacts.

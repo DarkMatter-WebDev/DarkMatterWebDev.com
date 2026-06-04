@@ -2,46 +2,77 @@
 
 Last updated: 2026-06-04
 
-Use this file after reading the required startup files:
+Read this after:
 
-1. `PROJECT_OVERVIEW.md`
-2. `CURRENT_STATUS.md`
-3. `TASKS.md`
-4. `DECISIONS.md`
+1. `AI_START_HERE.md`
+2. `AGENTS.md`
+3. `PROJECT_OVERVIEW.md`
+4. `CURRENT_STATUS.md`
+5. `TASKS.md`
+6. `DECISIONS.md`
 
 ## Immediate State
 
-- The site is static HTML with a full Spanish mirror under `es/`.
-- Most large recent work is complete: portfolio pages, Google Ads mini-site, and Supabase client portal scaffolding.
-- The current preview URL is usually `http://127.0.0.1:4173/`.
-- The only expected validator warning is the hidden English-only `jpsurette.html` Easter egg page missing `es/jpsurette.html`.
+- Dark Matter Web Services is a static bilingual site. English pages live at the root; Spanish mirrors live under `es/`.
+- Sean's Google Ads is a standalone bilingual mini-site in `Sean's Google Ads Services/` with Spanish pages under `Sean's Google Ads Services/es/`.
+- Sean's Ads is live on a separate server/domain at `https://seansads.com/`.
+- Dark Matter is separate at `https://darkmatterwebdev.com/`.
+- Cross-site links between Dark Matter and Sean's Ads should use absolute production URLs.
+- Local preview usually runs at `http://127.0.0.1:4173/`.
+- Current in-app browser context recently focused on Sean's Ads pages, especially `about-sean.html`, `contact.html`, and the mini-site homepage.
 
-## Most Important Paths
+## Most Recent Work
+
+- Updated the SDMS full profile pages so the top menu/button layout includes the full Dark Matter homepage-style set: Home/Inicio, Services/Servicios with dropdown, Apps, Process/Proceso, Portfolio/Portafolio, Client Login/Acceso, EN/ES, and Contact Us/Contactanos.
+- Added Secondhand Dealer Management System (SDMS) as the second Dark Matter Apps listing in English and Spanish. The Apps gallery tile jumps to a lower detail section, and that section links to full profile pages at `secondhand-dealer-management-system.html` and `es/secondhand-dealer-management-system.html`.
+- Reworked the Dark Matter Apps pages into a compact gallery-first layout with app tiles that jump to detailed sections below, mirrored in English and Spanish.
+- Renamed the Dark Matter `downloads.html` / `es/downloads.html` page-facing title/metadata/hero labels from Downloads/Descargas to Apps. The physical URLs remain unchanged.
+- Changed the Dark Matter main navigation label from `Downloads` / `Descargas` to `Apps` across English and Spanish desktop/mobile menus. Page URLs remain `downloads.html` / `es/downloads.html`.
+- Unified Sean's Ads header action bars across all English and Spanish mini-site pages. Every page now matches the homepage pattern with other services, Dark Matter Portal login, EN/ES toggle, and Contact Us / Contáctanos.
+- Routed Sean's Ads top-right `Contact Us` / `Contáctanos` header buttons to the local Contact Sean page across English and Spanish mini-site pages. Account/login and pricing CTAs still hand off to the Dark Matter portal with `?source=seansads`.
+- Doubled the Sean's Ads header service-name text size across homepage, contact, and shared detail pages in English and Spanish. The Google `G` mark size was left unchanged.
+- Added a small Sean portrait icon to the Sean's Ads homepage `About Sean Cochrane` card in English and Spanish.
+- Replaced the Sean's Ads header brand badge from a Google-like `G` to a multicolor Google `G` SVG across all English and Spanish mini-site pages, preserving the existing wrapper size.
+- Tightened Sean's Ads contact-page mobile layout: smaller hero headline, lead, Call/Text card, and Email card in English and Spanish.
+- Added a green account-portal notice that appears only when users arrive with `?source=seansads` or from a `seansads.com` referrer. It describes the Dark Matter portal as the user's customized Google Ads management console.
+- Swept Spanish Sean's Ads UI for untranslated labels such as `Contact Us` and `Log in through Dark Matter Portal`; visible Spanish UI should now be translated.
+- Swept Spanish pages for obvious question-mark/mojibake artifacts; continue checking after future Spanish edits.
+
+## Important Paths
 
 - Main homepage: `index.html`, `es/index.html`
 - Services: `services.html`, `services/*.html`, `es/services.html`, `es/services/*.html`
+- Apps: `downloads.html`, `es/downloads.html`, `secondhand-dealer-management-system.html`, `es/secondhand-dealer-management-system.html`
 - Portfolio summary: `casestudies.html`, `es/casestudies.html`
 - Portfolio detail pages: `portfolio-*.html`, `es/portfolio-*.html`
 - Client portal: `account.html`, `es/account.html`
 - Portal scripts/styles: `assets/client-portal.js`, `assets/client-portal.css`, `assets/supabase-config.js`
 - Supabase starter SQL: `supabase/client-portal-schema.sql`
-- Google Ads mini-site: `Sean's Google Ads Services/`
+- Sean's Ads mini-site: `Sean's Google Ads Services/`
+- Sean portrait asset: `Sean's Google Ads Services/assets/sean-cochrane-portrait-backgroundless-lossless.webp`
+- Sean social preview: `Sean's Google Ads Services/assets/seans-google-ads-social-preview.png`
 - Static validator: `scripts/validate-site.ps1`
 
-## What To Preserve
+## Preserve These Rules
 
 - Keep English and Spanish pages in sync.
+- Keep Sean's Ads and Dark Matter cross-domain links absolute because they are deployed separately.
 - Keep public Supabase config limited to URL and publishable/anon key only.
 - Do not store secrets, passwords, service-role keys, Stripe secret keys, or recovery codes in docs or static files.
 - Keep `jpsurette.html` unlinked except for the tiny homepage Easter egg unless the user asks otherwise.
 - Keep imported client source folders out of the project root; harvested assets should live under `assets/portfolio/`.
+- Prefer updating shared CSS/JS where possible, but note Sean's Ads homepage/contact pages use inline CSS while detail pages use `detail.css`.
 
 ## Before Editing
 
 - Check whether the requested page has a Spanish counterpart.
 - Check shared CSS/JS cache-busting query strings if a change appears not to show in preview.
-- Prefer updating shared assets over repeating one-off fixes across dozens of HTML files.
-- After broad HTML/CSS/JS changes, run:
+- Use `rg` for file/text searches.
+- Avoid changing unrelated page content; the user often asks for very narrow visual changes.
+
+## Validation
+
+After broad HTML/CSS/JS edits, run:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\validate-site.ps1
@@ -55,11 +86,9 @@ missing-es-pair jpsurette.html Missing Spanish mirror: es/jpsurette.html
 
 This is expected unless the user decides the hidden Easter egg needs a Spanish mirror or validator exception.
 
-## Next Good Work
+## Best Next Actions
 
-- Complete real Supabase setup and test login data.
-- Build real account settings/preferences workflow.
-- Build real Google Ads account activity/status data flow.
-- Finalize JPS Surette once the project is approved.
-- Decide standalone hosting/domain plan for `Sean's Google Ads Services/`.
-- Consider Astro migration only after current static output is stable and validated.
+- If continuing Sean's Ads polish, inspect both `Sean's Google Ads Services/index.html` and `Sean's Google Ads Services/es/index.html`.
+- If touching account portal flow, check `account.html`, `es/account.html`, `assets/client-portal.js`, and `assets/client-portal.css`.
+- If adding real account features, complete Supabase setup and test users before treating portal data as production.
+- If updating live URLs, verify both deployed domains because Sean's Ads and Dark Matter are separately hosted.

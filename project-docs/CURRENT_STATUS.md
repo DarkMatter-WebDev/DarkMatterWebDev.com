@@ -7,7 +7,7 @@ This file is intentionally concise for handoff. Historical detail lives in `CHAN
 ## Current Project Shape
 
 - Dark Matter Web Services is a static, bilingual marketing site with English pages at the project root and Spanish mirrors under `es/`.
-- Main pages include homepage, Services, Downloads, Process, Portfolio (`casestudies.html`), Contact, Built By, Website Preference Builder, Account/Login Portal, and individual Portfolio detail pages.
+- Main pages include homepage, Services, Apps (`downloads.html`), Process, Portfolio (`casestudies.html`), Contact, Built By, Website Preference Builder, Account/Login Portal, and individual Portfolio/detail pages.
 - Service pages live under `services/` with Spanish mirrors under `es/services/`.
 - Shared styling and behavior live mostly in `assets/`, including `nav.css`, `cosmic-web.css`, `care-plans.css`, `client-portal.css`, `rail.js`, `mobile-services-nav.js`, and Supabase/account portal scripts.
 - A standalone bilingual Google Ads mini-site exists in `Sean's Google Ads Services/`, with Spanish pages in `Sean's Google Ads Services/es/`.
@@ -22,7 +22,7 @@ This file is intentionally concise for handoff. Historical detail lives in `CHAN
 - Non-home pages use the compressed cosmic-web WebP background through `assets/cosmic-web.css`.
 - The sitewide floating process rail is a four-step system: Design, Build, Launch, Maintain.
 - Main navigation uses `Portfolio` / `Portafolio`; the underlying page is still `casestudies.html`.
-- Main navigation includes `Downloads` / `Descargas` directly after `Services` / `Servicios`; shared nav CSS keeps desktop link spacing, top-right CTAs, and mobile tab icons/labels visually consistent across English and Spanish pages.
+- Main navigation includes `Apps` directly after `Services` / `Servicios`; the underlying app-library URLs remain `downloads.html` and `es/downloads.html`.
 - Services are grouped into Online Services and In-Home & Office Services.
 - The Services page opens with three plain-language paths: website/online help, in-person tech setup, and business app/portal.
 - SEO Foundations includes an expanded visual foundation-map section before the Sean's Google Ads cross-promo.
@@ -31,7 +31,7 @@ This file is intentionally concise for handoff. Historical detail lives in `CHAN
 - Contact and client request forms use Netlify form markup.
 - WhatsApp update-queue messaging is integrated on the homepage and Process page.
 - Browser/link-preview metadata is in place with favicon, app icons, manifest, and a modern Dark Matter Open Graph image.
-- Downloads pages exist at `downloads.html` and `es/downloads.html` for Dark Matter-created web apps. They use the standard Dark Matter mobile header/tab shell and services popout. The first listing is Auction House & Consignment Store Complete Management Software; it currently routes to request access because no downloadable package has been added yet.
+- Apps pages exist at `downloads.html` and `es/downloads.html` for Dark Matter-created web apps. They use the standard Dark Matter mobile header/tab shell and services popout, open with a compact app-gallery tile view, and jump down to detailed app sections. Current listings are Auction House & Consignment Store Complete Management Software and Secondhand Dealer Management System (SDMS). SDMS also has full profile pages at `secondhand-dealer-management-system.html` and `es/secondhand-dealer-management-system.html`, with the full Dark Matter homepage-style top menu/button set.
 
 ## Portfolio / Case Studies
 
@@ -76,9 +76,14 @@ This file is intentionally concise for handoff. Historical detail lives in `CHAN
 - Google Ads tier pages route primary "Choose this plan" CTAs to the Dark Matter account portal with `?source=seansads` source tagging.
 - Mini-site top-right contact links route to the Dark Matter account dashboard contact anchor with `?source=seansads`; English account/login buttons use "Log in through Dark Matter Portal" and Spanish buttons use "Acceder al Portal Dark Matter."
 - Sean Cochrane bio and supplied transparent lossless WebP portrait cutout are present on About pages, styled as a floating motion portrait.
+- The Sean's Ads homepage `About Sean Cochrane` card uses the same portrait as a small circular icon in English and Spanish.
+- The Sean's Ads header brand mark uses a multicolor Google `G` SVG across English and Spanish pages while keeping the existing mark size.
+- The Sean's Ads header service-name text is intentionally large: `Sean's Google Ads` / `Google Ads de Sean` is doubled from the earlier small label size across homepage, contact, and shared detail pages.
+- Sean's Ads top-right `Contact Us` / `Contáctanos` header buttons route to the local Contact Sean page in the same mini-site language, while plan/account CTAs still route to the Dark Matter account portal with `?source=seansads`.
+- Sean's Ads header action bars are now consistent across homepage, contact, About, Portfolio, focus-detail, and pricing pages: other services, Dark Matter Portal login, EN/ES toggle, and Contact Us / Contáctanos.
 - Sean's Google Ads mini-site has a dedicated 1200x630 social preview asset and Open Graph/Twitter preview metadata across English and Spanish pages.
 - The mini-site has its own navigation, detail CSS/JS, EN/ES toggle, Dark Matter co-branding, and powered-by footer.
-- Mobile Sean's Google Ads pages use tighter typography/buttons and include a mobile-only draggable grid-orb control for touch interaction with the animated background. The homepage and subpage upper controls are compact on mobile, including other services, portal login, language switcher, contact, and Back to Google Ads home buttons.
+- Mobile Sean's Google Ads pages use tighter typography/buttons and include a mobile-only draggable grid-orb control for touch interaction with the animated background. The homepage and subpage upper controls are compact on mobile, including other services, portal login, language switcher, contact, and Back to Google Ads home buttons. The contact page's mobile hero, Call/Text card, and Email card have an extra-small treatment.
 
 ## Current Priorities
 
