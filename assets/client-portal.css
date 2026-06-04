@@ -1176,6 +1176,42 @@
   line-height: 1.6;
 }
 
+.client-source-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(24, 217, 110, 0.45);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(24, 217, 110, 0.18), rgba(0, 240, 255, 0.06)),
+    rgba(8, 42, 25, 0.72);
+  box-shadow: 0 0 28px rgba(24, 217, 110, 0.13);
+  color: rgba(226, 255, 237, 0.9);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.client-source-banner[hidden] {
+  display: none;
+}
+
+.client-source-banner .material-symbols-outlined {
+  flex: 0 0 auto;
+  color: #18d96e;
+  font-size: 1.25rem;
+  margin-top: 0.05rem;
+}
+
+.client-source-banner p {
+  margin: 0;
+}
+
+.client-source-banner strong {
+  color: #ffffff;
+}
+
 @keyframes client-dashboard-spin {
   to {
     transform: rotate(1turn);

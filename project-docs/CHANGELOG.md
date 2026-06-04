@@ -2,6 +2,9 @@
 
 ## 2026-06-04
 
+- Added a source-triggered green Sean's Ads notifier to the English and Spanish account portal, shown only for `?source=seansads` or `seansads.com` referrers, describing the portal as the client's customized Google Ads management console.
+
+- Translated remaining Spanish Sean's Ads UI labels, including the homepage `Acceder al Portal Dark Matter` and `Contáctanos` buttons, subpage contact CTAs, Spanish co-branding text, language-toggle aria labels, and related accent polish.
 - Tightened the live Sean's Ads to Dark Matter account-portal flow by adding `?source=seansads` to Sean's Ads account/contact/pricing handoff links, making pricing CTAs explicitly open the Dark Matter Portal, adding Sean's Ads handoff notes to English/Spanish account pages, and cleaning remaining Spanish question-mark/mojibake artifacts in page copy and metadata.
 - Updated links for the live separate SeansAds.com deployment: Dark Matter account, Services, SEO Foundations, Portfolio, and SeansAds project pages now point to `https://seansads.com/` or `/es/index.html`; Sean's Ads source now uses absolute `https://darkmatterwebdev.com/...` return/account/service/powered-by links plus standalone favicon and absolute social-preview image URLs.
 - Added periodic blog/content publishing hooks to Website Care Plan tier copy across `index.html`, `services.html`, `services/website-care-plans.html`, and Spanish mirrors, positioning Growth as occasional approved blog publishing and Business/Executive as stronger SEO/content cadence options.

@@ -43,14 +43,21 @@ const els = {
   metricVisitors: document.querySelector("[data-metric-visitors]"),
   metricPageViews: document.querySelector("[data-metric-pageviews]"),
   metricBilling: document.querySelector("[data-metric-billing]"),
-  metricSupport: document.querySelector("[data-metric-support]")
+  metricSupport: document.querySelector("[data-metric-support]"),
+  seansAdsBanner: document.querySelector("[data-seansads-banner]")
 };
 
 try {
-  const emailParam = new URLSearchParams(window.location.search).get("email");
+  const params = new URLSearchParams(window.location.search);
+  const emailParam = params.get("email");
   if (emailParam && els.email && !els.email.value) els.email.value = emailParam;
+  const source = (params.get("source") || "").toLowerCase();
+  const referrer = document.referrer || "";
+  if (els.seansAdsBanner && (source === "seansads" || referrer.includes("seansads.com"))) {
+    els.seansAdsBanner.hidden = false;
+  }
 } catch {
-  // Ignore malformed query strings; the form still works without prefill.
+  // Ignore malformed query strings; the form still works without prefill or source hints.
 }
 
 const t = {
