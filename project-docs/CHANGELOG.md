@@ -2,6 +2,7 @@
 
 ## 2026-06-04
 
+- Added Open Graph/Twitter preview metadata for `darkmatterwebsites.com` to the Apps gallery and full app profile pages in English and Spanish.
 - Added a Contact-page CTA button to the Apps page customization/language banner in English and Spanish.
 - Renamed the Dark Matter app-library files from `downloads.html` / `es/downloads.html` to `apps.html` / `es/apps.html`, updated internal links and metadata, preserved app-card anchors, and added Netlify redirects from the old Downloads URLs.
 - Simplified the Dark Matter Apps page into a gallery-only preview page in English and Spanish, removed the large lower app detail blocks, linked each tile directly to its full profile page, and added a fully customizable business/language banner beneath the gallery.
@@ -168,6 +169,10 @@
 - Updated Website Care Plan preview tiles and mobile plan rows so each tier uses the same accent color as its matching detailed section.
 - Normalized sitewide contact CTA labels from old consultation/start-project wording to "Contact Us" / "Contáctanos" across English and Spanish pages.
 - Reduced Case Studies / Nuestro portafolio hero height, intro spacing, and gallery top gap so project tiles appear closer to the opening copy.
+
+## 2026-06-04
+
+- Documented that Sean's Google Ads pages should retain their own Google Ads co-branded menu/header format and should not be standardized to the Dark Matter homepage navigation during menu consistency sweeps.
 
 ## 2026-06-01 (Spanish site)
 

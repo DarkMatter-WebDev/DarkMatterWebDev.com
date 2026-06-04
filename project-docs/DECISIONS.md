@@ -3,6 +3,19 @@
 ## 2026-06-04
 
 Decision:
+Keep Sean's Google Ads pages on their own Google Ads co-branded menu/header format instead of standardizing them to the Dark Matter homepage navigation.
+
+Reason:
+Sean's Ads is a separate live mini-site with its own heading, service branding, language toggle, portal handoff, and contact flow. Dark Matter menu consistency sweeps should apply to the Dark Matter site, not overwrite Sean's Ads' standalone identity.
+
+Alternatives Considered:
+- Apply the Dark Matter homepage nav and buttons to Sean's Ads pages.
+- Partially merge Dark Matter nav labels into the Sean's Ads mini-site header.
+- Treat the Sean's Ads header as intentionally separate and only keep it internally consistent across Sean's Ads pages.
+
+## 2026-06-04
+
+Decision:
 Use `apps.html` / `es/apps.html` as the canonical Dark Matter app-library URLs, with Netlify redirects from the old `downloads.html` paths.
 
 Reason:

@@ -23,6 +23,7 @@ Read this after:
 
 ## Most Recent Work
 
+- Added Open Graph/Twitter preview tags to `apps.html`, `es/apps.html`, both Auction House app profile pages, and both SDMS profile pages, using `https://darkmatterwebsites.com/assets/darkmatter-og-image-modern.png` as the preview image.
 - Added a green CTA button to the Apps page customization/language banner: `Customize Yours Now` on `apps.html` and `Personaliza la tuya ahora` on `es/apps.html`, both linking to the local Contact page.
 - Renamed the app-library files to `apps.html` and `es/apps.html`, updated all internal HTML links/metadata from `downloads.html`, preserved the `#app-auction-consignment` and `#app-secondhand-dealer` anchors on the gallery cards, and added Netlify 301 redirects from `/downloads.html` and `/es/downloads.html`.
 - Simplified `apps.html` and `es/apps.html` so they are gallery-only app preview pages. Removed the large lower detail sections and old in-page smooth-scroll behavior, changed app tiles to direct full-profile links, and added a banner under the gallery saying the apps are fully customizable for the business and language.
@@ -68,6 +69,7 @@ Read this after:
 
 - Keep English and Spanish pages in sync.
 - Keep Sean's Ads and Dark Matter cross-domain links absolute because they are deployed separately.
+- Keep Sean's Ads pages on their own Google Ads co-branded heading/menu format; do not apply the Dark Matter homepage nav/header to the Sean's Ads mini-site during menu consistency sweeps.
 - Keep public Supabase config limited to URL and publishable/anon key only.
 - Do not store secrets, passwords, service-role keys, Stripe secret keys, or recovery codes in docs or static files.
 - Keep `jpsurette.html` unlinked except for the tiny homepage Easter egg unless the user asks otherwise.

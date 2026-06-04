@@ -40,6 +40,8 @@ Last updated: 2026-06-04
 
 ## Recently Completed
 
+- Recorded Sean's Ads as an intentional navigation exception: keep its own Google Ads co-branded menu/header format rather than applying the Dark Matter homepage navigation to those pages.
+- Added Open Graph/Twitter preview image metadata for `darkmatterwebsites.com` to the Apps gallery and full app profile pages in English and Spanish.
 - Added a `Customize Yours Now` / `Personaliza la tuya ahora` CTA button to the Apps page customization/language banner, linking to Contact in English and Spanish.
 - Renamed the Dark Matter app-library files from `downloads.html` / `es/downloads.html` to `apps.html` / `es/apps.html`, updated internal links and metadata, preserved app-card hash anchors, and added Netlify redirects from the old Downloads URLs.
 - Simplified the Apps page into a gallery-only preview page, removed the lower detail sections, linked app tiles directly to full profile pages, and added a custom business/language banner in English and Spanish.
