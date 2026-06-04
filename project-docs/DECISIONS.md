@@ -3,6 +3,19 @@
 ## 2026-06-04
 
 Decision:
+Remove Sean's Google Ads source from this Dark Matter repository and manage it externally.
+
+Reason:
+Sean's Ads now lives as a separate site/project. Keeping its source outside the Dark Matter repo avoids accidental edits during Dark Matter menu, layout, and content sweeps.
+
+Alternatives Considered:
+- Keep `Sean's Google Ads Services/` in this repository as editable source.
+- Recreate the missing Sean's Ads folder when future agents notice it is absent.
+- Treat Sean's Ads only as an external live site and keep Dark Matter links absolute.
+
+## 2026-06-04
+
+Decision:
 Keep Sean's Google Ads pages on their own Google Ads co-branded menu/header format instead of standardizing them to the Dark Matter homepage navigation.
 
 Reason:

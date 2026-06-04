@@ -40,6 +40,11 @@ Last updated: 2026-06-04
 
 ## Recently Completed
 
+- Added visual previews to the English and Spanish Apps gallery tiles: the auction tile uses an existing app screenshot, while SDMS and custom-build tiles use compact interface mockups.
+- Updated the Apps hero copy in English and Spanish to mention custom business apps can be built from scratch or based on a client's current system.
+- Updated the Apps and Portfolio galleries in English and Spanish so mobile layouts show two compact tiles per row instead of one long stacked column.
+- Added a third custom-build CTA tile to the English and Spanish Apps galleries, linking visitors to the Contact page to request their own business app.
+- Simplified the Portfolio / Nuestro portafolio pages into gallery-only summaries in English and Spanish, with each project tile linking directly to its standalone project detail page and the old lower in-page deep-dive sections removed.
 - Recorded Sean's Ads as an intentional navigation exception: keep its own Google Ads co-branded menu/header format rather than applying the Dark Matter homepage navigation to those pages.
 - Added Open Graph/Twitter preview image metadata for `darkmatterwebsites.com` to the Apps gallery and full app profile pages in English and Spanish.
 - Added a `Customize Yours Now` / `Personaliza la tuya ahora` CTA button to the Apps page customization/language banner, linking to Contact in English and Spanish.

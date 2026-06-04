@@ -10,7 +10,7 @@ This file is intentionally concise for handoff. Historical detail lives in `CHAN
 - Main pages include homepage, Services, Apps (`apps.html`), Process, Portfolio (`casestudies.html`), Contact, Built By, Website Preference Builder, Account/Login Portal, and individual Portfolio/detail pages.
 - Service pages live under `services/` with Spanish mirrors under `es/services/`.
 - Shared styling and behavior live mostly in `assets/`, including `nav.css`, `cosmic-web.css`, `care-plans.css`, `client-portal.css`, `rail.js`, `mobile-services-nav.js`, and Supabase/account portal scripts.
-- A standalone bilingual Google Ads mini-site exists in `Sean's Google Ads Services/`, with Spanish pages in `Sean's Google Ads Services/es/`.
+- Sean's Google Ads source has been intentionally moved out of this repository and is now managed elsewhere. It is normal that the old `Sean's Google Ads Services/` folder is absent; do not recreate or edit that mini-site from this project.
 - Local preview commonly runs at `http://127.0.0.1:4173/`; if that port is stale, use another port such as `4188`.
 
 ## Working Features
@@ -32,11 +32,11 @@ This file is intentionally concise for handoff. Historical detail lives in `CHAN
 - WhatsApp update-queue messaging is integrated on the homepage and Process page.
 - Browser/link-preview metadata is in place with favicon, app icons, manifest, and a modern Dark Matter Open Graph image.
 - English and Spanish punctuation/form-tag artifacts from earlier cleanup sweeps have been rechecked; legitimate closing question marks were restored on affected pages, and malformed `textárea` tags were corrected back to `textarea`.
-- Apps pages exist at `apps.html` and `es/apps.html` for Dark Matter-created web apps. They use the standard Dark Matter mobile header/tab shell and services popout, now act as a compact gallery-only app preview page, link each app tile directly to its separate full profile page, and include a banner noting apps are fully customizable for each business and language. Current listings are Auction House & Consignment Store Complete Management Software and Secondhand Dealer Management System (SDMS). The auction app links to the live hosted app at `https://auctionconsignmentapp.netlify.app/`, includes cropped app-flow screenshots on its profile page, and explains that full brand, feature, layout, report, field, module, language/localization, and tag-printing customization is available. The auction app has full profile pages at `auction-house-consignment-store-software.html` and `es/auction-house-consignment-store-software.html`; SDMS has full profile pages at `secondhand-dealer-management-system.html` and `es/secondhand-dealer-management-system.html`; these app pages include the powered-by banner and footer shell.
+- Apps pages exist at `apps.html` and `es/apps.html` for Dark Matter-created web apps. They use the standard Dark Matter mobile header/tab shell and services popout, now act as a compact gallery-only app preview page with two-up mobile tiles, visual tile previews, direct full-profile links, a custom-build contact tile, and hero/banner copy noting Dark Matter can build custom apps from scratch or around an existing business system, fully customized for each business and language. Current listings are Auction House & Consignment Store Complete Management Software and Secondhand Dealer Management System (SDMS). The auction app links to the live hosted app at `https://auctionconsignmentapp.netlify.app/`, includes cropped app-flow screenshots on its profile page, and explains that full brand, feature, layout, report, field, module, language/localization, and tag-printing customization is available. The auction app has full profile pages at `auction-house-consignment-store-software.html` and `es/auction-house-consignment-store-software.html`; SDMS has full profile pages at `secondhand-dealer-management-system.html` and `es/secondhand-dealer-management-system.html`; these app pages include the powered-by banner and footer shell.
 
 ## Portfolio / Case Studies
 
-- Portfolio summary page uses domain-style names:
+- Portfolio summary page is a gallery-only page with two-up mobile tiles; tiles link directly to standalone project detail pages instead of lower in-page case-study deep dives. It uses domain-style names:
   - `NaplesEstateJewelry.co`
   - `EliteYachtDetailing.com`
   - `JPSurette.com`
@@ -69,23 +69,11 @@ This file is intentionally concise for handoff. Historical detail lives in `CHAN
   - `account-settings.html` / `es/account-settings.html`
   - `account-ads-status.html` / `es/account-ads-status.html`
 
-## Google Ads Mini-Site
+## Sean's Google Ads
 
-- Standalone mini-site path: `Sean's Google Ads Services/`.
-- It is hosted separately from Dark Matter at `https://seansads.com/`; this repository keeps the source folder for edits and future uploads.
-- Includes English/Spanish home, contact, About Sean, Portfolio, focus-detail pages, and pricing-tier pages.
-- Google Ads tier pages route primary "Choose this plan" CTAs to the Dark Matter account portal with `?source=seansads` source tagging.
-- Mini-site top-right contact links route to the Dark Matter account dashboard contact anchor with `?source=seansads`; English account/login buttons use "Log in through Dark Matter Portal" and Spanish buttons use "Acceder al Portal Dark Matter."
-- Sean Cochrane bio and supplied transparent lossless WebP portrait cutout are present on About pages, styled as a floating motion portrait.
-- The Sean's Ads homepage `About Sean Cochrane` card uses the same portrait as a small circular icon in English and Spanish.
-- The Sean's Ads header brand mark uses a multicolor Google `G` SVG across English and Spanish pages while keeping the existing mark size.
-- The Sean's Ads header service-name text is intentionally large: `Sean's Google Ads` / `Google Ads de Sean` is doubled from the earlier small label size across homepage, contact, and shared detail pages.
-- Sean's Ads top-right `Contact Us` / `Contáctanos` header buttons route to the local Contact Sean page in the same mini-site language, while plan/account CTAs still route to the Dark Matter account portal with `?source=seansads`.
-- Sean's Ads header action bars are now consistent across homepage, contact, About, Portfolio, focus-detail, and pricing pages: other services, Dark Matter Portal login, EN/ES toggle, and Contact Us / Contáctanos.
-- Sean's Ads pages intentionally keep their own Google Ads co-branded heading/menu format and should not be normalized to the Dark Matter homepage navigation during Dark Matter menu sweeps.
-- Sean's Google Ads mini-site has a dedicated 1200x630 social preview asset and Open Graph/Twitter preview metadata across English and Spanish pages.
-- The mini-site has its own navigation, detail CSS/JS, EN/ES toggle, Dark Matter co-branding, and powered-by footer.
-- Mobile Sean's Google Ads pages use tighter typography/buttons and include a mobile-only draggable grid-orb control for touch interaction with the animated background. The homepage and subpage upper controls are compact on mobile, including other services, portal login, language switcher, contact, and Back to Google Ads home buttons. The contact page's mobile hero, Call/Text card, and Email card have an extra-small treatment.
+- Sean's Ads is live at `https://seansads.com/` and is managed outside this repository.
+- The old `Sean's Google Ads Services/` source folder was intentionally removed from this project. Future agents should treat its absence as expected and should not recreate or edit it here.
+- Dark Matter pages may still link to Sean's Ads with absolute production URLs, and the account portal may still show source-specific Sean's Ads messaging for `?source=seansads` or `seansads.com` referrers.
 
 ## Current Priorities
 

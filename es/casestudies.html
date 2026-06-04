@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html class="dark" lang="es"><head>
 <meta charset="utf-8"/>
@@ -162,6 +162,39 @@
         .portfolio-tile--open:hover,
         .portfolio-tile--open:focus-visible {
             border-color: rgba(0, 240, 255, 0.4);
+        }
+        @media (max-width: 767px) {
+            .portfolio-tile {
+                min-height: 100%;
+            }
+            .portfolio-tile__badge {
+                top: 0.55rem;
+                left: 0.55rem;
+                font-size: 8px;
+                letter-spacing: 0.08em;
+                padding: 0.2rem 0.42rem;
+            }
+            .portfolio-tile__media {
+                aspect-ratio: 4 / 3;
+            }
+            .portfolio-tile > div:not(.portfolio-tile__media) {
+                gap: 0.55rem !important;
+                padding: 0.8rem !important;
+            }
+            .portfolio-tile h3 {
+                font-size: 0.98rem !important;
+                line-height: 1.15;
+            }
+            .portfolio-tile p {
+                font-size: 0.75rem !important;
+                line-height: 1.35;
+            }
+            .portfolio-tile__cta,
+            .portfolio-tile .font-label-mono {
+                font-size: 9px !important;
+                line-height: 1.25;
+                letter-spacing: 0.06em;
+            }
         }
         @media (prefers-reduced-motion: reduce) {
             .portfolio-tile,
@@ -494,8 +527,8 @@
 
 <!-- Portfolio gallery -->
 <section class="mb-20">
-<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter">
-<a href="#case-naples" class="portfolio-tile">
+<div class="grid grid-cols-2 xl:grid-cols-3 gap-3 md:gap-gutter">
+<a href="portfolio-naplesestatejewelry.html" class="portfolio-tile">
 <div class="portfolio-tile__media">
 <img src="../assets/portfolio/naples-estate-jewelry/home.webp" alt="Página de inicio de Naples Estate Jewelry" class="portfolio-tile__img" loading="lazy"/>
 <span class="portfolio-tile__badge">01  DESTACADO</span>
@@ -510,7 +543,7 @@
 <span class="portfolio-tile__cta">Ver caso de éxito <span class="material-symbols-outlined">arrow_forward</span></span>
 </div>
 </a>
-<a href="#elite-yacht" class="portfolio-tile">
+<a href="portfolio-eliteyachtdetailing.html" class="portfolio-tile">
 <div class="portfolio-tile__media">
 <img src="../assets/portfolio/elite/screenshot-home.png" alt="Página de inicio en vivo de Elite Yacht Detailing" class="portfolio-tile__img" loading="lazy"/>
 <span class="portfolio-tile__badge">02  EN VIVO</span>
@@ -525,7 +558,7 @@
 <span class="portfolio-tile__cta">Ver caso de éxito <span class="material-symbols-outlined">arrow_forward</span></span>
 </div>
 </a>
-<a href="#case-jps" class="portfolio-tile">
+<a href="portfolio-jpsurette.html" class="portfolio-tile">
 <div class="portfolio-tile__media">
 <img src="../assets/portfolio/jpsurette/home.webp" alt="Página de inicio de JPS Surette Photography" class="portfolio-tile__img" loading="lazy"/>
 <span class="portfolio-tile__badge">03 &middot; VISTA PREVIA</span>
@@ -540,9 +573,9 @@
 <span class="portfolio-tile__cta">Ver caso de éxito <span class="material-symbols-outlined">arrow_forward</span></span>
 </div>
 </a>
-<a href="#case-seansads" class="portfolio-tile">
+<a href="portfolio-seansads.html" class="portfolio-tile">
 <div class="portfolio-tile__media">
-<img src="../assets/portfolio/seansads/home.webp" alt="Pagina de inicio de SeansAds.com" class="portfolio-tile__img" loading="lazy"/>
+<img src="../assets/portfolio/seansads/home.webp" alt="Página de inicio de SeansAds.com" class="portfolio-tile__img" loading="lazy"/>
 <span class="portfolio-tile__badge">04 &middot; LISTO</span>
 </div>
 <div class="p-7 flex flex-col gap-4 flex-1">
@@ -551,255 +584,16 @@
 <span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">GOOGLE ADS</span>
 </div>
 <h3 class="font-headline-md text-headline-md text-starlight-white">SeansAds.com</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed flex-1">Sitio independiente de Google Ads con configuracion de campanas, niveles de precios, paginas bilingues, portal de cliente y portafolio.</p>
-<span class="portfolio-tile__cta">Ver caso de exito <span class="material-symbols-outlined">arrow_forward</span></span>
+<p class="text-on-surface-variant text-sm leading-relaxed flex-1">Sitio independiente de Google Ads con configuración de campañas, niveles de precios, páginas bilingües, portal de cliente y portafolio.</p>
+<span class="portfolio-tile__cta">Ver caso de éxito <span class="material-symbols-outlined">arrow_forward</span></span>
 </div>
 </a>
 <a href="contact.html" class="portfolio-tile portfolio-tile--open p-8 gap-4">
 <span class="material-symbols-outlined text-4xl text-electric-cyan">add_circle</span>
-<h3 class="font-headline-md text-headline-md text-starlight-white">Tu Proyecto Aqu</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed">Sé la próxima construcción de la galería  desde servicios locales hasta e-commerce y apps empresariales a medida.</p>
+<h3 class="font-headline-md text-headline-md text-starlight-white">Tu Proyecto Aquí</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Sé la próxima construcción de la galería desde servicios locales hasta e-commerce y apps empresariales a medida.</p>
 <span class="portfolio-tile__cta" style="opacity:1;transform:none;">Iniciar un proyecto <span class="material-symbols-outlined">arrow_forward</span></span>
 </a>
-</div>
-</section>
-
-<!-- Case study deep dives -->
-<section class="mb-12">
-<div class="flex items-center gap-4">
-<div class="h-[1px] w-12 bg-electric-cyan"></div>
-<span class="font-label-mono text-label-mono text-electric-cyan tracking-widest uppercase">Portafolio a detalle</span>
-</div>
-</section>
-
-<!-- Featured Case Study: Naples Estate Jewelry -->
-<section class="mb-24 scroll-mt-28" id="case-naples">
-<div class="flex items-end justify-between mb-8">
-<div>
-<h2 class="font-headline-lg text-headline-lg text-starlight-white">NaplesEstateJewelry.co</h2>
-<p class="mt-3 max-w-xl text-on-surface-variant text-sm leading-relaxed">E-commerce de joyería de patrimonio y reventa local de lujo.</p>
-<div class="h-1 w-24 bg-electric-cyan mt-3"></div>
-</div>
-<div class="font-label-mono text-label-mono text-electric-cyan">01 // DESTACADO</div>
-</div>
-<div class="glass-panel rounded-2xl overflow-hidden">
-<div class="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-void-black/60">
-<span class="w-3 h-3 rounded-full bg-red-500/70"></span>
-<span class="w-3 h-3 rounded-full bg-yellow-500/70"></span>
-<span class="w-3 h-3 rounded-full bg-green-500/70"></span>
-<span class="ml-3 font-label-mono text-[11px] text-outline truncate">NaplesEstateJewelry.co</span>
-</div>
-<div class="bg-primary-container overflow-hidden group">
-<img alt="Página de inicio de Naples Estate Jewelry" class="w-full h-[420px] object-cover object-center group-hover:scale-[1.02] transition-transform duration-700" loading="lazy" src="../assets/portfolio/naples-estate-jewelry/home.webp"/>
-</div>
-<div class="p-12 grid grid-cols-1 lg:grid-cols-2 gap-12">
-<div>
-<div class="flex flex-wrap gap-2 mb-6">
-<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">DISEÑO Y CONSTRUCCIÓN WEB</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">E-COMMERCE A MEDIDA</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-white/5 text-on-surface-variant border border-white/10 rounded">NAPLES  FORT MYERS</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Joyera de patrimonio y antigüedades, hecho para convertir.</h3>
-<p class="text-on-surface-variant mb-6 leading-relaxed">Una tienda rpida y centrada en la confianza para un comprador de joyería de patrimonio y antigüedades del suroeste de Florida. Combinamos una página de inicio enfocada en la conversión con una tienda totalmente a medida: precios de metales preciosos en vivo, galerías de productos y un carrito y pago que funciona <span class="text-starlight-white">sin Shopify ni sus cuotas mensuales</span>.</p>
-<p class="text-on-surface-variant mb-8 leading-relaxed">Los visitantes pueden explorar el inventario con precios, agregar piezas al carrito o convertir al instante con llamada y mensaje de un toque y un flujo de enviar fotos para una oferta.</p>
-<div class="flex flex-wrap gap-4">
-<a href="https://NaplesEstateJewelry.co" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-lg hover:scale-105 active:scale-95 transition-all">
-                            Visitar Sitio en Vivo
-                            <span class="material-symbols-outlined text-base">arrow_outward</span>
-</a>
-<a href="portfolio-naplesestatejewelry.html" class="inline-flex items-center gap-2 px-8 py-3 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-lg hover:bg-white/5 transition-all">Ver más detalles de este proyecto<span class="material-symbols-outlined text-base">arrow_forward</span></a>
-</div>
-</div>
-<div>
-<h4 class="font-label-caps text-label-caps text-electric-cyan mb-5 tracking-[0.15em]">LO QUE OFRECE</h4>
-<ul class="space-y-3 font-label-mono text-label-mono text-on-surface-variant">
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Precios spot de oro y plata en vivo con un multiplicador de spot configurable</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Carrito y pago a medida: sin Shopify, sin cuotas mensuales de plataforma</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Páginas de producto con galerías de imágenes, especificaciones e indicadores de disponibilidad</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Llamada y mensaje de un toque más un flujo de contactos de enviar fotos para una oferta</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Diseño centrado en la confianza: reseñas verificadas, servicio confidencial</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> SEO local en Naples, Fort Myers y Marco Island</li>
-</ul>
-</div>
-</div>
-</div>
-
-</section>
-
-<!-- Elite Yacht Detailing  live -->
-<section class="mb-24 scroll-mt-28 max-w-[1264px] mx-auto" id="elite-yacht">
-<div class="flex items-end justify-between mb-8">
-<div>
-<h2 class="font-headline-lg text-headline-lg text-starlight-white">EliteYachtDetailing.com</h2>
-<p class="mt-3 max-w-xl text-on-surface-variant text-sm leading-relaxed">Sitio de detallado de yates de lujo y portal de servicios de flota.</p>
-<div class="h-1 w-24 bg-electric-cyan mt-3"></div>
-</div>
-<div class="font-label-mono text-label-mono text-electric-cyan">02 // EN VIVO</div>
-</div>
-
-<div class="glass-panel rounded-2xl overflow-hidden">
-<div class="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-void-black/60">
-<span class="w-3 h-3 rounded-full bg-red-500/70"></span>
-<span class="w-3 h-3 rounded-full bg-yellow-500/70"></span>
-<span class="w-3 h-3 rounded-full bg-green-500/70"></span>
-<span class="ml-3 font-label-mono text-[11px] text-outline truncate">EliteYachtDetailing.com</span>
-<span class="ml-auto font-label-caps text-[10px] px-2 py-0.5 bg-electric-cyan/15 text-electric-cyan border border-electric-cyan/30 rounded">EN VIVO</span>
-</div>
-<div class="bg-void-black overflow-hidden relative">
-<img alt="Sunseeker 630 S  muestra de la flota de Elite Yacht Detailing" class="elite-feature-hero" decoding="async" fetchpriority="high" src="../assets/portfolio/elite/hero-yacht.jpg"/>
-</div>
-<div class="p-12 grid grid-cols-1 lg:grid-cols-2 gap-12">
-<div>
-<div class="flex flex-wrap gap-2 mb-6">
-<span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">DISEÑO Y CONSTRUCCIÓN WEB</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">IDENTIDAD DE MARCA</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-white/5 text-on-surface-variant border border-white/10 rounded">DESARROLLO A MEDIDA</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-white/5 text-on-surface-variant border border-white/10 rounded">SWFL  SERVICIOS DE YATES</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">El Arte del Reflejo  en vivo en Naples.</h3>
-<p class="text-on-surface-variant mb-6 leading-relaxed">Un sitio premium de doble diseño para un negocio de detallado de yates del suroeste de Florida: logo a medida, página de inicio cinematográfica con video de trabajo real en SWFL, control deslizante interactivo de restauración antes/después y un catálogo completo de servicios y aspectos técnicos creado para propietarios de embarcaciones de alto patrimonio.</p>
-<p class="text-on-surface-variant mb-8 leading-relaxed">Experiencias separadas de escritorio y móvil, galería de acabado espejo, reserva de consultas y una sección dedicada de <span class="text-starlight-white">Flota</span> que muestra más de 400 embarcaciones atendidas en toda la Costa del Golfo.</p>
-<div class="flex flex-wrap gap-4">
-<a href="https://EliteYachtDetailing.com" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-lg hover:scale-105 active:scale-95 transition-all">
-<span class="material-symbols-outlined text-base">open_in_new</span>
-Visitar Sitio en Vivo
-</a>
-<a href="portfolio-eliteyachtdetailing.html" class="inline-flex items-center gap-2 px-8 py-3 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-lg hover:bg-white/5 transition-all">Ver más detalles de este proyecto<span class="material-symbols-outlined text-base">arrow_forward</span></a>
-</div>
-</div>
-<div>
-<h4 class="font-label-caps text-label-caps text-electric-cyan mb-5 tracking-[0.15em]">LO QUE ENTREGAMOS</h4>
-<ul class="space-y-3 font-label-mono text-label-mono text-on-surface-variant">
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Logo a medida y sistema de marca de lujo (Playfair + paleta náutica)</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Variantes de sitio de escritorio y móvil con enrutamiento según el dispositivo</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Restauración antes/después de arrastrar para comparar (caso de éxito Aviara)</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Galería de flota con mosaicos uniformes de embarcaciones y vistas previas al pasar el cursor</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Interfaz del portal de Acceso de Flota: base de gestión de clientes (próximamente)</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Servicios, proceso, especificaciones técnicas, galería espejo y flujos de contacto</li>
-</ul>
-</div>
-</div>
-</div>
-
-</section>
-
-<!-- JPS Surette Photography -->
-<section class="mb-24 scroll-mt-28 max-w-[1264px] mx-auto" id="case-jps">
-<div class="flex items-end justify-between mb-8">
-<div>
-<h2 class="font-headline-lg text-headline-lg text-starlight-white">JPSurette.com</h2>
-<p class="mt-3 max-w-xl text-on-surface-variant text-sm leading-relaxed">Portafolio fotográfico y vista previa de galerías de eventos.</p>
-<div class="h-1 w-24 bg-nebula-purple mt-3"></div>
-</div>
-<div class="font-label-mono text-label-mono text-electric-cyan">03 // EN PROGRESO</div>
-</div>
-<div class="glass-panel rounded-2xl overflow-hidden">
-<div class="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-void-black/60">
-<span class="w-3 h-3 rounded-full bg-red-500/70"></span>
-<span class="w-3 h-3 rounded-full bg-yellow-500/70"></span>
-<span class="w-3 h-3 rounded-full bg-green-500/70"></span>
-<span class="ml-3 font-label-mono text-[11px] text-outline truncate">JPSurette.com</span>
-<span class="ml-auto font-label-caps text-[10px] px-2 py-0.5 bg-[#39ff88]/10 text-[#39ff88] border border-[#39ff88]/35 rounded">EN PROGRESO</span>
-</div>
-<div class="bg-void-black overflow-hidden group">
-<img alt="Página de inicio de JPS Surette Photography" class="w-full h-[420px] object-cover object-center group-hover:scale-[1.02] transition-transform duration-700" loading="lazy" src="../assets/portfolio/jpsurette/home.webp"/>
-</div>
-<div class="p-12 grid grid-cols-1 lg:grid-cols-2 gap-12">
-<div>
-<div class="flex flex-wrap gap-2 mb-6">
-<span class="font-label-caps text-[10px] px-2 py-1 bg-[#39ff88]/10 text-[#39ff88] border border-[#39ff88]/30 rounded">PORTAFOLIO</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">DIRECCIÓN DE GALERÍAS</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-white/5 text-on-surface-variant border border-white/10 rounded">MARCA FOTOGRÁFICA</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Intensidad de combate, precisión arquitectónica y una base de galerías lista para crecer.</h3>
-<p class="text-on-surface-variant mb-6 leading-relaxed">Un portafolio oscuro y de alto contraste para un fotógrafo de Boston que trabaja en deportes de combate, arquitectura, bienes raíces, editorial y encargos comerciales. El diseño es directo y físico: tipografía grande, espaciado disciplinado y secciones guiadas por imágenes.</p>
-<p class="text-on-surface-variant mb-8 leading-relaxed">La siguiente fase apunta a galerías de eventos: archivos después de peleas, acceso público o privado, y futuros flujos de descarga o compra para atletas, gimnasios, promotores, familias y marcas.</p>
-<div class="glass-card rounded-lg p-5 mb-7 border border-[#39ff88]/25 bg-[#39ff88]/5">
-<div class="flex items-center justify-between gap-4 mb-3">
-<span class="font-label-caps text-[10px] text-[#39ff88] tracking-[0.18em]">PROYECTO EN PROGRESO</span>
-<span class="font-label-mono text-[11px] text-electric-cyan">68%</span>
-</div>
-<div class="build-progress-track" aria-label="Progreso del caso JPS Surette"><div class="build-progress-fill build-progress-fill--green"></div></div>
-<p class="text-on-surface-variant text-xs leading-relaxed mt-3">La vista previa ya está en línea; los detalles finales de galerías, login y entrega de eventos pueden seguir evolucionando con la aprobación del cliente.</p>
-</div>
-<div class="flex flex-wrap gap-4">
-<a href="https://jpsurette.netlify.app/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-lg hover:scale-105 active:scale-95 transition-all">
-<span class="material-symbols-outlined text-base">open_in_new</span>
-Ver Vista Previa en Vivo
-</a>
-<a href="portfolio-jpsurette.html" class="inline-flex items-center gap-2 px-8 py-3 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-lg hover:bg-white/5 transition-all">Ver más detalles de este proyecto<span class="material-symbols-outlined text-base">arrow_forward</span></a>
-</div>
-</div>
-<div>
-<h4 class="font-label-caps text-label-caps text-electric-cyan mb-5 tracking-[0.15em]">QUÉ MUESTRA</h4>
-<ul class="space-y-3 font-label-mono text-label-mono text-on-surface-variant">
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Página de inicio dividida entre deportes de combate y arquitectura/bienes raíces</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Portafolio de combate con ritmo visual de alto impacto</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Concepto de Fight Night Archive para galerías después de eventos</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Página de arquitectura y bienes raíces basada en estructura, luz y detalle material</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Rutas de servicio para fotografía editorial, comercial, de producto y eventos privados</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Sitio estático listo para Netlify, con formulario de contacto y espacio para futuros flujos de galería/login</li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-
-<!-- SeansAds.com -->
-<section class="mb-24 scroll-mt-28 max-w-[1264px] mx-auto" id="case-seansads">
-<div class="flex items-end justify-between mb-8">
-<div>
-<h2 class="font-headline-lg text-headline-lg text-starlight-white">SeansAds.com</h2>
-<p class="mt-3 max-w-xl text-on-surface-variant text-sm leading-relaxed">Mini-sitio independiente de Google Ads y embudo de contacto.</p>
-<div class="h-1 w-24 bg-electric-cyan mt-3"></div>
-</div>
-<div class="font-label-mono text-label-mono text-electric-cyan">04 // LISTO PARA LANZAR</div>
-</div>
-<div class="glass-panel rounded-2xl overflow-hidden">
-<div class="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-void-black/60">
-<span class="w-3 h-3 rounded-full bg-red-500/70"></span>
-<span class="w-3 h-3 rounded-full bg-yellow-500/70"></span>
-<span class="w-3 h-3 rounded-full bg-green-500/70"></span>
-<span class="ml-3 font-label-mono text-[11px] text-outline truncate">SeansAds.com</span>
-<span class="ml-auto font-label-caps text-[10px] px-2 py-0.5 bg-electric-cyan/15 text-electric-cyan border border-electric-cyan/30 rounded">LISTO</span>
-</div>
-<div class="bg-void-black overflow-hidden group">
-<img alt="Pagina de inicio de SeansAds.com" class="w-full h-[420px] object-cover object-top group-hover:scale-[1.02] transition-transform duration-700" loading="lazy" src="../assets/portfolio/seansads/home.webp"/>
-</div>
-<div class="p-12 grid grid-cols-1 lg:grid-cols-2 gap-12">
-<div>
-<div class="flex flex-wrap gap-2 mb-6">
-<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">MINI-SITIO</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">GOOGLE ADS</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-white/5 text-on-surface-variant border border-white/10 rounded">BILINGUE</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Un sitio enfocado en anuncios con conexion al portal de Dark Matter.</h3>
-<p class="text-on-surface-variant mb-6 leading-relaxed">Un sitio independiente de servicios de busqueda pagada para Sean Cochrane, creado para separar las ofertas de Google Ads del sitio principal de Dark Matter mientras sigue llevando a los clientes al portal de cuenta de Dark Matter.</p>
-<p class="text-on-surface-variant mb-8 leading-relaxed">Incluye posicionamiento de servicios, rutas de precios, pagina Sobre Sean, contenido de portafolio, espejos en espanol, metadatos para vista previa social e imagenes WebP comprimidas listas para GitHub y Netlify.</p>
-<div class="grid grid-cols-2 gap-4 mb-8">
-<div class="rounded-lg overflow-hidden border border-white/10"><img alt="Vista previa del portafolio de SeansAds.com" class="w-full h-auto block" loading="lazy" src="../assets/portfolio/seansads/portfolio.webp"/></div>
-<div class="rounded-lg overflow-hidden border border-white/10"><img alt="Vista previa de Sobre Sean en SeansAds.com" class="w-full h-auto block" loading="lazy" src="../assets/portfolio/seansads/about.webp"/></div>
-</div>
-<div class="flex flex-wrap gap-4">
-<a href="https://seansads.com/es/index.html" class="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-lg hover:scale-105 active:scale-95 transition-all">
-<span class="material-symbols-outlined text-base">open_in_new</span>
-Abrir mini-sitio
-</a>
-<a href="portfolio-seansads.html" class="inline-flex items-center gap-2 px-8 py-3 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-lg hover:bg-white/5 transition-all">Ver mas detalles de este proyecto<span class="material-symbols-outlined text-base">arrow_forward</span></a>
-</div>
-</div>
-<div>
-<h4 class="font-label-caps text-label-caps text-electric-cyan mb-5 tracking-[0.15em]">LO QUE ENTREGA</h4>
-<ul class="space-y-3 font-label-mono text-label-mono text-on-surface-variant">
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Conjunto de paginas en ingles y espanol listo para un futuro lanzamiento de SeansAds.com</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Rutas de configuracion de campanas, landing pages, limpieza y precios</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Paginas Sobre Sean y Portafolio con perfiles publicos de investigacion</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Enlaces al portal de Dark Matter para seleccion de planes y contacto</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Imagen social dedicada y retrato transparente WebP sin perdida</li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-electric-cyan text-base">check_circle</span> Estructura estatica lista para GitHub/Netlify con capturas comprimidas</li>
-</ul>
-</div>
-</div>
 </div>
 </section>
 
@@ -810,7 +604,7 @@ Abrir mini-sitio
 <p class="max-w-xl mx-auto text-on-surface-variant text-body-lg mb-10">Ubicados en Naples, FL. Llama o envía un mensaje y conversaremos sobre tu proyecto, sin presión y sin tecnicismos.</p>
 <div class="flex flex-wrap justify-center gap-4">
 <a href="tel:+12394048505" class="inline-flex items-center gap-2 px-10 py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-xl font-bold hover:scale-105 active:scale-95 transition-all shadow-2xl">
-<span class="material-symbols-outlined text-base">call</span> Llama o Enva un Mensaje (239) 404-8505
+<span class="material-symbols-outlined text-base">call</span> Llama o Envía un Mensaje (239) 404-8505
                     </a>
 <a href="contact.html" class="inline-block px-10 py-4 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-xl hover:bg-white/5 transition-all">Enviar Mensaje</a>
 </div>
@@ -885,8 +679,8 @@ Abrir mini-sitio
 </div>
 
 <!-- Portfolio gallery (mobile) -->
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
-<a href="#m-case-naples" class="portfolio-tile active:scale-[0.98]">
+<div class="grid grid-cols-2 gap-3 mb-10">
+<a href="portfolio-naplesestatejewelry.html" class="portfolio-tile active:scale-[0.98]">
 <div class="portfolio-tile__media">
 <img src="../assets/portfolio/naples-estate-jewelry/home.webp" alt="Página de inicio de Naples Estate Jewelry" class="portfolio-tile__img" loading="lazy"/>
 <span class="portfolio-tile__badge">01  DESTACADO</span>
@@ -897,7 +691,7 @@ Abrir mini-sitio
 <span class="font-label-mono text-[11px] text-electric-cyan inline-flex items-center gap-1">Ver caso de éxito <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
 </div>
 </a>
-<a href="#m-case-elite" class="portfolio-tile active:scale-[0.98]">
+<a href="portfolio-eliteyachtdetailing.html" class="portfolio-tile active:scale-[0.98]">
 <div class="portfolio-tile__media">
 <img src="../assets/portfolio/elite/screenshot-home.png" alt="Página de inicio en vivo de Elite Yacht Detailing" class="portfolio-tile__img" loading="lazy"/>
 <span class="portfolio-tile__badge">02  EN VIVO</span>
@@ -908,7 +702,7 @@ Abrir mini-sitio
 <span class="font-label-mono text-[11px] text-electric-cyan inline-flex items-center gap-1">Ver caso de éxito <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
 </div>
 </a>
-<a href="#m-case-jps" class="portfolio-tile active:scale-[0.98]">
+<a href="portfolio-jpsurette.html" class="portfolio-tile active:scale-[0.98]">
 <div class="portfolio-tile__media">
 <img src="../assets/portfolio/jpsurette/home.webp" alt="Página de inicio de JPS Surette Photography" class="portfolio-tile__img" loading="lazy"/>
 <span class="portfolio-tile__badge">03 &middot; EN PROGRESO</span>
@@ -919,175 +713,23 @@ Abrir mini-sitio
 <span class="font-label-mono text-[11px] text-electric-cyan inline-flex items-center gap-1">Ver caso de éxito <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
 </div>
 </a>
-<a href="#m-case-seansads" class="portfolio-tile active:scale-[0.98]">
+<a href="portfolio-seansads.html" class="portfolio-tile active:scale-[0.98]">
 <div class="portfolio-tile__media">
-<img src="../assets/portfolio/seansads/home.webp" alt="Pagina de inicio de SeansAds.com" class="portfolio-tile__img" loading="lazy"/>
+<img src="../assets/portfolio/seansads/home.webp" alt="Página de inicio de SeansAds.com" class="portfolio-tile__img" loading="lazy"/>
 <span class="portfolio-tile__badge">04 &middot; LISTO</span>
 </div>
 <div class="p-5 flex flex-col gap-3">
 <h3 class="font-headline-md text-[18px] text-starlight-white">SeansAds.com</h3>
-<p class="font-body-md text-[13px] text-on-surface-variant">Mini-sitio de Google Ads con precios, paginas bilingues y conexion al portal de Dark Matter.</p>
-<span class="font-label-mono text-[11px] text-electric-cyan inline-flex items-center gap-1">Ver caso de exito <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+<p class="font-body-md text-[13px] text-on-surface-variant">Mini-sitio de Google Ads con precios, paginas bilingues y conexión al portal de Dark Matter.</p>
+<span class="font-label-mono text-[11px] text-electric-cyan inline-flex items-center gap-1">Ver caso de éxito <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
 </div>
 </a>
 <a href="contact.html" class="portfolio-tile portfolio-tile--open p-6 gap-3 active:scale-[0.98]">
 <span class="material-symbols-outlined text-3xl text-electric-cyan">add_circle</span>
-<h3 class="font-headline-md text-[18px] text-starlight-white">Tu Proyecto Aqu</h3>
+<h3 class="font-headline-md text-[18px] text-starlight-white">Tu Proyecto Aquí</h3>
 <p class="font-body-md text-[13px] text-on-surface-variant">Sé la próxima construcción de la galería.</p>
 <span class="font-label-mono text-[11px] text-electric-cyan inline-flex items-center gap-1">Iniciar un proyecto <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
 </a>
-</div>
-
-<!-- Featured: Naples Estate Jewelry -->
-<div id="m-case-naples" class="glass-card rounded-xl overflow-hidden mb-8 scroll-mt-24">
-<div class="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-void-black/60">
-<span class="w-2.5 h-2.5 rounded-full bg-red-500/70"></span>
-<span class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></span>
-<span class="w-2.5 h-2.5 rounded-full bg-green-500/70"></span>
-<span class="ml-2 font-label-mono text-[10px] text-outline truncate">NaplesEstateJewelry.co</span>
-</div>
-<img alt="Página de inicio de Naples Estate Jewelry" class="w-full h-56 object-cover object-center" loading="lazy" src="../assets/portfolio/naples-estate-jewelry/home.webp"/>
-<div class="p-7">
-<div class="flex items-center gap-2 mb-4">
-<span class="font-label-mono text-[10px] text-electric-cyan">01 // DESTACADO</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">NaplesEstateJewelry.co</h3>
-<p class="font-label-caps text-[10px] text-electric-cyan tracking-[0.14em] mb-4">E-commerce de joyería</p>
-<div class="flex flex-wrap gap-2 mb-5">
-<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">DISEÑO WEB</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">E-COMMERCE A MEDIDA</span>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6">Una tienda centrada en la confianza para un comprador de joyería de patrimonio y antigüedades del suroeste de Florida, con precios de metales preciosos en vivo, galerías de productos y un carrito y pago creado <span class="text-starlight-white">sin Shopify ni sus cuotas mensuales</span>.</p>
-<ul class="space-y-2 font-label-mono text-[12px] text-on-surface-variant mb-7">
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> Precios spot de oro y plata en vivo</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> Carrito y pago a medida, sin Shopify</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> Llamada y mensaje de un toque + ofertas por foto</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> SEO local en el suroeste de Florida</li>
-</ul>
-<a href="https://NaplesEstateJewelry.co" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-sm active:scale-[0.98] transition-all">
-                    Visitar Sitio en Vivo <span class="material-symbols-outlined text-base">arrow_outward</span>
-</a>
-<a href="portfolio-naplesestatejewelry.html" class="mt-3 flex items-center justify-center gap-2 w-full py-4 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-sm active:scale-[0.98] transition-all">Ver más detalles de este proyecto <span class="material-symbols-outlined text-base">arrow_forward</span></a>
-</div>
-</div>
-
-<!-- Project 02: Elite Yacht Detailing -->
-<div id="m-case-elite" class="glass-card rounded-xl overflow-hidden mb-8 border border-electric-cyan/20 scroll-mt-24">
-<div class="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-void-black/60">
-<span class="w-2.5 h-2.5 rounded-full bg-red-500/70"></span>
-<span class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></span>
-<span class="w-2.5 h-2.5 rounded-full bg-green-500/70"></span>
-<span class="ml-2 font-label-mono text-[10px] text-outline truncate">EliteYachtDetailing.com</span>
-<span class="ml-auto font-label-caps text-[9px] px-1.5 py-0.5 bg-electric-cyan/15 text-electric-cyan border border-electric-cyan/30 rounded">EN VIVO</span>
-</div>
-<div class="bg-void-black overflow-hidden">
-<img alt="Sunseeker 630 S  Elite Yacht Detailing" class="elite-feature-hero" decoding="async" src="../assets/portfolio/elite/hero-yacht.jpg"/>
-</div>
-<div class="p-7">
-<div class="flex items-center gap-2 mb-4">
-<span class="font-label-mono text-[10px] text-electric-cyan">02 // EN VIVO</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">EliteYachtDetailing.com</h3>
-<p class="font-label-caps text-[10px] text-electric-cyan tracking-[0.14em] mb-4">Detallado de yates de lujo</p>
-<div class="flex flex-wrap gap-2 mb-5">
-<span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">DISEÑO WEB</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">PORTAL DE FLOTA</span>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant mb-4">Sitio en vivo de detallado de yates de lujo para Naples: página de inicio cinematográfica, control deslizante de comparación antes/después, galería de flota (más de 400 embarcaciones) y un portal de cliente de Acceso de Flota para programas recurrentes de marina y flota.</p>
-<p class="font-label-caps text-[10px] text-electric-cyan mb-3 tracking-widest">ACCESO Y GESTIN DE FLOTA</p>
-<p class="font-body-md text-on-surface-variant text-sm mb-5">Vista previa del portal con programación de múltiples embarcaciones, historial de servicio, registros de recubrimiento y contacto prioritario con el capitán; inicio de sesión próximamente; experiencia completa ya creada.</p>
-<div class="space-y-3 mb-5">
-<div class="rounded-lg overflow-hidden border border-white/10">
-<img alt="Vista previa de la galería de flota" class="w-full h-auto block" loading="lazy" src="../assets/portfolio/elite/screenshot-gallery.png"/>
-</div>
-<div class="rounded-lg overflow-hidden border border-white/10">
-<img alt="Comparación antes/después" class="w-full h-auto block" loading="lazy" src="../assets/portfolio/elite/screenshot-compare.jpg"/>
-</div>
-</div>
-<ul class="space-y-2 font-label-mono text-[12px] text-on-surface-variant mb-7">
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> Variantes de sitio de escritorio + móvil</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> Galería de flota e interfaz del portal de cliente</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> Muestra de restauración de arrastrar para comparar</li>
-</ul>
-<a href="https://EliteYachtDetailing.com" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-sm active:scale-[0.98] transition-all">
-<span class="material-symbols-outlined text-base">open_in_new</span> Visitar Sitio en Vivo
-</a>
-<a href="portfolio-eliteyachtdetailing.html" class="mt-3 flex items-center justify-center gap-2 w-full py-4 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-sm active:scale-[0.98] transition-all">Ver más detalles de este proyecto <span class="material-symbols-outlined text-base">arrow_forward</span></a>
-</div>
-</div>
-
-<!-- Project 03: JPS Surette Photography -->
-<div id="m-case-jps" class="glass-card rounded-xl overflow-hidden mb-8 border border-nebula-purple/20 scroll-mt-24">
-<div class="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-void-black/60">
-<span class="w-2.5 h-2.5 rounded-full bg-red-500/70"></span>
-<span class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></span>
-<span class="w-2.5 h-2.5 rounded-full bg-green-500/70"></span>
-<span class="ml-2 font-label-mono text-[10px] text-outline truncate">JPSurette.com</span>
-<span class="ml-auto font-label-caps text-[9px] px-1.5 py-0.5 bg-[#39ff88]/10 text-[#39ff88] border border-[#39ff88]/35 rounded">EN PROGRESO</span>
-</div>
-<img alt="Página de inicio de JPS Surette Photography" class="w-full h-56 object-cover object-center" loading="lazy" src="../assets/portfolio/jpsurette/home.webp"/>
-<div class="p-7">
-<div class="flex items-center gap-2 mb-4"><span class="font-label-mono text-[10px] text-electric-cyan">03 // EN PROGRESO</span></div>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">JPSurette.com</h3>
-<p class="font-label-caps text-[10px] text-nebula-purple tracking-[0.14em] mb-4">Portafolio fotográfico</p>
-<div class="flex flex-wrap gap-2 mb-5">
-<span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">PORTAFOLIO</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">GALERÍAS</span>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant mb-5">Sitio de fotografía de alto contraste para deportes de combate, eventos, arquitectura, bienes raíces, editorial y encargos comerciales.</p>
-<div class="glass-card rounded-lg p-4 mb-5 border border-[#39ff88]/25 bg-[#39ff88]/5">
-<div class="flex items-center justify-between gap-3 mb-2"><span class="font-label-caps text-[9px] text-[#39ff88] tracking-[0.16em]">EN PROGRESO</span><span class="font-label-mono text-[10px] text-electric-cyan">68%</span></div>
-<div class="build-progress-track" aria-label="Progreso móvil de JPS Surette"><div class="build-progress-fill build-progress-fill--green"></div></div>
-</div>
-<div class="space-y-3 mb-5">
-<div class="rounded-lg overflow-hidden border border-white/10"><img alt="Portafolio de combate de JPS" class="w-full h-auto block" loading="lazy" src="../assets/portfolio/jpsurette/combat.webp"/></div>
-<div class="rounded-lg overflow-hidden border border-white/10"><img alt="Dirección de galerías de eventos de JPS" class="w-full h-auto block" loading="lazy" src="../assets/portfolio/jpsurette/events.webp"/></div>
-</div>
-<ul class="space-y-2 font-label-mono text-[12px] text-on-surface-variant mb-7">
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> Rutas de combate y arquitectura</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> Archivo de eventos y dirección de galerías</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> Formulario de contacto listo para Netlify</li>
-</ul>
-<a href="https://jpsurette.netlify.app/" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-sm active:scale-[0.98] transition-all">
-<span class="material-symbols-outlined text-base">open_in_new</span> Ver Vista Previa en Vivo
-</a>
-<a href="portfolio-jpsurette.html" class="mt-3 flex items-center justify-center gap-2 w-full py-4 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-sm active:scale-[0.98] transition-all">Ver más detalles de este proyecto <span class="material-symbols-outlined text-base">arrow_forward</span></a>
-</div>
-</div>
-
-<!-- Project 04: SeansAds.com -->
-<div id="m-case-seansads" class="glass-card rounded-xl overflow-hidden mb-8 border border-electric-cyan/20 scroll-mt-24">
-<div class="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-void-black/60">
-<span class="w-2.5 h-2.5 rounded-full bg-red-500/70"></span>
-<span class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></span>
-<span class="w-2.5 h-2.5 rounded-full bg-green-500/70"></span>
-<span class="ml-2 font-label-mono text-[10px] text-outline truncate">SeansAds.com</span>
-<span class="ml-auto font-label-caps text-[9px] px-1.5 py-0.5 bg-electric-cyan/15 text-electric-cyan border border-electric-cyan/30 rounded">LISTO</span>
-</div>
-<img alt="Pagina de inicio de SeansAds.com" class="w-full h-56 object-cover object-top" loading="lazy" src="../assets/portfolio/seansads/home.webp"/>
-<div class="p-7">
-<div class="flex items-center gap-2 mb-4"><span class="font-label-mono text-[10px] text-electric-cyan">04 // LISTO PARA LANZAR</span></div>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">SeansAds.com</h3>
-<p class="font-label-caps text-[10px] text-electric-cyan tracking-[0.14em] mb-4">Mini-sitio de Google Ads</p>
-<div class="flex flex-wrap gap-2 mb-5">
-<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">MINI-SITIO</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">BILINGUE</span>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant mb-5">Sitio independiente de busqueda pagada para Sean Cochrane, creado con ofertas de servicio, rutas de precios, Sobre Sean, portafolio y enlaces al portal de Dark Matter.</p>
-<div class="space-y-3 mb-5">
-<div class="rounded-lg overflow-hidden border border-white/10"><img alt="Vista previa del portafolio de SeansAds.com" class="w-full h-auto block" loading="lazy" src="../assets/portfolio/seansads/portfolio.webp"/></div>
-<div class="rounded-lg overflow-hidden border border-white/10"><img alt="Vista previa de Sobre Sean en SeansAds.com" class="w-full h-auto block" loading="lazy" src="../assets/portfolio/seansads/about.webp"/></div>
-</div>
-<ul class="space-y-2 font-label-mono text-[12px] text-on-surface-variant mb-7">
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> Paginas estaticas en ingles y espanol listas para lanzar</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> Paginas de precios y enfoques de campana</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-sm">check_circle</span> Enlaces al portal de Dark Matter para planes y contacto</li>
-</ul>
-<a href="https://seansads.com/es/index.html" class="flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-sm active:scale-[0.98] transition-all">
-<span class="material-symbols-outlined text-base">open_in_new</span> Abrir mini-sitio
-</a>
-<a href="portfolio-seansads.html" class="mt-3 flex items-center justify-center gap-2 w-full py-4 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-sm active:scale-[0.98] transition-all">Ver mas detalles de este proyecto <span class="material-symbols-outlined text-base">arrow_forward</span></a>
-</div>
 </div>
 
 <!-- CTA -->
@@ -1095,7 +737,7 @@ Abrir mini-sitio
 <h2 class="font-headline-lg text-headline-md text-starlight-white mb-3">¿Quieres ser el próximo?</h2>
 <p class="font-body-md text-on-surface-variant mb-6">Ubicados en Naples, FL. Llama o envía un mensaje.</p>
 <a href="tel:+12394048505" class="flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-sm active:scale-[0.98] transition-all">
-<span class="material-symbols-outlined text-base">call</span> Llama o Enva un Mensaje (239) 404-8505
+<span class="material-symbols-outlined text-base">call</span> Llama o Envía un Mensaje (239) 404-8505
             </a>
 </div>
 </main>

@@ -14,8 +14,8 @@ Then summarize the current state to the user and proceed.
 ## Fast Current Context
 
 - Dark Matter Web Services is a bilingual static site at the project root and `es/`.
-- Sean's Google Ads lives in `Sean's Google Ads Services/` with Spanish pages in `Sean's Google Ads Services/es/`.
-- Sean's Ads is now a separate live site at `https://seansads.com/`; Dark Matter is separate at `https://darkmatterwebdev.com/`.
+- Sean's Google Ads has been intentionally moved out of this repository and is now managed elsewhere; it is normal that `Sean's Google Ads Services/` is not present.
+- Sean's Ads is a separate live site at `https://seansads.com/`; Dark Matter is separate at `https://darkmatterwebdev.com/`.
 - Cross-site links must use absolute URLs, not local folder-relative URLs.
 - Local preview usually runs at `http://127.0.0.1:4173/`.
 - The expected validator warning is only:
@@ -28,9 +28,7 @@ This warning is intentional because `jpsurette.html` is a hidden English-only Ea
 
 ## Recent Work To Remember
 
-- Sean's Ads homepage card for `About Sean Cochrane` now uses Sean's portrait as the small card icon.
-- Sean's Ads header brand mark was changed from a Google-like letter badge to a multicolor Google `G` SVG across English and Spanish pages.
-- Sean's Ads contact-page mobile hero/contact blocks were made smaller in English and Spanish.
+- Sean's Ads source is no longer part of this project. Do not look for, recreate, or edit the old `Sean's Google Ads Services/` folder from this repo.
 - The Dark Matter account portal shows a green Sean's Ads Google Ads console notice only for `?source=seansads` or `seansads.com` referrers.
 - Spanish UI labels and outlying encoding/question-mark artifacts were recently swept, but keep checking Spanish mirrors after edits.
 

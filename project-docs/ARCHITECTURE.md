@@ -56,17 +56,7 @@ Long-term recommendation: keep the marketing site as static output, but migrate 
     validate-site.ps1
   supabase/
     client-portal-schema.sql
-  Sean's Google Ads Services/
-    index.html
-    contact.html
-    campaign-setup.html
-    landing-page-alignment.html
-    ongoing-cleanup.html
-    pricing-*.html
-    detail.css
-    detail.js
-    es/
-      (Spanish mirror of every Google Ads mini-site page)
+  # Sean's Google Ads source intentionally removed; managed externally.
 ```
 
 ## Page Model
@@ -84,7 +74,7 @@ Long-term recommendation: keep the marketing site as static output, but migrate 
 - Some page behavior is implemented inline in the relevant HTML files.
 - `account.html` and `es/account.html` are the first client login/account pages. They load `assets/supabase-config.js`, `assets/client-portal.js`, and `assets/client-portal.css`.
 - `account-settings.html` / `es/account-settings.html` and `account-ads-status.html` / `es/account-ads-status.html` are lightweight client-portal workspace placeholder pages for future settings/preferences and Google Ads campaign activity/status workflows.
-- `Sean's Google Ads Services/` is a standalone mini landing-page project hosted separately at `https://seansads.com/`. It has its own English/Spanish mirror under `Sean's Google Ads Services/es/`, shared detail styling/mesh script (`detail.css`, `detail.js`), and language toggles independent of the main site's `localStorage` language redirect system. Links from Dark Matter into the mini-site should use absolute `https://seansads.com/...` URLs; links from the mini-site back to Dark Matter should use absolute `https://darkmatterwebdev.com/...` URLs.
+- Sean's Google Ads is hosted separately at `https://seansads.com/` and its source has been intentionally moved out of this repository. The old `Sean's Google Ads Services/` folder is expected to be absent. Dark Matter should continue using absolute `https://seansads.com/...` URLs where it links to Sean's Ads, but Sean's Ads code/content changes belong in its separate external project.
 
 ## Internationalization (English / Spanish)
 

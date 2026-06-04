@@ -2,6 +2,12 @@
 
 ## 2026-06-04
 
+- Added visual media treatments to the Apps gallery cards in English and Spanish, including an auction dashboard screenshot and compact interface mockups for the SDMS and custom-build tiles.
+- Updated the Apps hero subtext in English and Spanish to say Dark Matter can custom build apps from scratch or around an existing business system.
+- Updated `apps.html`, `es/apps.html`, `casestudies.html`, and `es/casestudies.html` so mobile gallery tiles display two per row, with compact tile spacing and typography for phone-width layouts.
+- Added a third Apps gallery tile in English and Spanish for custom business app requests, with the CTA linking to the Contact page.
+- Documented that Sean's Google Ads source has been intentionally moved out of this repository, that the old `Sean's Google Ads Services/` folder is expected to be absent, and that future Sean's Ads changes belong in its separate external project.
+- Simplified `casestudies.html` and `es/casestudies.html` into gallery-only Portfolio pages, removed the lower in-page case-study deep-dive blocks on desktop and mobile, and routed each project tile directly to its standalone detail page.
 - Added Open Graph/Twitter preview metadata for `darkmatterwebsites.com` to the Apps gallery and full app profile pages in English and Spanish.
 - Added a Contact-page CTA button to the Apps page customization/language banner in English and Spanish.
 - Renamed the Dark Matter app-library files from `downloads.html` / `es/downloads.html` to `apps.html` / `es/apps.html`, updated internal links and metadata, preserved app-card anchors, and added Netlify redirects from the old Downloads URLs.

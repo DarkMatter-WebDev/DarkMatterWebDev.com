@@ -14,12 +14,12 @@ Read this after:
 ## Immediate State
 
 - Dark Matter Web Services is a static bilingual site. English pages live at the root; Spanish mirrors live under `es/`.
-- Sean's Google Ads is a standalone bilingual mini-site in `Sean's Google Ads Services/` with Spanish pages under `Sean's Google Ads Services/es/`.
+- Sean's Google Ads source has been intentionally moved out of this repository and is managed elsewhere. It is normal that `Sean's Google Ads Services/` is absent.
 - Sean's Ads is live on a separate server/domain at `https://seansads.com/`.
 - Dark Matter is separate at `https://darkmatterwebdev.com/`.
 - Cross-site links between Dark Matter and Sean's Ads should use absolute production URLs.
 - Local preview usually runs at `http://127.0.0.1:4173/`.
-- Current in-app browser context recently focused on Sean's Ads pages, especially `about-sean.html`, `contact.html`, and the mini-site homepage.
+- Current project work should treat Sean's Ads as an external live site, not as local source to edit.
 
 ## Most Recent Work
 
@@ -60,16 +60,15 @@ Read this after:
 - Client portal: `account.html`, `es/account.html`
 - Portal scripts/styles: `assets/client-portal.js`, `assets/client-portal.css`, `assets/supabase-config.js`
 - Supabase starter SQL: `supabase/client-portal-schema.sql`
-- Sean's Ads mini-site: `Sean's Google Ads Services/`
-- Sean portrait asset: `Sean's Google Ads Services/assets/sean-cochrane-portrait-backgroundless-lossless.webp`
-- Sean social preview: `Sean's Google Ads Services/assets/seans-google-ads-social-preview.png`
+- Sean's Ads source: intentionally absent from this repository; managed elsewhere.
+- Sean's Ads live site: `https://seansads.com/`
 - Static validator: `scripts/validate-site.ps1`
 
 ## Preserve These Rules
 
 - Keep English and Spanish pages in sync.
 - Keep Sean's Ads and Dark Matter cross-domain links absolute because they are deployed separately.
-- Keep Sean's Ads pages on their own Google Ads co-branded heading/menu format; do not apply the Dark Matter homepage nav/header to the Sean's Ads mini-site during menu consistency sweeps.
+- Keep Sean's Ads external. Do not recreate the old local mini-site folder or apply Dark Matter navigation sweeps to it from this repository.
 - Keep public Supabase config limited to URL and publishable/anon key only.
 - Do not store secrets, passwords, service-role keys, Stripe secret keys, or recovery codes in docs or static files.
 - Keep `jpsurette.html` unlinked except for the tiny homepage Easter egg unless the user asks otherwise.
@@ -101,7 +100,7 @@ This is expected unless the user decides the hidden Easter egg needs a Spanish m
 
 ## Best Next Actions
 
-- If continuing Sean's Ads polish, inspect both `Sean's Google Ads Services/index.html` and `Sean's Google Ads Services/es/index.html`.
+- If Sean's Ads needs changes, handle them in its separate external project, not in this Dark Matter repository.
 - If touching account portal flow, check `account.html`, `es/account.html`, `assets/client-portal.js`, and `assets/client-portal.css`.
 - If adding real account features, complete Supabase setup and test users before treating portal data as production.
 - If updating live URLs, verify both deployed domains because Sean's Ads and Dark Matter are separately hosted.
