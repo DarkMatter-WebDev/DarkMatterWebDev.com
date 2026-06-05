@@ -122,22 +122,22 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <div class="client-command-copy">
 <div class="client-portal-kicker">Command Center</div>
 <h3>Your website workspace</h3>
-<p>Jump straight into the things clients usually need: website health, traffic, services, billing, and quick update requests.</p>
+<p>Jump straight into the things clients usually need: shared documents, portal messages, active services, invoices, and quick update requests.</p>
 </div>
 <div class="client-command-orb" aria-hidden="true"><span class="material-symbols-outlined">hub</span></div>
 </section>
 <nav class="client-dashboard-actions" aria-label="Client dashboard shortcuts">
-<a class="client-mini-button" href="#client-website-status"><span class="material-symbols-outlined">health_and_safety</span>Status</a>
-<a class="client-mini-button client-mini-button--blue" href="#client-website-traffic"><span class="material-symbols-outlined">query_stats</span>Traffic</a>
+<a class="client-mini-button" href="#client-documents"><span class="material-symbols-outlined">folder_open</span>Documents</a>
+<a class="client-mini-button client-mini-button--blue" href="#client-messages"><span class="material-symbols-outlined">forum</span>Messages</a>
 <a class="client-mini-button client-mini-button--green" href="#client-active-services"><span class="material-symbols-outlined">apps</span>Services</a>
-<a class="client-mini-button client-mini-button--violet" href="#client-billing"><span class="material-symbols-outlined">credit_card</span>Billing</a>
+<a class="client-mini-button client-mini-button--violet" href="#client-invoices"><span class="material-symbols-outlined">receipt_long</span>Invoices</a>
 <a class="client-mini-button client-mini-button--hot" href="#client-contact"><span class="material-symbols-outlined">edit_note</span>Request</a>
 </nav>
 <div class="client-workspace-grid">
-<a class="client-workspace-card client-workspace-card--status" href="#client-website-status"><span class="material-symbols-outlined">shield_locked</span><strong>Keep the site healthy</strong><small>Hosting, SSL, backups, updates, and readiness checks.</small></a>
-<a class="client-workspace-card client-workspace-card--traffic" href="#client-website-traffic"><span class="material-symbols-outlined">monitoring</span><strong>Watch the signal</strong><small>Traffic summaries, popular pages, referral notes, and sources.</small></a>
+<a class="client-workspace-card client-workspace-card--status" href="#client-documents"><span class="material-symbols-outlined">description</span><strong>Shared documents</strong><small>Contracts, deliverables, reports, and files shared with your account.</small></a>
+<a class="client-workspace-card client-workspace-card--traffic" href="#client-messages"><span class="material-symbols-outlined">mail</span><strong>Portal messages</strong><small>Updates, notes, and replies from your Dark Matter workspace.</small></a>
 <a class="client-workspace-card client-workspace-card--request" href="#client-contact"><span class="material-symbols-outlined">send</span><strong>Send a change</strong><small>Ask a question or queue website updates directly from your account.</small></a>
-<a class="client-workspace-card client-workspace-card--settings" href="account-settings.html"><span class="material-symbols-outlined">tune</span><strong>Site preferences</strong><small>Set your website preferences, account settings, update style, and service defaults.</small></a>
+<a class="client-workspace-card client-workspace-card--settings" href="account-settings.html"><span class="material-symbols-outlined">tune</span><strong>Account settings</strong><small>Update your profile, password, contact details, and workspace preferences.</small></a>
 <a class="client-workspace-card client-workspace-card--orbit" href="preference-builder.html"><span class="material-symbols-outlined">rocket_launch</span><strong>Plan the next upgrade</strong><small>Map a new page, feature, redesign, or idea before we build it into your site.</small></a>
 </div>
 <section class="client-super-admin-panel client-sean-ads-panel" data-sean-ads-portal-panel hidden>
@@ -164,27 +164,28 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 </div>
 <div class="client-super-admin-actions">
 <a class="client-portal-button client-portal-button--secondary" href="seans-google-ads-dashboard.html"><span class="material-symbols-outlined">visibility</span>Open Sean's direct portal backend view</a>
+<a class="client-portal-button client-portal-button--ghost" href="https://naplesestatejewelry.co" target="_blank" rel="noopener noreferrer"><span class="material-symbols-outlined">storefront</span>Open jewelry site admin context</a>
 </div>
 <p class="client-muted mt-4">This page only controls what admin shortcuts are visible in the browser. Real cross-account data access must be enforced with Supabase roles, policies, or server-side functions before sensitive member records are stored.</p>
 </section>
 <div class="client-metric-grid">
 <div class="client-metric"><span class="client-muted">Services</span><strong data-metric-services>0</strong></div>
-<div class="client-metric"><span class="client-muted">Website Health</span><strong data-metric-health>Pending</strong></div>
-<div class="client-metric"><span class="client-muted">Visitors</span><strong data-metric-visitors>Pending</strong></div>
-<div class="client-metric"><span class="client-muted">Page Views</span><strong data-metric-pageviews>Pending</strong></div>
-<div class="client-metric"><span class="client-muted">Billing</span><strong data-metric-billing>Pending</strong></div>
+<div class="client-metric"><span class="client-muted">Documents</span><strong data-metric-documents>0</strong></div>
+<div class="client-metric"><span class="client-muted">Messages</span><strong data-metric-messages>0</strong></div>
+<div class="client-metric"><span class="client-muted">Invoices</span><strong data-metric-invoices>0</strong></div>
+<div class="client-metric"><span class="client-muted">Open invoices</span><strong data-metric-billing>Pending</strong></div>
 <div class="client-metric"><span class="client-muted">Support</span><strong data-metric-support>Pending</strong></div>
 </div>
-<section id="client-website-status">
-<div class="client-section-heading"><h3 class="text-xl font-headline text-white">Website status</h3><span class="client-muted">Health, hosting, backups, and update readiness.</span></div>
-<div class="client-health-grid" data-client-website-status></div>
+<section id="client-documents">
+<div class="client-section-heading"><h3 class="text-xl font-headline text-white">Documents</h3><span class="client-muted">Shared files, deliverables, and account paperwork.</span></div>
+<div class="client-health-grid" data-client-documents></div>
 </section>
-<section id="client-website-traffic">
-<div class="client-section-heading"><h3 class="text-xl font-headline text-white">Website traffic</h3><span class="client-muted">Visitor activity, popular pages, and referral notes.</span></div>
-<div class="client-stats-grid" data-client-website-stats></div>
+<section id="client-messages">
+<div class="client-section-heading"><h3 class="text-xl font-headline text-white">Messages</h3><span class="client-muted">Portal updates, notes, and replies tied to your account.</span></div>
+<div class="client-stats-grid" data-client-messages></div>
 </section>
 <section id="client-active-services"><h3 class="text-xl font-headline text-white mb-3">Active services</h3><div class="client-list" data-client-services></div></section>
-<section id="client-billing"><h3 class="text-xl font-headline text-white mb-3">Recurring billing</h3><div class="client-list" data-client-billing></div><button class="client-portal-button client-portal-button--ghost mt-4" type="button" disabled><span class="material-symbols-outlined">credit_card</span>Billing Portal Coming Soon</button></section>
+<section id="client-invoices"><h3 class="text-xl font-headline text-white mb-3">Invoices</h3><div class="client-list" data-client-invoices></div></section>
 <section class="client-request-panel" id="client-contact">
 <span class="client-anchor-alias" id="client-request" aria-hidden="true"></span>
 <div class="client-section-heading"><h3 class="text-xl font-headline text-white">Request a change or ask a question</h3><span class="client-muted">Send website updates, content changes, quick questions, or support notes directly from your account.</span></div>
@@ -236,17 +237,12 @@ window.DM_CLIENT_PORTAL_COPY = {
   passwordConfirmRequired: "Confirm your password.",
   passwordMismatch: "Passwords do not match.",
   noServices: "No active services are connected to this account yet.",
-  noBilling: "No recurring billing records are connected yet.",
-  noWebsiteStatus: "No website health records are connected to this account yet.",
-  noWebsiteStats: "No traffic stats are connected to this account yet.",
-  visitors: "Visitors",
-  pageViews: "Page views",
-  topPage: "Top page",
-  topReferrer: "Top referrer",
-  source: "Source",
+  noInvoices: "No invoices are connected to this account yet.",
+  noDocuments: "No shared documents are available in your portal yet.",
+  noMessages: "No portal messages are available yet.",
   requestSending: "Sending your request...",
   requestSent: "Request sent. We will review it and follow up soon."
 };
 </script>
-<script type="module" src="assets/client-portal.js?v=20260605-sean-admin-preview"></script>
+<script type="module" src="assets/client-portal.js?v=20260605-portal-roles"></script>
 </body></html>

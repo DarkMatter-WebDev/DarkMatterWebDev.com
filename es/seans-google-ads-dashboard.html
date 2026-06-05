@@ -119,69 +119,7 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 </div>
 </section>
 </main>
-<script src="../assets/supabase-config.js?v=20260605-super-admin"></script>
-<script type="module">
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
-const nextPath=`${location.pathname}${location.search}${location.hash}`;
-const loginUrl=new URL("es/account.html", location.origin);
-loginUrl.searchParams.set("next", nextPath);
-document.querySelector("[data-login-link]").href=loginUrl.href;
-const config=window.DM_SUPABASE_CONFIG||{};
-const status=document.querySelector("[data-session-status]");
-const gate=document.querySelector("[data-ads-gate]");
-const privatePanel=document.querySelector("[data-ads-private]");
-const ownerTools=document.querySelector("[data-ads-owner-tools]");
-const addProjectButton=document.querySelector("[data-ads-project-add]");
-const projectForm=document.querySelector("[data-ads-project-form]");
-const closeProjectButton=document.querySelector("[data-ads-project-close]");
-const navAccountLabel=document.querySelector("[data-nav-account-label]");
-function isSuperAdminUser(user){
-  const email=String(user?.email||"").trim().toLowerCase();
-  const adminEmails=(config.superAdminEmails||[]).map((item)=>String(item).trim().toLowerCase()).filter(Boolean);
-  return adminEmails.includes(email);
-}
-function isSeanAdsAdminUser(user){
-  const email=String(user?.email||"").trim().toLowerCase();
-  const seanEmails=(config.seanGoogleAdsAdminEmails||[]).map((item)=>String(item).trim().toLowerCase()).filter(Boolean);
-  return seanEmails.includes(email);
-}
-function canOpenSeanPortal(user){
-  return isSuperAdminUser(user)||isSeanAdsAdminUser(user);
-}
-if(!config.url||!config.anonKey){
-  status.textContent="Configuracion del portal pendiente";
-  gate.classList.add("is-visible");
-}else{
-  const supabase=createClient(config.url,config.anonKey);
-  const {data}=await supabase.auth.getSession();
-  if(!data.session){
-    status.innerHTML='<span class="material-symbols-outlined">lock</span>Inicio de sesion requerido';
-    gate.classList.add("is-visible");
-  }else if(!canOpenSeanPortal(data.session.user)){
-    if(navAccountLabel){
-      navAccountLabel.textContent="Cuenta";
-    }
-    status.innerHTML='<span class="material-symbols-outlined">lock</span>Solo Sean';
-    gate.classList.add("is-visible");
-    const note=gate.querySelector(".ads-note");
-    if(note) note.textContent="Este centro de clientes de Google Ads esta restringido a Sean y a la cuenta propietaria de Dark Matter.";
-  }else{
-    if(navAccountLabel){
-      navAccountLabel.textContent="Cuenta";
-    }
-    status.innerHTML='<span class="material-symbols-outlined">verified_user</span>Autorizado';
-    privatePanel.hidden=false;
-    ownerTools.hidden=false;
-  }
-}
-addProjectButton?.addEventListener("click",()=>{
-  if(!projectForm)return;
-  projectForm.hidden=false;
-  projectForm.scrollIntoView({behavior:"smooth",block:"center"});
-});
-closeProjectButton?.addEventListener("click",()=>{
-  if(projectForm)projectForm.hidden=true;
-});
-</script>
+<script src="../assets/supabase-config.js?v=20260605-portal-roles"></script>
+<script type="module" src="../assets/seans-ads-dashboard.js?v=20260605-portal-roles"></script>
 </body>
 </html>

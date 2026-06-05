@@ -1,4 +1,5 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+import { canOpenSeanAdsPortal, isSuperAdminUser, resolveProfilePortalRole } from "./portal-auth.js";
 
 const config = window.DM_SUPABASE_CONFIG || {};
 const copy = window.DM_CLIENT_PORTAL_COPY || {};
@@ -32,16 +33,16 @@ const els = {
   accountEmail: document.querySelector("[data-account-email]"),
   signOut: document.querySelector("[data-client-signout]"),
   services: document.querySelector("[data-client-services]"),
-  billing: document.querySelector("[data-client-billing]"),
-  websiteStatus: document.querySelector("[data-client-website-status]"),
-  websiteStats: document.querySelector("[data-client-website-stats]"),
+  invoices: document.querySelector("[data-client-invoices]"),
+  documents: document.querySelector("[data-client-documents]"),
+  messages: document.querySelector("[data-client-messages]"),
   requestForm: document.querySelector("[data-client-request-form]"),
   requestEmail: document.querySelector("[data-request-email]"),
   requestStatus: document.querySelector("[data-request-status]"),
   metricServices: document.querySelector("[data-metric-services]"),
-  metricHealth: document.querySelector("[data-metric-health]"),
-  metricVisitors: document.querySelector("[data-metric-visitors]"),
-  metricPageViews: document.querySelector("[data-metric-pageviews]"),
+  metricDocuments: document.querySelector("[data-metric-documents]"),
+  metricMessages: document.querySelector("[data-metric-messages]"),
+  metricInvoices: document.querySelector("[data-metric-invoices]"),
   metricBilling: document.querySelector("[data-metric-billing]"),
   metricSupport: document.querySelector("[data-metric-support]"),
   seansAdsBanner: document.querySelector("[data-seansads-banner]"),
@@ -55,26 +56,6 @@ const portalNext = {
   path: ""
 };
 
-function isSuperAdminUser(user) {
-  const userEmail = String(user?.email || "").trim().toLowerCase();
-  const adminEmails = (config.superAdminEmails || [])
-    .map((email) => String(email).trim().toLowerCase())
-    .filter(Boolean);
-  return adminEmails.includes(userEmail);
-}
-
-function isSeanAdsAdminUser(user) {
-  const userEmail = String(user?.email || "").trim().toLowerCase();
-  const seanEmails = (config.seanGoogleAdsAdminEmails || [])
-    .map((email) => String(email).trim().toLowerCase())
-    .filter(Boolean);
-  return seanEmails.includes(userEmail);
-}
-
-function canOpenSeanAdsPortal(user) {
-  return isSuperAdminUser(user) || isSeanAdsAdminUser(user);
-}
-
 function getSafePortalNext(value) {
   if (!value) return "";
   try {
@@ -83,9 +64,11 @@ function getSafePortalNext(value) {
     const path = `${url.pathname}${url.search}${url.hash}`;
     const isEnglishCheckout = path.startsWith("/app-checkout.html");
     const isSpanishCheckout = path.startsWith("/es/app-checkout.html");
+    const isEnglishSettings = path.startsWith("/account-settings.html");
+    const isSpanishSettings = path.startsWith("/es/account-settings.html");
     const isEnglishAdsDashboard = path.startsWith("/seans-google-ads-dashboard.html");
     const isSpanishAdsDashboard = path.startsWith("/es/seans-google-ads-dashboard.html");
-    return isEnglishCheckout || isSpanishCheckout || isEnglishAdsDashboard || isSpanishAdsDashboard ? path : "";
+    return isEnglishCheckout || isSpanishCheckout || isEnglishAdsDashboard || isSpanishAdsDashboard || isEnglishSettings || isSpanishSettings ? path : "";
   } catch {
     return "";
   }
@@ -164,9 +147,9 @@ const t = {
   signedOut: copy.signedOut || "Signed out.",
   error: copy.error || "Something went wrong. Please try again.",
   noServices: copy.noServices || "No active services are connected to this account yet.",
-  noBilling: copy.noBilling || "No recurring billing records are connected yet.",
-  noWebsiteStatus: copy.noWebsiteStatus || "No website health records are connected to this account yet.",
-  noWebsiteStats: copy.noWebsiteStats || "No traffic stats are connected to this account yet.",
+  noInvoices: copy.noInvoices || "No invoices are connected to this account yet.",
+  noDocuments: copy.noDocuments || "No shared documents are available in your portal yet.",
+  noMessages: copy.noMessages || "No portal messages are available yet.",
   visitors: copy.visitors || "Visitors",
   pageViews: copy.pageViews || "Page views",
   topPage: copy.topPage || "Top page",
@@ -235,6 +218,16 @@ function validateSignupForm() {
   return "";
 }
 
+function pickField(row, keys, fallback = "") {
+  for (const key of keys) {
+    const value = row?.[key];
+    if (value !== undefined && value !== null && String(value).trim() !== "") {
+      return value;
+    }
+  }
+  return fallback;
+}
+
 function renderList(container, rows, fallback, type) {
   if (!container) return;
   if (!rows || rows.length === 0) {
@@ -245,7 +238,7 @@ function renderList(container, rows, fallback, type) {
   container.innerHTML = rows.map((row) => {
     const title = row.name || row.service_name || row.plan_name || row.title || "Client service";
     const detail = row.description || row.billing_period || row.next_invoice_label || row.status || "";
-    const status = row.status || (type === "billing" ? t.pending : t.active);
+    const status = row.status || t.active;
     return `
       <div class="client-list-item">
         <div>
@@ -258,90 +251,94 @@ function renderList(container, rows, fallback, type) {
   }).join("");
 }
 
-function renderWebsiteStatus(container, rows) {
+function renderInvoices(container, rows) {
   if (!container) return;
   if (!rows || rows.length === 0) {
-    container.innerHTML = `<div class="client-list-item"><span class="client-muted">${t.noWebsiteStatus}</span></div>`;
+    container.innerHTML = `<div class="client-list-item"><span class="client-muted">${t.noInvoices}</span></div>`;
     return;
   }
 
   container.innerHTML = rows.map((row) => {
-    const score = Number.isFinite(Number(row.health_score)) ? `${Number(row.health_score)}%` : t.pending;
-    const siteName = row.site_name || row.name || "Website";
-    const siteUrl = row.site_url || "";
-    const lastChecked = row.last_checked_label || "";
-    const notes = row.notes || "";
+    const title = pickField(row, ["invoice_number", "title", "name", "plan_name"], "Invoice");
+    const amount = pickField(row, ["amount", "total", "balance_due"]);
+    const dueDate = pickField(row, ["due_date", "due_at", "next_invoice_label"]);
+    const detailParts = [amount ? `Amount: ${amount}` : "", dueDate ? `Due: ${dueDate}` : ""].filter(Boolean);
+    const detail = detailParts.join(" · ") || pickField(row, ["description", "billing_period", "notes"]);
+    const status = pickField(row, ["status"], t.pending);
+    return `
+      <div class="client-list-item">
+        <div>
+          <strong>${escapeHtml(title)}</strong>
+          ${detail ? `<div class="client-muted">${escapeHtml(detail)}</div>` : ""}
+        </div>
+        <span class="client-pill">${escapeHtml(status)}</span>
+      </div>
+    `;
+  }).join("");
+}
+
+function renderDocuments(container, rows) {
+  if (!container) return;
+  if (!rows || rows.length === 0) {
+    container.innerHTML = `<div class="client-list-item"><span class="client-muted">${t.noDocuments}</span></div>`;
+    return;
+  }
+
+  container.innerHTML = rows.map((row) => {
+    const title = pickField(row, ["title", "name", "file_name", "document_name"], "Document");
+    const docType = pickField(row, ["document_type", "doc_type", "category"]);
+    const fileUrl = pickField(row, ["file_url", "url", "public_url"]);
+    const notes = pickField(row, ["description", "notes", "summary"]);
     return `
       <article class="client-health-card">
         <div class="client-health-card__top">
           <div>
-            <strong>${escapeHtml(siteName)}</strong>
-            ${siteUrl ? `<a href="${escapeHtml(siteUrl)}" target="_blank" rel="noopener" class="client-health-url">${escapeHtml(siteUrl)}</a>` : ""}
+            <strong>${escapeHtml(title)}</strong>
+            ${docType ? `<div class="client-muted">${escapeHtml(docType)}</div>` : ""}
+            ${fileUrl ? `<a href="${escapeHtml(fileUrl)}" target="_blank" rel="noopener" class="client-health-url">Open document</a>` : ""}
           </div>
-          <span class="client-health-score">${escapeHtml(score)}</span>
-        </div>
-        <div class="client-health-checks">
-          <span><span class="material-symbols-outlined">monitoring</span>${escapeHtml(row.uptime_status || t.pending)}</span>
-          <span><span class="material-symbols-outlined">encrypted</span>${escapeHtml(row.ssl_status || t.pending)}</span>
-          <span><span class="material-symbols-outlined">backup</span>${escapeHtml(row.backup_status || t.pending)}</span>
-          <span><span class="material-symbols-outlined">published_with_changes</span>${escapeHtml(row.update_status || t.pending)}</span>
+          <span class="client-pill">${escapeHtml(pickField(row, ["status"], t.active))}</span>
         </div>
         ${notes ? `<p class="client-muted">${escapeHtml(notes)}</p>` : ""}
-        ${lastChecked ? `<div class="client-health-checked">${escapeHtml(lastChecked)}</div>` : ""}
       </article>
     `;
   }).join("");
 }
 
-function formatNumber(value) {
-  const number = Number(value);
-  if (!Number.isFinite(number)) return t.pending;
-  return new Intl.NumberFormat(document.documentElement.lang || "en").format(number);
-}
-
-function sumMetric(rows, key) {
-  return rows.reduce((sum, row) => {
-    const value = Number(row[key]);
-    return Number.isFinite(value) ? sum + value : sum;
-  }, 0);
-}
-
-function renderWebsiteStats(container, rows) {
+function renderMessages(container, rows) {
   if (!container) return;
   if (!rows || rows.length === 0) {
-    container.innerHTML = `<div class="client-list-item"><span class="client-muted">${t.noWebsiteStats}</span></div>`;
+    container.innerHTML = `<div class="client-list-item"><span class="client-muted">${t.noMessages}</span></div>`;
     return;
   }
 
   container.innerHTML = rows.map((row) => {
-    const siteName = row.site_name || "Website";
-    const siteUrl = row.site_url || "";
-    const visitors = formatNumber(row.visitors);
-    const pageViews = formatNumber(row.page_views);
-    const period = row.period_label || "";
-    const source = row.source || "";
+    const subject = pickField(row, ["subject", "title", "topic"], "Message");
+    const body = pickField(row, ["body", "message", "content", "details"]);
+    const preview = body ? String(body).slice(0, 180) : "";
+    const status = pickField(row, ["status"], t.active);
+    const created = pickField(row, ["created_at", "sent_at", "updated_at"]);
+    const createdLabel = created ? new Date(created).toLocaleString(document.documentElement.lang || "en") : "";
     return `
       <article class="client-stats-card">
         <div class="client-health-card__top">
           <div>
-            <strong>${escapeHtml(siteName)}</strong>
-            ${siteUrl ? `<a href="${escapeHtml(siteUrl)}" target="_blank" rel="noopener" class="client-health-url">${escapeHtml(siteUrl)}</a>` : ""}
+            <strong>${escapeHtml(subject)}</strong>
+            ${createdLabel ? `<div class="client-muted">${escapeHtml(createdLabel)}</div>` : ""}
           </div>
-          ${period ? `<span class="client-stats-period">${escapeHtml(period)}</span>` : ""}
+          <span class="client-pill">${escapeHtml(status)}</span>
         </div>
-        <div class="client-stats-numbers">
-          <div><span>${escapeHtml(t.visitors)}</span><strong>${escapeHtml(visitors)}</strong></div>
-          <div><span>${escapeHtml(t.pageViews)}</span><strong>${escapeHtml(pageViews)}</strong></div>
-        </div>
-        <div class="client-stats-details">
-          <span><strong>${escapeHtml(t.topPage)}:</strong> ${escapeHtml(row.top_page || t.pending)}</span>
-          <span><strong>${escapeHtml(t.topReferrer)}:</strong> ${escapeHtml(row.top_referrer || t.pending)}</span>
-          ${source ? `<span><strong>${escapeHtml(t.source)}:</strong> ${escapeHtml(source)}</span>` : ""}
-        </div>
-        ${row.conversion_notes ? `<p class="client-muted">${escapeHtml(row.conversion_notes)}</p>` : ""}
+        ${preview ? `<p class="client-muted">${escapeHtml(preview)}${String(body).length > 180 ? "…" : ""}</p>` : ""}
       </article>
     `;
   }).join("");
+}
+
+function countOpenInvoices(rows) {
+  return rows.filter((row) => {
+    const status = String(pickField(row, ["status"], "")).toLowerCase();
+    return !status || !/(paid|complete|closed|void)/i.test(status);
+  }).length;
 }
 
 function escapeHtml(value) {
@@ -383,8 +380,9 @@ async function renderDashboard(supabase, session) {
     setStatus(t.signedIn);
   }
   if (els.accountEmail) els.accountEmail.textContent = user.email || "";
-  const isSuperAdmin = isSuperAdminUser(user);
-  const canAccessSeanPortal = canOpenSeanAdsPortal(user);
+  const profileRole = await resolveProfilePortalRole(supabase, user, config);
+  const isSuperAdmin = isSuperAdminUser(user, config, profileRole);
+  const canAccessSeanPortal = canOpenSeanAdsPortal(user, config, profileRole);
   if (els.seanAdsPortalPanel) {
     els.seanAdsPortalPanel.hidden = !canAccessSeanPortal;
   }
@@ -393,27 +391,25 @@ async function renderDashboard(supabase, session) {
   }
 
   const services = await maybeQuery(supabase, config.tables?.services, user.id);
-  const billing = await maybeQuery(supabase, config.tables?.billing, user.id);
-  const websiteStatus = await maybeQuery(supabase, config.tables?.websiteStatus, user.id);
-  const websiteStats = await maybeQuery(supabase, config.tables?.websiteStats, user.id);
+  const invoices = await maybeQuery(supabase, config.tables?.invoices, user.id);
+  const documents = await maybeQuery(supabase, config.tables?.documents, user.id);
+  const messages = await maybeQuery(supabase, config.tables?.messages, user.id);
 
   renderList(els.services, services, t.noServices, "services");
-  renderList(els.billing, billing, t.noBilling, "billing");
-  renderWebsiteStatus(els.websiteStatus, websiteStatus);
-  renderWebsiteStats(els.websiteStats, websiteStats);
+  renderInvoices(els.invoices, invoices);
+  renderDocuments(els.documents, documents);
+  renderMessages(els.messages, messages);
 
   if (els.requestEmail) els.requestEmail.value = user.email || "";
 
   if (els.metricServices) els.metricServices.textContent = String(services.length);
-  if (els.metricVisitors) els.metricVisitors.textContent = websiteStats.length ? formatNumber(sumMetric(websiteStats, "visitors")) : t.pending;
-  if (els.metricPageViews) els.metricPageViews.textContent = websiteStats.length ? formatNumber(sumMetric(websiteStats, "page_views")) : t.pending;
-  if (els.metricHealth) {
-    const scores = websiteStatus
-      .map((item) => Number(item.health_score))
-      .filter((score) => Number.isFinite(score));
-    els.metricHealth.textContent = scores.length ? `${Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length)}%` : t.pending;
+  if (els.metricDocuments) els.metricDocuments.textContent = String(documents.length);
+  if (els.metricMessages) els.metricMessages.textContent = String(messages.length);
+  if (els.metricInvoices) els.metricInvoices.textContent = String(invoices.length);
+  if (els.metricBilling) {
+    const openInvoices = countOpenInvoices(invoices);
+    els.metricBilling.textContent = invoices.length ? (openInvoices ? String(openInvoices) : t.active) : t.pending;
   }
-  if (els.metricBilling) els.metricBilling.textContent = billing.length ? t.active : t.pending;
   if (els.metricSupport) els.metricSupport.textContent = services.some((item) => /support|care|help/i.test(item.name || item.service_name || "")) ? t.active : t.pending;
 }
 

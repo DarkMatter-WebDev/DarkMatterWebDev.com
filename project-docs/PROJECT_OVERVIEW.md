@@ -1,70 +1,35 @@
-# Dark Matter Web Services - Project Overview
+# Project Overview
 
-This is the first file future AI sessions and contributors should read.
+Dark Matter Web Services is a static bilingual marketing site for web services, portfolio work, a client portal entry point, and custom business apps.
 
-## Purpose
+## Shape
 
-Dark Matter Web Services is a marketing website for managed website services, custom business web apps, hosting, care plans, branding, SEO foundations, ongoing support, and local in-home/office technology setup for small businesses and homes.
+- Root HTML files are English.
+- `es/` contains Spanish mirrors.
+- `services/` and `es/services/` contain service detail pages.
+- `assets/` contains shared CSS, JS, images, video, app screenshots, and portfolio media.
+- `project-docs/` is the compact project memory system.
+- `supabase/` contains the client portal starter schema.
+- `scripts/validate-site.ps1` validates static links and common site issues.
 
-## Business Goals
+## Important Boundaries
 
-- Present Dark Matter as an outsourced website and local technology partner for Southwest Florida businesses.
-- Sell managed website packages, care plans, custom business web apps, rebranding services, and on-site tech setup.
-- Make complex web/app services feel practical and approachable for busy business owners.
-- Support lead generation through clear service pages, case studies, contact forms, and "powered by" referral links.
+- Sean's Google Ads source was intentionally moved out of this repo. Its absence is normal.
+- Sean's Ads production links should point to `https://seansads.com/`.
+- Dark Matter production links generally point to `https://darkmatterwebdev.com/`.
+- Do not store passwords, secret keys, recovery codes, or private credentials in docs.
 
-## Target Audience
+## Main Workflows
 
-- Southwest Florida small businesses and professional offices.
-- Business owners who want professional websites without managing hosting, security, updates, or multiple vendors.
-- Companies that may need private business web apps with staff/customer logins, reporting, automation, and support.
-- Home offices, small offices, and local clients that need practical in-person setup for Wi-Fi, devices, printers, workstations, and networking.
+- Keep bilingual changes mirrored.
+- Prefer local style/patterns over new abstractions.
+- For frontend changes, verify mobile and desktop when practical.
+- For broad edits, run:
 
-## Tech Stack
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\validate-site.ps1
+```
 
-- Static HTML pages.
-- Tailwind CSS via CDN on page templates.
-- Shared CSS in `assets/*.css`.
-- Shared JavaScript in `assets/rail.js` plus inline page scripts where needed.
-- Material Symbols icons loaded from Google Fonts.
-- Netlify Forms on `contact.html` and the Website Preference Builder.
-- Static image/video assets in `assets/`.
+## Startup
 
-## Deployment
-
-- Netlify configuration exists in `netlify.toml`.
-- Contact forms use Netlify form attributes and POST handling.
-- Local preview commonly runs from the project root at `http://127.0.0.1:4173/`.
-
-## High-Level Summary
-
-The site is a dark, premium, space-inspired marketing site for Dark Matter Web Services. It includes homepage, services index, individual service pages, process page, case studies, contact page, and a "Website powered by Dark Matter" referral page. Recent positioning emphasizes custom business web apps, premium team help desk support, and a new local on-site services category for in-home tech and office network setup.
-
-## Session Startup Protocol
-
-At the beginning of every future AI session:
-
-1. Read `project-docs/PROJECT_OVERVIEW.md`.
-2. Read `project-docs/CURRENT_STATUS.md`.
-3. Read `project-docs/TASKS.md`.
-4. Read `project-docs/DECISIONS.md`.
-5. Read `project-docs/HANDOFF.md`.
-6. Summarize the current project state before making changes.
-7. Ask for clarification only when the local docs and code do not provide a safe answer.
-
-## Session Shutdown Protocol
-
-Before ending any meaningful work session:
-
-1. Update `project-docs/CURRENT_STATUS.md`.
-2. Update `project-docs/TASKS.md`.
-3. Record important decisions in `project-docs/DECISIONS.md`.
-4. Add meaningful changes to `project-docs/CHANGELOG.md`.
-5. Update `project-docs/ARCHITECTURE.md` if structure, hosting, integrations, auth, or deployment changed.
-
-## Memory File Size Guidance
-
-- Keep memory files concise and current; prefer summaries over long historical detail.
-- Let core files grow to roughly 250-350 lines before trimming.
-- When trimming, preserve current architecture, active decisions, current tasks, and the last 30-60 days of meaningful changes.
-- Move old detail into feature notes only if it is still useful; otherwise summarize it in one short bullet or remove it.
+Read `AI_START_HERE.md`, then `CURRENT_STATUS.md`, `TASKS.md`, `DECISIONS.md`, and `HANDOFF.md`.

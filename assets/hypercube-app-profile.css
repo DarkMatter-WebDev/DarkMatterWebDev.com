@@ -1,0 +1,60 @@
+.app-profile-topbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.75rem;
+  margin: 0 0 1.25rem;
+}
+
+.app-profile-topbar .back-link {
+  margin: 0;
+}
+
+.hypercube-app-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0 0.5rem;
+  padding: 0.35rem 0.65rem 0.35rem 0.45rem;
+  border-radius: 999px;
+  border: 1px solid rgba(168, 85, 247, 0.14);
+  background: rgba(168, 85, 247, 0.04);
+  font: 500 10px "JetBrains Mono", monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(196, 199, 199, 0.58);
+  flex-shrink: 0;
+}
+
+.hypercube-app-credit__mark {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.18));
+}
+
+.hypercube-app-credit strong {
+  color: rgba(168, 85, 247, 0.82);
+  font-weight: 600;
+}
+
+.hypercube-app-credit span {
+  line-height: 1;
+}
+
+@media (max-width: 640px) {
+  .app-profile-topbar {
+    gap: 0.75rem;
+  }
+
+  .hypercube-app-credit {
+    margin-left: 1.75rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  .app-profile-topbar {
+    margin-bottom: 1rem;
+  }
+}

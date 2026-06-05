@@ -1,35 +1,42 @@
 # AI Start Here
 
-This project uses `project-docs/` as persistent memory. Before making changes, read these files in order:
+Trigger phrase: when the user says `analyze this project's files`, `analyze my project files`, or asks for handoff/setup, start here.
 
-1. `AGENTS.md`
-2. `project-docs/PROJECT_OVERVIEW.md`
-3. `project-docs/CURRENT_STATUS.md`
-4. `project-docs/TASKS.md`
-5. `project-docs/DECISIONS.md`
-6. `project-docs/HANDOFF.md`
+## Startup Order
 
-Then summarize the current state to the user and proceed.
+1. Read `AGENTS.md`.
+2. Read this file.
+3. Read `project-docs/PROJECT_OVERVIEW.md`.
+4. Read `project-docs/CURRENT_STATUS.md`.
+5. Read `project-docs/TASKS.md`.
+6. Read `project-docs/DECISIONS.md`.
+7. Read `project-docs/HANDOFF.md`.
 
-## Fast Current Context
+Then summarize the current state in a few bullets and continue with the user's latest request.
 
-- Dark Matter Web Services is a bilingual static site at the project root and `es/`.
-- Sean's Google Ads has been intentionally moved out of this repository and is now managed elsewhere; it is normal that `Sean's Google Ads Services/` is not present.
-- Sean's Ads is a separate live site at `https://seansads.com/`; Dark Matter is separate at `https://darkmatterwebdev.com/`.
-- Cross-site links must use absolute URLs, not local folder-relative URLs.
+## Project Snapshot
+
+- Static bilingual Dark Matter Web Services site.
+- English pages live at the repo root; Spanish mirrors live under `es/`.
+- Main app library page is `apps.html`; old `downloads.html` paths redirect.
+- Sean's Google Ads source is intentionally not in this repo. It lives separately at `https://seansads.com/`.
 - Local preview usually runs at `http://127.0.0.1:4173/`.
-- There is currently no expected validator warning. Treat any validator warning as something to inspect.
 
-## Recent Work To Remember
+## Core Rules
 
-- Sean's Ads source is no longer part of this project. Do not look for, recreate, or edit the old `Sean's Google Ads Services/` folder from this repo.
-- The Dark Matter account portal shows a green Sean's Ads Google Ads console notice only for `?source=seansads` or `seansads.com` referrers.
-- Spanish UI labels and outlying encoding/question-mark artifacts were recently swept, but keep checking Spanish mirrors after edits.
-
-## Validation
-
-After broad HTML/CSS/JS edits, run:
+- Keep English and Spanish pages in sync.
+- Do not recreate or edit the removed Sean's Ads mini-site source.
+- Use `apply_patch` for manual file edits.
+- After broad HTML/CSS/JS edits run:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\validate-site.ps1
 ```
+
+- Before ending meaningful work, update the compact memory docs:
+  - `CURRENT_STATUS.md`
+  - `TASKS.md`
+  - `CHANGELOG.md`
+  - `HANDOFF.md`
+  - `DECISIONS.md` only for durable architectural/business decisions.
+  - `ARCHITECTURE.md` only if structure, hosting, auth, integrations, or deployment changed.

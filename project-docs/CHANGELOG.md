@@ -1,274 +1,36 @@
-﻿# Changelog
+# Changelog
+
+This file is intentionally compact. Keep only high-signal recent changes and major milestones.
 
 ## 2026-06-05
 
-- Ran a phone-width mobile layout sweep, confirmed no missing local image paths from static checks, fixed pricing-page `Ask a Question` / `Hacer una pregunta` banner containment, kept pricing tiers two-wide on mobile, and patched targeted overflow on Built By decorative blur layers, Preference Builder hero, SeansAds portfolio detail pages, and SDMS app profile panels/header. Static validation passed after the changes.
-- Updated `app-pricing.html` and `es/app-pricing.html` so the pricing tier grid remains two cards wide on mobile, with smaller pricing-card type, spacing, badges, and CTA text to avoid clipping.
-- Made the four app pricing tier cards on `app-pricing.html` and `es/app-pricing.html` clickable, with hover feedback and login/create-account CTA text; when opened with `?from=auction` or `?from=sdms`, each tier routes through the client portal to the matching app checkout via a safe `next` URL. Also shortened the Apps hero subtext in English and Spanish.
-- Added a soft translucent color backing to the app gallery tiles on `apps.html` and `es/apps.html`, keeping the existing screenshot previews while moving the card body away from a plain black-glass look.
-- Swapped the Auction House app profile blocks in English and Spanish so the Consignor Spine section now appears before the AppFlow screenshots, with the Workflow Snapshot section moved below the screenshot grid.
-- Added app-aware pricing return links so Auction House and SDMS profile `Pricing` buttons pass context into `app-pricing.html` / `es/app-pricing.html`, relabel the pricing-page back control as `Back to App` / `Volver a la app`, and return visitors to the originating app profile. Also added `View App Pricing` / `Ver precios de apps` beside the custom business apps banner CTA on the Apps page.
-- Added a post-AppFlow Consignor Spine marketing block to the Auction House app profile pages in English and Spanish, with a CSS-only visual showing one consignor record connecting transferable floor items, auction lots, floor sales, and settlements.
-- Slimmed `app-pricing.html` and `es/app-pricing.html` by replacing the large two-column hero with a compact banner, adding a top-left Back to Apps link, moving the Evaluation/Popular/Operations/Custom tiers immediately under the banner, removing the pricing benchmark section/links, and normalizing Contact CTA styling on affected Dark Matter navs.
-- Reduced the Auction House app profile pre-screenshot content in English and Spanish from two feature blocks to one compact Workflow Snapshot block, so the AppFlow screenshot tiles appear much sooner after the hero while preserving the key workflow points.
-- Added `app-pricing.html` and `es/app-pricing.html` as dedicated Dark Matter Apps pricing pages, with competitive starting tiers, app-specific Auction/SDMS pricing recommendations, public benchmark links, and checkout CTAs to `app-checkout.html?app=auction` and `app-checkout.html?app=sdms`.
-- Added Pricing buttons to the Auction House and SDMS full app profile CTA rows in English and Spanish, and updated the SDMS main-card buttons to `Open Live App Demo`, `Request Live Login`, `Request Custom Version`, and `Pricing` with the green/outline button treatment.
-- Added language availability callouts to the Auction House and SDMS full app profile pages in English and Spanish, with a CSS-only globe/language-chip visual and copy noting each app can be built in any language or bilingual workflow.
-- Added a CSS-only deployment path visual to the Auction House app profile pages in English and Spanish, filling the lower Deployment Path card space with cloud, LAN/server, and Demo/Deploy/Operate workflow steps.
-- Removed the hidden `jpsurette.html` Easter egg page and deleted its tiny bottom-of-homepage links from `index.html` and `es/index.html`.
-- Changed the Auction House app profile CTA rows in English and Spanish so `Open Live App Demo` opens `https://auctionconsignmentapp.netlify.app/`, `Request Live Login` links to Contact, and `Request Custom Version` remains beside it.
-- Converted all six SDMS app screenshots from PNG to lossless WebP, updated `apps.html`, `es/apps.html`, `secondhand-dealer-management-system.html`, and `es/secondhand-dealer-management-system.html` to reference the WebP files, verified the SDMS screenshot modal still opens/closes, and removed the obsolete PNG assets.
-- Updated `auction-house-consignment-store-software.html` and `es/auction-house-consignment-store-software.html` with six new compressed lossless WebP auction app screenshots, SDMS-style interactive screenshot tiles, click-to-enlarge modal previews, refreshed dual-channel floor-sales/live-auction feature copy, and revised demo/login/custom CTAs while removing obsolete PNG screenshot assets.
-- Added a separate `seanGoogleAdsAdminEmails` UI allowlist for Sean's real Google Ads portal access, restored the Active Google Ads Projects customer table and Add New Project placeholder on the Sean portal pages, and added a hidden account-dashboard shortcut that appears only for Sean or the Dark Matter super-admin.
-- Replaced the temporary Sean/admin privilege experiment with a real-account-only super-admin UI allowlist: `assets/supabase-config.js` now exposes `superAdminEmails` with only `rcman12589@aol.com`, `assets/client-portal.js` no longer accepts `admin` / `admin`, the regular account dashboard no longer shows Sean's portal shortcut to all clients, and the owner-only account panel links to Sean's direct portal backend view.
-- Gated `seans-google-ads-dashboard.html` and `es/seans-google-ads-dashboard.html` behind the same owner super-admin allowlist, while keeping signed-out login handoff behavior and owner-only messaging for non-owner sessions.
-- Added a local-preview-only `admin` / `admin` placeholder login path in `assets/client-portal.js` for testing Sean's special Google Ads privileges through the Dark Matter portal flow; the Sean dashboard recognizes that preview session and reveals the owner-only customer management area.
-- Added `Hello Sean` / `Hola Sean` personal-dashboard titles and customer-management wording to Sean's owner-only Google Ads dashboard section.
-- Added an owner-only Active Google Ads Projects area to `seans-google-ads-dashboard.html` and `es/seans-google-ads-dashboard.html`, including an empty campaign/project table, customer/contact/location columns, an Add Project button, and a disabled future-entry form placeholder for Supabase-backed project records.
-- Added the standard Dark Matter top navigation/header shell to `seans-google-ads-dashboard.html` and `es/seans-google-ads-dashboard.html`, including desktop Services dropdowns, Apps/Process/Portfolio links, language toggles, Contact CTAs, mobile headers, Tailwind theme config, and a session-aware Account/Cuenta nav label.
-- Added a Sean-only special privileges section to `seans-google-ads-dashboard.html` and `es/seans-google-ads-dashboard.html`, using Sean's public contact email from `https://seansads.com/contact` in a non-secret `googleAdsAdminEmails` UI allowlist inside `assets/supabase-config.js`; cache-busted the dashboard config include so the local preview picks up the owner gate.
-- Added a subtle animation treatment to the remaining Sean's Google Ads login tile in `account.html` and `es/account.html`, including a soft pulse, shine sweep, icon lift, cache-busted CSS, and reduced-motion fallback.
-- Removed the large Google Ads activity/status panel from `account.html` and `es/account.html`, so the account dashboard now uses the compact Sean's Google Ads login card as the only Google Ads dashboard entry.
-- Renamed the client dashboard Sean's Google Ads card/button labels to `Sean's Google Ads Login` and `Acceso a Google Ads de Sean` so users understand they are entering a member login/dashboard area.
-- Added portal-only Sean's Google Ads member dashboard pages at `seans-google-ads-dashboard.html` and `es/seans-google-ads-dashboard.html`, with Supabase session gating, campaign/status/request workspace cards, and login handoff links for signed-out visitors.
-- Routed the logged-in account dashboard's `Sean's Google Ads` / `Google Ads de Sean` card and ad-status button to the new member dashboard instead of the public Sean's Ads site or old ad-status placeholder.
-- Expanded the safe client-portal `next` redirect allowlist to include the new Sean's Google Ads dashboard paths.
-- Updated `assets/client-portal.js` so the account navigation link changes from `Login` / `Acceso` to `Account` / `Cuenta` when a Supabase session is active, and switches back when signed out.
-- Added shared portal-only app checkout/cart pages at `app-checkout.html` and `es/app-checkout.html`, with selected-app handling for SDMS and auction apps, Supabase session gating, Netlify payment-request forms, and login links that preserve the selected checkout target.
-- Added a safe client-portal `next` redirect for app checkout targets only, so `account.html?next=/app-checkout.html?app=sdms` and the Spanish equivalent can send signed-in clients to the selected app checkout after login.
-- Changed the SDMS lower purchase CTA from the live demo link to `Get it now` / `Obtenerla ahora`, routing through the account portal before checkout.
+- Wired portal privileged access to Supabase `app_metadata.role` via `assets/portal-auth.js`, with email allowlist fallback and shared Sean dashboard gating in `assets/seans-ads-dashboard.js`.
+- Added `supabase/portal-role-setup.sql` for future RLS role helpers.
+- Compacted project markdown memory for faster AI handoff and added an explicit startup trigger for `analyze this project's files`.
+- Trimmed old feature docs into short pointers and removed stale markdown-only leftovers, including the imported Elite Yacht `DESIGN.md` and the old meeting note.
+- Removed unreferenced root screenshot leftovers: `sean-check-final.png`, `sean-check-matte_loose.png`, `sean-check-matte_soft.png`, and `sean-check-plain.png`.
+- Ran a phone-width mobile layout sweep, fixed app pricing question-button containment, kept pricing tiers two-wide on mobile, and patched targeted overflow on Built By, Preference Builder, SeansAds portfolio, and SDMS profile pages.
+- Made app pricing tier cards clickable through the client portal to the selected app checkout context.
+- Shortened Apps hero copy and added soft translucent color backing to app gallery tiles.
+- Added app-aware pricing return links and pricing CTAs from Auction and SDMS app profiles.
+- Slimmed the app pricing page to a compact banner plus immediate tiers and removed public benchmark links.
+- Updated Auction and SDMS app profile pages with WebP screenshots, modal preview tiles, pricing/custom/demo CTA rows, language callouts, powered-by banner, and footer.
+- Added/updated portal-only checkout pages and safe `next` redirects for app checkout.
+- Added browser-side owner/Sean allowlists for portal UI access; removed the temporary `admin` / `admin` bypass.
 
 ## 2026-06-04
 
-- Added a colorful CSS compliance-flow visual to the SDMS problem card in English and Spanish, filling the empty lower panel area with spreadsheet, orbit, and verify/track/report elements.
-- Reworded the four SDMS top feature cards in English and Spanish from seeded demo counts into simple business-owner benefits: organized seller records, clear purchase recording, live inventory value tracking with metal calculators/prices, and easier compliance reporting.
-- Tightened the SDMS app-flow screenshot crop and modal-preview crop on the English and Spanish profile pages, strengthened the screenshot tile borders, changed the screenshot cards into interactive hover-moving buttons, and added a larger screenshot modal preview with backdrop, Escape/backdrop close, and an X close button.
-- Upgraded the SDMS Apps gallery tile and full profile pages in English and Spanish with the live `https://secondhanddealer.netlify.app/` demo link, cropped app-flow screenshots under `assets/apps/sdms/`, production-grade SaaS + Windows desktop positioning, FastAPI/React/Neon/Render/Netlify stack details, custom JWT/RBAC, immutable audit logs, database-layer 15-day hold enforcement, seeded demo data, and delivered feature sections for seller intake, purchase intake, inventory holds, metals dashboard, reports, settings, and future hardware integrations.
-- Added visual media treatments to the Apps gallery cards in English and Spanish, including app screenshots for the auction and SDMS tiles plus a compact interface mockup for the custom-build tile.
-- Updated the Apps hero subtext in English and Spanish to say Dark Matter can custom build apps from scratch or around an existing business system.
-- Updated `apps.html`, `es/apps.html`, `casestudies.html`, and `es/casestudies.html` so mobile gallery tiles display two per row, with compact tile spacing and typography for phone-width layouts.
-- Added a third Apps gallery tile in English and Spanish for custom business app requests, with the CTA linking to the Contact page.
-- Documented that Sean's Google Ads source has been intentionally moved out of this repository, that the old `Sean's Google Ads Services/` folder is expected to be absent, and that future Sean's Ads changes belong in its separate external project.
-- Simplified `casestudies.html` and `es/casestudies.html` into gallery-only Portfolio pages, removed the lower in-page case-study deep-dive blocks on desktop and mobile, and routed each project tile directly to its standalone detail page.
-- Added Open Graph/Twitter preview metadata for `darkmatterwebsites.com` to the Apps gallery and full app profile pages in English and Spanish.
-- Added a Contact-page CTA button to the Apps page customization/language banner in English and Spanish.
-- Renamed the Dark Matter app-library files from `downloads.html` / `es/downloads.html` to `apps.html` / `es/apps.html`, updated internal links and metadata, preserved app-card anchors, and added Netlify redirects from the old Downloads URLs.
-- Simplified the Dark Matter Apps page into a gallery-only preview page in English and Spanish, removed the large lower app detail blocks, linked each tile directly to its full profile page, and added a fully customizable business/language banner beneath the gallery.
-- Added the powered-by Dark Matter banner and footer shell to the Apps page and both app profile pages in English and Spanish.
-- Added tag printing support to the Auction House & Consignment Store Software listing and full profile pages in English and Spanish, including on-the-fly tag/template customization for labels, fields, barcodes, QR codes, prices, branding, and print-ready formats.
-- Added language/localization customization messaging to the Auction House & Consignment Store Software full profile pages in English and Spanish, covering translated labels, regional terminology, and bilingual workflows.
-- Added full Auction House & Consignment Store Software profile pages in English and Spanish, with full-size app-flow screenshots, demo-login request messaging, customization/layout/module options, and Apps-page screenshot cards that link to profile anchors.
-- Updated the Dark Matter Apps auction listing to point to the live hosted Auction Consignment app, added cropped app-flow screenshots, refreshed features around consignors/events/transfers/reports, and added full customization messaging for brand, layout, feature, report, field, workflow, and module changes.
-- Added a return link to Sean's Google Ads inside the source-triggered green account portal banner and compacted the unauthenticated account portal intro/wormhole block on mobile.
-- Restored legitimate question marks that had been removed during earlier Spanish punctuation cleanup, including the Spanish Built By headline and matching English/Spanish CTA sentences, and corrected malformed `textárea` tags in Spanish form markup.
-- Ran a follow-up English punctuation sweep and restored missing question marks on the Dark Matter Built By and Contact pages.
-- Updated the SDMS full profile pages to use the full Dark Matter homepage-style top menu/button set in English and Spanish, including the services dropdown, Client Login/Acceso, EN/ES, and Contact Us/Contactanos.
-- Added Secondhand Dealer Management System (SDMS) as the second Dark Matter Apps listing in English and Spanish, replacing the reserved tile with a compliance-focused gallery tile, adding lower-page detail sections, and creating dedicated full profile pages with modules, demo data, technology stack, reporting, and future premium features.
-- Reworked the Dark Matter Apps pages into a compact gallery-first layout with app tiles that jump to detailed sections below, mirrored in English and Spanish.
-- Earlier in the Apps rollout, renamed the Dark Matter app-library page titles, metadata, hero eyebrow, and notes from Downloads/Descargas language to Apps while the files were still using the old Downloads URL.
-- Changed the Dark Matter main navigation label from `Downloads` / `Descargas` to `Apps` across English and Spanish desktop/mobile menus.
-- Unified the Sean's Ads header action bar across all English and Spanish mini-site pages so the top controls match the homepage format: other services, Dark Matter Portal login, EN/ES toggle, and Contact Us / Contáctanos.
-- Routed the Sean's Ads top-right `Contact Us` / `Contáctanos` header buttons to the local Contact Sean page across English and Spanish mini-site pages instead of the Dark Matter account portal contact anchor.
-- Doubled the Sean's Ads header service-name text size across English/Spanish homepage, contact pages, and shared detail pages (`Sean's Google Ads` / `Google Ads de Sean`) while preserving the existing Google `G` mark size.
-- Added Sean's portrait as the small homepage card icon for the `About Sean Cochrane` link on the English and Spanish Sean's Ads homepage.
-- Replaced the Sean's Ads header brand badge with a multicolor Google `G` SVG across all English and Spanish mini-site pages while preserving the existing logo wrapper size.
-- Tightened the Sean's Ads contact page mobile hero/contact section in English and Spanish, reducing the headline, lead, Call/Text card, Email card, labels, values, arrows, padding, and radius.
-- Added a source-triggered green Sean's Ads notifier to the English and Spanish account portal, shown only for `?source=seansads` or `seansads.com` referrers, describing the portal as the client's customized Google Ads management console.
+- Renamed the app library from Downloads to Apps, including `apps.html`, Spanish mirror, nav labels, and redirects from old Downloads URLs.
+- Reworked Apps and Portfolio pages into gallery-first layouts with standalone detail pages.
+- Added SDMS as a second Dark Matter app listing and full app profile.
+- Added Auction House & Consignment Store Software profile pages and live demo/request CTA flow.
+- Added powered-by/footer shells to app pages.
+- Restored legitimate English/Spanish question marks and fixed malformed Spanish `textarea` tags.
+- Documented that Sean's Google Ads source moved out of this repo and is managed separately.
 
-- Translated remaining Spanish Sean's Ads UI labels, including the homepage `Acceder al Portal Dark Matter` and `Contáctanos` buttons, subpage contact CTAs, Spanish co-branding text, language-toggle aria labels, and related accent polish.
-- Tightened the live Sean's Ads to Dark Matter account-portal flow by adding `?source=seansads` to Sean's Ads account/contact/pricing handoff links, making pricing CTAs explicitly open the Dark Matter Portal, adding Sean's Ads handoff notes to English/Spanish account pages, and cleaning remaining Spanish question-mark/mojibake artifacts in page copy and metadata.
-- Updated links for the live separate SeansAds.com deployment: Dark Matter account, Services, SEO Foundations, Portfolio, and SeansAds project pages now point to `https://seansads.com/` or `/es/index.html`; Sean's Ads source now uses absolute `https://darkmatterwebdev.com/...` return/account/service/powered-by links plus standalone favicon and absolute social-preview image URLs.
-- Added periodic blog/content publishing hooks to Website Care Plan tier copy across `index.html`, `services.html`, `services/website-care-plans.html`, and Spanish mirrors, positioning Growth as occasional approved blog publishing and Business/Executive as stronger SEO/content cadence options.
-- Normalized menu rendering across Dark Matter English and Spanish pages, especially Downloads, by adding the missing theme config to Downloads pages, enforcing shared desktop nav gap/CTA sizing in `assets/nav.css`, and cache-busting the stylesheet sitewide.
-- Added the standard mobile header/top-tab menu shell to `apps.html` and `es/apps.html`, including the services popout trigger, and tightened mobile content/card spacing to match the rest of the site.
-- Leveled the Downloads/Descargas navigation item across desktop and mobile by normalizing shared mobile tab icon spacing, adding coverage for the Downloads page mobile-nav markup, and cache-busting `assets/nav.css`.
-- Added a narrow/tall portrait mobile media rule to the English and Spanish Dark Matter homepage hero video so exceptionally skinny devices use a tiny zoom-out while keeping `object-fit: cover`.
-- Applied the same compact mobile upper-button treatment across Sean's Google Ads shared detail pages and contact pages, shrinking language/contact controls and the Back to Google Ads home pill in English and Spanish.
-- Greatly shrank the Sean's Google Ads homepage mobile header/action controls in English and Spanish, turning the other-services link, Dark Matter portal login, EN/ES switcher, and Contact Us link into a compact one-row strip.
-- Added bilingual Dark Matter Downloads pages (`apps.html`, `es/apps.html`) and inserted `Downloads` / `Descargas` directly after Services in the main desktop/mobile navigation; the first app listing is Auction House & Consignment Store Complete Management Software with request-access CTAs until a real package is added.
-- Polished Sean's Google Ads mobile layouts across the standalone English/Spanish mini-site by reducing mobile headline/button sizing, improving gutters, fixing the contact-page mobile header stack, and adding a mobile-only draggable grid-orb control that lets touch users bend the background without activating links.
-- Added SeansAds.com as the fourth Dark Matter Portfolio project in English and Spanish, including desktop/mobile homepage teasers, Portfolio gallery cards, full case-study summary sections, dedicated project detail pages, and compressed WebP mini-site previews.
-- Fixed account/login portal input visibility by overriding Tailwind Forms white input backgrounds so typed text and caret are visible in English and Spanish previews.
-- Audited Sean's Google Ads mini-site media assets, confirmed the active portrait and social preview are already losslessly optimized or compatibility-safe, and removed unused older portrait/social preview variants from the mini-site asset folder.
-- Cleaned up awkward imported copy on Sean's Google Ads portfolio cards so the Naples Estate Jewelry profile reads as polished portfolio-facing content in English and Spanish.
-- Added Naples Estate Jewelry & Antiques / NaplesAntiquesLLC.com to Sean's Google Ads portfolio before Covenant Buyers, with researched service-area/category notes, ad-structure guidance, and clearly labeled SEO target benchmarks pending verified analytics.
-- Added a Covenant Jewelry Buyers public-research portfolio brief to Sean's Google Ads portfolio pages in English and Spanish, including campaign-fit notes, ad-structure ideas, and source links.
-- Replaced the main Dark Matter website Open Graph/Twitter preview image with a modern branded 1200x630 card and updated sitewide metadata to the new cache-busting asset path.
-- Added a dedicated 1200x630 Sean's Google Ads social preview image and wired Open Graph/Twitter preview metadata across all English and Spanish mini-site pages for Netlify sharing.
-- Stylized the Dark Matter wordmark inside the account login portal card with a clipped glow gradient and energy underline in English and Spanish.
-- Made the main SEO Foundations cards/checklists and the foundation-map/search-results visual blocks clickable on English and Spanish service pages, routing each to the account login.
-- Replaced Sean Cochrane's About-page portrait with the supplied transparent PNG converted to lossless WebP, preserving the cutout alpha channel and updating English/Spanish image dimensions.
-- Smoothed the Dark Matter account wormhole core hover animation so the floating blue circle moves more slowly with a much smaller drift, and refreshed the account CSS cache version in English and Spanish.
-- Expanded the SEO Foundations service page in English and Spanish with a visual foundation-map section covering speed, structure, local signals, indexability, and measurement before the Sean's Google Ads cross-promo.
-- Added strong CSS hover interactions to the Dark Matter account wormhole core and dashboard command orb, including faster rings/grid glow and reduced-motion fallbacks; account request/contact sections now expose `#client-contact` while preserving `#client-request` as an alias.
-- Updated Sean's Google Ads mini-site co-branding to "Dark Matter Web Services partnered with," changed top-right `Talk to Sean` / `Hablar con Sean` links to `Contact Us` pointing at the Dark Matter account dashboard contact anchor, and standardized mini-site account/login labels to "Log in through Dark Matter Portal."
-- Made the About Sean Cochrane and Google Ads Portfolio cards on the standalone Google Ads homepages more prominent with a red/yellow animated spotlight treatment.
-- Replaced Sean Cochrane's About-page portrait source with the supplied 599x1041 PNG compressed to lossless WebP, and wired it into the floating portrait treatment.
-- Added `project-docs/HANDOFF.md`, compressed required startup docs (`CURRENT_STATUS.md`, `TASKS.md`, `DECISIONS.md`), updated startup instructions to include the handoff file, and refreshed client tracker entries for current Portfolio projects.
-- Added Google Ads ad-details/activity language to the Dark Matter Login Portal and created Google-styled English/Spanish account ad-status placeholder pages linked from the logged-in workspace.
-- Added Sean Cochrane's optimized WebP portrait to the Google Ads About pages in English and Spanish, styled as a compact glowing bio card beside the contact details.
-- Added a second row of logged-in account dashboard action cards for site preferences/settings, Sean's Google Ads, and planning the next website upgrade; created lightweight English/Spanish account settings placeholder pages for the future settings workflow.
-- Expanded Sean Cochrane's Google Ads About page bio in English and Spanish, adding Naples, Florida, Boston-area/Massachusetts background, HVAC experience, business values, community impact, and Christian faith.
-- Reframed the Dark Matter account login screen as a "Login Portal" / client wormhole in English and Spanish, adding animated spacetime-style rings, a warped grid, and gateway copy around the sign-in form.
-- Expanded the authenticated Dark Matter client account area into a full-width dashboard workspace in English and Spanish, adding a command-center panel, compact shortcut buttons, and interactive cards for status, traffic, services, billing, and update requests.
-- Routed standalone Google Ads pricing-tier primary buttons to the Dark Matter client account portal in English and Spanish (`account.html` / `es/account.html`) and standardized their text to "Choose this plan" / "Elegir este plan."
-- Moved the standalone Google Ads contact page's back link out of the top-right header controls and into the same left-aligned "Back to Google Ads home" row used by other detail pages, mirrored in Spanish.
+## Earlier Milestones
 
-## 2026-06-03
-
-- Moved the standalone Google Ads subpage "Back to Google Ads home" buttons out of the header and into a left-aligned row below the menu/above the hero content across English and Spanish internal pages.
-- Added a colorful Sean's Google Ads promo/link block to the SEO Foundations service page in English and Spanish, including compact mobile versions, positioned above the final "Ready to get started" CTA.
-- Added `Log in through Dark Matter` / `Acceder por Dark Matter` links to the standalone Google Ads homepage header and Dark Matter CTA section, routing customers to the existing Supabase-backed Dark Matter account pages in English and Spanish.
-- Removed "Services" from the visible Sean Google Ads mini-site brand across English and Spanish pages; the display brand is now `Sean's Google Ads` / `Google Ads de Sean` while the source folder name remains unchanged for path stability.
-- Added bilingual About Sean and Google Ads Portfolio pages to the standalone Google Ads mini-site, linked them from the English/Spanish homepages, updated the Google Ads contact email to `SCochrane495@gmail.com`, and included Sean Cochrane's owner bio, Massachusetts background, and Seagate Baptist Church link.
-- Updated standalone Google Ads focus/pricing detail pages so the top "Back to Google Ads home" buttons use a solid cyan-green treatment and all top Talk to Sean buttons share the animated landing-page CTA styling in English and Spanish.
-- Added Dark Matter homepage links to the DM mark and a powered-by Dark Matter footer badge across all English and Spanish pages in the standalone Google Ads mini-site.
-- Locked the standalone Google Ads mini-site EN/ES toggle layout so English and Spanish pages keep matching header/action positions while only the active slider moves.
-- Added Spanish (`es/`) mirrors for all nine standalone Google Ads mini-site pages, translated visible copy and metadata, corrected Spanish internal/main-site links, and added EN/ES language toggles plus hreflang alternates across English and Spanish mini-site pages.
-- Added seven linked Google Ads detail pages for Campaign Setup, Landing Page Alignment, Ongoing Cleanup, Launch Package, Ads Essential, Ads Growth, and Ads Dominance, using shared detail CSS/JS for the standalone mini-site.
-- Converted the Google Ads homepage focus cards and pricing cards into links to their respective detail pages, and added stronger motion to the `Talk to Sean` button.
-- Increased motion on the Google Ads landing page's `Talk to Sean` and `Request an Ads Consultation` buttons with shared flowing gradient, shine, float, and glow animations.
-- Replaced the two-card Google Ads pricing area with four colorful interactive pricing cards: Launch Package, Ads Essential, Ads Growth, and Ads Dominance.
-- Added a purple top navigation CTA on the Google Ads landing page for broader Dark Matter services and animated the `Talk to Sean` button with moving gradient/glow treatment.
-- Added a large bottom CTA to the standalone Google Ads landing page that advertises broader Dark Matter website, app, and local IT services while preserving the page's visual style.
-- Added a Dark Matter Web Services co-branded header lockup to the standalone Google Ads landing and contact pages while preserving the existing Google-colored Sean's Google Ads service mark.
-- Updated the Google Ads contact page phone number and click-to-call link to `1-617-860-9914`.
-- Added `Sean's Google Ads Services/contact.html` as a dedicated Google Ads contact page with public call/text and email links plus a focused Netlify-detected inquiry form; routed the Google Ads landing page's consultation CTAs to it.
-- Replaced the CSS-only Google Ads landing-page grid warp with a canvas-drawn mesh that redraws and bends the actual grid lines around the cursor while respecting reduced-motion preferences.
-- Added a standalone `Sean's Google Ads Services/index.html` landing page for a future separate Google Ads service domain, plus English/Spanish Services page links on desktop and mobile.
-- Updated `scripts/validate-site.ps1` so the standalone Google Ads mini-project is not treated as a normal bilingual Dark Matter page mirror.
-- Added the public Supabase project URL and publishable key to `assets/supabase-config.js`; the client portal now initializes instead of remaining in setup mode.
-- Added a first-pass Supabase-ready client portal at `account.html` and `es/account.html`, with shared portal CSS/JS, public config placeholders, setup-mode login protection, English/Spanish navigation links, and starter SQL in `supabase/client-portal-schema.sql`.
-- Expanded the client portal with website health/status cards, a `client_website_status` Supabase table, and a Netlify-backed `client-request` form so logged-in clients can submit questions or website changes from their account.
-- Added website traffic/stat cards and a `client_website_stats` Supabase table for visitors, page views, top page, top referrer, conversion notes, and analytics source summaries.
-- Moved account creation into a focused signup modal using Supabase Auth sign-up, with English and Spanish copy explaining that Dark Matter links services and billing records after approval.
-- Expanded the signup modal with basic intake fields and password confirmation; signup metadata now includes name and phone.
-- Added English and Spanish email-confirmation success pages after signup, including Gmail/Outlook/mail-app buttons and a functional sign-in form for users returning after confirming their email.
-- Added `project-docs/features/client-portal.md` and updated architecture/tasks/decisions to document planned Supabase tables, Row Level Security, auth redirects, and the future secure Stripe billing portal function.
-- Fixed the homepage hero MP4 loader in English and Spanish by restoring missing JavaScript ternary operators that prevented video sources from mounting.
-- Removed the imported root client folders after confirming portfolio assets were already harvested into `assets/portfolio/`; the live Dark Matter project now has 102 files.
-- Repaired Open Graph/Twitter metadata encoding and normalized social `og:url` paths after the sitewide metadata pass.
-- Added Dark Matter favicon/app icon assets, a `site.webmanifest`, and a 1200x630 Open Graph preview image, then wired favicon, Open Graph, and Twitter card metadata across 41 live English and Spanish HTML pages.
-- Renamed the hidden JPSurette Easter egg page to `jpsurette.html`, updated homepage links, and removed the old page label from project references.
-- Added a larger animated power-up loading panel to `jpsurette.html`, with six colorful moving progress bars, pulsing status cells, and longer scroll timing before the final reveal.
-- Added JPS Surette Photography as the third homepage portfolio teaser and Case Studies entry in English and Spanish.
-- Added optimized JPS Surette WebP previews (`home.webp`, `combat.webp`, `events.webp`, `architecture.webp`) plus tall mini page previews (`home-tall.webp`, `events-tall.webp`).
-- Wired the JPS Surette case-study live-preview button to `https://jpsurette.netlify.app/` and marked the case study as in progress with desktop/mobile progress bars.
-- Added tall full-page mini previews to Naples Estate Jewelry (`home-tall.webp`, `shop-tall.webp`) so the case-study details show more complete page layouts.
-- Updated Case Studies project labels to use website/domain names, added business-type subtitles under each main case-study title, added Elite Yacht full-page mini previews, and removed black frames around all tall/floating page previews in English and Spanish.
-- Constrained the Elite Yacht and JPS desktop case-study detail sections to match the narrower centered Naples case-study layout.
-- Changed JPS in-progress labels, status pills, and progress bars from muted purple to bright green for stronger readability.
-- Changed sitewide top-menu labels to `Portfolio` / `Portafolio` while keeping the page file as `casestudies.html`.
-- Split the deeper Portfolio project sections into dedicated detail pages for NaplesEstateJewelry.co, EliteYachtDetailing.com, and JPSurette.com in English and Spanish, and changed the summary CTAs to "See more details about this project" / "Ver más detalles de este proyecto."
-- Added animated green live-site widgets to all English and Spanish Portfolio project detail pages.
-- Fixed remaining Spanish Portfolio question-mark accent artifacts in Naples project copy, project-detail CTA copy, and footer separators.
-- Added a direct-link-only `jpsurette.html` Easter egg page for JPSurette.com with no site navigation; the page starts as a 1999-style photography site with filler copy and keep-scrolling prompts, then scroll-reveals a modern loading section and a subtle final link to the JPS project detail page.
-- Revised early `jpsurette.html` copy to remove obvious joke giveaways while keeping the final "Okay, just kidding" reveal.
-- Adjusted `jpsurette.html` visual/copy tone toward a sincere rough first-draft website while preserving the long scroll and reveal sequence.
-- Added large draft image placeholders to `jpsurette.html` beneath the placeholder-note section.
-- Added a floating animated "wait a second..." pause stage to `jpsurette.html` before the main loading reveal.
-- Smoothed the `jpsurette.html` old-to-modern transition with a gray-to-blue-green gradient fade.
-- Removed the experimental person/arm handoff visual from the final `jpsurette.html` project reveal.
-- Added colorful gradient outline/glow treatments to the photo and visual-highlight cards on all Portfolio project detail pages in English and Spanish.
-- Added a tiny rainbow Easter egg link to `jpsurette.html` at the actual bottom-left end of the English and Spanish homepages.
-- Rebranded the Naples portfolio/case-study entry from Naples Antiques LLC to Naples Estate Jewelry across English and Spanish homepage teasers and Case Studies pages.
-- Captured three new lightweight WebP screenshots from the imported Naples Estate Jewelry project (`home.webp`, `shop.webp`, `product.webp`) and wired them into the portfolio.
-- Removed the old unused Naples PNG screenshots from `assets/`.
-- Updated `built-by.html` and `es/built-by.html` with the standard desktop Services dropdown, language switcher, Contact CTA, mobile header, and mobile bottom navigation.
-- Turned the desktop homepage WhatsApp update visual into a link to `process.html#client-whatsapp-queue` / `es/process.html#client-whatsapp-queue`.
-- Added WhatsApp update requests as part of the Maintain step on the Process page in English and Spanish.
-- Added a detailed Process page section explaining the dedicated client WhatsApp account and automatic update queue for messages, photos, hours, promotions, and content changes.
-
-## 2026-06-02
-
-- Performed a strict no-quality-loss media sweep: confirmed `assets/cosmic-web-hero.webp` is already compressed at 1600x900/about 198 KB, left MP4/JPEG/WebP assets unchanged, and losslessly optimized six PNG-format portfolio screenshots with pixel-identical verification.
-- Strengthened `assets/cosmic-web.css` service colorways with hue rotation, higher saturation, and stronger accent overlays so the cosmic-web hero reads as different green/blue/purple/gold treatments instead of subtle same-looking glows.
-- Added page-specific `cosmic-tint-*` body classes to English and Spanish service pages so each online and local service category has a distinct cosmic-web hero color treatment.
-- Added `assets/cosmic-web-hero.webp`, a compressed local WebP derived from ESA/Hubble's "The Cosmic Web (Artist's Impression)," for a dark-matter-web visual on non-home pages.
-- Added `assets/cosmic-web.css` and linked it across non-home English and Spanish pages, leaving `index.html` and `es/index.html` on the optimized MP4 hero setup.
-- Updated `preference-builder.html` and `es/preference-builder.html` to inherit the standard site navigation and footer shell, including the desktop Services dropdown, mobile language header, mobile Services popout support, bottom tab bar, powered-by badge, and contact footer.
-- Matched the Website Preference Builder header more tightly to the homepage by using the same Tailwind load order, logo font/icon loading, and top-right Contact Us button styling.
-- Centered the desktop main navigation consistently by updating shared `assets/nav.css` and cache-busting all English and Spanish nav stylesheet links with `?v=20260602-menu-center`.
-- Replaced the old homepage hero MP4 reference with optimized responsive desktop/mobile MP4 sources in English and Spanish.
-- Removed `assets/site-hero.js` loading from non-home pages and removed the preference-builder MP4 hero so video now loads only on the homepage.
-- Added the floating four-step process rail to `preference-builder.html` and `es/preference-builder.html`.
-- Updated `assets/rail.js` active-state rules so each step highlights consistently on its corresponding pages, including Launch on the Process page.
-- Cache-busted all `assets/rail.js` references with `?v=20260602-rail-active`.
-- Added the shared black-hole MP4 hero background to the English and Spanish Website Preference Builder / free mockup pages with a unique purple-cyan tint.
-- Added a down-arrow hero cue on the free mockup page directing visitors to the form below.
-- Added page-specific MP4 hero tint themes in `assets/site-hero.js` and cache-busted it with `?v=20260602-hero-tints`.
-- Fixed UTF-8 mojibake artifacts across Spanish pages, English language-switch labels, typographic marks, and shared process-rail Spanish strings.
-- Renamed the consultation service across English and Spanish pages, updated mobile services nav labels, cache-busted `assets/mobile-services-nav.js`, and rewrote the service page around strategic consulting.
-- Optimized the English and Spanish Website Preference Builder for mobile by making the hero MP4 desktop-only, disabling preload, and replacing mobile video/backdrop blur with a lighter gradient hero.
-- Added an immediate loading overlay to the English and Spanish Website Preference Builder and deferred the Tailwind CDN/font loading path to reduce blank-screen behavior on slower mobile devices.
-- Added desktop rail clearance to the English and Spanish Website Preference Builder form so the floating process rail does not overlap the first preference cards.
-- Smoothed Services dropdown motion in `assets/nav.css`, including slower desktop menu open/close and mobile services popout transitions, and cache-busted nav CSS references.
-- Changed top-right "Start Project" CTAs to "Contact Us" / "Contáctanos" where applicable.
-- Added `darkmatterwebsites@gmail.com` as a clickable email contact in repeated English/Spanish contact/footer areas and on the Contact page cards.
-- Corrected the public contact email to `darkmatterwebsites@gmail.com` across site copy, `mailto:` links, and memory docs.
-- Added English and Spanish positioning copy across homepage, Services, Website Design, Managed Hosting, Complete Website Management, and Website Care Plans that frames AI as useful for ideas while Dark Matter keeps live-site updates stable and accountable.
-- Added `project-docs/STRUCTURE_RECOMMENDATIONS.md` after a full site-structure audit, recommending static generated HTML with Astro, reusable components, structured bilingual content, validation checks, and asset optimization before any major framework migration.
-- Updated project memory docs with the new long-term structure direction and next tasks.
-- Added `scripts/validate-site.ps1` and documented it in project memory plus `AGENTS.md`; the validator currently passes with no issues found.
-- Turned Website Care Plan package tiles into clickable jump links, added detailed package sections below the pricing grid, mirrored the behavior on mobile and Spanish pages, and strengthened `assets/care-plans.css` with tinted card styling.
-- Expanded the Website Care Plan detail sections with month-to-month and yearly pricing, fuller package inclusions, best-fit guidance, mobile pricing text, and distinct tier visuals/icons in English and Spanish.
-- Simplified the Website Care Plans page opening so English and Spanish versions start directly at the monthly plan chooser, removing the old Step 04 hero and "Which service fits you?" callout section.
-- Reduced the Website Care Plans universal hero height and following top padding so the pricing cards appear much closer under the intro.
-- Updated Website Care Plan preview tiles and mobile plan rows so each tier uses the same accent color as its matching detailed section.
-- Normalized sitewide contact CTA labels from old consultation/start-project wording to "Contact Us" / "Contáctanos" across English and Spanish pages.
-- Reduced Case Studies / Nuestro portafolio hero height, intro spacing, and gallery top gap so project tiles appear closer to the opening copy.
-
-## 2026-06-04
-
-- Documented that Sean's Google Ads pages should retain their own Google Ads co-branded menu/header format and should not be standardized to the Dark Matter homepage navigation during menu consistency sweeps.
-
-## 2026-06-01 (Spanish site)
-
-- Added `preference-builder.html` and `es/preference-builder.html` as a first-pass website preference/intake builder, then connected it from the Services gateway and Custom Business Web Apps pages.
-- Refined the Website Preference Builder layout so steps run vertically and visual preference swatches share a consistent mini-website icon style.
-- Changed the Website Preference Builder top summary card from an early submit CTA into a status prompt, with a disabled submit/review design at the bottom for the future intake workflow.
-- Increased contrast on Website Preference Builder step cards so Structure, Blueprint Options, and Brand Soul read as distinct sections.
-- Routed the shared floating process rail Design button to the Website Preference Builder across English and Spanish pages, and added builder links to Process and Website Design pages.
-- Connected the Website Preference Builder to Netlify Forms as `website-preferences`, including synced hidden selection fields, required contact fields, honeypot spam protection, and URL-encoded AJAX submission in English and Spanish.
-- Reframed the Website Preference Builder as a free website mockup request page, added 48-hour follow-up language, and removed the locked/disabled visual state from the submit button.
-- Updated English and Spanish homepage hero pill copy from "Your Website Team" to "Your Complete IT Solution" / "Tu Solución Completa de TI".
-- Fixed `assets/rail.js` active-step detection so English and Spanish Process overview pages clear rail highlights instead of marking Launch active, while launch-related service pages still highlight Launch.
-- Redesigned and then streamlined the desktop homepage WhatsApp update accent card in English and Spanish with a short, squat WhatsApp logo badge, one quick-message example, and automatic message/media queue language.
-- Updated Spanish portfolio navigation/page labels from "Casos de Éxito" / "Portafolio" to "Nuestro portafolio".
-- Reduced only the Spanish desktop homepage hero headline size so its longer copy does not push the MP4 hero stage lower than the English homepage.
-- Matched English and Spanish homepage mobile hero video/headline sizing rules and reduced the MP4 scale to `scale(1.01)`.
-- Moved the mobile five-item navigation from the bottom to a slimmer top tab bar, hid the old top-right mobile dropdown trigger, and added a tap-to-open Services popout grouped into Web & Online and In-Home & Office services.
-- Added `assets/mobile-services-nav.js` for shared mobile Services popout behavior and cache-busted it with `?v=20260601-mobile-services2`.
-- Cache-busted `assets/nav.css` with `?v=20260601-mobile-topnav` for the mobile top navigation change.
-- Reduced mobile homepage MP4 hero zoom from `scale(1.12)` to `scale(1.04)` and reduced the shared page-hero mobile video scale to show more of the scene while preserving full-screen coverage.
-- Added project memory size guidance: keep core Markdown files around 250-350 lines, trimming old detail into concise summaries.
-- Added `assets/site-hero.js` to test extending the homepage MP4 treatment across non-home pages in English and Spanish, with page intro text overlaid on the video and content continuing below on solid sections.
-- Added cache-busting to every `assets/site-hero.js` script link.
-- Unified Spanish Contact and Case Studies pages with the shared four-step process rail and removed their stale inline rail scripts.
-- Added `?v=20260601-rail-es` cache-busting to every `assets/rail.js` script link across English and Spanish pages.
-- Updated `services.html` and `es/services.html` so visitors first see three plain-language service paths: website/online help, local in-person tech setup, and business app/portal.
-- Fixed desktop Services dropdown heading icons by strengthening `assets/nav.css`, adding explicit `services-nav-heading-icon` classes, and cache-busting `nav.css` links across English and Spanish pages.
-- Added a full Latin American Spanish version of the site as a parallel `es/` mirror (16 pages: 6 top-level + 10 service pages), each an exact translated copy of its English desktop + mobile layouts.
-- Added an `EN / ES` language toggle to the desktop nav and mobile header of every page.
-- Added first-visit browser-language auto-detection (Spanish browsers are sent to `es/`) with the explicit choice remembered in `localStorage` (`dm_lang`).
-- Made `assets/rail.js` bilingual (Spanish process-rail popover text selected via `<html lang="es">`).
-- Added `hreflang` (`en` / `es` / `x-default`) alternates to all pages.
-- Translated the Netlify contact form labels/placeholders/validation/status messages while keeping form `name`/`value` submission attributes unchanged.
-- Added `project-docs/I18N.md` documenting the glossary, switch mechanism, and asset-path rules.
-
-## 2026-06-01
-
-- Added Services dropdown grouping for Online Services and In-Home & Office Services.
-- Added `services/in-home-services.html` for local in-home and on-site tech setup.
-- Added `services/office-network-setup.html` for small office Wi-Fi, workstation, printer, and network setup.
-- Updated homepage and services page to advertise online and on-site services.
-- Updated `assets/rail.js` so local service pages map to the Maintain process step and removed visible step-label encoding artifacts.
-- Created persistent project memory system under `project-docs/`.
-- Added root `AGENTS.md` so future coding agents can discover the startup and shutdown memory protocol.
-- Added `CLIENTS.md` for future client website operations tracking.
-- Added feature documentation for Custom Business Web Apps and Website Care Plans.
-- Added meeting/session notes for 2026-06-01.
-- Documented current architecture, decisions, active status, and future tasks.
-- Recently updated site positioning from Custom Development to Custom Business Web Apps.
-- Recently added Team Help Desk support tier at `$1,500+/mo`.
-- Recently standardized the floating process rail to four steps: Design, Build, Launch, Maintain.
+- Built the static bilingual Dark Matter Web Services site.
+- Added Services, Process, Contact, Built By, Portfolio, Apps, Website Preference Builder, and Client Portal surfaces.
+- Added Supabase starter config/schema for the portal.
+- Added homepage hero media and shared cosmic-web visual system.

@@ -382,4 +382,12 @@ nav .hidden.md\:flex,
     color: #fff;
     background: rgba(0, 240, 255, 0.08);
   }
+
+  body.has-dm-standard-nav .page {
+    padding: 7.75rem 20px 5.5rem !important;
+  }
+
+  body.has-dm-standard-nav .app-footer {
+    padding-bottom: 2rem !important;
+  }
 }

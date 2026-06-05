@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Hypercube Software">
+  <defs>
+    <linearGradient id="hc-edge" x1="8" y1="8" x2="112" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="45%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="hc-face" x1="20" y1="18" x2="100" y2="102" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0.08"/>
+    </linearGradient>
+    <radialGradient id="hc-core" cx="50%" cy="46%" r="42%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="hc-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2.4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <circle cx="60" cy="58" r="52" fill="url(#hc-core)" opacity="0.45"/>
+  <!-- Outer cube faces -->
+  <polygon points="34,72 60,86 86,72 60,58" fill="url(#hc-face)" stroke="url(#hc-edge)" stroke-width="1.6" stroke-linejoin="round"/>
+  <polygon points="34,72 34,46 60,32 60,58" fill="rgba(168,85,247,0.12)" stroke="url(#hc-edge)" stroke-width="1.6" stroke-linejoin="round"/>
+  <polygon points="60,58 60,32 86,46 86,72" fill="rgba(34,211,238,0.1)" stroke="url(#hc-edge)" stroke-width="1.6" stroke-linejoin="round"/>
+  <!-- Inner cube (tesseract projection) -->
+  <polygon points="44,66 60,74 76,66 60,58" fill="rgba(245,158,11,0.14)" stroke="url(#hc-edge)" stroke-width="1.4" stroke-linejoin="round" filter="url(#hc-glow)"/>
+  <polygon points="44,66 44,54 60,46 60,58" fill="rgba(244,114,182,0.1)" stroke="url(#hc-edge)" stroke-width="1.4" stroke-linejoin="round"/>
+  <polygon points="60,58 60,46 76,54 76,66" fill="rgba(34,211,238,0.08)" stroke="url(#hc-edge)" stroke-width="1.4" stroke-linejoin="round"/>
+  <!-- Hypercube connectors -->
+  <g stroke="url(#hc-edge)" stroke-width="1.15" stroke-linecap="round" opacity="0.92">
+    <line x1="34" y1="72" x2="44" y2="66"/>
+    <line x1="60" y1="86" x2="60" y2="74"/>
+    <line x1="86" y1="72" x2="76" y2="66"/>
+    <line x1="60" y1="58" x2="60" y2="58"/>
+    <line x1="34" y1="46" x2="44" y2="54"/>
+    <line x1="60" y1="32" x2="60" y2="46"/>
+    <line x1="86" y1="46" x2="76" y2="54"/>
+    <line x1="60" y1="58" x2="60" y2="58"/>
+  </g>
+  <circle cx="60" cy="58" r="3.2" fill="#fbbf24" filter="url(#hc-glow)"/>
+</svg>

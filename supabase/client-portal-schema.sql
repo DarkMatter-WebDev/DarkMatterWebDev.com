@@ -1,6 +1,8 @@
--- Dark Matter client portal starter schema.
--- Run in the Supabase SQL editor after creating the project.
--- This creates read-only client-facing tables protected by Row Level Security.
+-- Legacy starter schema for a standalone Dark Matter portal project.
+-- DO NOT re-run on the live Naples Estate Jewelry shared project.
+-- Production already uses: client_profiles, client_services, client_invoices,
+-- client_documents, client_messages, portal_admins view, and portal_role helpers.
+-- Run in the Supabase SQL editor only when bootstrapping a fresh project.
 
 create extension if not exists pgcrypto;
 

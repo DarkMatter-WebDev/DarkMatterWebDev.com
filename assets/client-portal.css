@@ -1583,3 +1583,124 @@
     flex-direction: column;
   }
 }
+
+.client-settings-shell {
+  position: relative;
+  z-index: 1;
+  width: min(920px, 100%);
+  margin: 0 auto;
+  padding: 104px 20px 72px;
+}
+
+.client-settings-stack {
+  display: grid;
+  gap: 18px;
+}
+
+.client-settings-panel {
+  padding: 22px;
+  border: 1px solid rgba(0, 240, 255, 0.18);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(0, 240, 255, 0.07), rgba(112, 0, 255, 0.06)),
+    rgba(5, 5, 5, 0.52);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.22);
+}
+
+.client-settings-panel[hidden],
+.client-settings-gate[hidden],
+.client-settings-content[hidden] {
+  display: none !important;
+}
+
+.client-settings-panel__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.client-settings-panel h3 {
+  margin: 4px 0;
+  color: #fff;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(22px, 3vw, 30px);
+  line-height: 1.15;
+}
+
+.client-settings-panel p {
+  margin: 0;
+  color: #c4c7c7;
+  line-height: 1.55;
+}
+
+.client-settings-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 11px;
+  border-radius: 999px;
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.24);
+  color: #00f0ff;
+  font: 700 11px "JetBrains Mono", monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.client-settings-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.client-settings-email {
+  margin-top: 6px;
+  color: #8e9192;
+  font: 500 14px "JetBrains Mono", monospace;
+}
+
+.client-settings-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.client-settings-gate {
+  display: none;
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  background: rgba(5, 5, 5, 0.56);
+}
+
+.client-settings-gate.is-visible {
+  display: block;
+}
+
+.client-settings-readonly {
+  opacity: 0.72;
+}
+
+@media (max-width: 700px) {
+  .client-settings-shell {
+    padding-top: 88px;
+    padding-bottom: 56px;
+  }
+
+  .client-settings-header,
+  .client-settings-panel__header {
+    flex-direction: column;
+  }
+
+  .client-settings-header .client-portal-button,
+  .client-settings-actions .client-portal-button {
+    width: 100%;
+  }
+}
