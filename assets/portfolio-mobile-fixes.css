@@ -1,0 +1,141 @@
+/* Case study gallery + portfolio detail — layout fixes + title shrink hooks */
+
+.portfolio-card-title,
+.portfolio-detail-title {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: visible;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.portfolio-card-title {
+  font-size: 0.72rem;
+}
+
+.portfolio-detail-title {
+  font-size: 1.35rem;
+}
+
+.portfolio-tile {
+  container-type: inline-size;
+  container-name: portfolio-tile;
+}
+
+@media (max-width: 767px) {
+  .portfolio-tile {
+    min-height: auto;
+    height: auto;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .portfolio-tile__media {
+    overflow: hidden;
+    border-radius: 1rem 1rem 0 0;
+  }
+
+  .portfolio-tile > div:not(.portfolio-tile__media) {
+    min-width: 0;
+  }
+
+  .portfolio-tile p {
+    font-size: clamp(0.5rem, 5.6cqw, 0.78rem) !important;
+    line-height: 1.28 !important;
+  }
+
+  .portfolio-tile__badge {
+    font-size: clamp(0.42rem, 4.2cqw, 0.58rem);
+    letter-spacing: 0.05em;
+    padding: 0.16rem 0.38rem;
+    max-width: calc(100% - 0.8rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .portfolio-tile .font-label-caps {
+    font-size: clamp(0.42rem, 4.4cqw, 0.58rem) !important;
+    letter-spacing: 0.04em;
+    line-height: 1.15;
+    padding: 0.12rem 0.32rem !important;
+  }
+
+  .portfolio-tile__cta,
+  .portfolio-tile .font-label-mono {
+    font-size: clamp(0.48rem, 4.8cqw, 0.68rem) !important;
+    letter-spacing: 0.04em;
+    line-height: 1.15;
+    white-space: nowrap;
+  }
+
+  .portfolio-tile .font-label-mono .material-symbols-outlined {
+    font-size: 0.85em;
+  }
+
+  .min-h-screen > main.relative,
+  main.relative {
+    min-width: 0;
+  }
+
+  .min-h-screen > main.relative h4,
+  .detail-color-card h4,
+  .jps-highlight-card h4 {
+    font-size: clamp(0.82rem, 3.6vw, 1.15rem) !important;
+    line-height: 1.15;
+  }
+
+  .min-h-screen > main.relative h5,
+  .min-h-screen > main.relative .font-label-caps {
+    font-size: clamp(0.52rem, 2.6vw, 0.68rem) !important;
+    letter-spacing: 0.08em;
+  }
+
+  .detail-color-card .flex.items-center.gap-3 {
+    flex-wrap: nowrap;
+    gap: 0.45rem;
+  }
+
+  .detail-color-card h4 {
+    min-width: 0;
+    flex: 1 1 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .detail-color-card .material-symbols-outlined {
+    flex-shrink: 0;
+  }
+
+  .min-h-screen > footer .font-label-caps {
+    font-size: clamp(0.42rem, 2.5vw, 0.58rem);
+    letter-spacing: 0.06em;
+    line-height: 1.35;
+    white-space: nowrap;
+    transform: scale(0.94);
+    transform-origin: center;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .portfolio-tile {
+    min-width: 0;
+  }
+
+  .portfolio-tile p {
+    font-size: clamp(0.72rem, 1.4vw, 0.875rem) !important;
+  }
+
+  .portfolio-tile__badge {
+    font-size: clamp(0.52rem, 1vw, 0.625rem);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+
+  .portfolio-tile .font-label-caps {
+    font-size: clamp(0.52rem, 1vw, 0.625rem) !important;
+  }
+}
