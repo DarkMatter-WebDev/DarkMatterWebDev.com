@@ -18,13 +18,7 @@ Then summarize the current state to the user and proceed.
 - Sean's Ads is a separate live site at `https://seansads.com/`; Dark Matter is separate at `https://darkmatterwebdev.com/`.
 - Cross-site links must use absolute URLs, not local folder-relative URLs.
 - Local preview usually runs at `http://127.0.0.1:4173/`.
-- The expected validator warning is only:
-
-```text
-missing-es-pair jpsurette.html Missing Spanish mirror: es/jpsurette.html
-```
-
-This warning is intentional because `jpsurette.html` is a hidden English-only Easter egg.
+- There is currently no expected validator warning. Treat any validator warning as something to inspect.
 
 ## Recent Work To Remember
 

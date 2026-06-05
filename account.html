@@ -29,7 +29,7 @@
 <link href="assets/nav.css?v=20260604-menu-consistency" rel="stylesheet"/>
 <link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/>
 <link href="assets/powered-by-badge.css" rel="stylesheet"/>
-<link href="assets/client-portal.css?v=20260604-seansads-mobile" rel="stylesheet"/>
+<link href="assets/client-portal.css?v=20260605-seansads-login-pulse" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
@@ -98,9 +98,9 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <div class="client-portal-card client-portal-panel" data-auth-panel>
 <div class="client-portal-kicker">Secure Crossing</div>
 <h2 class="text-3xl font-headline text-white mt-3 mb-3">Open the login portal</h2>
-<p class="client-auth-copy">Use your verified email to pass through the client wormhole and land inside your account dashboard.</p>
+<p class="client-auth-copy">Sign in with your verified email.</p>
 <form class="client-portal-form" data-client-login-form>
-<label class="client-portal-label">Email address<input class="client-portal-input" type="email" name="email" autocomplete="username" required data-client-email placeholder="client@example.com"/></label>
+<label class="client-portal-label">Email address<input class="client-portal-input" type="text" inputmode="email" name="email" autocomplete="username" required data-client-email placeholder="client@example.com"/></label>
 <label class="client-portal-label">Password<input class="client-portal-input" type="password" name="password" autocomplete="current-password" data-client-password placeholder="Password"/></label>
 <label class="client-remember-row"><input type="checkbox" checked data-client-remember/> <span>Keep me signed in</span></label>
 <div class="client-portal-actions">
@@ -138,16 +138,34 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <a class="client-workspace-card client-workspace-card--traffic" href="#client-website-traffic"><span class="material-symbols-outlined">monitoring</span><strong>Watch the signal</strong><small>Traffic summaries, popular pages, referral notes, and sources.</small></a>
 <a class="client-workspace-card client-workspace-card--request" href="#client-contact"><span class="material-symbols-outlined">send</span><strong>Send a change</strong><small>Ask a question or queue website updates directly from your account.</small></a>
 <a class="client-workspace-card client-workspace-card--settings" href="account-settings.html"><span class="material-symbols-outlined">tune</span><strong>Site preferences</strong><small>Set your website preferences, account settings, update style, and service defaults.</small></a>
-<a class="client-workspace-card client-workspace-card--ads" href="https://seansads.com/"><span class="material-symbols-outlined">ads_click</span><strong>Sean's Google Ads</strong><small>Open the dedicated Google Ads service for campaign setup, management, and growth.</small></a>
 <a class="client-workspace-card client-workspace-card--orbit" href="preference-builder.html"><span class="material-symbols-outlined">rocket_launch</span><strong>Plan the next upgrade</strong><small>Map a new page, feature, redesign, or idea before we build it into your site.</small></a>
 </div>
-<section class="client-ad-status-panel" aria-label="Google Ads activity and status">
+<section class="client-super-admin-panel client-sean-ads-panel" data-sean-ads-portal-panel hidden>
+<div class="client-super-admin-panel__header">
 <div>
-<div class="client-portal-kicker">Google Ads Workspace</div>
-<h3>Ad activity &amp; status</h3>
-<p>Track campaign notes, setup progress, lead activity, budget reminders, and Sean's next recommended cleanup items from your client portal.</p>
+<div class="client-portal-kicker">Sean's Google Ads Portal</div>
+<h3>Google Ads customer center</h3>
+<p>Open Sean's private customer/project workspace for campaign notes, customer records, and future project tracking.</p>
 </div>
-<a class="client-google-button" href="account-ads-status.html"><span class="material-symbols-outlined">ads_click</span><span>Open ad status</span></a>
+<span class="client-super-admin-badge"><span class="material-symbols-outlined">ads_click</span>Authorized</span>
+</div>
+<div class="client-super-admin-actions">
+<a class="client-portal-button client-portal-button--secondary" href="seans-google-ads-dashboard.html"><span class="material-symbols-outlined">visibility</span>Open Sean's portal</a>
+</div>
+</section>
+<section class="client-super-admin-panel" data-super-admin-panel hidden>
+<div class="client-super-admin-panel__header">
+<div>
+<div class="client-portal-kicker">Owner Admin Console</div>
+<h3>Super user access</h3>
+<p>Your owner account can open member portal views and future admin tools from inside the normal Dark Matter account dashboard.</p>
+</div>
+<span class="client-super-admin-badge"><span class="material-symbols-outlined">admin_panel_settings</span>Owner only</span>
+</div>
+<div class="client-super-admin-actions">
+<a class="client-portal-button client-portal-button--secondary" href="seans-google-ads-dashboard.html"><span class="material-symbols-outlined">visibility</span>Open Sean's direct portal backend view</a>
+</div>
+<p class="client-muted mt-4">This page only controls what admin shortcuts are visible in the browser. Real cross-account data access must be enforced with Supabase roles, policies, or server-side functions before sensitive member records are stored.</p>
 </section>
 <div class="client-metric-grid">
 <div class="client-metric"><span class="client-muted">Services</span><strong data-metric-services>0</strong></div>
@@ -230,5 +248,5 @@ window.DM_CLIENT_PORTAL_COPY = {
   requestSent: "Request sent. We will review it and follow up soon."
 };
 </script>
-<script type="module" src="assets/client-portal.js?v=20260604-seansads-mobile"></script>
+<script type="module" src="assets/client-portal.js?v=20260605-sean-admin-preview"></script>
 </body></html>

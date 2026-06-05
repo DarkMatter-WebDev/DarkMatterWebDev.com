@@ -1,6 +1,6 @@
 ﻿# Architecture
 
-Last updated: 2026-06-04
+Last updated: 2026-06-05
 
 ## System Design
 
@@ -17,6 +17,8 @@ Long-term recommendation: keep the marketing site as static output, but migrate 
   index.html
   services.html
   apps.html
+  app-pricing.html
+  app-checkout.html
   secondhand-dealer-management-system.html
   process.html
   casestudies.html
@@ -25,6 +27,7 @@ Long-term recommendation: keep the marketing site as static output, but migrate 
   account.html
   account-settings.html
   account-ads-status.html
+  seans-google-ads-dashboard.html
   netlify.toml
   assets/
     *.css
@@ -32,6 +35,9 @@ Long-term recommendation: keep the marketing site as static output, but migrate 
     *.html snippets
     images and video
     portfolio/
+    apps/
+      auction/
+      sdms/
   services/
     complete-website-management.html
     discovery-consultation.html
@@ -45,9 +51,9 @@ Long-term recommendation: keep the marketing site as static output, but migrate 
     office-network-setup.html
   es/
     (Spanish mirror of every top-level page)
-    index.html, services.html, apps.html, secondhand-dealer-management-system.html, process.html, casestudies.html,
+    index.html, services.html, apps.html, app-pricing.html, app-checkout.html, secondhand-dealer-management-system.html, process.html, casestudies.html,
     contact.html, built-by.html, account.html, account-settings.html,
-    account-ads-status.html
+    account-ads-status.html, seans-google-ads-dashboard.html
     services/
       (Spanish mirror of every service page, same filenames)
   project-docs/
@@ -62,7 +68,8 @@ Long-term recommendation: keep the marketing site as static output, but migrate 
 ## Page Model
 
 - Top-level pages provide the main site navigation and conversion flow.
-- `apps.html` / `es/apps.html` are static Dark Matter app-library gallery pages for hosted, downloadable, or request-access web apps. App gallery cards link directly to separate full profile pages, and the old `/downloads.html` and `/es/downloads.html` URLs are redirected in `netlify.toml`. App CTAs should point only to real hosted apps, real packages, or contact/request flows. The Auction House app links to `https://auctionconsignmentapp.netlify.app/`, uses screenshots under `assets/apps/`, and has paired full profile pages at `auction-house-consignment-store-software.html` / `es/auction-house-consignment-store-software.html`. SDMS has paired full profile pages at `secondhand-dealer-management-system.html` / `es/secondhand-dealer-management-system.html`.
+- `apps.html` / `es/apps.html` are static Dark Matter app-library gallery pages for hosted, downloadable, or request-access web apps. App gallery cards link directly to separate full profile pages, and the old `/downloads.html` and `/es/downloads.html` URLs are redirected in `netlify.toml`. App CTAs should point only to real hosted apps, real packages, contact/request flows, pricing pages, or portal-only checkout flows. The Auction House app uses six lossless WebP app-flow screenshots under `assets/apps/auction/` and has paired full profile pages at `auction-house-consignment-store-software.html` / `es/auction-house-consignment-store-software.html`. SDMS uses six lossless WebP screenshots under `assets/apps/sdms/` and has paired full profile pages at `secondhand-dealer-management-system.html` / `es/secondhand-dealer-management-system.html`.
+- `app-pricing.html` and `es/app-pricing.html` are public app-pricing pages for the current Dark Matter app lineup. They include starting monthly/setup pricing, app-specific Auction/SDMS notes, public benchmark links, and direct links into the shared portal-only checkout pages with `?app=auction` or `?app=sdms`.
 - Service pages under `services/` share the same general visual system and navigation pattern.
 - The Services dropdown is grouped into Online Services and In-Home & Office Services.
 - On mobile top-level pages, `assets/nav.css` moves the five-item tab bar to the top and `assets/mobile-services-nav.js` turns the Services tab into a grouped service picker.
@@ -73,6 +80,9 @@ Long-term recommendation: keep the marketing site as static output, but migrate 
 - `assets/care-plans.css`, `assets/nav.css`, `assets/logo.css`, and badge CSS files hold reusable styling.
 - Some page behavior is implemented inline in the relevant HTML files.
 - `account.html` and `es/account.html` are the first client login/account pages. They load `assets/supabase-config.js`, `assets/client-portal.js`, and `assets/client-portal.css`.
+- `assets/client-portal.js` supports a whitelist-only `next` redirect for `/app-checkout.html`, `/es/app-checkout.html`, `/seans-google-ads-dashboard.html`, and `/es/seans-google-ads-dashboard.html`, allowing app CTAs and member dashboard links to send visitors through login before reaching protected portal-only pages without creating an open redirect.
+- `app-checkout.html` and `es/app-checkout.html` are shared portal-only app checkout/cart pages. They read the selected app from `?app=sdms` or `?app=auction`, check the Supabase browser session, hide the cart/payment request form when signed out, and link direct visitors back to the account portal with a preserved `next` target. They are static request/intake pages only; real payment processing must be added later through a secure server-side function or payment provider integration.
+- `seans-google-ads-dashboard.html` and `es/seans-google-ads-dashboard.html` are portal-only Sean's Google Ads direct member/backend views. They check the Supabase browser session, show a login handoff when signed out, and only expose the private workspace when the signed-in email matches either `superAdminEmails` or `seanGoogleAdsAdminEmails` in the public config. The owner/Sean shortcut appears inside `account.html` / `es/account.html` only for those configured emails. The page includes an empty customer/project table and Add Project placeholder for future Supabase-backed Google Ads customer records. This is a non-secret UI allowlist only; real cross-account privileged reads/writes must be enforced by Supabase RLS, custom claims, or server-side functions.
 - `account-settings.html` / `es/account-settings.html` and `account-ads-status.html` / `es/account-ads-status.html` are lightweight client-portal workspace placeholder pages for future settings/preferences and Google Ads campaign activity/status workflows.
 - Sean's Google Ads is hosted separately at `https://seansads.com/` and its source has been intentionally moved out of this repository. The old `Sean's Google Ads Services/` folder is expected to be absent. Dark Matter should continue using absolute `https://seansads.com/...` URLs where it links to Sean's Ads, but Sean's Ads code/content changes belong in its separate external project.
 
@@ -113,10 +123,11 @@ Starter SQL lives in `supabase/client-portal-schema.sql`.
 
 Client portal authentication is scaffolded with Supabase Auth:
 
-- Public config lives in `assets/supabase-config.js` and must contain only the Supabase URL and anon key.
+- Public config lives in `assets/supabase-config.js` and must contain only non-secret values such as the Supabase URL, anon key, table names, and public UI allowlists.
 - `assets/client-portal.js` creates the Supabase client when real config is present.
 - Users can sign in with email/password or request a magic email link.
 - After sign-in, the dashboard queries client service and billing rows filtered by the authenticated user's `user_id`.
+- The current browser-side owner allowlists are `superAdminEmails` (`rcman12589@aol.com`) and `seanGoogleAdsAdminEmails` (`scochrane495@gmail.com`) in `assets/supabase-config.js`. There is intentionally no local `admin` / `admin` login bypass.
 - While config placeholders are present, the page displays a setup notice and disables login actions.
 
 The marketing copy also advertises custom business web apps that can include owner, staff, and customer logins. If a larger app is implemented later, document roles, permissions, session behavior, and account lifecycle here.

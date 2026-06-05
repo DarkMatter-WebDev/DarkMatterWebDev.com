@@ -44,13 +44,101 @@ const els = {
   metricPageViews: document.querySelector("[data-metric-pageviews]"),
   metricBilling: document.querySelector("[data-metric-billing]"),
   metricSupport: document.querySelector("[data-metric-support]"),
-  seansAdsBanner: document.querySelector("[data-seansads-banner]")
+  seansAdsBanner: document.querySelector("[data-seansads-banner]"),
+  navLoginLinks: document.querySelectorAll(".nav-login-link"),
+  seanAdsPortalPanel: document.querySelector("[data-sean-ads-portal-panel]"),
+  superAdminPanel: document.querySelector("[data-super-admin-panel]")
 };
+
+const portalNext = {
+  storageKey: "dm_portal_next",
+  path: ""
+};
+
+function isSuperAdminUser(user) {
+  const userEmail = String(user?.email || "").trim().toLowerCase();
+  const adminEmails = (config.superAdminEmails || [])
+    .map((email) => String(email).trim().toLowerCase())
+    .filter(Boolean);
+  return adminEmails.includes(userEmail);
+}
+
+function isSeanAdsAdminUser(user) {
+  const userEmail = String(user?.email || "").trim().toLowerCase();
+  const seanEmails = (config.seanGoogleAdsAdminEmails || [])
+    .map((email) => String(email).trim().toLowerCase())
+    .filter(Boolean);
+  return seanEmails.includes(userEmail);
+}
+
+function canOpenSeanAdsPortal(user) {
+  return isSuperAdminUser(user) || isSeanAdsAdminUser(user);
+}
+
+function getSafePortalNext(value) {
+  if (!value) return "";
+  try {
+    const url = new URL(value, window.location.origin);
+    if (url.origin !== window.location.origin) return "";
+    const path = `${url.pathname}${url.search}${url.hash}`;
+    const isEnglishCheckout = path.startsWith("/app-checkout.html");
+    const isSpanishCheckout = path.startsWith("/es/app-checkout.html");
+    const isEnglishAdsDashboard = path.startsWith("/seans-google-ads-dashboard.html");
+    const isSpanishAdsDashboard = path.startsWith("/es/seans-google-ads-dashboard.html");
+    return isEnglishCheckout || isSpanishCheckout || isEnglishAdsDashboard || isSpanishAdsDashboard ? path : "";
+  } catch {
+    return "";
+  }
+}
+
+function getStoredPortalNext() {
+  try {
+    return getSafePortalNext(window.sessionStorage.getItem(portalNext.storageKey) || "");
+  } catch {
+    return "";
+  }
+}
+
+function setStoredPortalNext(path) {
+  try {
+    if (path) window.sessionStorage.setItem(portalNext.storageKey, path);
+  } catch {
+    // Session storage is optional; password login still works without it.
+  }
+}
+
+function clearStoredPortalNext() {
+  try {
+    window.sessionStorage.removeItem(portalNext.storageKey);
+  } catch {
+    // Ignore storage errors.
+  }
+}
+
+function getAccountRedirectUrl() {
+  const accountPath = document.documentElement.lang.startsWith("es") ? "/es/account.html" : "/account.html";
+  const url = new URL(accountPath, window.location.origin);
+  const next = portalNext.path || getStoredPortalNext();
+  if (next) url.searchParams.set("next", next);
+  return url.href;
+}
+
+function maybeRedirectToPortalNext() {
+  const next = portalNext.path || getStoredPortalNext();
+  if (!next) return false;
+  const current = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+  if (current === next) return false;
+  clearStoredPortalNext();
+  window.location.href = next;
+  return true;
+}
 
 try {
   const params = new URLSearchParams(window.location.search);
   const emailParam = params.get("email");
   if (emailParam && els.email && !els.email.value) els.email.value = emailParam;
+  portalNext.path = getSafePortalNext(params.get("next"));
+  if (portalNext.path) setStoredPortalNext(portalNext.path);
   const source = (params.get("source") || "").toLowerCase();
   const referrer = document.referrer || "";
   if (els.seansAdsBanner && (source === "seansads" || referrer.includes("seansads.com"))) {
@@ -283,6 +371,8 @@ async function maybeQuery(supabase, table, userId) {
 async function renderDashboard(supabase, session) {
   const user = session?.user;
   if (!user) return;
+  if (maybeRedirectToPortalNext()) return;
+  updateAccountNav(true);
 
   if (els.dashboard) {
     els.portalGrid?.classList.add("is-authenticated");
@@ -293,6 +383,14 @@ async function renderDashboard(supabase, session) {
     setStatus(t.signedIn);
   }
   if (els.accountEmail) els.accountEmail.textContent = user.email || "";
+  const isSuperAdmin = isSuperAdminUser(user);
+  const canAccessSeanPortal = canOpenSeanAdsPortal(user);
+  if (els.seanAdsPortalPanel) {
+    els.seanAdsPortalPanel.hidden = !canAccessSeanPortal;
+  }
+  if (els.superAdminPanel) {
+    els.superAdminPanel.hidden = !isSuperAdmin;
+  }
 
   const services = await maybeQuery(supabase, config.tables?.services, user.id);
   const billing = await maybeQuery(supabase, config.tables?.billing, user.id);
@@ -324,6 +422,25 @@ function renderSignedOut() {
   els.introPanel?.removeAttribute("hidden");
   els.authPanel?.removeAttribute("hidden");
   els.dashboard?.classList.remove("is-visible");
+  if (els.seanAdsPortalPanel) els.seanAdsPortalPanel.hidden = true;
+  if (els.superAdminPanel) els.superAdminPanel.hidden = true;
+  updateAccountNav(false);
+}
+
+function updateAccountNav(isSignedIn) {
+  const isSpanish = document.documentElement.lang.startsWith("es");
+  const label = isSignedIn ? (isSpanish ? "Cuenta" : "Account") : (isSpanish ? "Acceso" : "Login");
+  const iconName = isSignedIn ? "account_circle" : "login";
+
+  els.navLoginLinks?.forEach((link) => {
+    const icon = link.querySelector(".material-symbols-outlined");
+    link.textContent = "";
+    if (icon) {
+      icon.textContent = iconName;
+      link.append(icon);
+    }
+    link.append(document.createTextNode(label));
+  });
 }
 
 if (!isConfigured) {
@@ -356,7 +473,7 @@ if (!isConfigured) {
   els.magic?.addEventListener("click", async () => {
     setLoading(true);
     const email = els.email?.value.trim();
-    const redirectTo = new URL(document.documentElement.lang.startsWith("es") ? "/es/account.html" : "/account.html", window.location.origin).href;
+    const redirectTo = getAccountRedirectUrl();
     const { error } = await supabase.auth.signInWithOtp({ email, options: { emailRedirectTo: redirectTo } });
     setLoading(false);
     if (error) setStatus(error.message || t.error);
@@ -381,7 +498,7 @@ if (!isConfigured) {
     const email = els.signupEmail?.value.trim();
     const password = els.signupPassword?.value;
     setSignupLoading(true);
-    const redirectTo = new URL(document.documentElement.lang.startsWith("es") ? "/es/account.html" : "/account.html", window.location.origin).href;
+    const redirectTo = getAccountRedirectUrl();
     const { data, error } = await supabase.auth.signUp({
       email,
       password,

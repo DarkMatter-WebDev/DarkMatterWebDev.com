@@ -29,7 +29,7 @@
 <link href="../assets/nav.css?v=20260604-menu-consistency" rel="stylesheet"/>
 <link href="../assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/>
 <link href="../assets/powered-by-badge.css" rel="stylesheet"/>
-<link href="../assets/client-portal.css?v=20260604-seansads-mobile" rel="stylesheet"/>
+<link href="../assets/client-portal.css?v=20260605-seansads-login-pulse" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
@@ -82,9 +82,9 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <div class="client-portal-card client-portal-panel" data-auth-panel>
 <div class="client-portal-kicker">Cruce Seguro</div>
 <h2 class="text-3xl font-headline text-white mt-3 mb-3">Abre el portal de acceso</h2>
-<p class="client-auth-copy">Usa tu correo verificado para cruzar el wormhole de cliente y entrar a tu panel de cuenta.</p>
+<p class="client-auth-copy">Inicia sesion con tu correo verificado.</p>
 <form class="client-portal-form" data-client-login-form>
-<label class="client-portal-label">Correo electrónico<input class="client-portal-input" type="email" name="email" autocomplete="username" required data-client-email placeholder="cliente@ejemplo.com"/></label>
+<label class="client-portal-label">Correo electrónico<input class="client-portal-input" type="text" inputmode="email" name="email" autocomplete="username" required data-client-email placeholder="cliente@ejemplo.com"/></label>
 <label class="client-portal-label">Contraseña<input class="client-portal-input" type="password" name="password" autocomplete="current-password" data-client-password placeholder="Contraseña"/></label>
 <label class="client-remember-row"><input type="checkbox" checked data-client-remember/> <span>Mantener sesión iniciada</span></label>
 <div class="client-portal-actions">
@@ -122,16 +122,34 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <a class="client-workspace-card client-workspace-card--traffic" href="#client-website-traffic"><span class="material-symbols-outlined">monitoring</span><strong>Ver la senal</strong><small>Resumenes de trafico, paginas populares, referencias y fuentes.</small></a>
 <a class="client-workspace-card client-workspace-card--request" href="#client-contact"><span class="material-symbols-outlined">send</span><strong>Enviar un cambio</strong><small>Haz una pregunta o pon actualizaciones del sitio en cola desde tu cuenta.</small></a>
 <a class="client-workspace-card client-workspace-card--settings" href="account-settings.html"><span class="material-symbols-outlined">tune</span><strong>Preferencias del sitio</strong><small>Configura preferencias del sitio, ajustes de cuenta, estilo de actualizaciones y valores predeterminados.</small></a>
-<a class="client-workspace-card client-workspace-card--ads" href="https://seansads.com/es/index.html"><span class="material-symbols-outlined">ads_click</span><strong>Google Ads de Sean</strong><small>Abre el servicio dedicado de Google Ads para configuracion, administracion y crecimiento.</small></a>
 <a class="client-workspace-card client-workspace-card--orbit" href="preference-builder.html"><span class="material-symbols-outlined">rocket_launch</span><strong>Planear la proxima mejora</strong><small>Define una nueva pagina, funcion, rediseno o idea antes de construirla en tu sitio.</small></a>
 </div>
-<section class="client-ad-status-panel" aria-label="Actividad y estado de Google Ads">
+<section class="client-super-admin-panel client-sean-ads-panel" data-sean-ads-portal-panel hidden>
+<div class="client-super-admin-panel__header">
 <div>
-<div class="client-portal-kicker">Espacio de Google Ads</div>
-<h3>Actividad y estado de anuncios</h3>
-<p>Revisa notas de campaña, progreso de configuracion, actividad de prospectos, recordatorios de presupuesto y los proximos puntos de limpieza recomendados por Sean.</p>
+<div class="client-portal-kicker">Portal de Google Ads de Sean</div>
+<h3>Centro de clientes de Google Ads</h3>
+<p>Abre el espacio privado de Sean para clientes, proyectos, notas de campana y futuro seguimiento.</p>
 </div>
-<a class="client-google-button" href="account-ads-status.html"><span class="material-symbols-outlined">ads_click</span><span>Abrir estado de anuncios</span></a>
+<span class="client-super-admin-badge"><span class="material-symbols-outlined">ads_click</span>Autorizado</span>
+</div>
+<div class="client-super-admin-actions">
+<a class="client-portal-button client-portal-button--secondary" href="../seans-google-ads-dashboard.html"><span class="material-symbols-outlined">visibility</span>Abrir portal de Sean</a>
+</div>
+</section>
+<section class="client-super-admin-panel" data-super-admin-panel hidden>
+<div class="client-super-admin-panel__header">
+<div>
+<div class="client-portal-kicker">Consola admin del propietario</div>
+<h3>Acceso de super usuario</h3>
+<p>Tu cuenta de propietario puede abrir vistas de portales de miembros y futuras herramientas administrativas desde el panel normal de Dark Matter.</p>
+</div>
+<span class="client-super-admin-badge"><span class="material-symbols-outlined">admin_panel_settings</span>Solo propietario</span>
+</div>
+<div class="client-super-admin-actions">
+<a class="client-portal-button client-portal-button--secondary" href="../seans-google-ads-dashboard.html"><span class="material-symbols-outlined">visibility</span>Abrir vista backend del portal de Sean</a>
+</div>
+<p class="client-muted mt-4">Esta pagina solo controla que accesos administrativos se ven en el navegador. El acceso real a datos entre cuentas debe protegerse con roles, politicas o funciones de servidor en Supabase antes de guardar datos sensibles de miembros.</p>
 </section>
 <div class="client-metric-grid">
 <div class="client-metric"><span class="client-muted">Servicios</span><strong data-metric-services>0</strong></div>
@@ -217,7 +235,7 @@ window.DM_CLIENT_PORTAL_COPY = {
   signedOut: "Sesión cerrada."
 };
 </script>
-<script type="module" src="../assets/client-portal.js?v=20260604-seansads-mobile"></script>
+<script type="module" src="../assets/client-portal.js?v=20260605-sean-admin-preview"></script>
 </body></html>
 
 

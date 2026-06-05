@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Panel de Google Ads de Sean | DARK MATTER</title>
+<meta name="description" content="Panel privado de Google Ads de Sean dentro del portal de clientes de Dark Matter."/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="alternate" hreflang="en" href="/seans-google-ads-dashboard.html"/>
+<link rel="alternate" hreflang="es" href="/es/seans-google-ads-dashboard.html"/>
+<link href="../assets/nav.css?v=20260604-menu-consistency" rel="stylesheet"/>
+<link href="../assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/>
+<link href="../assets/client-portal.css?v=20260604-ad-status" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config={darkMode:"class",theme:{extend:{colors:{"electric-cyan":"#00F0FF","nebula-purple":"#7000FF","void-black":"#050505","starlight-white":"#FFFFFF","surface":"#121414","on-surface-variant":"#c4c7c7","outline":"#8e9192"},fontFamily:{"headline":["Space Grotesk","sans-serif"],"body":["Plus Jakarta Sans","sans-serif"],"mono":["JetBrains Mono","monospace"]}}}};
+</script>
+<style>
+body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",sans-serif;overflow-x:hidden}.grid-overlay{position:fixed;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.05) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:-1}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24}.nav-login-link{display:inline-flex;align-items:center;gap:.35rem;color:#00f0ff}.ads-shell{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:104px 22px 72px}.ads-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);gap:22px}.ads-panel{border-radius:18px;padding:28px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(18px)}.ads-kicker{font:700 12px "JetBrains Mono",monospace;letter-spacing:.18em;text-transform:uppercase;color:#00f0ff}.ads-title{font-family:"Space Grotesk",sans-serif;font-size:clamp(38px,6vw,68px);line-height:1;margin:14px 0;color:#fff}.ads-copy{color:#c4c7c7;font-size:18px;line-height:1.65}.portal-status{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:9px 11px;border-radius:999px;background:rgba(57,255,20,.09);border:1px solid rgba(57,255,20,.24);color:#39ff14;font:700 11px "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.08em}.portal-status.is-admin{background:rgba(251,188,5,.11);border-color:rgba(251,188,5,.34);color:#fbbc05}.ads-gate{display:none}.ads-gate.is-visible{display:block}.ads-private[hidden],.ads-admin[hidden],.ads-project-form[hidden]{display:none!important}.ads-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}.ads-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;padding:13px 18px;font:700 13px "JetBrains Mono",monospace;text-decoration:none;border:0;cursor:pointer}.ads-button--primary{background:linear-gradient(135deg,#39ff14,#00f0ff);color:#050505;box-shadow:0 0 30px rgba(57,255,20,.22)}.ads-button--secondary{border:1px solid rgba(255,255,255,.16);background:transparent;color:#e3e2e2}.ads-board{display:grid;gap:14px;margin-top:18px}.ads-card{display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:14px;background:rgba(5,5,5,.56);border:1px solid rgba(0,240,255,.18)}.ads-card .material-symbols-outlined{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,rgba(0,240,255,.18),rgba(112,0,255,.18));color:#00f0ff}.ads-card strong{display:block;color:#fff;font-family:"Space Grotesk",sans-serif;font-size:20px;margin-bottom:4px}.ads-card small{display:block;color:#c4c7c7;line-height:1.5}.ads-note{margin-top:16px;color:#8e9192;font-size:14px;line-height:1.55}.ads-admin{margin-top:22px;background:linear-gradient(135deg,rgba(251,188,5,.1),rgba(52,168,83,.07),rgba(66,133,244,.08)),rgba(255,255,255,.05);border-color:rgba(251,188,5,.24);box-shadow:0 0 42px rgba(251,188,5,.08)}.ads-admin .ads-kicker{color:#fbbc05}.ads-admin-badge{display:inline-flex;align-items:center;gap:8px;margin-top:8px;padding:8px 11px;border-radius:999px;background:rgba(251,188,5,.12);border:1px solid rgba(251,188,5,.32);color:#fbbc05;font:700 11px "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.08em}.ads-admin .ads-card{border-color:rgba(251,188,5,.22)}.ads-admin .ads-card .material-symbols-outlined{background:linear-gradient(135deg,rgba(251,188,5,.22),rgba(52,168,83,.16));color:#fbbc05}.ads-project-table-wrap{margin-top:18px;overflow-x:auto;border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(5,5,5,.44)}.ads-project-table{width:100%;min-width:860px;border-collapse:collapse}.ads-project-table th,.ads-project-table td{padding:13px 16px;border-bottom:1px solid rgba(255,255,255,.08);text-align:left}.ads-project-table th{color:#fbbc05;font:700 11px "JetBrains Mono",monospace;letter-spacing:.1em;text-transform:uppercase;background:rgba(251,188,5,.06)}.ads-project-table td{color:#c4c7c7;font-size:14px}.ads-project-empty{padding:28px 18px!important;text-align:center!important;color:#8e9192!important}.ads-project-form{margin-top:16px;padding:18px;border:1px solid rgba(0,240,255,.18);border-radius:16px;background:rgba(0,240,255,.05)}.ads-project-form-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}.ads-project-form-head strong{display:block;color:#fff;font-family:"Space Grotesk",sans-serif;font-size:22px}.ads-project-form-head small{display:block;color:#c4c7c7;line-height:1.5}.ads-project-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.ads-project-form label{display:grid;gap:7px;color:#c4c7c7;font:700 12px "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.08em}.ads-project-form input,.ads-project-form select,.ads-project-form textarea{width:100%;border:1px solid rgba(255,255,255,.16);border-radius:10px;background:rgba(5,5,5,.62);color:#e3e2e2;padding:11px 12px;font:500 14px "Plus Jakarta Sans",sans-serif;text-transform:none;letter-spacing:0}.ads-project-form textarea{min-height:92px;resize:vertical}.ads-project-field-full{grid-column:1/-1}.ads-visual{min-height:260px;border-radius:16px;overflow:hidden;position:relative;background:radial-gradient(circle at 18% 20%,rgba(66,133,244,.3),transparent 30%),radial-gradient(circle at 78% 18%,rgba(52,168,83,.3),transparent 28%),radial-gradient(circle at 62% 82%,rgba(251,188,5,.26),transparent 32%),radial-gradient(circle at 34% 74%,rgba(234,67,53,.24),transparent 30%),linear-gradient(135deg,rgba(5,5,5,.82),rgba(16,18,24,.9));border:1px solid rgba(255,255,255,.12)}.ads-visual:before{content:"";position:absolute;inset:20px;border-radius:999px;border:1px solid rgba(255,255,255,.12);box-shadow:0 0 70px rgba(0,240,255,.14),inset 0 0 46px rgba(112,0,255,.12)}.ads-visual__metric{position:absolute;padding:12px 14px;border-radius:14px;background:rgba(5,5,5,.66);border:1px solid rgba(255,255,255,.14);box-shadow:0 18px 44px rgba(0,0,0,.24)}.ads-visual__metric strong{display:block;color:#fff;font-family:"Space Grotesk",sans-serif;font-size:24px}.ads-visual__metric span{display:block;color:#c4c7c7;font:700 10px "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.12em}.ads-visual__metric:nth-child(1){left:24px;top:28px}.ads-visual__metric:nth-child(2){right:22px;top:82px}.ads-visual__metric:nth-child(3){left:34px;bottom:28px}@media(max-width:900px){.ads-shell{padding-top:84px}.ads-grid,.ads-project-form-grid{grid-template-columns:1fr}.ads-panel{padding:22px}.ads-project-form-head{flex-direction:column}.ads-project-form-head .ads-button{width:100%}}
+</style>
+</head>
+<body class="cosmic-page cosmic-tint-services">
+<div class="fixed inset-0 grid-overlay"></div>
+<div class="fixed inset-0 z-0 pointer-events-none"><div class="absolute inset-0 cosmic-web-bg opacity-70"></div><div class="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(5,5,5,0.42),#050505_86%)]"></div></div>
+<nav class="hidden md:flex fixed top-0 w-full z-50 bg-surface/10 backdrop-blur-xl border-b border-white/10 justify-between items-center px-16 py-4">
+<a href="index.html" class="site-brand inline-flex items-center gap-2.5 flex-nowrap shrink-0">
+<span class="material-symbols-outlined brand-mark text-electric-cyan" aria-hidden="true">blur_on</span>
+<span class="flex flex-col leading-none"><span class="font-headline text-2xl tracking-tighter brand-mystical brand-mystical--glow">DARK MATTER</span><span class="brand-subtext">Servicios Web</span></span>
+</a>
+<div class="hidden md:flex items-center gap-10">
+<a class="font-mono text-sm text-on-surface-variant hover:text-electric-cyan transition-colors" href="index.html">Inicio</a>
+<div class="relative services-nav-group">
+<a class="font-mono text-sm text-on-surface-variant hover:text-electric-cyan transition-colors" href="services.html">Servicios</a>
+<div class="services-nav-menu"><div class="services-nav-panel">
+<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon" aria-hidden="true">language</span>Servicios en linea</div>
+<a href="services/complete-website-management.html">Administracion completa del sitio</a>
+<a href="services/discovery-consultation.html">Consultoria</a>
+<a href="services/website-design.html">Diseno de sitios web</a>
+<a href="services/brand-rebranding.html">Marca y rebranding</a>
+<a href="services/managed-hosting.html">Hosting administrado</a>
+<a href="services/website-care-plans.html">Planes de cuidado web</a>
+<a href="services/seo-foundations.html">Bases de SEO</a>
+<a href="services/custom-development.html">Apps web para negocios</a>
+<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon" aria-hidden="true">home_pin</span>Servicios a domicilio y oficina</div>
+<a href="services/in-home-services.html">Servicios tech a domicilio</a>
+<a href="services/office-network-setup.html">Redes para oficina</a>
+</div></div>
+</div>
+<a class="font-mono text-sm text-on-surface-variant hover:text-electric-cyan transition-colors" href="apps.html">Apps</a>
+<a class="font-mono text-sm text-on-surface-variant hover:text-electric-cyan transition-colors" href="process.html">Proceso</a>
+<a class="font-mono text-sm text-on-surface-variant hover:text-electric-cyan transition-colors" href="casestudies.html">Portafolio</a>
+<a class="font-mono text-sm nav-login-link" href="account.html"><span class="material-symbols-outlined text-base">account_circle</span><span data-nav-account-label>Acceso</span></a>
+<div class="lang-switch flex items-center gap-1.5 font-mono text-sm shrink-0"><a href="../seans-google-ads-dashboard.html" hreflang="en" lang="en" onclick="try{localStorage.setItem('dm_lang','en')}catch(e){}" class="text-on-surface-variant hover:text-electric-cyan transition-colors">EN</a><span class="text-outline/50">/</span><span class="text-electric-cyan" aria-current="true">ES</span></div>
+</div>
+<a href="contact.html" class="inline-block bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-mono text-sm px-6 py-2 rounded-lg hover:scale-105 active:scale-95 transition-all">Contáctanos</a>
+</nav>
+<header class="md:hidden fixed top-0 w-full bg-surface/10 backdrop-blur-xl z-50 border-b border-white/10">
+<div class="flex items-center justify-between h-16 px-4">
+<a href="index.html" class="site-brand inline-flex items-center gap-2.5"><span class="material-symbols-outlined brand-mark text-electric-cyan">blur_on</span><span class="flex flex-col leading-none"><span class="font-headline text-xl brand-mystical brand-mystical--glow">DARK MATTER</span><span class="brand-subtext">Servicios Web</span></span></a>
+<div class="font-mono text-sm"><a href="../seans-google-ads-dashboard.html" class="text-on-surface-variant" onclick="try{localStorage.setItem('dm_lang','en')}catch(e){}">EN</a><span class="text-outline/50"> / </span><span class="text-electric-cyan">ES</span></div>
+</div>
+</header>
+<main class="ads-shell">
+<section class="ads-grid">
+<article class="ads-panel">
+<p class="ads-kicker">Panel de miembro</p>
+<h1 class="ads-title">Google Ads de Sean</h1>
+<p class="ads-copy">Un panel privado de Google Ads para clientes de Dark Matter que trabajan con Sean: notas de campana, estado de configuracion, recordatorios de presupuesto, actividad de prospectos y solicitudes quedan detras del login del portal.</p>
+<div class="portal-status" data-session-status><span class="material-symbols-outlined">lock</span>Revisando sesion</div>
+<div class="ads-gate" data-ads-gate>
+<p class="ads-note">Inicia sesion antes de abrir el panel de miembro de Google Ads de Sean.</p>
+<div class="ads-actions"><a class="ads-button ads-button--primary" data-login-link href="account.html"><span class="material-symbols-outlined">login</span>Entrar para continuar</a></div>
+</div>
+</article>
+<aside class="ads-panel">
+<div class="ads-visual" aria-hidden="true">
+<div class="ads-visual__metric"><span>Campanas</span><strong>Senal</strong></div>
+<div class="ads-visual__metric"><span>Prospectos</span><strong>Vigilar</strong></div>
+<div class="ads-visual__metric"><span>Siguiente</span><strong>Plan</strong></div>
+</div>
+</aside>
+</section>
+<section class="ads-panel ads-private" data-ads-private hidden style="margin-top:22px;">
+<p class="ads-kicker">Espacio del cliente</p>
+<h2 class="ads-title" style="font-size:clamp(30px,4vw,48px);">Tu centro de comando de Google Ads</h2>
+<div class="ads-board">
+<div class="ads-card"><span class="material-symbols-outlined">campaign</span><div><strong>Notas de campana</strong><small>Mantiene notas de configuracion, ideas de segmentacion, recomendaciones de limpieza y proximas prioridades conectadas con tu cuenta.</small></div></div>
+<div class="ads-card"><span class="material-symbols-outlined">monitoring</span><div><strong>Actividad de prospectos</strong><small>Reserva espacio para resumenes futuros de prospectos, notas de paginas de destino, recordatorios de llamadas y observaciones de presupuesto.</small></div></div>
+<div class="ads-card"><span class="material-symbols-outlined">task_alt</span><div><strong>Solicitudes y aprobaciones</strong><small>Envia preguntas de Google Ads, solicitudes de actualizacion o notas de aprobacion desde el portal de cliente.</small></div></div>
+</div>
+<div class="ads-actions"><a class="ads-button ads-button--primary" href="account.html#client-contact"><span class="material-symbols-outlined">send</span>Enviar actualizacion</a><a class="ads-button ads-button--secondary" href="account.html"><span class="material-symbols-outlined">arrow_back</span>Volver a la cuenta</a><a class="ads-button ads-button--secondary" href="https://seansads.com/es/index.html" target="_blank" rel="noopener"><span class="material-symbols-outlined">open_in_new</span>Inicio de Sean's Ads</a></div>
+</section>
+<section class="ads-panel ads-admin" data-ads-owner-tools hidden>
+<p class="ads-kicker">Centro de clientes de Sean</p>
+<h2 class="ads-title" style="font-size:clamp(30px,4vw,48px);">Proyectos activos de Google Ads</h2>
+<p class="ads-copy">Da seguimiento al trabajo de campanas, datos de contacto, zonas de servicio, estado y proximo paso de cada proyecto de Google Ads.</p>
+<div class="ads-actions"><button class="ads-button ads-button--primary" type="button" data-ads-project-add><span class="material-symbols-outlined">add_circle</span>Agregar proyecto</button></div>
+<div class="ads-project-table-wrap">
+<table class="ads-project-table" aria-label="Proyectos de clientes de Google Ads de Sean">
+<thead><tr><th>Cliente</th><th>Negocio</th><th>Ubicacion</th><th>Telefono</th><th>Email</th><th>Tipo de campana</th><th>Estado</th><th>Siguiente paso</th></tr></thead>
+<tbody><tr><td colspan="8" class="ads-project-empty">Todavia no se han agregado proyectos activos de Google Ads.</td></tr></tbody>
+</table>
+</div>
+<div class="ads-project-form" data-ads-project-form hidden>
+<div class="ads-project-form-head"><div><strong>Agregar proyecto de cliente</strong><small>Este marcador esta listo para futuros registros de clientes con Supabase.</small></div><button class="ads-button ads-button--secondary" type="button" data-ads-project-close><span class="material-symbols-outlined">close</span>Cerrar</button></div>
+<div class="ads-project-form-grid">
+<label>Nombre del cliente<input type="text" placeholder="Nombre del cliente" disabled></label>
+<label>Nombre del negocio<input type="text" placeholder="Nombre del negocio" disabled></label>
+<label>Ubicacion<input type="text" placeholder="Ciudad, estado o area de servicio" disabled></label>
+<label>Telefono<input type="tel" placeholder="Numero de telefono" disabled></label>
+<label>Email<input type="email" placeholder="Correo electronico" disabled></label>
+<label>Tipo de campana<select disabled><option>Nueva campana</option><option>Limpieza / reparacion</option><option>Revision de pagina de destino</option><option>Tracking / reportes</option></select></label>
+<label>Estado<select disabled><option>Nuevo prospecto</option><option>En configuracion</option><option>Activo</option><option>Necesita seguimiento</option><option>Pausado</option></select></label>
+<label>Siguiente paso<input type="text" placeholder="Siguiente paso" disabled></label>
+<label class="ads-project-field-full">Notas<textarea placeholder="Notas de campana, presupuesto, pagina de destino o solicitudes del cliente" disabled></textarea></label>
+</div>
+<p class="ads-note">Guardar proyectos debe conectarse a Supabase con permisos RLS o de servidor solo para Sean/propietario antes de almacenar datos reales de clientes.</p>
+</div>
+</section>
+</main>
+<script src="../assets/supabase-config.js?v=20260605-super-admin"></script>
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+const nextPath=`${location.pathname}${location.search}${location.hash}`;
+const loginUrl=new URL("es/account.html", location.origin);
+loginUrl.searchParams.set("next", nextPath);
+document.querySelector("[data-login-link]").href=loginUrl.href;
+const config=window.DM_SUPABASE_CONFIG||{};
+const status=document.querySelector("[data-session-status]");
+const gate=document.querySelector("[data-ads-gate]");
+const privatePanel=document.querySelector("[data-ads-private]");
+const ownerTools=document.querySelector("[data-ads-owner-tools]");
+const addProjectButton=document.querySelector("[data-ads-project-add]");
+const projectForm=document.querySelector("[data-ads-project-form]");
+const closeProjectButton=document.querySelector("[data-ads-project-close]");
+const navAccountLabel=document.querySelector("[data-nav-account-label]");
+function isSuperAdminUser(user){
+  const email=String(user?.email||"").trim().toLowerCase();
+  const adminEmails=(config.superAdminEmails||[]).map((item)=>String(item).trim().toLowerCase()).filter(Boolean);
+  return adminEmails.includes(email);
+}
+function isSeanAdsAdminUser(user){
+  const email=String(user?.email||"").trim().toLowerCase();
+  const seanEmails=(config.seanGoogleAdsAdminEmails||[]).map((item)=>String(item).trim().toLowerCase()).filter(Boolean);
+  return seanEmails.includes(email);
+}
+function canOpenSeanPortal(user){
+  return isSuperAdminUser(user)||isSeanAdsAdminUser(user);
+}
+if(!config.url||!config.anonKey){
+  status.textContent="Configuracion del portal pendiente";
+  gate.classList.add("is-visible");
+}else{
+  const supabase=createClient(config.url,config.anonKey);
+  const {data}=await supabase.auth.getSession();
+  if(!data.session){
+    status.innerHTML='<span class="material-symbols-outlined">lock</span>Inicio de sesion requerido';
+    gate.classList.add("is-visible");
+  }else if(!canOpenSeanPortal(data.session.user)){
+    if(navAccountLabel){
+      navAccountLabel.textContent="Cuenta";
+    }
+    status.innerHTML='<span class="material-symbols-outlined">lock</span>Solo Sean';
+    gate.classList.add("is-visible");
+    const note=gate.querySelector(".ads-note");
+    if(note) note.textContent="Este centro de clientes de Google Ads esta restringido a Sean y a la cuenta propietaria de Dark Matter.";
+  }else{
+    if(navAccountLabel){
+      navAccountLabel.textContent="Cuenta";
+    }
+    status.innerHTML='<span class="material-symbols-outlined">verified_user</span>Autorizado';
+    privatePanel.hidden=false;
+    ownerTools.hidden=false;
+  }
+}
+addProjectButton?.addEventListener("click",()=>{
+  if(!projectForm)return;
+  projectForm.hidden=false;
+  projectForm.scrollIntoView({behavior:"smooth",block:"center"});
+});
+closeProjectButton?.addEventListener("click",()=>{
+  if(projectForm)projectForm.hidden=true;
+});
+</script>
+</body>
+</html>

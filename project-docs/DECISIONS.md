@@ -1,5 +1,43 @@
 # Decisions
 
+## 2026-06-05
+
+Decision:
+Publish public starting prices for Dark Matter Apps on dedicated English/Spanish pricing pages, while routing purchase intent into the portal-only app checkout flow.
+
+Reason:
+Visitors need a clear price anchor before requesting a demo or custom version, but app purchases still require account context, setup notes, and future secure payment processing. Pricing is therefore public and competitive, while the cart/request flow stays in the client portal.
+
+Alternatives Considered:
+- Keep every app price as contact-only.
+- Put all app pricing only inside individual app profile pages.
+- Link pricing buttons straight to public payment pages.
+- Use dedicated public pricing pages with checkout CTAs into the existing portal-gated cart.
+
+Decision:
+Use real Supabase-authenticated email allowlists for owner-only portal shortcuts: `rcman12589@aol.com` as the Dark Matter super-admin and `scochrane495@gmail.com` as Sean's Google Ads admin. Do not include any local `admin` / `admin` credential bypass.
+
+Reason:
+The current portal is static/browser-side, so public config can only hide or show owner/admin UI. The owner and Sean accounts should be real Supabase-authenticated accounts, and fake local credentials could be confused with real access. Sensitive cross-account reads/writes still require Supabase RLS, custom claims, or server-side functions before production data exists.
+
+Alternatives Considered:
+- Add owner tools with no gating.
+- Store a private admin secret in static JavaScript.
+- Keep a local `admin` / `admin` test shortcut.
+- Use public owner/Sean email UI allowlists now and require Supabase/server enforcement before any sensitive privileged operation.
+
+Decision:
+App purchase and cart flows should live inside the Dark Matter client portal, reached through a safe login `next` redirect, instead of exposing a public standalone shopping cart.
+
+Reason:
+Business app purchases may involve custom setup, license choices, account identity, payment status, and follow-up notes. Keeping checkout behind the portal lets future payment processing, invoices, client records, and app setup requests stay connected to the authenticated client account.
+
+Alternatives Considered:
+- Link app purchase buttons directly to a public payment page.
+- Keep app purchase CTAs as contact-only request links.
+- Build a standalone public cart before finishing the portal.
+- Route app CTAs through the portal and use a shared selected-app checkout page.
+
 ## 2026-06-04
 
 Decision:

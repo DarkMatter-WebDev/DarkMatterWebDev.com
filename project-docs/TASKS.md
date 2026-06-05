@@ -1,6 +1,6 @@
 ﻿# Tasks
 
-Last updated: 2026-06-04
+Last updated: 2026-06-05
 
 ## Backlog
 
@@ -11,10 +11,8 @@ Last updated: 2026-06-04
 - Add real client entries to `project-docs/CLIENTS.md` when operational details are confirmed.
 - Define local/on-site service pricing, travel area, minimum visit policy, and residential vs business scope.
 - Add clearer starting prices or estimate language for in-home and office setup visits.
-- Add a dedicated custom business web app pricing/estimate section.
+- Review and refine the new app pricing page copy/rates after client feedback or real sales calls.
 - Keep the Auction House & Consignment Store Software listing and screenshots current with the hosted `https://auctionconsignmentapp.netlify.app/` app.
-- Add a real hosted demo, screenshots, or downloadable package for the Secondhand Dealer Management System (SDMS) listing when product assets exist.
-- Decide whether hidden `jpsurette.html` should stay English-only, get an `es/` mirror, or be added as a validator exception.
 - Update the JPS Surette case study from in-progress to final/live-complete once approved.
 - Add approved Google Ads portfolio examples, screenshots, or campaign summaries when Sean has public work cleared.
 - Have a native Spanish speaker review translation choices before a major public launch.
@@ -40,7 +38,42 @@ Last updated: 2026-06-04
 
 ## Recently Completed
 
-- Added visual previews to the English and Spanish Apps gallery tiles: the auction tile uses an existing app screenshot, while SDMS and custom-build tiles use compact interface mockups.
+- Ran a phone-width mobile sweep and fixed the app pricing banner CTA containment, two-wide pricing tier layout, SDMS mobile profile panel overflow, Built By decorative blur overflow, Preference Builder hero overflow, and SeansAds portfolio detail mobile overflow; validator passed afterward.
+- Updated the app pricing tier grid in English and Spanish so the four pricing cards stay two-wide on phone-width layouts, with tighter card spacing and type to prevent clipping.
+- Made all four app pricing tier cards clickable in English and Spanish, routing through the client login/account portal and preserving auction/SDMS checkout context when the pricing page is opened from an app profile.
+- Shortened the Apps page hero subtext in English and Spanish while keeping the custom-build/from-current-system message.
+- Added soft translucent cyan/purple/green color backing to the Apps gallery tiles in English and Spanish so the cards no longer read as plain black panels.
+- Swapped the Auction House app profile section order in English and Spanish so the Consignor Spine visual now appears before AppFlow screenshots and the Workflow Snapshot block appears after them.
+- Added app-aware return behavior to the Dark Matter app pricing pages: Pricing buttons from Auction House and SDMS now pass app context so `Back to App` returns to the originating app profile, and the Apps customization banner now includes a direct app-pricing CTA in English and Spanish.
+- Added a post-AppFlow Consignor Spine marketing block to the Auction House app profile pages in English and Spanish, with a CSS-only visual showing transferable floor items, auction lots, sales, and settlements tied back to one consignor profile.
+- Slimmed the Dark Matter app pricing pages in English and Spanish so they start with a small banner, a top-left Back to Apps link, and the Evaluation/Popular/Operations/Custom pricing tiers immediately; removed the pricing benchmark links/section and normalized Contact CTA styling on affected Dark Matter navs.
+- Tightened the Auction House app profile pages in English and Spanish so only one compact Workflow Snapshot block appears before the AppFlow screenshot tiles, matching the faster screenshot-first rhythm used by SDMS.
+- Added dedicated app pricing pages in English and Spanish with competitive starting tiers, app-specific Auction/SDMS pricing notes, benchmark links, and checkout CTAs back into the portal-only app checkout flow.
+- Added Pricing buttons to the Auction House and SDMS app profile CTA rows in English and Spanish; SDMS hero buttons now match the live demo, live login, custom version, and pricing button pattern.
+- Added an `Any Language` / `Cualquier idioma` callout with a colorful language-chip visual to each full app profile page: Auction House and SDMS, English and Spanish.
+- Added a colorful cloud-to-LAN deployment visual to the Auction House app profile Deployment Path card in English and Spanish, with Demo, Deploy/Instala, and Operate/Opera step chips.
+- Removed the hidden `jpsurette.html` Easter egg page and its tiny bottom-of-homepage links from the English and Spanish homepages.
+- Updated the Auction House app profile CTA rows in English and Spanish so the primary button opens the live hosted demo, a new secondary button requests live login access, and the custom-version request remains beside it.
+- Converted the SDMS app screenshots from PNG to lossless WebP, updated the English and Spanish Apps gallery cards plus SDMS profile screenshot tiles/modal data to use the WebP files, and removed the obsolete SDMS PNG assets.
+- Updated the Auction House & Consignment Store Software profile pages in English and Spanish with six new lossless WebP app-flow screenshots under `assets/apps/auction/`, SDMS-style interactive screenshot tiles, click-to-enlarge modal previews with X/Escape/backdrop close, refreshed dual-channel auction/floor-sales copy, and demo/request CTAs replacing the old hosted-app wording.
+- Added `seanGoogleAdsAdminEmails` to `assets/supabase-config.js` with `scochrane495@gmail.com` so Sean can access his Google Ads portal page through real Supabase login.
+- Added a Sean/owner-only portal shortcut panel to `account.html` and `es/account.html`, hidden from regular users, that opens Sean's direct Google Ads portal.
+- Restored the Active Google Ads Projects customer table and Add New Project placeholder form inside `seans-google-ads-dashboard.html` and `es/seans-google-ads-dashboard.html`; it is only revealed to Sean's allowed email or the Dark Matter super-admin account.
+- Added `superAdminEmails` to `assets/supabase-config.js` with `rcman12589@aol.com` as the only browser-side super-admin allowlist entry.
+- Removed the local-preview-only `admin` / `admin` placeholder login path from `assets/client-portal.js`; all admin UI now requires a real Supabase session whose email matches the super-admin allowlist.
+- Added an owner-only super-user panel to `account.html` and `es/account.html`, hidden for non-owner accounts, with a button to open Sean's direct portal backend view.
+- Removed the Sean's Google Ads dashboard tile from the regular account dashboard workspace so other signed-in users do not see a shortcut into Sean's direct/personalized portal page.
+- Gated `seans-google-ads-dashboard.html` and `es/seans-google-ads-dashboard.html` behind the same super-admin email allowlist, with owner-only messaging for non-owner sessions.
+- Added the standard Dark Matter desktop navigation and mobile header shell to the English and Spanish portal-only Sean's Google Ads dashboard pages, including the Services dropdown, Apps/Process/Portfolio links, language toggle, Contact CTA, and session-aware Account/Cuenta nav label.
+- Removed the large Google Ads activity/status panel from the English and Spanish account dashboards.
+- Added portal-only Sean's Google Ads direct view pages in English and Spanish and added the dashboard path to the safe client-portal `next` redirect list.
+- Updated the client portal navigation label so the account menu link switches from `Login` / `Acceso` to `Account` / `Cuenta` when a Supabase session is active.
+- Added a shared portal-only app checkout/cart page in English and Spanish, added a safe `next` login redirect to the client portal, and changed the SDMS purchase CTA to `Get it now` / `Obtenerla ahora` so app purchases route through login before the selected-app checkout.
+- Added a colorful CSS compliance-flow visual to the SDMS problem card in English and Spanish to fill the empty lower space and reinforce ID verification, hold tracking, and reporting.
+- Reworded the four SDMS top feature cards in English and Spanish from demo sample-data counts into plain-language business benefits for seller records, purchase recording, live inventory value tracking with metal calculators/prices, and easier compliance reporting.
+- Tightened the SDMS screenshot tile and modal-preview crops in English and Spanish, converted each screenshot tile into a hover-moving button, strengthened the tile borders, and added a click-to-enlarge modal preview with backdrop, Escape/backdrop close, and an X close button.
+- Upgraded the SDMS Apps gallery tile and full profile pages in English and Spanish with the live `https://secondhanddealer.netlify.app/` demo link, real cropped app-flow screenshots under `assets/apps/sdms/`, production-grade SaaS + Windows desktop positioning, FastAPI/React/Neon/Render/Netlify stack details, custom JWT/RBAC, immutable audit log, and database-layer 15-day hold enforcement.
+- Added visual previews to the English and Spanish Apps gallery tiles: the auction and SDMS tiles use real app screenshots, while the custom-build tile uses a compact interface mockup.
 - Updated the Apps hero copy in English and Spanish to mention custom business apps can be built from scratch or based on a client's current system.
 - Updated the Apps and Portfolio galleries in English and Spanish so mobile layouts show two compact tiles per row instead of one long stacked column.
 - Added a third custom-build CTA tile to the English and Spanish Apps galleries, linking visitors to the Contact page to request their own business app.

@@ -10,5 +10,11 @@ window.DM_SUPABASE_CONFIG = {
     billing: "client_billing",
     websiteStatus: "client_website_status",
     websiteStats: "client_website_stats"
-  }
+  },
+  superAdminEmails: [
+    "rcman12589@aol.com"
+  ],
+  seanGoogleAdsAdminEmails: [
+    "scochrane495@gmail.com"
+  ]
 };

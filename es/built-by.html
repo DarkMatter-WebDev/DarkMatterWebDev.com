@@ -38,7 +38,8 @@
 .glass-card { background: rgba(255,255,255,0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); }
 .grid-overlay { background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 80px 80px; }
 .gradient-text { background: linear-gradient(135deg, #00F0FF 0%, #7000FF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.nebula-blur { filter: blur(120px); opacity: 0.15; position: absolute; border-radius: 50%; z-index: 0; pointer-events: none; }
+.nebula-blur { filter: blur(120px); opacity: 0.15; position: fixed; border-radius: 50%; z-index: 0; pointer-events: none; }
+@media (max-width: 767px) { .nebula-blur, .nebula-blur.w-\[500px\], .nebula-blur.w-\[400px\] { display: none !important; } }
 .feature-check { display: flex; align-items: flex-start; gap: 0.75rem; }
 .feature-check .material-symbols-outlined { color: #00F0FF; font-size: 1.25rem; flex-shrink: 0; margin-top: 0.125rem; }
 .mystical-badge {

@@ -66,4 +66,4 @@ Use this file to track client website operations. Never store actual passwords, 
 - Login/credential locations: Not documented.
 - Outstanding requests: Update the case study from in-progress to final/live-complete when approved.
 - Billing status: Not documented.
-- Notes: Featured case study assets exist under `assets/portfolio/jpsurette/`; hidden Easter egg page exists at `jpsurette.html`.
+- Notes: Featured case study assets exist under `assets/portfolio/jpsurette/`.

@@ -1,6 +1,6 @@
 ﻿# Current Status
 
-Last updated: 2026-06-04
+Last updated: 2026-06-05
 
 This file is intentionally concise for handoff. Historical detail lives in `CHANGELOG.md` and feature notes under `project-docs/features/`.
 
@@ -32,7 +32,8 @@ This file is intentionally concise for handoff. Historical detail lives in `CHAN
 - WhatsApp update-queue messaging is integrated on the homepage and Process page.
 - Browser/link-preview metadata is in place with favicon, app icons, manifest, and a modern Dark Matter Open Graph image.
 - English and Spanish punctuation/form-tag artifacts from earlier cleanup sweeps have been rechecked; legitimate closing question marks were restored on affected pages, and malformed `textárea` tags were corrected back to `textarea`.
-- Apps pages exist at `apps.html` and `es/apps.html` for Dark Matter-created web apps. They use the standard Dark Matter mobile header/tab shell and services popout, now act as a compact gallery-only app preview page with two-up mobile tiles, visual tile previews, direct full-profile links, a custom-build contact tile, and hero/banner copy noting Dark Matter can build custom apps from scratch or around an existing business system, fully customized for each business and language. Current listings are Auction House & Consignment Store Complete Management Software and Secondhand Dealer Management System (SDMS). The auction app links to the live hosted app at `https://auctionconsignmentapp.netlify.app/`, includes cropped app-flow screenshots on its profile page, and explains that full brand, feature, layout, report, field, module, language/localization, and tag-printing customization is available. The auction app has full profile pages at `auction-house-consignment-store-software.html` and `es/auction-house-consignment-store-software.html`; SDMS has full profile pages at `secondhand-dealer-management-system.html` and `es/secondhand-dealer-management-system.html`; these app pages include the powered-by banner and footer shell.
+- A mobile-formatting sweep was run across the routed site at phone width. App pricing now keeps two-wide tier cards on mobile, the pricing banner `Ask a Question` / `Hacer una pregunta` CTA stays contained, and targeted overflow fixes were applied to Built By decorative blurs, Preference Builder hero behavior, the SeansAds portfolio detail pages, and SDMS mobile profile panels/header.
+- Apps pages exist at `apps.html` and `es/apps.html` for Dark Matter-created web apps. They use the standard Dark Matter mobile header/tab shell and services popout, now act as a compact gallery-only app preview page with two-up mobile tiles, soft translucent color-backed app cards, visual tile previews, direct full-profile links, a custom-build contact tile, and concise hero/banner copy noting Dark Matter can build apps from scratch or adapt around an existing system. The custom business apps banner includes both a Contact CTA and an app pricing CTA. Current listings are Auction House & Consignment Store Complete Management Software and Secondhand Dealer Management System (SDMS). Dedicated app pricing pages now exist at `app-pricing.html` and `es/app-pricing.html`, with a compact page banner, top-left Back to Apps link, immediate Evaluation/Popular/Operations/Custom tiers, app-specific pricing notes, and checkout CTAs into `app-checkout.html?app=auction` / `app-checkout.html?app=sdms`; the old public benchmark-link section was intentionally removed. Pricing buttons on app profile pages pass `?from=auction` or `?from=sdms`, causing the pricing page back link to relabel as `Back to App` / `Volver a la app` and return directly to the originating app profile; the four pricing tier cards are also clickable and route through `account.html?next=...` to the selected app checkout when app context is present. The auction app profile now uses six compressed lossless WebP screenshots stored under `assets/apps/auction/`, presents floor sales plus live auctions as one shared operating system, uses SDMS-style hover-moving screenshot tiles with click-to-enlarge modal previews in English and Spanish, includes a CSS-only cloud-to-LAN deployment visual in the Deployment Path card, includes an `Any Language` callout with a language-chip visual, places the Consignor Spine marketing block before the AppFlow screenshots, and places the compact Workflow Snapshot block after the AppFlow screenshots. Auction CTA rows include `Open Live App Demo`, `Request Live Login`, `Request Custom Version`, and `Pricing`. SDMS links to the live hosted demo at `https://secondhanddealer.netlify.app/`, uses six compressed lossless WebP screenshots stored under `assets/apps/sdms/`, has one benefit-summary block before AppFlow screenshots, has tighter cropped interactive screenshot tiles with hover motion and click-to-enlarge modal previews, includes an `Any Language` callout with a language-chip visual, and positions the product as a production-grade SaaS + Windows desktop compliance app using FastAPI, React/TypeScript/Vite/Tailwind, PostgreSQL on Neon, Render + Netlify, custom JWT auth, immutable audit logs, and database-layer 15-day hold enforcement. The auction app has full profile pages at `auction-house-consignment-store-software.html` and `es/auction-house-consignment-store-software.html`; SDMS has full profile pages at `secondhand-dealer-management-system.html` and `es/secondhand-dealer-management-system.html`; these app pages include the powered-by banner and footer shell. SDMS purchase CTA now says `Get it now` / `Obtenerla ahora` and routes through the client portal with a safe `next` redirect to the shared portal-only app checkout page.
 
 ## Portfolio / Case Studies
 
@@ -45,7 +46,6 @@ This file is intentionally concise for handoff. Historical detail lives in `CHAN
 - Portfolio screenshots have been harvested into `assets/portfolio/`; imported full client source folders have been removed.
 - JPS Surette is still marked in progress and links to `https://jpsurette.netlify.app/`.
 - SeansAds.com is live at `https://seansads.com/` as a standalone Google Ads mini-site hosted separately from Dark Matter. Dark Matter portfolio/account/service links now point to the live Sean's Ads domain.
-- A hidden direct-link-only Easter egg page exists at `jpsurette.html`; it intentionally has no Spanish mirror.
 
 ## Client Portal
 
@@ -68,6 +68,8 @@ This file is intentionally concise for handoff. Historical detail lives in `CHAN
 - Lightweight placeholder pages:
   - `account-settings.html` / `es/account-settings.html`
   - `account-ads-status.html` / `es/account-ads-status.html`
+- Portal-only app checkout pages now exist at `app-checkout.html` and `es/app-checkout.html`. They read the selected app from `?app=sdms` or `?app=auction`, require a Supabase session before showing the cart/payment request form, and otherwise link visitors back through `account.html?next=...` / `es/account.html?next=...`.
+- A portal-only Sean's Google Ads direct member/backend view exists at `seans-google-ads-dashboard.html` and `es/seans-google-ads-dashboard.html`. It checks the Supabase browser session and only opens for the owner super-admin email in `assets/supabase-config.js` (`superAdminEmails`, currently `rcman12589@aol.com`) or Sean's Google Ads admin email (`seanGoogleAdsAdminEmails`, currently `scochrane495@gmail.com`). The normal account dashboard shows a Sean portal shortcut only to those allowed accounts and hides it from regular users. Sean's direct portal includes an empty Active Google Ads Projects customer table plus an Add New Project placeholder form for future Supabase-backed records. There is no `admin` / `admin` local preview login shortcut; real sign-in must happen through Supabase. This is still browser-side UI gating only, so real cross-account/customer data access must be enforced later with Supabase RLS/custom claims/server-side functions.
 
 ## Sean's Google Ads
 
@@ -94,9 +96,7 @@ This file is intentionally concise for handoff. Historical detail lives in `CHAN
 
 ## Known Validator Warning
 
-- `scripts/validate-site.ps1` currently reports one expected warning:
-  - `missing-es-pair jpsurette.html Missing Spanish mirror: es/jpsurette.html`
-- This is intentional because `jpsurette.html` is a hidden English-only Easter egg page.
+- No expected validator warning is currently documented.
 
 ## Active Blockers
 

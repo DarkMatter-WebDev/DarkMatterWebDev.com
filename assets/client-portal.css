@@ -791,12 +791,96 @@
 
 .client-workspace-card--ads {
   --workspace-glow: rgba(52, 168, 83, 0.3);
+  border-color: rgba(251, 188, 5, 0.28);
+  animation: ads-login-card-pulse 3.8s ease-in-out infinite;
+}
+
+.client-workspace-card--ads::after {
+  content: "";
+  position: absolute;
+  inset: -45% auto auto -60%;
+  width: 56%;
+  height: 190%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  transform: rotate(18deg);
+  animation: ads-login-card-shine 5.4s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .client-workspace-card--ads .material-symbols-outlined {
   background:
     conic-gradient(from 40deg, #4285f4, #ea4335, #fbbc05, #34a853, #4285f4);
   color: #050505;
+  box-shadow: 0 0 22px rgba(251, 188, 5, 0.22);
+  animation: ads-login-icon-orbit 4.2s ease-in-out infinite;
+}
+
+.client-super-admin-panel {
+  margin: 18px 0;
+  padding: 20px;
+  border: 1px solid rgba(251, 188, 5, 0.24);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(251, 188, 5, 0.09), rgba(52, 168, 83, 0.06), rgba(66, 133, 244, 0.07)),
+    rgba(5, 5, 5, 0.5);
+  box-shadow: 0 20px 52px rgba(0, 0, 0, 0.22), 0 0 40px rgba(251, 188, 5, 0.06);
+}
+
+.client-super-admin-panel[hidden] {
+  display: none !important;
+}
+
+.client-super-admin-panel__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.client-super-admin-panel h3 {
+  margin: 4px 0;
+  color: #fff;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.12;
+}
+
+.client-super-admin-panel p {
+  margin: 0;
+  color: #c4c7c7;
+  line-height: 1.55;
+}
+
+.client-super-admin-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  padding: 8px 11px;
+  border: 1px solid rgba(251, 188, 5, 0.32);
+  border-radius: 999px;
+  background: rgba(251, 188, 5, 0.12);
+  color: #fbbc05;
+  font: 700 11px "JetBrains Mono", monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.client-super-admin-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 700px) {
+  .client-super-admin-panel__header {
+    flex-direction: column;
+  }
+
+  .client-super-admin-panel .client-portal-button {
+    width: 100%;
+  }
 }
 
 .client-workspace-card--orbit {
@@ -806,6 +890,48 @@
 .client-workspace-card--orbit .material-symbols-outlined {
   background: linear-gradient(135deg, #a65cff, #00f0ff);
   color: #fff;
+}
+
+@keyframes ads-login-card-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(66, 133, 244, 0), inset 0 0 0 1px rgba(52, 168, 83, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 34px rgba(66, 133, 244, 0.14), inset 0 0 0 1px rgba(251, 188, 5, 0.18);
+  }
+}
+
+@keyframes ads-login-card-shine {
+  0%, 58%, 100% {
+    transform: translateX(0) rotate(18deg);
+    opacity: 0;
+  }
+  70% {
+    opacity: 1;
+  }
+  86% {
+    transform: translateX(360%) rotate(18deg);
+    opacity: 0;
+  }
+}
+
+@keyframes ads-login-icon-orbit {
+  0%, 100% {
+    filter: saturate(1);
+    transform: translateY(0);
+  }
+  50% {
+    filter: saturate(1.25);
+    transform: translateY(-2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .client-workspace-card--ads,
+  .client-workspace-card--ads::after,
+  .client-workspace-card--ads .material-symbols-outlined {
+    animation: none;
+  }
 }
 
 .client-ad-status-panel {
