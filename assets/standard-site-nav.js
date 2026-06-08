@@ -8,7 +8,7 @@
 
   var copy = isSpanish
     ? {
-        brandSub: "Servicios Web",
+        brandSub: '<span class="brand-subtext__line">Surette Systems</span><span class="brand-subtext__line brand-subtext__line--portal">Portal</span>',
         home: "Inicio",
         services: "Servicios",
         apps: "Apps",
@@ -25,7 +25,7 @@
         langStorage: "en"
       }
     : {
-        brandSub: "Web Services",
+        brandSub: '<span class="brand-subtext__line">Surette Systems</span><span class="brand-subtext__line brand-subtext__line--portal">Portal</span>',
         home: "Home",
         services: "Services",
         apps: "Apps",

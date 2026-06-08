@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600&display=swap');
 
 .brand-subtext {
   display: block;
@@ -14,8 +14,67 @@
   transform-origin: left center;
 }
 
-.brand-subtext--center {
-  transform-origin: center center;
+.brand-subtext__line {
+  display: block;
+  line-height: 1;
+}
+
+.flex.flex-col.leading-none:has(.brand-subtext__line),
+.site-brand > .flex.flex-col:has(.brand-subtext__line) {
+  gap: 0;
+  align-items: flex-start;
+}
+
+.flex.flex-col.leading-none:has(.brand-subtext__line) > * {
+  text-align: left;
+}
+
+.brand-subtext:has(.brand-subtext__line) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 100%;
+  font-family: 'Syne', 'Space Grotesk', system-ui, sans-serif;
+  font-size: 7.25px;
+  font-weight: 500;
+  font-synthesis: none;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: rgba(156, 168, 182, 0.92);
+  line-height: 1;
+  margin-top: -2px;
+  transform: none;
+}
+
+.brand-subtext:has(.brand-subtext__line) .brand-subtext__line--portal {
+  font-size: 5.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-align: left;
+  align-self: flex-start;
+  margin-top: 0;
+  color: rgba(156, 168, 182, 0.82);
+}
+
+:not(.site-brand) .flex.flex-col.leading-none .brand-subtext:has(.brand-subtext__line) .brand-subtext__line--portal {
+  font-size: 6.25px;
+  letter-spacing: 0.14em;
+}
+
+.site-brand > .flex.flex-col {
+  gap: 0;
+  min-width: 0;
+}
+
+.site-brand .brand-subtext:has(.brand-subtext__line) {
+  transform: translateY(-2px);
+}
+
+.brand-subtext.brand-subtext--center:has(.brand-subtext__line) {
+  transform: none;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .site-brand {

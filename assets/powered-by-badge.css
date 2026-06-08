@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@500&display=swap');
+
 /* Dark Matter — "Website powered by" footer badge (rectangle) */
 .dm-powered-badge {
   display: inline-flex;
@@ -56,18 +58,35 @@
   filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.55)) drop-shadow(0 0 22px rgba(112, 0, 255, 0.4));
   animation: dm-brand-shimmer 6s ease-in-out infinite;
 }
-.dm-powered-badge__subtext {
-  display: block;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 9px;
-  font-weight: 400;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #8e9192;
+.dm-powered-badge__subtext:has(.dm-powered-badge__subtext-line) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: 'Syne', 'Space Grotesk', system-ui, sans-serif;
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: rgba(156, 168, 182, 0.92);
   line-height: 1;
-  margin-top: 3px;
-  transform: scaleX(1.28);
-  transform-origin: left center;
+  margin-top: 1px;
+  transform: none;
+}
+
+.dm-powered-badge__subtext-line {
+  display: block;
+  line-height: 1;
+  text-align: left;
+}
+
+.dm-powered-badge__subtext-line--portal {
+  font-size: 6.25px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: left;
+  align-self: flex-start;
+  margin-top: 0;
+  color: rgba(156, 168, 182, 0.82);
 }
 @keyframes dm-brand-shimmer {
   0%, 100% { background-position: 0% center; }

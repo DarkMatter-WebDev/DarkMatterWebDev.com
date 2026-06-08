@@ -1,0 +1,569 @@
+/* Surette physics wordmark — GSAP + SplitType + Matter.js */
+
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@600;700&display=swap");
+
+.sds-wordmark:has(.sds-physics-wordmark.is-ready),
+.sds-wordmark.is-physics-falling {
+  overflow: visible;
+  position: relative;
+  z-index: 12;
+  transform: none;
+}
+
+.sds-wordmark.is-physics-falling .sds-wordmark__system {
+  position: relative;
+  z-index: 12;
+}
+
+.sds-wordmark:has(.sds-physics-wordmark)::before {
+  display: none;
+}
+
+.sds-wordmark:has(.sds-physics-wordmark) .sds-wordmark__system {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-left: 0;
+  font-size: clamp(1.12rem, 3.85vw, 2.9rem);
+  letter-spacing: clamp(0.2em, 0.95vw, 0.44em);
+}
+
+.sds-wordmark:has(.sds-physics-wordmark) .sds-wordmark__rule {
+  display: none;
+}
+
+.sds-wordmark:has(.sds-physics-wordmark) .sds-wordmark__system-text {
+  display: inline-flex;
+  justify-content: flex-start;
+}
+
+.sds-physics-fall-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 43;
+  overflow: visible;
+}
+
+.sds-physics-fall-layer.is-desktop-mark-launchable {
+  z-index: 85;
+}
+
+.sds-physics-fall-layer.is-desktop-mark-launchable .sds-physics-desktop-mark {
+  pointer-events: auto;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.sds-physics-wordmark {
+  position: relative;
+  max-width: 100%;
+  margin: 0 0 0.35rem;
+  z-index: 30;
+  pointer-events: auto;
+}
+
+.sds-physics-wordmark--sub {
+  display: inline-block;
+  vertical-align: baseline;
+  max-width: none;
+  margin: 0;
+  z-index: 31;
+  line-height: 1.4;
+}
+
+.sds-physics-wordmark--sub .sds-physics-wordmark__arena {
+  display: inline-block;
+  vertical-align: baseline;
+  width: auto;
+  min-height: 0;
+  line-height: 1.4;
+}
+
+.sds-physics-wordmark--sub .sds-physics-wordmark__line,
+.sds-physics-wordmark--sub .sds-physics-wordmark__line .char,
+.sds-physics-fall-layer .char.is-subline-char {
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 600;
+  font-size: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-transform: uppercase;
+  color: var(--sds-lime, #a3e635);
+  text-shadow: 0 0 12px rgba(163, 230, 53, 0.35);
+}
+
+.sds-physics-wordmark--sub.is-split .sds-physics-wordmark__line {
+  display: inline-block;
+  vertical-align: baseline;
+  opacity: 1;
+  overflow: visible;
+}
+
+.sds-physics-wordmark--sub.is-split .sds-physics-wordmark__arena {
+  overflow: visible;
+}
+
+.sds-physics-wordmark--sub.is-split .sds-physics-wordmark__line .char {
+  position: absolute;
+}
+
+.sds-physics-wordmark--sub.is-ready.is-split .sds-physics-wordmark__arena {
+  touch-action: manipulation;
+}
+
+.sds-physics-wordmark--sub.is-ready.is-split .sds-physics-wordmark__line .char {
+  pointer-events: auto;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.sds-physics-wordmark--sub.is-ready.is-split .sds-physics-wordmark__line .char::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(100% + 0.22em);
+  height: calc(100% + 0.34em);
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+}
+
+.sds-physics-wordmark--sub.is-ready.is-split .sds-physics-wordmark__line .char:hover,
+.sds-physics-wordmark--sub.is-ready.is-split .sds-physics-wordmark__line .char:focus-visible {
+  opacity: 0.88;
+}
+
+.sds-hero__sub .sds-physics-wordmark--sub {
+  pointer-events: auto;
+}
+
+/* Hero visual (floating S) must sit below catalog cards; copy stays above via sibling z-index. */
+.sds-apps-page .sds-hero {
+  z-index: auto;
+  isolation: auto;
+}
+
+.sds-apps-page .sds-hero__copy,
+.sds-apps-page .sds-hero__copy:has(.sds-physics-wordmark) {
+  position: relative;
+  z-index: 42;
+}
+
+.sds-apps-page .sds-hero__visual {
+  z-index: 0;
+}
+
+.sds-physics-wordmark.is-booting .sds-physics-wordmark__arena {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sds-physics-wordmark:not(.sds-physics-wordmark--sub):not(.is-intro):not(.is-ready):not(.is-static) .sds-physics-wordmark__line {
+  opacity: 0;
+}
+
+.sds-physics-wordmark--sub.is-visible .sds-physics-wordmark__line {
+  opacity: 1;
+}
+
+.sds-physics-wordmark--sub.is-visible:not(.is-ready).is-split .sds-physics-wordmark__line .char {
+  pointer-events: none;
+  cursor: default;
+}
+
+.sds-physics-wordmark:not(.sds-physics-wordmark--sub).is-load-intro .sds-physics-wordmark__arena {
+  pointer-events: auto;
+}
+
+.sds-physics-wordmark:not(.sds-physics-wordmark--sub).is-load-intro.is-ready.is-split .sds-physics-wordmark__line .char:not(.is-falling-char):not(.is-cycle-active):not(.is-loosening-char) {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+@property --intro-fill {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
+@property --intro-color-mix {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
+.sds-physics-wordmark.is-load-intro .sds-physics-wordmark__line .char.is-intro-filling {
+  --intro-fill: 0%;
+  --intro-color-mix: 0%;
+  --intro-tint: #ffffff;
+  color: #ffffff;
+  background-image: linear-gradient(
+    to top,
+    var(--intro-tint, #ffffff) 0%,
+    var(--intro-tint, #ffffff) var(--intro-fill, 0%),
+    #ffffff var(--intro-fill, 0%),
+    #ffffff 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .sds-physics-wordmark.is-load-intro .sds-physics-wordmark__line .char.is-intro-filling {
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .sds-physics-wordmark.is-load-intro .sds-physics-wordmark__line .char.is-intro-filling::after {
+    content: attr(data-intro-overlay);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: inherit;
+    letter-spacing: inherit;
+    line-height: inherit;
+    text-transform: inherit;
+    font-synthesis: inherit;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    pointer-events: none;
+    z-index: 1;
+    opacity: calc(var(--intro-color-mix, 0%) / 100 * 0.82);
+    mix-blend-mode: soft-light;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent 0,
+        transparent 2px,
+        color-mix(in srgb, var(--intro-tint, #00f0ff) 26%, transparent) 2px,
+        color-mix(in srgb, var(--intro-tint, #00f0ff) 26%, transparent) 3px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent 0,
+        transparent 6px,
+        color-mix(in srgb, var(--intro-tint, #00f0ff) 14%, transparent) 6px,
+        color-mix(in srgb, var(--intro-tint, #00f0ff) 14%, transparent) 7px
+      ),
+      repeating-linear-gradient(
+        128deg,
+        transparent 0,
+        transparent 10px,
+        hsl(0 0% 100% / 0.05) 10px,
+        hsl(0 0% 100% / 0.05) 11px
+      ),
+      linear-gradient(
+        180deg,
+        transparent 0%,
+        color-mix(in srgb, var(--intro-tint, #00f0ff) 8%, transparent) 47%,
+        color-mix(in srgb, var(--intro-tint, #00f0ff) 16%, transparent) 50%,
+        color-mix(in srgb, var(--intro-tint, #00f0ff) 8%, transparent) 53%,
+        transparent 100%
+      );
+    background-size: 100% 3px, 7px 100%, 14px 14px, 100% 28%;
+    background-position:
+      0 var(--intro-scan-offset, 0px),
+      var(--intro-scan-offset, 0px) 0,
+      0 0,
+      0 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-mask-image: linear-gradient(
+      to top,
+      #000 0%,
+      #000 var(--intro-fill, 0%),
+      transparent var(--intro-fill, 0%),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to top,
+      #000 0%,
+      #000 var(--intro-fill, 0%),
+      transparent var(--intro-fill, 0%),
+      transparent 100%
+    );
+    animation: sds-intro-overlay-drift 7.5s linear infinite;
+  }
+
+  .sds-physics-wordmark.is-load-intro .sds-physics-wordmark__line .char.is-intro-filling.is-intro-fill-frozen::after {
+    animation: none;
+  }
+}
+
+@keyframes sds-intro-overlay-drift {
+  0% {
+    background-position:
+      0 var(--intro-scan-offset, 0px),
+      var(--intro-scan-offset, 0px) 0,
+      0 0,
+      0 0;
+  }
+
+  100% {
+    background-position:
+      0 calc(var(--intro-scan-offset, 0px) + 9px),
+      calc(var(--intro-scan-offset, 0px) + 7px) 0,
+      4px 4px,
+      0 1px;
+  }
+}
+
+.sds-physics-wordmark__arena {
+  position: relative;
+  width: 100%;
+  min-height: clamp(3.1rem, 9.5vw, 5.4rem);
+  overflow: visible;
+  touch-action: manipulation;
+  cursor: default;
+}
+
+.sds-physics-wordmark.is-ready .sds-physics-wordmark__arena {
+  cursor: default;
+}
+
+.sds-physics-wordmark.is-ready.is-split .sds-physics-wordmark__line .char {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.sds-physics-wordmark.is-ready.is-split .sds-physics-wordmark__line .char::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(100% + 0.55em);
+  height: calc(100% + 0.7em);
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+}
+
+.sds-physics-wordmark.is-ready.is-split .sds-physics-wordmark__line .char.is-cycle-active,
+.sds-physics-wordmark.is-ready.is-split .sds-physics-wordmark__line .char.is-engage-cooldown,
+.sds-physics-wordmark.is-ready.is-split .sds-physics-wordmark__line .char.is-loosening-char {
+  pointer-events: none;
+}
+
+.sds-physics-wordmark.is-ready.is-split .sds-physics-wordmark__line .char.is-loosening-char {
+  opacity: 1;
+}
+
+.sds-physics-wordmark.is-ready.is-split .sds-physics-wordmark__line .char:hover,
+.sds-physics-wordmark.is-ready.is-split .sds-physics-wordmark__line .char:focus-visible {
+  opacity: 0.92;
+}
+
+.sds-physics-wordmark__line,
+.sds-physics-wordmark__line .char,
+.sds-physics-fall-layer .char {
+  font-family: "Archivo Expanded", "Eurostile", "Microgramma", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-synthesis: none;
+  font-size: clamp(3.45rem, 12.8vw, 7.65rem);
+  letter-spacing: 0.062em;
+  line-height: 0.84;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: none;
+  filter: none;
+}
+
+.sds-physics-wordmark__line {
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.sds-physics-wordmark.is-booting .sds-physics-wordmark__line,
+.sds-physics-wordmark.is-load-intro .sds-physics-wordmark__line,
+.sds-physics-wordmark.is-falling .sds-physics-wordmark__line {
+  will-change: transform, opacity;
+}
+
+.sds-physics-wordmark__line .char,
+.sds-physics-fall-layer .char {
+  display: inline-block;
+  transform-origin: 50% 62%;
+}
+
+.sds-physics-wordmark.is-load-intro .sds-physics-wordmark__line .char,
+.sds-physics-wordmark.is-falling .sds-physics-wordmark__line .char,
+.sds-physics-fall-layer .char.is-falling-char,
+.sds-physics-fall-layer .char.is-rematerializing-char {
+  will-change: transform;
+}
+
+.sds-physics-wordmark.is-split .sds-physics-wordmark__line {
+  position: relative;
+  display: block;
+  margin: 0;
+}
+
+.sds-physics-wordmark.is-split .sds-physics-wordmark__line .char {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+}
+
+.sds-physics-fall-layer .char.is-falling-char,
+.sds-physics-fall-layer .char.is-rematerializing-char {
+  position: fixed;
+  z-index: 43;
+  margin: 0;
+  left: 0;
+  top: 0;
+  filter: none;
+  pointer-events: none;
+}
+
+.sds-apps-page .sds-hero + section {
+  position: relative;
+  z-index: 40;
+  isolation: isolate;
+}
+
+.sds-apps-page .sds-hero + section .app-tile {
+  position: relative;
+  z-index: 41;
+}
+
+.sds-physics-wordmark.is-rematerializing .sds-physics-wordmark__line .char {
+  z-index: 12;
+  filter: none;
+}
+
+.sds-physics-wordmark__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sds-physics-wordmark.is-static .sds-physics-wordmark__arena {
+  cursor: default;
+}
+
+@media (max-width: 767px) {
+  .sds-physics-wordmark__arena {
+    min-height: clamp(2.8rem, 12vw, 4rem);
+  }
+
+  .sds-physics-wordmark__line,
+  .sds-physics-wordmark__line .char,
+  .sds-physics-fall-layer .char {
+    font-size: clamp(2.75rem, 13.8vw, 4.9rem);
+    letter-spacing: 0.05em;
+    line-height: 0.86;
+  }
+
+  .sds-physics-mobile-mark {
+    display: block;
+    object-fit: contain;
+    filter:
+      drop-shadow(0 0 12px rgba(168, 85, 247, 0.42))
+      drop-shadow(0 10px 22px rgba(0, 0, 0, 0.44));
+    will-change: transform;
+  }
+
+  .sds-wordmark:has(.sds-physics-wordmark) .sds-wordmark__system {
+    font-size: clamp(0.76rem, 4vw, 1.06rem);
+    letter-spacing: 0.18em;
+  }
+}
+
+
+.sds-hero__copy {
+  overflow: visible;
+}
+
+@media (min-width: 768px) {
+  .sds-physics-desktop-mark {
+    display: block;
+    object-fit: contain;
+    filter:
+      drop-shadow(0 0 14px rgba(168, 85, 247, 0.42))
+      drop-shadow(0 10px 22px rgba(0, 0, 0, 0.44));
+    will-change: transform;
+  }
+
+  .sds-physics-desktop-mark.is-launch-ready {
+    animation: sds-desktop-mark-launch-ready 1.8s ease-in-out infinite;
+  }
+
+  .sds-physics-hero-floating-mark {
+    display: block;
+    object-fit: contain;
+    transform-origin: center center;
+    filter:
+      drop-shadow(0 0 28px rgba(168, 85, 247, 0.34))
+      drop-shadow(0 28px 58px rgba(0, 0, 0, 0.46));
+    will-change: transform, opacity;
+  }
+
+  .sds-physics-hero-floating-mark.is-flick-launch {
+    filter:
+      drop-shadow(0 0 32px rgba(245, 158, 11, 0.36))
+      drop-shadow(0 30px 60px rgba(0, 0, 0, 0.48));
+    transition: filter 0.28s ease-out;
+  }
+}
+
+@keyframes sds-desktop-mark-launch-ready {
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 18px rgba(168, 85, 247, 0.5))
+      drop-shadow(0 12px 24px rgba(0, 0, 0, 0.44));
+  }
+
+  50% {
+    filter:
+      drop-shadow(0 0 26px rgba(168, 85, 247, 0.72))
+      drop-shadow(0 14px 28px rgba(0, 0, 0, 0.48));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sds-physics-wordmark__arena,
+  .sds-physics-wordmark.is-active .sds-physics-wordmark__arena,
+  .sds-physics-wordmark.is-falling .sds-physics-wordmark__arena {
+    min-height: auto;
+    transition: none;
+  }
+
+  .sds-physics-wordmark.is-load-intro .sds-physics-wordmark__line .char.is-intro-filling {
+    animation: none;
+    --intro-fill: 100%;
+    --intro-color-mix: 100%;
+    --intro-tint: #00f0ff;
+    color: #00f0ff;
+    -webkit-text-fill-color: currentColor;
+    background-image: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+  }
+
+  .sds-physics-wordmark.is-load-intro .sds-physics-wordmark__line .char.is-intro-filling::after {
+    content: none;
+    animation: none;
+  }
+}

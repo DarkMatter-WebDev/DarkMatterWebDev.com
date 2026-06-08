@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\rcman\\\\OneDrive\\\\Documents\\\\DarkMatter - Codex\" -Recurse -Force -ErrorAction SilentlyContinue)",
+      "Bash(Select-Object FullName, PSIsContainer)",
+      "Bash(Sort-Object FullName)",
+      "Bash(ConvertTo-Json)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\rcman\\\\OneDrive\\\\Documents\\\\DarkMatter - Codex\" -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object { $_.FullName })"
+    ]
+  }
+}

@@ -1,4 +1,6 @@
 (() => {
+  if (document.querySelector(".sds-physics-wordmark")) return;
+
   const wordmarkName = document.querySelector(".sds-wordmark__name");
   const letters = [...document.querySelectorAll(".sds-block-letter")];
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

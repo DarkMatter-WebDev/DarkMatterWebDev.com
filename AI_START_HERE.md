@@ -16,7 +16,7 @@ Then summarize the current state in a few bullets and continue with the user's l
 
 ## Project Snapshot
 
-- Static bilingual Dark Matter Web Services site.
+- Static bilingual Dark Matter Surette Systems Portal site.
 - English pages live at the repo root; Spanish mirrors live under `es/`.
 - Main app library page is `apps.html`; app brand is Surette Data Systems; old `downloads.html` paths redirect.
 - Sean's Google Ads source is intentionally not in this repo. It lives separately at `https://seansads.com/`.
