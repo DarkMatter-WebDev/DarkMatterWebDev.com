@@ -65,6 +65,46 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        .case-studies-hero {
+            display: grid;
+            grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.85fr);
+            align-items: center;
+            gap: clamp(1.5rem, 4vw, 4.5rem);
+        }
+        .case-studies-hero__copy { max-width: 48rem; }
+        .case-studies-hero__visual {
+            position: relative;
+            min-height: clamp(22rem, 38vw, 34rem);
+            display: grid;
+            place-items: center;
+            isolation: isolate;
+        }
+        .case-studies-hero__visual::before {
+            content: "";
+            position: absolute;
+            inset: 9% 3% 5%;
+            border-radius: 999px;
+            background:
+                radial-gradient(circle at 38% 45%, rgba(0, 240, 255, 0.2), transparent 44%),
+                radial-gradient(circle at 70% 24%, rgba(112, 0, 255, 0.28), transparent 44%);
+            filter: blur(26px);
+            opacity: 0.95;
+            z-index: -1;
+        }
+        .case-studies-hero__blocks {
+            display: block;
+            width: min(100%, clamp(21rem, 41vw, 36rem));
+            height: auto;
+            object-fit: contain;
+            filter:
+                drop-shadow(0 0 26px rgba(0, 240, 255, 0.22))
+                drop-shadow(0 24px 54px rgba(0, 0, 0, 0.42));
+            animation: case-study-block-float 8s ease-in-out infinite;
+        }
+        @keyframes case-study-block-float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(1.2deg); }
+        }
         /* Portfolio gallery tiles (product-listing style) */
         .portfolio-tile {
             position: relative;
@@ -199,6 +239,7 @@
             .portfolio-tile__cta { transition: none; }
             .portfolio-tile:hover { transform: none; }
             .portfolio-tile:hover .portfolio-tile__img { transform: none; }
+            .case-studies-hero__blocks { animation: none; }
         }
         /* Ghost rail popover */
         .rail-popover-ghost {
@@ -514,11 +555,14 @@
 </div>
 </div>
 <main class="relative z-10 pt-32 pb-24 px-margin-desktop max-w-container-max mx-auto md:pl-28">
-<section class="mb-8">
-<div class="max-w-3xl">
+<section class="case-studies-hero mb-12">
+<div class="case-studies-hero__copy">
 <h4 class="font-label-caps text-label-caps text-electric-cyan mb-4 tracking-[0.2em]">NUESTRO PORTAFOLIO</h4>
 <h1 class="font-headline-xl text-headline-xl text-starlight-white mb-8">Nuestro <span class="gradient-text-nebula">portafolio</span></h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">Sitios reales para negocios reales del suroeste de Florida. Cada proyecto está diseñado para cargar rápido, verse impecable y convertir visitantes en clientes.</p>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">Sitios reales para negocios reales del suroeste de Florida. Empezamos con los bloques de una base empresarial solida y luego damos forma a cada proyecto para cargar rapido, verse impecable y convertir visitantes en clientes.</p>
+</div>
+<div class="case-studies-hero__visual" aria-hidden="true">
+<img class="case-studies-hero__blocks" src="../assets/case-studies-building-blocks.webp" width="1024" height="1024" alt=""/>
 </div>
 </section>
 
@@ -672,7 +716,8 @@
 <span class="font-label-mono text-label-mono text-electric-cyan tracking-widest uppercase">Trabajo Seleccionado</span>
 </div>
 <h2 class="font-headline-xl text-headline-lg-mobile text-starlight-white">Nuestro portafolio</h2>
-<p class="font-body-lg text-body-md text-on-surface-variant">Sitios reales para negocios reales del suroeste de Florida, creados para cargar rápido y convertir visitantes en clientes.</p>
+<img class="case-studies-hero__blocks w-full max-w-[18rem] self-center -my-2" src="../assets/case-studies-building-blocks.webp" width="1024" height="1024" alt="" aria-hidden="true"/>
+<p class="font-body-lg text-body-md text-on-surface-variant">Empezamos con los bloques de una base empresarial solida y luego creamos sitios rapidos que convierten visitantes en clientes.</p>
 </div>
 
 <!-- Portfolio gallery (mobile) -->

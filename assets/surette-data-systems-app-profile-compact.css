@@ -1,0 +1,282 @@
+/* Compact typography overrides for Surette Data Systems app profile pages. */
+
+.page {
+  max-width: 1520px;
+  padding-top: clamp(96px, 9vw, 116px);
+}
+
+.hero {
+  grid-template-columns: minmax(0, 1.28fr) minmax(300px, 0.72fr);
+  gap: clamp(18px, 2vw, 30px);
+  align-items: start;
+}
+
+.hero h1 {
+  font-size: clamp(34px, 4.3vw, 58px);
+  line-height: 1.04;
+  margin: 10px 0 14px;
+  max-width: 16ch;
+}
+
+.hero h1 .app-hero-subtitle {
+  font-size: clamp(14px, 1.55vw, 18px);
+  line-height: 1.32;
+  max-width: 32rem;
+}
+
+.lead {
+  font-size: 16.5px;
+  line-height: 1.58;
+}
+
+.panel h2 {
+  font-size: clamp(24px, 2.6vw, 28px);
+  line-height: 1.14;
+}
+
+.shot h3,
+.card h3 {
+  font-size: clamp(18px, 1.8vw, 21px);
+  line-height: 1.2;
+}
+
+.panel {
+  padding: clamp(22px, 2.1vw, 26px);
+}
+
+.app-profile-scroll-cue {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .page {
+    padding: 96px 18px 76px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .hero h1 {
+    font-size: clamp(28px, 8.2vw, 38px);
+    max-width: 18ch;
+  }
+
+  .hero h1 .app-hero-subtitle {
+    font-size: clamp(14px, 4.3vw, 17px);
+  }
+
+  .lead {
+    font-size: 15.5px;
+    line-height: 1.56;
+  }
+
+  .panel h2 {
+    font-size: clamp(22px, 6.4vw, 26px);
+  }
+
+  .hero .deployment-visual,
+  .hero .compliance-visual {
+    margin-top: 16px;
+    min-height: 300px;
+  }
+
+  .hero .deployment-visual__cloud {
+    left: 16px;
+    top: 18px;
+    width: 100px;
+    height: 72px;
+  }
+
+  .hero .deployment-visual__server {
+    right: 16px;
+    top: 68px;
+    bottom: auto;
+    width: 104px;
+    height: 76px;
+  }
+
+  .hero .deployment-visual__line {
+    left: 70px;
+    right: 70px;
+    top: 108px;
+  }
+
+  .hero .deployment-visual__cloud .material-symbols-outlined,
+  .hero .deployment-visual__server .material-symbols-outlined {
+    font-size: 36px;
+  }
+
+  .hero .deployment-visual__steps {
+    grid-template-columns: 1fr;
+    top: 168px;
+    bottom: auto;
+  }
+
+  .hero .deployment-step {
+    padding: 8px 10px;
+  }
+
+  .hero .compliance-visual__sheet {
+    left: 18px;
+    top: 18px;
+    width: 116px;
+    height: 126px;
+  }
+
+  .hero .compliance-visual__sheet span {
+    height: 7px;
+    margin: 12px 14px;
+  }
+
+  .hero .compliance-visual__orbit {
+    right: 20px;
+    left: auto;
+    top: 28px;
+    width: 96px;
+    height: 96px;
+  }
+
+  .hero .compliance-visual__core {
+    left: 16px;
+    right: 16px;
+    top: 142px;
+    width: auto;
+    gap: 8px;
+  }
+
+  .hero .compliance-step {
+    gap: 9px;
+    padding: 9px 10px;
+  }
+
+  .hero .compliance-step .material-symbols-outlined {
+    width: 30px;
+    height: 30px;
+  }
+
+  .hero .payroll-flow-visual {
+    margin-top: 16px;
+    min-height: 348px;
+    padding: 14px 0 8px;
+  }
+
+  .hero .payroll-step {
+    margin: 0 16px 8px;
+    padding: 9px 11px;
+  }
+
+  .hero .payroll-step .material-symbols-outlined {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 84px 14px 64px;
+  }
+
+  .panel {
+    padding: 18px;
+  }
+
+  .hero {
+    gap: 12px;
+  }
+
+  .hero h1 {
+    font-size: clamp(26px, 7.6vw, 32px);
+    margin: 8px 0 10px;
+    max-width: none;
+  }
+
+  .hero .lead {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .hero aside > .muted {
+    display: none;
+  }
+
+  .hero .deployment-visual,
+  .hero .compliance-visual {
+    min-height: 282px;
+  }
+
+  .hero .deployment-visual__steps {
+    top: 156px;
+  }
+
+  .hero .deployment-step small,
+  .hero .compliance-step small,
+  .hero .payroll-step small {
+    font-size: 10px;
+  }
+
+  .hero .compliance-visual__core {
+    top: 132px;
+  }
+
+  .hero .payroll-flow-visual {
+    min-height: 324px;
+  }
+
+  .hero .deployment-visual,
+  .hero .compliance-visual,
+  .hero .payroll-flow-visual {
+    display: none;
+  }
+
+  .hero .actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+    margin-top: 14px;
+  }
+
+  .hero .button {
+    width: auto;
+    min-height: 36px;
+    padding: 7px 8px;
+    gap: 5px;
+    border-radius: 8px;
+    font-size: 10.5px;
+    line-height: 1.15;
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .hero .button .material-symbols-outlined {
+    flex: 0 0 auto;
+    font-size: 16px;
+  }
+
+  .app-profile-scroll-cue {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin: 14px 0 0;
+    color: #00f0ff;
+    font: 700 11px/1.2 "JetBrains Mono", monospace;
+    letter-spacing: .12em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .app-profile-scroll-cue .material-symbols-outlined {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero .button {
+    min-height: 34px;
+    padding: 6px 6px;
+    font-size: 9.5px;
+  }
+}

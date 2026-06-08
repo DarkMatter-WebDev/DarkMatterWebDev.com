@@ -10,7 +10,7 @@
   margin: 0;
 }
 
-.hypercube-app-credit {
+.sds-app-credit {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -26,20 +26,21 @@
   flex-shrink: 0;
 }
 
-.hypercube-app-credit__mark {
-  width: 16px;
-  height: 16px;
+.sds-app-credit__mark {
+  width: 18px;
+  height: 22px;
   flex-shrink: 0;
+  object-fit: contain;
   opacity: 0.8;
   filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.18));
 }
 
-.hypercube-app-credit strong {
+.sds-app-credit strong {
   color: rgba(168, 85, 247, 0.82);
   font-weight: 600;
 }
 
-.hypercube-app-credit span {
+.sds-app-credit span {
   line-height: 1;
 }
 
@@ -48,7 +49,7 @@
     gap: 0.75rem;
   }
 
-  .hypercube-app-credit {
+  .sds-app-credit {
     margin-left: 1.75rem;
   }
 }

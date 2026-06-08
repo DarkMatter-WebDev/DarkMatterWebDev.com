@@ -18,7 +18,7 @@ Then summarize the current state in a few bullets and continue with the user's l
 
 - Static bilingual Dark Matter Web Services site.
 - English pages live at the repo root; Spanish mirrors live under `es/`.
-- Main app library page is `apps.html`; old `downloads.html` paths redirect.
+- Main app library page is `apps.html`; app brand is Surette Data Systems; old `downloads.html` paths redirect.
 - Sean's Google Ads source is intentionally not in this repo. It lives separately at `https://seansads.com/`.
 - Local preview usually runs at `http://127.0.0.1:4173/`.
 
