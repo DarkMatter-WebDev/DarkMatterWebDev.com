@@ -35,6 +35,10 @@
   const SETTLE_RETURN_MS = 2600;
   const REMATERIALIZE_SETTLE_MIN_MS = 800;
   const REMATERIALIZE_MAX_WAIT_MS = 4500;
+  // Hard wall-clock cap for flick-reveal icons: no matter how actively they
+  // are bouncing, they are recalled after this many ms from release.
+  // Intentionally shorter than the letters' REMATERIALIZE_MAX_WAIT_MS.
+  const FLICK_ICON_MAX_DOWN_MS = 3200;
   const REMATERIALIZE_FORCE_RETURN_DURATION = 0.62;
   const REMATERIALIZE_FORCE_SPAWN_DURATION = 0.78;
   const REST_VELOCITY = 0.12;
@@ -53,6 +57,7 @@
   let userPhysicsDisabled = false;
   const frozenBodyIds = new Set();
   const isPhysicsInteractive = () => physicsEnabled && !userPhysicsDisabled;
+  const PHYSICS_PREF_KEY = "sds:physicsEnabled";
   const MOBILE_MARK_ID = "sds-physics-mobile-mark";
   const MOBILE_MARK_SELECTOR = ".sds-hero__brand-mark";
   const MOBILE_MARK_SPACER_CLASS = "sds-hero__brand-mark-spacer";
@@ -342,7 +347,9 @@
   let heroFloatingMarkBound = false;
   let flickRevealIcons = [];
   let desktopLaunchPointerHandler = null;
+  let desktopLaunchClickHandler = null;
   let mobileLaunchPointerHandler = null;
+  let mobileLaunchClickHandler = null;
   let heroFlickPointerHandler = null;
   let appTileLaunchHandler = null;
   let desktopBrandMarkEngageHandler = null;
@@ -1916,6 +1923,70 @@
     applyDesktopMarkBounceImpulse(markBody, floorLabel);
   };
 
+  // ---------------------------------------------------------------------------
+  // Mark dead-zone overlay
+  //
+  // A transparent, pointer-events:auto <div> in the fall layer that tracks the
+  // icon's position every physics frame.  Because it sits inside the fall layer
+  // (z-index: 43, above all page content) and explicitly sets pointer-events:auto
+  // it absorbs hover, pointerdown AND click events before they can ever reach an
+  // app-tile link beneath the icon — regardless of the icon's launchReady state.
+  // ---------------------------------------------------------------------------
+
+  const createMarkDeadZone = (mark, isDesktop) => {
+    if (!mark) return;
+    const pad = BRAND_MARK_CLICK_BLOCK_PAD;
+    const el = document.createElement("div");
+    el.className = "sds-physics-mark-dead-zone";
+    el.style.cssText = (
+      "position:fixed;"
+      + "left:-9999px;top:0;"
+      + `width:${mark.width + pad * 2}px;`
+      + `height:${mark.height + pad * 2}px;`
+      + "pointer-events:auto;"
+      + "background:transparent;"
+      + "touch-action:manipulation;"
+    );
+
+    el.addEventListener("pointerdown", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (userPhysicsDisabled) return;
+      if (!isDesktop) {
+        launchBrandMarkFromCard(mobileMark);
+      } else if (desktopBrandMark?.launchReady) {
+        launchDesktopBrandMark();
+      }
+    });
+
+    // Block the follow-up click so it cannot fall through to links below.
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    });
+
+    getFallLayer().appendChild(el);
+    mark.deadZoneEl = el;
+  };
+
+  const syncMarkDeadZone = (mark) => {
+    if (!mark?.deadZoneEl || !mark.body) return;
+    const pad = BRAND_MARK_CLICK_BLOCK_PAD;
+    mark.deadZoneEl.style.left = `${mark.body.position.x - mark.width * 0.5 - pad}px`;
+    mark.deadZoneEl.style.top  = `${mark.body.position.y - mark.height * 0.5 - pad}px`;
+  };
+
+  const destroyMarkDeadZone = (mark) => {
+    mark?.deadZoneEl?.remove();
+    if (mark) mark.deadZoneEl = null;
+  };
+
+  const setMarkDeadZoneCursor = (mark, cursor) => {
+    if (mark?.deadZoneEl) mark.deadZoneEl.style.cursor = cursor;
+  };
+
+  // ---------------------------------------------------------------------------
+
   const syncBrandMarkDom = (mark) => {
     if (!mark?.released || !mark.body) return;
     gsap.set(mark.el, {
@@ -1925,6 +1996,7 @@
       yPercent: -50,
       rotation: mark.body.angle * (180 / Math.PI)
     });
+    syncMarkDeadZone(mark);
   };
 
   const syncMobileMark = () => syncBrandMarkDom(mobileMark);
@@ -2408,6 +2480,7 @@
         desktopBrandMark.el?.removeEventListener("pointerdown", desktopBrandMark.launchClickHandler);
         desktopBrandMark.el?.removeEventListener("click", desktopBrandMark.launchClickHandler);
       }
+      destroyMarkDeadZone(desktopBrandMark);
       if (desktopBrandMark.body && engine) {
         Composite.remove(engine.world, desktopBrandMark.body);
       }
@@ -2446,6 +2519,7 @@
       if (mobileMark.body && engine) {
         Composite.remove(engine.world, mobileMark.body);
       }
+      destroyMarkDeadZone(mobileMark);
       mobileMark.el?.remove();
       mobileMark = null;
     }
@@ -2491,9 +2565,12 @@
 
     mobileMarkEarlyReleaseHandler = (event) => {
       if (!getMobilePhysicsActive()) return;
-      if (!tryReleaseMobileBrandMarkEarly()) return;
+      // Always consume the interaction when mobile physics is active so the
+      // source element never lets a click fall through to links below it,
+      // regardless of whether the early-release attempt succeeds.
       event.preventDefault();
       event.stopPropagation();
+      tryReleaseMobileBrandMarkEarly();
     };
 
     mobileMarkEarlyReleaseBound = true;
@@ -2629,6 +2706,7 @@
       menuKnockCount: 0,
       wasInGalleryZone: false
     };
+    createMarkDeadZone(mobileMark, false);
     lastMobileMarkScrollY = getPageScrollY();
     bindBrandMarkScroll();
     Composite.add(engine.world, body);
@@ -2765,6 +2843,9 @@
   };
 
   const BRAND_MARK_LAUNCH_HIT_PAD = 10;
+  // Slightly larger dead-zone used to block click events that follow a
+  // pointerdown on or near the icon so no link behind it can be triggered.
+  const BRAND_MARK_CLICK_BLOCK_PAD = 24;
 
   const isPointerOnBrandMark = (event, mark) => {
     if (!mark?.el || !mark.released) return false;
@@ -2781,6 +2862,20 @@
   };
 
   const isPointerOnDesktopBrandMark = (event) => isPointerOnBrandMark(event, desktopBrandMark);
+
+  // Wider hit-test used only for click-blocking; gives a small dead-zone
+  // around the icon so a click can never fall through to links below it.
+  const isPointerNearBrandMark = (event, mark) => {
+    if (!mark?.el || !mark.released) return false;
+    const rect = mark.el.getBoundingClientRect();
+    const pad = BRAND_MARK_CLICK_BLOCK_PAD;
+    return (
+      event.clientX >= rect.left - pad
+      && event.clientX <= rect.right + pad
+      && event.clientY >= rect.top - pad
+      && event.clientY <= rect.bottom + pad
+    );
+  };
 
   const bindDesktopBrandMarkElementLaunch = () => {
     if (!desktopBrandMark?.el || desktopBrandMark.launchClickHandler) return;
@@ -2804,18 +2899,41 @@
       if (
         userPhysicsDisabled
         || !getDesktopPhysicsActive()
-        || !desktopBrandMark?.launchReady
         || !isPointerOnDesktopBrandMark(event)
       ) {
         return;
       }
 
+      // Always consume the event when the pointer lands on the brand mark while
+      // desktop physics is active — even if it is not yet launch-ready.  This
+      // prevents the click from falling through to links beneath the bouncing
+      // icon.  The launch action is only triggered once the mark is ready.
       event.preventDefault();
       event.stopPropagation();
-      launchDesktopBrandMark();
+
+      if (desktopBrandMark?.launchReady) {
+        launchDesktopBrandMark();
+      }
+    };
+
+    // Block the click event that the browser fires after the pointerdown.
+    // Without this, the launch action fires on pointerdown (which sets
+    // pointer-events:none on the element), and the subsequent click passes
+    // straight through to any link sitting beneath the icon.
+    desktopLaunchClickHandler = (event) => {
+      if (
+        userPhysicsDisabled
+        || !getDesktopPhysicsActive()
+        || !isPointerNearBrandMark(event, desktopBrandMark)
+      ) {
+        return;
+      }
+      event.preventDefault();
+      event.stopPropagation();
     };
 
     document.addEventListener("pointerdown", desktopLaunchPointerHandler, true);
+    document.addEventListener("click", desktopLaunchClickHandler, true);
     desktopMarkLaunchLayerBound = true;
   };
 
@@ -2833,7 +2951,17 @@
       launchBrandMarkFromCard(mark);
     };
 
+    // Block the click that follows a pointerdown on the mobile mark so it
+    // cannot reach any link beneath the bouncing icon.
+    mobileLaunchClickHandler = (event) => {
+      if (userPhysicsDisabled || !getMobilePhysicsActive()) return;
+      if (!isPointerNearBrandMark(event, mobileMark)) return;
+      event.preventDefault();
+      event.stopPropagation();
+    };
+
     document.addEventListener("pointerdown", mobileLaunchPointerHandler, true);
+    document.addEventListener("click", mobileLaunchClickHandler, true);
     mobileMarkLaunchLayerBound = true;
   };
 
@@ -2846,6 +2974,7 @@
     desktopBrandMark.el.style.pointerEvents = ready ? "auto" : "none";
     desktopBrandMark.el.style.cursor = ready ? "pointer" : "";
     desktopBrandMark.el.classList.toggle("is-launch-ready", ready);
+    setMarkDeadZoneCursor(desktopBrandMark, ready ? "pointer" : "default");
     layer.classList.toggle("is-desktop-mark-launchable", ready);
 
     if (ready) {
@@ -2964,6 +3093,7 @@
         settleSpeedPeak: 0,
         settleSpeedSampleAt: 0,
         lowEnergySince: null,
+        releasedAt: null,
         releaseRotation: null,
         width: 0,
         height: 0
@@ -3071,6 +3201,7 @@
     state.settleSpeedPeak = 0;
     state.settleSpeedSampleAt = 0;
     state.lowEnergySince = null;
+    state.releasedAt = performance.now();
 
     Composite.add(engine.world, body);
     syncFlickRevealIconDom();
@@ -3136,6 +3267,7 @@
     state.released = false;
     state.fallen = false;
     state.settledSince = null;
+    state.releasedAt = null;
 
     if (state.body && engine) {
       Composite.remove(engine.world, state.body);
@@ -3162,7 +3294,6 @@
       y: slot.y,
       rotation: 0,
       scale: 1,
-      opacity: 1,
       duration: accelerated
         ? REMATERIALIZE_FORCE_RETURN_DURATION + Math.random() * 0.12
         : 1.05 + Math.random() * 0.35,
@@ -3228,8 +3359,15 @@
 
       const lowEnergyAge = state.lowEnergySince ? now - state.lowEnergySince : 0;
       const forceStragglerReturn = !introRunning && lowEnergyAge >= REMATERIALIZE_MAX_WAIT_MS;
+
+      // Wall-clock cap: recall regardless of energy level once the icon has
+      // been down for longer than FLICK_ICON_MAX_DOWN_MS.
+      const downAge = state.releasedAt != null ? now - state.releasedAt : 0;
+      const forceTimeoutReturn = !introRunning && downAge >= FLICK_ICON_MAX_DOWN_MS;
+
       const effectivelySettled = isFlickIconEffectivelySettled(state, now, groupIdle)
-        || (forceStragglerReturn && lowEnergyAge >= REMATERIALIZE_SETTLE_MIN_MS);
+        || (forceStragglerReturn && lowEnergyAge >= REMATERIALIZE_SETTLE_MIN_MS)
+        || forceTimeoutReturn;
 
       if (!effectivelySettled) {
         state.settledSince = null;
@@ -3238,11 +3376,14 @@
 
       if (state.settledSince === null) {
         state.settledSince = now;
-        if (!forceStragglerReturn) return;
+        // forceStragglerReturn and forceTimeoutReturn both skip the one-frame
+        // deferral so the icon is recalled on this tick.
+        if (!forceStragglerReturn && !forceTimeoutReturn) return;
       }
 
       const settleAge = now - state.settledSince;
-      const accelerated = forceGroupReturn || forceStragglerReturn || settleAge >= REMATERIALIZE_MAX_WAIT_MS;
+      const accelerated = forceGroupReturn || forceStragglerReturn || forceTimeoutReturn
+        || settleAge >= REMATERIALIZE_MAX_WAIT_MS;
       const readyToReturn = accelerated || (settleAge >= normalReturnMs && settleAge >= minReturnMs);
 
       if (readyToReturn) {
@@ -3676,7 +3817,10 @@
       const mark = getVisibleLaunchableBrandMark();
       if (!mark) return;
 
-      const tapOnMark = isPointerOnBrandMark(event, mark);
+      // Use the wider click-block pad here as a defence-in-depth measure: if
+      // the user's touch lands anywhere within the dead-zone around the icon,
+      // treat it as a tap on the mark and skip navigation.
+      const tapOnMark = isPointerNearBrandMark(event, mark);
 
       event.preventDefault();
       event.stopPropagation();
@@ -3842,6 +3986,7 @@
       desktopBrandMark.launchReady = false;
       desktopBrandMark.slowFrames = 0;
       desktopBrandMark.floorAnchor = "viewport";
+      createMarkDeadZone(desktopBrandMark, true);
       lastDesktopMarkScrollY = getPageScrollY();
       bindBrandMarkScroll();
       syncDesktopMarkBodyRestitution();
@@ -4152,6 +4297,15 @@
 
       const markBody = pair.bodyA.label === brandLabel ? pair.bodyA : pair.bodyB;
       const otherBody = pair.bodyA === markBody ? pair.bodyB : pair.bodyA;
+
+      // The view-top wall has no ceiling for the brand mark — pass through freely
+      // in both directions so it can fall back into the viewport after being knocked
+      // upward past the top edge.
+      if (otherBody.label === "view-top" && isBrandMarkEnvironmentCollider(otherBody)) {
+        pair.isActive = false;
+        return;
+      }
+
       if (!isBrandMarkPassingUpward(markBody) || !isBrandMarkEnvironmentCollider(otherBody)) {
         return;
       }
@@ -4245,6 +4399,10 @@
 
         const wallLabel = labels.find((label) => VIEW_WALL_LABELS.has(label));
         if (wallLabel && desktopBrandMark.screenBounceMode) {
+          // view-top is fully transparent to the brand mark — no impulse in either direction.
+          if (wallLabel === "view-top") {
+            return;
+          }
           if (isBrandMarkPassingUpward(markBody) && !getBrandMarkUpwardPassExemptLabels().has(wallLabel)) {
             return;
           }
@@ -5731,7 +5889,11 @@
       pair.introTintColor = null;
     }
 
-    commitPairSlotFromDom(pair);
+    // Do NOT re-measure the char's viewport position here.  When the user scrolls
+    // during a rematerialize tween the char ends up at a stale viewport position
+    // and commitPairSlotFromDom would corrupt pair.slot by adding the scroll delta.
+    // The dataset values written by syncPairSlotFromPaintedCenter at cycle-start
+    // are line-relative and always correct; slotLayoutItem reads those directly.
     restoreCharToLine(slotLayoutItem(pair), pair);
     resetLetterCycle(pair);
     resolveIntroLetter(pair);
@@ -5851,6 +6013,7 @@
   };
 
   const finishParkMobileBrandMark = () => {
+    destroyMarkDeadZone(mobileMark);
     mobileMark = null;
     mobileMarkLetterHitsEnabled = false;
     getFallLayer().classList.remove("is-mobile-mark-gallery-anchored");
@@ -6144,10 +6307,32 @@
     }
   };
 
+  const savePhysicsPref = (enabled) => {
+    try { localStorage.setItem(PHYSICS_PREF_KEY, enabled ? "1" : "0"); } catch (_) {}
+  };
+
+  const loadPhysicsPref = () => {
+    try {
+      const v = localStorage.getItem(PHYSICS_PREF_KEY);
+      return v === null ? null : v !== "0";
+    } catch (_) { return null; }
+  };
+
   const bindPhysicsToggle = () => {
     const toggleRoot = document.querySelector(".sds-physics-toggle");
     const toggle = document.getElementById("sds-physics-toggle-input");
     if (!toggle || !toggleRoot) return;
+
+    // Restore the user's saved preference across page loads and language
+    // versions.  We apply this before the rest of init() runs so that
+    // playLoadIntro() and all physics guards see the correct state from
+    // the very first frame.
+    const savedPref = loadPhysicsPref();
+    if (savedPref === false) {
+      toggle.checked = false;
+      userPhysicsDisabled = true;
+      document.documentElement.dataset.sdsPhysicsDisabled = "true";
+    }
 
     const syncToggleUi = () => {
       const physicsOn = toggle.checked;
@@ -6169,6 +6354,7 @@
       } else {
         disablePhysics();
       }
+      savePhysicsPref(toggle.checked);
       syncToggleUi();
     };
 
@@ -6775,10 +6961,20 @@
       desktopLaunchPointerHandler = null;
     }
 
+    if (desktopLaunchClickHandler) {
+      document.removeEventListener("click", desktopLaunchClickHandler, true);
+      desktopLaunchClickHandler = null;
+    }
+
     if (mobileMarkLaunchLayerBound && mobileLaunchPointerHandler) {
       document.removeEventListener("pointerdown", mobileLaunchPointerHandler, true);
       mobileMarkLaunchLayerBound = false;
       mobileLaunchPointerHandler = null;
+    }
+
+    if (mobileLaunchClickHandler) {
+      document.removeEventListener("click", mobileLaunchClickHandler, true);
+      mobileLaunchClickHandler = null;
     }
 
     if (heroFloatingMarkBound && heroFlickPointerHandler) {

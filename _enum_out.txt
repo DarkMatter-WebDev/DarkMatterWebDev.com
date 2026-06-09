@@ -1,0 +1,344 @@
+FILES IN SCOPE: 65
+TOTAL OCCURRENCES: 1306
+UNIQUE ALPHA TOKENS: 277
+UNIQUE PUNCT CONTEXTS: 59
+================================================================================
+ALPHA TOKENS (token | count):
+    58  Dise�o
+    49  Cont�ctanos
+    49  Gesti�n
+    39  m�s
+    37  Configuraci�n
+    33  espa�ol
+    32  p�gina
+    28  Redise�o
+    23  T�cnicos
+    23  qu�
+    21  ENV�A
+    18  Cu�ntanos
+    18  DISE�O
+    18  configuraci�n
+    18  tecnolog�a
+    17  p�ginas
+    16  Construcci�n
+    15  L�nea
+    15  dise�o
+    15  l�nea
+    14  CONSTRUCCI�N
+    13  due�os
+    13  sesi�n
+    12  t�cnico
+    12  �Listo
+    11  T�rminos
+    11  peque�as
+    10  aplicaci�n
+    10  a�o
+    10  est�
+    10  m�viles
+     9  direcci�n
+     8  b�squeda
+     8  compa��as
+     8  despu�s
+     8  gesti�n
+     7  Qu�
+     7  t�cnica
+     6  Env�a
+     6  env�a
+     6  m�vil
+     6  pr�cticas
+     6  redise�o
+     6  restauraci�n
+     6  r�pida
+     6  r�pido
+     5  P�gina
+     5  autom�ticas
+     5  construcci�n
+     5  cotizaci�n
+     5  estrat�gico
+     5  galer�as
+     5  informaci�n
+     5  pr�ctica
+     5  �Quieres
+     4  CONFIGURACI�N
+     4  Compa��as
+     4  Due�os
+     4  Optimizaci�n
+     4  Todav�a
+     4  acci�n
+     4  actualizaci�n
+     4  administraci�n
+     4  campa�as
+     4  cat�logo
+     4  conversaci�n
+     4  detr�s
+     4  esc�neres
+     4  facturaci�n
+     4  im�genes
+     4  peque�os
+     4  presentaci�n
+     4  r�pidas
+     4  tipograf�a
+     4  �Qu�
+     3  Consultor�a
+     3  Creaci�n
+     3  C�MO
+     3  Despu�s
+     3  Dise�amos
+     3  Escr�benos
+     3  Instalaci�n
+     3  L�NEA
+     3  P�ginas
+     3  Tel�fono
+     3  Tipograf�a
+     3  b�sica
+     3  b�sicas
+     3  b�sico
+     3  b�squedas
+     3  cer�mico
+     3  comparaci�n
+     3  correcci�n
+     3  c�mo
+     3  d�a
+     3  electr�nico
+     3  est�n
+     3  est�s
+     3  m�ltiples
+     3  opci�n
+     3  pr�ctico
+     3  revisi�n
+     3  seg�n
+     3  trav�s
+     2  AQU�
+     2  Alineaci�n
+     2  CONSULTOR�A
+     2  Contrase�a
+     2  DESPU�S
+     2  Direcci�n
+     2  Dise�ado
+     2  Dise�os
+     2  ESCR�BENOS
+     2  ESTRAT�GICA
+     2  Evaluaci�n
+     2  Galer�a
+     2  Galer�as
+     2  Gu�a
+     2  Gu�as
+     2  LL�MANOS
+     2  P�rez
+     2  Redise�ar
+     2  Revisi�n
+     2  Sesi�n
+     2  T�CNICO
+     2  T�tulos
+     2  anal�ticas
+     2  automatizaci�n
+     2  autom�ticamente
+     2  a�n
+     2  b�sicos
+     2  campa�a
+     2  ca�das
+     2  confusi�n
+     2  contrase�as
+     2  cu�ntas
+     2  c�digo
+     2  c�lculo
+     2  desempe�o
+     2  dise�ados
+     2  dise�amos
+     2  due�o
+     2  env�anos
+     2  escr�benos
+     2  espec�fica
+     2  galer�a
+     2  impresi�n
+     2  joyer�a
+     2  modernizaci�n
+     2  promoci�n
+     2  pr�cticos
+     2  pr�ximos
+     2  publicaci�n
+     2  rompi�
+     2  tard�a
+     2  t�reas
+     2  ubicaci�n
+     2  vac�o
+     2  �A�n
+     2  �Con
+     2  �Prefieres
+     1  AUTOM�TICA
+     1  Actualizaci�n
+     1  Aplicaci�n
+     1  As�
+     1  B�SQUEDA
+     1  B�squeda
+     1  Cat�logo
+     1  Comparaci�n
+     1  Coordinaci�n
+     1  Cotizaci�n
+     1  C�mo
+     1  C�smico
+     1  Dep�sito
+     1  Due�o
+     1  GALER�AS
+     1  Inspecci�n
+     1  Ll�manos
+     1  Mant�n
+     1  Misi�n
+     1  M�S
+     1  M�VILES
+     1  M�s
+     1  OPCI�N
+     1  PUBLICACI�N
+     1  Programaci�n
+     1  QU�
+     1  Tecnolog�a
+     1  Tecnol�gico
+     1  V�a
+     1  adem�s
+     1  agr�galo
+     1  all�
+     1  aparecer�n
+     1  aqu�
+     1  arquitect�nica
+     1  atenci�n
+     1  bot�n
+     1  cinematogr�fica
+     1  cinematogr�fico
+     1  comb�nalo
+     1  configur�
+     1  consultor�a
+     1  continuaci�n
+     1  conversi�n
+     1  coordinaci�n
+     1  cr�ticos
+     1  cu�ntanos
+     1  c�lido
+     1  deber�a
+     1  dise�ado
+     1  dise�ador
+     1  dise�os
+     1  documentaci�n
+     1  ejecuci�n
+     1  energ�tico
+     1  env�as
+     1  env�o
+     1  espec�fico
+     1  estad�sticas
+     1  fotogr�fica
+     1  fotogr�fico
+     1  fricci�n
+     1  f�cil
+     1  gen�rica
+     1  gen�rico
+     1  gustar�a
+     1  h�bil
+     1  incorporaci�n
+     1  instalaci�n
+     1  interrumpir�an
+     1  ll�manos
+     1  l�mites
+     1  men�
+     1  m�dicos
+     1  n�mero
+     1  n�meros
+     1  n�utica
+     1  n�utico
+     1  organizaci�n
+     1  orientaci�n
+     1  peque�a
+     1  peque�o
+     1  precisi�n
+     1  presi�n
+     1  purificaci�n
+     1  qui�n
+     1  ra�ces
+     1  redise�amos
+     1  relaci�n
+     1  r�pidos
+     1  sali�
+     1  seguir�
+     1  sensaci�n
+     1  ser�
+     1  soluci�n
+     1  supervisi�n
+     1  suscripci�n
+     1  tama�o
+     1  tambi�n
+     1  tecnol�gicas
+     1  tel�fonos
+     1  t�
+     1  versi�n
+     1  v�lido
+     1  �Abres
+     1  �Eres
+     1  �NO
+     1  �Necesitas
+     1  �No
+     1  �Te
+     1  �nicamente
+     1  �nico
+     1  �rbita
+     1  �rea
+     1  �salo
+     1  �til
+================================================================================
+PUNCT CONTEXTS (context | count):
+     7  ...2026 DARK MATTER � NAPLES, FL � LLAMA O ENV�A UN MENSAJE (23...
+     5  ...Matter Surette Systems Portal � ver p�gina de referidos"> <s...
+     5  ...Matter Surette Systems Portal � view referral landing page">...
+     4  ...2026 DARK MATTER � NAPLES, FL � CALL OR TEXT (239) 404-8505 ...
+     3  ...Matter Surette Systems Portal � la fuerza invisible detr�s d...
+     3  ...Matter Surette Systems Portal � the unseen force behind prof...
+     3  ...V�A UN MENSAJE (239) 404-8505 � <a class="text-electric-cyan...
+     3  ...king-widest">2026 DARK MATTER � NAPLES, FL � LLAMA O ENV�A U...
+     2  ...           � 2026 DARK MATTER � NAPLES, FL � CALL OR TEXT (2...
+     2  ...           � 2026 DARK MATTER � NAPLES, FL � LLAMA O ENV�A U...
+     2  ... Southwest Florida businesses � custom, mobile-friendly, and...
+     2  ... Southwest Florida businesses � design, hosting, security, u...
+     2  ... tracking-widest text-center">� 2026 DARK MATTER � NAPLES, F...
+     2  ..."Complete business rebranding � modern logos, visual identit...
+     2  ...ft mb-4 md:mb-0">             � 2026 DARK MATTER � NAPLES, F...
+     2  ...ne mb-4 md:mb-0">             � 2026 DARK MATTER � NAPLES, F...
+     2  ...primary-container opacity-80">� 2026 DARK MATTER � NAPLES, F...
+     1  ... project? Based in Naples, FL � call or text <a class="text-...
+     1  ... real person gets back to you � no bots, no pressure.</p> </...
+     1  ...-normal">Dark Matter</strong> � la fuerza invisible detr�s d...
+     1  ...-normal">Dark Matter</strong> � the unseen force behind its ...
+     1  ...</span>Care plans from $79/mo � or complete management bundl...
+     1  ...>Captures from the live build � homepage cinema, fleet galle...
+     1  ...>Una persona real te responde � sin bots, sin presi�n.</p> <...
+     1  ...ER � Managed Website Services � Southwest Florida</span> </f...
+     1  ...Trazaremos el camino correcto � un sitio nuevo, un redise�o ...
+     1  ...Tu departamento de sitios web � materializado desde el vac�o...
+     1  ...Yacht Detailing fleet gallery � 400+ vessels serviced" class...
+     1  ...ador configurable (p. ej. 1.25� spot), con estados elegantes...
+     1  ...axed">Interactive drag slider � oxidized gelcoat vs. mirror ...
+     1  ...circle</span> MENSAJE ENVIADO � TE CONTACTAREMOS</span>';   ...
+     1  ...ck_circle</span> MESSAGE SENT � WE\'LL BE IN TOUCH</span>'; ...
+     1  ...e mantenimiento desde $79/mes � o gesti�n completa incluida<...
+     1  ...elaxed">400+ vessels serviced � uniform client tiles, featur...
+     1  ...he fleet page and site footer � a secure client portal previ...
+     1  ...igurable multiplier (e.g. 1.25� spot), with graceful "market...
+     1  ...ity, maintenance, and updates � one partnership, one team.</...
+     1  ...lite Yacht Detailing homepage � The Art of the Reflection" c...
+     1  ...mb-6">Your website department � materialized from the void</...
+     1  ...ntenimiento y actualizaciones � una sola alianza, un solo eq...
+     1  ...ono text-[10px] text-outline">� 2026 DARK MATTER � Managed W...
+     1  ...ono text-[10px] text-outline">� 2026 DARK MATTER � Servicios...
+     1  ...pacity-80">� 2026 DARK MATTER � NAPLES, FL � CALL OR TEXT (2...
+     1  ...pacity-80">� 2026 DARK MATTER � NAPLES, FL � LLAMA O ENV�A U...
+     1  ...r cu�ntanos sobre tu proyecto � este campo no puede estar va...
+     1  ...s de Sitios Web Administrados � el suroeste de Florida</span...
+     1  ...s we can build into your site � live pricing, a real shoppin...
+     1  ...s. We'll chart the right path � a new site, a redesign, or f...
+     1  ...se tell us about your project � this field cannot be empty.'...
+     1  ...t-outline">� 2026 DARK MATTER � Managed Website Services � S...
+     1  ...t-outline">� 2026 DARK MATTER � Servicios de Sitios Web Admi...
+     1  ...t-sm">Built around your brand � not a generic template. Clea...
+     1  ...te Yacht Detailing fleet page � vessel gallery and fleet log...
+     1  ...text-outline mt-8">Naples, FL � Call or text (239) 404-8505<...
+     1  ...text-outline mt-8">Naples, FL � Llama o env�a un mensaje (23...
+     1  ...ue, add-to-cart and favorites � a complete storefront with n...
+     1  ...xt-center">� 2026 DARK MATTER � NAPLES, FL � CALL OR TEXT (2...
+     1  ...xt-center">� 2026 DARK MATTER � NAPLES, FL � LLAMA O ENV�A U...
+     1  ...yecto? Ubicados en Naples, FL � llama o env�a un mensaje al ...
