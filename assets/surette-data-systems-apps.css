@@ -323,6 +323,64 @@ html:lang(es) .sds-hero__flick-reveal-sub {
   contain: layout style;
 }
 
+/* "click me" speech bubble shown next to the brand mark while it rests in
+   place on load. Hidden automatically once the mark is launched into physics
+   (the source picks up the --physics-captured class). */
+.sds-hero__click-hint {
+  position: absolute;
+  top: 0.7rem;
+  left: clamp(3.1rem, 6vw, 5rem);
+  z-index: 6;
+  padding: 0.34rem 0.66rem;
+  font: 700 clamp(0.72rem, 1.5vw, 0.92rem) "JetBrains Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #0a0610;
+  background: linear-gradient(135deg, #22d3ee, #a3e635);
+  border-radius: 0.66rem;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.4),
+    0 0 16px rgba(34, 211, 238, 0.45);
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  animation: sds-click-hint-bob 2.6s ease-in-out infinite;
+}
+
+.sds-hero__click-hint::before {
+  content: "";
+  position: absolute;
+  left: -0.46rem;
+  top: 50%;
+  transform: translateY(-50%);
+  border-style: solid;
+  border-width: 0.42rem 0.5rem 0.42rem 0;
+  border-color: transparent #22d3ee transparent transparent;
+}
+
+.sds-hero__brand-mark--physics-captured ~ .sds-hero__click-hint {
+  opacity: 0;
+  visibility: hidden;
+  animation: none;
+}
+
+@keyframes sds-click-hint-bob {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+
+@media (max-width: 767px) {
+  .sds-hero__click-hint {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sds-hero__click-hint {
+    animation: none;
+  }
+}
+
 .sds-wordmark {
   position: relative;
   isolation: isolate;
@@ -570,11 +628,6 @@ html:lang(es) .sds-hero__flick-reveal-sub {
 .sds-hero__sub .sds-physics-wordmark--sub[data-word="falls-apart"] .sds-physics-wordmark__line .char,
 .sds-hero__sub .sds-physics-wordmark--sub[data-word="todo-falla"] .sds-physics-wordmark__line,
 .sds-hero__sub .sds-physics-wordmark--sub[data-word="todo-falla"] .sds-physics-wordmark__line .char {
-  color: rgba(168, 170, 171, 0.88);
-  text-shadow: none;
-}
-
-.sds-physics-fall-layer .char.is-subline-char.is-subline-char--falls-apart {
   color: rgba(168, 170, 171, 0.88);
   text-shadow: none;
 }

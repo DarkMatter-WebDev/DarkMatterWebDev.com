@@ -2,8 +2,19 @@
   const MOBILE_QUERY = "(max-width: 767px)";
   const root = document.querySelector(".sds-physics-wordmark:not(.sds-physics-wordmark--sub)");
   const line = root?.querySelector(".sds-physics-wordmark__line");
-  const collectSubRoots = () => [...document.querySelectorAll(".sds-physics-wordmark--sub")];
+  // "EVERYTHING FALLS APART" (and its localized variants) opt out of physics
+  // entirely: they render as plain static text rather than falling/interactive
+  // letters. They are excluded from the physics contexts below, and marked
+  // visible up front so the apps loader's is-visible gate is still satisfied.
+  const STATIC_SUB_WORDS = new Set(["falls-apart", "todo-falla"]);
+  const collectSubRoots = () => [...document.querySelectorAll(".sds-physics-wordmark--sub")]
+    .filter((el) => !STATIC_SUB_WORDS.has(el.getAttribute("data-word")));
   const subRoots = collectSubRoots();
+  document.querySelectorAll(".sds-physics-wordmark--sub").forEach((el) => {
+    if (STATIC_SUB_WORDS.has(el.getAttribute("data-word"))) {
+      el.classList.add("is-visible", "is-static");
+    }
+  });
   const wordmark = document.querySelector(".sds-wordmark");
   const catalogSection = document.querySelector(".sds-hero + section");
   const FALL_LAYER_ID = "sds-physics-fall-layer";
@@ -21,8 +32,6 @@
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const HOLD_MS = 1350;
   const INTRO_FIRST_PAUSE_MS = 480;
-  const INTRO_LETTER_GAP_MS = 680;
-  const INTRO_LETTER_GAP_JITTER_MS = 180;
   const INTRO_FILL_STEP_MS = 260;
   const INTRO_FILL_PAUSE_MS = 220;
   const INTRO_FILL_SETTLE_MS = 140;
@@ -35,10 +44,6 @@
   const SETTLE_RETURN_MS = 2600;
   const REMATERIALIZE_SETTLE_MIN_MS = 800;
   const REMATERIALIZE_MAX_WAIT_MS = 4500;
-  // Hard wall-clock cap for flick-reveal icons: no matter how actively they
-  // are bouncing, they are recalled after this many ms from release.
-  // Intentionally shorter than the letters' REMATERIALIZE_MAX_WAIT_MS.
-  const FLICK_ICON_MAX_DOWN_MS = 3200;
   const REMATERIALIZE_FORCE_RETURN_DURATION = 0.62;
   const REMATERIALIZE_FORCE_SPAWN_DURATION = 0.78;
   const REST_VELOCITY = 0.12;
@@ -98,32 +103,9 @@
   const DESKTOP_MARK_LAUNCH_ARM_DELAY_MS = 280;
   const DESKTOP_MARK_LAUNCH_LAYER_Z = "85";
   const DESKTOP_MARK_UPWARD_PASS_VY = -0.02;
-  const HERO_FLOATING_MARK_SELECTOR = ".sds-hero__floating-mark";
-  const HERO_FLOATING_STAGE_SELECTOR = ".sds-hero__floating-stage";
-  const HERO_FLICK_REVEAL_SELECTOR = ".sds-hero__flick-reveal";
-  const FLICK_REVEAL_ICON_SELECTOR = ".sds-hero__flick-reveal-icon";
-  const FLICK_ICON_COLLIDER_PAD = 1.18;
-  const HERO_FLOATING_MARK_ID = "sds-physics-hero-floating-mark";
-  const HERO_FLOATING_MARK_LABEL = "hero-floating-mark";
-  const HERO_FLOATING_MARK_BARRIER_LABEL = "hero-floating-mark-barrier";
-  const HERO_FLOATING_MARK_BARRIER_PAD = 0.74;
-  const HERO_FLOATING_MARK_BARRIER_HEIGHT_RATIO = 0.24;
-  const HERO_FLOATING_MARK_BARRIER_TOP_INSET = 0.08;
-  const HERO_FLOATING_MARK_EXIT_SCALE = 0.03;
-  const HERO_FLOATING_MARK_EXIT_OPACITY = 0.06;
-  const HERO_FLOATING_MARK_RECEDE_DURATION = 5.8;
-  const HERO_FLOATING_MARK_IMPULSE_MIN = 4.2;
-  const HERO_FLOATING_MARK_IMPULSE_MAX = 7.6;
-  const HERO_FLOATING_MARK_ANGULAR_MIN = 0.05;
-  const HERO_FLOATING_MARK_ANGULAR_MAX = 0.11;
-  const HERO_FLOATING_MARK_Z = "41";
-  const HERO_FLOATING_MARK_IMPACT_PAD = 0.88;
   const WORDMARK_LETTER_KNOCK_MIN_SPEED = 0.45;
   // Main idle knock floor: 0.56 sits between subline parity (0.45) and harsh 0.68 tuning.
   const MAIN_WORDMARK_KNOCK_MIN_SPEED = 0.56;
-  const HERO_FLOATING_MARK_IMPACT_MIN_SPEED = WORDMARK_LETTER_KNOCK_MIN_SPEED * 0.58;
-  const HERO_FLOATING_MARK_IMPACT_MIN_MOVER_SIZE = 16;
-  const BRAND_MARK_LAUNCH_NAV_DELAY_MS = 500;
   const MOBILE_MARK_FLOOR_RESTITUTION = 0.84;
   const MOBILE_MARK_SCROLL_RELEASE_BANNER_PAD = 6;
   const MOBILE_MENU_BARRIER_LABEL = "mobile-menu-barrier";
@@ -136,7 +118,6 @@
   const MOBILE_MARK_SCROLL_FLOOR_SNAP_PX = 26;
   const MOBILE_MARK_SCROLL_FLOOR_SETTLE_VY = 1.15;
   const GALLERY_FLOOR_SPAN_INSET = 4;
-  const WORDMARK_REVEAL_DURATION = 2.15;
   const BANNER_CEILING_LABEL = "banner-ceiling";
   const BANNER_CEILING_THICKNESS = 14;
   const BANNER_CEILING_FALLBACK_Y = 64;
@@ -205,14 +186,6 @@
     frictionAir: 0.005,
     restitution: 0.958,
     density: 0.00058
-  };
-
-  const HERO_FLOATING_MARK_PHYSICS = {
-    friction: 0.001,
-    frictionStatic: 0.004,
-    frictionAir: 0.011,
-    restitution: 0.12,
-    density: 0.00028
   };
 
   const DESKTOP_MARK_BODY_RESTITUTION_HIGH = 0.965;
@@ -313,7 +286,6 @@
   let lastDesktopMarkScrollY = 0;
   let lastMobileMarkScrollY = 0;
   let brandMarkScrollBound = false;
-  let appTileLaunchBound = false;
   let mobileMarkEarlyReleaseBound = false;
   let mobileMarkEarlyReleaseHandler = null;
   let desktopBrandMarkLetterHitsEnabled = false;
@@ -343,15 +315,10 @@
   let introAbortRequested = false;
   const introDelayTimers = new Set();
   let lastBannerKnockScrollY = -1;
-  let heroFloatingMark = null;
-  let heroFloatingMarkBound = false;
-  let flickRevealIcons = [];
   let desktopLaunchPointerHandler = null;
   let desktopLaunchClickHandler = null;
   let mobileLaunchPointerHandler = null;
   let mobileLaunchClickHandler = null;
-  let heroFlickPointerHandler = null;
-  let appTileLaunchHandler = null;
   let desktopBrandMarkEngageHandler = null;
   let physicsToggleChangeHandler = null;
   const originalLayout = [];
@@ -892,10 +859,6 @@
     pairs = originalLayout.map((item) => {
       if (!item.withIntro) {
         item.char.classList.add("is-subline-char");
-        const wordKey = item.root?.getAttribute("data-word");
-        if (wordKey === "falls-apart" || wordKey === "todo-falla") {
-          item.char.classList.add("is-subline-char--falls-apart");
-        }
       }
       return {
         char: item.char,
@@ -1403,16 +1366,10 @@
 
   const hasActiveLetters = () => pairs.some((pair) => pair.released && !pair.fallen && !pair.rematerializing);
 
-  const hasActiveFlickIcons = () => (
-    flickRevealIcons.some((state) => state.released && !state.fallen && !state.rematerializing)
-  );
-
   const hasActivePhysicsBodies = () => (
     hasActiveLetters()
-    || hasActiveFlickIcons()
     || Boolean(mobileMark?.body && mobileMark.released)
     || Boolean(desktopBrandMark?.body && desktopBrandMark.released)
-    || Boolean(heroFloatingMark?.body && heroFloatingMark.exiting)
   );
 
   const removeEnvironmentBodies = () => {
@@ -3036,737 +2993,6 @@
     applyBrandMarkLaunchImpulse(desktopBrandMark);
   };
 
-  const getDomRotationDeg = (el) => {
-    const transform = window.getComputedStyle(el).transform;
-    if (!transform || transform === "none") return 0;
-
-    const Matrix = window.DOMMatrixReadOnly || window.DOMMatrix;
-    if (Matrix) {
-      const matrix = new Matrix(transform);
-      return Math.atan2(matrix.b, matrix.a) * (180 / Math.PI);
-    }
-
-    const match = transform.match(/^matrix\(([^)]+)\)$/);
-    if (!match) return 0;
-    const [a, b] = match[1].split(",").map((value) => parseFloat(value.trim()));
-    return Math.atan2(b, a) * (180 / Math.PI);
-  };
-
-  const hideHeroFloatingMarkSource = (source) => {
-    source.classList.add("is-flicked-away");
-    source.style.animation = "none";
-    source.style.pointerEvents = "none";
-    source.style.visibility = "hidden";
-  };
-
-  const isFlickRevealPanelRevealed = () => (
-    document.querySelector(HERO_FLICK_REVEAL_SELECTOR)?.classList.contains("is-revealed")
-  );
-
-  const captureFlickIconSlot = (iconEl) => {
-    const rect = iconEl.getBoundingClientRect();
-    return {
-      x: rect.left + rect.width * 0.5,
-      y: rect.top + rect.height * 0.5,
-      width: Math.max(rect.width, 16),
-      height: Math.max(rect.height, 16)
-    };
-  };
-
-  const initFlickRevealIcons = () => {
-    if (!getDesktopPhysicsActive() || !isFlickRevealPanelRevealed()) return;
-
-    const iconEls = [...document.querySelectorAll(`${HERO_FLICK_REVEAL_SELECTOR} ${FLICK_REVEAL_ICON_SELECTOR}`)];
-    if (!iconEls.length) return;
-
-    if (!flickRevealIcons.length) {
-      flickRevealIcons = iconEls.map((iconEl, index) => ({
-        index,
-        iconEl,
-        slot: captureFlickIconSlot(iconEl),
-        released: false,
-        fallen: false,
-        rematerializing: false,
-        body: null,
-        cloneEl: null,
-        settledSince: null,
-        settleSpeedPeak: 0,
-        settleSpeedSampleAt: 0,
-        lowEnergySince: null,
-        releasedAt: null,
-        releaseRotation: null,
-        width: 0,
-        height: 0
-      }));
-      return;
-    }
-
-    flickRevealIcons.forEach((state) => {
-      if (!state.released && !state.rematerializing) {
-        state.slot = captureFlickIconSlot(state.iconEl);
-      }
-    });
-  };
-
-  const refreshFlickRevealIconLayout = () => {
-    if (!flickRevealIcons.length) {
-      initFlickRevealIcons();
-      return;
-    }
-
-    flickRevealIcons.forEach((state) => {
-      if (!state.released && !state.rematerializing) {
-        state.slot = captureFlickIconSlot(state.iconEl);
-      }
-    });
-  };
-
-  const isFlickIconKnockTarget = (state) => (
-    state
-    && getDesktopPhysicsActive()
-    && isFlickRevealPanelRevealed()
-    && !state.released
-    && !state.fallen
-    && !state.rematerializing
-    && !state.body
-  );
-
-  const beginFlickIconPhysics = (state, sourceBody = null) => {
-    const slot = state.slot || captureFlickIconSlot(state.iconEl);
-    const centerX = slot.x;
-    const centerY = slot.y;
-    const width = slot.width;
-    const height = slot.height;
-
-    state.width = width;
-    state.height = height;
-    state.releaseRotation = -8 + (state.index * 11) % 16 + (Math.random() - 0.5) * 6;
-
-    const wrap = document.createElement("span");
-    wrap.className = "sds-flick-reveal-icon-fall is-falling-icon";
-    wrap.style.width = `${width}px`;
-    wrap.style.height = `${height}px`;
-    const iconComputed = window.getComputedStyle(state.iconEl);
-    wrap.style.color = iconComputed.color;
-    wrap.style.filter = iconComputed.filter;
-    wrap.style.opacity = iconComputed.opacity;
-    wrap.appendChild(state.iconEl.cloneNode(true));
-    getFallLayer().appendChild(wrap);
-
-    state.cloneEl = wrap;
-    state.iconEl.classList.add("is-knocked-away");
-
-    gsap.set(wrap, {
-      x: centerX,
-      y: centerY,
-      xPercent: -50,
-      yPercent: -50,
-      rotation: state.releaseRotation,
-      force3D: true
-    });
-
-    const body = Bodies.rectangle(centerX, centerY, width * 0.88, height * 0.88, {
-      ...SUBLINE_LETTER_PHYSICS,
-      chamfer: { radius: 3 },
-      label: `flick-reveal-icon-${state.index}`
-    });
-
-    if (sourceBody) {
-      const impactSpeed = getNormalizedWordmarkImpactSpeed(sourceBody);
-      const impulseScale = Math.min(1.15, 0.44 + impactSpeed * 0.1);
-      const speed = Math.hypot(sourceBody.velocity.x, sourceBody.velocity.y);
-      const dirX = speed > 0.01 ? sourceBody.velocity.x / speed : 0;
-      const dirY = speed > 0.01 ? sourceBody.velocity.y / speed : 1;
-      Body.setVelocity(body, {
-        x: dirX * impactSpeed * impulseScale * 0.36 + (Math.random() - 0.5) * 0.3,
-        y: Math.max(dirY * impactSpeed * impulseScale * 0.58, 0.85)
-      });
-      clampBodyToMaxSpeed(body, SUBLINE_MAX_SPEED);
-      Body.setAngularVelocity(
-        body,
-        sourceBody.angularVelocity * 0.45 + (Math.random() - 0.5) * 0.04
-      );
-    } else {
-      Body.setVelocity(body, {
-        x: (Math.random() - 0.5) * 0.3,
-        y: 0.85 + Math.random() * 0.35
-      });
-      Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.04);
-    }
-
-    state.body = body;
-    state.released = true;
-    state.fallen = false;
-    state.settledSince = null;
-    state.settleSpeedPeak = 0;
-    state.settleSpeedSampleAt = 0;
-    state.lowEnergySince = null;
-    state.releasedAt = performance.now();
-
-    Composite.add(engine.world, body);
-    syncFlickRevealIconDom();
-    refreshEnvironmentColliders();
-    startRunner();
-  };
-
-  const knockFlickRevealIcon = (state, sourceBody) => {
-    if (userPhysicsDisabled || !isFlickIconKnockTarget(state)) return false;
-
-    try {
-      ensurePhysicsWorld();
-      beginFlickIconPhysics(state, sourceBody);
-      return true;
-    } catch (error) {
-      return false;
-    }
-  };
-
-  const syncFlickRevealIconDom = () => {
-    flickRevealIcons.forEach((state) => {
-      if (!state.released || state.fallen || state.rematerializing || !state.body || !state.cloneEl) return;
-      gsap.set(state.cloneEl, {
-        x: state.body.position.x,
-        y: state.body.position.y,
-        xPercent: -50,
-        yPercent: -50,
-        scale: 1,
-        rotation: state.body.angle * (180 / Math.PI)
-      });
-    });
-  };
-
-  const finishFlickIconRematerialize = (state) => {
-    gsap.killTweensOf(state.cloneEl);
-    state.cloneEl?.remove();
-    state.cloneEl = null;
-    state.body = null;
-    state.released = false;
-    state.fallen = false;
-    state.rematerializing = false;
-    state.settledSince = null;
-    state.settleSpeedPeak = 0;
-    state.settleSpeedSampleAt = 0;
-    state.lowEnergySince = null;
-    state.releaseRotation = null;
-    state.iconEl.classList.remove("is-knocked-away");
-    state.slot = captureFlickIconSlot(state.iconEl);
-
-    if (
-      desktopBrandMark?.released
-      || pairs.some((pair) => isPairWordmarkKnockTarget(pair) || isPairMainLetterKnockTarget(pair))
-      || flickRevealIcons.some(isFlickIconKnockTarget)
-    ) {
-      refreshEnvironmentColliders();
-    }
-  };
-
-  const rematerializeFlickRevealIcon = (state, { accelerated = false } = {}) => {
-    if (!state || state.rematerializing || !state.cloneEl) return;
-
-    state.rematerializing = true;
-    state.released = false;
-    state.fallen = false;
-    state.settledSince = null;
-    state.releasedAt = null;
-
-    if (state.body && engine) {
-      Composite.remove(engine.world, state.body);
-    }
-    state.body = null;
-
-    state.cloneEl.classList.remove("is-falling-icon");
-    state.cloneEl.classList.add("is-rematerializing-icon");
-
-    const slot = state.slot || captureFlickIconSlot(state.iconEl);
-    const currentX = Number(gsap.getProperty(state.cloneEl, "x")) || slot.x;
-    const currentY = Number(gsap.getProperty(state.cloneEl, "y")) || slot.y;
-    const currentRot = Number(gsap.getProperty(state.cloneEl, "rotation")) || 0;
-
-    gsap.killTweensOf(state.cloneEl);
-    gsap.set(state.cloneEl, {
-      x: currentX,
-      y: currentY,
-      rotation: currentRot
-    });
-
-    gsap.to(state.cloneEl, {
-      x: slot.x,
-      y: slot.y,
-      rotation: 0,
-      scale: 1,
-      duration: accelerated
-        ? REMATERIALIZE_FORCE_RETURN_DURATION + Math.random() * 0.12
-        : 1.05 + Math.random() * 0.35,
-      ease: accelerated ? "power2.inOut" : "power3.inOut",
-      onComplete: () => finishFlickIconRematerialize(state)
-    });
-  };
-
-  const sampleFlickIconSettleSpeed = (state, now) => {
-    if (!state.body) return 0;
-    const speed = getBodySpeed(state.body);
-    if (!state.settleSpeedSampleAt || now - state.settleSpeedSampleAt > SETTLE_SPEED_WINDOW_MS) {
-      state.settleSpeedPeak = speed;
-      state.settleSpeedSampleAt = now;
-    } else {
-      state.settleSpeedPeak = Math.max(state.settleSpeedPeak || 0, speed);
-    }
-    return state.settleSpeedPeak;
-  };
-
-  const isFlickIconActivelyBouncing = (state) => {
-    if (!state.body) return false;
-    const { activeSpeed, activeAngular } = getSettleThresholds();
-    const speed = getBodySpeed(state.body);
-    return speed >= activeSpeed || Math.abs(state.body.angularVelocity) >= activeAngular;
-  };
-
-  const isFlickIconVisuallySettled = (state, peakSpeed) => {
-    if (!state.body) return false;
-    const { groupSpeed, groupAngular } = getSettleThresholds();
-    return peakSpeed < groupSpeed && Math.abs(state.body.angularVelocity) < groupAngular;
-  };
-
-  const isFlickIconEffectivelySettled = (state, now, groupIdle) => {
-    if (!state.body || isFlickIconActivelyBouncing(state)) return false;
-    if (isBodyAtRest(state.body)) return true;
-    if (groupIdle) return true;
-    const peakSpeed = sampleFlickIconSettleSpeed(state, now);
-    return isFlickIconVisuallySettled(state, peakSpeed);
-  };
-
-  const checkFlickRevealIconsSettled = (now, groupIdle, normalReturnMs, minReturnMs, forceGroupReturn) => {
-    const offscreenThreshold = window.innerHeight + OFFSCREEN_PAD;
-
-    flickRevealIcons.forEach((state) => {
-      if (!state.released || state.fallen || state.rematerializing || !state.body) {
-        state.settledSince = null;
-        return;
-      }
-
-      if (state.body.position.y >= offscreenThreshold) {
-        state.settledSince = null;
-        return;
-      }
-
-      sampleFlickIconSettleSpeed(state, now);
-
-      if (isFlickIconActivelyBouncing(state)) {
-        state.lowEnergySince = null;
-      } else if (state.lowEnergySince === null) {
-        state.lowEnergySince = now;
-      }
-
-      const lowEnergyAge = state.lowEnergySince ? now - state.lowEnergySince : 0;
-      const forceStragglerReturn = !introRunning && lowEnergyAge >= REMATERIALIZE_MAX_WAIT_MS;
-
-      // Wall-clock cap: recall regardless of energy level once the icon has
-      // been down for longer than FLICK_ICON_MAX_DOWN_MS.
-      const downAge = state.releasedAt != null ? now - state.releasedAt : 0;
-      const forceTimeoutReturn = !introRunning && downAge >= FLICK_ICON_MAX_DOWN_MS;
-
-      const effectivelySettled = isFlickIconEffectivelySettled(state, now, groupIdle)
-        || (forceStragglerReturn && lowEnergyAge >= REMATERIALIZE_SETTLE_MIN_MS)
-        || forceTimeoutReturn;
-
-      if (!effectivelySettled) {
-        state.settledSince = null;
-        return;
-      }
-
-      if (state.settledSince === null) {
-        state.settledSince = now;
-        // forceStragglerReturn and forceTimeoutReturn both skip the one-frame
-        // deferral so the icon is recalled on this tick.
-        if (!forceStragglerReturn && !forceTimeoutReturn) return;
-      }
-
-      const settleAge = now - state.settledSince;
-      const accelerated = forceGroupReturn || forceStragglerReturn || forceTimeoutReturn
-        || settleAge >= REMATERIALIZE_MAX_WAIT_MS;
-      const readyToReturn = accelerated || (settleAge >= normalReturnMs && settleAge >= minReturnMs);
-
-      if (readyToReturn) {
-        state.settledSince = null;
-        rematerializeFlickRevealIcon(state, { accelerated });
-      }
-    });
-  };
-
-  const checkFlickRevealIconsFallen = (groupAgeAtFall) => {
-    const threshold = window.innerHeight + OFFSCREEN_PAD;
-
-    flickRevealIcons.forEach((state) => {
-      if (!state.released || state.fallen || state.rematerializing || !state.body) return;
-      if (state.body.position.y <= threshold) return;
-
-      state.fallen = true;
-      state.released = false;
-      state.settledSince = null;
-      Composite.remove(engine.world, state.body);
-      state.body = null;
-
-      const accelerated = groupAgeAtFall >= REMATERIALIZE_MAX_WAIT_MS;
-      window.setTimeout(
-        () => rematerializeFlickRevealIcon(state, { accelerated }),
-        REMATERIALIZE_DELAY_MS
-      );
-    });
-  };
-
-  const applyFlickIconKnockOverlapsFromBody = (body, moverWidth, moverHeight, knockMinSpeed) => {
-    if (!getDesktopPhysicsActive() || !isFlickRevealPanelRevealed() || !flickRevealIcons.length) return false;
-
-    const speed = Math.hypot(body.velocity.x, body.velocity.y);
-    if (speed < knockMinSpeed) return false;
-
-    const { x: bx, y: by } = body.position;
-    const bhw = moverWidth * 0.5 * WORDMARK_LETTER_KNOCK_OVERLAP_PAD;
-    const bhh = moverHeight * 0.5 * WORDMARK_LETTER_KNOCK_OVERLAP_PAD;
-
-    for (const state of flickRevealIcons) {
-      if (!isFlickIconKnockTarget(state)) continue;
-
-      const slot = state.slot || captureFlickIconSlot(state.iconEl);
-      const thw = slot.width * 0.5 * FLICK_ICON_COLLIDER_PAD;
-      const thh = slot.height * 0.5 * FLICK_ICON_COLLIDER_PAD;
-      if (!wordmarkKnockBoxesOverlap(bx, by, bhw, bhh, slot.x, slot.y, thw, thh)) continue;
-      if (knockFlickRevealIcon(state, body)) return true;
-    }
-
-    return false;
-  };
-
-  const revealHeroFlickPanel = () => {
-    const panel = document.querySelector(HERO_FLICK_REVEAL_SELECTOR);
-    if (!panel || panel.classList.contains("is-revealed")) return;
-
-    panel.classList.add("is-revealed");
-    panel.setAttribute("aria-hidden", "false");
-
-    if (getDesktopPhysicsActive()) {
-      window.requestAnimationFrame(() => {
-        initFlickRevealIcons();
-        refreshFlickRevealIconLayout();
-      });
-    }
-  };
-
-  const syncHeroFloatingMark = () => {
-    if (!heroFloatingMark?.released || !heroFloatingMark.body) return;
-    syncBrandMarkDom(heroFloatingMark);
-  };
-
-  const isHeroFloatingMarkReceded = (mark) => {
-    if (!mark?.el) return false;
-    if (mark.depthComplete) return true;
-
-    const scale = Number(gsap.getProperty(mark.el, "scaleX")) || 1;
-    const opacity = Number(gsap.getProperty(mark.el, "opacity"));
-    const resolvedOpacity = Number.isFinite(opacity) ? opacity : 1;
-
-    return (
-      scale <= HERO_FLOATING_MARK_EXIT_SCALE * 1.35
-      && resolvedOpacity <= HERO_FLOATING_MARK_EXIT_OPACITY
-    );
-  };
-
-  const teardownHeroFloatingMark = () => {
-    if (!heroFloatingMark) return;
-
-    if (heroFloatingMark.el) {
-      gsap.killTweensOf(heroFloatingMark.el);
-    }
-    if (heroFloatingMark.body && engine) {
-      Composite.remove(engine.world, heroFloatingMark.body);
-    }
-    heroFloatingMark.el?.remove();
-    heroFloatingMark = null;
-  };
-
-  const checkHeroFloatingMarkExit = () => {
-    if (!heroFloatingMark?.exiting) return;
-
-    syncHeroFloatingMark();
-
-    if (isHeroFloatingMarkReceded(heroFloatingMark)) {
-      teardownHeroFloatingMark();
-    }
-  };
-
-  const getHeroFloatingMarkStage = () => document.querySelector(HERO_FLOATING_STAGE_SELECTOR);
-
-  const getHeroFloatingMarkLayoutEl = () => (
-    getHeroFloatingMarkStage() || document.querySelector(HERO_FLOATING_MARK_SELECTOR)
-  );
-
-  const isHeroFloatingMarkBarrierSourceVisible = () => {
-    const source = document.querySelector(HERO_FLOATING_MARK_SELECTOR);
-    return Boolean(source && !source.classList.contains("is-flicked-away"));
-  };
-
-  const shouldIncludeHeroFloatingMarkBarrier = () => (
-    getDesktopPhysicsActive()
-    && isPhysicsInteractive()
-    && !userPhysicsDisabled
-    && !heroFloatingMark
-    && !isBrandMarkMainWordmarkHitsBlocked()
-    && (hasActiveLetters() || introRunning)
-    && isHeroFloatingMarkBarrierSourceVisible()
-  );
-
-  const getHeroFloatingMarkBarrierMetrics = (rect) => {
-    const width = Math.max(rect.width * HERO_FLOATING_MARK_BARRIER_PAD, 24);
-    const height = Math.max(rect.height * HERO_FLOATING_MARK_BARRIER_HEIGHT_RATIO, 10);
-    const cx = rect.left + rect.width * 0.5;
-    const topY = rect.top + rect.height * HERO_FLOATING_MARK_BARRIER_TOP_INSET;
-    const cy = topY + height * 0.5;
-
-    return { cx, cy, width, height };
-  };
-
-  const getHeroFloatingMarkBarrierRestitution = () => (
-    desktopBrandMark?.released
-      ? getDesktopMarkSurfaceRestitution()
-      : DESKTOP_MARK_WALL_RESTITUTION_LOW
-  );
-
-  const buildHeroFloatingMarkBarrierCollider = () => {
-    if (!shouldIncludeHeroFloatingMarkBarrier()) return null;
-
-    const layoutEl = getHeroFloatingMarkLayoutEl();
-    if (!layoutEl) return null;
-
-    const rect = layoutEl.getBoundingClientRect();
-    if (rect.width < 4 || rect.height < 4) return null;
-
-    const { cx, cy, width, height } = getHeroFloatingMarkBarrierMetrics(rect);
-    const rotationDeg = getDomRotationDeg(layoutEl);
-    const restitution = getHeroFloatingMarkBarrierRestitution();
-
-    const body = Bodies.rectangle(cx, cy, width, height, {
-      isStatic: true,
-      friction: 0.02,
-      restitution,
-      render: { visible: false },
-      label: HERO_FLOATING_MARK_BARRIER_LABEL
-    });
-
-    Body.setPosition(body, { x: cx, y: cy });
-    Body.setAngle(body, rotationDeg * (Math.PI / 180));
-    return body;
-  };
-
-  const syncHeroFloatingMarkBarrierPosition = () => {
-    if (!engine || !shouldIncludeHeroFloatingMarkBarrier()) return;
-
-    const barrier = environmentBodies.find((body) => body.label === HERO_FLOATING_MARK_BARRIER_LABEL);
-    if (!barrier) return;
-
-    const layoutEl = getHeroFloatingMarkLayoutEl();
-    if (!layoutEl) return;
-
-    const rect = layoutEl.getBoundingClientRect();
-    if (rect.width < 4 || rect.height < 4) return;
-
-    const { cx, cy } = getHeroFloatingMarkBarrierMetrics(rect);
-    const rotationDeg = getDomRotationDeg(layoutEl);
-
-    Body.setPosition(barrier, { x: cx, y: cy });
-    Body.setAngle(barrier, rotationDeg * (Math.PI / 180));
-  };
-
-  const isPointerOnHeroFloatingMark = (event) => {
-    const mark = document.querySelector(HERO_FLOATING_MARK_SELECTOR);
-    const layoutEl = getHeroFloatingMarkLayoutEl();
-    if (!mark || !layoutEl || mark.classList.contains("is-flicked-away")) return false;
-
-    const rect = layoutEl.getBoundingClientRect();
-    if (rect.width < 4 || rect.height < 4) return false;
-
-    const inRect = (
-      event.clientX >= rect.left
-      && event.clientX <= rect.right
-      && event.clientY >= rect.top
-      && event.clientY <= rect.bottom
-    );
-    if (!inRect) return false;
-
-    const topEl = document.elementFromPoint(event.clientX, event.clientY);
-    if (topEl?.closest(".sds-hero__copy, a, button, input, textarea, select")) return false;
-
-    return true;
-  };
-
-  const canHeroFloatingMarkBeTriggered = () => (
-    getDesktopPhysicsActive()
-    && isPhysicsInteractive()
-    && !lowPerformance
-    && !heroFloatingMark
-    && !userPhysicsDisabled
-  );
-
-  const launchHeroFloatingMarkFlick = (contactPoint = null) => {
-    if (!canHeroFloatingMarkBeTriggered()) return;
-
-    const source = document.querySelector(HERO_FLOATING_MARK_SELECTOR);
-    const layoutEl = getHeroFloatingMarkLayoutEl();
-    if (!source || !layoutEl || source.classList.contains("is-flicked-away")) return;
-
-    const sourceRect = layoutEl.getBoundingClientRect();
-    if (sourceRect.width < 4 || sourceRect.height < 4) return;
-
-    ensurePhysicsWorld();
-
-    const startX = sourceRect.left + sourceRect.width * 0.5;
-    const startY = sourceRect.top + sourceRect.height * 0.5;
-    const width = sourceRect.width;
-    const height = sourceRect.height;
-    const rotationDeg = getDomRotationDeg(layoutEl);
-    const bodyWidth = Math.max(width * 0.88, 24);
-    const bodyHeight = Math.max(height * 0.88, 24);
-
-    const el = source.cloneNode(true);
-    el.id = HERO_FLOATING_MARK_ID;
-    el.className = "sds-physics-hero-floating-mark is-flick-launch";
-    el.removeAttribute("width");
-    el.removeAttribute("height");
-    el.style.position = "fixed";
-    el.style.left = "0";
-    el.style.top = "0";
-    el.style.width = `${width}px`;
-    el.style.height = `${height}px`;
-    el.style.margin = "0";
-    el.style.pointerEvents = "none";
-    el.style.zIndex = HERO_FLOATING_MARK_Z;
-    el.style.animation = "none";
-    el.style.transform = "none";
-    el.style.willChange = "transform";
-
-    hideHeroFloatingMarkSource(source);
-    revealHeroFlickPanel();
-    getFallLayer().appendChild(el);
-
-    gsap.set(el, {
-      x: startX,
-      y: startY,
-      xPercent: -50,
-      yPercent: -50,
-      scale: 1,
-      opacity: 1,
-      rotation: rotationDeg,
-      transformOrigin: "50% 50%",
-      force3D: true
-    });
-
-    const depthTimeline = gsap.timeline({
-      onComplete: () => {
-        if (heroFloatingMark) {
-          heroFloatingMark.depthComplete = true;
-        }
-      }
-    });
-
-    depthTimeline
-      .to(el, {
-        scale: 1.035,
-        duration: 0.16,
-        ease: "power2.out"
-      })
-      .to(el, {
-        scale: 1,
-        duration: 0.18,
-        ease: "power2.inOut"
-      })
-      .to(el, {
-        scale: HERO_FLOATING_MARK_EXIT_SCALE,
-        opacity: 0,
-        duration: HERO_FLOATING_MARK_RECEDE_DURATION,
-        ease: "power1.inOut"
-      }, "+=0.04");
-
-    window.setTimeout(() => {
-      el.classList.remove("is-flick-launch");
-    }, 320);
-
-    const body = Bodies.rectangle(startX, startY, bodyWidth, bodyHeight, {
-      ...HERO_FLOATING_MARK_PHYSICS,
-      chamfer: { radius: 8 },
-      label: HERO_FLOATING_MARK_LABEL
-    });
-
-    Body.setPosition(body, { x: startX, y: startY });
-    Body.setAngle(body, rotationDeg * (Math.PI / 180));
-
-    const contactX = contactPoint?.x ?? (startX - width * 0.42);
-    const contactY = contactPoint?.y ?? (startY + height * 0.52);
-    let dx = startX - contactX;
-    let dy = startY - contactY;
-    dx += width * 0.42;
-    dy -= height * 0.52;
-
-    const len = Math.hypot(dx, dy) || 1;
-    const impulse = HERO_FLOATING_MARK_IMPULSE_MIN
-      + Math.random() * (HERO_FLOATING_MARK_IMPULSE_MAX - HERO_FLOATING_MARK_IMPULSE_MIN);
-    const vx = (dx / len) * impulse;
-    const vy = (dy / len) * impulse;
-    const spinSign = vx >= 0 ? 1 : -1;
-
-    Body.setVelocity(body, { x: vx, y: vy });
-    Body.setAngularVelocity(
-      body,
-      spinSign * (
-        HERO_FLOATING_MARK_ANGULAR_MIN
-        + Math.random() * (HERO_FLOATING_MARK_ANGULAR_MAX - HERO_FLOATING_MARK_ANGULAR_MIN)
-      )
-    );
-
-    heroFloatingMark = {
-      el,
-      body,
-      source,
-      depthTimeline,
-      depthComplete: false,
-      released: true,
-      exiting: true,
-      flicked: true,
-      width,
-      height
-    };
-
-    Composite.add(engine.world, body);
-    syncHeroFloatingMark();
-    scheduleRefreshEnvironmentColliders();
-
-    if (!runnerActive) {
-      startRunner();
-    }
-  };
-
-  const flickHeroFloatingMark = (event) => {
-    if (!isPointerOnHeroFloatingMark(event)) return;
-    event.preventDefault();
-    event.stopPropagation();
-    launchHeroFloatingMarkFlick({ x: event.clientX, y: event.clientY });
-  };
-
-  const bindHeroFloatingMarkFlick = () => {
-    if (heroFloatingMarkBound || !isPhysicsInteractive()) return;
-
-    const source = document.querySelector(HERO_FLOATING_MARK_SELECTOR);
-    if (!source || source.dataset.heroFlickBound === "true") return;
-
-    heroFlickPointerHandler = (event) => {
-      if (userPhysicsDisabled || !getDesktopPhysicsActive()) return;
-      if (!isPointerOnHeroFloatingMark(event)) return;
-      flickHeroFloatingMark(event);
-    };
-
-    source.dataset.heroFlickBound = "true";
-    heroFloatingMarkBound = true;
-    document.addEventListener("pointerdown", heroFlickPointerHandler, true);
-  };
-
   const isBrandMarkInViewport = (mark) => {
     if (!mark?.el || !mark.released) return false;
 
@@ -3803,39 +3029,6 @@
     if (!mark?.body || prefersReducedMotion || lowPerformance) return false;
     ensurePhysicsWorld();
     return applyBrandMarkLaunchImpulse(mark);
-  };
-
-  const bindAppTileLaunchNavigation = () => {
-    if (appTileLaunchBound || !catalogSection) return;
-    appTileLaunchBound = true;
-
-    appTileLaunchHandler = (event) => {
-      const tile = event.target.closest("a.app-tile");
-      if (!tile?.href) return;
-      if (prefersReducedMotion || lowPerformance) return;
-
-      const mark = getVisibleLaunchableBrandMark();
-      if (!mark) return;
-
-      // Use the wider click-block pad here as a defence-in-depth measure: if
-      // the user's touch lands anywhere within the dead-zone around the icon,
-      // treat it as a tap on the mark and skip navigation.
-      const tapOnMark = isPointerNearBrandMark(event, mark);
-
-      event.preventDefault();
-      event.stopPropagation();
-
-      const href = tile.href;
-      launchBrandMarkFromCard(mark);
-
-      if (!tapOnMark) {
-        window.setTimeout(() => {
-          window.location.href = href;
-        }, BRAND_MARK_LAUNCH_NAV_DELAY_MS);
-      }
-    };
-
-    catalogSection.addEventListener("click", appTileLaunchHandler, true);
   };
 
   const applyDesktopMarkSettlingFriction = () => {
@@ -4246,17 +3439,6 @@
       if (!WORDMARK_LETTER_MENU_BARRIER_LABELS.has(otherBody.label)) return;
 
       pair.isActive = false;
-    });
-  };
-
-  const suppressHeroFloatingMarkCollisions = (event) => {
-    if (!heroFloatingMark?.exiting) return;
-
-    event.pairs.forEach((pair) => {
-      const labels = [pair.bodyA.label, pair.bodyB.label];
-      if (labels.includes(HERO_FLOATING_MARK_LABEL)) {
-        pair.isActive = false;
-      }
     });
   };
 
@@ -4782,12 +3964,6 @@
       : WORDMARK_LETTER_KNOCK_MIN_SPEED * 0.42
   );
 
-  const getHeroFloatingMarkImpactMinSpeed = () => (
-    introRunning
-      ? HERO_FLOATING_MARK_IMPACT_MIN_SPEED * 0.65
-      : HERO_FLOATING_MARK_IMPACT_MIN_SPEED
-  );
-
   const applySublineKnockOverlapsFromBody = (body, moverWidth, moverHeight, now, knockMinSpeed) => {
     const speed = Math.hypot(body.velocity.x, body.velocity.y);
     if (speed < knockMinSpeed) return;
@@ -4858,10 +4034,6 @@
         });
       }
     }
-
-    if (!knockApplied) {
-      applyFlickIconKnockOverlapsFromBody(body, moverWidth, moverHeight, knockMinSpeed);
-    }
   };
 
   const applyBrandMarkKnockOverlapsFromBody = (body, moverWidth, moverHeight, now, knockMinSpeed) => {
@@ -4928,10 +4100,6 @@
         now
       );
     });
-
-    if (!knockApplied && !textOnlyDrop) {
-      applyFlickIconKnockOverlapsFromBody(body, moverWidth, moverHeight, knockMinSpeed);
-    }
   };
 
   const checkWordmarkLetterKnockOverlaps = () => {
@@ -4977,58 +4145,6 @@
     }
   };
 
-  const tryTriggerHeroFloatingMarkImpact = (body, moverWidth, moverHeight, knockMinSpeed) => {
-    if (!canHeroFloatingMarkBeTriggered()) return false;
-    if (WORDMARK_LETTER_BODY_LABEL_RE.test(body.label)) return false;
-
-    const layoutEl = getHeroFloatingMarkLayoutEl();
-    const source = document.querySelector(HERO_FLOATING_MARK_SELECTOR);
-    if (!layoutEl || !source || source.classList.contains("is-flicked-away")) return false;
-
-    const sourceRect = layoutEl.getBoundingClientRect();
-    if (sourceRect.width < 4 || sourceRect.height < 4) return false;
-
-    if (
-      moverWidth < HERO_FLOATING_MARK_IMPACT_MIN_MOVER_SIZE
-      || moverHeight < HERO_FLOATING_MARK_IMPACT_MIN_MOVER_SIZE
-    ) {
-      return false;
-    }
-
-    const speed = Math.hypot(body.velocity.x, body.velocity.y);
-    if (speed < knockMinSpeed) return false;
-
-    const hx = sourceRect.left + sourceRect.width * 0.5;
-    const hy = sourceRect.top + sourceRect.height * 0.5;
-    const hhw = sourceRect.width * 0.5 * HERO_FLOATING_MARK_IMPACT_PAD;
-    const hhh = sourceRect.height * 0.5 * HERO_FLOATING_MARK_IMPACT_PAD;
-    const { x: bx, y: by } = body.position;
-    const bhw = moverWidth * 0.5 * WORDMARK_LETTER_KNOCK_OVERLAP_PAD;
-    const bhh = moverHeight * 0.5 * WORDMARK_LETTER_KNOCK_OVERLAP_PAD;
-
-    if (!wordmarkKnockBoxesOverlap(hx, hy, hhw, hhh, bx, by, bhw, bhh)) return false;
-
-    launchHeroFloatingMarkFlick({ x: bx, y: by });
-    return true;
-  };
-
-  const checkHeroFloatingMarkImpactTriggers = () => {
-    if (!canHeroFloatingMarkBeTriggered()) return;
-
-    const knockMinSpeed = getHeroFloatingMarkImpactMinSpeed();
-
-    if (desktopBrandMark?.released && desktopBrandMark.body) {
-      if (tryTriggerHeroFloatingMarkImpact(
-        desktopBrandMark.body,
-        desktopBrandMark.width,
-        desktopBrandMark.height,
-        knockMinSpeed
-      )) {
-        return;
-      }
-    }
-  };
-
   const syncWordmarkLetterColliderPositions = () => {
     if (!engine || !environmentBodies.length) return;
     const shouldSync = introRunning
@@ -5055,8 +4171,6 @@
     Events.on(engine, "collisionActive", suppressIntroMainLetterColliderCollisions);
     Events.on(engine, "collisionStart", suppressWordmarkLetterBannerCollisions);
     Events.on(engine, "collisionActive", suppressWordmarkLetterBannerCollisions);
-    Events.on(engine, "collisionStart", suppressHeroFloatingMarkCollisions);
-    Events.on(engine, "collisionActive", suppressHeroFloatingMarkCollisions);
     Events.on(engine, "collisionStart", suppressBrandMarkUpwardCollisions);
     Events.on(engine, "collisionActive", suppressBrandMarkUpwardCollisions);
     Events.on(engine, "collisionStart", suppressBrandMarkNonSublineCollisionsDuringTextOnlyDrop);
@@ -5162,11 +4276,6 @@
         }));
         environmentBodies.push(...buildGalleryFloorColliders(DESKTOP_MARK_WALL_RESTITUTION_LOW));
       }
-
-      const heroFloatingMarkBarrier = buildHeroFloatingMarkBarrierCollider();
-      if (heroFloatingMarkBarrier) {
-        environmentBodies.push(heroFloatingMarkBarrier);
-      }
     }
 
     environmentBodies.forEach((body) => {
@@ -5200,10 +4309,8 @@
       syncBannerKnockLooseFromScroll();
 
       const activeLetters = hasActiveLetters();
-      const activeFlickIcons = hasActiveFlickIcons();
       const mobileMarkActive = Boolean(mobileMark?.body && mobileMark.released);
       const desktopMarkActive = Boolean(desktopBrandMark?.body && desktopBrandMark.released);
-      const heroMarkActive = Boolean(heroFloatingMark?.body && heroFloatingMark.exiting);
       const needsKnockColliderSync = introRunning
         || activeLetters
         || wordmark?.classList.contains("is-physics-falling")
@@ -5211,10 +4318,6 @@
 
       if (needsKnockColliderSync) {
         syncWordmarkLetterColliderPositions();
-      }
-
-      if (shouldIncludeHeroFloatingMarkBarrier()) {
-        syncHeroFloatingMarkBarrierPosition();
       }
 
       if (activeLetters || desktopMarkActive || mobileMarkActive) {
@@ -5226,7 +4329,7 @@
         calmSublineLetters();
       }
 
-      if (activeLetters || activeFlickIcons || mobileMarkActive || desktopMarkActive || heroMarkActive) {
+      if (activeLetters || mobileMarkActive || desktopMarkActive) {
         syncDomFromBodies();
       }
 
@@ -5244,14 +4347,6 @@
 
       if (getMobilePhysicsActive()) {
         checkMobileHeroGalleryZoneTransition();
-      }
-
-      if ((activeLetters || desktopMarkActive) && !heroMarkActive && !isBrandMarkMainWordmarkHitsBlocked()) {
-        checkHeroFloatingMarkImpactTriggers();
-      }
-
-      if (heroMarkActive) {
-        checkHeroFloatingMarkExit();
       }
 
       if (activeLetters) {
@@ -5400,8 +4495,6 @@
     });
     syncMobileMark();
     syncDesktopBrandMark();
-    syncHeroFloatingMark();
-    syncFlickRevealIconDom();
   };
 
   const checkSettledLetters = () => {
@@ -5472,8 +4565,6 @@
         returnLetterToSlot(pair, { accelerated });
       }
     });
-
-    checkFlickRevealIconsSettled(now, groupIdle, normalReturnMs, minReturnMs, forceGroupReturn);
   };
 
   const checkFallenLetters = () => {
@@ -5498,8 +4589,6 @@
         REMATERIALIZE_DELAY_MS
       );
     });
-
-    checkFlickRevealIconsFallen(groupAgeAtFall);
   };
 
   const returnLetterToSlot = (pair, { accelerated = false, onComplete } = {}) => {
@@ -5933,7 +5022,6 @@
     });
     teardownMobilePhysics();
     teardownDesktopBrandMark();
-    teardownHeroFloatingMark();
     stopRunner();
     frameBudget.length = 0;
     wordmarkContexts.forEach((ctx) => {
@@ -6224,43 +5312,12 @@
     return jobs.length ? Promise.all(jobs) : Promise.resolve();
   };
 
-  const waitForHeroFloatingMarkExit = () => new Promise((resolve) => {
-    if (!heroFloatingMark?.exiting) {
-      resolve();
-      return;
-    }
-
-    const step = () => {
-      if (!heroFloatingMark?.exiting) {
-        resolve();
-        return;
-      }
-
-      syncHeroFloatingMark();
-      checkHeroFloatingMarkExit();
-
-      if (!heroFloatingMark?.exiting) {
-        resolve();
-        return;
-      }
-
-      requestAnimationFrame(step);
-    };
-
-    step();
-  });
-
   const finalizePhysicsDisable = () => {
-    if (heroFloatingMark?.depthTimeline) {
-      heroFloatingMark.depthTimeline.pause();
-    }
-
     if (engine) {
       syncDomFromBodies();
       pairs.forEach((pair) => {
         if (pair.body) freezePhysicsBody(pair.body);
       });
-      if (heroFloatingMark?.body) freezePhysicsBody(heroFloatingMark.body);
       stopRunner();
     }
   };
@@ -6276,8 +5333,7 @@
 
     void Promise.all([
       returnAllLettersForPhysicsDisable(),
-      parkActiveBrandMarksForToggle(),
-      waitForHeroFloatingMarkExit()
+      parkActiveBrandMarksForToggle()
     ]).finally(() => {
       if (session !== physicsDisableSession) return;
       physicsDisablePending = false;
@@ -6297,10 +5353,6 @@
     }
 
     unfreezeAllPhysicsBodies();
-
-    if (heroFloatingMark?.depthTimeline) {
-      heroFloatingMark.depthTimeline.resume();
-    }
 
     if (engine && hasActivePhysicsBodies()) {
       startRunner();
@@ -6383,13 +5435,8 @@
 
   const revealWordmark = () => new Promise((resolve) => {
     root.classList.remove("is-booting");
-    gsap.to(line, {
-      opacity: 1,
-      y: 0,
-      duration: WORDMARK_REVEAL_DURATION,
-      ease: "power3.inOut",
-      onComplete: resolve
-    });
+    gsap.set(line, { opacity: 1, y: 0 });
+    resolve();
   });
 
   const prepareSplitLayout = () => {
@@ -6756,11 +5803,6 @@
     for (let i = 0; i < order.length; i += 1) {
       if (lowPerformance || introAbortRequested) break;
 
-      if (i > 0) {
-        await cancellableIntroDelay(INTRO_LETTER_GAP_MS + Math.random() * INTRO_LETTER_GAP_JITTER_MS);
-        if (introAbortRequested) break;
-      }
-
       introRuns.push(runIntroLetter(order[i]));
     }
 
@@ -6851,20 +5893,6 @@
     brandMarkSource.addEventListener("pointerdown", desktopBrandMarkEngageHandler);
   };
 
-  const teardownFlickRevealIcons = () => {
-    flickRevealIcons.forEach((state) => {
-      if (state.cloneEl) {
-        gsap.killTweensOf(state.cloneEl);
-        state.cloneEl.remove();
-      }
-      if (state.body && engine) {
-        Composite.remove(engine.world, state.body);
-      }
-      state.iconEl?.classList.remove("is-knocked-away");
-    });
-    flickRevealIcons = [];
-  };
-
   const destroyPhysicsPage = () => {
     if (pageDestroyed) return;
     pageDestroyed = true;
@@ -6887,14 +5915,8 @@
       refreshCollidersRaf = 0;
     }
 
-    if (heroFloatingMark?.depthTimeline) {
-      heroFloatingMark.depthTimeline.kill();
-    }
-
     teardownMobilePhysics();
     teardownDesktopBrandMark();
-    teardownHeroFloatingMark();
-    teardownFlickRevealIcons();
 
     pairs.forEach((pair) => {
       if (pair.shakeTimeline) {
@@ -6977,22 +5999,6 @@
       mobileLaunchClickHandler = null;
     }
 
-    if (heroFloatingMarkBound && heroFlickPointerHandler) {
-      document.removeEventListener("pointerdown", heroFlickPointerHandler, true);
-      heroFloatingMarkBound = false;
-      heroFlickPointerHandler = null;
-      const heroSource = document.querySelector(HERO_FLOATING_MARK_SELECTOR);
-      if (heroSource) {
-        delete heroSource.dataset.heroFlickBound;
-      }
-    }
-
-    if (appTileLaunchBound && appTileLaunchHandler && catalogSection) {
-      catalogSection.removeEventListener("click", appTileLaunchHandler, true);
-      appTileLaunchBound = false;
-      appTileLaunchHandler = null;
-    }
-
     const brandMarkSource = document.querySelector(MOBILE_MARK_SELECTOR);
     if (brandMarkSource && desktopBrandMarkEngageHandler) {
       brandMarkSource.removeEventListener("pointerenter", desktopBrandMarkEngageHandler);
@@ -7050,14 +6056,10 @@
 
     if (nowMobile && !wasMobile) {
       teardownDesktopBrandMark();
-      teardownHeroFloatingMark();
       setupMobilePhysics();
       if (introComplete && !mobileMark) void spawnMobileBrandMark();
     } else if (!nowMobile && wasMobile) {
       teardownMobilePhysics();
-      if (isFlickRevealPanelRevealed()) {
-        window.requestAnimationFrame(() => refreshFlickRevealIconLayout());
-      }
     }
 
     if (introRunning || hasActiveLetters() || pairs.some((pair) => pair.cycleActive || pair.rematerializing || pair.loosening)) {
@@ -7075,9 +6077,6 @@
     initPairRegistry();
     pairs.forEach((pair) => applyCharLayout(slotLayoutItem(pair), pair));
     bindLetterInteractions();
-    if (isFlickRevealPanelRevealed()) {
-      refreshFlickRevealIconLayout();
-    }
     if (engine) refreshEnvironmentColliders();
   };
 
@@ -7086,11 +6085,9 @@
   const init = async () => {
     bindPhysicsToggle();
     bindDesktopBrandMarkHover();
-    bindHeroFloatingMarkFlick();
     bindDesktopBrandMarkLaunchLayer();
     bindMobileBrandMarkLaunchLayer();
     bindBrandMarkScroll();
-    bindAppTileLaunchNavigation();
     await waitForFonts();
     setupMobilePhysics();
     resetSystemRowStyles();
