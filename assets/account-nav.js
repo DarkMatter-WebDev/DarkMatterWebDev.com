@@ -32,9 +32,15 @@
     var isEs = (document.documentElement.lang || "en").toLowerCase().indexOf("es") === 0;
     var label = signedIn ? (isEs ? "Cuenta" : "Account") : (isEs ? "Acceso" : "Client Login");
     var icon = signedIn ? "account_circle" : "login";
-    var links = document.querySelectorAll('a[href$="account.html"]');
+    // Match the account link regardless of URL style: "account.html",
+    // "/account.html", "../account.html", the clean URL "/account" or "account",
+    // and any of those with a ?query or #hash. Deliberately does NOT match
+    // "account-settings", "account-created", "account-ads-status", etc.
+    var accountHref = /(^|\/)account(\.html)?([?#]|$)/i;
+    var links = document.querySelectorAll("a[href]");
     for (var i = 0; i < links.length; i++) {
       var a = links[i];
+      if (!accountHref.test(a.getAttribute("href") || "")) continue;
       var iconEl = a.querySelector(".material-symbols-outlined");
       if (!iconEl) continue; // only the nav account button carries the icon
       var name = (iconEl.textContent || "").trim();
