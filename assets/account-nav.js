@@ -54,4 +54,15 @@
   } else {
     apply();
   }
+
+  // Re-apply when the page is shown again, including back/forward navigations
+  // restored from the bfcache. Scripts do NOT re-run on a bfcache restore, so
+  // without this a page first rendered while logged out keeps showing
+  // "Client Login" after the user signs in and navigates back to it.
+  window.addEventListener("pageshow", function () { apply(); });
+
+  // Reflect a login that happened in another tab without needing a reload.
+  window.addEventListener("storage", function (e) {
+    if (!e || e.key == null || e.key === "dm_logged_in" || e.key.indexOf("sb-") === 0) apply();
+  });
 })();

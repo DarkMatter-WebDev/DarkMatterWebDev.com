@@ -368,6 +368,10 @@ async function maybeQuery(supabase, table, userId) {
 async function renderDashboard(supabase, session) {
   const user = session?.user;
   if (!user) return;
+  // Persist the signed-in flag the instant a session exists, before any
+  // post-login redirect (magic link / ?next=) can navigate away. Otherwise the
+  // flag would never be set on flows that redirect straight to checkout.
+  try { localStorage.setItem("dm_logged_in", "1"); } catch (e) {}
   if (maybeRedirectToPortalNext()) return;
   updateAccountNav(true);
 
