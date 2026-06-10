@@ -7,8 +7,8 @@ const isSpanish = document.documentElement.lang.startsWith("es");
 const accountPath = isSpanish ? "/es/account.html" : "/account.html";
 
 const t = {
-  setupPending: copy.setupPending || (isSpanish ? "Configuracion del portal pendiente" : "Portal login setup pending"),
-  loginRequired: copy.loginRequired || (isSpanish ? "Inicio de sesion requerido" : "Login required"),
+  setupPending: copy.setupPending || (isSpanish ? "Configuración del portal pendiente" : "Portal login setup pending"),
+  loginRequired: copy.loginRequired || (isSpanish ? "Inicio de sesión requerido" : "Login required"),
   accessDenied: copy.accessDenied || (isSpanish ? "Solo Sean" : "Sean access only"),
   accessDeniedNote:
     copy.accessDeniedNote ||
@@ -16,7 +16,7 @@ const t = {
       ? "Este centro de clientes de Google Ads esta restringido a Sean y a la cuenta propietaria de Dark Matter."
       : "This Google Ads customer center is restricted to Sean and the Dark Matter owner account."),
   authorized: copy.authorized || (isSpanish ? "Autorizado" : "Authorized"),
-  ownerOversight: copy.ownerOversight || (isSpanish ? "Supervision del propietario" : "Owner oversight"),
+  ownerOversight: copy.ownerOversight || (isSpanish ? "Supervisión del propietario" : "Owner oversight"),
   accountLabel: copy.accountLabel || (isSpanish ? "Cuenta" : "Account")
 };
 

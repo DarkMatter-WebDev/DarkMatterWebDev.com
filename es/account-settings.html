@@ -5,7 +5,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <script>(function(){try{var p=localStorage.getItem('dm_lang');if(p==="en"){location.replace("../account-settings.html"+location.search+location.hash);}}catch(e){}})();</script>
 <title>Ajustes de Cuenta | DARK MATTER</title>
-<meta name="description" content="Administra el perfil, contrasena y preferencias de tu cuenta de cliente Dark Matter."/>
+<meta name="description" content="Administra el perfil, contraseña y preferencias de tu cuenta de cliente Dark Matter."/>
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
 <link rel="alternate" hreflang="en" href="/account-settings.html"/>
 <link rel="alternate" hreflang="es" href="/es/account-settings.html"/>
@@ -28,16 +28,16 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <div class="client-portal-kicker">Ajustes de Cuenta</div>
 <h1 class="client-portal-title client-portal-title--split"><span>Tu cuenta</span><small>perfil y seguridad</small></h1>
 <div class="client-settings-email" data-settings-email></div>
-<div class="client-settings-badge" data-settings-session-status style="margin-top:14px;"><span class="material-symbols-outlined">lock</span>Verificando sesion</div>
+<div class="client-settings-badge" data-settings-session-status style="margin-top:14px;"><span class="material-symbols-outlined">lock</span>Verificando sesión</div>
 </div>
 <div class="client-settings-actions">
 <a class="client-portal-button client-portal-button--ghost" href="account.html"><span class="material-symbols-outlined">arrow_back</span>Volver al panel</a>
-<button class="client-portal-button client-portal-button--ghost" type="button" data-settings-signout><span class="material-symbols-outlined">logout</span>Cerrar sesion</button>
+<button class="client-portal-button client-portal-button--ghost" type="button" data-settings-signout><span class="material-symbols-outlined">logout</span>Cerrar sesión</button>
 </div>
 </div>
 <div class="client-settings-gate" data-settings-gate>
-<p class="client-muted">Inicia sesion para administrar tu perfil, contrasena y preferencias de cuenta.</p>
-<div class="client-settings-actions"><a class="client-portal-button" data-settings-login-link href="account.html"><span class="material-symbols-outlined">login</span>Iniciar sesion</a></div>
+<p class="client-muted">Inicia sesión para administrar tu perfil, contraseña y preferencias de cuenta.</p>
+<div class="client-settings-actions"><a class="client-portal-button" data-settings-login-link href="account.html"><span class="material-symbols-outlined">login</span>Iniciar sesión</a></div>
 </div>
 <div class="client-settings-stack" data-settings-content hidden>
 <section class="client-settings-panel">
@@ -45,13 +45,13 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <div>
 <div class="client-portal-kicker">Perfil</div>
 <h3>Datos de contacto</h3>
-<p>Actualiza el nombre y la informacion de contacto que Dark Matter usa para tu cuenta y solicitudes de soporte.</p>
+<p>Actualiza el nombre y la información de contacto que Dark Matter usa para tu cuenta y solicitudes de soporte.</p>
 </div>
 <span class="client-settings-badge"><span class="material-symbols-outlined">person</span>Cuenta</span>
 </div>
 <form class="client-portal-form" data-profile-form>
 <label class="client-portal-label">Nombre completo<input class="client-portal-input" type="text" autocomplete="name" required data-profile-name placeholder="Tu nombre"/></label>
-<label class="client-portal-label">Telefono<input class="client-portal-input" type="tel" autocomplete="tel" data-profile-phone placeholder="Mejor numero de contacto"/></label>
+<label class="client-portal-label">Teléfono<input class="client-portal-input" type="tel" autocomplete="tel" data-profile-phone placeholder="Mejor número de contacto"/></label>
 <label class="client-portal-label">Empresa o negocio<input class="client-portal-input" type="text" autocomplete="organization" data-profile-company placeholder="Nombre del negocio (opcional)"/></label>
 <label class="client-portal-label">Sitio web<input class="client-portal-input" type="url" autocomplete="url" data-profile-website placeholder="https://tusitio.com"/></label>
 <label class="client-portal-label client-settings-readonly">Correo de acceso<input class="client-portal-input" type="email" readonly data-profile-email placeholder="cliente@ejemplo.com"/></label>
@@ -63,15 +63,15 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <div class="client-settings-panel__header">
 <div>
 <div class="client-portal-kicker">Seguridad</div>
-<h3>Cambiar contrasena</h3>
-<p>Establece una contrasena nueva para tu acceso al portal Dark Matter.</p>
+<h3>Cambiar contraseña</h3>
+<p>Establece una contraseña nueva para tu acceso al portal Dark Matter.</p>
 </div>
 <span class="client-settings-badge"><span class="material-symbols-outlined">key</span>Seguridad</span>
 </div>
 <form class="client-portal-form" data-password-form>
-<label class="client-portal-label">Nueva contrasena<input class="client-portal-input" type="password" autocomplete="new-password" minlength="6" required data-password-new placeholder="Minimo 6 caracteres"/></label>
-<label class="client-portal-label">Confirmar contrasena<input class="client-portal-input" type="password" autocomplete="new-password" minlength="6" required data-password-confirm placeholder="Escríbela otra vez"/></label>
-<button class="client-portal-button client-portal-button--secondary" type="submit"><span class="material-symbols-outlined">lock_reset</span>Actualizar contrasena</button>
+<label class="client-portal-label">Nueva contraseña<input class="client-portal-input" type="password" autocomplete="new-password" minlength="6" required data-password-new placeholder="Mínimo 6 caracteres"/></label>
+<label class="client-portal-label">Confirmar contraseña<input class="client-portal-input" type="password" autocomplete="new-password" minlength="6" required data-password-confirm placeholder="Escríbela otra vez"/></label>
+<button class="client-portal-button client-portal-button--secondary" type="submit"><span class="material-symbols-outlined">lock_reset</span>Actualizar contraseña</button>
 <div class="client-portal-status" data-password-status></div>
 </form>
 </section>
@@ -80,14 +80,13 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <div>
 <div class="client-portal-kicker">Preferencias</div>
 <h3>Sitio web y valores de servicio</h3>
-<p>Usa el panel para enviar solicitudes de cambio, o explora direccion visual con el creador de preferencias mientras ampliamos estos ajustes.</p>
+<p>Usa el panel para enviar solicitudes de cambio, o explora dirección visual con el creador de preferencias mientras ampliamos estos ajustes.</p>
 </div>
 <span class="client-settings-badge"><span class="material-symbols-outlined">tune</span>Espacio</span>
 </div>
 <div class="client-workspace-grid">
-<a class="client-workspace-card client-workspace-card--request" href="account.html#client-request"><span class="material-symbols-outlined">edit_note</span><strong>Enviar solicitud</strong><small>Pide cambios de contenido, diseno, facturacion o soporte.</small></a>
-<a class="client-workspace-card client-workspace-card--orbit" href="preference-builder.html"><span class="material-symbols-outlined">architecture</span><strong>Preferencias visuales</strong><small>Explora direccion visual con el creador de mockup gratis.</small></a>
-<a class="client-workspace-card client-workspace-card--status" href="account.html#client-website-status"><span class="material-symbols-outlined">monitoring</span><strong>Ver panel</strong><small>Regresa a salud del sitio, servicios, facturacion y trafico.</small></a>
+<a class="client-workspace-card client-workspace-card--request" href="account.html#client-request"><span class="material-symbols-outlined">edit_note</span><strong>Enviar solicitud</strong><small>Pide cambios de contenido, diseño, facturación o soporte.</small></a>
+<a class="client-workspace-card client-workspace-card--status" href="account.html#client-website-status"><span class="material-symbols-outlined">monitoring</span><strong>Ver panel</strong><small>Regresa a salud del sitio, servicios, facturación y tráfico.</small></a>
 </div>
 </section>
 <section class="client-super-admin-panel client-sean-ads-panel" data-settings-sean-panel hidden>
@@ -95,7 +94,7 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <div>
 <div class="client-portal-kicker">Portal Google Ads de Sean</div>
 <h3>Acceso admin autorizado</h3>
-<p>Abre el centro de clientes de Sean para notas de campana y seguimiento de proyectos.</p>
+<p>Abre el centro de clientes de Sean para notas de campaña y seguimiento de proyectos.</p>
 </div>
 <span class="client-super-admin-badge"><span class="material-symbols-outlined">ads_click</span>Autorizado</span>
 </div>
@@ -124,17 +123,17 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <script>
 window.DM_ACCOUNT_SETTINGS_COPY = {
   setupPending: "Configura Supabase en assets/supabase-config.js para habilitar ajustes.",
-  loginRequired: "Inicio de sesion requerido",
-  loginNote: "Inicia sesion para ver y actualizar los ajustes de tu cuenta.",
-  signedIn: "Sesion activa",
+  loginRequired: "Inicio de sesión requerido",
+  loginNote: "Inicia sesión para ver y actualizar los ajustes de tu cuenta.",
+  signedIn: "Sesión activa",
   profileSaved: "Perfil actualizado.",
-  passwordSaved: "Contrasena actualizada.",
-  passwordTooShort: "La contrasena debe tener al menos 6 caracteres.",
-  passwordMismatch: "Las contrasenas no coinciden.",
-  passwordRequired: "Escribe una contrasena nueva.",
+  passwordSaved: "Contraseña actualizada.",
+  passwordTooShort: "La contraseña debe tener al menos 6 caracteres.",
+  passwordMismatch: "Las contraseñas no coinciden.",
+  passwordRequired: "Escribe una contraseña nueva.",
   nameRequired: "Escribe tu nombre.",
   error: "Algo salio mal. Intenta de nuevo.",
-  profilePartial: "Datos basicos guardados. Algunos campos del perfil aun no estan conectados en Supabase."
+  profilePartial: "Datos básicos guardados. Algunos campos del perfil aún no están conectados en Supabase."
 };
 </script>
 <script type="module" src="../assets/account-settings.js?v=20260605-account-settings"></script>

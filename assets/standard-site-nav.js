@@ -15,9 +15,9 @@
         process: "Proceso",
         portfolio: "Portafolio",
         login: "Acceso",
-        contact: "Contactanos",
+        contact: "Contáctanos",
         work: "Trabajo",
-        onlineHeading: "Servicios en linea",
+        onlineHeading: "Servicios en línea",
         localHeading: "Servicios a Domicilio y Oficina",
         langCurrent: "ES",
         langOther: "EN",
@@ -38,36 +38,28 @@
         localHeading: "In-Home & Office Services",
         langCurrent: "EN",
         langOther: "ES",
-        langOtherLabel: "Cambiar a espanol",
+        langOtherLabel: "Cambiar a español",
         langStorage: "es"
       };
 
   var services = isSpanish
     ? {
         online: [
-          ["Gestion Completa de Sitios Web", "services/complete-website-management.html"],
-          ["Consulta", "services/discovery-consultation.html"],
-          ["Diseno de Sitios Web", "services/website-design.html"],
-          ["Marca y Rediseno", "services/brand-rebranding.html"],
+          ["Diseño de Sitios Web", "services/website-design.html"],
           ["Hosting Administrado", "services/managed-hosting.html"],
           ["Planes de Mantenimiento Web", "services/website-care-plans.html"],
-          ["Fundamentos de SEO", "services/seo-foundations.html"],
           ["Aplicaciones Web Empresariales a Medida", "services/custom-development.html"]
         ],
         local: [
-          ["Servicios Tecnicos a Domicilio", "services/in-home-services.html"],
-          ["Configuracion de Redes de Oficina", "services/office-network-setup.html"]
+          ["Servicios Técnicos a Domicilio", "services/in-home-services.html"],
+          ["Configuración de Redes de Oficina", "services/office-network-setup.html"]
         ]
       }
     : {
         online: [
-          ["Complete Website Management", "services/complete-website-management.html"],
-          ["Consultation", "services/discovery-consultation.html"],
           ["Website Design", "services/website-design.html"],
-          ["Brand & Rebranding", "services/brand-rebranding.html"],
           ["Managed Hosting", "services/managed-hosting.html"],
           ["Website Care Plans", "services/website-care-plans.html"],
-          ["SEO Foundations", "services/seo-foundations.html"],
           ["Custom Business Web Apps", "services/custom-development.html"]
         ],
         local: [
@@ -146,7 +138,7 @@
     copy.home +
     '</a><div class="relative services-nav-group"><a class="' +
     desktopClass("services") +
-    '" href="services.html">' +
+    '" tabindex="0" aria-haspopup="true">' +
     copy.services +
     '</a><div class="services-nav-menu"><div class="services-nav-panel"><div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>' +
     copy.onlineHeading +
@@ -164,10 +156,6 @@
     desktopClass("process") +
     '" href="process.html">' +
     copy.process +
-    '</a><a class="' +
-    desktopClass("portfolio") +
-    '" href="casestudies.html">' +
-    copy.portfolio +
     '</a><a class="' +
     desktopClass("account") +
     '" href="account.html"><span class="material-symbols-outlined text-base">account_circle</span>' +
@@ -187,7 +175,7 @@
     mobileClass("home") +
     '"><span class="material-symbols-outlined">home</span><span class="font-label-caps text-[10px] mt-1">' +
     copy.home +
-    '</span></a><a href="services.html" class="' +
+    '</span></a><a href="apps.html" class="' +
     mobileClass("services") +
     '" data-mobile-services-trigger><span class="material-symbols-outlined">design_services</span><span class="font-label-caps text-[10px] mt-1">' +
     copy.services +
@@ -199,10 +187,6 @@
     mobileClass("process") +
     '"><span class="material-symbols-outlined">timeline</span><span class="font-label-caps text-[10px] mt-1">' +
     copy.process +
-    '</span></a><a href="casestudies.html" class="' +
-    mobileClass("portfolio") +
-    '"><span class="material-symbols-outlined">workspace_premium</span><span class="font-label-caps text-[10px] mt-1">' +
-    copy.work +
     '</span></a><a href="contact.html" class="' +
     mobileClass("contact") +
     '"><span class="material-symbols-outlined">mail</span><span class="font-label-caps text-[10px] mt-1">' +

@@ -62,10 +62,11 @@
 
 .sds-home-widget--mobile .sds-home-widget__frame {
   padding: 1px;
-  border-radius: 8px;
+  border-radius: 6px;
   box-shadow:
-    0 4px 14px rgba(0, 0, 0, 0.42),
-    0 0 10px rgba(168, 85, 247, 0.16);
+    0 4px 13px rgba(0, 0, 0, 0.46),
+    0 0 10px rgba(168, 85, 247, 0.2),
+    0 0 6px rgba(34, 211, 238, 0.1);
 }
 
 .sds-home-widget__inner {
@@ -86,9 +87,9 @@
 }
 
 .sds-home-widget--mobile .sds-home-widget__inner {
-  gap: 0.28rem;
-  padding: 0.22rem 0.38rem 0.22rem 0.28rem;
-  border-radius: 7px;
+  gap: 0.25rem;
+  padding: 0.25rem 0.34rem 0.25rem 0.27rem;
+  border-radius: 5px;
 }
 
 .sds-home-widget:hover .sds-home-widget__inner,
@@ -114,8 +115,8 @@
 }
 
 .sds-home-widget--mobile .sds-home-widget__logo-wrap {
-  width: 0.72rem;
-  height: 0.95rem;
+  width: 0.66rem;
+  height: 0.85rem;
 }
 
 .sds-home-widget__logo {
@@ -131,7 +132,7 @@
 }
 
 .sds-home-widget--mobile .sds-home-widget__logo {
-  filter: drop-shadow(0 0 4px rgba(168, 85, 247, 0.35));
+  filter: drop-shadow(0 0 4px rgba(168, 85, 247, 0.36));
 }
 
 .sds-home-widget__copy {
@@ -145,7 +146,7 @@
 }
 
 .sds-home-widget--mobile .sds-home-widget__copy {
-  gap: 0;
+  gap: 0.05rem;
 }
 
 .sds-home-widget__kicker {
@@ -168,17 +169,21 @@
   -webkit-text-fill-color: transparent;
 }
 
-.sds-home-widget--mobile .sds-home-widget__label {
-  font: 700 7px "JetBrains Mono", monospace;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(226, 232, 240, 0.88);
-  white-space: nowrap;
+.sds-home-widget--mobile .sds-home-widget__kicker {
+  font-size: 5px;
 }
 
-.sds-home-widget--mobile .sds-home-widget__kicker,
+.sds-home-widget--mobile .sds-home-widget__label {
+  font: 600 6px "Space Grotesk", sans-serif;
+  letter-spacing: -0.01em;
+  background: linear-gradient(118deg, #22d3ee 0%, #c084fc 52%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .sds-home-widget--mobile .sds-home-widget__arrow {
-  display: none;
+  font-size: 0.52rem;
 }
 
 .sds-home-widget__arrow {

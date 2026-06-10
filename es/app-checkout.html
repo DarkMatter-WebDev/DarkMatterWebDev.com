@@ -25,10 +25,10 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <article class="checkout-panel">
 <p class="checkout-kicker">Carrito del portal</p>
 <h1 class="checkout-title">Checkout de app</h1>
-<p class="checkout-copy">Esta pagina de compra esta reservada para clientes que ya iniciaron sesion en Dark Matter. La app seleccionada queda en el carrito del portal para conectar pago, notas de configuracion y solicitudes personalizadas con tu cuenta.</p>
-<div class="portal-status" data-session-status><span class="material-symbols-outlined">lock</span>Revisando sesion</div>
+<p class="checkout-copy">Esta página de compra está reservada para clientes que ya iniciaron sesión en Dark Matter. La app seleccionada queda en el carrito del portal para conectar pago, notas de configuración y solicitudes personalizadas con tu cuenta.</p>
+<div class="portal-status" data-session-status><span class="material-symbols-outlined">lock</span>Revisando sesión</div>
 <div class="checkout-gate" data-checkout-gate>
-<p class="checkout-note">Inicia sesion antes de abrir el carrito de checkout de apps.</p>
+<p class="checkout-note">Inicia sesión antes de abrir el carrito de checkout de apps.</p>
 <div class="checkout-actions"><a class="checkout-button checkout-button--primary" data-login-link href="account.html"><span class="material-symbols-outlined">login</span>Entrar para continuar</a></div>
 </div>
 </article>
@@ -39,18 +39,18 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <div><h2 data-app-name>Dark Matter App</h2><p data-app-description>App empresarial seleccionada para checkout.</p></div>
 </div>
 <div class="cart-total">
-<div><span>Articulo seleccionado</span><strong data-app-short>SDMS</strong></div>
-<div><span>Configuracion</span><strong>Revision del portal</strong></div>
+<div><span>Artículo seleccionado</span><strong data-app-short>SDMS</strong></div>
+<div><span>Configuración</span><strong>Revisión del portal</strong></div>
 <div><span>Estado de pago</span><strong>Listo para procesar</strong></div>
 </div>
 <form class="checkout-form" name="app-checkout-request-es" method="POST" data-netlify="true">
 <input type="hidden" name="form-name" value="app-checkout-request-es"/>
 <input type="hidden" name="selected-app" data-selected-app-input value="sdms"/>
 <label>Email de la cuenta<input type="email" name="email" data-account-email-input placeholder="tu@email.com"/></label>
-<label>Version necesaria<select name="version"><option>Acceso SaaS alojado</option><option>Instalador de escritorio</option><option>Version personalizada con marca</option><option>No estoy seguro todavia</option></select></label>
-<label>Notas de configuracion<textarea name="notes" placeholder="Cuentanos sobre ubicaciones, usuarios, reportes o funciones personalizadas."></textarea></label>
+<label>Versión necesaria<select name="version"><option>Acceso SaaS alojado</option><option>Instalador de escritorio</option><option>Versión personalizada con marca</option><option>No estoy seguro todavía</option></select></label>
+<label>Notas de configuración<textarea name="notes" placeholder="Cuéntanos sobre ubicaciones, usuarios, reportes o funciones personalizadas."></textarea></label>
 <div class="checkout-actions"><button class="checkout-button checkout-button--primary" type="submit"><span class="material-symbols-outlined">shopping_cart_checkout</span>Procesar solicitud de pago</button><a class="checkout-button checkout-button--secondary" href="account.html">Volver al portal</a></div>
-<p class="checkout-note">Este carrito del portal puede conectarse despues a un procesador de pago seguro desde el servidor. No se guardan secretos de pago en esta pagina estatica.</p>
+<p class="checkout-note">Este carrito del portal puede conectarse después a un procesador de pago seguro desde el servidor. No se guardan secretos de pago en esta página estática.</p>
 </form>
 </aside>
 </section>
@@ -58,7 +58,7 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <script src="../assets/supabase-config.js"></script>
 <script type="module">
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
-const apps={sdms:{name:"SDMS — Sistema de gestion para vendedores de segunda mano",short:"SDMS",description:"Cumplimiento de Florida, vendedores, inventario, metales, ventas, reportes y auditoria.",icon:"diamond"},auction:{name:"Software para subastas y consignacion",short:"App de subastas",description:"Consignadores, eventos, inventario, etiquetas, ventas, liquidaciones, facturas y reportes.",icon:"inventory_2"}};
+const apps={sdms:{name:"SDMS — Sistema de gestión para vendedores de segunda mano",short:"SDMS",description:"Cumplimiento de Florida, vendedores, inventario, metales, ventas, reportes y auditoría.",icon:"diamond"},auction:{name:"Software para subastas y consignación",short:"App de subastas",description:"Consignadores, eventos, inventario, etiquetas, ventas, liquidaciones, facturas y reportes.",icon:"inventory_2"}};
 const params=new URLSearchParams(location.search);
 const appKey=apps[params.get("app")]?params.get("app"):"sdms";
 const app=apps[appKey];
@@ -76,16 +76,16 @@ const status=document.querySelector("[data-session-status]");
 const gate=document.querySelector("[data-checkout-gate]");
 const privatePanel=document.querySelector("[data-checkout-private]");
 if(!config.url||!config.anonKey){
-  status.textContent="Configuracion del portal pendiente";
+  status.textContent="Configuración del portal pendiente";
   gate.classList.add("is-visible");
 }else{
   const supabase=createClient(config.url,config.anonKey);
   const {data}=await supabase.auth.getSession();
   if(!data.session){
-    status.innerHTML='<span class="material-symbols-outlined">lock</span>Inicio de sesion requerido';
+    status.innerHTML='<span class="material-symbols-outlined">lock</span>Inicio de sesión requerido';
     gate.classList.add("is-visible");
   }else{
-    status.innerHTML='<span class="material-symbols-outlined">verified_user</span>Sesion iniciada';
+    status.innerHTML='<span class="material-symbols-outlined">verified_user</span>Sesión iniciada';
     privatePanel.hidden=false;
     const emailInput=document.querySelector("[data-account-email-input]");
     if(emailInput) emailInput.value=data.session.user?.email||"";

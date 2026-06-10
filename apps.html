@@ -36,7 +36,7 @@
 <link href="assets/powered-by-badge.css" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="assets/surette-data-systems-apps.css?v=20260609-click-hint" rel="stylesheet"/>
+<link href="assets/surette-data-systems-apps.css?v=20260609-nav-active-fix" rel="stylesheet"/>
 <link href="assets/surette-physics-wordmark.css?v=20260608-hover-reattach" rel="stylesheet"/>
 <script>(function(){document.documentElement.classList.add("sds-apps-boot");})();</script>
 <style>
@@ -64,12 +64,11 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 <a href="index.html" class="site-brand inline-flex items-center gap-2.5 flex-nowrap shrink-0"><span class="material-symbols-outlined brand-mark text-electric-cyan" aria-hidden="true">blur_on</span><span class="flex flex-col leading-none"><span class="font-headline-md text-headline-md tracking-tighter brand-mystical brand-mystical--glow">DARK MATTER</span><span class="brand-subtext"><span class="brand-subtext__line">Surette Systems</span><span class="brand-subtext__line brand-subtext__line--portal">Portal</span></span></span></a>
 <div class="hidden md:flex items-center gap-10">
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="index.html">Home</a>
-<div class="relative services-nav-group"><a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="services.html">Services</a><div class="services-nav-menu"><div class="services-nav-panel"><div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Online Services</div><a href="services/complete-website-management.html">Complete Website Management</a><a href="services/discovery-consultation.html">Consultation</a><a href="services/website-design.html">Website Design</a><a href="services/brand-rebranding.html">Brand &amp; Rebranding</a><a href="services/managed-hosting.html">Managed Hosting</a><a href="services/website-care-plans.html">Website Care Plans</a><a href="services/seo-foundations.html">SEO Foundations</a><a href="services/custom-development.html">Custom Business Web Apps</a><div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">home_pin</span>In-Home &amp; Office Services</div><a href="services/in-home-services.html">In-Home Tech Services</a><a href="services/office-network-setup.html">Office Network Setup</a></div></div></div>
+<div class="relative services-nav-group"><a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" tabindex="0" aria-haspopup="true">Services</a><div class="services-nav-menu"><div class="services-nav-panel"><div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Online Services</div><a href="services/website-design.html">Website Design</a><a href="services/managed-hosting.html">Managed Hosting</a><a href="services/website-care-plans.html">Website Care Plans</a><a href="services/custom-development.html">Custom Business Web Apps</a><div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">home_pin</span>In-Home &amp; Office Services</div><a href="services/in-home-services.html">In-Home Tech Services</a><a href="services/office-network-setup.html">Office Network Setup</a></div></div></div>
 <a class="font-label-mono text-label-mono text-electric-cyan border-b-2 border-electric-cyan pb-1 transition-colors duration-300" href="apps.html">Apps</a>
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="process.html">Process</a>
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="casestudies.html">Portfolio</a>
 <a class="font-label-mono text-label-mono text-electric-cyan hover:underline transition-colors duration-300 inline-flex items-center gap-1.5" href="account.html"><span class="material-symbols-outlined text-base">account_circle</span>Client Login</a>
-<div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0"><span class="text-electric-cyan" aria-current="true">EN</span><span class="text-outline/50">/</span><a href="es/apps.html" hreflang="es" lang="es" aria-label="Cambiar a espanol" class="text-on-surface-variant hover:text-electric-cyan transition-colors duration-300">ES</a></div>
+<div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0"><span class="text-electric-cyan" aria-current="true">EN</span><span class="text-outline/50">/</span><a href="es/apps.html" hreflang="es" lang="es" aria-label="Cambiar a español" class="text-on-surface-variant hover:text-electric-cyan transition-colors duration-300">ES</a></div>
 </div>
 </nav>
 <div class="md:hidden">
@@ -80,16 +79,15 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 <span class="flex flex-col leading-none"><span class="font-headline-md text-headline-md tracking-tighter brand-mystical brand-mystical--glow">DARK MATTER</span><span class="brand-subtext"><span class="brand-subtext__line">Surette Systems</span><span class="brand-subtext__line brand-subtext__line--portal">Portal</span></span></span>
 </a>
 <div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0">
-<span class="text-electric-cyan" aria-current="true">EN</span><span class="text-outline/50">/</span><a href="es/apps.html" hreflang="es" lang="es" aria-label="Cambiar a espanol" class="text-on-surface-variant hover:text-electric-cyan transition-colors duration-300">ES</a>
+<span class="text-electric-cyan" aria-current="true">EN</span><span class="text-outline/50">/</span><a href="es/apps.html" hreflang="es" lang="es" aria-label="Cambiar a español" class="text-on-surface-variant hover:text-electric-cyan transition-colors duration-300">ES</a>
 </div>
 </div>
 </header>
 <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface/10 backdrop-blur-2xl border-t border-starlight-white/10 shadow-[0_-10px_30px_rgba(112,0,255,0.15)] rounded-t-xl">
 <a href="index.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90"><span class="material-symbols-outlined">home</span><span class="font-label-caps text-[10px] mt-1">Home</span></a>
-<a href="services.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90" data-mobile-services-trigger><span class="material-symbols-outlined">design_services</span><span class="font-label-caps text-[10px] mt-1">Services</span></a>
+<a href="apps.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90" data-mobile-services-trigger><span class="material-symbols-outlined">design_services</span><span class="font-label-caps text-[10px] mt-1">Services</span></a>
 <a href="apps.html" class="flex flex-col items-center justify-center text-electric-cyan drop-shadow-[0_0_8px_rgba(0,240,255,0.8)] active:scale-90 transition-all"><span class="material-symbols-outlined">download</span><span class="font-label-caps text-[10px] mt-1">Apps</span></a>
 <a href="process.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90"><span class="material-symbols-outlined">timeline</span><span class="font-label-caps text-[10px] mt-1">Process</span></a>
-<a href="casestudies.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90"><span class="material-symbols-outlined">workspace_premium</span><span class="font-label-caps text-[10px] mt-1">Work</span></a>
 <a href="contact.html" class="sds-nav-contact-tab flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90"><span class="material-symbols-outlined">mail</span><span class="font-label-caps text-[10px] mt-1">Contact</span></a>
 </nav>
 </div>
@@ -121,7 +119,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 </h1>
 <p class="sds-hero__lead">Mobile, web, and desktop CRM, ERP, inventory, workflows, reporting, and operations software.</p>
 <p class="sds-hero__sub">just because it's <span class="sds-physics-wordmark sds-physics-wordmark--sub" data-word="business"><span class="sds-physics-wordmark__arena" tabindex="0"><span class="sds-physics-wordmark__line" data-split="business" aria-hidden="true">BUSINESS</span></span></span>, doesn't mean it needs to be <span class="sds-physics-wordmark sds-physics-wordmark--sub" data-word="boring"><span class="sds-physics-wordmark__arena" tabindex="0"><span class="sds-physics-wordmark__line" data-split="boring" aria-hidden="true">BORING</span></span></span></p>
-<p class="sds-hero__sub"><span class="sds-hero__sub-prefix">AND </span><span class="sds-hero__sub-prefix sds-hero__sub-prefix--falls">when </span><span class="sds-physics-wordmark sds-physics-wordmark--sub" data-word="falls-apart"><span class="sds-physics-wordmark__arena" tabindex="0"><span class="sds-physics-wordmark__line" data-split="everything falls apart" aria-hidden="true">EVERYTHING FALLS APART</span></span></span>, <span class="brand-mystical">our systems stand strong</span>.</p>
+<div class="sds-hero__sub-spacer" aria-hidden="true"></div>
 </div>
 <div class="sds-hero__visual" aria-hidden="true">
 <div class="sds-hero__floating-wrap">
@@ -196,10 +194,11 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 </div>
 <footer class="w-full py-12 px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row items-center justify-between gap-6 border-t border-starlight-white/5 bg-void-black relative z-10">
 <div class="flex flex-col leading-none text-center md:text-left"><span class="font-headline-md text-headline-md text-starlight-white">DARK MATTER</span><span class="brand-subtext"><span class="brand-subtext__line">Surette Systems</span><span class="brand-subtext__line brand-subtext__line--portal">Portal</span></span></div>
-<div class="flex flex-wrap justify-center gap-x-6 gap-y-2 font-label-mono text-[10px] uppercase tracking-[0.2em] text-outline"><a class="hover:text-electric-cyan" href="services.html">Services</a><a class="hover:text-electric-cyan" href="apps.html">Apps</a><a class="hover:text-electric-cyan" href="casestudies.html">Portfolio</a><a class="hover:text-electric-cyan" href="contact.html">Contact</a></div>
+<div class="flex flex-wrap justify-center gap-x-6 gap-y-2 font-label-mono text-[10px] uppercase tracking-[0.2em] text-outline"><a class="hover:text-electric-cyan" href="apps.html">Services</a><a class="hover:text-electric-cyan" href="apps.html">Apps</a><a class="hover:text-electric-cyan" href="contact.html">Contact</a></div>
 <p class="font-label-caps text-[10px] text-on-primary-container/60 tracking-widest text-center md:text-right">&copy; 2026 DARK MATTER<br/>Call or text (239) 404-8505</p>
 </footer>
 <script src="assets/mobile-services-nav.js?v=20260608-mobile-desktop-teardown"></script>
+<script src="assets/account-nav.js?v=20260609-account-nav"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js"></script>

@@ -8,7 +8,7 @@
   var closeTimer = null;
 
   var stepSlugs = {
-    design: 'preference-builder',
+    design: 'website-design',
     build: 'custom-development',
     launch: 'process',
     maintain: 'website-care-plans'
@@ -43,7 +43,6 @@
 
   function stepHref(key) {
     if (key === 'launch') return inServicesDir() ? '../process.html' : 'process.html';
-    if (key === 'design') return inServicesDir() ? '../preference-builder.html' : 'preference-builder.html';
     var slug = stepSlugs[key];
     if (!slug) return null;
     return inServicesDir() ? slug + '.html' : 'services/' + slug + '.html';
@@ -103,11 +102,10 @@
   function activeKeyFromPath(path) {
     var normalized = path.replace(/\/+$/, '/').toLowerCase();
     var file = normalized.split('/').pop() || 'index.html';
-    if (normalized.indexOf('preference-builder') !== -1) return 'design';
-    if (normalized.indexOf('discovery-consultation') !== -1 || normalized.indexOf('website-design') !== -1 || normalized.indexOf('brand-rebranding') !== -1) return 'design';
+    if (normalized.indexOf('website-design') !== -1) return 'design';
     if (normalized.indexOf('custom-development') !== -1) return 'build';
     if (file === 'process.html') return 'launch';
-    if (normalized.indexOf('managed-hosting') !== -1 || normalized.indexOf('complete-website-management') !== -1 || normalized.indexOf('seo-foundations') !== -1) return 'launch';
+    if (normalized.indexOf('managed-hosting') !== -1) return 'launch';
     if (normalized.indexOf('website-care-plans') !== -1 || normalized.indexOf('in-home-services') !== -1 || normalized.indexOf('office-network-setup') !== -1) return 'maintain';
     if (file === 'index.html' || /\/$/.test(normalized)) return 'design';
     return null;

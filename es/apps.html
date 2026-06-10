@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <script>(function(){try{var p=localStorage.getItem('dm_lang');if(p==="en"){location.replace("../apps.html");}}catch(e){}})();</script>
-<title>Surette Data Systems | Apps Movil, Web y Escritorio</title>
+<title>Surette Data Systems | Apps Móvil, Web y Escritorio</title>
 <meta name="description" content="Surette Data Systems — CRM, ERP, inventario, flujos, reportes y operaciones para movil, web y escritorio."/>
 <link rel="canonical" href="https://darkmatterwebdev.com/es/apps.html"/>
 <meta name="theme-color" content="#12081f"/>
@@ -36,7 +36,7 @@
 <link href="../assets/powered-by-badge.css" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="../assets/surette-data-systems-apps.css?v=20260609-click-hint" rel="stylesheet"/>
+<link href="../assets/surette-data-systems-apps.css?v=20260609-nav-active-fix" rel="stylesheet"/>
 <link href="../assets/surette-physics-wordmark.css?v=20260608-hover-reattach" rel="stylesheet"/>
 <script>(function(){document.documentElement.classList.add("sds-apps-boot");})();</script>
 <style>
@@ -61,10 +61,9 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 <a href="index.html" class="site-brand inline-flex items-center gap-2.5 flex-nowrap shrink-0"><span class="material-symbols-outlined brand-mark text-electric-cyan" aria-hidden="true">blur_on</span><span class="flex flex-col leading-none"><span class="font-headline-md text-headline-md tracking-tighter brand-mystical brand-mystical--glow">DARK MATTER</span><span class="brand-subtext"><span class="brand-subtext__line">Surette Systems</span><span class="brand-subtext__line brand-subtext__line--portal">Portal</span></span></span></a>
 <div class="hidden md:flex items-center gap-10">
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="index.html">Inicio</a>
-<div class="relative services-nav-group"><a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="services.html">Servicios</a><div class="services-nav-menu"><div class="services-nav-panel"><div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Servicios en linea</div><a href="services/complete-website-management.html">Gestion Completa de Sitios Web</a><a href="services/discovery-consultation.html">Consulta</a><a href="services/website-design.html">Diseno de Sitios Web</a><a href="services/brand-rebranding.html">Marca y Rediseno</a><a href="services/managed-hosting.html">Hosting Administrado</a><a href="services/website-care-plans.html">Planes de Mantenimiento Web</a><a href="services/seo-foundations.html">Fundamentos de SEO</a><a href="services/custom-development.html">Aplicaciones Web Empresariales a Medida</a><div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">home_pin</span>Servicios a Domicilio y Oficina</div><a href="services/in-home-services.html">Servicios Tecnicos a Domicilio</a><a href="services/office-network-setup.html">Configuracion de Redes de Oficina</a></div></div></div>
+<div class="relative services-nav-group"><a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" tabindex="0" aria-haspopup="true">Servicios</a><div class="services-nav-menu"><div class="services-nav-panel"><div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Servicios en línea</div><a href="services/website-design.html">Diseño de Sitios Web</a><a href="services/managed-hosting.html">Hosting Administrado</a><a href="services/website-care-plans.html">Planes de Mantenimiento Web</a><a href="services/custom-development.html">Aplicaciones Web Empresariales a Medida</a><div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">home_pin</span>Servicios a Domicilio y Oficina</div><a href="services/in-home-services.html">Servicios Técnicos a Domicilio</a><a href="services/office-network-setup.html">Configuración de Redes de Oficina</a></div></div></div>
 <a class="font-label-mono text-label-mono text-electric-cyan border-b-2 border-electric-cyan pb-1 transition-colors duration-300" href="apps.html">Apps</a>
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="process.html">Proceso</a>
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="casestudies.html">Portafolio</a>
 <a class="font-label-mono text-label-mono text-electric-cyan hover:underline transition-colors duration-300 inline-flex items-center gap-1.5" href="account.html"><span class="material-symbols-outlined text-base">account_circle</span>Acceso</a>
 <div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0"><a href="../apps.html" hreflang="en" lang="en" aria-label="Switch to English" class="text-on-surface-variant hover:text-electric-cyan transition-colors duration-300">EN</a><span class="text-outline/50">/</span><span class="text-electric-cyan" aria-current="true">ES</span></div>
 </div>
@@ -83,15 +82,14 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 </header>
 <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface/10 backdrop-blur-2xl border-t border-starlight-white/10 shadow-[0_-10px_30px_rgba(112,0,255,0.15)] rounded-t-xl">
 <a href="index.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90"><span class="material-symbols-outlined">home</span><span class="font-label-caps text-[10px] mt-1">Inicio</span></a>
-<a href="services.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90" data-mobile-services-trigger><span class="material-symbols-outlined">design_services</span><span class="font-label-caps text-[10px] mt-1">Servicios</span></a>
+<a href="apps.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90" data-mobile-services-trigger><span class="material-symbols-outlined">design_services</span><span class="font-label-caps text-[10px] mt-1">Servicios</span></a>
 <a href="apps.html" class="flex flex-col items-center justify-center text-electric-cyan drop-shadow-[0_0_8px_rgba(0,240,255,0.8)] active:scale-90 transition-all"><span class="material-symbols-outlined">download</span><span class="font-label-caps text-[10px] mt-1">Apps</span></a>
 <a href="process.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90"><span class="material-symbols-outlined">timeline</span><span class="font-label-caps text-[10px] mt-1">Proceso</span></a>
-<a href="casestudies.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90"><span class="material-symbols-outlined">workspace_premium</span><span class="font-label-caps text-[10px] mt-1">Trabajo</span></a>
 <a href="contact.html" class="sds-nav-contact-tab flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90"><span class="material-symbols-outlined">mail</span><span class="font-label-caps text-[10px] mt-1">Contacto</span></a>
 </nav>
 </div>
 <div class="sds-nav-contact-stack">
-<a href="contact.html" class="sds-nav-contact-stack__cta hidden md:inline-flex bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-mono text-label-mono px-6 py-2 rounded-lg hover:scale-105 active:scale-95 transition-all glow-cyan">Contactanos</a>
+<a href="contact.html" class="sds-nav-contact-stack__cta hidden md:inline-flex bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-mono text-label-mono px-6 py-2 rounded-lg hover:scale-105 active:scale-95 transition-all glow-cyan">Contáctanos</a>
 </div>
 <main class="downloads-main relative z-10 pt-32 pb-28 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
 <section class="sds-hero max-w-container-max mb-14">
@@ -117,9 +115,8 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 <span class="sds-wordmark__system" aria-hidden="true"><span class="sds-wordmark__rule"></span><span class="sds-wordmark__system-text"><span class="sds-wordmark__data">DATA</span><span class="sds-wordmark__systems brand-mystical">SYSTEMS</span></span><span class="sds-wordmark__rule"></span></span>
 </h1>
 <p class="sds-hero__lead">CRM, ERP, inventario, flujos, reportes y operaciones para movil, web y escritorio.</p>
-<p class="sds-hero__sub">solo porque es un <span class="sds-physics-wordmark sds-physics-wordmark--sub" data-word="negocio"><span class="sds-physics-wordmark__arena" tabindex="0"><span class="sds-physics-wordmark__line" data-split="negocio" aria-hidden="true">NEGOCIO</span></span></span>, no significa que necesita ser <span class="sds-physics-wordmark sds-physics-wordmark--sub" data-word="aburrido"><span class="sds-physics-wordmark__arena" tabindex="0"><span class="sds-physics-wordmark__line" data-split="aburrido" aria-hidden="true">ABURRIDO</span></span></span></p>
-<p class="sds-hero__sub"><span class="sds-hero__sub-prefix">Y </span><span class="sds-hero__sub-prefix sds-hero__sub-prefix--falls">cuando </span><span class="sds-physics-wordmark sds-physics-wordmark--sub" data-word="todo-falla"><span class="sds-physics-wordmark__arena" tabindex="0"><span class="sds-physics-wordmark__line" data-split="todo falla" aria-hidden="true">TODO FALLA</span></span></span>, <span class="brand-mystical">nuestros sistemas siguen firmes</span>.</p>
-</div>
+<p class="sds-hero__sub">Solo porque es un <span class="sds-physics-wordmark sds-physics-wordmark--sub" data-word="negocio"><span class="sds-physics-wordmark__arena" tabindex="0"><span class="sds-physics-wordmark__line" data-split="negocio" aria-hidden="true">NEGOCIO</span></span></span>, no significa que necesita ser <span class="sds-physics-wordmark sds-physics-wordmark--sub" data-word="aburrido"><span class="sds-physics-wordmark__arena" tabindex="0"><span class="sds-physics-wordmark__line" data-split="aburrido" aria-hidden="true">ABURRIDO</span></span></span></p>
+<div class="sds-hero__sub-spacer" aria-hidden="true"></div></div>
 <div class="sds-hero__visual" aria-hidden="true">
 <div class="sds-hero__floating-wrap">
 <span class="sds-hero__floating-stage" aria-hidden="true">
@@ -132,7 +129,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 <section class="mb-16">
 <div class="flex items-end justify-between gap-6 mb-6">
 <div>
-<p class="sds-section-kicker sds-section-kicker--gallery">Catalogo de Software</p>
+<p class="sds-section-kicker sds-section-kicker--gallery">Catálogo de Software</p>
 <h2 class="font-headline-lg text-3xl md:text-headline-lg text-starlight-white">Elige una app para ver detalles.</h2>
 </div>
 </div>
@@ -140,8 +137,8 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 <a id="app-auction-consignment" href="auction-house-consignment-store-software.html" class="app-tile glass-card rounded-2xl">
 <div class="app-tile__top"><img class="app-tile__image" src="../assets/apps/auction/auction-dashboard.webp" alt="Vista previa del tablero de la app de subastas" loading="lazy"/><span class="app-tile__icon"><span class="material-symbols-outlined text-electric-cyan text-3xl">inventory_2</span></span></div>
 <div class="app-tile__body">
-<div class="flex flex-wrap gap-2"><span class="sds-badge sds-badge--live">Demo Activa</span><span class="sds-badge sds-badge--tag">Gestion</span></div>
-<h3 class="font-headline-md text-xl text-starlight-white leading-tight">Software para subastas y consignacion</h3>
+<div class="flex flex-wrap gap-2"><span class="sds-badge sds-badge--live">Demo Activa</span><span class="sds-badge sds-badge--tag">Gestión</span></div>
+<h3 class="font-headline-md text-xl text-starlight-white leading-tight">Software para subastas y consignación</h3>
 <p class="text-on-surface-variant text-sm leading-relaxed">Ventas de piso y subastas en vivo en un sistema: consignadores, inventario, etiquetas, facturas, liquidaciones y reportes.</p>
 <span class="app-tile__cta">Abrir perfil completo <span class="material-symbols-outlined text-base">open_in_new</span></span>
 </div>
@@ -150,17 +147,17 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 <div class="app-tile__top"><img class="app-tile__image" src="../assets/apps/sdms/sdms-dashboard.webp" alt="Vista previa del tablero de SDMS" loading="lazy"/><span class="app-tile__icon"><span class="material-symbols-outlined text-electric-cyan text-3xl">diamond</span></span></div>
 <div class="app-tile__body">
 <div class="flex flex-wrap gap-2"><span class="sds-badge sds-badge--live">Demo Activa</span><span class="sds-badge sds-badge--tag">Cumplimiento</span></div>
-<h3 class="font-headline-md text-xl text-starlight-white leading-tight">Sistema de gestion para vendedores de segunda mano</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed">Cumplimiento FL 538, vendedores, retenciones de 15 dias, inventario, metales, ventas y auditoria.</p>
+<h3 class="font-headline-md text-xl text-starlight-white leading-tight">Sistema de gestión para vendedores de segunda mano</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Cumplimiento FL 538, vendedores, retenciones de 15 días, inventario, metales, ventas y auditoría.</p>
 <span class="app-tile__cta">Abrir perfil completo <span class="material-symbols-outlined text-base">open_in_new</span></span>
 </div>
 </a>
 <a id="app-benji-payroll" href="benji-payroll-management-system.html" class="app-tile glass-card rounded-2xl">
-<div class="app-tile__top"><img class="app-tile__image" src="../assets/apps/benji/benji-dashboard.webp" alt="Vista previa del tablero de nomina Benji" loading="lazy"/><span class="app-tile__icon"><span class="material-symbols-outlined text-electric-cyan text-3xl">payments</span></span></div>
+<div class="app-tile__top"><img class="app-tile__image" src="../assets/apps/benji/benji-dashboard.webp" alt="Vista previa del tablero de nómina Benji" loading="lazy"/><span class="app-tile__icon"><span class="material-symbols-outlined text-electric-cyan text-3xl">payments</span></span></div>
 <div class="app-tile__body">
-<div class="flex flex-wrap gap-2"><span class="sds-badge sds-badge--live">Demo Activa</span><span class="sds-badge sds-badge--tag">Nomina</span></div>
-<h3 class="font-headline-md text-xl text-starlight-white leading-tight">Benji &mdash; Sistema interno de nomina</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed">Horas, aprobaciones de supervisores, calculo automatico de pago bruto e impuestos, recibos de pago y reportes auditables.</p>
+<div class="flex flex-wrap gap-2"><span class="sds-badge sds-badge--live">Demo Activa</span><span class="sds-badge sds-badge--tag">Nómina</span></div>
+<h3 class="font-headline-md text-xl text-starlight-white leading-tight">Benji &mdash; Sistema interno de nómina</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Horas, aprobaciones de supervisores, cálculo automático de pago bruto e impuestos, recibos de pago y reportes auditables.</p>
 <span class="app-tile__cta">Abrir perfil completo <span class="material-symbols-outlined text-base">open_in_new</span></span>
 </div>
 </a>
@@ -178,7 +175,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 <section class="app-custom-banner mb-4">
 <p class="sds-section-kicker app-custom-banner__kicker">Software a Medida</p>
 <h2>Adaptado a tu negocio, marca e idioma.</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mt-4">Cada app de Surette Data Systems puede adaptarse con tus flujos, campos, reportes, layouts, terminologia y necesidades de idioma.</p>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mt-4">Cada app de Surette Data Systems puede adaptarse con tus flujos, campos, reportes, layouts, terminología y necesidades de idioma.</p>
 <div class="flex flex-wrap gap-3 mt-6">
 <a href="contact.html" class="sds-btn-primary">Personaliza la tuya ahora <span class="material-symbols-outlined text-base">arrow_forward</span></a>
 <a href="app-pricing.html" class="sds-btn-secondary">Ver precios de apps <span class="material-symbols-outlined text-base">sell</span></a>
@@ -193,10 +190,11 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 </div>
 <footer class="w-full py-12 px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row items-center justify-between gap-6 border-t border-starlight-white/5 bg-void-black relative z-10">
 <div class="flex flex-col leading-none text-center md:text-left"><span class="font-headline-md text-headline-md text-starlight-white">DARK MATTER</span><span class="brand-subtext"><span class="brand-subtext__line">Surette Systems</span><span class="brand-subtext__line brand-subtext__line--portal">Portal</span></span></div>
-<div class="flex flex-wrap justify-center gap-x-6 gap-y-2 font-label-mono text-[10px] uppercase tracking-[0.2em] text-outline"><a class="hover:text-electric-cyan" href="services.html">Servicios</a><a class="hover:text-electric-cyan" href="apps.html">Apps</a><a class="hover:text-electric-cyan" href="casestudies.html">Portafolio</a><a class="hover:text-electric-cyan" href="contact.html">Contacto</a></div>
-<p class="font-label-caps text-[10px] text-on-primary-container/60 tracking-widest text-center md:text-right">&copy; 2026 DARK MATTER<br/>Llama o envia texto (239) 404-8505</p>
+<div class="flex flex-wrap justify-center gap-x-6 gap-y-2 font-label-mono text-[10px] uppercase tracking-[0.2em] text-outline"><a class="hover:text-electric-cyan" href="apps.html">Servicios</a><a class="hover:text-electric-cyan" href="apps.html">Apps</a><a class="hover:text-electric-cyan" href="contact.html">Contacto</a></div>
+<p class="font-label-caps text-[10px] text-on-primary-container/60 tracking-widest text-center md:text-right">&copy; 2026 DARK MATTER<br/>Llama o envía texto (239) 404-8505</p>
 </footer>
 <script src="../assets/mobile-services-nav.js?v=20260608-mobile-desktop-teardown"></script>
+<script src="../assets/account-nav.js?v=20260609-account-nav"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js"></script>

@@ -8,17 +8,17 @@ const accountPath = isSpanish ? "/es/account.html" : "/account.html";
 
 const t = {
   setupPending: copy.setupPending || (isSpanish ? "Configura Supabase en assets/supabase-config.js para habilitar ajustes." : "Add Supabase settings in assets/supabase-config.js to enable account settings."),
-  loginRequired: copy.loginRequired || (isSpanish ? "Inicio de sesion requerido" : "Login required"),
-  loginNote: copy.loginNote || (isSpanish ? "Inicia sesion para ver y actualizar los ajustes de tu cuenta." : "Sign in to view and update your account settings."),
-  signedIn: copy.signedIn || (isSpanish ? "Sesion activa" : "Signed in"),
+  loginRequired: copy.loginRequired || (isSpanish ? "Inicio de sesión requerido" : "Login required"),
+  loginNote: copy.loginNote || (isSpanish ? "Inicia sesión para ver y actualizar los ajustes de tu cuenta." : "Sign in to view and update your account settings."),
+  signedIn: copy.signedIn || (isSpanish ? "Sesión activa" : "Signed in"),
   profileSaved: copy.profileSaved || (isSpanish ? "Perfil actualizado." : "Profile updated."),
-  passwordSaved: copy.passwordSaved || (isSpanish ? "Contrasena actualizada." : "Password updated."),
-  passwordTooShort: copy.passwordTooShort || (isSpanish ? "La contrasena debe tener al menos 6 caracteres." : "Password must be at least 6 characters."),
-  passwordMismatch: copy.passwordMismatch || (isSpanish ? "Las contrasenas no coinciden." : "Passwords do not match."),
-  passwordRequired: copy.passwordRequired || (isSpanish ? "Escribe una contrasena nueva." : "Enter a new password."),
+  passwordSaved: copy.passwordSaved || (isSpanish ? "Contraseña actualizada." : "Password updated."),
+  passwordTooShort: copy.passwordTooShort || (isSpanish ? "La contraseña debe tener al menos 6 caracteres." : "Password must be at least 6 characters."),
+  passwordMismatch: copy.passwordMismatch || (isSpanish ? "Las contraseñas no coinciden." : "Passwords do not match."),
+  passwordRequired: copy.passwordRequired || (isSpanish ? "Escribe una contraseña nueva." : "Enter a new password."),
   nameRequired: copy.nameRequired || (isSpanish ? "Escribe tu nombre." : "Enter your name."),
-  error: copy.error || (isSpanish ? "Algo salio mal. Intenta de nuevo." : "Something went wrong. Please try again."),
-  profilePartial: copy.profilePartial || (isSpanish ? "Datos basicos guardados. Algunos campos del perfil aun no estan conectados en Supabase." : "Basic account details saved. Some profile fields are not writable in Supabase yet.")
+  error: copy.error || (isSpanish ? "Algo salió mal. Intenta de nuevo." : "Something went wrong. Please try again."),
+  profilePartial: copy.profilePartial || (isSpanish ? "Datos básicos guardados. Algunos campos del perfil aún no están conectados en Supabase." : "Basic account details saved. Some profile fields are not writable in Supabase yet.")
 };
 
 const els = {

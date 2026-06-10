@@ -9,13 +9,9 @@
   var videoSrc = assetBase + 'Hero-Black-Hole-desktop-1080p.mp4';
 
   var heroThemes = [
-    { match: 'complete-website-management', accent: '0,214,255', secondary: '51,112,255', hue: '-8deg', sat: '1.24', name: 'sapphire' },
-    { match: 'discovery-consultation', accent: '0,240,190', secondary: '43,190,255', hue: '24deg', sat: '1.22', name: 'aqua' },
     { match: 'website-design', accent: '255,72,180', secondary: '112,0,255', hue: '48deg', sat: '1.26', name: 'rose' },
-    { match: 'brand-rebranding', accent: '255,197,92', secondary: '255,88,88', hue: '118deg', sat: '1.2', name: 'ember' },
     { match: 'managed-hosting', accent: '76,110,255', secondary: '0,240,255', hue: '-34deg', sat: '1.18', name: 'indigo' },
     { match: 'website-care-plans', accent: '118,255,115', secondary: '0,210,170', hue: '76deg', sat: '1.2', name: 'green' },
-    { match: 'seo-foundations', accent: '255,214,72', secondary: '0,240,255', hue: '96deg', sat: '1.18', name: 'gold' },
     { match: 'custom-development', accent: '255,70,120', secondary: '112,0,255', hue: '136deg', sat: '1.28', name: 'crimson' },
     { match: 'in-home-services', accent: '0,255,210', secondary: '105,255,120', hue: '58deg', sat: '1.22', name: 'mint' },
     { match: 'office-network-setup', accent: '255,139,61', secondary: '0,176,255', hue: '152deg', sat: '1.24', name: 'copper' },

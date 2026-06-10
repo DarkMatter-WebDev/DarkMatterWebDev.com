@@ -492,6 +492,10 @@ html:lang(es) .sds-hero__flick-reveal-sub {
   margin-top: 0.4rem;
 }
 
+.sds-hero__sub-spacer {
+  height: 2.1rem;
+}
+
 .sds-hero__sub-accent {
   color: var(--sds-lime);
   font-weight: 600;
@@ -687,16 +691,21 @@ html:lang(es) .sds-hero__flick-reveal-sub {
   border-color: rgba(245, 158, 11, 0.28);
 }
 
-.sds-apps-page nav a[href="apps.html"],
-.sds-apps-page nav a[href="../apps.html"],
-.sds-apps-page nav a[href="es/apps.html"] {
+/* Highlight only the active Apps nav item (the one carrying the active
+   border-b-2 marker), not other links that merely point to apps.html
+   such as the Services dropdown trigger. */
+.sds-apps-page nav a[href="apps.html"].border-b-2,
+.sds-apps-page nav a[href="../apps.html"].border-b-2,
+.sds-apps-page nav a[href="es/apps.html"].border-b-2 {
   color: var(--sds-violet) !important;
   border-color: var(--sds-violet) !important;
   text-shadow: 0 0 12px rgba(168, 85, 247, 0.45);
 }
 
-.sds-apps-page .md\:hidden nav a[href="apps.html"],
-.sds-apps-page .md\:hidden nav a[href="../apps.html"] {
+/* Mobile bottom nav: highlight the Apps tab only, never the Services
+   trigger (which opens the services menu and also points to apps.html). */
+.sds-apps-page .md\:hidden nav a[href="apps.html"]:not([data-mobile-services-trigger]),
+.sds-apps-page .md\:hidden nav a[href="../apps.html"]:not([data-mobile-services-trigger]) {
   color: var(--sds-cyan) !important;
   filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.75));
 }

@@ -17,3 +17,66 @@
   from = "/es/downloads.html"
   to = "/es/apps.html"
   status = 301
+
+# Retired services landing page → apps
+[[redirects]]
+  from = "/services.html"
+  to = "/apps.html"
+  status = 301
+
+[[redirects]]
+  from = "/es/services.html"
+  to = "/es/apps.html"
+  status = 301
+
+# Retired service pages → main services listing
+[[redirects]]
+  from = "/services/complete-website-management.html"
+  to = "/apps.html"
+  status = 301
+
+[[redirects]]
+  from = "/services/discovery-consultation.html"
+  to = "/apps.html"
+  status = 301
+
+[[redirects]]
+  from = "/services/brand-rebranding.html"
+  to = "/apps.html"
+  status = 301
+
+[[redirects]]
+  from = "/services/seo-foundations.html"
+  to = "/apps.html"
+  status = 301
+
+[[redirects]]
+  from = "/es/services/complete-website-management.html"
+  to = "/es/apps.html"
+  status = 301
+
+[[redirects]]
+  from = "/es/services/discovery-consultation.html"
+  to = "/es/apps.html"
+  status = 301
+
+[[redirects]]
+  from = "/es/services/brand-rebranding.html"
+  to = "/es/apps.html"
+  status = 301
+
+[[redirects]]
+  from = "/es/services/seo-foundations.html"
+  to = "/es/apps.html"
+  status = 301
+
+# Retired preference builder → contact
+[[redirects]]
+  from = "/preference-builder.html"
+  to = "/contact.html"
+  status = 301
+
+[[redirects]]
+  from = "/es/preference-builder.html"
+  to = "/es/contact.html"
+  status = 301
