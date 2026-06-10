@@ -172,8 +172,10 @@ if (!config.url || !config.anonKey || config.url.includes("YOUR_PROJECT_REF")) {
   const { data } = await supabase.auth.getSession();
 
   if (!data.session) {
+    try { localStorage.removeItem("dm_logged_in"); } catch (e) {}
     showGate(t.loginRequired);
   } else {
+    try { localStorage.setItem("dm_logged_in", "1"); } catch (e) {}
     const profileRole = await resolveProfilePortalRole(supabase, data.session.user, config);
     showContent(data.session.user, profileRole);
     await loadProfile(supabase, data.session.user);
@@ -200,10 +202,15 @@ if (!config.url || !config.anonKey || config.url.includes("YOUR_PROJECT_REF")) {
 
     els.signOut?.addEventListener("click", async () => {
       await supabase.auth.signOut();
+      try { localStorage.removeItem("dm_logged_in"); } catch (e) {}
       showGate(t.loginRequired);
     });
 
     supabase.auth.onAuthStateChange((_event, session) => {
+      try {
+        if (session) localStorage.setItem("dm_logged_in", "1");
+        else localStorage.removeItem("dm_logged_in");
+      } catch (e) {}
       if (!session) showGate(t.loginRequired);
     });
   }

@@ -1,22 +1,26 @@
 /* account-nav.js
    Reflects the signed-in state in the top-nav account link on every page.
-   When a Supabase session is present in localStorage, the "Client Login" /
-   "Acceso" link becomes "Account" / "Cuenta" with the account icon.
+   When the user is logged in, the "Client Login" / "Acceso" link becomes
+   "Account" / "Cuenta" with the account icon.
 
-   Detection is a lightweight localStorage read (no supabase-js load) so it
-   works on static marketing pages. The authoritative portal pages keep using
-   client-portal.js; this only fills the gap on the rest of the site. */
+   Source of truth: the authoritative portal scripts (client-portal.js,
+   account-settings.js, seans-ads-dashboard.js) set a simple "dm_logged_in"
+   flag in localStorage via supabase.auth.getSession()/onAuthStateChange.
+   This script just reads that flag, so it works the same on every page.
+   As a fallback it also detects a Supabase auth token directly (matching
+   any sb-...-auth-token key, including chunked variants). */
 (function () {
   function hasSession() {
     try {
+      if (localStorage.getItem("dm_logged_in") === "1") return true;
       for (var i = 0; i < localStorage.length; i++) {
-        var k = localStorage.key(i);
-        if (/^sb-.*-auth-token$/.test(k)) {
-          var raw = localStorage.getItem(k);
-          if (!raw) continue;
-          var obj = JSON.parse(raw);
-          var s = obj && obj.currentSession ? obj.currentSession : obj;
-          if (s && (s.access_token || s.refresh_token)) return true;
+        var k = localStorage.key(i) || "";
+        if (k.indexOf("sb-") === 0 && k.indexOf("auth-token") !== -1) {
+          var v = localStorage.getItem(k);
+          if (v && v.length > 20) {
+            try { localStorage.setItem("dm_logged_in", "1"); } catch (e) {}
+            return true;
+          }
         }
       }
     } catch (e) {}
@@ -24,19 +28,23 @@
   }
 
   function apply() {
-    if (!hasSession()) return;
+    var signedIn = hasSession();
     var isEs = (document.documentElement.lang || "en").toLowerCase().indexOf("es") === 0;
-    var label = isEs ? "Cuenta" : "Account";
+    var label = signedIn ? (isEs ? "Cuenta" : "Account") : (isEs ? "Acceso" : "Client Login");
+    var icon = signedIn ? "account_circle" : "login";
     var links = document.querySelectorAll('a[href$="account.html"]');
     for (var i = 0; i < links.length; i++) {
       var a = links[i];
-      var icon = a.querySelector(".material-symbols-outlined");
-      if (!icon) continue; // only the nav account button carries the icon
-      var name = (icon.textContent || "").trim();
+      var iconEl = a.querySelector(".material-symbols-outlined");
+      if (!iconEl) continue; // only the nav account button carries the icon
+      var name = (iconEl.textContent || "").trim();
       if (name !== "account_circle" && name !== "login") continue;
-      icon.textContent = "account_circle";
+      // Only rewrite when logged in; leave the page's own label otherwise so
+      // we never clobber a deliberately different label (e.g. "Acceso").
+      if (!signedIn) continue;
+      iconEl.textContent = icon;
       a.textContent = "";
-      a.appendChild(icon);
+      a.appendChild(iconEl);
       a.appendChild(document.createTextNode(label));
     }
   }

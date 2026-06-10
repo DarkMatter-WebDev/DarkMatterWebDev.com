@@ -424,6 +424,11 @@ function renderSignedOut() {
 }
 
 function updateAccountNav(isSignedIn) {
+  // Single source of truth read by account-nav.js on every other page.
+  try {
+    if (isSignedIn) localStorage.setItem("dm_logged_in", "1");
+    else localStorage.removeItem("dm_logged_in");
+  } catch (e) {}
   const isSpanish = document.documentElement.lang.startsWith("es");
   const label = isSignedIn ? (isSpanish ? "Cuenta" : "Account") : (isSpanish ? "Acceso" : "Login");
   const iconName = isSignedIn ? "account_circle" : "login";

@@ -66,8 +66,10 @@ if (!config.url || !config.anonKey) {
   const { data } = await supabase.auth.getSession();
 
   if (!data.session) {
+    try { localStorage.removeItem("dm_logged_in"); } catch (e) {}
     showGate(`<span class="material-symbols-outlined">lock</span>${t.loginRequired}`);
   } else {
+    try { localStorage.setItem("dm_logged_in", "1"); } catch (e) {}
     const profileRole = await resolveProfilePortalRole(supabase, data.session.user, config);
     if (!canOpenSeanAdsPortal(data.session.user, config, profileRole)) {
       showGate(
