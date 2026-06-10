@@ -1,7 +1,9 @@
 /* account-nav.js
    Reflects the signed-in state in the top-nav account link on every page.
    When the user is logged in, the "Client Login" / "Acceso" link becomes
-   "Account" / "Cuenta" with the account icon.
+   "Account" / "Cuenta"; when logged out it is restored to its original label.
+   Re-runs on bfcache restore (pageshow) and on cross-tab login/logout (storage),
+   so the button stays correct on back/forward navigation and in other tabs.
 
    Source of truth: the authoritative portal scripts (client-portal.js,
    account-settings.js, seans-ads-dashboard.js) set a simple "dm_logged_in"
@@ -30,8 +32,7 @@
   function apply() {
     var signedIn = hasSession();
     var isEs = (document.documentElement.lang || "en").toLowerCase().indexOf("es") === 0;
-    var label = signedIn ? (isEs ? "Cuenta" : "Account") : (isEs ? "Acceso" : "Client Login");
-    var icon = signedIn ? "account_circle" : "login";
+    var label = isEs ? "Cuenta" : "Account";
     // Match the account link regardless of URL style: "account.html",
     // "/account.html", "../account.html", the clean URL "/account" or "account",
     // and any of those with a ?query or #hash. Deliberately does NOT match
@@ -45,13 +46,18 @@
       if (!iconEl) continue; // only the nav account button carries the icon
       var name = (iconEl.textContent || "").trim();
       if (name !== "account_circle" && name !== "login") continue;
-      // Only rewrite when logged in; leave the page's own label otherwise so
-      // we never clobber a deliberately different label (e.g. "Acceso").
-      if (!signedIn) continue;
-      iconEl.textContent = icon;
-      a.textContent = "";
-      a.appendChild(iconEl);
-      a.appendChild(document.createTextNode(label));
+      // Remember the page's original (logged-out) button markup exactly once, so
+      // signing out restores it verbatim instead of leaving a stale "Account".
+      if (!a.hasAttribute("data-dm-orig")) a.setAttribute("data-dm-orig", a.innerHTML);
+      if (signedIn) {
+        iconEl.textContent = "account_circle";
+        a.textContent = "";
+        a.appendChild(iconEl);
+        a.appendChild(document.createTextNode(label));
+      } else {
+        // Put the original "Client Login" / "Acceso" button back.
+        a.innerHTML = a.getAttribute("data-dm-orig");
+      }
     }
   }
 

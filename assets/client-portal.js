@@ -533,6 +533,9 @@ if (!isConfigured) {
 
   els.signOut?.addEventListener("click", async () => {
     await supabase.auth.signOut();
+    // Clear the nav flag immediately so other pages flip back to "Client Login"
+    // right away, without waiting for the async auth state change to propagate.
+    try { localStorage.removeItem("dm_logged_in"); } catch (e) {}
     setStatus(t.signedOut);
   });
 
