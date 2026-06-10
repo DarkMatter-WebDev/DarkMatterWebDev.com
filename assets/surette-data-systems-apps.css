@@ -40,8 +40,8 @@
 }
 
 .sds-hero__visual {
-  position: absolute;
-  top: -6.5rem;
+  position: fixed;
+  top: 1.5rem;
   right: -7rem;
   z-index: 0;
   width: min(54vw, 46rem);
