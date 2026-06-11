@@ -238,6 +238,16 @@
   50% { transform: rotate(5deg) translateY(-2px); }
 }
 
+/* ── Right-side "Do Not Press" variant ───────────────────────────────── */
+.sds-home-widget--right {
+  left: auto;
+  right: max(1.5rem, env(safe-area-inset-right, 0px));
+}
+
+.sds-home-widget--mobile.sds-home-widget--right {
+  right: max(0.35rem, env(safe-area-inset-right, 0px));
+}
+
 @media (prefers-reduced-motion: reduce) {
   .sds-home-widget,
   .sds-home-widget__glow,
