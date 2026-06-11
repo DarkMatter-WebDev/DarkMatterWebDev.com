@@ -165,8 +165,8 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 <div class="sds-nav-contact-stack">
 <a href="contact.html" class="sds-nav-contact-stack__cta hidden md:inline-flex bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-mono text-label-mono px-6 py-2 rounded-lg hover:scale-105 active:scale-95 transition-all glow-cyan">Contact Us</a>
 </div>
-<main class="downloads-main relative z-10 pt-32 pb-28 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
 <button id="fractal-gui-toggle" title="Visual settings" aria-label="Toggle visual settings" onclick="if(window._fractalGUI){window._fractalGUI._hidden?window._fractalGUI.show():window._fractalGUI.hide()}"><span class="material-symbols-outlined">grain</span></button>
+<main class="downloads-main relative z-10 pt-32 pb-28 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
 <section class="sds-hero max-w-container-max mb-14">
 <div class="sds-hero__grid">
 <div class="sds-hero__copy">
@@ -316,14 +316,15 @@ canvas.addEventListener('touchstart', (e) => {
 <script src="assets/surette-apps-loader.js?v=20260608-intro-hover-abort"></script>
 <script>
 window.FRACTAL_CONFIG = {
-    algorithm: 'Thomas Labyrinth',
+    algorithm: 'Nose-Hoover Braid',
     color1: '#2bff00',
     color2: '#ff2424',
     color3: '#002aff',
     pointsCount: 75000,
-    pointSize: 0.153,
+    pointSize: 0.01,
     rotationSpeedX: 0.0033,
-    disableHover: true
+    disableHover: true,
+    params: { a: 0.2, dt: 0.01 }
 };
 </script>
 <script type="module" src="fractal.js"></script>
