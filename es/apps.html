@@ -35,6 +35,52 @@
 <link href="../assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/>
 <link href="../assets/powered-by-badge.css?v=20260609-badge-fix" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+  #sds-logo a.sds-anchor,
+  #sds-logo-mobile a.sds-anchor {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 11px !important;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 4px 10px 4px 4px;
+    border-radius: 6px;
+    position: relative;
+  }
+  #sds-logo canvas.sds-canvas,
+  #sds-logo-mobile canvas.sds-canvas {
+    display: block !important;
+    flex-shrink: 0 !important;
+  }
+  #sds-logo .sds-text,
+  #sds-logo-mobile .sds-text {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3px !important;
+  }
+  #sds-logo .sds-co,
+  #sds-logo-mobile .sds-co {
+    font-family: 'Exo 2', 'Segoe UI', sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.16em !important;
+    color: #ddeeff !important;
+    line-height: 1 !important;
+    text-transform: uppercase !important;
+    text-shadow: 0 0 12px rgba(0, 190, 255, 0.45) !important;
+  }
+  #sds-logo .sds-sub,
+  #sds-logo-mobile .sds-sub {
+    font-family: 'Exo 2', 'Segoe UI', sans-serif !important;
+    font-size: 8px !important;
+    font-weight: 300 !important;
+    letter-spacing: 0.34em !important;
+    color: #00b8df !important;
+    line-height: 1 !important;
+    opacity: 0.7 !important;
+  }
+</style>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="../assets/surette-data-systems-apps.css?v=20260610-canvas-align" rel="stylesheet"/>
 <link href="../assets/surette-physics-wordmark.css?v=20260608-hover-reattach" rel="stylesheet"/>
@@ -58,7 +104,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 </div>
 <div class="fixed inset-0 z-0 pointer-events-none"><div class="absolute inset-0 cosmic-web-bg opacity-70"></div><div class="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(5,5,5,0.48),#050505_84%)]"></div></div>
 <nav class="hidden md:flex fixed top-0 w-full z-50 bg-surface/10 backdrop-blur-xl border-b border-white/10 justify-between items-center px-margin-desktop py-4">
-<a href="index.html" class="site-brand inline-flex items-center gap-2.5 flex-nowrap shrink-0"><span class="material-symbols-outlined brand-mark text-electric-cyan" aria-hidden="true">blur_on</span><span class="flex flex-col leading-none"><span class="font-headline-md text-headline-md tracking-tighter brand-mystical brand-mystical--glow">DARK MATTER</span><span class="brand-subtext"><span class="brand-subtext__line">Surette Systems</span><span class="brand-subtext__line brand-subtext__line--portal">Portal</span></span></span></a>
+<div id="sds-logo"></div>
 <div class="hidden md:flex items-center gap-10">
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="index.html">Inicio</a>
 <div class="relative services-nav-group"><a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" tabindex="0" aria-haspopup="true">Servicios</a><div class="services-nav-menu"><div class="services-nav-panel"><div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Servicios en línea</div><a href="services/website-design.html">Diseño de Sitios Web</a><a href="services/managed-hosting.html">Hosting Administrado</a><a href="services/website-care-plans.html">Planes de Mantenimiento Web</a><a href="services/custom-development.html">Aplicaciones Web Empresariales a Medida</a><div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">home_pin</span>Servicios a Domicilio y Oficina</div><a href="services/in-home-services.html">Servicios Técnicos a Domicilio</a><a href="services/office-network-setup.html">Configuración de Redes de Oficina</a></div></div></div>
@@ -71,10 +117,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 <div class="md:hidden">
 <header class="fixed top-0 w-full bg-surface/10 backdrop-blur-xl z-50 border-b border-starlight-white/10 shadow-[0_0_20px_rgba(0,240,255,0.1)]">
 <div class="flex items-center justify-between px-margin-mobile h-16 w-full mx-auto">
-<a href="index.html" class="site-brand inline-flex items-center gap-2.5 flex-nowrap shrink-0">
-<span class="material-symbols-outlined brand-mark text-electric-cyan" aria-hidden="true">blur_on</span>
-<span class="flex flex-col leading-none"><span class="font-headline-md text-headline-md tracking-tighter brand-mystical brand-mystical--glow">DARK MATTER</span><span class="brand-subtext"><span class="brand-subtext__line">Surette Systems</span><span class="brand-subtext__line brand-subtext__line--portal">Portal</span></span></span>
-</a>
+<div id="sds-logo-mobile"></div>
 <div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0">
 <a href="../apps.html" hreflang="en" lang="en" aria-label="Switch to English" class="text-on-surface-variant hover:text-electric-cyan transition-colors duration-300">EN</a><span class="text-outline/50">/</span><span class="text-electric-cyan" aria-current="true">ES</span>
 </div>
@@ -245,5 +288,7 @@ canvas.addEventListener('touchstart', (e) => {
 </script>
 <script src="../assets/apps-lang-nav.js?v=20260608-mobile-desktop-teardown"></script>
 <script src="../assets/surette-apps-loader.js?v=20260608-intro-hover-abort"></script>
+<script src="../surette-logo.js"></script>
+<script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
 </body>
 </html>

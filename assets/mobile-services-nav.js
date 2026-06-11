@@ -74,7 +74,6 @@
     '<div class="mobile-services-popout__grid">' +
       '<div class="mobile-services-popout__group">' +
         '<div class="mobile-services-popout__heading"><span class="material-symbols-outlined text-sm">language</span>' + copy.online + '</div>' +
-        '<a href="' + page('apps.html') + '">' + copy.all + '</a>' +
         copy.links.map(function (item) { return '<a href="' + item[1] + '">' + item[0] + '</a>'; }).join('') +
       '</div>' +
       '<div class="mobile-services-popout__group">' +

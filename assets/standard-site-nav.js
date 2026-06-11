@@ -129,9 +129,7 @@
 
   var html =
     '<nav class="hidden md:flex fixed top-0 w-full z-50 bg-surface/10 backdrop-blur-xl border-b border-white/10 justify-between items-center px-margin-desktop py-4">' +
-    '<a href="index.html" class="site-brand inline-flex items-center gap-2.5 flex-nowrap shrink-0"><span class="material-symbols-outlined brand-mark text-electric-cyan" aria-hidden="true">blur_on</span><span class="flex flex-col leading-none"><span class="font-headline-md text-headline-md tracking-tighter brand-mystical brand-mystical--glow">DARK MATTER</span><span class="brand-subtext">' +
-    copy.brandSub +
-    '</span></span></a><div class="hidden md:flex items-center gap-10">' +
+    '<div id="sds-logo"></div><div class="hidden md:flex items-center gap-10">' +
     '<a class="' +
     desktopClass("home") +
     '" href="index.html">' +
@@ -166,9 +164,7 @@
     copy.contact +
     "</a></nav>" +
     '<div class="md:hidden"><header class="fixed top-0 w-full bg-surface/10 backdrop-blur-xl z-50 border-b border-starlight-white/10 shadow-[0_0_20px_rgba(0,240,255,0.1)]">' +
-    '<div class="flex items-center justify-between px-margin-mobile h-16 w-full mx-auto"><a href="index.html" class="site-brand inline-flex items-center gap-2.5 flex-nowrap shrink-0"><span class="material-symbols-outlined brand-mark text-electric-cyan" aria-hidden="true">blur_on</span><span class="flex flex-col leading-none"><span class="font-headline-md text-headline-md tracking-tighter brand-mystical brand-mystical--glow">DARK MATTER</span><span class="brand-subtext">' +
-    copy.brandSub +
-    '</span></span></a><div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0">' +
+    '<div class="flex items-center justify-between px-margin-mobile h-16 w-full mx-auto"><div id="sds-logo-mobile"></div><div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0">' +
     langToggleHtml() +
     '</div></div></header><nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface/10 backdrop-blur-2xl border-t border-starlight-white/10 shadow-[0_-10px_30px_rgba(112,0,255,0.15)] rounded-t-xl">' +
     '<a href="index.html" class="' +
