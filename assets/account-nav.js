@@ -1,7 +1,7 @@
 /* account-nav.js
    Reflects the signed-in state in the top-nav account link on every page.
-   When the user is logged in, the "Client Login" / "Acceso" link becomes
-   "Account" / "Cuenta"; when logged out it is restored to its original label.
+   When the user is logged in, the "Client Login" link becomes "Account";
+   when logged out it is restored to its original label.
    Re-runs on bfcache restore (pageshow) and on cross-tab login/logout (storage),
    so the button stays correct on back/forward navigation and in other tabs.
 
@@ -31,8 +31,7 @@
 
   function apply() {
     var signedIn = hasSession();
-    var isEs = (document.documentElement.lang || "en").toLowerCase().indexOf("es") === 0;
-    var label = isEs ? "Cuenta" : "Account";
+    var label = "Account";
     // Match the account link regardless of URL style: "account.html",
     // "/account.html", "../account.html", the clean URL "/account" or "account",
     // and any of those with a ?query or #hash. Deliberately does NOT match
@@ -55,44 +54,47 @@
         a.appendChild(iconEl);
         a.appendChild(document.createTextNode(label));
       } else {
-        // Put the original "Client Login" / "Acceso" button back.
         a.innerHTML = a.getAttribute("data-dm-orig");
       }
     }
   }
 
-  // ── Mobile header: inject account icon + shrink lang toggle ──────────────
+  // ── Mobile header: inject account icon into header flex row ──────────────
   function injectMobileAccountIcon() {
     var mobileSection = document.querySelector('.md\\:hidden');
     if (!mobileSection) return;
-    var langSwitch = mobileSection.querySelector('.lang-switch');
-    if (!langSwitch) return;
-    if (langSwitch.querySelector('.dm-mob-acct')) return; // already injected
 
-    // Shrink the EN/ES labels
-    langSwitch.style.fontSize = '10px';
-    langSwitch.style.gap = '5px';
+    var header = mobileSection.querySelector('header');
+    var container;
+    if (header) {
+      // Some pages put flex classes directly on <header>; others wrap in a child <div>
+      if (header.classList.contains('flex') && header.classList.contains('justify-between')) {
+        container = header;
+      } else {
+        container = header.querySelector('.flex.items-center.justify-between') || header;
+      }
+    } else {
+      container = mobileSection.querySelector('.flex.items-center.justify-between');
+    }
+    if (!container) return;
+    if (container.querySelector('.dm-mob-acct')) return; // already injected
 
     // Resolve account.html relative to the current page depth
     var path = window.location.pathname;
     var parts = path.split('/').filter(Boolean);
     var depth = Math.max(0, parts.length - 1);
     var prefix = depth > 0 ? Array(depth).fill('..').join('/') + '/' : '';
-    var isEs = (document.documentElement.lang || '').toLowerCase().indexOf('es') === 0;
-    var href = prefix + (isEs ? 'es/' : '') + 'account.html';
+    var href = prefix + 'account.html';
     var onAcct = /(^|\/)account(\.html)?([?#]|$)/i.test(path);
 
     var a = document.createElement('a');
     a.href = href;
     a.className = 'dm-mob-acct';
-    a.setAttribute('aria-label', isEs ? 'Acceso de cliente' : 'Client login');
+    a.setAttribute('aria-label', 'Client login');
     a.style.cssText = [
       'display:flex', 'align-items:center', 'text-decoration:none',
       'transition:color 0.2s',
-      'color:' + (onAcct ? '#00F0FF' : 'rgba(196,199,199,0.55)'),
-      'margin-right:4px',
-      'padding-right:6px',
-      'border-right:1px solid rgba(255,255,255,0.12)'
+      'color:' + (onAcct ? '#00F0FF' : 'rgba(196,199,199,0.55)')
     ].join(';');
     a.addEventListener('mouseenter', function () { this.style.color = '#00F0FF'; });
     a.addEventListener('mouseleave', function () {
@@ -105,7 +107,7 @@
     icon.textContent = 'account_circle';
     a.appendChild(icon);
 
-    langSwitch.insertBefore(a, langSwitch.firstChild);
+    container.appendChild(a);
   }
 
   if (document.readyState === "loading") {
