@@ -5,7 +5,10 @@
       "Bash(Select-Object FullName, PSIsContainer)",
       "Bash(Sort-Object FullName)",
       "Bash(ConvertTo-Json)",
-      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\rcman\\\\OneDrive\\\\Documents\\\\DarkMatter - Codex\" -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object { $_.FullName })"
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\rcman\\\\OneDrive\\\\Documents\\\\DarkMatter - Codex\" -Recurse -Force -ErrorAction SilentlyContinue | ForEach-Object { $_.FullName })",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\rcman\\\\OneDrive\\\\Documents\\\\DarkMatter - Codex - Copy \\(6\\) - Copy - Copy - Copy\" -Recurse -Force)",
+      "Bash(Format-Table -AutoSize)",
+      "mcp__Claude_Preview__preview_start"
     ]
   }
 }

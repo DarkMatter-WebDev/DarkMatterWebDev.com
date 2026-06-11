@@ -78,34 +78,74 @@ nav .hidden.md\:flex,
   overflow: visible;
 }
 
+/* ───────────────────────────────────────────────────────────────
+   Fluid desktop top-nav (≥768px), shared sitewide.
+
+   Previously the brand and Contact CTA were absolutely positioned at a
+   fixed side offset while the link cluster was centred across the full
+   width, so on narrow desktop/tablet widths (≈768–1150px) the centred
+   links slid under the brand and CTA and the text overlapped.
+
+   Now the brand sits in normal flex flow (it can never overlap the
+   links) and the link cluster is centred in the space that remains,
+   clear of a right gutter reserved for the Contact CTA. The side inset,
+   gutter, inter-link gap and link font-size all scale continuously via
+   clamp(). The Contact CTA stays pinned to the right edge so the same
+   rules work whether the markup places it as a direct nav child or
+   nested at the end of the link cluster (both variants exist sitewide).
+   The apps page overrides the gutter in surette-data-systems-apps.css
+   (its CTA is a separate fixed overlay rather than a nav child).
+   ─────────────────────────────────────────────────────────────── */
 @media (min-width: 768px) {
-  nav.fixed.top-0.w-full > .hidden.md\:flex,
-  nav.fixed.top-0.w-full > .flex.gap-10.items-center,
-  nav.fixed.top-0.w-full > .flex.gap-8.items-center {
-    gap: 2.5rem !important;
-  }
-
   nav.fixed.top-0.w-full {
-    justify-content: center !important;
+    /* Edge inset; tightens as the viewport narrows, reaches the
+       original 4rem by standard desktop widths (~1280px). */
+    --dm-nav-side-offset: clamp(1.25rem, 5vw, 4rem);
+    /* Right gutter held open for the pinned Contact CTA so the centred
+       link cluster can never slide underneath it. */
+    --dm-nav-contact-reserve: 10.5rem;
+    justify-content: flex-start !important;
+    padding-left: var(--dm-nav-side-offset) !important;
+    padding-right: calc(var(--dm-nav-side-offset) + var(--dm-nav-contact-reserve)) !important;
+    column-gap: clamp(0.6rem, 1.6vw, 1.5rem);
   }
 
+  /* Brand back into the flex flow (was position:absolute). */
   nav.fixed.top-0.w-full > .site-brand {
+    position: static;
+    left: auto;
+    top: auto;
+    transform: none;
+    flex: 0 0 auto;
+  }
+
+  /* Link cluster centres between the brand and the reserved gutter; its
+     internal spacing tightens fluidly. */
+  nav.fixed.top-0.w-full > .hidden.md\:flex {
+    margin-inline: auto;
+    gap: clamp(0.55rem, 1.5vw, 2.5rem) !important;
+    min-width: 0;
+  }
+
+  /* Link text eases down a little on narrow widths to buy room. */
+  nav.fixed.top-0.w-full > .hidden.md\:flex > a.font-label-mono,
+  nav.fixed.top-0.w-full > .hidden.md\:flex .services-nav-group > a,
+  nav.fixed.top-0.w-full > .hidden.md\:flex .lang-switch {
+    font-size: clamp(0.78rem, 0.66rem + 0.42vw, 0.875rem);
+  }
+
+  /* Contact CTA pinned to the right edge. Two selectors cover both DOM
+     variants: a direct nav child, and a child nested at the end of the
+     link cluster. Visual styling (size, colour, font) is preserved. */
+  nav.fixed.top-0.w-full > a.bg-gradient-to-r,
+  nav.fixed.top-0.w-full > .hidden.md\:flex > a.bg-gradient-to-r {
     position: absolute;
-    left: var(--dm-nav-side-offset, 4rem);
+    right: var(--dm-nav-side-offset);
     top: 50%;
     transform: translateY(-50%);
-  }
-
-  nav.fixed.top-0.w-full > a.bg-gradient-to-r,
-  nav.fixed.top-0.w-full > .hidden.md\:flex > a.bg-gradient-to-r,
-  nav.fixed.top-0.w-full > .flex.gap-10.items-center > a.bg-gradient-to-r,
-  nav.fixed.top-0.w-full > .flex.gap-8.items-center > a.bg-gradient-to-r {
-    position: absolute;
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    right: var(--dm-nav-side-offset, 4rem);
-    top: 50%;
     min-height: 2.225rem;
     padding: 0.5rem 1.5rem !important;
     border-radius: 0.5rem !important;
@@ -117,23 +157,33 @@ nav .hidden.md\:flex,
     letter-spacing: 0.05em !important;
     text-decoration: none !important;
     white-space: nowrap !important;
-    transform: translateY(-50%);
     margin-left: 0 !important;
     box-shadow: 0 0 24px rgba(0, 240, 255, 0.18);
   }
 
   nav.fixed.top-0.w-full > a.bg-gradient-to-r:hover,
-  nav.fixed.top-0.w-full > .hidden.md\:flex > a.bg-gradient-to-r:hover,
-  nav.fixed.top-0.w-full > .flex.gap-10.items-center > a.bg-gradient-to-r:hover,
-  nav.fixed.top-0.w-full > .flex.gap-8.items-center > a.bg-gradient-to-r:hover {
+  nav.fixed.top-0.w-full > .hidden.md\:flex > a.bg-gradient-to-r:hover {
     transform: translateY(-50%) scale(1.05);
   }
 
   nav.fixed.top-0.w-full > a.bg-gradient-to-r:active,
-  nav.fixed.top-0.w-full > .hidden.md\:flex > a.bg-gradient-to-r:active,
-  nav.fixed.top-0.w-full > .flex.gap-10.items-center > a.bg-gradient-to-r:active,
-  nav.fixed.top-0.w-full > .flex.gap-8.items-center > a.bg-gradient-to-r:active {
+  nav.fixed.top-0.w-full > .hidden.md\:flex > a.bg-gradient-to-r:active {
     transform: translateY(-50%) scale(0.95);
+  }
+}
+
+/* Tight band: below ≈880px there isn't room for the CTA alongside the
+   full link row. Drop the CTA and reclaim its gutter so the links keep
+   one clean, non-overlapping row down to the mobile breakpoint (Contact
+   stays reachable from the footer, and from the bottom nav below 768px). */
+@media (min-width: 768px) and (max-width: 879.98px) {
+  nav.fixed.top-0.w-full {
+    --dm-nav-contact-reserve: 0rem;
+  }
+
+  nav.fixed.top-0.w-full > a.bg-gradient-to-r,
+  nav.fixed.top-0.w-full > .hidden.md\:flex > a.bg-gradient-to-r {
+    display: none !important;
   }
 }
 

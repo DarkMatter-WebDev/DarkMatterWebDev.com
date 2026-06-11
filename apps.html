@@ -31,12 +31,12 @@
 <link rel="alternate" hreflang="en" href="/apps.html"/>
 <link rel="alternate" hreflang="es" href="/es/apps.html"/>
 <link rel="alternate" hreflang="x-default" href="/apps.html"/>
-<link href="assets/nav.css?v=20260608-portal" rel="stylesheet"/>
+<link href="assets/nav.css?v=20260610-fluid-nav" rel="stylesheet"/>
 <link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/>
 <link href="assets/powered-by-badge.css?v=20260609-badge-fix" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="assets/surette-data-systems-apps.css?v=20260609-floating-fixed" rel="stylesheet"/>
+<link href="assets/surette-data-systems-apps.css?v=20260610-canvas-align" rel="stylesheet"/>
 <link href="assets/surette-physics-wordmark.css?v=20260608-hover-reattach" rel="stylesheet"/>
 <script>(function(){document.documentElement.classList.add("sds-apps-boot");})();</script>
 <style>
@@ -96,29 +96,13 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 </div>
 <main class="downloads-main relative z-10 pt-32 pb-28 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
 <section class="sds-hero max-w-container-max mb-14">
-<div class="sds-physics-toggle">
-<label class="sds-physics-toggle__label" for="sds-physics-toggle-input">
-<span class="sds-physics-toggle__text">Physics</span>
-<input type="checkbox" id="sds-physics-toggle-input" class="sds-physics-toggle__input" role="switch" checked aria-label="Physics enabled"/>
-<span class="sds-physics-toggle__track" aria-hidden="true"><span class="sds-physics-toggle__thumb"></span></span>
-</label>
-</div>
 <div class="sds-hero__grid">
 <div class="sds-hero__copy">
-<img class="sds-hero__brand-mark" src="assets/surette-data-systems-geometric-icon.webp" width="64" height="90" alt="" aria-hidden="true"/>
-<span class="sds-hero__click-hint" aria-hidden="true">click me</span>
-<p class="sds-hero__kicker"><span class="sds-hero__kicker-lead">Powered By</span> <span class="sds-hero__kicker-brand">Dark Matter</span></p>
-<h1 class="sds-wordmark" aria-label="Surette Data Systems">
-<div class="sds-physics-wordmark" id="sds-physics-wordmark">
-<div class="sds-physics-wordmark__arena" tabindex="0">
-<p class="sds-physics-wordmark__line" data-split="SURETTE" aria-hidden="true">SURETTE</p>
-</div>
-<span class="sds-physics-wordmark__sr">Surette</span>
-</div>
-<span class="sds-wordmark__system" aria-hidden="true"><span class="sds-wordmark__rule"></span><span class="sds-wordmark__system-text"><span class="sds-wordmark__data">DATA</span><span class="sds-wordmark__systems brand-mystical">SYSTEMS</span></span><span class="sds-wordmark__rule"></span></span>
+<h1 class="sds-wordmark" aria-label="Surette Data Systems" style="position:relative">
+<canvas id="wm-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;"></canvas>
 </h1>
 <p class="sds-hero__lead">Mobile, web, and desktop CRM, ERP, inventory, workflows, reporting, and operations software.</p>
-<p class="sds-hero__sub">just because it's <span class="sds-physics-wordmark sds-physics-wordmark--sub" data-word="business"><span class="sds-physics-wordmark__arena" tabindex="0"><span class="sds-physics-wordmark__line" data-split="business" aria-hidden="true">BUSINESS</span></span></span>, doesn't mean it needs to be <span class="sds-physics-wordmark sds-physics-wordmark--sub" data-word="boring"><span class="sds-physics-wordmark__arena" tabindex="0"><span class="sds-physics-wordmark__line" data-split="boring" aria-hidden="true">BORING</span></span></span></p>
+<p class="sds-hero__sub">just because it's <strong>business</strong>, doesn't mean it needs to be <strong>boring</strong></p>
 <div class="sds-hero__sub-spacer" aria-hidden="true"></div>
 </div>
 <div class="sds-hero__visual" aria-hidden="true">
@@ -199,10 +183,70 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 </footer>
 <script src="assets/mobile-services-nav.js?v=20260609-services-trim"></script>
 <script src="assets/account-nav.js?v=20260610d-account-logout"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js"></script>
-<script src="assets/surette-physics-wordmark.js?v=20260609-click-hint"></script>
+<script src="assets/surette-physics-wordmark-canvas.js"></script>
+<script>
+const canvas = document.getElementById('wm-canvas');
+const wm = new SurettePhysicsWordmark(canvas, {
+  bg: 'transparent',
+  groups: [
+    { text: 'SURETTE', yFactor: 0.45, yMobile: 0.45 },
+    { text: 'DATA SYSTEMS', preset: 'subline' },
+  ],
+});
+
+function alignAll() {
+  wm._groups[0].xOffset = 0;
+  wm._groups[1].xOffset = 0;
+  wm._layoutLetters();
+  const g0 = wm._letters.filter(l => l.groupI === 0);
+  const g1 = wm._letters.filter(l => l.groupI === 1);
+  if (!g0.length || !g1.length) return;
+  const leftOf = ls => Math.min(...ls.map(l => l.homeX - l.w * 0.5));
+  wm._groups[0].xOffset = -leftOf(g0);
+  wm._groups[1].xOffset = -leftOf(g1);
+  wm._layoutLetters();
+  if (window.innerWidth > 767) {
+    const sureRight = Math.max(...wm._letters.filter(l => l.groupI === 0).map(l => l.homeX + l.w * 0.5));
+    const r = canvas.getBoundingClientRect();
+    const visual = document.querySelector('.sds-hero__visual');
+    if (visual) { visual.style.right = 'auto'; visual.style.left = (r.left + sureRight + 16) + 'px'; }
+  }
+}
+requestAnimationFrame(() => requestAnimationFrame(alignAll));
+let _alignRaf;
+window.addEventListener('resize', () => {
+  cancelAnimationFrame(_alignRaf);
+  _alignRaf = requestAnimationFrame(() => requestAnimationFrame(alignAll));
+}, { passive: true });
+
+// The module uses e.clientX/Y (viewport coords) but compares them against
+// canvas-local letter positions. Re-register handlers with rect correction.
+canvas.removeEventListener('pointermove', wm._onPointerMove);
+canvas.addEventListener('pointermove', (e) => {
+  const r = canvas.getBoundingClientRect();
+  wm._mouse.x = e.clientX - r.left;
+  wm._mouse.y = e.clientY - r.top;
+}, { passive: true });
+
+canvas.removeEventListener('click', wm._onClick);
+canvas.addEventListener('click', (e) => {
+  const r = canvas.getBoundingClientRect();
+  const now = performance.now();
+  const l = wm._hitTestLetter(e.clientX - r.left, e.clientY - r.top);
+  if (l) wm._releaseLetter(l, now);
+});
+
+canvas.removeEventListener('touchstart', wm._onTouch);
+canvas.addEventListener('touchstart', (e) => {
+  e.preventDefault();
+  const r = canvas.getBoundingClientRect();
+  const now = performance.now();
+  if (e.touches.length > 1) { wm._letters.forEach(l => wm._releaseLetter(l, now)); return; }
+  const t = e.touches[0];
+  const l = wm._hitTestLetter(t.clientX - r.left, t.clientY - r.top);
+  if (l) wm._releaseLetter(l, now);
+}, { passive: false });
+</script>
 <script src="assets/apps-lang-nav.js?v=20260608-mobile-desktop-teardown"></script>
 <script src="assets/surette-apps-loader.js?v=20260608-intro-hover-abort"></script>
 </body>

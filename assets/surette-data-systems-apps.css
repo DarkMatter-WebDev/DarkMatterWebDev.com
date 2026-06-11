@@ -387,6 +387,7 @@ html:lang(es) .sds-hero__flick-reveal-sub {
   margin: 0 0 1.05rem;
   max-width: min(100%, 58rem);
   transform: translateZ(0);
+  height: clamp(11rem, 26vw, 17rem);
 }
 
 .sds-wordmark::before {
@@ -1051,6 +1052,7 @@ body.sds-apps-page {
 
   .sds-wordmark {
     max-width: 100%;
+    height: clamp(9rem, 50vw, 14rem);
   }
 
   .sds-wordmark__system {
@@ -1428,6 +1430,80 @@ body.is-apps-ready > :not(#sds-apps-loader) {
 
   .sds-apps-page .sds-nav-contact-stack__cta:active {
     transform: scale(0.95);
+  }
+}
+
+/* ───────────────────────────────────────────────────────────────
+   Fluid desktop top-nav (≥768px). The base layout in nav.css pins the
+   brand and Contact CTA with absolute/fixed positioning at a fixed
+   side offset while the link cluster is centred across the full width,
+   so on narrow desktop/tablet widths (≈768–1150px) the centred links
+   slid under the brand and the CTA and the text overlapped.
+
+   Here the brand is returned to normal flow and the cluster is centred
+   in the space that remains, with the side offset, inter-link gap and
+   link font-size all scaling continuously via clamp(). The result
+   adapts to any width instead of snapping between two fixed states.
+   Scoped to .sds-apps-page so other pages keep the base nav.
+   ─────────────────────────────────────────────────────────────── */
+@media (min-width: 768px) {
+  .sds-apps-page {
+    /* Edge inset shared by the brand (left) and Contact CTA (right);
+       tightens as the viewport narrows but reaches the original 4rem
+       by standard desktop widths (~1280px). */
+    --dm-nav-side-offset: clamp(1.25rem, 5vw, 4rem);
+    /* Right gutter held open for the fixed Contact CTA overlay so the
+       centred link cluster can never slide underneath it. */
+    --dm-nav-contact-reserve: 10.5rem;
+  }
+
+  /* Brand back into the flex flow (was position:absolute) — the links
+     now physically cannot overlap it at any width. */
+  .sds-apps-page nav.fixed.top-0.w-full > .site-brand {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    flex: 0 0 auto;
+  }
+
+  /* Single flow row: brand | centred links | reserved right gutter
+     (the Contact overlay lives in that gutter). */
+  .sds-apps-page nav.fixed.top-0.w-full {
+    justify-content: flex-start !important;
+    padding-left: var(--dm-nav-side-offset) !important;
+    padding-right: calc(var(--dm-nav-side-offset) + var(--dm-nav-contact-reserve)) !important;
+    column-gap: clamp(0.6rem, 1.6vw, 1.5rem);
+  }
+
+  /* Link cluster centres in the gap between the brand and the reserved
+     gutter; internal spacing tightens fluidly. */
+  .sds-apps-page nav.fixed.top-0.w-full > .hidden.md\:flex {
+    margin-inline: auto !important;
+    gap: clamp(0.55rem, 1.5vw, 2.5rem) !important;
+    min-width: 0;
+  }
+
+  /* Link text eases down a little on narrow widths to buy room. */
+  .sds-apps-page nav.fixed.top-0.w-full > .hidden.md\:flex a.font-label-mono,
+  .sds-apps-page nav.fixed.top-0.w-full > .hidden.md\:flex .services-nav-group > a,
+  .sds-apps-page nav.fixed.top-0.w-full > .hidden.md\:flex .lang-switch {
+    font-size: clamp(0.78rem, 0.66rem + 0.42vw, 0.875rem);
+  }
+}
+
+/* Tight band: below ≈880px there isn't room for the floating Contact
+   CTA alongside the full link row. Drop the CTA and reclaim its gutter
+   so the links keep one clean, non-overlapping row down to the mobile
+   breakpoint (Contact is still reachable from the footer, and from the
+   bottom nav once below 768px). */
+@media (min-width: 768px) and (max-width: 879.98px) {
+  .sds-apps-page {
+    --dm-nav-contact-reserve: 0rem;
+  }
+
+  .sds-apps-page .sds-nav-contact-stack {
+    display: none !important;
   }
 }
 
