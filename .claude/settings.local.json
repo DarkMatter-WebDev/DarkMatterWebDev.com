@@ -16,7 +16,9 @@
       "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\rcman\\\\OneDrive\\\\Documents\\\\DarkMatter - Codex - Copy \\(6\\) - Copy - Copy - Copy\" -Force | Select-Object Name, @{Name=\"Type\"; Expression={if\\($_.PSIsContainer\\){\"Directory\"}else{\"File\"}}} | Format-Table -AutoSize)",
       "Bash(python3 -)",
       "Bash(python apply_logo.py)",
-      "Bash(python -c ' *)"
+      "Bash(python -c ' *)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\rcman\\\\OneDrive\\\\Documents\\\\DarkMatter - Codex - Copy \\(7\\) - Copy - Copy - Copy - Copy\" -Recurse -Force)",
+      "Bash(Select-Object FullName)"
     ]
   }
 }

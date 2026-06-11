@@ -84,6 +84,33 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="../assets/surette-data-systems-apps.css?v=20260610-canvas-align" rel="stylesheet"/>
 <link href="../assets/surette-physics-wordmark.css?v=20260608-hover-reattach" rel="stylesheet"/>
+<script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/","lil-gui":"https://cdn.jsdelivr.net/npm/lil-gui@0.20.0/dist/lil-gui.esm.js"}}</script>
+<style>
+  #canvas-container { position:fixed; inset:0; z-index:1; background:#020205; pointer-events:none; }
+  #canvas-container canvas { position:absolute !important; top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:auto; }
+  main.downloads-main { position:relative; z-index:10; }
+  .sds-hero__lead, .sds-hero__sub { color:#ffffff !important; }
+  #fractal-gui-toggle {
+    position:fixed; top:76px; right:14px; z-index:60;
+    width:28px; height:28px;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(5,5,5,0.4); border:1px solid rgba(255,255,255,0.06);
+    border-radius:7px; color:rgba(255,255,255,0.18); cursor:pointer;
+    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+    transition:color 0.2s, border-color 0.2s, background 0.2s;
+  }
+  #fractal-gui-toggle:hover {
+    color:rgba(0,240,255,0.65); border-color:rgba(0,240,255,0.18);
+    background:rgba(5,5,5,0.7);
+  }
+  #fractal-gui-toggle .material-symbols-outlined { font-size:15px; }
+  @media (max-width: 767px) {
+    #canvas-container { top:0; left:0; right:0; bottom:auto; height:52vh; overflow:hidden; }
+    #canvas-container canvas { top:50% !important; left:50% !important; transform:translate(-50%,-50%) scale(1.0) !important; }
+    .lil-gui.root { top:64px !important; right:0 !important; max-height:calc(100vh - 64px) !important; overflow-y:auto !important; }
+  }
+</style>
 <script>(function(){document.documentElement.classList.add("sds-apps-boot");})();</script>
 <style>
   body.is-apps-loading { overflow: hidden; }
@@ -95,6 +122,8 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 </script>
 </head>
 <body class="font-['Plus_Jakarta_Sans',sans-serif] min-h-screen flex flex-col cosmic-page cosmic-tint-services sds-apps-page">
+<div id="canvas-container" aria-hidden="true"></div>
+<button id="fractal-gui-toggle" title="Configuración visual" aria-label="Alternar configuración visual" onclick="if(window._fractalGUI){window._fractalGUI._hidden?window._fractalGUI.show():window._fractalGUI.hide()}"><span class="material-symbols-outlined">grain</span></button>
 <div id="sds-apps-loader" class="sds-apps-loader is-pending" role="status" aria-live="polite" aria-label="Cargando apps de Surette Data Systems" aria-hidden="true">
 <div class="sds-apps-loader__inner">
 <div class="sds-apps-loader__mark" aria-hidden="true"><span class="sds-apps-loader__mark-ring"></span><img class="sds-apps-loader__mark-core" src="../assets/surette-data-systems-geometric-icon.webp" width="44" height="62" alt="" decoding="sync"/></div>
@@ -144,13 +173,6 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 <p class="sds-hero__lead">CRM, ERP, inventario, flujos, reportes y operaciones para movil, web y escritorio.</p>
 <p class="sds-hero__sub">Solo porque es un <strong>negocio</strong>, no significa que necesita ser <strong>aburrido</strong></p>
 <div class="sds-hero__sub-spacer" aria-hidden="true"></div></div>
-<div class="sds-hero__visual" aria-hidden="true">
-<div class="sds-hero__floating-wrap">
-<span class="sds-hero__floating-stage" aria-hidden="true">
-<img class="sds-hero__floating-mark" src="../assets/surette-data-systems-floating-orange-blocks.webp" width="726" height="874" alt="" aria-hidden="true"/>
-</span>
-</div>
-</div>
 </div>
 </section>
 <section class="mb-16">
@@ -288,6 +310,19 @@ canvas.addEventListener('touchstart', (e) => {
 </script>
 <script src="../assets/apps-lang-nav.js?v=20260608-mobile-desktop-teardown"></script>
 <script src="../assets/surette-apps-loader.js?v=20260608-intro-hover-abort"></script>
+<script>
+window.FRACTAL_CONFIG = {
+    algorithm: 'Thomas Labyrinth',
+    color1: '#2bff00',
+    color2: '#ff2424',
+    color3: '#002aff',
+    pointsCount: 75000,
+    pointSize: 0.153,
+    rotationSpeedX: 0.0033,
+    disableHover: true
+};
+</script>
+<script type="module" src="../fractal.js"></script>
 <script src="../surette-logo.js"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
 </body>

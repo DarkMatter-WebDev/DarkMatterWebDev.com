@@ -84,8 +84,49 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"electric-cyan":"#00F0F
 <style>
 body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",sans-serif;overflow-x:hidden}.grid-overlay{position:fixed;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.05) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:-1}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24}.nav-login-link{display:inline-flex;align-items:center;gap:.35rem;color:#00f0ff}
 </style>
+<script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/","lil-gui":"https://cdn.jsdelivr.net/npm/lil-gui@0.20.0/dist/lil-gui.esm.js"}}</script>
+<style>
+  #canvas-container { position:fixed; inset:0; z-index:1; background:#020205; pointer-events:none; }
+  #canvas-container canvas { position:absolute !important; top:50%; left:30%; transform:translate(-50%,-50%); pointer-events:none; }
+  main.client-portal-shell { position:relative; z-index:2; }
+  @media (max-width: 767px) {
+    #canvas-container { top:0; left:0; right:0; bottom:auto; height:52vh; overflow:hidden; }
+    #canvas-container canvas { top:50% !important; left:50% !important; transform:translate(-50%,-50%) scale(1.0) !important; }
+    .lil-gui.root { top:64px !important; right:0 !important; max-height:calc(100vh - 64px) !important; overflow-y:auto !important; }
+  }
+  .client-portal-card.client-portal-panel { background:rgba(5,5,5,0.72) !important; backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+  #fractal-gui-toggle {
+    position:fixed; top:76px; right:14px; z-index:60;
+    width:28px; height:28px;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(5,5,5,0.4); border:1px solid rgba(255,255,255,0.06);
+    border-radius:7px; color:rgba(255,255,255,0.18); cursor:pointer;
+    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+    transition:color 0.2s, border-color 0.2s, background 0.2s;
+  }
+  #fractal-gui-toggle:hover {
+    color:rgba(0,240,255,0.65); border-color:rgba(0,240,255,0.18);
+    background:rgba(5,5,5,0.7);
+  }
+  #fractal-gui-toggle .material-symbols-outlined { font-size:15px; }
+  .client-portal-card.client-portal-panel[data-client-intro],
+  [data-client-intro] {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+</style>
 </head>
 <body class="bg-void-black">
+<div id="canvas-container" aria-hidden="true"></div>
+<button id="fractal-gui-toggle" title="Visual settings" aria-label="Toggle visual settings" onclick="if(window._fractalGUI){window._fractalGUI._hidden?window._fractalGUI.show():window._fractalGUI.hide()}"><span class="material-symbols-outlined">grain</span></button>
 <div class="fixed inset-0 grid-overlay"></div>
 <nav class="hidden md:flex fixed top-0 w-full z-50 bg-surface/10 backdrop-blur-xl border-b border-white/10 justify-between items-center px-16 py-4">
 <div id="sds-logo"></div>
@@ -129,15 +170,6 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <div class="client-portal-card client-portal-panel" data-client-intro>
 <div class="client-portal-kicker">Login Portal</div>
 <h1 class="client-portal-title client-portal-title--split"><span>Your <span class="client-portal-brand-wordmark">Dark Matter</span></span><small>client wormhole</small></h1>
-<div class="client-wormhole-visual" aria-hidden="true">
-<div class="client-wormhole-ring"></div>
-<div class="client-wormhole-ring"></div>
-<div class="client-wormhole-ring"></div>
-<div class="client-wormhole-core"><span class="material-symbols-outlined">lock</span></div>
-<div class="client-wormhole-grid"></div>
-</div>
-<p class="client-portal-copy"><span class="client-copy-full">Step through the login portal into your private Dark Matter workspace. Once your account is linked, the wormhole opens to your services, website health, traffic notes, ad details and activity, support requests, billing details, and preference settings.</span><span class="client-copy-mobile">Sign in to reach your private Dark Matter workspace.</span></p>
-<div class="client-portal-setup"><strong>Portal status:</strong> The gateway is live. Website health, service records, and billing details appear after your account is linked in Dark Matter's client system.</div>
 <div class="client-source-banner" data-seansads-banner hidden><span class="material-symbols-outlined" aria-hidden="true">ads_click</span><p><strong>Sean's Ads console ready.</strong> This portal will become your customized Google Ads management console for campaign notes, plan choices, requests, and status updates. <a href="https://seansads.com/">Back to Sean's Google Ads</a></p></div>
 </div>
 <div class="client-portal-card client-portal-panel" data-auth-panel>
@@ -150,13 +182,10 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <label class="client-remember-row"><input type="checkbox" checked data-client-remember/> <span>Keep me signed in</span></label>
 <div class="client-portal-actions">
 <button class="client-portal-button" type="submit" data-client-action><span class="material-symbols-outlined">login</span>Sign In</button>
-<button class="client-portal-button client-portal-button--ghost" type="button" data-client-action data-client-magic><span class="material-symbols-outlined">mail</span>Email Link</button>
+<button class="client-portal-button client-portal-button--secondary" type="button" data-client-signup-open><span class="material-symbols-outlined">person_add</span>Create Account</button>
 </div>
 </form>
 <div class="client-portal-status" data-client-status></div>
-<p class="client-muted mt-4">After a successful sign-in, your browser or password manager may offer to save this login.</p>
-<div class="client-signup-prompt"><span>New here?</span><button class="client-portal-button client-portal-button--secondary" type="button" data-client-signup-open><span class="material-symbols-outlined">person_add</span>Create Account</button></div>
-<p class="client-muted mt-4">Create an account with your email, then Dark Matter will connect your services, website status, and billing records after your account is approved.</p>
 </div>
 <div class="client-portal-card client-portal-panel client-dashboard" data-client-dashboard>
 <div class="client-dashboard-header">
@@ -291,4 +320,5 @@ window.DM_CLIENT_PORTAL_COPY = {
 <script type="module" src="assets/client-portal.js?v=20260610c-login-flag"></script>
 <script src="surette-logo.js"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
+<script type="module" src="fractal.js"></script>
 </body></html>
