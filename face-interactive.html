@@ -154,6 +154,10 @@
 		let faceRoot, faceBaseSize, faceBaseCenter, faceBaseScale;
 		let faceLandmarker, video;
 		const eyeRotationLimit = THREE.MathUtils.degToRad( 30 );
+		// Camera sits above the screen, so the user looks slightly downward relative
+		// to the lens. Subtract this bias from the vertical score so that normal
+		// screen-gazing maps to a neutral (forward) eye position on the 3D face.
+		const EYE_VERTICAL_BIAS = 0.22;
 		const transform = new THREE.Object3D();
 
 		let mouseLightTarget = new THREE.Vector3( 0, BOX_HEIGHT / 2, LIGHT_DEPTH );
@@ -553,8 +557,8 @@
 
 					eyeL.rotation.z = eyeScore.leftHorizontal * eyeRotationLimit;
 					eyeR.rotation.z = eyeScore.rightHorizontal * eyeRotationLimit;
-					eyeL.rotation.x = eyeScore.leftVertical * eyeRotationLimit;
-					eyeR.rotation.x = eyeScore.rightVertical * eyeRotationLimit;
+					eyeL.rotation.x = ( eyeScore.leftVertical - EYE_VERTICAL_BIAS ) * eyeRotationLimit;
+					eyeR.rotation.x = ( eyeScore.rightVertical - EYE_VERTICAL_BIAS ) * eyeRotationLimit;
 
 				}
 
