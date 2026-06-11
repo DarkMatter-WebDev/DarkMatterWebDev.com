@@ -61,10 +61,58 @@
     }
   }
 
+  // ── Mobile header: inject account icon + shrink lang toggle ──────────────
+  function injectMobileAccountIcon() {
+    var mobileSection = document.querySelector('.md\\:hidden');
+    if (!mobileSection) return;
+    var langSwitch = mobileSection.querySelector('.lang-switch');
+    if (!langSwitch) return;
+    if (langSwitch.querySelector('.dm-mob-acct')) return; // already injected
+
+    // Shrink the EN/ES labels
+    langSwitch.style.fontSize = '10px';
+    langSwitch.style.gap = '5px';
+
+    // Resolve account.html relative to the current page depth
+    var path = window.location.pathname;
+    var parts = path.split('/').filter(Boolean);
+    var depth = Math.max(0, parts.length - 1);
+    var prefix = depth > 0 ? Array(depth).fill('..').join('/') + '/' : '';
+    var isEs = (document.documentElement.lang || '').toLowerCase().indexOf('es') === 0;
+    var href = prefix + (isEs ? 'es/' : '') + 'account.html';
+    var onAcct = /(^|\/)account(\.html)?([?#]|$)/i.test(path);
+
+    var a = document.createElement('a');
+    a.href = href;
+    a.className = 'dm-mob-acct';
+    a.setAttribute('aria-label', isEs ? 'Acceso de cliente' : 'Client login');
+    a.style.cssText = [
+      'display:flex', 'align-items:center', 'text-decoration:none',
+      'transition:color 0.2s',
+      'color:' + (onAcct ? '#00F0FF' : 'rgba(196,199,199,0.55)'),
+      'margin-right:4px',
+      'padding-right:6px',
+      'border-right:1px solid rgba(255,255,255,0.12)'
+    ].join(';');
+    a.addEventListener('mouseenter', function () { this.style.color = '#00F0FF'; });
+    a.addEventListener('mouseleave', function () {
+      if (!onAcct) this.style.color = 'rgba(196,199,199,0.55)';
+    });
+
+    var icon = document.createElement('span');
+    icon.className = 'material-symbols-outlined';
+    icon.style.cssText = 'font-size:18px;line-height:1;';
+    icon.textContent = 'account_circle';
+    a.appendChild(icon);
+
+    langSwitch.insertBefore(a, langSwitch.firstChild);
+  }
+
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", apply, { once: true });
+    document.addEventListener("DOMContentLoaded", function () { apply(); injectMobileAccountIcon(); }, { once: true });
   } else {
     apply();
+    injectMobileAccountIcon();
   }
 
   // Re-apply when the page is shown again, including back/forward navigations

@@ -91,9 +91,11 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
   #canvas-container canvas { position:absolute !important; top:50%; left:30%; transform:translate(-50%,-50%); pointer-events:none; }
   main.client-portal-shell { position:relative; z-index:2; }
   @media (max-width: 767px) {
-    #canvas-container { top:0; left:0; right:0; bottom:auto; height:52vh; overflow:hidden; }
-    #canvas-container canvas { top:50% !important; left:50% !important; transform:translate(-50%,-50%) scale(1.0) !important; }
-    .lil-gui.root { top:64px !important; right:0 !important; max-height:calc(100vh - 64px) !important; overflow-y:auto !important; }
+    #canvas-container canvas { top:50% !important; left:50% !important; transform:translate(-50%,-50%) !important; }
+    #fractal-gui-toggle { top:auto !important; bottom:90px; }
+    .lil-gui.root { top:auto !important; bottom:122px !important; right:0 !important; max-height:55vh !important; overflow-y:auto !important; }
+    main.client-portal-shell { padding-top:40vh; padding-bottom:100px; }
+    .client-portal-card.client-portal-panel[data-auth-panel] { background:transparent !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; box-shadow:none !important; border-color:transparent !important; }
   }
   .client-portal-card.client-portal-panel { background:rgba(5,5,5,0.72) !important; backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
   #fractal-gui-toggle {
@@ -126,7 +128,6 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 </head>
 <body class="bg-void-black">
 <div id="canvas-container" aria-hidden="true"></div>
-<button id="fractal-gui-toggle" title="Visual settings" aria-label="Toggle visual settings" onclick="if(window._fractalGUI){window._fractalGUI._hidden?window._fractalGUI.show():window._fractalGUI.hide()}"><span class="material-symbols-outlined">grain</span></button>
 <div class="fixed inset-0 grid-overlay"></div>
 <nav class="hidden md:flex fixed top-0 w-full z-50 bg-surface/10 backdrop-blur-xl border-b border-white/10 justify-between items-center px-16 py-4">
 <div id="sds-logo"></div>
@@ -159,10 +160,18 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <header class="md:hidden fixed top-0 w-full bg-surface/10 backdrop-blur-xl z-50 border-b border-white/10">
 <div class="flex items-center justify-between h-16 px-4">
 <div id="sds-logo-mobile"></div>
-<div class="font-mono text-sm"><span class="text-electric-cyan">EN</span><span class="text-outline/50"> / </span><a href="es/account.html" class="text-on-surface-variant">ES</a></div>
+<div class="lang-switch flex items-center gap-1.5 font-mono text-sm shrink-0"><span class="text-electric-cyan">EN</span><span class="text-outline/50"> / </span><a href="es/account.html" class="text-on-surface-variant">ES</a></div>
 </div>
 </header>
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 bg-surface/10 backdrop-blur-2xl border-t border-starlight-white/10 shadow-[0_-10px_30px_rgba(112,0,255,0.15)] rounded-t-xl">
+<a href="index.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90"><span class="material-symbols-outlined">home</span><span class="font-label-caps text-[10px] mt-1">Home</span></a>
+<a href="apps.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90"><span class="material-symbols-outlined">design_services</span><span class="font-label-caps text-[10px] mt-1">Services</span></a>
+<a href="apps.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90"><span class="material-symbols-outlined">download</span><span class="font-label-caps text-[10px] mt-1">Apps</span></a>
+<a href="process.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90"><span class="material-symbols-outlined">timeline</span><span class="font-label-caps text-[10px] mt-1">Process</span></a>
+<a href="contact.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90"><span class="material-symbols-outlined">mail</span><span class="font-label-caps text-[10px] mt-1">Contact</span></a>
+</nav>
 <main class="client-portal-shell">
+<button id="fractal-gui-toggle" title="Visual settings" aria-label="Toggle visual settings" onclick="if(window._fractalGUI){window._fractalGUI._hidden?window._fractalGUI.show():window._fractalGUI.hide()}"><span class="material-symbols-outlined">grain</span></button>
 <button type="button" onclick="history.back()" class="md:hidden inline-flex items-center gap-1 text-on-surface-variant hover:text-electric-cyan transition-colors font-mono text-xs tracking-widest uppercase mb-4" aria-label="Go back">
 <span class="material-symbols-outlined" style="font-size:0.95rem;line-height:1">arrow_back</span>Go Back
 </button>

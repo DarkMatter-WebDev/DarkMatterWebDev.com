@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html class="dark" lang="es"><head>
 <meta charset="utf-8"/>
@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Surette Data Systems"/>
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="Nuestro Proceso | Surette Data Systems"/>
-<meta property="og:description" content="Software empresarial a medida, aplicaciones web, sitios web, hosting, soporte y soporte técnico local para el suroeste de Florida — un proceso claro y comprobado."/>
+<meta property="og:description" content="Software empresarial a medida, aplicaciones web, sitios web, hosting, soporte y soporte tÃ©cnico local para el suroeste de Florida â€” un proceso claro y comprobado."/>
 <meta property="og:url" content="https://darkmatterwebdev.com/es/process.html"/>
 <meta property="og:image" content="https://darkmatterwebdev.com/assets/darkmatter-og-image-modern.png"/>
 <meta property="og:image:width" content="1200"/>
@@ -21,7 +21,7 @@
 <meta property="og:image:alt" content="Surette Data Systems - managed websites and local IT support"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Nuestro Proceso | Surette Data Systems"/>
-<meta name="twitter:description" content="Software empresarial a medida, aplicaciones web, sitios web, hosting, soporte y soporte técnico local para el suroeste de Florida — un proceso claro y comprobado."/>
+<meta name="twitter:description" content="Software empresarial a medida, aplicaciones web, sitios web, hosting, soporte y soporte tÃ©cnico local para el suroeste de Florida â€” un proceso claro y comprobado."/>
 <meta name="twitter:image" content="https://darkmatterwebdev.com/assets/darkmatter-og-image-modern.png"/>
 <link rel="alternate" hreflang="en" href="/process.html"/>
 <link rel="alternate" hreflang="es" href="/es/process.html"/>
@@ -339,8 +339,35 @@
             },
         }
     </script>
+<script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/","lil-gui":"https://cdn.jsdelivr.net/npm/lil-gui@0.20.0/dist/lil-gui.esm.js"}}</script>
+<style>
+  #canvas-container { position:fixed; inset:0; z-index:1; background:#020205; pointer-events:none; }
+  #canvas-container canvas { position:absolute !important; top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:auto; }
+  #fractal-gui-toggle {
+    position:fixed; top:76px; right:14px; z-index:60;
+    width:28px; height:28px;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(5,5,5,0.4); border:1px solid rgba(255,255,255,0.06);
+    border-radius:7px; color:rgba(255,255,255,0.18); cursor:pointer;
+    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+    transition:color 0.2s, border-color 0.2s, background 0.2s;
+  }
+  #fractal-gui-toggle:hover {
+    color:rgba(0,240,255,0.65); border-color:rgba(0,240,255,0.18);
+    background:rgba(5,5,5,0.7);
+  }
+  #fractal-gui-toggle .material-symbols-outlined { font-size:15px; }
+  @media (max-width: 767px) {
+    #canvas-container canvas { top:50% !important; left:50% !important; transform:translate(-50%,-50%) !important; }
+    #fractal-gui-toggle { top:auto !important; bottom:90px; }
+    .lil-gui.root { top:auto !important; bottom:122px !important; right:0 !important; max-height:55vh !important; overflow-y:auto !important; }
+  }
+</style>
 </head>
 <body class="font-body-md text-body-md min-h-screen relative overflow-x-hidden selection:bg-electric-cyan selection:text-void-black">
+<div id="canvas-container" aria-hidden="true"></div>
+<button id="fractal-gui-toggle" title="Configuración visual" aria-label="Alternar configuración visual" onclick="if(window._fractalGUI){window._fractalGUI._hidden?window._fractalGUI.show():window._fractalGUI.hide()}"><span class="material-symbols-outlined">grain</span></button>
 
 <!-- ============================================================ -->
 <!-- DESKTOP LAYOUT (>= md / 768px)                               -->
@@ -357,18 +384,18 @@
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" tabindex="0" aria-haspopup="true">Servicios</a>
 <div class="services-nav-menu">
 <div class="services-nav-panel">
-<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Servicios en Línea</div>
+<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Servicios en LÃ­nea</div>
 
 
-<a href="services/website-design.html">Diseño de Sitios Web</a>
+<a href="services/website-design.html">DiseÃ±o de Sitios Web</a>
 
 <a href="services/managed-hosting.html">Hosting Administrado</a>
 <a href="services/website-care-plans.html">Planes de Mantenimiento Web</a>
 
 <a href="services/custom-development.html">Aplicaciones Web Empresariales a Medida</a>
 <div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">home_pin</span>Servicios a Domicilio y de Oficina</div>
-<a href="services/in-home-services.html">Servicios Técnicos a Domicilio</a>
-<a href="services/office-network-setup.html">Configuración de Redes de Oficina</a>
+<a href="services/in-home-services.html">Servicios TÃ©cnicos a Domicilio</a>
+<a href="services/office-network-setup.html">ConfiguraciÃ³n de Redes de Oficina</a>
 </div>
 </div>
 </div>
@@ -382,7 +409,7 @@
 </div>
 </div>
 <a href="contact.html" class="inline-block bg-gradient-to-r from-electric-cyan to-nebula-purple px-6 py-2 rounded-lg font-label-mono text-label-mono text-starlight-white font-bold hover:scale-105 active:scale-95 transition-all">
-            Contáctanos
+            ContÃ¡ctanos
         </a>
 </nav>
 <aside class="fixed left-0 top-1/2 -translate-y-1/2 h-auto rounded-r-xl bg-void-black/80 backdrop-blur-2xl border-r border-t border-b border-white/5 p-4 gap-unit z-40 flex flex-col shadow-[0_0_20px_rgba(112,0,255,0.15)]">
@@ -391,13 +418,13 @@
 <p class="font-label-caps text-nebula-purple">4 PASOS</p>
 </div>
 <div class="flex flex-col gap-4">
-<button type="button" data-step="design" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Diseño">
+<button type="button" data-step="design" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="DiseÃ±o">
 <span class="material-symbols-outlined">architecture</span>
-<span class="font-label-caps text-[8px] mt-1">DISEÑO</span>
+<span class="font-label-caps text-[8px] mt-1">DISEÃ‘O</span>
 </button>
-<button type="button" data-step="build" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Construcción">
+<button type="button" data-step="build" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="ConstrucciÃ³n">
 <span class="material-symbols-outlined">terminal</span>
-<span class="font-label-caps text-[8px] mt-1">CONSTRUCCIÓN</span>
+<span class="font-label-caps text-[8px] mt-1">CONSTRUCCIÃ“N</span>
 </button>
 <button type="button" data-step="launch" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Lanzamiento">
 <span class="material-symbols-outlined">rocket_launch</span>
@@ -427,7 +454,7 @@
 <main class="pt-32 pb-20 px-margin-desktop relative z-10 md:pl-44">
 <header class="max-w-4xl mb-24">
 <div class="flex items-center gap-4 mb-6">
-<span class="font-label-mono text-label-mono text-electric-cyan bg-electric-cyan/10 px-3 py-1 rounded-full border border-electric-cyan/20">CÓMO TRABAJAMOS</span>
+<span class="font-label-mono text-label-mono text-electric-cyan bg-electric-cyan/10 px-3 py-1 rounded-full border border-electric-cyan/20">CÃ“MO TRABAJAMOS</span>
 <span class="h-[1px] flex-grow bg-white/10"></span>
 </div>
 <h1 class="font-headline-xl text-headline-xl mb-8 tracking-tighter">
@@ -435,7 +462,7 @@
                 y simple.
             </h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
-                Ya sea software empresarial a medida, una aplicación web o un sitio web, cuatro pasos claros llevan tu proyecto desde la primera conversación hasta el lanzamiento y el cuidado continuo &mdash; con la seguridad integrada en el trabajo, no añadida después.
+                Ya sea software empresarial a medida, una aplicaciÃ³n web o un sitio web, cuatro pasos claros llevan tu proyecto desde la primera conversaciÃ³n hasta el lanzamiento y el cuidado continuo &mdash; con la seguridad integrada en el trabajo, no aÃ±adida despuÃ©s.
             </p>
 </header>
 <div class="mb-8 flex items-center gap-4">
@@ -454,9 +481,9 @@
 <div class="glass-card p-8 rounded-xl min-h-[400px] flex flex-col group-hover:translate-y-[-8px] transition-all duration-500">
 <div class="scanline hidden group-hover:block"></div>
 <span class="font-label-mono text-label-mono text-outline mb-2">PASO 01</span>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Diseño</h3>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">DiseÃ±o</h3>
 <p class="font-body-md text-on-surface-variant mb-6 flex-grow">
-                        Empezamos con los objetivos de tu negocio y la forma en que tu equipo realmente trabaja, y luego trazamos la estructura, los flujos de trabajo y la dirección visual &mdash; para un sitio web o una aplicación a medida. Ves el plan antes de que se construya nada.
+                        Empezamos con los objetivos de tu negocio y la forma en que tu equipo realmente trabaja, y luego trazamos la estructura, los flujos de trabajo y la direcciÃ³n visual &mdash; para un sitio web o una aplicaciÃ³n a medida. Ves el plan antes de que se construya nada.
                     </p>
 <div class="relative rounded-lg overflow-hidden border border-white/10 aspect-video mb-4">
 <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFcZsVWmxpFxSkYNDl0fDT-8JEZbdWPlo-8fhXkNQY7TOdFzHCVmuO3gEvuylhNjKjJtpVZm1TfB39YTpIHgPOhbl6qpaarsd3txpus1-mqfaIIo3MIbR2vif8-2pQClcxVDxrRb2jXAN6zZ4793HJahxR0c25P3hWFY7grFZcrD3RVBoCZ1ziSMOvHh0p3Dx--qgf4dV_hCxVYL-tU0I8z9L2OJTv6fgUqmMdAXQAwYPTZjeYVHDjObH2QqyA_aES7aaj9sL_4Dc"/>
@@ -476,15 +503,15 @@
 <div class="glass-card p-8 rounded-xl min-h-[400px] flex flex-col group-hover:translate-y-[-8px] transition-all duration-500">
 <div class="scanline hidden group-hover:block"></div>
 <span class="font-label-mono text-label-mono text-outline mb-2">PASO 02</span>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Construcción</h3>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">ConstrucciÃ³n</h3>
 <p class="font-body-md text-on-surface-variant mb-6 flex-grow">
-                        Construimos el plan aprobado con código limpio y moderno &mdash; sitios web, software empresarial a medida, accesos seguros para el personal, paneles y los flujos de aplicaciones web sobre los que opera tu negocio, con rendimiento, accesibilidad y seguridad incluidos.
+                        Construimos el plan aprobado con cÃ³digo limpio y moderno &mdash; sitios web, software empresarial a medida, accesos seguros para el personal, paneles y los flujos de aplicaciones web sobre los que opera tu negocio, con rendimiento, accesibilidad y seguridad incluidos.
                     </p>
 <div class="relative rounded-lg overflow-hidden border border-white/10 aspect-video mb-4">
 <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBliSX8E84AIw9hig0ASkNW6e0NoBXQBdRbjjqFJTmxKtp4x7Srh8b7KXkKjgjQ88taJYQsG9CKBK9dqoJW3Y9OsbONrlhiI9SgDaCe51nIRfKkCn9uzWMwJOETZc61RU0amm5H3ZjON7r9Aie4BAHqhjcQedS-Hz9_d3U834zH19H39rUyDYQ5cE4J3SSbVLsuXb-9aQE8Z5mA1SI6Rrbmrz34owRkYPQIiRj9cutvEEjEKsjJVuwGSiZnFL2C0MvuYVIVjEqIGyE"/>
 </div>
 <div class="flex flex-wrap gap-2">
-<span class="font-label-caps text-[10px] border border-white/10 px-2 py-1 rounded">VISTA PREVIA DEL DISEÑO</span>
+<span class="font-label-caps text-[10px] border border-white/10 px-2 py-1 rounded">VISTA PREVIA DEL DISEÃ‘O</span>
 <span class="font-label-caps text-[10px] border border-white/10 px-2 py-1 rounded">TUS COMENTARIOS</span>
 </div>
 </div>
@@ -500,7 +527,7 @@
 <span class="font-label-mono text-label-mono text-outline mb-2">PASO 03</span>
 <h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Lanzamiento</h3>
 <p class="font-body-md text-on-surface-variant mb-6 flex-grow">
-                        Conectamos tu dominio, configuramos el hosting, el SSL y los datos, realizamos las verificaciones finales en todos los dispositivos y nos aseguramos de que todo esté probado y listo antes de publicar tu sitio o software.
+                        Conectamos tu dominio, configuramos el hosting, el SSL y los datos, realizamos las verificaciones finales en todos los dispositivos y nos aseguramos de que todo estÃ© probado y listo antes de publicar tu sitio o software.
                     </p>
 <div class="relative rounded-lg overflow-hidden border border-white/10 aspect-video mb-4">
 <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6nCBJaG8xaYmJg-I-NjJERunYTDLk6tqF1S-2hthbjSgUwb-W4Htfc_NNj-vWFgl6IMj6-eXgr1Zlei6xjGiFd2mwWsCIuMgVkTgceWPS0C_xxk5Whu4kJDDpgC5tCteMpE_fBOZVoIF8Cz6kwYEN80Osh34lyt5tYNb2stb_WWFlfUnl9Qew8C5_IJXe-DIWQGY1rXMC7nFeh04cisWKdcHRzej-eIvJ4Y-dicOZXk3fo44khxbRFtqaL9lmWyJaSbo_CtroER0"/>
@@ -522,20 +549,20 @@
 <span class="font-label-mono text-label-mono text-outline mb-2">PASO 04</span>
 <h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Mantenimiento</h3>
 <p class="font-body-md text-on-surface-variant mb-4">
-                        Después del lanzamiento, mantenemos tu sitio o software en buen estado con copias de seguridad, monitoreo, parches de seguridad, ajustes de rendimiento y actualizaciones a través de tu plan de mantenimiento.
+                        DespuÃ©s del lanzamiento, mantenemos tu sitio o software en buen estado con copias de seguridad, monitoreo, parches de seguridad, ajustes de rendimiento y actualizaciones a travÃ©s de tu plan de mantenimiento.
                     </p>
 <ul class="process-detail-list mb-6 flex-grow">
-<li><span class="material-symbols-outlined">check</span> Copias de seguridad automáticas y restauración rápida</li>
+<li><span class="material-symbols-outlined">check</span> Copias de seguridad automÃ¡ticas y restauraciÃ³n rÃ¡pida</li>
 <li><span class="material-symbols-outlined">check</span> Parches de seguridad y monitoreo de disponibilidad</li>
 <li><span class="material-symbols-outlined">check</span> Ajustes de rendimiento y pruebas de velocidad</li>
-<li><span class="material-symbols-outlined">check</span> Cuenta de WhatsApp dedicada para solicitudes rápidas</li>
+<li><span class="material-symbols-outlined">check</span> Cuenta de WhatsApp dedicada para solicitudes rÃ¡pidas</li>
 <li><span class="material-symbols-outlined">check</span> Actualizaciones de contenido mediante el soporte del plan de mantenimiento</li>
 </ul>
 <div class="relative rounded-lg overflow-hidden border border-white/10 aspect-video mb-4">
 <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWfQExRejLLKgr-Kx26j0DNur2gnTuGojt-nfhG9DZCTvjqLOgovypBfPpD-_zwlQqyn42YMosjZ_OINZywHtNAsDd9Egl9kiolEb6K2L7zp_9mxqRns1d_z3P9GD4MNJIoXRRdNTxvTiRWLC6lq0GOfTIOd04IH1zxRuZTNygv_0dAldu3o17y5qFw_BuJ-GOgVd9uqkK4RpRmeS5FJnPEh_G_TWCsdB59YcicOjZq9F-d_Th4Pl3pGcX-WYlqYThmADT1cYRDjQ"/>
 </div>
 <div class="flex flex-wrap gap-2">
-<span class="font-label-caps text-[10px] border border-white/10 px-2 py-1 rounded">PUBLICACIÓN</span>
+<span class="font-label-caps text-[10px] border border-white/10 px-2 py-1 rounded">PUBLICACIÃ“N</span>
 <span class="font-label-caps text-[10px] border border-white/10 px-2 py-1 rounded">QA FINAL</span>
 </div>
 </div>
@@ -552,11 +579,11 @@
 <p class="font-body-lg text-body-lg text-on-surface-variant">Cuando el proyecto es software empresarial a medida, normalmente entramos a un negocio que ya tiene herramientas en marcha. No las arrancamos de golpe y cruzamos los dedos &mdash; estudiamos lo que hay, construimos el reemplazo a su lado, lo probamos con tus datos reales y hacemos el cambio solo cuando es perfecto.</p>
 </div>
 <ol class="space-y-6">
-<li class="flex gap-5"><span class="font-headline-md text-headline-md text-nebula-purple shrink-0 w-12">01</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">Entramos y analizamos</h3><p class="font-body-md text-on-surface-variant">Empezamos dentro de tu negocio y mapeamos el software y los sistemas que ya tienes en marcha &mdash; cómo funciona todo en el día a día.</p></div></li>
-<li class="flex gap-5"><span class="font-headline-md text-headline-md text-nebula-purple shrink-0 w-12">02</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">Recortamos lo que sobra y añadimos lo que falta</h3><p class="font-body-md text-on-surface-variant">Eliminamos lo que te frena y conservamos lo que funciona &mdash; y luego incorporamos las capacidades que tu equipo realmente necesita, incluidas las funciones exactas que siempre quisiste pero que tus herramientas anteriores nunca ofrecieron.</p></div></li>
-<li class="flex gap-5"><span class="font-headline-md text-headline-md text-nebula-purple shrink-0 w-12">03</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">Diseñamos un prototipo</h3><p class="font-body-md text-on-surface-variant">Diseñamos un prototipo funcional en torno a tus flujos de trabajo reales &mdash; no una plantilla genérica.</p></div></li>
-<li class="flex gap-5"><span class="font-headline-md text-headline-md text-nebula-purple shrink-0 w-12">04</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">Funcionando y en su sitio, con datos reales</h3><p class="font-body-md text-on-surface-variant">Lo dejamos 100% funcionando y en su sitio, y luego hacemos copias de migración para probar con tus datos reales &mdash; en paralelo con tus herramientas actuales.</p></div></li>
-<li class="flex gap-5"><span class="font-headline-md text-headline-md text-nebula-purple shrink-0 w-12">05</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">Cambiamos solo cuando es perfecto</h3><p class="font-body-md text-on-surface-variant">Hacemos el cambio solo cuando todo está comprobado y listo, para que la transición sea perfecta &mdash; sin caídas ni sorpresas.</p></div></li>
+<li class="flex gap-5"><span class="font-headline-md text-headline-md text-nebula-purple shrink-0 w-12">01</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">Entramos y analizamos</h3><p class="font-body-md text-on-surface-variant">Empezamos dentro de tu negocio y mapeamos el software y los sistemas que ya tienes en marcha &mdash; cÃ³mo funciona todo en el dÃ­a a dÃ­a.</p></div></li>
+<li class="flex gap-5"><span class="font-headline-md text-headline-md text-nebula-purple shrink-0 w-12">02</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">Recortamos lo que sobra y aÃ±adimos lo que falta</h3><p class="font-body-md text-on-surface-variant">Eliminamos lo que te frena y conservamos lo que funciona &mdash; y luego incorporamos las capacidades que tu equipo realmente necesita, incluidas las funciones exactas que siempre quisiste pero que tus herramientas anteriores nunca ofrecieron.</p></div></li>
+<li class="flex gap-5"><span class="font-headline-md text-headline-md text-nebula-purple shrink-0 w-12">03</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">DiseÃ±amos un prototipo</h3><p class="font-body-md text-on-surface-variant">DiseÃ±amos un prototipo funcional en torno a tus flujos de trabajo reales &mdash; no una plantilla genÃ©rica.</p></div></li>
+<li class="flex gap-5"><span class="font-headline-md text-headline-md text-nebula-purple shrink-0 w-12">04</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">Funcionando y en su sitio, con datos reales</h3><p class="font-body-md text-on-surface-variant">Lo dejamos 100% funcionando y en su sitio, y luego hacemos copias de migraciÃ³n para probar con tus datos reales &mdash; en paralelo con tus herramientas actuales.</p></div></li>
+<li class="flex gap-5"><span class="font-headline-md text-headline-md text-nebula-purple shrink-0 w-12">05</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">Cambiamos solo cuando es perfecto</h3><p class="font-body-md text-on-surface-variant">Hacemos el cambio solo cuando todo estÃ¡ comprobado y listo, para que la transiciÃ³n sea perfecta &mdash; sin caÃ­das ni sorpresas.</p></div></li>
 </ol>
 </section>
 <section class="mt-32 grid grid-cols-1 md:grid-cols-3 gap-gutter">
@@ -594,7 +621,7 @@
 <p class="font-headline-md">Naples, FL</p>
 </div>
 <div class="flex-grow h-12 bg-white/5 rounded flex items-center justify-center">
-<span class="font-label-mono text-[10px] text-outline">LLAMA O ENVÍA UN MENSAJE (239) 404-8505 &middot; CORREO <a class="text-electric-cyan hover:underline" href="mailto:darkmatterwebsites@gmail.com">darkmatterwebsites@gmail.com</a></span>
+<span class="font-label-mono text-[10px] text-outline">LLAMA O ENVÃA UN MENSAJE (239) 404-8505 &middot; CORREO <a class="text-electric-cyan hover:underline" href="mailto:darkmatterwebsites@gmail.com">darkmatterwebsites@gmail.com</a></span>
 </div>
 </div>
 </section>
@@ -605,9 +632,9 @@
 <span class="material-symbols-outlined text-[#25D366] text-3xl">chat</span>
 <span class="font-label-caps text-label-caps text-[#25D366]">CUENTA DE WHATSAPP DEDICADA</span>
 </div>
-<h2 class="font-headline-lg text-headline-lg text-starlight-white mb-5">Envía actualizaciones de forma sencilla.</h2>
-<p class="font-body-lg text-body-lg text-on-surface-variant mb-5">Para clientes con un plan de mantenimiento, podemos configurar una cuenta de WhatsApp dedicada para solicitudes del sitio web. Envía un mensaje, foto, volante, cambio de menú, promoción u horario, y queda como parte de la cola de actualización.</p>
-<p class="font-body-md text-body-md text-on-surface-variant">Así las solicitudes no se pierden entre mensajes sueltos o correos, pero siguen siendo simples para tu equipo. Revisamos la cola, confirmamos lo que no está claro y manejamos las actualizaciones aprobadas mediante tu plan de mantenimiento.</p>
+<h2 class="font-headline-lg text-headline-lg text-starlight-white mb-5">EnvÃ­a actualizaciones de forma sencilla.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-5">Para clientes con un plan de mantenimiento, podemos configurar una cuenta de WhatsApp dedicada para solicitudes del sitio web. EnvÃ­a un mensaje, foto, volante, cambio de menÃº, promociÃ³n u horario, y queda como parte de la cola de actualizaciÃ³n.</p>
+<p class="font-body-md text-body-md text-on-surface-variant">AsÃ­ las solicitudes no se pierden entre mensajes sueltos o correos, pero siguen siendo simples para tu equipo. Revisamos la cola, confirmamos lo que no estÃ¡ claro y manejamos las actualizaciones aprobadas mediante tu plan de mantenimiento.</p>
 </div>
 <div class="space-y-4">
 <div class="glass-card p-5 rounded-lg border border-[#25D366]/20">
@@ -615,8 +642,8 @@
 <p class="font-body-md text-starlight-white">"Cambien el horario y agreguen estas fotos."</p>
 </div>
 <div class="glass-card p-5 rounded-lg border border-white/10">
-<p class="font-label-mono text-[10px] text-electric-cyan mb-2">COLA AUTOMÁTICA</p>
-<p class="font-body-md text-on-surface-variant">Los mensajes y archivos se organizan para revisión, sin obligar al cliente a usar un portal de soporte complicado.</p>
+<p class="font-label-mono text-[10px] text-electric-cyan mb-2">COLA AUTOMÃTICA</p>
+<p class="font-body-md text-on-surface-variant">Los mensajes y archivos se organizan para revisiÃ³n, sin obligar al cliente a usar un portal de soporte complicado.</p>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
 <div class="rounded-lg border border-white/10 p-4"><span class="material-symbols-outlined text-[#25D366] mb-2">image</span><p class="font-body-md text-sm text-on-surface-variant">Fotos y archivos</p></div>
@@ -629,7 +656,7 @@
 </section>
 </main>
 <div class="site-powered-by-bar w-full bg-void-black border-t border-white/5 py-8 px-margin-mobile md:px-margin-desktop flex justify-center">
-<a class="dm-powered-badge" href="built-by.html" aria-label="Sitio web desarrollado por Surette Data Systems — ver página de referidos">
+<a class="dm-powered-badge" href="built-by.html" aria-label="Sitio web desarrollado por Surette Data Systems â€” ver pÃ¡gina de referidos">
 <svg class="dm-powered-badge__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z"/>
 </svg>
@@ -646,12 +673,12 @@
 <span class="brand-subtext"><span class="brand-subtext__line">Surette Systems</span><span class="brand-subtext__line brand-subtext__line--portal">Portal</span></span>
 </div>
 <div class="font-label-mono text-label-mono text-outline text-center md:text-left mb-4 md:mb-0">
-            © 2026 DARK MATTER · NAPLES, FL · LLAMA O ENVÍA UN MENSAJE (239) 404-8505 &middot; CORREO <a class="text-electric-cyan hover:underline" href="mailto:darkmatterwebsites@gmail.com">darkmatterwebsites@gmail.com</a>
+            Â© 2026 DARK MATTER Â· NAPLES, FL Â· LLAMA O ENVÃA UN MENSAJE (239) 404-8505 &middot; CORREO <a class="text-electric-cyan hover:underline" href="mailto:darkmatterwebsites@gmail.com">darkmatterwebsites@gmail.com</a>
         </div>
 <div class="flex gap-6">
 <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="#">Privacidad</a>
 <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="#">Seguridad</a>
-<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="#">Términos</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="#">TÃ©rminos</a>
 <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="#">Estado</a>
 </div>
 </footer>
@@ -675,11 +702,11 @@
 <section class="mb-24 text-center">
 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-electric-cyan/30 bg-electric-cyan/5 mb-6 animate-glow-pulse reveal-1">
 <span class="w-2 h-2 rounded-full bg-electric-cyan animate-pulse"></span>
-<span class="font-label-mono text-label-mono text-electric-cyan">Cómo Trabajamos</span>
+<span class="font-label-mono text-label-mono text-electric-cyan">CÃ³mo Trabajamos</span>
 </div>
 <h2 class="font-headline-xl text-headline-lg-mobile text-starlight-white mb-6 uppercase reveal-2">Nuestro Proceso</h2>
 <p class="font-body-lg text-body-md text-on-surface-variant max-w-2xl mx-auto reveal-3">
-        Ya sea software empresarial a medida, una aplicación web o un sitio web, cuatro pasos claros llevan tu proyecto desde la primera conversación hasta el lanzamiento y el cuidado continuo &mdash; con la seguridad integrada en el trabajo, no añadida después.
+        Ya sea software empresarial a medida, una aplicaciÃ³n web o un sitio web, cuatro pasos claros llevan tu proyecto desde la primera conversaciÃ³n hasta el lanzamiento y el cuidado continuo &mdash; con la seguridad integrada en el trabajo, no aÃ±adida despuÃ©s.
       </p>
 </section>
 <section class="relative mb-16">
@@ -688,11 +715,11 @@
 <div class="space-y-24">
 <div class="relative flex flex-col items-center group">
 <div class="relative z-20"><div class="w-16 h-16 rounded-full bg-void-black border-2 border-electric-cyan flex items-center justify-center shadow-[0_0_20px_rgba(0,240,255,0.5)] animate-drift"><span class="material-symbols-outlined text-electric-cyan">architecture</span></div></div>
-<div class="w-full mt-8 text-center"><h3 class="font-headline-lg text-headline-lg-mobile text-starlight-white mb-4">Diseño</h3><p class="font-body-md text-body-md text-on-surface-variant">Empezamos con tus objetivos y cómo trabaja tu equipo, y luego trazamos la estructura, los flujos de trabajo y la dirección visual &mdash; sitio o software &mdash; antes de construir nada.</p></div>
+<div class="w-full mt-8 text-center"><h3 class="font-headline-lg text-headline-lg-mobile text-starlight-white mb-4">DiseÃ±o</h3><p class="font-body-md text-body-md text-on-surface-variant">Empezamos con tus objetivos y cÃ³mo trabaja tu equipo, y luego trazamos la estructura, los flujos de trabajo y la direcciÃ³n visual &mdash; sitio o software &mdash; antes de construir nada.</p></div>
 </div>
 <div class="relative flex flex-col items-center group">
 <div class="relative z-20"><div class="w-16 h-16 rounded-full bg-void-black border-2 border-nebula-purple flex items-center justify-center shadow-[0_0_20px_rgba(112,0,255,0.5)]"><span class="material-symbols-outlined text-nebula-purple">terminal</span></div></div>
-<div class="w-full mt-8 text-center"><h3 class="font-headline-lg text-headline-lg-mobile text-starlight-white mb-4">Construcción</h3><p class="font-body-md text-body-md text-on-surface-variant">Lo construimos con código limpio &mdash; sitios web, apps a medida, accesos para el personal, paneles &mdash; con rendimiento, accesibilidad y seguridad incluidos.</p></div>
+<div class="w-full mt-8 text-center"><h3 class="font-headline-lg text-headline-lg-mobile text-starlight-white mb-4">ConstrucciÃ³n</h3><p class="font-body-md text-body-md text-on-surface-variant">Lo construimos con cÃ³digo limpio &mdash; sitios web, apps a medida, accesos para el personal, paneles &mdash; con rendimiento, accesibilidad y seguridad incluidos.</p></div>
 </div>
 <div class="relative flex flex-col items-center group">
 <div class="relative z-20"><div class="w-16 h-16 rounded-full bg-void-black border-2 border-electric-cyan flex items-center justify-center shadow-[0_0_20px_rgba(0,240,255,0.5)]"><span class="material-symbols-outlined text-electric-cyan">rocket_launch</span></div></div>
@@ -700,7 +727,7 @@
 </div>
 <div class="relative flex flex-col items-center group">
 <div class="relative z-20"><div class="w-16 h-16 rounded-full bg-void-black border-2 border-nebula-purple flex items-center justify-center shadow-[0_0_20px_rgba(112,0,255,0.5)]"><span class="material-symbols-outlined text-nebula-purple">cloud_done</span></div></div>
-<div class="w-full mt-8 text-center"><h3 class="font-headline-lg text-headline-lg-mobile text-starlight-white mb-4">Mantenimiento</h3><p class="font-body-md text-body-md text-on-surface-variant mb-4">Después del lanzamiento, nos encargamos de las copias de seguridad, el monitoreo, los parches de seguridad, los ajustes de rendimiento y las actualizaciones de tu sitio o software a través de tu plan de mantenimiento.</p><ul class="process-detail-list text-left max-w-md mx-auto mb-4"><li><span class="material-symbols-outlined">check</span> Copias de seguridad y monitoreo</li><li><span class="material-symbols-outlined">check</span> Parches de seguridad y mantenimiento</li><li><span class="material-symbols-outlined">check</span> Cola de actualizaciones por WhatsApp</li><li><span class="material-symbols-outlined">check</span> Actualizaciones de contenido y soporte</li></ul></div>
+<div class="w-full mt-8 text-center"><h3 class="font-headline-lg text-headline-lg-mobile text-starlight-white mb-4">Mantenimiento</h3><p class="font-body-md text-body-md text-on-surface-variant mb-4">DespuÃ©s del lanzamiento, nos encargamos de las copias de seguridad, el monitoreo, los parches de seguridad, los ajustes de rendimiento y las actualizaciones de tu sitio o software a travÃ©s de tu plan de mantenimiento.</p><ul class="process-detail-list text-left max-w-md mx-auto mb-4"><li><span class="material-symbols-outlined">check</span> Copias de seguridad y monitoreo</li><li><span class="material-symbols-outlined">check</span> Parches de seguridad y mantenimiento</li><li><span class="material-symbols-outlined">check</span> Cola de actualizaciones por WhatsApp</li><li><span class="material-symbols-outlined">check</span> Actualizaciones de contenido y soporte</li></ul></div>
 </div>
 </div>
 </section>
@@ -712,10 +739,10 @@
 <p class="font-body-md text-body-md text-on-surface-variant mb-6">Cuando es software empresarial a medida, entramos a un negocio que ya tiene herramientas en marcha. Estudiamos lo que hay, construimos el reemplazo a su lado, lo probamos con tus datos reales y cambiamos solo cuando es perfecto.</p>
 <ol class="space-y-5">
 <li class="flex gap-4"><span class="font-headline-md text-nebula-purple shrink-0 w-8">01</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">Entramos y analizamos</h3><p class="font-body-md text-sm text-on-surface-variant">Mapeamos el software y los sistemas que ya tienes en marcha.</p></div></li>
-<li class="flex gap-4"><span class="font-headline-md text-nebula-purple shrink-0 w-8">02</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">Recortamos lo que sobra y añadimos lo que falta</h3><p class="font-body-md text-sm text-on-surface-variant">Eliminamos lo que te frena, conservamos lo que funciona e incorporamos las funciones que siempre quisiste.</p></div></li>
-<li class="flex gap-4"><span class="font-headline-md text-nebula-purple shrink-0 w-8">03</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">Diseñamos un prototipo</h3><p class="font-body-md text-sm text-on-surface-variant">Un prototipo funcional en torno a tus flujos de trabajo reales.</p></div></li>
-<li class="flex gap-4"><span class="font-headline-md text-nebula-purple shrink-0 w-8">04</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">Funcionando y en su sitio, con datos reales</h3><p class="font-body-md text-sm text-on-surface-variant">100% funcionando y en su sitio, con copias de migración para probar con tus datos reales.</p></div></li>
-<li class="flex gap-4"><span class="font-headline-md text-nebula-purple shrink-0 w-8">05</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">Cambiamos solo cuando es perfecto</h3><p class="font-body-md text-sm text-on-surface-variant">Hacemos el cambio solo cuando está listo para ser perfecto.</p></div></li>
+<li class="flex gap-4"><span class="font-headline-md text-nebula-purple shrink-0 w-8">02</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">Recortamos lo que sobra y aÃ±adimos lo que falta</h3><p class="font-body-md text-sm text-on-surface-variant">Eliminamos lo que te frena, conservamos lo que funciona e incorporamos las funciones que siempre quisiste.</p></div></li>
+<li class="flex gap-4"><span class="font-headline-md text-nebula-purple shrink-0 w-8">03</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">DiseÃ±amos un prototipo</h3><p class="font-body-md text-sm text-on-surface-variant">Un prototipo funcional en torno a tus flujos de trabajo reales.</p></div></li>
+<li class="flex gap-4"><span class="font-headline-md text-nebula-purple shrink-0 w-8">04</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">Funcionando y en su sitio, con datos reales</h3><p class="font-body-md text-sm text-on-surface-variant">100% funcionando y en su sitio, con copias de migraciÃ³n para probar con tus datos reales.</p></div></li>
+<li class="flex gap-4"><span class="font-headline-md text-nebula-purple shrink-0 w-8">05</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">Cambiamos solo cuando es perfecto</h3><p class="font-body-md text-sm text-on-surface-variant">Hacemos el cambio solo cuando estÃ¡ listo para ser perfecto.</p></div></li>
 </ol>
 </div>
 </section>
@@ -724,8 +751,8 @@
 <span class="material-symbols-outlined text-[#25D366] text-3xl">chat</span>
 <span class="font-label-caps text-label-caps text-[#25D366]">CUENTA DE WHATSAPP DEDICADA</span>
 </div>
-<h2 class="font-headline-lg text-headline-lg-mobile text-starlight-white mb-4">Envía actualizaciones de forma sencilla</h2>
-<p class="font-body-md text-body-md text-on-surface-variant mb-5">Para clientes con un plan de mantenimiento, podemos configurar una cuenta de WhatsApp dedicada para solicitudes del sitio web. Mensajes, fotos, volantes, cambios de horario y promociones quedan en cola para revisión y se manejan mediante tu plan.</p>
+<h2 class="font-headline-lg text-headline-lg-mobile text-starlight-white mb-4">EnvÃ­a actualizaciones de forma sencilla</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-5">Para clientes con un plan de mantenimiento, podemos configurar una cuenta de WhatsApp dedicada para solicitudes del sitio web. Mensajes, fotos, volantes, cambios de horario y promociones quedan en cola para revisiÃ³n y se manejan mediante tu plan.</p>
 <div class="space-y-3">
 <div class="glass-card p-4 rounded-lg border border-[#25D366]/20"><p class="font-body-md text-starlight-white text-sm">"Cambien el horario y agreguen estas fotos."</p></div>
 <div class="grid grid-cols-2 gap-3 text-sm">
@@ -740,15 +767,15 @@
 <section class="mt-32">
 <div class="glass-panel p-10 rounded-2xl text-center relative overflow-hidden">
 <h2 class="font-headline-lg text-headline-lg-mobile text-starlight-white mb-8">Comencemos</h2>
-<p class="font-body-lg text-body-md text-on-surface-variant max-w-xl mx-auto mb-10">¿Listo para iniciar tu proyecto? Ubicados en Naples, FL — llama o envía un mensaje al <a class="text-electric-cyan hover:underline" href="tel:+12394048505">(239) 404-8505</a>.</p>
+<p class="font-body-lg text-body-md text-on-surface-variant max-w-xl mx-auto mb-10">Â¿Listo para iniciar tu proyecto? Ubicados en Naples, FL â€” llama o envÃ­a un mensaje al <a class="text-electric-cyan hover:underline" href="tel:+12394048505">(239) 404-8505</a>.</p>
 <a href="tel:+12394048505" class="inline-block bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps px-10 py-4 rounded-lg font-bold tracking-widest active:scale-95 transition-all shadow-[0_0_30px_rgba(0,240,255,0.3)]">
-          LLAMA O ENVÍA UN MENSAJE (239) 404-8505 &middot; CORREO <a class="text-electric-cyan hover:underline" href="mailto:darkmatterwebsites@gmail.com">darkmatterwebsites@gmail.com</a>
+          LLAMA O ENVÃA UN MENSAJE (239) 404-8505 &middot; CORREO <a class="text-electric-cyan hover:underline" href="mailto:darkmatterwebsites@gmail.com">darkmatterwebsites@gmail.com</a>
         </a>
 </div>
 </section>
 </main>
 <div class="site-powered-by-bar w-full bg-void-black border-t border-white/5 py-8 px-margin-mobile flex justify-center relative z-10">
-<a class="dm-powered-badge" href="built-by.html" aria-label="Sitio web desarrollado por Surette Data Systems — ver página de referidos">
+<a class="dm-powered-badge" href="built-by.html" aria-label="Sitio web desarrollado por Surette Data Systems â€” ver pÃ¡gina de referidos">
 <svg class="dm-powered-badge__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z"/>
 </svg>
@@ -760,7 +787,7 @@
 </a>
 </div>
 <footer class="w-full py-12 px-margin-mobile flex flex-col items-center gap-6 mb-20 border-t border-starlight-white/5 bg-void-black z-10 relative">
-<p class="font-label-caps text-label-caps text-on-primary-container opacity-80">© 2026 DARK MATTER · NAPLES, FL · LLAMA O ENVÍA UN MENSAJE (239) 404-8505 &middot; CORREO <a class="text-electric-cyan hover:underline" href="mailto:darkmatterwebsites@gmail.com">darkmatterwebsites@gmail.com</a></p>
+<p class="font-label-caps text-label-caps text-on-primary-container opacity-80">Â© 2026 DARK MATTER Â· NAPLES, FL Â· LLAMA O ENVÃA UN MENSAJE (239) 404-8505 &middot; CORREO <a class="text-electric-cyan hover:underline" href="mailto:darkmatterwebsites@gmail.com">darkmatterwebsites@gmail.com</a></p>
 </footer>
 <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface/10 backdrop-blur-2xl border-t border-starlight-white/10 rounded-t-xl shadow-[0_-10px_30px_rgba(112,0,255,0.15)]">
 <a href="index.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90">
@@ -794,10 +821,24 @@
         });
     </script>
 <script src="../assets/mobile-services-nav.js?v=20260609-services-trim"></script>
-<script src="../assets/account-nav.js?v=20260610d-account-logout"></script>
+<script src="../assets/account-nav.js?v=20260611-mobile-icon"></script>
 <script src="../assets/rail.js?v=20260602-rail-active"></script>
 <script src="../surette-logo.js"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
+<script>
+window.FRACTAL_CONFIG = {
+    algorithm: 'Aetheric Crown',
+    color1: '#00ff40',
+    color2: '#ff2424',
+    color3: '#ff0000',
+    pointsCount: 75000,
+    pointSize: 0.08,
+    rotationSpeedX: 0.0033,
+    disableHover: true,
+    params: { a: 1.2, b: 2.1, c: 1.4, d: 1.5 }
+};
+</script>
+<script type="module" src="../fractal.js"></script>
 </body></html>
 
 

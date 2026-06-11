@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html class="dark" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <title>Surette Data Systems | Mobile, Web &amp; Desktop Apps</title>
-<meta name="description" content="Surette Data Systems — mobile, web, and desktop CRM, ERP, inventory, workflows, reporting, and operations software."/>
+<meta name="description" content="Surette Data Systems â€” mobile, web, and desktop CRM, ERP, inventory, workflows, reporting, and operations software."/>
 <link rel="canonical" href="https://darkmatterwebdev.com/apps.html"/>
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
 <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png"/>
@@ -22,12 +22,12 @@
 <meta property="og:image" content="https://darkmatterwebdev.com/assets/surette-data-systems-og.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
-<meta property="og:image:alt" content="Surette Data Systems — high-tech business software for mobile, web, and desktop"/>
+<meta property="og:image:alt" content="Surette Data Systems â€” high-tech business software for mobile, web, and desktop"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Surette Data Systems"/>
 <meta name="twitter:description" content="Mobile, web, and desktop CRM, ERP, inventory, workflows, reporting, and operations software."/>
 <meta name="twitter:image" content="https://darkmatterwebdev.com/assets/surette-data-systems-og.png"/>
-<meta name="twitter:image:alt" content="Surette Data Systems — high-tech business software for mobile, web, and desktop"/>
+<meta name="twitter:image:alt" content="Surette Data Systems â€” high-tech business software for mobile, web, and desktop"/>
 <link rel="alternate" hreflang="en" href="/apps.html"/>
 <link rel="alternate" hreflang="es" href="/es/apps.html"/>
 <link rel="alternate" hreflang="x-default" href="/apps.html"/>
@@ -106,9 +106,9 @@
   }
   #fractal-gui-toggle .material-symbols-outlined { font-size:15px; }
   @media (max-width: 767px) {
-    #canvas-container { top:0; left:0; right:0; bottom:auto; height:52vh; overflow:hidden; }
-    #canvas-container canvas { top:50% !important; left:50% !important; transform:translate(-50%,-50%) scale(1.0) !important; }
-    .lil-gui.root { top:64px !important; right:0 !important; max-height:calc(100vh - 64px) !important; overflow-y:auto !important; }
+    #canvas-container canvas { top:50% !important; left:50% !important; transform:translate(-50%,-50%) !important; }
+    #fractal-gui-toggle { top:auto !important; bottom:90px; }
+    .lil-gui.root { top:auto !important; bottom:122px !important; right:0 !important; max-height:55vh !important; overflow-y:auto !important; }
   }
 </style>
 <script>(function(){document.documentElement.classList.add("sds-apps-boot");})();</script>
@@ -123,7 +123,6 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 </head>
 <body class="font-['Plus_Jakarta_Sans',sans-serif] min-h-screen flex flex-col cosmic-page cosmic-tint-services sds-apps-page">
 <div id="canvas-container" aria-hidden="true"></div>
-<button id="fractal-gui-toggle" title="Visual settings" aria-label="Toggle visual settings" onclick="if(window._fractalGUI){window._fractalGUI._hidden?window._fractalGUI.show():window._fractalGUI.hide()}"><span class="material-symbols-outlined">grain</span></button>
 <div id="sds-apps-loader" class="sds-apps-loader is-pending" role="status" aria-live="polite" aria-label="Loading Surette Data Systems apps" aria-hidden="true">
 <div class="sds-apps-loader__inner">
 <div class="sds-apps-loader__mark" aria-hidden="true"><span class="sds-apps-loader__mark-ring"></span><img class="sds-apps-loader__mark-core" src="assets/surette-data-systems-geometric-icon.webp" width="44" height="62" alt="" decoding="sync"/></div>
@@ -143,7 +142,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 <a class="font-label-mono text-label-mono text-electric-cyan border-b-2 border-electric-cyan pb-1 transition-colors duration-300" href="apps.html">Apps</a>
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="process.html">Process</a>
 <a class="font-label-mono text-label-mono text-electric-cyan hover:underline transition-colors duration-300 inline-flex items-center gap-1.5" href="account.html"><span class="material-symbols-outlined text-base">account_circle</span>Client Login</a>
-<div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0"><span class="text-electric-cyan" aria-current="true">EN</span><span class="text-outline/50">/</span><a href="es/apps.html" hreflang="es" lang="es" aria-label="Cambiar a español" class="text-on-surface-variant hover:text-electric-cyan transition-colors duration-300">ES</a></div>
+<div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0"><span class="text-electric-cyan" aria-current="true">EN</span><span class="text-outline/50">/</span><a href="es/apps.html" hreflang="es" lang="es" aria-label="Cambiar a espaÃ±ol" class="text-on-surface-variant hover:text-electric-cyan transition-colors duration-300">ES</a></div>
 </div>
 </nav>
 <div class="md:hidden">
@@ -151,7 +150,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 <div class="flex items-center justify-between px-margin-mobile h-16 w-full mx-auto">
 <div id="sds-logo-mobile"></div>
 <div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0">
-<span class="text-electric-cyan" aria-current="true">EN</span><span class="text-outline/50">/</span><a href="es/apps.html" hreflang="es" lang="es" aria-label="Cambiar a español" class="text-on-surface-variant hover:text-electric-cyan transition-colors duration-300">ES</a>
+<span class="text-electric-cyan" aria-current="true">EN</span><span class="text-outline/50">/</span><a href="es/apps.html" hreflang="es" lang="es" aria-label="Cambiar a espaÃ±ol" class="text-on-surface-variant hover:text-electric-cyan transition-colors duration-300">ES</a>
 </div>
 </div>
 </header>
@@ -167,6 +166,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 <a href="contact.html" class="sds-nav-contact-stack__cta hidden md:inline-flex bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-mono text-label-mono px-6 py-2 rounded-lg hover:scale-105 active:scale-95 transition-all glow-cyan">Contact Us</a>
 </div>
 <main class="downloads-main relative z-10 pt-32 pb-28 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+<button id="fractal-gui-toggle" title="Visual settings" aria-label="Toggle visual settings" onclick="if(window._fractalGUI){window._fractalGUI._hidden?window._fractalGUI.show():window._fractalGUI.hide()}"><span class="material-symbols-outlined">grain</span></button>
 <section class="sds-hero max-w-container-max mb-14">
 <div class="sds-hero__grid">
 <div class="sds-hero__copy">
@@ -247,7 +247,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 <p class="font-label-caps text-[10px] text-on-primary-container/60 tracking-widest text-center md:text-right">&copy; 2026 DARK MATTER<br/>Call or text (239) 404-8505</p>
 </footer>
 <script src="assets/mobile-services-nav.js?v=20260609-services-trim"></script>
-<script src="assets/account-nav.js?v=20260610d-account-logout"></script>
+<script src="assets/account-nav.js?v=20260611-mobile-icon"></script>
 <script src="assets/surette-physics-wordmark-canvas.js"></script>
 <script>
 const canvas = document.getElementById('wm-canvas');
