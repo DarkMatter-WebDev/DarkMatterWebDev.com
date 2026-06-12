@@ -10,8 +10,8 @@
 // 2. client_profiles.portal_role for the signed-in user
 // 3. Email allowlists below (UI fallback only)
 window.DM_SUPABASE_CONFIG = {
-  url: "https://evzluixourmsefwdsieu.supabase.co",
-  anonKey: "sb_publishable_gz00q5m9SdyEAXU3b8Srng_4vBM6dSJ",
+  url: "https://axlszyssxyvehjatztwe.supabase.co",
+  anonKey: "sb_publishable_qKXSXbrUR-sW0tJ1ul3upw__X8IBqh9",
   jewelrySiteUrl: "https://naplesestatejewelry.co",
   portalRoles: {
     superAdmin: "super_admin",
