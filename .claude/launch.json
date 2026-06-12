@@ -3,9 +3,9 @@
   "configurations": [
     {
       "name": "darkmatter-preview",
-      "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "4174"],
-      "port": 4174
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "python -m http.server %PORT%"],
+      "autoPort": true
     }
   ]
 }

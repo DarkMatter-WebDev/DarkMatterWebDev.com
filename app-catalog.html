@@ -475,42 +475,44 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
   if (!('ontouchstart' in window)) return; // desktop: nothing to do
 
   document.querySelectorAll('.ux-card').forEach(function (card) {
-    var startX = 0, startY = 0, mayTap = false;
+    var startX = 0, startY = 0, tapping = false;
 
     card.addEventListener('touchstart', function (e) {
       var t = e.touches[0];
       startX = t.clientX;
       startY = t.clientY;
-      mayTap = true;
+      tapping = true;
       card.classList.add('is-pressed');
       if (navigator.vibrate) navigator.vibrate(12);
     }, { passive: true });
 
     card.addEventListener('touchmove', function (e) {
-      if (!mayTap) return;
+      if (!tapping) return;
       var t = e.touches[0];
       if (Math.abs(t.clientX - startX) > 8 || Math.abs(t.clientY - startY) > 8) {
-        mayTap = false;
+        tapping = false;
         card.classList.remove('is-pressed');
       }
     }, { passive: true });
 
-    card.addEventListener('touchend', function (e) {
-      if (!mayTap) return;
-      mayTap = false;
+    card.addEventListener('touchcancel', function () {
+      tapping = false;
+      card.classList.remove('is-pressed');
+    });
+
+    // Intercept click (fires after touchend on iOS and Android).
+    // preventDefault() here reliably blocks <a> navigation on iOS Safari,
+    // whereas preventDefault() on touchend does not.
+    card.addEventListener('click', function (e) {
+      if (!tapping) return; // scroll or cancelled — let it through normally
+      tapping = false;
+      e.preventDefault();
       var href = card.getAttribute('href');
       if (!href) { card.classList.remove('is-pressed'); return; }
-      e.preventDefault(); // block the synthesised click
-      // hold the pressed visual for 130 ms, then navigate
       setTimeout(function () {
         card.classList.remove('is-pressed');
         window.location.href = href;
-      }, 130);
-    });
-
-    card.addEventListener('touchcancel', function () {
-      mayTap = false;
-      card.classList.remove('is-pressed');
+      }, 150);
     });
   });
 })();
