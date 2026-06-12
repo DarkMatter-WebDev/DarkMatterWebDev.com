@@ -48,7 +48,7 @@
           ["Diseño de Sitios Web", "services/website-design.html"],
           ["Hosting Administrado", "services/managed-hosting.html"],
           ["Planes de Mantenimiento Web", "services/website-care-plans.html"],
-          ["Aplicaciones Web Empresariales a Medida", "services/custom-development.html"]
+          ["Aplicaciones Web Empresariales a Medida", "apps.html"]
         ],
         local: [
           ["Servicios Técnicos a Domicilio", "services/in-home-services.html"],
@@ -60,7 +60,7 @@
           ["Website Design", "services/website-design.html"],
           ["Managed Hosting", "services/managed-hosting.html"],
           ["Website Care Plans", "services/website-care-plans.html"],
-          ["Custom Business Web Apps", "services/custom-development.html"]
+          ["Custom Business Web Apps", "apps.html"]
         ],
         local: [
           ["In-Home Tech Services", "services/in-home-services.html"],
