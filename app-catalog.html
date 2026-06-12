@@ -272,22 +272,14 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
   .ux-parent:hover .ux-social-btn { transform:none; }
 }
 
-/* ——— touch devices: suppress sticky hover, add press animation ——— */
+/* ——— touch devices: suppress sticky hover ——— */
 @media (hover: none) and (pointer: coarse) {
   /* prevent hover transform from "sticking" after a tap */
   .ux-parent:hover .ux-card {
     transform: none;
     box-shadow: rgba(5,71,17,0) 40px 50px 25px -40px, rgba(5,71,17,0.28) 0 25px 25px -5px;
   }
-  /* remove default blue tap flash */
   .ux-card { -webkit-tap-highlight-color: transparent; }
-  /* press-down state: fast in (0.1s), spring out via base 0.55s transition */
-  .ux-card.is-pressed,
-  .ux-card:active {
-    transform: scale(0.93) translateY(2px) !important;
-    filter: brightness(0.78) !important;
-    transition: transform 0.1s ease, filter 0.1s ease !important;
-  }
 }
 </style>
 </head>
@@ -469,53 +461,5 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
 <script type="module" src="assets/fly/fly.js"></script>
 
-<script>
-/* Gallery card touch — haptics + press animation before navigation */
-(function () {
-  if (!('ontouchstart' in window)) return; // desktop: nothing to do
-
-  document.querySelectorAll('.ux-card').forEach(function (card) {
-    var startX = 0, startY = 0, tapping = false;
-
-    card.addEventListener('touchstart', function (e) {
-      var t = e.touches[0];
-      startX = t.clientX;
-      startY = t.clientY;
-      tapping = true;
-      card.classList.add('is-pressed');
-      if (navigator.vibrate) navigator.vibrate(12);
-    }, { passive: true });
-
-    card.addEventListener('touchmove', function (e) {
-      if (!tapping) return;
-      var t = e.touches[0];
-      if (Math.abs(t.clientX - startX) > 8 || Math.abs(t.clientY - startY) > 8) {
-        tapping = false;
-        card.classList.remove('is-pressed');
-      }
-    }, { passive: true });
-
-    card.addEventListener('touchcancel', function () {
-      tapping = false;
-      card.classList.remove('is-pressed');
-    });
-
-    // Intercept click (fires after touchend on iOS and Android).
-    // preventDefault() here reliably blocks <a> navigation on iOS Safari,
-    // whereas preventDefault() on touchend does not.
-    card.addEventListener('click', function (e) {
-      if (!tapping) return; // scroll or cancelled — let it through normally
-      tapping = false;
-      e.preventDefault();
-      var href = card.getAttribute('href');
-      if (!href) { card.classList.remove('is-pressed'); return; }
-      setTimeout(function () {
-        card.classList.remove('is-pressed');
-        window.location.href = href;
-      }, 150);
-    });
-  });
-})();
-</script>
 </body>
 </html>
