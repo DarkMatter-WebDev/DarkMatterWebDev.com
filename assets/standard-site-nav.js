@@ -95,9 +95,7 @@
 
   function langToggleHtml() {
     if (!langAlt) {
-      return isSpanish
-        ? '<span class="text-electric-cyan" aria-current="true">ES</span>'
-        : '<span class="text-electric-cyan" aria-current="true">EN</span>';
+      return "";
     }
 
     if (isSpanish) {
@@ -158,15 +156,15 @@
     desktopClass("account") +
     '" href="account.html"><span class="material-symbols-outlined text-base">account_circle</span>' +
     copy.login +
-    '</a><div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0">' +
-    langToggleHtml() +
-    '</div></div><a href="contact.html" class="hidden sm:inline-block bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-mono text-label-mono px-6 py-2 rounded-lg hover:scale-105 active:scale-95 transition-all glow-cyan">' +
+    '</a>' +
+    (langAlt ? '<div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0">' + langToggleHtml() + "</div>" : "") +
+    '</div><a href="contact.html" class="hidden sm:inline-block bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-mono text-label-mono px-6 py-2 rounded-lg hover:scale-105 active:scale-95 transition-all glow-cyan">' +
     copy.contact +
     "</a></nav>" +
     '<div class="md:hidden"><header class="fixed top-0 w-full bg-surface/10 backdrop-blur-xl z-50 border-b border-starlight-white/10 shadow-[0_0_20px_rgba(0,240,255,0.1)]">' +
-    '<div class="flex items-center justify-between px-margin-mobile h-16 w-full mx-auto"><div id="sds-logo-mobile"></div><div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0">' +
-    langToggleHtml() +
-    '</div></div></header><nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface/10 backdrop-blur-2xl border-t border-starlight-white/10 shadow-[0_-10px_30px_rgba(112,0,255,0.15)] rounded-t-xl">' +
+    '<div class="flex items-center justify-between px-margin-mobile h-16 w-full mx-auto"><div id="sds-logo-mobile"></div>' +
+    (langAlt ? '<div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0">' + langToggleHtml() + "</div>" : "") +
+    '</div></header><nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface/10 backdrop-blur-2xl border-t border-starlight-white/10 shadow-[0_-10px_30px_rgba(112,0,255,0.15)] rounded-t-xl">' +
     '<a href="index.html" class="' +
     mobileClass("home") +
     '"><span class="material-symbols-outlined">home</span><span class="font-label-caps text-[10px] mt-1">' +
