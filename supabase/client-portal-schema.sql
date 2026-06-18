@@ -1,5 +1,5 @@
 -- Legacy starter schema for a standalone Dark Matter portal project.
--- DO NOT re-run on the live Naples Estate Jewelry shared project.
+-- Use only for the dedicated Dark Matter / Surette Data Systems Supabase project.
 -- Production already uses: client_profiles, client_services, client_invoices,
 -- client_documents, client_messages, portal_admins view, and portal_role helpers.
 -- Run in the Supabase SQL editor only when bootstrapping a fresh project.
@@ -13,6 +13,7 @@ create table if not exists public.client_profiles (
   company_name text,
   phone text,
   website text,
+  portal_role text,
   created_at timestamptz not null default now(),
   unique (user_id)
 );

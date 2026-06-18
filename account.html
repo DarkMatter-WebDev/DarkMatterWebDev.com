@@ -26,7 +26,7 @@
 <link href="assets/nav.css?v=20260610-fluid-nav" rel="stylesheet"/>
 <link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/>
 <link href="assets/powered-by-badge.css?v=20260609-badge-fix" rel="stylesheet"/>
-<link href="assets/client-portal.css?v=20260605-seansads-login-pulse" rel="stylesheet"/>
+<link href="assets/client-portal.css?v=20260615-admin-accounts" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
   #sds-logo a.sds-anchor,
@@ -238,9 +238,22 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 </div>
 <div class="client-super-admin-actions">
 <a class="client-portal-button client-portal-button--secondary" href="seans-google-ads-dashboard.html"><span class="material-symbols-outlined">visibility</span>Open Sean's direct portal backend view</a>
-<a class="client-portal-button client-portal-button--ghost" href="https://naplesestatejewelry.co" target="_blank" rel="noopener noreferrer"><span class="material-symbols-outlined">storefront</span>Open jewelry site admin context</a>
+<button class="client-portal-button client-portal-button--secondary" type="button" data-admin-account-holders-load><span class="material-symbols-outlined">group</span>View all site account holders</button>
 </div>
 <p class="client-muted mt-4">This page only controls what admin shortcuts are visible in the browser. Real cross-account data access must be enforced with Supabase roles, policies, or server-side functions before sensitive member records are stored.</p>
+<section class="client-admin-accounts" data-admin-account-holders-panel hidden>
+<div class="client-section-heading">
+<div><h3 class="text-xl font-headline text-white">Site account holders</h3><span class="client-muted">Pulled from Supabase for super-admin review.</span></div>
+<span class="client-super-admin-badge"><span class="material-symbols-outlined">database</span><span data-admin-account-holders-count>0 records</span></span>
+</div>
+<div class="client-portal-status" data-admin-account-holders-status></div>
+<div class="client-admin-table-wrap">
+<table class="client-admin-table">
+<thead><tr><th>Name</th><th>Email</th><th>Company</th><th>Phone</th><th>Website</th><th>Role</th><th>Created</th><th>Last sign in</th></tr></thead>
+<tbody data-admin-account-holders-table></tbody>
+</table>
+</div>
+</section>
 </section>
 <div class="client-metric-grid">
 <div class="client-metric"><span class="client-muted">Services</span><strong data-metric-services>0</strong></div>
@@ -318,7 +331,7 @@ window.DM_CLIENT_PORTAL_COPY = {
   requestSent: "Request sent. We will review it and follow up soon."
 };
 </script>
-<script type="module" src="assets/client-portal.js?v=20260610c-login-flag"></script>
+<script type="module" src="assets/client-portal.js?v=20260615-admin-accounts"></script>
 <script src="surette-logo.js"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
 <script type="module" src="fractal.js"></script>

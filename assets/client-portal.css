@@ -873,6 +873,68 @@
   gap: 12px;
 }
 
+.client-admin-accounts {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.client-admin-accounts[hidden] {
+  display: none !important;
+}
+
+.client-admin-table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.22);
+}
+
+.client-admin-table {
+  width: 100%;
+  min-width: 980px;
+  border-collapse: collapse;
+  color: #e3e2e2;
+  font-size: 0.86rem;
+}
+
+.client-admin-table th,
+.client-admin-table td {
+  padding: 0.78rem 0.9rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: left;
+  vertical-align: top;
+}
+
+.client-admin-table th {
+  color: #00f0ff;
+  background: rgba(0, 240, 255, 0.07);
+  font: 800 0.68rem "JetBrains Mono", monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.client-admin-table td {
+  overflow-wrap: anywhere;
+}
+
+.client-admin-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.client-admin-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.client-admin-empty {
+  padding: 1rem;
+  color: rgba(227, 226, 226, 0.62);
+}
+
 @media (max-width: 700px) {
   .client-super-admin-panel__header {
     flex-direction: column;
