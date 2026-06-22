@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
@@ -9,21 +9,21 @@
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
 <link rel="manifest" href="/site.webmanifest"/>
 <meta name="theme-color" content="#050505"/>
-<meta name="description" content="Product landing and PWA install page for MetalsCalc â€” a precious-metal buying calculator with live Au/Ag/Pt spot prices, offline capability, and one-tap invoicing."/>
+<meta name="description" content="Product landing page and PWA install hub for MetalsCalc &mdash; a precious-metal buying calculator with live Au/Ag/Pt spot prices, offline capability, and one-tap invoicing."/>
 <meta property="og:site_name" content="Surette Data Systems"/>
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="MetalsCalc.com | Websites We've Built | Surette Data Systems"/>
 <meta property="og:description" content="Product marketing site and PWA install page for a precious-metal buying calculator used by dealers, pawn shops, and jewelry buyers."/>
 <meta property="og:url" content="https://darkmatterwebdev.com/portfolio-metalscalc.html"/>
-<meta property="og:image" content="https://darkmatterwebdev.com/assets/surette-data-systems-og.png"/>
-<meta property="og:image:width" content="1200"/>
-<meta property="og:image:height" content="630"/>
-<meta property="og:image:alt" content="Surette Data Systems - managed websites and local IT support"/>
+<meta property="og:image" content="https://darkmatterwebdev.com/assets/apps/metalscalc/metalscalc-list-mode.webp"/>
+<meta property="og:image:width" content="475"/>
+<meta property="og:image:height" content="1211"/>
+<meta property="og:image:alt" content="MetalsCalc buying calculator list mode with live gold, silver, and coin spot prices"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="MetalsCalc.com | Websites We've Built | Surette Data Systems"/>
 <meta name="twitter:description" content="Product marketing site and PWA install page for a precious-metal buying calculator used by dealers, pawn shops, and jewelry buyers."/>
-<meta name="twitter:image" content="https://darkmatterwebdev.com/assets/surette-data-systems-og.png"/>
-<link href="assets/nav.css?v=20260622-fade" rel="stylesheet"/>
+<meta name="twitter:image" content="https://darkmatterwebdev.com/assets/apps/metalscalc/metalscalc-list-mode.webp"/>
+<link href="assets/nav.css?v=20260622b-fade" rel="stylesheet"/>
 <link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/>
 <link href="assets/powered-by-badge.css?v=20260609-badge-fix" rel="stylesheet"/>
 <link href="assets/portfolio-live-widget.css?v=20260605-live-widget-shrink" rel="stylesheet"/>
@@ -109,7 +109,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        /* Portfolio gallery tiles (product-listing style) */
+        /* Portfolio gallery tiles */
         .portfolio-tile {
             position: relative;
             display: flex;
@@ -214,6 +214,38 @@
             .portfolio-tile__cta { transition: none; }
             .portfolio-tile:hover { transform: none; }
             .portfolio-tile:hover .portfolio-tile__img { transform: none; }
+        }
+        /* App screenshot grid */
+        .app-screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+        }
+        .app-screenshot-card {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 240, 255, 0.15);
+            background: #0a0a0a;
+        }
+        .app-screenshot-card img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 9/16;
+            object-fit: contain;
+            object-position: top center;
+            background: #f6f7f9;
+        }
+        .app-screenshot-card p {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: #8e9192;
+            padding: 0.6rem 0.75rem;
+            line-height: 1.4;
+        }
+        @media (max-width: 768px) {
+            .app-screenshot-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
         }
     </style>
 <script id="tailwind-config">
@@ -324,35 +356,33 @@
 
 <script src="assets/standard-site-nav.js?v=20260609-services-nohref" data-active="websites"></script>
 
-<div class="relative z-10 pt-24 pb-0 px-6 md:px-12 lg:px-20">
-<a href="casestudies.html" class="inline-flex items-center gap-2 text-electric-cyan font-mono text-xs tracking-widest uppercase hover:underline">
+<main class="relative z-10 pt-32 pb-24 px-6 md:px-12 lg:px-20 max-w-[1400px] mx-auto">
+<a href="casestudies.html" class="inline-flex items-center gap-2 text-electric-cyan font-mono text-xs tracking-widest uppercase hover:underline mb-8 block">
 <span class="material-symbols-outlined text-sm">arrow_back</span>Back to Websites
 </a>
-</div>
-
-<main class="relative z-10 pt-8 pb-24 px-6 md:px-12 lg:px-20 max-w-[1400px] mx-auto">
 
   <!-- Hero -->
   <section class="mb-16">
     <div class="mb-6">
-      <span class="inline-block font-mono text-xs tracking-widest uppercase text-electric-cyan border border-electric-cyan/30 bg-electric-cyan/10 rounded-full px-3 py-1 mb-6">06 Â· LIVE</span>
+      <span class="inline-block font-mono text-xs tracking-widest uppercase text-electric-cyan border border-electric-cyan/30 bg-electric-cyan/10 rounded-full px-3 py-1 mb-6">05 &middot; PWA</span>
       <h1 class="font-headline-xl text-headline-lg md:text-headline-xl text-starlight-white mt-2 mb-4">MetalsCalc.com</h1>
-      <p class="text-on-surface-variant text-body-lg leading-relaxed max-w-2xl mb-6">Product landing page and PWA install hub for a precious-metal buying calculator.</p>
+      <p class="text-on-surface-variant text-body-lg leading-relaxed max-w-2xl mb-6">Product landing page and PWA install hub for a precious-metal buying calculator &mdash; from weigh-in to finished invoice in under ten seconds.</p>
       <div class="flex flex-wrap gap-2 mb-8">
         <span class="font-mono text-xs tracking-widest uppercase px-3 py-1 rounded-full bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/25">PWA LANDING</span>
         <span class="font-mono text-xs tracking-widest uppercase px-3 py-1 rounded-full bg-nebula-purple/15 text-secondary border border-nebula-purple/25">MOBILE-FIRST</span>
+        <span class="font-mono text-xs tracking-widest uppercase px-3 py-1 rounded-full bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/25">LIVE DATA</span>
       </div>
       <div class="flex flex-wrap gap-3 mb-10">
         <a href="https://metalscalc.com" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-xl font-bold hover:scale-105 active:scale-95 transition-all">
           <span class="material-symbols-outlined text-sm">open_in_new</span>Visit metalscalc.com
         </a>
         <a href="https://app.metalscalc.com" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 glass-panel text-electric-cyan font-label-caps text-label-caps rounded-xl hover:border-electric-cyan/50 hover:scale-105 active:scale-95 transition-all">
-          <span class="material-symbols-outlined text-sm">smartphone</span>View the App
+          <span class="material-symbols-outlined text-sm">smartphone</span>Open the App
         </a>
       </div>
     </div>
     <div class="rounded-2xl overflow-hidden border border-white/10 bg-black/40">
-      <img src="assets/portfolio/metalscalc/home.png" alt="MetalsCalc.com desktop homepage" class="w-full object-cover object-top" loading="eager"/>
+      <img src="assets/portfolio/metalscalc/home.png?v=20260622b" alt="MetalsCalc.com desktop homepage showing headline, live Au/Ag/Pt spot prices, and install CTAs" class="w-full object-cover object-top" loading="eager"/>
     </div>
   </section>
 
@@ -361,12 +391,12 @@
     <div class="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-12 items-start">
       <div>
         <p class="font-mono text-xs tracking-widest uppercase text-electric-cyan mb-3">ABOUT THE SITE</p>
-        <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-starlight-white mb-6">A mobile-first marketing page that doubles as the app's front door.</h2>
+        <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-starlight-white mb-6">A mobile-first marketing page that doubles as the app&rsquo;s front door.</h2>
         <div class="space-y-4 text-on-surface-variant leading-relaxed">
-          <p>MetalsCalc.com is a single-page product site built to explain, promote, and install a PWA precious-metal buying calculator.</p>
-          <p>The page leads with the core value proposition â€” from weigh-in to printed offer in under 10 seconds â€” and immediately shows the live Au/Ag/Pt spot prices to prove the product is real and working.</p>
-          <p>Visitors on a phone can install the PWA directly from the site with a single "Add to Home Screen" step; desktop visitors get the full feature overview and can open the app in their browser.</p>
-          <p>The design is intentionally lean: one strong headline, a live price row, four key stat chips, and a feature grid â€” enough to explain the product and close the install without friction.</p>
+          <p>MetalsCalc.com is a single-page product site built to explain, promote, and install a PWA precious-metal buying calculator. The headline says it all: <em>One list for everything. Fully customizable.</em></p>
+          <p>The page leads with live Au/Ag/Pt spot prices above the fold &mdash; proving the product is real and pulling data before a visitor even scrolls. From there, four feature sections walk through the core workflows: list mode, custom purity settings, invoicing, and the My Value margin tool.</p>
+          <p>Visitors on a phone can install the PWA directly from the site with a single &ldquo;Add to Home Screen&rdquo; step. Desktop visitors get the full feature overview and can open the app in their browser without installing anything.</p>
+          <p>The design is intentionally lean &mdash; one strong headline, a live price row, and feature sections that explain the product and close the install without friction.</p>
         </div>
       </div>
       <div class="glass-panel rounded-xl p-6 space-y-6">
@@ -384,9 +414,10 @@
           <p class="font-mono text-xs tracking-widest uppercase text-electric-cyan mb-3">KEY FEATURES</p>
           <ul class="space-y-2 text-sm text-on-surface-variant">
             <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base mt-0.5">check_circle</span>Live metal price ticker (Au/Ag/Pt)</li>
-            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base mt-0.5">check_circle</span>Install flow for iOS and Android PWA</li>
+            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base mt-0.5">check_circle</span>iOS and Android PWA install flow</li>
             <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base mt-0.5">check_circle</span>Offline-capability messaging</li>
             <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base mt-0.5">check_circle</span>Responsive mobile-first layout</li>
+            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base mt-0.5">check_circle</span>App screenshot showcase with feature callouts</li>
             <li class="flex items-start gap-2"><span class="material-symbols-outlined text-electric-cyan text-base mt-0.5">check_circle</span>Zero-dependency static page</li>
           </ul>
         </div>
@@ -401,29 +432,53 @@
     </div>
   </section>
 
-  <!-- Screenshot Showcase -->
-  <section class="mb-20">
-    <h3 class="font-headline-md text-headline-md text-starlight-white mb-2">A closer look at the site</h3>
-    <p class="text-on-surface-variant mb-8 max-w-2xl leading-relaxed">MetalsCalc.com is designed to work for dealers wherever they are â€” on a desktop before opening the shop or on a phone at a customer's kitchen table.</p>
+  <!-- Site Screenshots -->
+  <section class="mb-12">
+    <h3 class="font-headline-md text-headline-md text-starlight-white mb-2">The marketing site</h3>
+    <p class="text-on-surface-variant mb-8 max-w-2xl leading-relaxed">MetalsCalc.com works for dealers wherever they are &mdash; on a desktop before opening the shop or on a phone at a customer&rsquo;s kitchen table.</p>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter mb-gutter">
       <div class="glass-card rounded-xl overflow-hidden">
         <div class="overflow-hidden bg-black/50">
-          <img src="assets/portfolio/metalscalc/home.png" alt="MetalsCalc desktop hero" class="w-full object-cover object-top" style="aspect-ratio: 4/3;" loading="lazy"/>
+          <img src="assets/portfolio/metalscalc/home.png?v=20260622b" alt="MetalsCalc.com desktop hero &mdash; headline, live spot prices, and install CTAs above the fold" class="w-full object-cover object-top" style="aspect-ratio: 4/3;" loading="lazy"/>
         </div>
-        <p class="font-mono text-xs text-on-surface-variant px-4 py-3">Desktop hero â€” headline, live spot prices, and key stat chips above the fold</p>
+        <p class="font-mono text-xs text-on-surface-variant px-4 py-3">Desktop hero &mdash; headline, live spot prices, and install CTAs above the fold</p>
       </div>
       <div class="glass-card rounded-xl overflow-hidden">
         <div class="overflow-hidden bg-black/50">
-          <img src="assets/portfolio/metalscalc/mobile-home.png" alt="MetalsCalc mobile homepage" class="w-full object-cover object-top" style="aspect-ratio: 4/3;" loading="lazy"/>
+          <img src="assets/portfolio/metalscalc/mobile-home.png?v=20260622b" alt="MetalsCalc.com mobile homepage optimized for phone-first install flow" class="w-full object-cover object-top" style="aspect-ratio: 4/3;" loading="lazy"/>
         </div>
-        <p class="font-mono text-xs text-on-surface-variant px-4 py-3">Mobile view â€” same content, optimized for phone-first install flow</p>
+        <p class="font-mono text-xs text-on-surface-variant px-4 py-3">Mobile view &mdash; same content, tuned for phone-first install</p>
       </div>
     </div>
 
     <div class="glass-card rounded-xl overflow-hidden">
-      <img src="assets/portfolio/metalscalc/home-tall.png" alt="MetalsCalc full page scroll" class="w-full object-cover object-top rounded-t-xl" style="max-height: 600px;" loading="lazy"/>
-      <p class="font-mono text-xs text-on-surface-variant px-4 py-3">Full page â€” headline, live prices, feature highlights, and PWA install instructions</p>
+      <img src="assets/portfolio/metalscalc/home-tall.png?v=20260622b" alt="MetalsCalc.com full page scroll showing headline, live prices, feature sections, and PWA install instructions" class="w-full object-cover object-top rounded-t-xl" style="max-height: 600px;" loading="lazy"/>
+      <p class="font-mono text-xs text-on-surface-variant px-4 py-3">Full page &mdash; headline, live prices, feature sections, and step-by-step PWA install instructions</p>
+    </div>
+  </section>
+
+  <!-- App Screenshots -->
+  <section class="mb-20">
+    <h3 class="font-headline-md text-headline-md text-starlight-white mb-2">The app it installs</h3>
+    <p class="text-on-surface-variant mb-8 max-w-2xl leading-relaxed">The site&rsquo;s job is to get dealers to install the PWA. These are the four screens they&rsquo;ll use every time they buy.</p>
+    <div class="app-screenshot-grid">
+      <div class="app-screenshot-card">
+        <img src="assets/apps/metalscalc/metalscalc-list-mode.webp" alt="MetalsCalc list mode showing gold, silver, and coin lots with live spot prices and combined totals" loading="lazy"/>
+        <p><strong style="color:#e3e2e2;">List Mode</strong><br/>Gold, silver, platinum, and coins &mdash; grouped with a live running total.</p>
+      </div>
+      <div class="app-screenshot-card">
+        <img src="assets/apps/metalscalc/metalscalc-purity-settings.webp" alt="MetalsCalc purity settings panel showing editable purity percentages per grade" loading="lazy"/>
+        <p><strong style="color:#e3e2e2;">Purity Settings</strong><br/>Override % per grade for gold, silver, and platinum. Applies instantly.</p>
+      </div>
+      <div class="app-screenshot-card">
+        <img src="assets/apps/metalscalc/metalscalc-invoice-preview.webp" alt="MetalsCalc finalized invoice with itemized melt values and PDF, photo, email export buttons" loading="lazy"/>
+        <p><strong style="color:#e3e2e2;">Invoice Preview</strong><br/>Itemized melt values and offers. Export as PDF, photo, or email in one tap.</p>
+      </div>
+      <div class="app-screenshot-card">
+        <img src="assets/apps/metalscalc/metalscalc-invoice-editor.webp" alt="MetalsCalc invoice editor with customer detail fields and per-line offer overrides" loading="lazy"/>
+        <p><strong style="color:#e3e2e2;">Invoice Editor</strong><br/>Customer details and per-item offer adjustments before finalizing.</p>
+      </div>
     </div>
   </section>
 
@@ -435,32 +490,32 @@
       <div class="glass-card rounded-xl p-6">
         <span class="material-symbols-outlined text-electric-cyan mb-3 block">live_tv</span>
         <h5 class="font-label-caps text-label-caps text-starlight-white mb-2">LIVE SPOT PRICES EMBEDDED</h5>
-        <p class="text-on-surface-variant text-sm leading-relaxed">The page fetches and displays real-time Au/Ag/Pt prices on load â€” proving the product works before visitors even open the app.</p>
+        <p class="text-on-surface-variant text-sm leading-relaxed">The page fetches and displays real-time Au/Ag/Pt prices on load &mdash; proving the product works before visitors even open the app.</p>
       </div>
       <div class="glass-card rounded-xl p-6">
         <span class="material-symbols-outlined text-electric-cyan mb-3 block">install_mobile</span>
         <h5 class="font-label-caps text-label-caps text-starlight-white mb-2">PWA INSTALL FLOW</h5>
-        <p class="text-on-surface-variant text-sm leading-relaxed">Clear step-by-step instructions for adding to Home Screen on iOS and Android, reducing the friction between landing and installing.</p>
+        <p class="text-on-surface-variant text-sm leading-relaxed">Step-by-step instructions for adding to Home Screen on iOS and Android, reducing the friction between landing and installing.</p>
       </div>
       <div class="glass-card rounded-xl p-6">
         <span class="material-symbols-outlined text-electric-cyan mb-3 block">offline_bolt</span>
         <h5 class="font-label-caps text-label-caps text-starlight-white mb-2">OFFLINE-FIRST MESSAGING</h5>
-        <p class="text-on-surface-variant text-sm leading-relaxed">The site prominently calls out 100% offline capability â€” a key differentiator for buyers working in basements, storage units, or remote locations.</p>
+        <p class="text-on-surface-variant text-sm leading-relaxed">The site prominently calls out 100% offline capability &mdash; a key differentiator for buyers working in basements, storage units, or remote locations.</p>
       </div>
       <div class="glass-card rounded-xl p-6">
         <span class="material-symbols-outlined text-electric-cyan mb-3 block">speed</span>
         <h5 class="font-label-caps text-label-caps text-starlight-white mb-2">10-SECOND OFFER PROMISE</h5>
-        <p class="text-on-surface-variant text-sm leading-relaxed">The &lt;10s weigh-in-to-offer metric is front and center, setting a concrete performance expectation that builds trust.</p>
+        <p class="text-on-surface-variant text-sm leading-relaxed">The &lt;10s weigh-in-to-offer metric is front and center, setting a concrete performance expectation that builds trust before the install.</p>
       </div>
       <div class="glass-card rounded-xl p-6">
-        <span class="material-symbols-outlined text-electric-cyan mb-3 block">smartphone</span>
-        <h5 class="font-label-caps text-label-caps text-starlight-white mb-2">MOBILE-FIRST LAYOUT</h5>
-        <p class="text-on-surface-variant text-sm leading-relaxed">Typography, spacing, and CTAs are optimized for phone-width viewports, matching where the product actually gets used.</p>
+        <span class="material-symbols-outlined text-electric-cyan mb-3 block">trending_up</span>
+        <h5 class="font-label-caps text-label-caps text-starlight-white mb-2">MY VALUE MARGIN TOOL</h5>
+        <p class="text-on-surface-variant text-sm leading-relaxed">The site explains how dealers can set a resell target per metal and see melt value, their sell target, and offer amount side by side &mdash; know your spread before you quote.</p>
       </div>
       <div class="glass-card rounded-xl p-6">
         <span class="material-symbols-outlined text-electric-cyan mb-3 block">print</span>
         <h5 class="font-label-caps text-label-caps text-starlight-white mb-2">INVOICE CAPABILITY CALLED OUT</h5>
-        <p class="text-on-surface-variant text-sm leading-relaxed">1-tap PDF/photo/email invoice export is highlighted as a key feature â€” showing the product closes the deal paperwork too.</p>
+        <p class="text-on-surface-variant text-sm leading-relaxed">One-tap PDF, photo, or email invoice export is highlighted as a key feature &mdash; showing the product closes the deal paperwork, not just the calculation.</p>
       </div>
     </div>
   </section>
@@ -469,13 +524,13 @@
   <section class="max-w-[1264px] mx-auto text-center mt-4">
     <div class="glass-panel rounded-2xl p-10 md:p-14 relative overflow-hidden">
       <h2 class="font-headline-lg text-headline-md md:text-headline-lg text-starlight-white mb-5">Ready to install MetalsCalc?</h2>
-      <p class="max-w-2xl mx-auto text-on-surface-variant mb-8 leading-relaxed">Open the app directly in your browser or add it to your phone's home screen for the full offline experience.</p>
+      <p class="max-w-2xl mx-auto text-on-surface-variant mb-8 leading-relaxed">Open the app directly in your browser or add it to your phone&rsquo;s home screen for the full offline experience.</p>
       <div class="flex flex-wrap justify-center gap-4">
         <a href="https://metalscalc.com" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 px-9 py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-xl font-bold hover:scale-105 active:scale-95 transition-all">
-          <span class="material-symbols-outlined text-sm">install_mobile</span>Install the App â€” Free
+          <span class="material-symbols-outlined text-sm">install_mobile</span>Install the App &mdash; Free
         </a>
         <a href="https://app.metalscalc.com" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 px-9 py-4 glass-panel text-electric-cyan font-label-caps text-label-caps rounded-xl hover:border-electric-cyan/50 hover:scale-105 active:scale-95 transition-all">
-          <span class="material-symbols-outlined text-sm">open_in_new</span>View on the App
+          <span class="material-symbols-outlined text-sm">open_in_new</span>Open in Browser
         </a>
       </div>
     </div>
