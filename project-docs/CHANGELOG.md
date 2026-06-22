@@ -2,6 +2,14 @@
 
 This file is intentionally compact. Keep only high-signal recent changes and major milestones.
 
+## 2026-06-22 (nav flash + page fade-in fix)
+
+- Fixed the nav jump and flash on all pages. Root causes: `#sds-logo` / `#sds-logo-mobile` are empty placeholder divs until `surette-logo.js` inserts the 60×60 canvas at DOMContentLoaded, causing the nav to reflow; Tailwind CDN processes injected nav HTML (on `standard-site-nav.js` pages) asynchronously via MutationObserver, briefly showing unstyled classes.
+- `assets/nav.css` — added `html { opacity: 0; transition: opacity 0.38s ease }` immediately after `@import`, so the page is hidden before the browser's first paint (render-blocking CSS guarantees this). Added a CSS animation fallback (`dm-page-show`, 200ms delay) scoped to `html:not(.sds-logo-loaded)` so portal/utility pages that don't load `surette-logo.js` still reveal within 200ms. Reduced-motion override included.
+- `surette-logo.js` — (1) stamps `sds-logo-loaded` on `<html>` synchronously at IIFE parse time, suppressing the CSS animation for all pages that load the logo script; (2) after the DOMContentLoaded logo init, schedules the reveal via `setTimeout(0)` + 2×`requestAnimationFrame`, ensuring the canvas is painted before opacity is set to 1; (3) 850ms safety timeout ensures the page is never permanently invisible if something stalls.
+- `assets/client-portal.js` — changed 4 serial `maybeQuery` awaits to `Promise.all` for parallel Supabase dashboard reads.
+- `netlify.toml` — rewrote with security headers (`X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`), `Link` preconnect hints for Tailwind/fonts/jsdelivr CDN, `Cache-Control: no-store` for HTML, long-lived immutable cache for `/assets/*`, all original redirects preserved.
+
 ## 2026-06-22 (doc audit)
 
 - Full project-docs audit against actual disk state. Updated `CURRENT_STATUS.md`, `TASKS.md`, `HANDOFF.md`, `ARCHITECTURE.md` to reflect: MetalsCalc app + portfolio entry, three new portal pages (`account-created.html`, `account-settings.html`, `account-ads-status.html`), removal of black-hole hero video references from ARCHITECTURE, correct Surette brand asset filenames, and stale antique-mall screenshot note. Updated `MEMORY.md` project memory accordingly.

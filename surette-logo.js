@@ -8,6 +8,11 @@
 (function (global) {
   'use strict';
 
+  // Stamp the class synchronously at parse time (before DOMContentLoaded).
+  // nav.css uses this to suppress the CSS-only reveal animation on pages that
+  // load this script, so JS fully controls when the page fades in.
+  document.documentElement.classList.add('sds-logo-loaded');
+
   function init(mountId) {
     mountId = mountId || 'sds-logo';
     const mount = document.getElementById(mountId);
@@ -336,10 +341,57 @@
 
   global.SuretteLogo = { init: init };
 
+  // Page reveal — sets html opacity to 1 so the page fades in.
+  // nav.css sets html { opacity: 0 } from first paint to prevent the nav-logo
+  // canvas jump and Tailwind FOUC from being visible.
+  function dmRevealPage() {
+    document.documentElement.style.opacity = '1';
+  }
+
+  // Wait for all DCL handlers to finish (setTimeout 0), then two rAFs so the
+  // logo canvas and any Tailwind-processed nav classes have been laid out and
+  // painted before we reveal.
+  function dmScheduleReveal() {
+    setTimeout(function () {
+      requestAnimationFrame(function () {
+        requestAnimationFrame(dmRevealPage);
+      });
+    }, 0);
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () { init(); });
+    document.addEventListener('DOMContentLoaded', function () {
+      init();
+      dmScheduleReveal();
+    });
   } else {
     init();
+    dmScheduleReveal();
   }
+
+  // Safety: reveal after 850ms regardless, in case something above stalls.
+  setTimeout(dmRevealPage, 850);
+
+  // bfcache: when the browser restores this page from the back/forward cache,
+  // scripts don't re-run, so the existing opacity (1) is preserved correctly.
+  // But if something left it at 0, snap it back.
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) { dmRevealPage(); }
+  });
+
+  // Exit fade: fade the current page to dark before navigating away so the
+  // between-pages gap is dark (not white) and the new page's fade-in feels
+  // continuous. Don't preventDefault — let the browser navigate normally.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href]');
+    if (!a || a.target === '_blank') return;
+    var href = a.getAttribute('href');
+    if (!href || href.charAt(0) === '#' || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0) return;
+    try {
+      if (new URL(href, location.href).origin !== location.origin) return;
+    } catch (_) { return; }
+    document.documentElement.style.transition = 'opacity 0.15s ease';
+    document.documentElement.style.opacity = '0';
+  });
 
 }(window));

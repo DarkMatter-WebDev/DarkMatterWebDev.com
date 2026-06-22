@@ -1,5 +1,40 @@
 @import url('logo.css?v=20260608-lockup-align');
 
+/* ── Page reveal ─────────────────────────────────────────────────────────────
+   nav.css is the first render-blocking stylesheet on every page, guaranteeing
+   html { opacity: 0 } is applied before the browser's first paint.
+
+   Pages that load surette-logo.js: that script adds class="sds-logo-loaded"
+   to <html> synchronously at parse time, suppressing the CSS animation below.
+   surette-logo.js then reveals the page via JS (document.documentElement
+   .style.opacity = '1') after DOMContentLoaded + 2 rAFs — at which point both
+   logo canvases are mounted and the nav is at its full painted size.
+
+   Portal/utility pages that do NOT load surette-logo.js (account-settings,
+   account-ads-status, account-created, app-checkout, seans-google-ads-dashboard):
+   they never get .sds-logo-loaded, so the CSS animation below fires at 200ms.
+   Those pages have no SDS logo canvas, so there's nothing to hide.
+   ─────────────────────────────────────────────────────────────────────────── */
+@keyframes dm-page-show { to { opacity: 1; } }
+
+html {
+  opacity: 0;
+  transition: opacity 0.38s ease;
+  /* Matches the site's void-black body background. Without this, the browser
+     shows white <html> between page navigations even while opacity is 0. */
+  background-color: #050505;
+}
+
+/* CSS-only fallback: only for pages that DON'T load surette-logo.js */
+html:not(.sds-logo-loaded) {
+  animation: dm-page-show 0s 0.2s forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { transition: none; }
+  html:not(.sds-logo-loaded) { animation: dm-page-show 0s 0s forwards; }
+}
+
 /* Logo lockup — row layout so icon sits left of wordmark (not stacked) */
 .site-brand {
   display: inline-flex;
