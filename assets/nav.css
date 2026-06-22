@@ -51,7 +51,7 @@
   align-self: center;
 }
 
-/* Main menu links — same height for Services, Process, and siblings */
+/* Main menu links — same height for Services, Portfolio, and siblings */
 nav .hidden.md\:flex {
   align-items: center;
 }

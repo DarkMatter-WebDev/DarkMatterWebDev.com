@@ -12,8 +12,7 @@
         home: "Inicio",
         services: "Servicios",
         apps: "Apps",
-        process: "Proceso",
-        portfolio: "Portafolio",
+        portfolio: "Sitios web",
         login: "Acceso",
         contact: "Contáctanos",
         work: "Trabajo",
@@ -29,8 +28,7 @@
         home: "Home",
         services: "Services",
         apps: "Apps",
-        process: "Process",
-        portfolio: "Portfolio",
+        portfolio: "Websites",
         login: "Client Login",
         contact: "Contact Us",
         work: "Work",
@@ -149,9 +147,10 @@
     '" href="apps.html">' +
     copy.apps +
     '</a><a class="' +
-    desktopClass("process") +
-    '" href="process.html">' +
-    copy.process +
+    desktopClass("portfolio") +
+    ' portfolio-nav-button' +
+    '" href="casestudies.html">' +
+    copy.portfolio +
     '</a><a class="' +
     desktopClass("account") +
     '" href="account.html"><span class="material-symbols-outlined text-base">account_circle</span>' +
@@ -177,10 +176,10 @@
     mobileClass("apps") +
     '"><span class="material-symbols-outlined">download</span><span class="font-label-caps text-[10px] mt-1">' +
     copy.apps +
-    '</span></a><a href="process.html" class="' +
-    mobileClass("process") +
-    '"><span class="material-symbols-outlined">timeline</span><span class="font-label-caps text-[10px] mt-1">' +
-    copy.process +
+    '</span></a><a href="casestudies.html" class="' +
+    mobileClass("portfolio") +
+    '"><span class="material-symbols-outlined">work</span><span class="font-label-caps text-[10px] mt-1">' +
+    copy.portfolio +
     '</span></a><a href="contact.html" class="' +
     mobileClass("contact") +
     '"><span class="material-symbols-outlined">mail</span><span class="font-label-caps text-[10px] mt-1">' +

@@ -79,226 +79,167 @@
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="assets/surette-data-systems-apps.css?v=20260610-canvas-align" rel="stylesheet"/>
-<script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
-<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/","lil-gui":"https://cdn.jsdelivr.net/npm/lil-gui@0.20.0/dist/lil-gui.esm.js"}}</script>
 <style>
-  /* fly canvas is the base background — clear everything that covers z:-1 */
-  body.sds-apps-page { background-color: transparent; }
-  body.sds-apps-page::before { display: none; }
-  .fly-background { position:fixed; inset:0; z-index:-1; pointer-events:none; overflow:hidden; }
-  .fly-background canvas { display:block; width:100%; height:100%; }
-
   main.catalog-main { position:relative; z-index:10; }
 </style>
 <script id="tailwind-config">
 tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e2","deep-space-grey":"#1A1A1A","primary-container":"#050505","on-surface":"#e3e2e2","void-black":"#050505","on-surface-variant":"#c4c7c7","surface-container-high":"#292a2a","on-tertiary-container":"#00848d","surface":"#121414","surface-container-low":"#1a1c1c","on-tertiary-fixed-variant":"#004f54","tertiary":"#00dbe9","electric-cyan":"#00F0FF","surface-bright":"#383939","on-tertiary":"#00363a","on-primary":"#313030","surface-container-highest":"#343535","on-secondary-container":"#ddcdff","secondary":"#d1bcff","surface-container":"#1f2020","background":"#121414","outline":"#8e9192","surface-container-lowest":"#0d0e0f","primary-fixed":"#e5e2e1","on-secondary":"#3c0090","on-error":"#690005","on-primary-fixed":"#1c1b1b","on-primary-container":"#797777","tertiary-fixed-dim":"#00dbe9","on-error-container":"#ffdad6","surface-dim":"#121414","surface-tint":"#c9c6c5","tertiary-container":"#000607","on-primary-fixed-variant":"#474646","nebula-purple":"#7000FF","inverse-primary":"#5f5e5e","on-secondary-fixed-variant":"#5700c9","secondary-container":"#7000ff","error-container":"#93000a","tertiary-fixed":"#7df4ff","error":"#ffb4ab","inverse-on-surface":"#2f3131","primary-fixed-dim":"#c9c6c5","secondary-fixed-dim":"#d1bcff","primary":"#c9c6c5","on-secondary-fixed":"#23005b","starlight-white":"#FFFFFF","surface-variant":"#343535","inverse-surface":"#e3e2e2","on-tertiary-fixed":"#002022","outline-variant":"#444748","secondary-fixed":"#e9ddff"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{unit:"8px","margin-desktop":"64px","margin-mobile":"20px",gutter:"24px","container-max":"1440px"},fontFamily:{"headline-lg-mobile":["Space Grotesk"],"body-md":["Plus Jakarta Sans"],"label-mono":["JetBrains Mono"],"label-caps":["JetBrains Mono"],"body-lg":["Plus Jakarta Sans"],"headline-xl":["Space Grotesk"],"headline-md":["Space Grotesk"],"headline-lg":["Space Grotesk"]},fontSize:{"headline-lg-mobile":["32px",{lineHeight:"1.2",fontWeight:"600"}],"body-md":["16px",{lineHeight:"1.6",fontWeight:"400"}],"label-mono":["14px",{lineHeight:"1.4",letterSpacing:"0.05em",fontWeight:"500"}],"label-caps":["12px",{lineHeight:"1.2",letterSpacing:"0.1em",fontWeight:"700"}],"body-lg":["18px",{lineHeight:"1.6",fontWeight:"400"}],"headline-xl":["64px",{lineHeight:"1.1",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-md":["24px",{lineHeight:"1.3",fontWeight:"500"}],"headline-lg":["40px",{lineHeight:"1.2",letterSpacing:"-0.01em",fontWeight:"600"}]}}}};
 </script>
 <style>
-/* ——— App Gallery 3D cards (DepthFold) ——— */
-.app-gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  gap: clamp(0.5rem, 2vw, 0.875rem);
-  align-items: stretch;
+/* App catalog cards — product-listing style (mirrors the Websites/Case Studies gallery) */
+.portfolio-tile {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+    scroll-margin-top: 7rem;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.5s ease;
+    will-change: transform;
 }
-
-.ux-parent {
-  width: 100%;
-  height: 130px;
-  perspective: 1000px;
-  perspective-origin: 50% 50%;
-  filter: drop-shadow(0 6px 14px rgba(0,30,20,0.5));
+/* Per-app solid background colors */
+.portfolio-tile:nth-child(1) { background: #1a1209; } /* Auction — dark amber */
+.portfolio-tile:nth-child(2) { background: #071618; } /* SDMS — dark ocean */
+.portfolio-tile:nth-child(3) { background: #081211; } /* Benji — dark jade */
+.portfolio-tile:nth-child(4) { background: #120c1a; } /* Antique Mall — dark violet */
+.portfolio-tile:nth-child(5) { background: #17120a; } /* MetalsCalc — dark gold */
+.portfolio-tile:nth-child(6) { background: #0c0c14; } /* Open tile — dark indigo */
+.portfolio-tile:hover,
+.portfolio-tile:focus-visible {
+    transform: translateY(-8px);
+    border-color: rgba(0, 240, 255, 0.45);
+    box-shadow: 0 26px 60px rgba(0, 0, 0, 0.55), 0 0 46px rgba(112, 0, 255, 0.18);
+    outline: none;
 }
-.ux-card {
-  position: relative;
-  height: 100%;
-  border-radius: 20px;
-  background: var(--ux-grad);
-  transform-style: preserve-3d;
-  transition: transform 0.55s cubic-bezier(0.22,1,0.36,1), box-shadow 0.55s ease;
-  box-shadow: rgba(5,71,17,0) 40px 50px 25px -40px, rgba(5,71,17,0.28) 0 25px 25px -5px;
-  display: block;
-  text-decoration: none;
-  color: inherit;
+.portfolio-tile__media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: #050505;
 }
-.ux-parent:hover .ux-card {
-  transform: rotate3d(1,1,0,28deg);
-  box-shadow: rgba(5,71,17,0.45) 28px 48px 28px -38px, rgba(0,255,214,0.12) 0 0 60px -10px, rgba(5,71,17,0.15) 0 25px 35px 0;
+.portfolio-tile__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
-/* themes */
-.ux-parent--mint   { --ux-grad:linear-gradient(135deg,#00ffd6 0%,#08e260 100%); --ux-title:#7f1d1d; --ux-body:rgba(127,29,29,0.78); --ux-cta:#005f36; --ux-orbit:rgba(0,249,203,0.22); --ux-fill:#00894d; }
-.ux-parent--violet { --ux-grad:linear-gradient(145deg,#a855f7 0%,#6366f1 40%,#ec4899 100%); --ux-title:#1e3a5f; --ux-body:rgba(30,58,95,0.82); --ux-cta:#4c0891; --ux-orbit:rgba(216,180,254,0.35); --ux-fill:#5b21b6; }
-.ux-parent--solar  { --ux-grad:linear-gradient(135deg,#fbbf24 0%,#f97316 45%,#dc2626 100%); --ux-title:#1e293b; --ux-body:rgba(30,41,59,0.82); --ux-cta:#9a3412; --ux-orbit:rgba(254,243,199,0.4); --ux-fill:#9a3412; }
-.ux-parent--teal   { --ux-grad:linear-gradient(135deg,#14b8a6 0%,#0f766e 42%,#d97706 100%); --ux-title:#fff7ed; --ux-body:rgba(255,247,237,0.84); --ux-cta:#fef3c7; --ux-orbit:rgba(20,184,166,0.32); --ux-fill:#f59e0b; }
-.ux-parent--void   { --ux-grad:linear-gradient(160deg,#0f172a 0%,#1e1b4b 50%,#312e81 100%); --ux-title:#5eead4; --ux-body:rgba(203,213,225,0.82); --ux-cta:#c084fc; --ux-orbit:rgba(167,139,250,0.25); --ux-fill:#c084fc; }
-.ux-parent--void .ux-card { box-shadow:0 0 0 1px rgba(167,139,250,0.35), rgba(5,71,17,0) 40px 50px 25px -40px, rgba(0,0,0,0.5) 0 25px 35px -5px; }
-
-/* per-layer orb colors */
-.ux-parent--mint .ux-circle:nth-child(1) { background: rgba(0,249,203,0.18); }
-.ux-parent--mint .ux-circle:nth-child(2) { background: rgba(56,189,248,0.24); }
-.ux-parent--mint .ux-circle:nth-child(3) { background: rgba(74,222,128,0.30); }
-.ux-parent--mint .ux-circle:nth-child(4) { background: rgba(163,230,53,0.36); }
-.ux-parent--mint .ux-circle:nth-child(5) { background: rgba(240,255,240,0.55); }
-
-.ux-parent--violet .ux-circle:nth-child(1) { background: rgba(168,85,247,0.22); }
-.ux-parent--violet .ux-circle:nth-child(2) { background: rgba(99,102,241,0.28); }
-.ux-parent--violet .ux-circle:nth-child(3) { background: rgba(217,70,239,0.28); }
-.ux-parent--violet .ux-circle:nth-child(4) { background: rgba(236,72,153,0.34); }
-.ux-parent--violet .ux-circle:nth-child(5) { background: rgba(251,113,133,0.52); }
-
-.ux-parent--solar .ux-circle:nth-child(1) { background: rgba(251,191,36,0.24); }
-.ux-parent--solar .ux-circle:nth-child(2) { background: rgba(249,115,22,0.30); }
-.ux-parent--solar .ux-circle:nth-child(3) { background: rgba(239,68,68,0.30); }
-.ux-parent--solar .ux-circle:nth-child(4) { background: rgba(220,38,38,0.36); }
-.ux-parent--solar .ux-circle:nth-child(5) { background: rgba(253,224,71,0.52); }
-
-.ux-parent--teal .ux-circle:nth-child(1) { background: rgba(20,184,166,0.20); }
-.ux-parent--teal .ux-circle:nth-child(2) { background: rgba(13,148,136,0.26); }
-.ux-parent--teal .ux-circle:nth-child(3) { background: rgba(15,118,110,0.30); }
-.ux-parent--teal .ux-circle:nth-child(4) { background: rgba(217,119,6,0.34); }
-.ux-parent--teal .ux-circle:nth-child(5) { background: rgba(251,191,36,0.52); }
-
-.ux-parent--void .ux-circle:nth-child(1) { background: rgba(94,234,212,0.18); }
-.ux-parent--void .ux-circle:nth-child(2) { background: rgba(34,211,238,0.24); }
-.ux-parent--void .ux-circle:nth-child(3) { background: rgba(99,102,241,0.30); }
-.ux-parent--void .ux-circle:nth-child(4) { background: rgba(167,139,250,0.36); }
-.ux-parent--void .ux-circle:nth-child(5) { background: rgba(192,132,252,0.55); }
-
-/* glass layer */
-.ux-glass {
-  transform-style: preserve-3d;
-  position: absolute;
-  inset: 5px;
-  border-radius: 20px;
-  border-top-right-radius: 100%;
-  background: linear-gradient(0deg,rgba(255,255,255,0.38) 0%,rgba(255,255,255,0.82) 100%);
-  transform: translate3d(0,0,25px);
-  border-inline-start: 1px solid rgba(255,255,255,0.85);
-  border-bottom: 1px solid rgba(255,255,255,0.75);
-  transition: all 0.5s ease-in-out;
-  pointer-events: none;
+.portfolio-tile:hover .portfolio-tile__img,
+.portfolio-tile:focus-visible .portfolio-tile__img {
+    transform: scale(1.07);
 }
-.ux-parent--void .ux-glass {
-  background: linear-gradient(180deg,rgba(255,255,255,0.12) 0%,rgba(15,23,42,0.55) 100%);
-  border-color: rgba(148,163,184,0.25);
+.portfolio-tile__media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(5, 5, 5, 0.78) 0%, rgba(5, 5, 5, 0.12) 52%, transparent 100%);
+    opacity: 0.85;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
 }
-
-/* floating orb circles */
-.ux-logo { position:absolute; inset-inline-end:0; top:0; transform-style:preserve-3d; pointer-events:none; z-index:2; }
-.ux-circle {
-  display: block; position:absolute; aspect-ratio:1; border-radius:50%;
-  top:0; inset-inline-end:0; background:var(--ux-orbit);
-  box-shadow: rgba(100,100,111,0.25) -10px 10px 24px 0;
-  backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
-  transition: all 0.5s ease-in-out;
+.portfolio-tile:hover .portfolio-tile__media::after { opacity: 0.6; }
+.portfolio-tile__badge {
+    position: absolute;
+    top: 0.85rem;
+    left: 0.85rem;
+    z-index: 2;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    padding: 0.25rem 0.6rem;
+    border-radius: 9999px;
+    background: rgba(0, 240, 255, 0.15);
+    color: #00F0FF;
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
 }
-.ux-circle:nth-child(1) { width:51px; transform:translate3d(0,0,20px); top:5px; inset-inline-end:5px; }
-.ux-circle:nth-child(2) { width:42px; transform:translate3d(0,0,40px); top:6px; inset-inline-end:6px; backdrop-filter:blur(4px); transition-delay:.05s; }
-.ux-circle:nth-child(3) { width:33px; transform:translate3d(0,0,60px); top:9px; inset-inline-end:9px; transition-delay:.1s; }
-.ux-circle:nth-child(4) { width:24px; transform:translate3d(0,0,80px); top:11px; inset-inline-end:11px; transition-delay:.15s; }
-.ux-circle:nth-child(5) { width:15px; transform:translate3d(0,0,100px); top:14px; inset-inline-end:14px; display:grid; place-content:center; transition-delay:.2s; }
-.ux-circle:nth-child(5) svg { width:7px; height:7px; }
-.ux-parent:hover .ux-circle:nth-child(2) { transform:translate3d(0,0,60px); }
-.ux-parent:hover .ux-circle:nth-child(3) { transform:translate3d(0,0,80px); }
-.ux-parent:hover .ux-circle:nth-child(4) { transform:translate3d(0,0,100px); }
-.ux-parent:hover .ux-circle:nth-child(5) { transform:translate3d(0,0,120px); }
-
-/* text content */
-.ux-content {
-  position: absolute; bottom:24px; left:10px; right:10px; padding:0;
-  transform: translate3d(0,0,26px); z-index:3;
+.portfolio-tile__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #00F0FF;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.ux-title { display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden; color:var(--ux-title); font-weight:900; font-size:0.7rem; letter-spacing:-0.02em; line-height:1.25; }
-.ux-text  { display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden; margin-top:0.15rem; color:var(--ux-body); font-size:0.58rem; line-height:1.3; font-weight:600; }
-
-/* bottom bar */
-.ux-bottom {
-  padding: 2px 4px;
-  transform-style: preserve-3d;
-  position: absolute; bottom:5px; left:8px; right:8px;
-  display: flex; align-items:center; justify-content:space-between;
-  transform: translate3d(0,0,26px); z-index:4;
+.portfolio-tile:hover .portfolio-tile__cta,
+.portfolio-tile:focus-visible .portfolio-tile__cta {
+    opacity: 1;
+    transform: translateX(0);
 }
-.ux-badges { display:flex; flex-wrap:wrap; gap:5px; align-items:center; transform-style:preserve-3d; }
-.ux-parent:hover .ux-badges { transform:translate3d(0,0,50px); }
-.ux-badges .sds-badge {
-  box-shadow: 0 2px 6px rgba(0,0,0,0.35);
-  transition: transform 0.2s ease-in-out;
+.portfolio-tile__cta .material-symbols-outlined {
+    font-size: 16px;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
-
-.ux-more { display:flex; align-items:center; gap:4px; transition:transform 0.2s ease; }
-.ux-more:hover { transform:translate3d(0,0,10px); }
-.ux-more-label { color:var(--ux-cta); font-weight:800; font-size:0.72rem; font-family:inherit; text-transform:uppercase; letter-spacing:.08em; white-space:nowrap; }
-.ux-more svg { fill:none; stroke:var(--ux-cta); stroke-width:3; max-height:14px; width:16px; flex-shrink:0; }
-
-/* ——— mobile 2-up (≤539px) ——— */
-@media (max-width: 539px) {
-  .ux-parent { height: 110px; }
-  .ux-card   { border-radius: 16px; }
-  .ux-glass  { border-radius: 18px; inset: 4px; }
-  .ux-content { bottom: 18px; left: 8px; right: 8px; }
-  .ux-title   { -webkit-line-clamp: 2; }
-  /* badges: top-left stack, capped so they never reach the orb zone */
-  .ux-bottom  { top: 6px; bottom: auto; left: 6px; right: auto; max-width: calc(100% - 62px); padding: 0; overflow: hidden; flex-direction: column; align-items: flex-start; }
-  .ux-badges  { flex-direction: column; flex-wrap: nowrap; gap: 2px; }
-  .ux-badges .sds-badge { font-size: 0.4rem; padding: 1px 3px; white-space: nowrap; }
-  .ux-more    { display: none; }
+.portfolio-tile:hover .portfolio-tile__cta .material-symbols-outlined {
+    transform: translateX(4px);
 }
-
-/* ——— large mobile 2-up (540px–767px): fill gap so badges stay top-left ——— */
-@media (min-width: 540px) and (max-width: 767px) {
-  .ux-bottom  { top: 6px; bottom: auto; left: 6px; right: auto; max-width: calc(100% - 62px); padding: 0; overflow: hidden; flex-direction: column; align-items: flex-start; }
-  .ux-badges  { flex-direction: column; flex-wrap: nowrap; gap: 2px; }
-  .ux-badges .sds-badge { font-size: 0.4rem; padding: 1px 3px; white-space: nowrap; }
-  .ux-more    { display: none; }
+.portfolio-tile--open {
+    border-style: dashed;
+    border-color: rgba(255, 255, 255, 0.18);
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
 }
-
-/* ——— 8-column tiles (≥768px) ——— */
-@media (min-width: 768px) {
-  .app-gallery-grid { grid-template-columns: repeat(8, minmax(0,1fr)); gap: 0.5rem; }
-  .ux-parent { height: 110px; }
-  .ux-card   { border-radius: 16px; }
-  .ux-glass  { border-radius: 18px; inset: 4px; }
-  .ux-content { bottom: 14px; left: 8px; right: 8px; }
-  .ux-title   { -webkit-line-clamp: 2; }
-  /* badges: top-left stack, capped so they never reach the orb zone */
-  .ux-bottom  { top: 6px; bottom: auto; left: 6px; right: auto; max-width: calc(100% - 62px); padding: 0; overflow: hidden; flex-direction: column; align-items: flex-start; }
-  .ux-badges  { flex-direction: column; flex-wrap: nowrap; gap: 2px; }
-  .ux-badges .sds-badge { font-size: 0.4rem; padding: 1px 3px; white-space: nowrap; }
-  .ux-more    { display: none; }
+.portfolio-tile--open:hover,
+.portfolio-tile--open:focus-visible {
+    border-color: rgba(0, 240, 255, 0.4);
 }
-
-@media (prefers-reduced-motion:reduce) {
-  .ux-card,.ux-circle,.ux-badges,.ux-more { transition:none!important; }
-  .ux-parent:hover .ux-card { transform:none; }
-  .ux-parent:hover .ux-circle:nth-child(2),
-  .ux-parent:hover .ux-circle:nth-child(3),
-  .ux-parent:hover .ux-circle:nth-child(4),
-  .ux-parent:hover .ux-circle:nth-child(5) { transform:inherit; }
-  .ux-parent:hover .ux-social-btn { transform:none; }
+@media (max-width: 767px) {
+    .portfolio-tile { min-height: auto; }
+    .portfolio-tile__badge {
+        top: 0.55rem;
+        left: 0.55rem;
+        font-size: 8px;
+        letter-spacing: 0.08em;
+        padding: 0.2rem 0.42rem;
+    }
+    .portfolio-tile__media { aspect-ratio: 4 / 3; }
+    .portfolio-tile > div:not(.portfolio-tile__media) {
+        gap: 0.55rem !important;
+        padding: 0.8rem !important;
+    }
+    .portfolio-tile .portfolio-card-title {
+        font-size: 1.05rem !important;
+        line-height: 1.2;
+    }
+    .portfolio-tile p {
+        font-size: 0.75rem !important;
+        line-height: 1.35;
+    }
+    .portfolio-tile__cta,
+    .portfolio-tile .font-label-mono {
+        font-size: 9px !important;
+        line-height: 1.25;
+        letter-spacing: 0.06em;
+    }
 }
-
-/* ——— touch devices: suppress sticky hover ——— */
-@media (hover: none) and (pointer: coarse) {
-  /* prevent hover transform from "sticking" after a tap */
-  .ux-parent:hover .ux-card {
-    transform: none;
-    box-shadow: rgba(5,71,17,0) 40px 50px 25px -40px, rgba(5,71,17,0.28) 0 25px 25px -5px;
-  }
-  .ux-card { -webkit-tap-highlight-color: transparent; }
+@media (prefers-reduced-motion: reduce) {
+    .portfolio-tile,
+    .portfolio-tile__img,
+    .portfolio-tile__cta { transition: none; }
+    .portfolio-tile:hover { transform: none; }
+    .portfolio-tile:hover .portfolio-tile__img { transform: none; }
 }
 </style>
 </head>
 <body class="font-['Plus_Jakarta_Sans',sans-serif] min-h-screen flex flex-col cosmic-page cosmic-tint-services sds-apps-page">
-<div class="fly-background" data-fly-background></div>
 <nav class="hidden md:flex fixed top-0 w-full z-50 bg-surface/10 backdrop-blur-xl border-b border-white/10 justify-between items-center px-margin-desktop py-4">
 <div id="sds-logo"></div>
 <div class="hidden md:flex items-center gap-10">
 <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="index.html">Home</a>
 <div class="relative services-nav-group"><a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" tabindex="0" aria-haspopup="true">Services</a><div class="services-nav-menu"><div class="services-nav-panel"><div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Online Services</div><a href="services/website-design.html">Website Design</a><a href="services/managed-hosting.html">Managed Hosting</a><a href="services/website-care-plans.html">Website Care Plans</a><a href="apps.html">Custom Business Web Apps</a><div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">home_pin</span>In-Home &amp; Office Services</div><a href="services/in-home-services.html">In-Home Tech Services</a><a href="services/office-network-setup.html">Office Network Setup</a></div></div></div>
 <a class="font-label-mono text-label-mono text-electric-cyan border-b-2 border-electric-cyan pb-1 transition-colors duration-300" href="apps.html">Apps</a>
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="process.html">Process</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300 portfolio-nav-button" href="casestudies.html">Websites</a>
 <a class="font-label-mono text-label-mono text-electric-cyan hover:underline transition-colors duration-300 inline-flex items-center gap-1.5" href="account.html"><span class="material-symbols-outlined text-base">account_circle</span>Client Login</a>
 </div>
 </nav>
@@ -312,7 +253,7 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 <a href="index.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90"><span class="material-symbols-outlined">home</span><span class="font-label-caps text-[10px] mt-1">Home</span></a>
 <a href="apps.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90" data-mobile-services-trigger><span class="material-symbols-outlined">design_services</span><span class="font-label-caps text-[10px] mt-1">Services</span></a>
 <a href="apps.html" class="flex flex-col items-center justify-center text-electric-cyan drop-shadow-[0_0_8px_rgba(0,240,255,0.8)] active:scale-90 transition-all"><span class="material-symbols-outlined">download</span><span class="font-label-caps text-[10px] mt-1">Apps</span></a>
-<a href="process.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90"><span class="material-symbols-outlined">timeline</span><span class="font-label-caps text-[10px] mt-1">Process</span></a>
+<a href="casestudies.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90"><span class="material-symbols-outlined">work</span><span class="font-label-caps text-[10px] mt-1">Websites</span></a>
 <a href="contact.html" class="sds-nav-contact-tab flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90"><span class="material-symbols-outlined">mail</span><span class="font-label-caps text-[10px] mt-1">Contact</span></a>
 </nav>
 </div>
@@ -324,159 +265,96 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 <span class="material-symbols-outlined text-base">arrow_back</span>Back to Apps
 </a>
 </div>
-<main class="catalog-main relative z-10 pt-[46vh] pb-28 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+<main class="catalog-main relative z-10 pt-6 md:pt-10 pb-28 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
 <section class="mb-16">
-<div class="app-gallery-grid">
+<div class="grid grid-cols-2 xl:grid-cols-3 gap-3 md:gap-gutter">
 
-  <!-- Auction House — mint -->
-  <div class="ux-parent ux-parent--mint">
-    <a href="auction-house-consignment-store-software.html" class="ux-card" aria-label="Auction House &amp; Consignment Store Software — open full app profile">
-      <div class="ux-logo" aria-hidden="true">
-        <span class="ux-circle"></span>
-        <span class="ux-circle"></span>
-        <span class="ux-circle"></span>
-        <span class="ux-circle"></span>
-        <span class="ux-circle">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
-        </span>
-      </div>
-      <div class="ux-glass"></div>
-      <div class="ux-content">
-        <span class="ux-title">Auction House &amp; Consignment Store</span>
-        <span class="ux-text">Consignors, inventory, labels, invoices, and settlements for floor sales &amp; live auctions.</span>
-      </div>
-      <div class="ux-bottom">
-        <div class="ux-badges">
-          <span class="sds-badge sds-badge--live">Live Demo</span>
-          <span class="sds-badge sds-badge--tag">Management</span>
-        </div>
-        <div class="ux-more">
-          <span class="ux-more-label">Open Profile</span>
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"/></svg>
-        </div>
-      </div>
-    </a>
-  </div>
+<a href="auction-house-consignment-store-software.html" class="portfolio-tile">
+<div class="portfolio-tile__media">
+<img src="assets/apps/auction/auction-dashboard.webp" alt="Auction House &amp; Consignment Store Software dashboard" class="portfolio-tile__img" loading="lazy"/>
+<span class="portfolio-tile__badge">01 &middot; LIVE DEMO</span>
+</div>
+<div class="p-7 flex flex-col gap-4 flex-1">
+<div class="flex flex-wrap gap-2">
+<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">MANAGEMENT</span>
+<span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">CONSIGNMENT</span>
+</div>
+<h3 class="portfolio-card-title font-headline-md text-headline-md text-starlight-white">Auction House &amp; Consignment Store</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed flex-1">Consignors, inventory, labels, invoices, and settlements for floor sales and live auctions.</p>
+<span class="portfolio-tile__cta">Open profile <span class="material-symbols-outlined">arrow_forward</span></span>
+</div>
+</a>
 
-  <!-- Secondhand Dealer — violet -->
-  <div class="ux-parent ux-parent--violet">
-    <a href="secondhand-dealer-management-system.html" class="ux-card" aria-label="Secondhand Dealer Management System — open full app profile">
-      <div class="ux-logo" aria-hidden="true">
-        <span class="ux-circle"></span>
-        <span class="ux-circle"></span>
-        <span class="ux-circle"></span>
-        <span class="ux-circle"></span>
-        <span class="ux-circle">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4.18l5 2.22v3.6c0 3.4-2.26 6.67-5 7.93-2.74-1.26-5-4.53-5-7.93V7.4l5-2.22z"/></svg>
-        </span>
-      </div>
-      <div class="ux-glass"></div>
-      <div class="ux-content">
-        <span class="ux-title">Secondhand Dealer Management</span>
-        <span class="ux-text">FL 538 compliance, seller intake, 15-day holds, live metals pricing, and full audit logs.</span>
-      </div>
-      <div class="ux-bottom">
-        <div class="ux-badges">
-          <span class="sds-badge sds-badge--live">Live Demo</span>
-          <span class="sds-badge sds-badge--tag">Compliance</span>
-        </div>
-        <div class="ux-more">
-          <span class="ux-more-label">Open Profile</span>
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"/></svg>
-        </div>
-      </div>
-    </a>
-  </div>
+<a href="secondhand-dealer-management-system.html" class="portfolio-tile">
+<div class="portfolio-tile__media">
+<img src="assets/apps/sdms/sdms-dashboard.webp" alt="Secondhand Dealer Management System dashboard" class="portfolio-tile__img" loading="lazy"/>
+<span class="portfolio-tile__badge">02 &middot; LIVE DEMO</span>
+</div>
+<div class="p-7 flex flex-col gap-4 flex-1">
+<div class="flex flex-wrap gap-2">
+<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">COMPLIANCE</span>
+<span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">FL 538</span>
+</div>
+<h3 class="portfolio-card-title font-headline-md text-headline-md text-starlight-white">Secondhand Dealer Management</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed flex-1">FL 538 compliance, seller intake, 15-day holds, live metals pricing, and full audit logs.</p>
+<span class="portfolio-tile__cta">Open profile <span class="material-symbols-outlined">arrow_forward</span></span>
+</div>
+</a>
 
-  <!-- Benji Payroll — solar -->
-  <div class="ux-parent ux-parent--solar">
-    <a href="benji-payroll-management-system.html" class="ux-card" aria-label="Benji Payroll Management System — open full app profile">
-      <div class="ux-logo" aria-hidden="true">
-        <span class="ux-circle"></span>
-        <span class="ux-circle"></span>
-        <span class="ux-circle"></span>
-        <span class="ux-circle"></span>
-        <span class="ux-circle">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
-        </span>
-      </div>
-      <div class="ux-glass"></div>
-      <div class="ux-content">
-        <span class="ux-title">Benji &mdash; Payroll Management</span>
-        <span class="ux-text">Time entry, approvals, auto pay calculations, pay stubs, and auditable payroll reports.</span>
-      </div>
-      <div class="ux-bottom">
-        <div class="ux-badges">
-          <span class="sds-badge sds-badge--live">Live Demo</span>
-          <span class="sds-badge sds-badge--tag">Payroll</span>
-        </div>
-        <div class="ux-more">
-          <span class="ux-more-label">Open Profile</span>
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"/></svg>
-        </div>
-      </div>
-    </a>
-  </div>
+<a href="benji-payroll-management-system.html" class="portfolio-tile">
+<div class="portfolio-tile__media">
+<img src="assets/apps/benji/benji-dashboard.webp" alt="Benji Payroll Management System dashboard" class="portfolio-tile__img" loading="lazy"/>
+<span class="portfolio-tile__badge">03 &middot; LIVE DEMO</span>
+</div>
+<div class="p-7 flex flex-col gap-4 flex-1">
+<div class="flex flex-wrap gap-2">
+<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">PAYROLL</span>
+<span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">TIME TRACKING</span>
+</div>
+<h3 class="portfolio-card-title font-headline-md text-headline-md text-starlight-white">Benji &mdash; Payroll Management</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed flex-1">Time entry, approvals, auto pay calculations, pay stubs, and auditable payroll reports.</p>
+<span class="portfolio-tile__cta">Open profile <span class="material-symbols-outlined">arrow_forward</span></span>
+</div>
+</a>
 
-  <!-- Build Yours — void -->
-  <div class="ux-parent ux-parent--teal">
-    <a href="antique-mall-vendor-management-system-and-auction-platform.html" class="ux-card" aria-label="Antique Mall Vendor Management System and Auction Platform - open full app profile">
-      <div class="ux-logo" aria-hidden="true">
-        <span class="ux-circle"></span>
-        <span class="ux-circle"></span>
-        <span class="ux-circle"></span>
-        <span class="ux-circle"></span>
-        <span class="ux-circle">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M7 3h10l1 5h3v2h-1v10h-2v-7h-5v7H6v-7H4v7H2V10H1V8h5l1-5zm2 2-.6 3h7.2L15 5H9zm-3 5v1h12v-1H6zm2 3v5h3v-5H8z"/></svg>
-        </span>
-      </div>
-      <div class="ux-glass"></div>
-      <div class="ux-content">
-        <span class="ux-title">Antique Mall Vendor Management</span>
-        <span class="ux-text">Vendor storefronts, marketplace listings, category browsing, gated selling, and live auction pages.</span>
-      </div>
-      <div class="ux-bottom">
-        <div class="ux-badges">
-          <span class="sds-badge sds-badge--live">Live Demo</span>
-          <span class="sds-badge sds-badge--tag">Marketplace</span>
-        </div>
-        <div class="ux-more">
-          <span class="ux-more-label">Open Profile</span>
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"/></svg>
-        </div>
-      </div>
-    </a>
-  </div>
+<a href="antique-mall-vendor-management-system-and-auction-platform.html" class="portfolio-tile">
+<div class="portfolio-tile__media">
+<img src="assets/apps/antique-mall/thirdstreet-home.png" alt="Third Street Auction Marketplace homepage" class="portfolio-tile__img" loading="lazy"/>
+<span class="portfolio-tile__badge">04 &middot; LIVE DEMO</span>
+</div>
+<div class="p-7 flex flex-col gap-4 flex-1">
+<div class="flex flex-wrap gap-2">
+<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">MARKETPLACE</span>
+<span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">AUCTIONS</span>
+</div>
+<h3 class="portfolio-card-title font-headline-md text-headline-md text-starlight-white">Third Street Auction Marketplace</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed flex-1">Vendor shops, filtered catalog browsing, carts, account access, and timed auction lot pages.</p>
+<span class="portfolio-tile__cta">Open profile <span class="material-symbols-outlined">arrow_forward</span></span>
+</div>
+</a>
 
-  <!-- Build Yours - void -->
-  <div class="ux-parent ux-parent--void">
-    <a href="contact.html" class="ux-card" aria-label="Let's build yours today — contact us">
-      <div class="ux-logo" aria-hidden="true">
-        <span class="ux-circle"></span>
-        <span class="ux-circle"></span>
-        <span class="ux-circle"></span>
-        <span class="ux-circle"></span>
-        <span class="ux-circle">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
-        </span>
-      </div>
-      <div class="ux-glass"></div>
-      <div class="ux-content">
-        <span class="ux-title">Let&rsquo;s build yours today</span>
-        <span class="ux-text">Tell us what you need to track, manage, or automate — we&rsquo;ll build it for you.</span>
-      </div>
-      <div class="ux-bottom">
-        <div class="ux-badges">
-          <span class="sds-badge sds-badge--custom">Custom Build</span>
-          <span class="sds-badge sds-badge--tag">Your Workflow</span>
-        </div>
-        <div class="ux-more">
-          <span class="ux-more-label">Contact Us</span>
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"/></svg>
-        </div>
-      </div>
-    </a>
-  </div>
+<a href="metalscalc-buying-calculator.html" class="portfolio-tile">
+<div class="portfolio-tile__media">
+<img src="assets/apps/metalscalc/metalscalc-dashboard.png" alt="MetalsCalc precious metal buying calculator dashboard" class="portfolio-tile__img" loading="lazy"/>
+<span class="portfolio-tile__badge">05 &middot; PWA</span>
+</div>
+<div class="p-7 flex flex-col gap-4 flex-1">
+<div class="flex flex-wrap gap-2">
+<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">PRECIOUS METALS</span>
+<span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">BUYING CALC</span>
+</div>
+<h3 class="portfolio-card-title font-headline-md text-headline-md text-starlight-white">MetalsCalc &mdash; Buying Calculator</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed flex-1">Live Au/Ag/Pt spot pricing, customizable buy percentages, coin library, and one-tap PDF invoices for precious-metal dealers.</p>
+<span class="portfolio-tile__cta">Open profile <span class="material-symbols-outlined">arrow_forward</span></span>
+</div>
+</a>
+
+<a href="contact.html" class="portfolio-tile portfolio-tile--open p-8 gap-4">
+<span class="material-symbols-outlined text-4xl text-electric-cyan">add_circle</span>
+<h3 class="portfolio-card-title font-headline-md text-headline-md text-starlight-white">Let&rsquo;s build yours today</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Tell us what you need to track, manage, or automate &mdash; we&rsquo;ll build a custom app for your workflow.</p>
+<span class="portfolio-tile__cta" style="opacity:1;transform:none;">Start a project <span class="material-symbols-outlined">arrow_forward</span></span>
+</a>
 
 </div>
 </section>
@@ -496,7 +374,6 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-background":"#e3e2e
 <script src="assets/account-nav.js?v=20260611-no-lang"></script>
 <script src="surette-logo.js"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
-<script type="module" src="assets/fly/fly.js"></script>
 
 </body>
 </html>
