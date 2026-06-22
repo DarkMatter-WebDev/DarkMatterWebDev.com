@@ -196,8 +196,11 @@
             padding-bottom: clamp(0.75rem, 2vh, 1.25rem);
         }
         .hero-video-stage {
-            min-height: clamp(22rem, 52vh, 36rem);
+            min-height: clamp(10rem, 26vh, 16rem);
             flex: 1 1 auto;
+        }
+        #hero-mobile {
+            min-height: 74vh;
         }
         .hidden.md\:block .hero-video-stage {
             min-height: clamp(20rem, 48vh, 32rem);
@@ -1048,7 +1051,7 @@ Contact Us
       rotationSpeed: 0.05,    // slow auto-spin of the whole galaxy
 
       // Interaction: let the visitor drag to orbit the camera.
-      enableControls: true,
+      enableControls: false,
     };
     /* ============================================================
        ▲▲▲  END OF MODIFIABLE VARIABLES  ▲▲▲
@@ -1078,8 +1081,12 @@ Contact Us
       camera.updateProjectionMatrix();
       renderer.setSize(getW(), getH());
     };
-    window.addEventListener("resize", resize);
-    if (window.ResizeObserver) new ResizeObserver(resize).observe(mount);
+    // Debounced resize — fires only on true window resize (orientation change, etc.).
+    // ResizeObserver is intentionally omitted: on iOS Safari the fixed #nova-bg
+    // briefly changes height when the toolbar hides/shows on scroll, which would
+    // trigger renderer.setSize() and cause a WebGL flash on every scroll gesture.
+    let _novaResizeTimer;
+    window.addEventListener("resize", () => { clearTimeout(_novaResizeTimer); _novaResizeTimer = setTimeout(resize, 150); });
 
     let controls = null;
     if (CONFIG.enableControls) {

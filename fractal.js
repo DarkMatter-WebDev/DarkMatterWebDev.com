@@ -19,7 +19,6 @@
         let mouseTarget = { x: 0, y: 0 };
         let mouseSmooth = { x: 0, y: 0 };
         let autoRotOffset = 0;
-        let scrollZoomTarget = 0, scrollZoomLerp = 0;
 
         // Global State — defaults overridable via window.FRACTAL_CONFIG
         const state = {
@@ -379,10 +378,6 @@
             // 6. Setup GUI & generate initial fractal
             setupGUI();
             window.addEventListener('resize', onWindowResize);
-            window.addEventListener('scroll', () => {
-                const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
-                scrollZoomTarget = Math.min(window.scrollY / maxScroll, 1);
-            }, { passive: true });
             if (!_cfg.disableHover) {
                 window.addEventListener('mousemove', (e) => {
                     mouseTarget.x = (e.clientX / window.innerWidth) * 2 - 1;
@@ -703,10 +698,6 @@
                 geometry.attributes.position.needsUpdate = true;
                 wasAnimating = false;
             }
-
-            // Scroll zoom: pull camera in as user scrolls down
-            scrollZoomLerp += (scrollZoomTarget - scrollZoomLerp) * 0.04;
-            camera.position.z = 30 - scrollZoomLerp * 18;
 
             // Continuous auto-rotation
             if(particles) {
