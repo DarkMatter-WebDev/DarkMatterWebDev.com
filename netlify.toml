@@ -3,11 +3,33 @@
   publish = "."
   command = ""
 
+# ─── Global security headers ────────────────────────────────────────────────
+# Applied to every response. More-specific rules below override Cache-Control
+# and Link where needed, but these security headers always merge in.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    # Preconnect to external origins loaded on every page or portal pages.
+    # fonts.gstatic.com needs crossorigin because font files use CORS.
+    Link = "<https://cdn.tailwindcss.com>; rel=preconnect, <https://fonts.googleapis.com>; rel=preconnect, <https://fonts.gstatic.com>; rel=preconnect; crossorigin, <https://cdn.jsdelivr.net>; rel=preconnect"
+
+# ─── HTML pages: no CDN caching — always revalidate on Netlify deploy ────────
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# ─── Assets: long-lived immutable cache (versioned via ?v= query strings) ───
 [[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# ─── Redirects ───────────────────────────────────────────────────────────────
 [[redirects]]
   from = "/downloads.html"
   to = "/apps.html"

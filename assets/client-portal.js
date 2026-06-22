@@ -503,10 +503,12 @@ async function renderDashboard(supabase, session) {
     setPanelStatus(els.adminAccountHoldersStatus, "", false);
   }
 
-  const services = await maybeQuery(supabase, config.tables?.services, user.id);
-  const invoices = await maybeQuery(supabase, config.tables?.invoices, user.id);
-  const documents = await maybeQuery(supabase, config.tables?.documents, user.id);
-  const messages = await maybeQuery(supabase, config.tables?.messages, user.id);
+  const [services, invoices, documents, messages] = await Promise.all([
+    maybeQuery(supabase, config.tables?.services, user.id),
+    maybeQuery(supabase, config.tables?.invoices, user.id),
+    maybeQuery(supabase, config.tables?.documents, user.id),
+    maybeQuery(supabase, config.tables?.messages, user.id)
+  ]);
 
   renderList(els.services, services, t.noServices, "services");
   renderInvoices(els.invoices, invoices);

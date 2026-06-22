@@ -2,6 +2,10 @@
 
 This file is intentionally compact. Keep only high-signal recent changes and major milestones.
 
+## 2026-06-22 (doc audit)
+
+- Full project-docs audit against actual disk state. Updated `CURRENT_STATUS.md`, `TASKS.md`, `HANDOFF.md`, `ARCHITECTURE.md` to reflect: MetalsCalc app + portfolio entry, three new portal pages (`account-created.html`, `account-settings.html`, `account-ads-status.html`), removal of black-hole hero video references from ARCHITECTURE, correct Surette brand asset filenames, and stale antique-mall screenshot note. Updated `MEMORY.md` project memory accordingly.
+
 ## 2026-06-22
 
 - Redesigned the `app-catalog.html` application gallery cards to match the Websites/Case Studies (`casestudies.html`) product-listing tiles. Removed the old "DepthFold" 3D `.ux-card` theme system (gradient/glass/orbit-circle CSS and markup) and replaced it with `.portfolio-tile` cards: a 16:10 screenshot media area with a numbered "0X · LIVE DEMO" badge and gradient scrim, cyan/purple tag chips, an `font-headline-md` title, a description, and a hover-reveal "Open profile →" CTA. Grid changed to `grid grid-cols-2 xl:grid-cols-3 gap-3 md:gap-gutter` (2-up mobile, 3-up desktop). The "Let's build yours today" card is the dashed `.portfolio-tile--open` tile. Card screenshots: `assets/apps/auction/auction-dashboard.webp`, `assets/apps/sdms/sdms-dashboard.webp`, `assets/apps/benji/benji-dashboard.webp`, `assets/apps/antique-mall/thirdstreet-home.png`. Added a mobile-only `.portfolio-card-title` size override (the Case Studies title-fit JS/container-query CSS was intentionally not pulled in, since its global `0.72rem` base depends on that script). Verified desktop + mobile in preview: 5 tiles, all images load, no console errors, no horizontal overflow.
