@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MetalsPredictor &mdash; Gold &amp; Silver Trend Analyzer | Surette Data Systems</title>
+<meta name="description" content="Live Au/Ag spot prices, TradingView candlestick charts, RSI, MACD, Bollinger Bands, SMA 20/50/200, and an Analytical Forecast score &mdash; MetalsPredictor puts the full technical picture for precious metals in one free web app."/>
+<meta property="og:site_name" content="Surette Data Systems"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="MetalsPredictor &mdash; Gold &amp; Silver Trend Analyzer"/>
+<meta property="og:description" content="Live spot prices, candlestick charts, RSI, MACD, Bollinger Bands, SMA 20/50/200, and an Analytical Forecast score for Gold and Silver."/>
+<meta property="og:url" content="https://surettesystems.com/metalspredictor-gold-silver-analyzer.html"/>
+<meta property="og:image" content="https://surettesystems.com/assets/apps/metalspredictor/metalspredictor-dashboard.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="MetalsPredictor &mdash; Gold &amp; Silver Trend Analyzer"/>
+<meta name="twitter:description" content="Live spot prices, candlestick charts, RSI, MACD, Bollinger Bands, and an Analytical Forecast score for Gold and Silver."/>
+<meta name="twitter:image" content="https://surettesystems.com/assets/apps/metalspredictor/metalspredictor-dashboard.png"/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png"/>
+<link href="assets/nav.css?v=20260622-fade" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+  #sds-logo a.sds-anchor,
+  #sds-logo-mobile a.sds-anchor {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 11px !important;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 4px 10px 4px 4px;
+    border-radius: 6px;
+    position: relative;
+  }
+  #sds-logo canvas.sds-canvas,
+  #sds-logo-mobile canvas.sds-canvas {
+    display: block !important;
+    flex-shrink: 0 !important;
+  }
+  #sds-logo .sds-text,
+  #sds-logo-mobile .sds-text {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3px !important;
+  }
+  #sds-logo .sds-co,
+  #sds-logo-mobile .sds-co {
+    font-family: 'Exo 2', 'Segoe UI', sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.16em !important;
+    color: #ddeeff !important;
+    line-height: 1 !important;
+    text-transform: uppercase !important;
+    text-shadow: 0 0 12px rgba(0, 190, 255, 0.45) !important;
+  }
+  #sds-logo .sds-sub,
+  #sds-logo-mobile .sds-sub {
+    font-family: 'Exo 2', 'Segoe UI', sans-serif !important;
+    font-size: 8px !important;
+    font-weight: 300 !important;
+    letter-spacing: 0.34em !important;
+    color: #00b8df !important;
+    line-height: 1 !important;
+    opacity: 0.7 !important;
+  }
+</style>
+<script src="assets/tailwind-nav-config.js?v=20260605-menu-consistency"></script>
+<link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/><link href="assets/surette-data-systems-app-profile.css?v=20260608-sds" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",sans-serif;overflow-x:hidden}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24}.glass{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(18px)}.muted{color:#c4c7c7}.cyan{color:#00f0ff}.purple{color:#9b66ff}.gradient-text{background:linear-gradient(135deg,#00f0ff,#7000ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.page{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:128px 64px 96px}.back-link{display:inline-flex;align-items:center;gap:8px;margin:0 0 18px;color:#00f0ff;text-decoration:none;font:700 13px "JetBrains Mono",monospace;letter-spacing:.04em}.back-link:hover{text-decoration:underline}.eyebrow{font:700 12px/1.2 "JetBrains Mono",monospace;letter-spacing:.18em;text-transform:uppercase;color:#00f0ff}.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr);gap:24px;align-items:stretch;margin-bottom:32px}.hero h1{font-family:"Space Grotesk",sans-serif;font-size:clamp(38px,5.5vw,72px);line-height:1.02;margin:14px 0 20px;color:white}.lead{font-size:18px;line-height:1.7;max-width:780px}.panel{border-radius:16px;padding:28px}.stat-grid,.module-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.module-grid{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:18px}.card{border-radius:14px;padding:22px}.card h3,.panel h2{font-family:"Space Grotesk",sans-serif;color:white}.card h3{font-size:20px;margin:12px 0 8px}.panel h2{font-size:32px;margin:0 0 14px}.section{margin-top:24px}.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(0,240,255,.25);background:rgba(0,240,255,.08);border-radius:999px;padding:8px 12px;font:700 11px "JetBrains Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:#00f0ff}.list,.tech-list{display:grid;gap:10px;margin:18px 0 0;padding:0;list-style:none}.list li,.tech-list li{display:flex;gap:10px;color:#c4c7c7;line-height:1.55}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}.button{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;padding:13px 18px;font:700 14px "JetBrains Mono",monospace;text-decoration:none}.primary{background:#39ff14;color:#050505;box-shadow:0 0 28px rgba(57,255,20,.28)}.secondary{border:1px solid rgba(57,255,20,.42);color:#39ff14}.tertiary{border:1px solid rgba(255,255,255,.16);color:#e3e2e2}.split-panel{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:20px}.quote-panel{background:linear-gradient(135deg,rgba(0,240,255,.07),rgba(112,0,255,.08),rgba(57,255,20,.06));border-color:rgba(0,240,255,.18)}@media(max-width:1100px){.hero,.stat-grid,.module-grid,.split-panel{grid-template-columns:1fr}.panel{padding:22px}}
+</style>
+<style>
+.screenshot-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.screenshot-card{display:block;width:100%;overflow:hidden;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.032));border:2px solid rgba(255,255,255,.18);padding:6px;text-align:left;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(0,240,255,.14),0 14px 38px rgba(0,0,0,.28);transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}.screenshot-card:hover,.screenshot-card:focus-visible{transform:translateY(-6px) scale(1.015);border-color:rgba(0,240,255,.58);box-shadow:inset 0 0 0 1px rgba(57,255,20,.24),0 24px 70px rgba(0,240,255,.18);outline:none}.screenshot-card img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top center;background:#08101e;border-radius:9px 9px 0 0;border:1px solid rgba(0,240,255,.2);border-bottom:0}.screenshot-caption{display:block;margin-top:0;padding:14px 16px;border:1px solid rgba(255,255,255,.14);border-top:1px solid rgba(0,240,255,.22);border-radius:0 0 9px 9px;background:rgba(5,5,5,.72)}.screenshot-caption strong{display:block;color:#fff;font-family:"Space Grotesk",sans-serif;font-size:18px;margin-bottom:4px}.screenshot-caption .muted{display:block}.screenshot-modal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:28px;background:rgba(0,0,0,.82);backdrop-filter:blur(14px)}.screenshot-modal[hidden]{display:none}.screenshot-modal__panel{position:relative;width:min(960px,96vw);max-height:92vh;border-radius:16px;background:#08101e;border:1px solid rgba(255,255,255,.16);box-shadow:0 40px 120px rgba(0,0,0,.7);overflow:hidden}.screenshot-modal__close{position:absolute;top:12px;right:12px;z-index:2;display:grid;place-items:center;width:42px;height:42px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(5,5,5,.74);color:#fff;cursor:pointer}.screenshot-modal__image{display:block;width:100%;height:auto;max-height:78vh;object-fit:contain;object-position:top center;background:#08101e}.screenshot-modal__caption{padding:16px 20px 18px;border-top:1px solid rgba(255,255,255,.1)}.screenshot-modal__caption strong{display:block;color:#fff;font-family:"Space Grotesk",sans-serif;font-size:22px;margin-bottom:4px}.app-footer{position:relative;z-index:1;background:#050505;border-top:1px solid rgba(255,255,255,.05)}.app-footer{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:36px 64px}.footer-brand{display:flex;align-items:center;gap:12px;line-height:1}.footer-brand__icon{width:42px;height:52px;border-radius:0;object-fit:contain;background:transparent;filter:drop-shadow(0 0 10px rgba(168,85,247,.22))}.footer-brand__copy{display:flex;flex-direction:column;gap:4px}.footer-brand strong{font-family:"Space Grotesk",sans-serif;font-size:28px;color:#fff}.footer-brand span,.footer-links a,.footer-copy{font:700 10px "JetBrains Mono",monospace;letter-spacing:.18em;text-transform:uppercase;color:#8e9192}.footer-links{display:flex;flex-wrap:wrap;gap:18px}.footer-links a{text-decoration:none}.footer-links a:hover{color:#00f0ff}.footer-copy{text-align:right;line-height:1.7}@media(max-width:1100px){.screenshot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.screenshot-caption .muted{display:none}.app-footer{flex-direction:column;text-align:center;padding:34px 20px 2rem}.footer-copy{text-align:center}.footer-links{justify-content:center}}@media(max-width:640px){.screenshot-grid{grid-template-columns:1fr}}
+</style>
+<style>
+.predictor-flow-visual{position:relative;margin-top:24px;border-radius:14px;overflow:hidden;background:radial-gradient(circle at 12% 18%,rgba(0,240,255,.22),transparent 26%),radial-gradient(circle at 85% 18%,rgba(57,255,20,.16),transparent 28%),radial-gradient(circle at 50% 90%,rgba(112,0,255,.22),transparent 32%),linear-gradient(135deg,rgba(5,5,5,.72),rgba(8,12,20,.92));border:1px solid rgba(0,240,255,.12);box-shadow:inset 0 0 0 1px rgba(0,240,255,.07);display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:16px;align-items:start}.predictor-flow-visual:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:28px 28px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.95),transparent 94%);pointer-events:none}.predictor-step{position:relative;display:grid;gap:4px;padding:12px 13px;border-radius:12px;background:rgba(5,5,5,.68);border:1px solid rgba(0,240,255,.28);box-shadow:0 12px 28px rgba(0,0,0,.24)}.predictor-step strong{color:#fff;font:700 11px "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase}.predictor-step small{color:#c4c7c7;font-size:11px;line-height:1.35}.predictor-step .material-symbols-outlined{display:grid;place-items:center;width:30px;height:30px;margin-bottom:4px;border-radius:10px;background:linear-gradient(135deg,rgba(0,240,255,.22),rgba(112,0,255,.14));color:#00f0ff}@media(max-width:768px){.predictor-flow-visual{grid-template-columns:1fr 1fr}}@media(max-width:400px){.predictor-flow-visual{grid-template-columns:1fr}}
+</style>
+<link href="assets/surette-data-systems-app-profile-compact.css?v=20260608" rel="stylesheet"/>
+</head>
+<body class="cosmic-page cosmic-tint-services">
+<div class="fixed inset-0 z-0 pointer-events-none"><div class="absolute inset-0 cosmic-web-bg opacity-70"></div><div class="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(5,5,5,0.48),#050505_84%)]"></div></div>
+<script src="assets/standard-site-nav.js?v=20260609-services-nohref" data-active="apps"></script>
+<main class="page">
+<div class="app-profile-topbar">
+<a class="back-link" href="app-catalog.html"><span class="material-symbols-outlined">arrow_back</span>Back to Apps Gallery</a>
+<p class="sds-app-credit"><img class="sds-app-credit__mark" src="assets/surette-data-systems-geometric-icon.webp" width="18" height="22" alt="" aria-hidden="true"/><span>A <strong>Surette Data Systems</strong> app</span></p>
+</div>
+<section class="hero">
+<article class="panel glass" style="grid-column:1/-1">
+<p class="eyebrow">Precious Metals Analytics</p>
+<h1>MetalsPredictor &mdash; Gold &amp; Silver Trend Analyzer</h1>
+<p class="lead muted">MetalsPredictor delivers live Au/Ag spot prices with full technical analysis &mdash; RSI, MACD, Bollinger Bands, and SMA 20/50/200 &mdash; and synthesizes every indicator into a single Analytical Forecast score so you can read precious metal trends at a glance.</p>
+<div class="actions">
+<a class="button primary" href="https://chrisappmet.netlify.app" target="_blank" rel="noopener noreferrer">Launch App <span class="material-symbols-outlined">open_in_new</span></a>
+<a class="button tertiary" href="contact.html">Contact</a>
+</div>
+<p class="app-profile-scroll-cue">More app details below <span class="material-symbols-outlined" aria-hidden="true">keyboard_arrow_down</span></p>
+</article>
+</section>
+<section class="section panel glass" id="app-screenshots">
+<p class="eyebrow">App Screenshots</p>
+<h2>Live charts, indicators, and forecast &mdash; one dashboard.</h2>
+<div class="screenshot-grid">
+<button type="button" class="screenshot-card" data-screenshot="assets/apps/metalspredictor/metalspredictor-dashboard.png" data-title="Full Dashboard" data-caption="Complete MetalsPredictor dashboard showing live Gold spot price, candlestick chart with Bollinger Bands, Analytical Forecast score, RSI and MACD charts, and the indicator breakdown table all in one view."><img src="assets/apps/metalspredictor/metalspredictor-dashboard.png" alt="MetalsPredictor full dashboard showing live Gold spot price, candlestick chart, Analytical Forecast score, RSI, MACD, and indicator breakdown table" loading="lazy"/><span class="screenshot-caption"><strong>Full Dashboard</strong><span class="muted">Spot price, candlestick chart, forecast score, RSI, MACD, and indicator table in one scrollable view.</span></span></button>
+<button type="button" class="screenshot-card" data-screenshot="assets/apps/metalspredictor/metalspredictor-chart.png" data-title="Chart &amp; Analytical Forecast" data-caption="Header with Gold/Silver tab selector and live spot price panels, followed by the TradingView candlestick chart with Bollinger Bands overlay, and the Analytical Forecast panel showing the consensus trend score and gauge."><img src="assets/apps/metalspredictor/metalspredictor-chart.png" alt="MetalsPredictor candlestick chart with Bollinger Bands and the Analytical Forecast score panel showing trend strength gauge" loading="lazy"/><span class="screenshot-caption"><strong>Chart &amp; Analytical Forecast</strong><span class="muted">TradingView candlestick chart with Bollinger Bands and the trend forecast score gauge side-by-side.</span></span></button>
+<button type="button" class="screenshot-card" data-screenshot="assets/apps/metalspredictor/metalspredictor-indicators.png" data-title="Indicator Breakdown" data-caption="RSI(14) and MACD(12/26/9) momentum charts followed by the full indicator breakdown table listing all six signals — SMA 20, SMA 50, SMA 200, Bollinger Bands, RSI, and MACD — with their individual score contributions to the Analytical Forecast."><img src="assets/apps/metalspredictor/metalspredictor-indicators.png" alt="MetalsPredictor RSI and MACD charts with the indicator breakdown table showing score contributions for all six technical signals" loading="lazy"/><span class="screenshot-caption"><strong>RSI, MACD &amp; Indicator Breakdown</strong><span class="muted">Momentum charts and a per-indicator score table showing each signal&rsquo;s contribution to the overall forecast.</span></span></button>
+</div>
+</section>
+<section class="section panel glass quote-panel">
+<p class="eyebrow purple">The Problem</p>
+<h2>Precious metal signals are scattered across five different tools.</h2>
+<p class="muted">Reading RSI in one tab, MACD in another, checking spot price on a third site &mdash; there&rsquo;s no single place that turns all those signals into a clear directional read. MetalsPredictor consolidates live pricing, chart analysis, and six technical indicators into one dashboard with a single Analytical Forecast score at the top.</p>
+<div class="predictor-flow-visual" aria-hidden="true">
+<div class="predictor-step"><span class="material-symbols-outlined">swap_horiz</span><strong>Select Metal</strong><small>Switch between Gold (XAU) and Silver (XAG) with a single tab click.</small></div>
+<div class="predictor-step"><span class="material-symbols-outlined">price_change</span><strong>Spot Price</strong><small>Live Au/Ag price and 24-hour change pulled automatically and displayed at the top.</small></div>
+<div class="predictor-step"><span class="material-symbols-outlined">candlestick_chart</span><strong>Chart &amp; Signals</strong><small>TradingView candlestick chart with Bollinger Bands, RSI(14), and MACD(12/26/9) charted below.</small></div>
+<div class="predictor-step"><span class="material-symbols-outlined">analytics</span><strong>Forecast Score</strong><small>All six indicators weighted and combined into a single trend score with a visual gauge.</small></div>
+</div>
+</section>
+<section class="stat-grid">
+<div class="card glass"><span class="pill">Spot Pricing</span><h3>Live Au &amp; Ag</h3><p class="muted">Real-time Gold and Silver spot prices with 24-hour change displayed in large, readable panels at the top of the dashboard.</p></div>
+<div class="card glass"><span class="pill">Technical Analysis</span><h3>6 Indicators</h3><p class="muted">SMA 20, SMA 50, SMA 200, Bollinger Bands, RSI(14), and MACD(12/26/9) &mdash; all calculated and displayed in one place.</p></div>
+<div class="card glass"><span class="pill">Analytical Forecast</span><h3>Consensus Score</h3><p class="muted">A weighted score from 0&ndash;100 synthesized across all six indicators, with a trend direction label and gauge visualization.</p></div>
+<div class="card glass"><span class="pill">Timeframes</span><h3>7D &middot; 1M &middot; 3M &middot; 1Y</h3><p class="muted">Switch between weekly, monthly, quarterly, and yearly chart ranges to track trend context at any time horizon.</p></div>
+</section>
+<section class="section split-panel">
+<article class="panel glass">
+<p class="eyebrow">Runs in Any Browser</p>
+<h2>No install. No account. Free to use.</h2>
+<ul class="tech-list">
+<li><span class="material-symbols-outlined cyan">public</span>Opens directly in Chrome, Firefox, Safari, or Edge &mdash; no download or app store required.</li>
+<li><span class="material-symbols-outlined cyan">swap_horiz</span>Gold and Silver tabs let you switch between metals without leaving the page.</li>
+<li><span class="material-symbols-outlined cyan">candlestick_chart</span>TradingView-powered charting with professional-grade candlesticks and Bollinger Band overlay.</li>
+<li><span class="material-symbols-outlined cyan">table_chart</span>Indicator Breakdown table lists every signal with its individual score contribution, so you can see exactly what&rsquo;s driving the forecast.</li>
+</ul>
+</article>
+<aside class="panel glass">
+<p class="eyebrow purple">Who It Fits</p>
+<ul class="tech-list">
+<li><span class="material-symbols-outlined cyan">savings</span>Precious metal investors tracking Au/Ag momentum for buy and sell timing decisions.</li>
+<li><span class="material-symbols-outlined cyan">storefront</span>Coin dealers and bullion buyers who want a quick technical read before making a purchase.</li>
+<li><span class="material-symbols-outlined cyan">trending_up</span>Traders who rely on RSI and MACD signals and want them all in one place for metals.</li>
+<li><span class="material-symbols-outlined cyan">diamond</span>Collectors researching precious metal price cycles before significant purchases.</li>
+</ul>
+</aside>
+</section>
+<section class="section panel glass" id="indicator-modules">
+<p class="eyebrow">Indicators &amp; Features</p>
+<h2>Everything a precious-metal analyst needs in one view.</h2>
+<div class="module-grid">
+<div class="card glass"><span class="material-symbols-outlined cyan">price_change</span><h3>Live Spot Price</h3><p class="muted">Real-time Gold and Silver prices with the 24-hour dollar and percentage change shown at a glance.</p></div>
+<div class="card glass"><span class="material-symbols-outlined cyan">candlestick_chart</span><h3>Candlestick Chart</h3><p class="muted">TradingView-powered OHLC candlestick chart with Bollinger Bands overlay for volatility and trend context.</p></div>
+<div class="card glass"><span class="material-symbols-outlined cyan">show_chart</span><h3>SMA 20 / 50 / 200</h3><p class="muted">Three simple moving averages covering short, medium, and long-term trend direction for both metals.</p></div>
+<div class="card glass"><span class="material-symbols-outlined cyan">align_horizontal_center</span><h3>Bollinger Bands</h3><p class="muted">20-period Bollinger Bands showing price volatility channels and potential breakout and mean-reversion zones.</p></div>
+<div class="card glass"><span class="material-symbols-outlined cyan">speed</span><h3>RSI (14)</h3><p class="muted">14-period Relative Strength Index charted below the main price chart to identify overbought and oversold conditions.</p></div>
+<div class="card glass"><span class="material-symbols-outlined cyan">stacked_line_chart</span><h3>MACD (12/26/9)</h3><p class="muted">MACD line, signal line, and histogram with standard 12/26/9 settings for momentum confirmation.</p></div>
+<div class="card glass"><span class="material-symbols-outlined cyan">analytics</span><h3>Analytical Forecast</h3><p class="muted">A weighted consensus score from all six indicators combined into one trend gauge with a directional label.</p></div>
+<div class="card glass"><span class="material-symbols-outlined cyan">table_chart</span><h3>Indicator Breakdown</h3><p class="muted">Per-indicator score contribution table showing exactly how each signal weighted into the overall forecast.</p></div>
+<div class="card glass"><span class="material-symbols-outlined cyan">swap_horiz</span><h3>Gold &amp; Silver Tabs</h3><p class="muted">Instant switching between XAU and XAG &mdash; all charts, prices, and indicator readings update to the selected metal.</p></div>
+</div>
+</section>
+<section class="section panel glass">
+<p class="eyebrow">Try It Free</p>
+<h2>Open MetalsPredictor in any browser &mdash; no install required.</h2>
+<p class="muted">MetalsPredictor runs entirely in your browser. Open it on any desktop or laptop and get live Au/Ag spot prices, full technical indicator charts, and the Analytical Forecast score in seconds &mdash; no account, no login, and no download needed.</p>
+<div class="actions"><a class="button primary" href="https://chrisappmet.netlify.app" target="_blank" rel="noopener noreferrer">Launch App <span class="material-symbols-outlined">open_in_new</span></a><a class="button tertiary" href="contact.html">Contact</a></div>
+</section>
+</main>
+<div class="screenshot-modal" id="screenshotModal" role="dialog" aria-modal="true" aria-labelledby="screenshotModalTitle" hidden>
+<div class="screenshot-modal__panel">
+<button type="button" class="screenshot-modal__close" aria-label="Close screenshot preview"><span class="material-symbols-outlined">close</span></button>
+<img class="screenshot-modal__image" src="" alt=""/>
+<div class="screenshot-modal__caption"><strong id="screenshotModalTitle"></strong><span class="muted" id="screenshotModalCaption"></span></div>
+</div>
+</div>
+<footer class="app-footer"><div class="footer-brand"><img class="footer-brand__icon" src="assets/surette-data-systems-geometric-icon.webp" width="42" height="52" alt="" aria-hidden="true"/><div class="footer-brand__copy"><strong>SURETTE DATA SYSTEMS</strong><span>Business Software by Surette Data Systems</span></div></div><nav class="footer-links" aria-label="Footer navigation"><a href="apps.html">Services</a><a href="apps.html">Apps</a><a href="contact.html">Contact</a></nav><div class="footer-copy">&copy; 2026 Surette Data Systems<br/>Call or text (239) 404-8505</div></footer>
+<script>
+(function(){
+var modal=document.getElementById("screenshotModal");if(!modal)return;
+var image=modal.querySelector(".screenshot-modal__image");
+var title=document.getElementById("screenshotModalTitle");
+var caption=document.getElementById("screenshotModalCaption");
+var closeButton=modal.querySelector(".screenshot-modal__close");
+var lastTrigger=null;
+function openModal(button){lastTrigger=button;image.src=button.dataset.screenshot||"";image.alt=button.querySelector("img")?.alt||"";title.textContent=button.dataset.title||"";caption.textContent=button.dataset.caption||"";modal.hidden=false;document.body.style.overflow="hidden";closeButton.focus();}
+function closeModal(){modal.hidden=true;document.body.style.overflow="";image.src="";if(lastTrigger)lastTrigger.focus();}
+document.querySelectorAll(".screenshot-card[data-screenshot]").forEach(function(button){button.addEventListener("click",function(){openModal(button);});});
+closeButton.addEventListener("click",closeModal);
+modal.addEventListener("click",function(event){if(event.target===modal)closeModal();});
+document.addEventListener("keydown",function(event){if(event.key==="Escape"&&!modal.hidden)closeModal();});
+})();
+</script>
+<script src="assets/mobile-services-nav.js?v=20260609-services-trim"></script>
+<script src="assets/account-nav.js?v=20260611-no-lang"></script>
+<script src="surette-logo.js?v=2"></script>
+<script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
+</body>
+</html>
