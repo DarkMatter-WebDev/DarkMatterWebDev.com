@@ -1,7 +1,15 @@
-﻿﻿<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
-<html class="dark" lang="en"><head>
+<html class="dark" style="background:#050505" lang="en"><head>
 <meta charset="utf-8"/>
+<style>
+  /* Inline so it applies before any external stylesheet loads */
+  html,body{background:#050505}
+  #page-loader{position:fixed;inset:0;z-index:9999;background:#050505;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;transition:opacity 0.5s ease;pointer-events:none}
+  #page-loader.fade-out{opacity:0}
+  @keyframes sds-loader-spin{to{transform:rotate(360deg)}}
+  #page-loader svg{animation:sds-loader-spin 0.9s linear infinite}
+</style>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
 <title>Surette Data Systems | Software · Websites · Business Tech · Southwest Florida</title>
@@ -24,7 +32,7 @@
 <meta name="twitter:title" content="Surette Data Systems | Software · Websites · Business Tech · Southwest Florida"/>
 <meta name="twitter:description" content="Custom business software, managed websites, web apps, branding, and on-site tech for Southwest Florida businesses — built and maintained by Surette Data Systems."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
-<link href="assets/nav.css?v=20260624-enter" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="assets/nav.css?v=20260624-transition" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
   #sds-logo a.sds-anchor,
   #sds-logo-mobile a.sds-anchor {
@@ -415,6 +423,14 @@
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/","gsap":"https://unpkg.com/gsap@3.12.5/index.js"}}</script>
 </head>
 <body class="bg-void-black text-on-background font-body-md overflow-x-hidden selection:bg-electric-cyan selection:text-void-black">
+<!-- Loading overlay — shown until surette-logo.js fires page reveal -->
+<div id="page-loader" aria-hidden="true">
+  <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="23" cy="23" r="19" stroke="rgba(0,240,255,0.12)" stroke-width="3"/>
+    <path d="M23 4 A19 19 0 0 1 42 23" stroke="#00f0ff" stroke-width="3" stroke-linecap="round"/>
+  </svg>
+  <span style="font-family:Consolas,'Courier New',monospace;font-size:10px;letter-spacing:.22em;color:rgba(0,240,255,0.4);text-transform:uppercase">Loading</span>
+</div>
 <!-- Nova particle background widget mount (replaces former black-hole hero). Occupies the same fixed full-viewport hero slot. -->
 <div id="nova-bg" aria-hidden="true" style="position:fixed;inset:0;z-index:1;overflow:hidden;background:#160016;"></div>
 <!-- Anchored darkening scrim over the Nova background. Fixed to the viewport (sits above #nova-bg at z-1, below all page content at z-10) so it stays put while text scrolls freely. -->
@@ -465,13 +481,6 @@
 <!-- Hero Section -->
 <section id="hero" class="relative min-h-screen flex flex-col overflow-hidden"><div class="scanline z-[3] pointer-events-none"></div>
 <div class="hero-headline-band relative z-10 w-full mx-auto px-margin-desktop text-center">
-<!-- Skeleton: visible during the 0.38s fade-in, hidden once content is ready -->
-<div class="skel-hero" aria-hidden="true" style="margin-bottom:0">
-  <div class="skel-bar" style="height:13px;width:88px;margin:0 auto 16px"></div>
-  <div class="skel-bar" style="height:58px;width:400px;max-width:88%;margin:0 auto 32px"></div>
-  <div class="skel-bar" style="height:13px;width:360px;max-width:82%;margin:0 auto 9px"></div>
-  <div class="skel-bar" style="height:13px;width:280px;max-width:70%;margin:0 auto 0"></div>
-</div>
 <p class="hero-enter hero-enter-d0 text-on-surface-variant text-xl font-semibold tracking-widest uppercase mb-3 drop-shadow-[0_2px_12px_rgba(0,0,0,0.75)]">Welcome to</p>
 <h1 class="hero-enter hero-enter-d1 hero-headline-wide font-headline-xl font-bold text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.85)]">Surette Data Systems</h1>
 <p class="hero-enter hero-enter-d2 text-on-surface-variant mt-12 drop-shadow-[0_2px_16px_rgba(0,0,0,0.75)] text-2xl font-bold tracking-wide max-w-lg mx-auto">Custom business software, web apps, websites, hosting, branding, and on-site tech for Southwest Florida.</p>
@@ -729,13 +738,6 @@ Contact Us
 <main class="relative z-10 pt-16 pb-24">
 <!-- Hero Section -->
 <section id="hero-mobile" class="relative min-h-[100vh] flex flex-col overflow-hidden"><div class="hero-headline-band relative z-10 w-full mx-auto px-margin-mobile text-center pt-20">
-<!-- Skeleton: visible during the 0.38s fade-in, hidden once content is ready -->
-<div class="skel-hero" aria-hidden="true" style="margin-bottom:0">
-  <div class="skel-bar" style="height:12px;width:80px;margin:0 auto 14px"></div>
-  <div class="skel-bar" style="height:46px;width:280px;max-width:86%;margin:0 auto 24px"></div>
-  <div class="skel-bar" style="height:12px;width:260px;max-width:80%;margin:0 auto 8px"></div>
-  <div class="skel-bar" style="height:12px;width:200px;max-width:70%;margin:0 auto 0"></div>
-</div>
 <p class="hero-enter hero-enter-d0 text-on-surface-variant text-xl font-semibold tracking-widest uppercase mb-3 drop-shadow-[0_2px_12px_rgba(0,0,0,0.75)]">Welcome to</p>
 <h1 class="hero-enter hero-enter-d1 hero-headline-wide font-headline-xl font-bold text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.85)]">Surette Data Systems</h1>
 <p class="hero-enter hero-enter-d2 font-body-md text-on-surface-variant mt-5 drop-shadow-[0_2px_16px_rgba(0,0,0,0.75)]">Custom business software, web apps, websites, hosting, branding, and on-site tech for Southwest Florida.</p>
@@ -1078,6 +1080,6 @@ Contact Us
       renderer.render(scene, camera);
     });
 </script>
-<script src="surette-logo.js?v=3"></script>
+<script src="surette-logo.js?v=4"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
 </body></html>

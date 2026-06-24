@@ -102,15 +102,13 @@ html.page-content-ready .skel-hero { display: none !important; }
 .hero-enter {
   opacity: 0;
   transform: translateY(14px);
+  transition: opacity .55s ease, transform .55s ease;
 }
-@keyframes hero-enter {
-  to { opacity: 1; transform: none; }
-}
-html.page-content-ready .hero-enter        { animation: hero-enter .55s ease both; }
-html.page-content-ready .hero-enter-d0     { animation-delay: .04s; }
-html.page-content-ready .hero-enter-d1     { animation-delay: .16s; }
-html.page-content-ready .hero-enter-d2     { animation-delay: .28s; }
-html.page-content-ready .hero-enter-d3     { animation-delay: .42s; }
+html.page-content-ready .hero-enter        { opacity: 1; transform: none; }
+html.page-content-ready .hero-enter-d0     { transition-delay: .04s; }
+html.page-content-ready .hero-enter-d1     { transition-delay: .16s; }
+html.page-content-ready .hero-enter-d2     { transition-delay: .28s; }
+html.page-content-ready .hero-enter-d3     { transition-delay: .42s; }
 
 /* ── Scroll reveal ───────────────────────────────────────────────────────── */
 .reveal-up {
@@ -122,8 +120,7 @@ html.page-content-ready .hero-enter-d3     { animation-delay: .42s; }
 
 @media (prefers-reduced-motion: reduce) {
   .skel-bar                                { animation: none; }
-  .hero-enter                              { opacity: 1 !important; transform: none !important; }
-  html.page-content-ready .hero-enter      { animation: none; }
+  .hero-enter                              { opacity: 1 !important; transform: none !important; transition: none; }
   .reveal-up                               { opacity: 1; transform: none; transition: none; }
 }
 

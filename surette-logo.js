@@ -346,12 +346,23 @@
   // canvas jump and Tailwind FOUC from being visible.
   function dmRevealPage() {
     document.documentElement.style.opacity = '1';
-    // After the 0.38s CSS fade-in completes, mark content ready so hero-enter
-    // animations and skeleton hiding kick in.
+
+    // Fade the loading spinner out immediately — it sits above the page while
+    // the html opacity transition runs, then disappears revealing live content.
+    var loader = document.getElementById('page-loader');
+    if (loader) {
+      loader.classList.add('fade-out');
+      setTimeout(function () {
+        if (loader.parentNode) loader.parentNode.removeChild(loader);
+      }, 550);
+    }
+
+    // Mark content ready shortly after reveal so hero-enter animations fire
+    // while the spinner is still fading — creates a cinematic overlap.
     setTimeout(function () {
       document.documentElement.classList.add('page-content-ready');
       initScrollReveal();
-    }, 420);
+    }, 120);
   }
 
   // Scroll reveal — observes any .reveal-up elements and adds .in-view when
