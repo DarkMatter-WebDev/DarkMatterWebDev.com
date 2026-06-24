@@ -14,19 +14,17 @@
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="Client Login | Surette Data Systems"/>
 <meta property="og:description" content="Client login for Surette Data Systems accounts, active services, support status, and recurring billing information."/>
-<meta property="og:url" content="https://darkmatterwebdev.com/account.html"/>
-<meta property="og:image" content="https://darkmatterwebdev.com/assets/surette-data-systems-og.png"/>
+<meta property="og:url" content="https://surettesystems.com/account.html"/>
+<meta property="og:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <meta property="og:image:alt" content="Surette Data Systems - managed websites and local IT support"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Client Login | Surette Data Systems"/>
 <meta name="twitter:description" content="Client login for Surette Data Systems accounts, active services, support status, and recurring billing information."/>
-<meta name="twitter:image" content="https://darkmatterwebdev.com/assets/surette-data-systems-og.png"/>
+<meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
 <link href="assets/nav.css?v=20260622-fade" rel="stylesheet"/>
-<link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/>
-<link href="assets/powered-by-badge.css?v=20260609-badge-fix" rel="stylesheet"/>
-<link href="assets/client-portal.css?v=20260615-admin-accounts" rel="stylesheet"/>
+<link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/><link href="assets/client-portal.css?v=20260615-admin-accounts" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
   #sds-logo a.sds-anchor,
@@ -170,7 +168,7 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <section class="client-portal-grid">
 <div class="client-portal-card client-portal-panel" data-client-intro>
 <div class="client-portal-kicker">Login Portal</div>
-<h1 class="client-portal-title client-portal-title--split"><span>Your <span class="client-portal-brand-wordmark">Dark Matter</span></span><small>client wormhole</small></h1>
+<h1 class="client-portal-title client-portal-title--split"><span>Your <span class="client-portal-brand-wordmark">Surette Data Systems</span></span><small>client wormhole</small></h1>
 <div class="client-source-banner" data-seansads-banner hidden><span class="material-symbols-outlined" aria-hidden="true">ads_click</span><p><strong>Sean's Ads console ready.</strong> This portal will become your customized Google Ads management console for campaign notes, plan choices, requests, and status updates. <a href="https://seansads.com/">Back to Sean's Google Ads</a></p></div>
 </div>
 <div class="client-portal-card client-portal-panel" data-auth-panel>
@@ -185,6 +183,7 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <button class="client-portal-button" type="submit" data-client-action><span class="material-symbols-outlined">login</span>Sign In</button>
 <button class="client-portal-button client-portal-button--secondary" type="button" data-client-signup-open><span class="material-symbols-outlined">person_add</span>Create Account</button>
 </div>
+<button type="button" id="forgot-pw-btn" class="font-label-mono text-[11px] text-outline hover:text-electric-cyan transition-colors mt-1">Forgot password?</button>
 </form>
 <div class="client-portal-status" data-client-status></div>
 </div>
@@ -210,7 +209,7 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 </nav>
 <div class="client-workspace-grid">
 <a class="client-workspace-card client-workspace-card--status" href="#client-documents"><span class="material-symbols-outlined">description</span><strong>Shared documents</strong><small>Contracts, deliverables, reports, and files shared with your account.</small></a>
-<a class="client-workspace-card client-workspace-card--traffic" href="#client-messages"><span class="material-symbols-outlined">mail</span><strong>Portal messages</strong><small>Updates, notes, and replies from your Dark Matter workspace.</small></a>
+<a class="client-workspace-card client-workspace-card--traffic" href="#client-messages"><span class="material-symbols-outlined">mail</span><strong>Portal messages</strong><small>Updates, notes, and replies from your Surette Data Systems workspace.</small></a>
 <a class="client-workspace-card client-workspace-card--request" href="#client-contact"><span class="material-symbols-outlined">send</span><strong>Send a change</strong><small>Ask a question or queue website updates directly from your account.</small></a>
 <a class="client-workspace-card client-workspace-card--settings" href="account-settings.html"><span class="material-symbols-outlined">tune</span><strong>Account settings</strong><small>Update your profile, password, contact details, and workspace preferences.</small></a>
 </div>
@@ -232,7 +231,7 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <div>
 <div class="client-portal-kicker">Owner Admin Console</div>
 <h3>Super user access</h3>
-<p>Your owner account can open member portal views and future admin tools from inside the normal Dark Matter account dashboard.</p>
+<p>Your owner account can open member portal views and future admin tools from inside the normal Surette Data Systems account dashboard.</p>
 </div>
 <span class="client-super-admin-badge"><span class="material-symbols-outlined">admin_panel_settings</span>Owner only</span>
 </div>
@@ -296,13 +295,19 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <button class="client-modal__close" type="button" aria-label="Close signup" data-client-signup-close><span class="material-symbols-outlined">close</span></button>
 <div class="client-portal-kicker">Create Account</div>
 <h2 id="signup-title" class="text-3xl font-headline text-white mt-3 mb-3">Create your client account.</h2>
-<p class="client-muted mb-5">Use the email you want connected to your Dark Matter services. After signup, we will attach your website records, support details, and billing information.</p>
+<p class="client-muted mb-5">Use the email you want connected to your Surette Data Systems services. After signup, we will attach your website records, support details, and billing information.</p>
 <form class="client-portal-form" data-client-signup-form novalidate>
 <label class="client-portal-label">Full name<input class="client-portal-input" type="text" autocomplete="name" required data-signup-name placeholder="Your name"/></label>
 <label class="client-portal-label">Phone<input class="client-portal-input" type="tel" autocomplete="tel" data-signup-phone placeholder="Best phone number"/></label>
 <label class="client-portal-label">Email address<input class="client-portal-input" type="email" autocomplete="email" required data-signup-email placeholder="client@example.com"/></label>
 <label class="client-portal-label">Password<input class="client-portal-input" type="password" autocomplete="new-password" required minlength="6" data-signup-password placeholder="Create a password"/></label>
 <label class="client-portal-label">Confirm password<input class="client-portal-input" type="password" autocomplete="new-password" required minlength="6" data-signup-password-confirm placeholder="Type it again"/></label>
+<div class="flex items-start gap-3 mt-2">
+  <input type="checkbox" id="tos-agree" required class="mt-1 w-4 h-4 accent-electric-cyan flex-shrink-0" />
+  <label for="tos-agree" class="font-label-mono text-[11px] text-on-surface-variant leading-snug">
+    I agree to the <a href="terms.html" class="text-electric-cyan hover:underline">Terms of Service</a> and <a href="privacy.html" class="text-electric-cyan hover:underline">Privacy Policy</a>
+  </label>
+</div>
 <button class="client-portal-button client-portal-button--secondary" type="submit" data-signup-submit><span class="material-symbols-outlined">person_add</span>Create Account</button>
 </form>
 <div class="client-portal-status" data-signup-status></div>
@@ -335,4 +340,12 @@ window.DM_CLIENT_PORTAL_COPY = {
 <script src="surette-logo.js?v=2"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
 <script type="module" src="fractal.js"></script>
+<script>
+document.getElementById('forgot-pw-btn')?.addEventListener('click', async () => {
+  const email = document.querySelector('#sign-in-email, input[type="email"]')?.value?.trim()
+  if (!email) { alert('Enter your email address first.'); return; }
+  const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: window.location.origin + '/account-settings.html' })
+  if (error) { alert('Error: ' + error.message); } else { alert('Password reset email sent. Check your inbox.'); }
+})
+</script>
 </body></html>

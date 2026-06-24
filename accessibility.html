@@ -1,0 +1,546 @@
+﻿<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Accessibility Statement | Surette Data Systems</title>
+<meta name="description" content="Surette Data Systems is committed to making our website accessible to everyone. Learn about our WCAG 2.2 AA compliance efforts."/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png"/>
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<meta name="theme-color" content="#050505"/>
+<meta property="og:site_name" content="Surette Data Systems"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Accessibility Statement | Surette Data Systems"/>
+<meta property="og:description" content="Surette Data Systems is committed to making our website accessible to everyone. Learn about our WCAG 2.2 AA compliance efforts."/>
+<meta property="og:url" content="https://darkmatterwebdev.com/accessibility.html"/>
+<meta property="og:image" content="https://darkmatterwebdev.com/assets/surette-data-systems-og.png"/>
+<link href="assets/nav.css?v=20260622-fade" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+  #sds-logo a.sds-anchor,
+  #sds-logo-mobile a.sds-anchor {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 11px !important;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 4px 10px 4px 4px;
+    border-radius: 6px;
+    position: relative;
+  }
+  #sds-logo canvas.sds-canvas,
+  #sds-logo-mobile canvas.sds-canvas {
+    display: block !important;
+    flex-shrink: 0 !important;
+  }
+  #sds-logo .sds-text,
+  #sds-logo-mobile .sds-text {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3px !important;
+  }
+  #sds-logo .sds-co,
+  #sds-logo-mobile .sds-co {
+    font-family: 'Exo 2', 'Segoe UI', sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.16em !important;
+    color: #ddeeff !important;
+    line-height: 1 !important;
+    text-transform: uppercase !important;
+    text-shadow: 0 0 12px rgba(0, 190, 255, 0.45) !important;
+  }
+  #sds-logo .sds-sub,
+  #sds-logo-mobile .sds-sub {
+    font-family: 'Exo 2', 'Segoe UI', sans-serif !important;
+    font-size: 8px !important;
+    font-weight: 300 !important;
+    letter-spacing: 0.34em !important;
+    color: #00b8df !important;
+    line-height: 1 !important;
+    opacity: 0.7 !important;
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Plus+Jakarta+Sans:wght@300..800&amp;family=JetBrains+Mono:wght@100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-background": "#e3e2e2",
+          "deep-space-grey": "#1A1A1A",
+          "primary-container": "#050505",
+          "on-surface": "#e3e2e2",
+          "void-black": "#050505",
+          "on-surface-variant": "#c4c7c7",
+          "surface-container-high": "#292a2a",
+          "on-tertiary-container": "#00848d",
+          "surface": "#121414",
+          "surface-container-low": "#1a1c1c",
+          "on-tertiary-fixed-variant": "#004f54",
+          "tertiary": "#00dbe9",
+          "electric-cyan": "#00F0FF",
+          "surface-bright": "#383939",
+          "on-tertiary": "#00363a",
+          "on-primary": "#313030",
+          "surface-container-highest": "#343535",
+          "on-secondary-container": "#ddcdff",
+          "secondary": "#d1bcff",
+          "surface-container": "#1f2020",
+          "background": "#121414",
+          "outline": "#8e9192",
+          "surface-container-lowest": "#0d0e0f",
+          "primary-fixed": "#e5e2e1",
+          "on-secondary": "#3c0090",
+          "on-error": "#690005",
+          "on-primary-fixed": "#1c1b1b",
+          "on-primary-container": "#797777",
+          "tertiary-fixed-dim": "#00dbe9",
+          "on-error-container": "#ffdad6",
+          "surface-dim": "#121414",
+          "surface-tint": "#c9c6c5",
+          "tertiary-container": "#000607",
+          "on-primary-fixed-variant": "#474646",
+          "nebula-purple": "#7000FF",
+          "inverse-primary": "#5f5e5e",
+          "on-secondary-fixed-variant": "#5700c9",
+          "secondary-container": "#7000ff",
+          "error-container": "#93000a",
+          "tertiary-fixed": "#7df4ff",
+          "error": "#ffb4ab",
+          "inverse-on-surface": "#2f3131",
+          "primary-fixed-dim": "#c9c6c5",
+          "secondary-fixed-dim": "#d1bcff",
+          "primary": "#c9c6c5",
+          "on-secondary-fixed": "#23005b",
+          "starlight-white": "#FFFFFF",
+          "surface-variant": "#343535",
+          "inverse-surface": "#e3e2e2",
+          "on-tertiary-fixed": "#002022",
+          "outline-variant": "#444748",
+          "secondary-fixed": "#e9ddff"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "unit": "8px",
+          "margin-desktop": "64px",
+          "margin-mobile": "20px",
+          "gutter": "24px",
+          "container-max": "1440px"
+        },
+        "fontFamily": {
+          "headline-lg-mobile": ["Space Grotesk"],
+          "body-md": ["Plus Jakarta Sans"],
+          "label-mono": ["JetBrains Mono"],
+          "label-caps": ["JetBrains Mono"],
+          "body-lg": ["Plus Jakarta Sans"],
+          "headline-xl": ["Space Grotesk"],
+          "headline-md": ["Space Grotesk"],
+          "headline-lg": ["Space Grotesk"]
+        },
+        "fontSize": {
+          "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+          "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "label-mono": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+          "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "700"}],
+          "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+          "headline-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+          "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+        }
+      },
+    },
+  }
+</script>
+<style>
+  body {
+    background-color: #050505;
+    color: #e3e2e2;
+    overflow-x: hidden;
+  }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  }
+  .grid-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+    z-index: -1;
+  }
+  .glass-card {
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+  }
+  .glass-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.3) 0%, transparent 100%);
+  }
+  .section-divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    margin: 0;
+  }
+</style>
+</head>
+<body class="font-body-md text-on-surface selection:bg-electric-cyan selection:text-void-black">
+
+<!-- ============================================================ -->
+<!-- DESKTOP LAYOUT (>= md / 768px)                               -->
+<!-- ============================================================ -->
+<div class="hidden md:block">
+<div class="grid-overlay"></div>
+
+<!-- Desktop Nav -->
+<nav class="fixed top-0 w-full z-50 bg-surface/10 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-margin-desktop py-4" aria-label="Main navigation">
+  <div id="sds-logo"></div>
+  <div class="hidden md:flex items-center gap-10">
+    <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="index.html">Home</a>
+    <div class="relative services-nav-group">
+      <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" tabindex="0" aria-haspopup="true">Services</a>
+      <div class="services-nav-menu">
+        <div class="services-nav-panel">
+          <div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Online Services</div>
+          <a href="services/website-design.html">Website Design</a>
+          <a href="services/managed-hosting.html">Managed Hosting</a>
+          <a href="services/website-care-plans.html">Website Care Plans</a>
+          <a href="apps.html">Custom Business Web Apps</a>
+          <div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">home_pin</span>In-Home &amp; Office Services</div>
+          <a href="services/in-home-services.html">In-Home Tech Services</a>
+          <a href="services/office-network-setup.html">Office Network Setup</a>
+        </div>
+      </div>
+    </div>
+    <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="apps.html">Apps</a>
+    <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="casestudies.html">Websites</a>
+    <a class="font-label-mono text-label-mono text-electric-cyan hover:underline transition-colors duration-300 inline-flex items-center gap-1.5" href="account.html"><span class="material-symbols-outlined text-base">account_circle</span>Client Login</a>
+  </div>
+  <a href="contact.html" class="inline-block bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-mono text-label-mono px-6 py-2 rounded-lg hover:scale-105 active:scale-95 transition-all">
+    Contact Us
+  </a>
+</nav>
+
+<!-- Desktop Main -->
+<main class="min-h-screen pt-36 pb-20 px-margin-desktop">
+  <div class="max-w-3xl mx-auto">
+
+    <!-- Page header -->
+    <header class="mb-12">
+      <div class="inline-block bg-electric-cyan/10 px-3 py-1 rounded-full mb-5 border border-electric-cyan/20">
+        <span class="font-label-caps text-label-caps text-electric-cyan">LEGAL</span>
+      </div>
+      <h1 class="font-headline-lg text-headline-lg text-starlight-white mb-4">Accessibility Statement</h1>
+      <p class="font-body-lg text-body-lg text-on-surface-variant">
+        Surette Data Systems is committed to making surettesystems.com accessible to all users, including people with disabilities.
+      </p>
+      <p class="font-label-mono text-label-mono text-outline mt-4">Effective date: June 2026</p>
+    </header>
+
+    <!-- Content -->
+    <div class="flex flex-col gap-2">
+
+      <!-- Our commitment -->
+      <section class="glass-card rounded-xl p-8" aria-labelledby="commitment-heading">
+        <h2 id="commitment-heading" class="font-headline-md text-headline-md text-starlight-white mb-4 flex items-center gap-3">
+          <span class="material-symbols-outlined text-electric-cyan" aria-hidden="true">verified</span>
+          Our Commitment
+        </h2>
+        <p class="font-body-md text-body-md text-on-surface-variant">
+          We target conformance with the Web Content Accessibility Guidelines (WCAG) 2.2, Level AA. These guidelines explain how to make web content more accessible to people with disabilities. We believe that everyone deserves equal access to information and functionality on the web.
+        </p>
+      </section>
+
+      <hr class="section-divider"/>
+
+      <!-- Current status -->
+      <section class="glass-card rounded-xl p-8" aria-labelledby="status-heading">
+        <h2 id="status-heading" class="font-headline-md text-headline-md text-starlight-white mb-4 flex items-center gap-3">
+          <span class="material-symbols-outlined text-electric-cyan" aria-hidden="true">pending</span>
+          Current Status
+        </h2>
+        <p class="font-body-md text-body-md text-on-surface-variant">
+          This website is partially conformant with WCAG 2.2 Level AA. Accessibility is an ongoing effort and some areas of the site may not yet fully conform. We are actively working to identify and resolve gaps.
+        </p>
+      </section>
+
+      <hr class="section-divider"/>
+
+      <!-- Known limitations -->
+      <section class="glass-card rounded-xl p-8" aria-labelledby="limitations-heading">
+        <h2 id="limitations-heading" class="font-headline-md text-headline-md text-starlight-white mb-4 flex items-center gap-3">
+          <span class="material-symbols-outlined text-electric-cyan" aria-hidden="true">info</span>
+          Known Limitations
+        </h2>
+        <p class="font-body-md text-body-md text-on-surface-variant mb-4">
+          We are aware of the following areas that are currently under active review and improvement:
+        </p>
+        <ul class="flex flex-col gap-3 font-body-md text-body-md text-on-surface-variant list-none">
+          <li class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-outline text-base mt-0.5 flex-shrink-0" aria-hidden="true">keyboard</span>
+            <span><strong class="text-starlight-white">Keyboard navigation</strong> &mdash; Some interactive elements, including dropdown menus and animated components, may not be fully operable by keyboard alone in all scenarios.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="material-symbols-outlined text-outline text-base mt-0.5 flex-shrink-0" aria-hidden="true">contrast</span>
+            <span><strong class="text-starlight-white">Color contrast</strong> &mdash; Certain secondary text and decorative UI elements are under review to ensure they meet the 4.5:1 contrast ratio required by WCAG 2.2 AA.</span>
+          </li>
+        </ul>
+      </section>
+
+      <hr class="section-divider"/>
+
+      <!-- Technical specifications -->
+      <section class="glass-card rounded-xl p-8" aria-labelledby="tech-heading">
+        <h2 id="tech-heading" class="font-headline-md text-headline-md text-starlight-white mb-4 flex items-center gap-3">
+          <span class="material-symbols-outlined text-electric-cyan" aria-hidden="true">code</span>
+          Technical Specifications
+        </h2>
+        <p class="font-body-md text-body-md text-on-surface-variant mb-4">
+          This site relies on the following technologies for conformance:
+        </p>
+        <ul class="flex flex-col gap-2 font-body-md text-body-md text-on-surface-variant">
+          <li class="flex items-center gap-2">
+            <span class="text-electric-cyan font-label-mono text-xs">&rsaquo;</span>
+            HTML5
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="text-electric-cyan font-label-mono text-xs">&rsaquo;</span>
+            CSS (including Tailwind CSS)
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="text-electric-cyan font-label-mono text-xs">&rsaquo;</span>
+            JavaScript
+          </li>
+        </ul>
+        <p class="font-body-md text-body-md text-on-surface-variant mt-4">
+          The site is tested on modern versions of Chrome, Firefox, Safari, and Edge on both desktop and mobile devices.
+        </p>
+      </section>
+
+      <hr class="section-divider"/>
+
+      <!-- Feedback -->
+      <section class="glass-card rounded-xl p-8" aria-labelledby="feedback-heading">
+        <h2 id="feedback-heading" class="font-headline-md text-headline-md text-starlight-white mb-4 flex items-center gap-3">
+          <span class="material-symbols-outlined text-electric-cyan" aria-hidden="true">feedback</span>
+          Feedback
+        </h2>
+        <p class="font-body-md text-body-md text-on-surface-variant mb-6">
+          If you encounter an accessibility barrier on this site, please let us know. We take all feedback seriously and aim to respond within 2 business days.
+        </p>
+        <div class="flex flex-col gap-3">
+          <a href="contact.html" class="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-mono text-label-mono font-bold rounded-lg hover:scale-105 active:scale-95 transition-all w-fit">
+            <span class="material-symbols-outlined text-base" aria-hidden="true">mail</span>
+            Contact Us
+          </a>
+          <a href="tel:+12394048505" class="inline-flex items-center gap-3 px-6 py-3 border border-white/10 hover:border-electric-cyan/40 hover:bg-white/5 font-label-mono text-label-mono text-starlight-white rounded-lg transition-all w-fit">
+            <span class="material-symbols-outlined text-base" aria-hidden="true">call</span>
+            (239) 404-8505
+          </a>
+        </div>
+      </section>
+
+      <hr class="section-divider"/>
+
+      <!-- Formal complaints -->
+      <section class="glass-card rounded-xl p-8" aria-labelledby="complaints-heading">
+        <h2 id="complaints-heading" class="font-headline-md text-headline-md text-starlight-white mb-4 flex items-center gap-3">
+          <span class="material-symbols-outlined text-electric-cyan" aria-hidden="true">gavel</span>
+          Formal Complaints
+        </h2>
+        <p class="font-body-md text-body-md text-on-surface-variant">
+          If you are not satisfied with our response to your accessibility concern, you may contact the relevant enforcement body in your jurisdiction. In the United States, accessibility complaints related to websites can be directed to the U.S. Department of Justice Civil Rights Division or the U.S. Access Board.
+        </p>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<!-- Desktop Footer -->
+<footer class="w-full mt-auto bg-void-black border-t border-white/5 flex flex-col md:flex-row justify-between items-center px-margin-desktop py-8">
+  <div class="font-label-mono text-label-mono text-outline mb-4 md:mb-0">
+    &copy; 2026 SURETTE DATA SYSTEMS &middot; Southwest Florida &middot; Call or text (239) 404-8505
+  </div>
+  <div class="flex gap-8">
+    <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="privacy.html">Privacy</a>
+    <a class="font-label-mono text-label-mono text-electric-cyan" href="accessibility.html" aria-current="page">Accessibility</a>
+    <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="terms.html">Terms</a>
+    <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<div class="fixed top-[20%] right-[-10%] w-[50vw] h-[50vw] bg-nebula-purple/5 blur-[120px] rounded-full z-[-1]"></div>
+<div class="fixed bottom-[10%] left-[-10%] w-[40vw] h-[40vw] bg-electric-cyan/5 blur-[120px] rounded-full z-[-1]"></div>
+</div>
+<!-- /DESKTOP -->
+
+<!-- ============================================================ -->
+<!-- MOBILE LAYOUT (< md / 768px)                                 -->
+<!-- ============================================================ -->
+<div class="md:hidden">
+<div class="grid-overlay"></div>
+
+<!-- Mobile TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/10 backdrop-blur-xl border-b border-starlight-white/10 shadow-[0_0_20px_rgba(0,240,255,0.1)] flex items-center justify-between px-margin-mobile h-16">
+  <div id="sds-logo-mobile"></div>
+</header>
+
+<!-- Mobile Main -->
+<main class="relative z-10 pt-24 pb-28 px-margin-mobile">
+
+  <!-- Page header -->
+  <header class="mb-8 text-center">
+    <div class="inline-block bg-electric-cyan/10 px-3 py-1 rounded-full mb-4 border border-electric-cyan/20">
+      <span class="font-label-caps text-label-caps text-electric-cyan">LEGAL</span>
+    </div>
+    <h1 class="font-headline-lg text-headline-lg-mobile text-starlight-white mb-3">Accessibility Statement</h1>
+    <p class="font-body-md text-body-md text-on-surface-variant">
+      Our commitment to making this site accessible to everyone.
+    </p>
+    <p class="font-label-mono text-[11px] text-outline mt-3">Effective date: June 2026</p>
+  </header>
+
+  <!-- Content sections -->
+  <div class="flex flex-col gap-4">
+
+    <section class="glass-card rounded-xl p-6" aria-labelledby="m-commitment-heading">
+      <h2 id="m-commitment-heading" class="font-headline-md text-[18px] text-starlight-white mb-3 flex items-center gap-2">
+        <span class="material-symbols-outlined text-electric-cyan text-xl" aria-hidden="true">verified</span>
+        Our Commitment
+      </h2>
+      <p class="font-body-md text-body-md text-on-surface-variant">
+        We target conformance with WCAG 2.2, Level AA. We believe everyone deserves equal access to information and functionality on the web.
+      </p>
+    </section>
+
+    <section class="glass-card rounded-xl p-6" aria-labelledby="m-status-heading">
+      <h2 id="m-status-heading" class="font-headline-md text-[18px] text-starlight-white mb-3 flex items-center gap-2">
+        <span class="material-symbols-outlined text-electric-cyan text-xl" aria-hidden="true">pending</span>
+        Current Status
+      </h2>
+      <p class="font-body-md text-body-md text-on-surface-variant">
+        This site is partially conformant with WCAG 2.2 Level AA. Accessibility is an ongoing effort and some areas may not yet fully conform.
+      </p>
+    </section>
+
+    <section class="glass-card rounded-xl p-6" aria-labelledby="m-limitations-heading">
+      <h2 id="m-limitations-heading" class="font-headline-md text-[18px] text-starlight-white mb-3 flex items-center gap-2">
+        <span class="material-symbols-outlined text-electric-cyan text-xl" aria-hidden="true">info</span>
+        Known Limitations
+      </h2>
+      <ul class="flex flex-col gap-3 font-body-md text-body-md text-on-surface-variant">
+        <li>
+          <strong class="text-starlight-white">Keyboard navigation</strong> &mdash; Some dropdown menus and animated components may not be fully keyboard-operable in all scenarios. Under active review.
+        </li>
+        <li>
+          <strong class="text-starlight-white">Color contrast</strong> &mdash; Certain secondary text and decorative elements are under review for WCAG 2.2 AA contrast compliance.
+        </li>
+      </ul>
+    </section>
+
+    <section class="glass-card rounded-xl p-6" aria-labelledby="m-tech-heading">
+      <h2 id="m-tech-heading" class="font-headline-md text-[18px] text-starlight-white mb-3 flex items-center gap-2">
+        <span class="material-symbols-outlined text-electric-cyan text-xl" aria-hidden="true">code</span>
+        Technical Specifications
+      </h2>
+      <p class="font-body-md text-body-md text-on-surface-variant mb-3">Built with HTML5, CSS, and JavaScript. Tested on modern versions of Chrome, Firefox, Safari, and Edge on desktop and mobile.</p>
+    </section>
+
+    <section class="glass-card rounded-xl p-6" aria-labelledby="m-feedback-heading">
+      <h2 id="m-feedback-heading" class="font-headline-md text-[18px] text-starlight-white mb-3 flex items-center gap-2">
+        <span class="material-symbols-outlined text-electric-cyan text-xl" aria-hidden="true">feedback</span>
+        Feedback
+      </h2>
+      <p class="font-body-md text-body-md text-on-surface-variant mb-5">
+        Found an accessibility barrier? We want to know. We aim to respond within 2 business days.
+      </p>
+      <div class="flex flex-col gap-3">
+        <a href="contact.html" class="flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-mono text-label-mono font-bold rounded-lg active:scale-[0.98] transition-all">
+          <span class="material-symbols-outlined text-base" aria-hidden="true">mail</span>
+          Contact Us
+        </a>
+        <a href="tel:+12394048505" class="flex items-center justify-center gap-2 py-3 border border-white/10 font-label-mono text-label-mono text-starlight-white rounded-lg active:scale-[0.98] transition-all">
+          <span class="material-symbols-outlined text-base" aria-hidden="true">call</span>
+          (239) 404-8505
+        </a>
+      </div>
+    </section>
+
+    <section class="glass-card rounded-xl p-6" aria-labelledby="m-complaints-heading">
+      <h2 id="m-complaints-heading" class="font-headline-md text-[18px] text-starlight-white mb-3 flex items-center gap-2">
+        <span class="material-symbols-outlined text-electric-cyan text-xl" aria-hidden="true">gavel</span>
+        Formal Complaints
+      </h2>
+      <p class="font-body-md text-body-md text-on-surface-variant">
+        If our response does not resolve your concern, you may contact the U.S. Department of Justice Civil Rights Division or the U.S. Access Board.
+      </p>
+    </section>
+
+  </div>
+</main>
+
+<!-- Mobile Footer -->
+<footer class="w-full py-8 px-margin-mobile flex flex-col items-center gap-4 mb-20 border-t border-starlight-white/5 bg-void-black relative z-10">
+  <p class="font-label-caps text-[10px] text-on-primary-container/60 tracking-widest text-center">
+    &copy; 2026 Surette Data Systems &middot; Southwest Florida
+  </p>
+  <div class="flex flex-wrap justify-center gap-x-5 gap-y-2">
+    <a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="privacy.html">Privacy</a>
+    <a class="font-label-mono text-[11px] text-electric-cyan" href="accessibility.html" aria-current="page">Accessibility</a>
+    <a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="terms.html">Terms</a>
+    <a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<!-- Mobile BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface/10 backdrop-blur-2xl border-t border-starlight-white/10 shadow-[0_-10px_30px_rgba(112,0,255,0.15)] rounded-t-xl" aria-label="Bottom navigation">
+  <a href="index.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-transform hover:text-starlight-white">
+    <span class="material-symbols-outlined mb-1">home</span>
+    <span class="font-label-caps text-[10px]">Home</span>
+  </a>
+  <a href="apps.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-transform hover:text-starlight-white">
+    <span class="material-symbols-outlined mb-1">design_services</span>
+    <span class="font-label-caps text-[10px]">Services</span>
+  </a>
+  <a href="apps.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90">
+    <span class="material-symbols-outlined">download</span>
+    <span class="font-label-caps text-[9px] mt-1">Apps</span>
+  </a>
+  <a href="casestudies.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-transform hover:text-starlight-white">
+    <span class="material-symbols-outlined mb-1">work</span>
+    <span class="font-label-caps text-[10px]">Websites</span>
+  </a>
+  <a href="contact.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-transform hover:text-starlight-white">
+    <span class="material-symbols-outlined mb-1">mail</span>
+    <span class="font-label-caps text-[10px]">Contact</span>
+  </a>
+</nav>
+
+</div>
+<!-- /MOBILE -->
+
+<script src="assets/mobile-services-nav.js?v=20260609-services-trim"></script>
+<script src="assets/account-nav.js?v=20260611-no-lang"></script>
+<script src="assets/rail.js?v=20260602-rail-active"></script>
+<script src="surette-logo.js?v=2"></script>
+<script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo'); SuretteLogo.init('sds-logo-mobile'); });</script>
+</body>
+</html>

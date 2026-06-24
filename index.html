@@ -15,19 +15,16 @@
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="Surette Data Systems | Software · Websites · Business Tech · Southwest Florida"/>
 <meta property="og:description" content="Custom business software, managed websites, web apps, branding, and on-site tech for Southwest Florida businesses — built and maintained by Surette Data Systems."/>
-<meta property="og:url" content="https://darkmatterwebdev.com/index.html"/>
-<meta property="og:image" content="https://darkmatterwebdev.com/assets/surette-data-systems-og.png"/>
+<meta property="og:url" content="https://surettesystems.com/index.html"/>
+<meta property="og:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <meta property="og:image:alt" content="Surette Data Systems — software, websites, and local tech for Southwest Florida"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Surette Data Systems | Software · Websites · Business Tech · Southwest Florida"/>
 <meta name="twitter:description" content="Custom business software, managed websites, web apps, branding, and on-site tech for Southwest Florida businesses — built and maintained by Surette Data Systems."/>
-<meta name="twitter:image" content="https://darkmatterwebdev.com/assets/surette-data-systems-og.png"/>
-<link href="assets/nav.css?v=20260622-fade" rel="stylesheet"/>
-<link href="assets/powered-by-badge.css?v=20260609-badge-fix" rel="stylesheet"/>
-<link href="assets/surette-data-systems-home-widget.css?v=20260611-right-btn" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
+<link href="assets/nav.css?v=20260622-fade" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
   #sds-logo a.sds-anchor,
   #sds-logo-mobile a.sds-anchor {
@@ -75,7 +72,7 @@
   }
   @media (min-width: 768px) {
     #hero .hero-headline-band {
-      padding-top: 7.5rem !important;
+      padding-top: 22vh !important;
     }
   }
   @media (max-width: 767px) {
@@ -83,7 +80,7 @@
       padding-top: 5.25rem !important;
     }
     #hero-mobile .hero-headline-band {
-      padding-top: 3rem !important;
+      padding-top: 18vh !important;
     }
   }
 </style>
@@ -192,18 +189,18 @@
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
         .hero-headline-band {
-            padding-top: clamp(5.5rem, 11vh, 7rem);
+            padding-top: clamp(10rem, 22vh, 18rem);
             padding-bottom: clamp(0.75rem, 2vh, 1.25rem);
         }
         .hero-video-stage {
-            min-height: clamp(10rem, 26vh, 16rem);
+            min-height: clamp(1rem, 4vh, 3rem);
             flex: 1 1 auto;
         }
         #hero-mobile {
             min-height: 74vh;
         }
         .hidden.md\:block .hero-video-stage {
-            min-height: clamp(20rem, 48vh, 32rem);
+            min-height: clamp(2rem, 5vh, 4rem);
         }
         .hidden.md\:block .hero-headline-band {
             min-height: clamp(12rem, 24vh, 16rem);
@@ -464,64 +461,18 @@
             Contact Us
         </a>
 </nav>
-<!-- Side Navigation Shell (Project Context) -->
-<aside class="fixed left-0 top-1/2 -translate-y-1/2 h-auto rounded-r-xl bg-void-black/80 backdrop-blur-2xl border-r border-t border-b border-white/5 p-4 gap-unit z-40 flex flex-col shadow-[0_0_20px_rgba(112,0,255,0.15)]">
-<div class="mb-4">
-<p class="font-label-caps text-[10px] text-outline opacity-50">OUR PROCESS</p>
-<p class="font-label-caps text-nebula-purple">4 STEPS</p>
-</div>
-<div class="flex flex-col gap-4">
-<button type="button" data-step="design" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Design">
-<span class="material-symbols-outlined">architecture</span>
-<span class="font-label-caps text-[8px] mt-1">DESIGN</span>
-</button>
-<button type="button" data-step="build" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Build">
-<span class="material-symbols-outlined">terminal</span>
-<span class="font-label-caps text-[8px] mt-1">BUILD</span>
-</button>
-<button type="button" data-step="launch" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Launch">
-<span class="material-symbols-outlined">rocket_launch</span>
-<span class="font-label-caps text-[8px] mt-1">LAUNCH</span>
-</button>
-<button type="button" data-step="maintain" class="flex flex-col items-center p-2 text-outline hover:bg-white/5 transition-all group" title="Maintain">
-<span class="material-symbols-outlined">cloud_done</span>
-<span class="font-label-caps text-[8px] mt-1">MAINTAIN</span>
-</button>
-</div>
-</aside>
-<!-- Floating rail info popover -->
-<div id="rail-popover" class="rail-popover-ghost fixed z-[60] w-[min(32rem,calc(100vw-6rem))]" aria-hidden="true">
-<div class="rail-popover-ghost-inner">
-<div class="flex items-center gap-3">
-<span id="rail-popover-icon" class="material-symbols-outlined text-electric-cyan/80 text-lg shrink-0"></span>
-<div class="flex flex-col gap-0.5 min-w-0">
-<div class="flex items-center gap-2 flex-wrap">
-<span id="rail-popover-step" class="font-label-mono text-[10px] tracking-widest text-electric-cyan/70 rail-popover-step-label shrink-0"></span>
-<h4 id="rail-popover-title" class="font-headline-md text-base text-starlight-white/90 rail-popover-title"></h4>
-</div>
-<p id="rail-popover-desc" class="text-on-surface-variant text-xs leading-snug rail-popover-desc"></p>
-</div>
-</div>
-</div>
-</div>
 <main class="relative z-10">
 <!-- Hero Section -->
 <section id="hero" class="relative min-h-screen flex flex-col overflow-hidden"><div class="scanline z-[3] pointer-events-none"></div>
 <div class="hero-headline-band relative z-10 w-full mx-auto px-margin-desktop text-center">
-<div class="inline-flex items-center gap-3 px-4 py-1 glass-card rounded-full mx-auto mb-6">
-<span class="w-2 h-2 rounded-full bg-electric-cyan animate-pulse"></span>
-<span class="font-label-mono text-label-mono text-starlight-white tracking-widest uppercase">Software &middot; Websites &middot; Systems</span>
-</div>
 <h1 class="hero-headline-wide font-headline-xl font-bold text-starlight-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.85)]">
 <span class="hero-headline-line">Solutions that flow with spacetime.</span>
 <span class="hero-headline-line hero-headline-line-accent">Managed to defy ordinary gravity.</span>
 </h1>
+<p class="text-on-surface-variant mt-12 drop-shadow-[0_2px_16px_rgba(0,0,0,0.75)] text-2xl font-bold tracking-wide max-w-lg mx-auto">Custom business software, web apps, websites, hosting, branding, and on-site tech for Southwest Florida.</p>
 </div>
 <div class="hero-video-stage relative z-0" aria-hidden="true"></div>
 <div class="hero-bottom-band relative z-10 w-full max-w-[min(100%,56rem)] mx-auto px-margin-desktop text-center">
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-[min(100%,48rem)] mx-auto drop-shadow-[0_2px_16px_rgba(0,0,0,0.75)]">
-                        Custom business software, web apps, websites, hosting, branding, and on-site tech for Southwest Florida &mdash; Dark Matter by Surette Data Systems builds, runs, and maintains the systems your business depends on. One team for all of it.
-                    </p>
 <div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-4 pt-10">
 <a href="contact.html" class="inline-block px-12 py-5 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-mono text-label-mono font-bold rounded-lg hover:scale-105 active:scale-95 transition-all glow-cyan">
                             Contact Us
@@ -531,26 +482,6 @@
                         </a>
 </div>
 <p class="font-label-mono text-label-mono text-on-surface-variant pt-8 tracking-wide">Southwest Florida &middot; Call or text <a class="text-electric-cyan hover:underline" href="tel:+12394048505">(239) 404-8505</a></p>
-</div>
-<!-- Absolute Positioning for Visual Flair -->
-<div class="absolute right-margin-desktop top-[50%] hidden xl:block pointer-events-none z-[1]">
-<a href="process.html#client-whatsapp-queue" class="glass-card whatsapp-hero-card p-3.5 rounded-lg w-72 space-y-2.5 block pointer-events-auto hover:border-[#25D366]/50 transition-all" aria-label="Learn how dedicated WhatsApp update requests work">
-<div class="flex items-center gap-2.5">
-<span class="whatsapp-logo-mark" aria-hidden="true">
-<svg viewBox="0 0 32 32" class="w-6 h-6" fill="currentColor">
-<path d="M16.04 3.2c-7.05 0-12.78 5.65-12.78 12.61 0 2.22.59 4.39 1.71 6.3L3.2 28.8l6.9-1.74a12.9 12.9 0 0 0 5.94 1.48c7.05 0 12.78-5.65 12.78-12.61S23.09 3.2 16.04 3.2Zm0 22.96c-1.82 0-3.6-.48-5.16-1.39l-.37-.22-4.09 1.03 1.06-3.9-.25-.4a10.11 10.11 0 0 1-1.58-5.47c0-5.64 4.66-10.23 10.39-10.23 5.73 0 10.39 4.59 10.39 10.23 0 5.76-4.56 10.35-10.39 10.35Zm5.7-7.66c-.31-.16-1.85-.9-2.14-1-.29-.11-.5-.16-.71.16-.21.31-.82 1-.99 1.21-.18.21-.36.24-.67.08-.31-.16-1.31-.48-2.5-1.52-.92-.82-1.55-1.82-1.73-2.13-.18-.31-.02-.48.14-.63.14-.14.31-.36.47-.54.16-.18.21-.31.31-.52.1-.21.05-.39-.03-.54-.08-.16-.71-1.69-.97-2.32-.26-.61-.52-.53-.71-.54l-.61-.01c-.21 0-.55.08-.84.39-.29.31-1.1 1.07-1.1 2.61s1.13 3.03 1.29 3.24c.16.21 2.23 3.35 5.4 4.69.75.32 1.34.51 1.8.65.76.24 1.45.21 1.99.13.61-.09 1.85-.75 2.11-1.48.26-.73.26-1.35.18-1.48-.08-.13-.29-.21-.6-.36Z"/>
-</svg>
-</span>
-<span class="font-label-caps text-[9px] text-[#25D366] tracking-[0.22em]">WEBSITE UPDATES VIA WHATSAPP</span>
-</div>
-<div class="h-[1px] w-full bg-white/10 relative overflow-hidden">
-<div class="absolute inset-0 bg-[#25D366] w-2/3 animate-pulse-line"></div>
-</div>
-<div class="whatsapp-message">
-<p class="font-body-md text-starlight-white text-[13px] leading-snug">"Update our hours and add these photos."</p>
-</div>
-<p class="font-label-mono text-[9px] text-on-surface-variant tracking-wide leading-snug"><span class="text-[#25D366]">?</span> Messages and media queue automatically.</p>
-</a>
 </div>
 </section>
 <!-- Services Section -->
@@ -668,7 +599,7 @@ Message Us on WhatsApp
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
 <div class="glass-card p-8 rounded-xl">
-<p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">"Dark Matter responds faster than any web company we've worked with. We send a message, and it's done &mdash; no back-and-forth, no confusion."</p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">"Surette Data Systems responds faster than any web company we've worked with. We send a message, and it's done &mdash; no back-and-forth, no confusion."</p>
 <p class="font-label-mono text-label-mono text-starlight-white">&mdash; Practice Manager</p>
 <p class="font-label-caps text-[10px] text-outline mt-1">Medical Office &middot; Naples, FL</p>
 </div>
@@ -686,58 +617,35 @@ Message Us on WhatsApp
 </div>
 </section>
 </main>
-<div class="site-powered-by-bar w-full bg-void-black border-t border-white/5 py-8 px-margin-desktop flex justify-center relative z-10">
-<a class="dm-powered-badge" href="built-by.html" aria-label="Website powered by Surette Data Systems &mdash; view referral landing page">
-<svg class="dm-powered-badge__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z"/>
-</svg>
-<span class="dm-powered-badge__lockup">
-<span class="dm-powered-badge__label">Website powered by</span>
-<span class="dm-powered-badge__name">DARK MATTER</span>
-<span class="dm-powered-badge__subtext"><span class="dm-powered-badge__subtext-line">Surette Systems</span><span class="dm-powered-badge__subtext-line dm-powered-badge__subtext-line--portal">Portal</span></span>
-</span>
-</a>
-</div>
 <!-- Footer Shell -->
 <footer class="w-full mt-auto bg-void-black border-t border-white/5 px-margin-desktop py-12 relative z-10">
 <div class="max-w-container-max mx-auto flex flex-col lg:flex-row justify-between gap-10">
 <div class="flex flex-col gap-3">
 <div class="flex flex-col leading-none">
-<span class="font-headline-md text-headline-md text-starlight-white">DARK MATTER</span>
-<span class="brand-subtext"><span class="brand-subtext__line">Surette Systems</span><span class="brand-subtext__line brand-subtext__line--portal">Portal</span></span>
+<span class="font-headline-md text-headline-md text-starlight-white">SURETTE DATA SYSTEMS</span>
+
 </div>
 <span class="font-label-mono text-[10px] text-outline tracking-[0.2em] uppercase">Software &middot; Websites &middot; Business Tech &middot; Southwest Florida</span>
 </div>
 <div class="flex flex-wrap gap-x-10 gap-y-4">
-<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="apps.html">Brand &amp; Rebranding</a>
 <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="services/website-design.html">Website Design</a>
 <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="services/managed-hosting.html">Managed Hosting</a>
 <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="services/website-care-plans.html">Website Care Plans</a>
-<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="apps.html">SEO Services</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="apps.html">Custom Business Web Apps</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="services/in-home-services.html">In-Home Tech Services</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="casestudies.html">Websites / Portfolio</a>
 <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="contact.html">Contact</a>
-<a class="font-label-mono text-label-mono text-electric-cyan hover:underline transition-colors duration-300" href="contact.html">Contact Us</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="account.html">Client Login</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="privacy.html">Privacy</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="terms.html">Terms</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="accessibility.html">Accessibility</a>
 </div>
 <div class="text-left lg:text-right">
-<span class="font-label-mono text-[10px] text-outline block">&copy; 2026 DARK MATTER &middot; Southwest Florida</span>
+<span class="font-label-mono text-[10px] text-outline block">&copy; 2026 Surette Data Systems &middot; Southwest Florida</span>
 <span class="font-label-mono text-[10px] text-outline block mt-1">Call or text (239) 404-8505</span>
 </div>
 </div>
 </footer>
-<a href="apps.html" class="sds-home-widget sds-home-widget--desktop" aria-label="Surette Data Systems â€" view our business software">
-<span class="sds-home-widget__glow" aria-hidden="true"></span>
-<span class="sds-home-widget__frame">
-<span class="sds-home-widget__inner">
-<span class="sds-home-widget__logo-wrap">
-<img class="sds-home-widget__logo" src="assets/surette-data-systems-geometric-icon.webp" width="33" height="43" alt="" aria-hidden="true"/>
-</span>
-<span class="sds-home-widget__copy">
-<span class="sds-home-widget__kicker">Surette Data Systems</span>
-<span class="sds-home-widget__label">View our business software</span>
-</span>
-<span class="material-symbols-outlined sds-home-widget__arrow" aria-hidden="true">arrow_forward</span>
-</span>
-</span>
-</a>
 </div>
 <!-- /DESKTOP -->
 
@@ -816,19 +724,14 @@ Contact Us
 <main class="relative z-10 pt-16 pb-24">
 <!-- Hero Section -->
 <section id="hero-mobile" class="relative min-h-[100vh] flex flex-col overflow-hidden"><div class="hero-headline-band relative z-10 w-full mx-auto px-margin-mobile text-center pt-20">
-<span class="inline-block px-4 py-1 border border-electric-cyan/30 rounded-full font-label-mono text-label-mono text-electric-cyan mb-5 uppercase tracking-widest bg-void-black/40 backdrop-blur-sm">
-                        Software &middot; Websites &middot; Systems
-                    </span>
 <h1 class="hero-headline-wide font-headline-xl font-bold text-starlight-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.85)]">
 <span class="hero-headline-line">Solutions that flow with spacetime.</span>
 <span class="hero-headline-line hero-headline-line-accent">Managed to defy ordinary gravity.</span>
 </h1>
+<p class="font-body-md text-on-surface-variant mt-5 drop-shadow-[0_2px_16px_rgba(0,0,0,0.75)]">Custom business software, web apps, websites, hosting, branding, and on-site tech for Southwest Florida.</p>
 </div>
 <div class="hero-video-stage relative z-0" aria-hidden="true"></div>
 <div class="hero-bottom-band relative z-10 w-full max-w-xl mx-auto px-margin-mobile text-center pb-8">
-<p class="font-body-lg text-body-md text-on-surface-variant drop-shadow-[0_2px_16px_rgba(0,0,0,0.75)]">
-                        Business software, web apps, websites, hosting, branding, and on-site tech &mdash; Surette Systems builds and runs what your business depends on. One team for all of it.
-                    </p>
 <div class="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-4 pt-8">
 <a href="contact.html" class="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-caps text-label-caps rounded-sm transition-all active:scale-95">
                             Contact Us
@@ -886,41 +789,32 @@ Contact Us
 <section class="py-16 px-margin-mobile">
 <div class="space-y-6">
 <span class="font-label-caps text-label-caps text-nebula-purple">CLIENT FEEDBACK</span>
-<div class="glass-card p-8 rounded-lg"><p class="font-body-md text-on-surface-variant text-sm mb-4">"Dark Matter responds faster than any web company we've worked with. We send a message, and it's done."</p><p class="font-label-mono text-sm text-starlight-white">&mdash; Practice Manager, Medical Office</p></div>
+<div class="glass-card p-8 rounded-lg"><p class="font-body-md text-on-surface-variant text-sm mb-4">"Surette Data Systems responds faster than any web company we've worked with. We send a message, and it's done."</p><p class="font-label-mono text-sm text-starlight-white">&mdash; Practice Manager, Medical Office</p></div>
 <div class="glass-card p-8 rounded-lg"><p class="font-body-md text-on-surface-variant text-sm mb-4">"It feels like having our own website department. They handle everything."</p><p class="font-label-mono text-sm text-starlight-white">&mdash; Business Owner, Southwest Florida</p></div>
 </div>
 </section>
 </main>
-<div class="site-powered-by-bar w-full bg-void-black border-t border-white/5 py-8 px-margin-mobile flex justify-center relative z-10">
-<a class="dm-powered-badge" href="built-by.html" aria-label="Website powered by Surette Data Systems &mdash; view referral landing page">
-<svg class="dm-powered-badge__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6z"/>
-</svg>
-<span class="dm-powered-badge__lockup">
-<span class="dm-powered-badge__label">Website powered by</span>
-<span class="dm-powered-badge__name">DARK MATTER</span>
-<span class="dm-powered-badge__subtext"><span class="dm-powered-badge__subtext-line">Surette Systems</span><span class="dm-powered-badge__subtext-line dm-powered-badge__subtext-line--portal">Portal</span></span>
-</span>
-</a>
-</div>
 <!-- Footer -->
 <footer class="w-full py-12 px-margin-mobile flex flex-col items-center gap-6 mb-20 border-t border-starlight-white/5 bg-void-black relative z-10">
 <div class="flex items-center gap-3 mb-2 opacity-80">
 <span class="material-symbols-outlined text-electric-cyan text-xl" aria-hidden="true">blur_on</span>
 <span class="flex flex-col leading-none">
-<span class="font-headline-md text-headline-md tracking-tighter text-starlight-white">DARK MATTER</span>
-<span class="brand-subtext brand-subtext--center"><span class="brand-subtext__line">Surette Systems</span><span class="brand-subtext__line brand-subtext__line--portal">Portal</span></span>
+<span class="font-headline-md text-headline-md tracking-tighter text-starlight-white">SURETTE DATA SYSTEMS</span>
+
 </span>
 </div>
 <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-center">
-<a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="apps.html">Rebranding</a>
 <a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="services/website-design.html">Website Design</a>
 <a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="services/website-care-plans.html">Care Plans</a>
+<a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="apps.html">Web Apps</a>
+<a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="casestudies.html">Portfolio</a>
 <a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="contact.html">Contact</a>
-<a class="font-label-mono text-[11px] text-electric-cyan" href="contact.html">Contact Us</a>
+<a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="privacy.html">Privacy</a>
+<a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="terms.html">Terms</a>
+<a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="accessibility.html">Accessibility</a>
 </div>
 <p class="font-label-caps text-[10px] text-on-primary-container/60 tracking-widest text-center max-w-lg">
-            &copy; 2026 DARK MATTER &middot; Software &middot; Websites &middot; Business Tech &middot; Southwest Florida
+            &copy; 2026 Surette Data Systems &middot; Software &middot; Websites &middot; Business Tech &middot; Southwest Florida
         </p>
 </footer>
 <!-- BottomNavBar (Mobile) -->
@@ -945,21 +839,6 @@ Contact Us
 </nav>
 </div>
 <!-- /MOBILE -->
-<a href="apps.html" class="sds-home-widget sds-home-widget--mobile" aria-label="Surette Data Systems â€" view our business software">
-<span class="sds-home-widget__glow" aria-hidden="true"></span>
-<span class="sds-home-widget__frame">
-<span class="sds-home-widget__inner">
-<span class="sds-home-widget__logo-wrap">
-<img class="sds-home-widget__logo" src="assets/surette-data-systems-geometric-icon.webp" width="20" height="26" alt="" aria-hidden="true"/>
-</span>
-<span class="sds-home-widget__copy">
-<span class="sds-home-widget__kicker">Surette Data Systems</span>
-<span class="sds-home-widget__label">View our business software</span>
-</span>
-<span class="material-symbols-outlined sds-home-widget__arrow" aria-hidden="true">arrow_forward</span>
-</span>
-</span>
-</a>
 
 <script>
 (function () {
