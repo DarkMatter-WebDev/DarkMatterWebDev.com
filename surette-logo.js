@@ -346,6 +346,31 @@
   // canvas jump and Tailwind FOUC from being visible.
   function dmRevealPage() {
     document.documentElement.style.opacity = '1';
+    // After the 0.38s CSS fade-in completes, mark content ready so hero-enter
+    // animations and skeleton hiding kick in.
+    setTimeout(function () {
+      document.documentElement.classList.add('page-content-ready');
+      initScrollReveal();
+    }, 420);
+  }
+
+  // Scroll reveal — observes any .reveal-up elements and adds .in-view when
+  // they enter the viewport. Works on every page that uses the class.
+  function initScrollReveal() {
+    if (!window.IntersectionObserver) {
+      document.querySelectorAll('.reveal-up').forEach(function (el) {
+        el.classList.add('in-view');
+      });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in-view');
+        io.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -60px 0px', threshold: 0.08 });
+    document.querySelectorAll('.reveal-up').forEach(function (el) { io.observe(el); });
   }
 
   // Wait for all DCL handlers to finish (setTimeout 0), then two rAFs so the
