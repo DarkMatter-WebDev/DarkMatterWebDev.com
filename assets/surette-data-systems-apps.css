@@ -734,8 +734,8 @@ html:lang(es) .sds-hero__flick-reveal-sub {
 html { scroll-behavior: smooth; }
 
 body.sds-apps-page {
-  background: #050505;
-  color: #e3e2e2;
+  background: var(--c-bg);
+  color: var(--c-text);
   overflow-x: hidden;
 }
 
@@ -857,7 +857,7 @@ body.sds-apps-page {
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   background: linear-gradient(120deg, var(--sds-violet), var(--sds-amber));
-  color: #050505;
+  color: var(--c-text-inv);
   font: 700 14px "JetBrains Mono", monospace;
   box-shadow: 0 0 28px rgba(168, 85, 247, 0.32);
   transition: transform 0.2s ease;
@@ -1581,8 +1581,8 @@ body.is-apps-ready > :not(#sds-apps-loader) {
 
 .sds-physics-toggle__input:checked + .sds-physics-toggle__track .sds-physics-toggle__thumb {
   transform: translateX(0);
-  background: #00f0ff;
-  box-shadow: 0 0 8px rgba(0, 240, 255, 0.45);
+  background: var(--c-primary);
+  box-shadow: 0 0 8px rgba(var(--c-primary-rgb), 0.45);
 }
 
 .sds-physics-toggle__input:focus-visible + .sds-physics-toggle__track {

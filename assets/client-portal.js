@@ -19,11 +19,11 @@ const els = {
   signupClose: document.querySelectorAll("[data-client-signup-close]"),
   signupForm: document.querySelector("[data-client-signup-form]"),
   signupName: document.querySelector("[data-signup-name]"),
-  signupPhone: document.querySelector("[data-signup-phone]"),
   signupEmail: document.querySelector("[data-signup-email]"),
   signupPassword: document.querySelector("[data-signup-password]"),
   signupPasswordConfirm: document.querySelector("[data-signup-password-confirm]"),
   signupStatus: document.querySelector("[data-signup-status]"),
+  signupResetBtn: document.querySelector("[data-signup-reset-btn]"),
   magic: document.querySelector("[data-client-magic]"),
   status: document.querySelector("[data-client-status]"),
   introPanel: document.querySelector("[data-client-intro]"),
@@ -167,7 +167,9 @@ const t = {
   accountHoldersSetup: copy.accountHoldersSetup || "Install the list_portal_account_holders() Supabase RPC to view auth account emails here.",
   active: copy.active || "Active",
   pending: copy.pending || "Pending",
-  billingPortalPending: copy.billingPortalPending || "Billing portal connection is ready to wire to Stripe once the secure server function is added."
+  billingPortalPending: copy.billingPortalPending || "Billing portal connection is ready to wire to Stripe once the secure server function is added.",
+  accountExists: copy.accountExists || "An account with this email already exists. If you forgot your password, request a reset link below.",
+  accountExistsReset: copy.accountExistsReset || "Password reset email sent. Check your inbox."
 };
 
 function setStatus(message, visible = true) {
@@ -187,10 +189,13 @@ function setSignupLoading(isLoading) {
   if (button) button.disabled = isLoading || !isConfigured;
 }
 
-function setSignupStatus(message, visible = true) {
+function setSignupStatus(message, visible = true, showResetBtn = false) {
   if (!els.signupStatus) return;
   els.signupStatus.textContent = message;
   els.signupStatus.classList.toggle("is-visible", visible);
+  if (els.signupResetBtn) {
+    els.signupResetBtn.style.display = showResetBtn ? "inline-flex" : "none";
+  }
 }
 
 function setPanelStatus(element, message, visible = true) {
@@ -222,7 +227,6 @@ function validateSignupForm() {
   const password = els.signupPassword?.value || "";
   const passwordConfirm = els.signupPasswordConfirm?.value || "";
 
-  if (!name) return t.nameRequired;
   if (!email) return t.emailRequired;
   if (!isValidEmail(email)) return t.emailInvalid;
   if (!password) return t.passwordRequired;
@@ -622,14 +626,29 @@ if (!isConfigured) {
       options: {
         emailRedirectTo: redirectTo,
         data: {
-          display_name: els.signupName?.value.trim() || "",
-          phone: els.signupPhone?.value.trim() || ""
+          display_name: els.signupName?.value.trim() || ""
         }
       }
     });
     setSignupLoading(false);
-    if (error) setSignupStatus(error.message || t.error);
-    else {
+    if (error) {
+      const msg = (error.message || "").toLowerCase();
+      const isExisting =
+        msg.includes("already registered") ||
+        msg.includes("already exists") ||
+        error.code === "user_already_exists";
+      if (isExisting) {
+        setSignupStatus(t.accountExists, true, true);
+      } else {
+        setSignupStatus(error.message || t.error);
+      }
+    } else {
+      // Supabase anti-enumeration: signUp returns success but empty identities
+      // array when the email is already in use.
+      if (data?.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) {
+        setSignupStatus(t.accountExists, true, true);
+        return;
+      }
       if (!data?.session) {
         const successPath = copy.signupSuccessUrl || (document.documentElement.lang.startsWith("es") ? "/es/account-created.html" : "/account-created.html");
         const successUrl = new URL(successPath, window.location.origin);
@@ -640,6 +659,20 @@ if (!isConfigured) {
       setSignupStatus(t.accountCreatedSignedIn);
       els.signupForm.reset();
       window.setTimeout(closeSignupModal, 900);
+    }
+  });
+
+  els.signupResetBtn?.addEventListener("click", async () => {
+    const email = els.signupEmail?.value.trim();
+    if (!email) return;
+    els.signupResetBtn.disabled = true;
+    const redirectTo = getAccountRedirectUrl();
+    const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, { redirectTo });
+    els.signupResetBtn.disabled = false;
+    if (resetError) {
+      setSignupStatus(resetError.message || t.error, true, true);
+    } else {
+      setSignupStatus(t.accountExistsReset, true, false);
     }
   });
 

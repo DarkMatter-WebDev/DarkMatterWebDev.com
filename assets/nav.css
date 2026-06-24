@@ -1,5 +1,99 @@
 @import url('logo.css?v=20260608-lockup-align');
 
+/* ── Design Tokens ───────────────────────────────────────────────────────────
+   Single source of truth for brand colours. Every file should reference these
+   variables instead of hardcoding hex values.
+   ─────────────────────────────────────────────────────────────────────────── */
+:root {
+  /* Brand */
+  --c-primary:         #00f0ff;
+  --c-primary-rgb:     0, 240, 255;
+  --c-secondary:       #39ff88;
+  --c-secondary-rgb:   57, 255, 136;
+  --c-purple:          #7000ff;
+  --c-purple-rgb:      112, 0, 255;
+
+  /* Surfaces */
+  --c-bg:              #050505;
+  --c-overlay:         rgba(8, 10, 14, 0.97);
+
+  /* Text */
+  --c-text:            #e3e2e2;
+  --c-text-rgb:        227, 226, 226;
+  --c-text-2:          #c4c7c7;
+  --c-text-3:          #8e9192;
+  --c-text-inv:        #050505;
+
+  /* Borders */
+  --c-border:          rgba(255, 255, 255, 0.1);
+  --c-border-2:        rgba(255, 255, 255, 0.18);
+
+  /* Gradients */
+  --g-primary:         linear-gradient(90deg, #00f0ff, #7000ff);
+  --g-secondary:       linear-gradient(90deg, #39ff88, #00f0ff);
+}
+
+/* ── Button System ───────────────────────────────────────────────────────────
+   Base class + variant modifiers. Replaces per-component button rules.
+   Usage: class="btn btn--primary"  /  class="btn btn--ghost btn--sm"
+   ─────────────────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 0;
+  border-radius: 0.65rem;
+  padding: 0.9rem 1.5rem;
+  font: 800 0.8rem "JetBrains Mono", monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, opacity 0.22s ease;
+}
+.btn:hover  { transform: translateY(-2px); }
+.btn:active { transform: translateY(0) scale(0.97); }
+.btn:disabled,
+.btn[aria-disabled="true"] { opacity: 0.45; pointer-events: none; cursor: not-allowed; }
+.btn:focus-visible { outline: 2px solid var(--c-primary); outline-offset: 3px; }
+
+.btn--primary {
+  background: var(--g-primary);
+  color: var(--c-text-inv);
+  box-shadow: 0 0 20px rgba(var(--c-primary-rgb), 0.18);
+}
+.btn--primary:hover {
+  box-shadow: 0 4px 32px rgba(var(--c-primary-rgb), 0.3);
+}
+.btn--secondary {
+  background: var(--g-secondary);
+  color: var(--c-text-inv);
+}
+.btn--ghost {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--c-text);
+  border: 1px solid var(--c-border-2);
+}
+.btn--ghost:hover { background: rgba(255, 255, 255, 0.11); transform: translateY(-1px); }
+.btn--outline {
+  background: transparent;
+  color: var(--c-primary);
+  border: 1px solid rgba(var(--c-primary-rgb), 0.45);
+}
+.btn--outline:hover { background: rgba(var(--c-primary-rgb), 0.08); transform: translateY(-1px); }
+
+/* Size modifiers */
+.btn--sm   { padding: 0.5rem 1rem; font-size: 0.72rem; }
+.btn--lg   { padding: 1rem 2rem; font-size: 0.9rem; }
+.btn--pill { border-radius: 999px; }
+.btn--full { width: 100%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn, .btn:hover, .btn:active { transform: none !important; transition: opacity 0.2s ease; }
+}
+
 /* ── Page reveal ─────────────────────────────────────────────────────────────
    nav.css is the first render-blocking stylesheet on every page, guaranteeing
    html { opacity: 0 } is applied before the browser's first paint.
@@ -150,7 +244,7 @@ nav .hidden.md\:flex > a.font-label-mono:not(.bg-gradient-to-r),
 
 nav .hidden.md\:flex > a.font-label-mono.border-b-2,
 .services-nav-group > a.font-label-mono.border-b-2:first-child {
-  border-bottom-color: #00f0ff;
+  border-bottom-color: var(--c-primary);
 }
 
 nav,
@@ -329,7 +423,7 @@ nav .hidden.md\:flex,
   line-height: 1.2;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #8e9192;
+  color: var(--c-text-3);
 }
 
 .services-nav-heading:not(:first-child) {
@@ -348,7 +442,7 @@ nav .hidden.md\:flex,
   height: 1rem !important;
   font-size: 1rem !important;
   line-height: 1 !important;
-  color: #00f0ff !important;
+  color: var(--c-primary) !important;
   opacity: 0.78 !important;
   vertical-align: middle !important;
   transform: translateY(0) !important;
@@ -361,18 +455,18 @@ nav .hidden.md\:flex,
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.875rem;
   line-height: 1.4;
-  color: #c4c7c7;
+  color: var(--c-text-2);
   transition: color 0.24s ease, background-color 0.24s ease;
 }
 
 .services-nav-panel a:hover {
-  color: #00f0ff;
+  color: var(--c-primary);
   background: rgba(255, 255, 255, 0.06);
 }
 
 .services-nav-panel a.text-electric-cyan {
-  color: #00f0ff;
-  background: rgba(0, 240, 255, 0.06);
+  color: var(--c-primary);
+  background: rgba(var(--c-primary-rgb), 0.06);
 }
 
 @media (max-width: 767px) {
@@ -491,7 +585,7 @@ nav .hidden.md\:flex,
     align-items: center;
     gap: 0.45rem;
     padding: 0.65rem 0.8rem 0.45rem;
-    color: #00f0ff;
+    color: var(--c-primary);
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.62rem;
     letter-spacing: 0.14em;
@@ -501,7 +595,7 @@ nav .hidden.md\:flex,
   .mobile-services-popout a {
     display: block;
     padding: 0.55rem 0.8rem;
-    color: #c4c7c7;
+    color: var(--c-text-2);
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.72rem;
     line-height: 1.25;
@@ -511,7 +605,7 @@ nav .hidden.md\:flex,
   .mobile-services-popout a:active,
   .mobile-services-popout a:hover {
     color: #fff;
-    background: rgba(0, 240, 255, 0.08);
+    background: rgba(var(--c-primary-rgb), 0.08);
   }
 
   body.has-dm-standard-nav .page {

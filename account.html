@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html class="dark" style="background:#050505" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -23,7 +23,7 @@
 <meta name="twitter:title" content="Client Login | Surette Data Systems"/>
 <meta name="twitter:description" content="Client login for Surette Data Systems accounts, active services, support status, and recurring billing information."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
-<link href="assets/nav.css?v=20260622-fade" rel="stylesheet"/>
+<link href="assets/nav.css?v=20260624-tokens" rel="stylesheet"/>
 <link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/><link href="assets/client-portal.css?v=20260615-admin-accounts" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
@@ -297,8 +297,7 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <h2 id="signup-title" class="text-3xl font-headline text-white mt-3 mb-3">Create your client account.</h2>
 <p class="client-muted mb-5">Use the email you want connected to your Surette Data Systems services. After signup, we will attach your website records, support details, and billing information.</p>
 <form class="client-portal-form" data-client-signup-form novalidate>
-<label class="client-portal-label">Full name<input class="client-portal-input" type="text" autocomplete="name" required data-signup-name placeholder="Your name"/></label>
-<label class="client-portal-label">Phone<input class="client-portal-input" type="tel" autocomplete="tel" data-signup-phone placeholder="Best phone number"/></label>
+<label class="client-portal-label">Full name<input class="client-portal-input" type="text" autocomplete="name" data-signup-name placeholder="Your name"/></label>
 <label class="client-portal-label">Email address<input class="client-portal-input" type="email" autocomplete="email" required data-signup-email placeholder="client@example.com"/></label>
 <label class="client-portal-label">Password<input class="client-portal-input" type="password" autocomplete="new-password" required minlength="6" data-signup-password placeholder="Create a password"/></label>
 <label class="client-portal-label">Confirm password<input class="client-portal-input" type="password" autocomplete="new-password" required minlength="6" data-signup-password-confirm placeholder="Type it again"/></label>
@@ -311,6 +310,9 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <button class="client-portal-button client-portal-button--secondary" type="submit" data-signup-submit><span class="material-symbols-outlined">person_add</span>Create Account</button>
 </form>
 <div class="client-portal-status" data-signup-status></div>
+<button type="button" class="client-portal-button" data-signup-reset-btn style="display:none;width:100%;margin-top:.65rem;justify-content:center">
+  <span class="material-symbols-outlined">lock_reset</span>Send password reset email
+</button>
 </section>
 </div>
 <script src="assets/supabase-config.js"></script>

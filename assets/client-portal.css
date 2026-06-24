@@ -61,7 +61,7 @@
   font-size: 0.72rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #00f0ff;
+  color: var(--c-primary);
 }
 
 .client-portal-title {
@@ -325,7 +325,7 @@
   border-radius: 0.6rem;
   background: rgba(0, 0, 0, 0.35) !important;
   color: #fff !important;
-  caret-color: #00f0ff !important;
+  caret-color: var(--c-primary) !important;
   padding: 0.95rem 1rem;
   font: 500 1rem "Plus Jakarta Sans", sans-serif;
   box-sizing: border-box;
@@ -347,8 +347,8 @@
 
 .client-portal-input:focus {
   outline: none;
-  border-color: rgba(0, 240, 255, 0.72);
-  box-shadow: 0 0 0 4px rgba(0, 240, 255, 0.1);
+  border-color: rgba(var(--c-primary-rgb), 0.72);
+  box-shadow: 0 0 0 4px rgba(var(--c-primary-rgb), 0.1);
 }
 
 .client-select-wrap {
@@ -367,7 +367,7 @@
   right: 0.9rem;
   top: 50%;
   transform: translateY(-50%);
-  color: #00f0ff;
+  color: var(--c-primary);
   pointer-events: none;
   font-size: 1.45rem;
 }
@@ -390,7 +390,7 @@
 .client-remember-row input {
   width: 1rem;
   height: 1rem;
-  accent-color: #00f0ff;
+  accent-color: var(--c-primary);
 }
 
 .client-portal-button {
@@ -401,8 +401,8 @@
   border: 0;
   border-radius: 0.65rem;
   padding: 0.9rem 1.1rem;
-  color: #050505;
-  background: linear-gradient(90deg, #00f0ff, #7000ff);
+  color: var(--c-text-inv);
+  background: var(--g-primary);
   font: 800 0.78rem "JetBrains Mono", monospace;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -416,19 +416,19 @@
 
 .client-portal-button:disabled {
   cursor: not-allowed;
-  opacity: 0.5;
+  opacity: 0.45;
   transform: none;
 }
 
 .client-portal-button--ghost {
-  color: #e3e2e2;
+  color: var(--c-text);
   background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid var(--c-border-2);
 }
 
 .client-portal-button--secondary {
-  color: #050505;
-  background: linear-gradient(90deg, #39ff88, #00f0ff);
+  color: var(--c-text-inv);
+  background: var(--g-secondary);
 }
 
 .client-signup-prompt {
@@ -528,9 +528,9 @@
   margin-top: 1rem;
   padding: 0.85rem 1rem;
   border-radius: 0.65rem;
-  border: 1px solid rgba(0, 240, 255, 0.28);
-  color: rgba(227, 226, 226, 0.82);
-  background: rgba(0, 240, 255, 0.07);
+  border: 1px solid rgba(var(--c-primary-rgb), 0.28);
+  color: rgba(var(--c-text-rgb), 0.82);
+  background: rgba(var(--c-primary-rgb), 0.07);
   font-size: 0.92rem;
   line-height: 1.5;
 }
@@ -848,7 +848,7 @@
 
 .client-super-admin-panel p {
   margin: 0;
-  color: #c4c7c7;
+  color: var(--c-text-2);
   line-height: 1.55;
 }
 
@@ -897,7 +897,7 @@
   width: 100%;
   min-width: 980px;
   border-collapse: collapse;
-  color: #e3e2e2;
+  color: var(--c-text);
   font-size: 0.86rem;
 }
 
@@ -910,8 +910,8 @@
 }
 
 .client-admin-table th {
-  color: #00f0ff;
-  background: rgba(0, 240, 255, 0.07);
+  color: var(--c-primary);
+  background: rgba(var(--c-primary-rgb), 0.07);
   font: 800 0.68rem "JetBrains Mono", monospace;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1115,7 +1115,7 @@
 }
 
 .client-dashboard-email {
-  color: #00f0ff;
+  color: var(--c-primary);
   font-family: "JetBrains Mono", monospace;
   font-size: 0.9rem;
   overflow-wrap: anywhere;
@@ -1272,7 +1272,7 @@
 }
 
 .client-stats-details strong {
-  color: #00f0ff;
+  color: var(--c-primary);
   font-weight: 700;
 }
 
@@ -1295,7 +1295,7 @@
 }
 
 .client-health-checks .material-symbols-outlined {
-  color: #00f0ff;
+  color: var(--c-primary);
   font-size: 1.1rem;
 }
 
@@ -1347,8 +1347,8 @@
   align-self: flex-start;
   border-radius: 999px;
   padding: 0.3rem 0.65rem;
-  color: #050505;
-  background: #39ff88;
+  color: var(--c-text-inv);
+  background: var(--c-secondary);
   font: 800 0.68rem "JetBrains Mono", monospace;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1693,7 +1693,7 @@
 
 .client-settings-panel p {
   margin: 0;
-  color: #c4c7c7;
+  color: var(--c-text-2);
   line-height: 1.55;
 }
 
@@ -1703,9 +1703,9 @@
   gap: 8px;
   padding: 8px 11px;
   border-radius: 999px;
-  background: rgba(0, 240, 255, 0.1);
-  border: 1px solid rgba(0, 240, 255, 0.24);
-  color: #00f0ff;
+  background: rgba(var(--c-primary-rgb), 0.1);
+  border: 1px solid rgba(var(--c-primary-rgb), 0.24);
+  color: var(--c-primary);
   font: 700 11px "JetBrains Mono", monospace;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1722,7 +1722,7 @@
 
 .client-settings-email {
   margin-top: 6px;
-  color: #8e9192;
+  color: var(--c-text-3);
   font: 500 14px "JetBrains Mono", monospace;
 }
 
