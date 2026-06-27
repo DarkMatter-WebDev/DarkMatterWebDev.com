@@ -2,6 +2,13 @@
 
 This file is intentionally compact. Keep only high-signal recent changes and major milestones.
 
+## 2026-06-27 (mobile Services tab black-screen fix)
+
+- Fixed the mobile bottom-nav **Services** tab blanking the entire page to black on tap. Root cause: the tab's `click` bubbled to document-level handlers (the hamburger-menu close handler in `index.html`, plus the Nova Three.js/OrbitControls pointer listeners) in the *same* event that opened the `.mobile-services-popout`; that combination corrupted the Nova WebGL compositing layer and blanked the page (persisting until reload). The popout CSS itself (incl. `backdrop-filter`) renders fine — proven by isolating a non-bubbling click, which worked. Fix: `assets/mobile-services-nav.js` now calls `event.stopPropagation()` in the Services-tab click handler so the popout-toggle click never reaches those global handlers.
+- Also fixed a latent 404 in the same popout: "Custom Business Web Apps" / "Aplicaciones Web Empresariales" linked to `services/custom-development.html` (does not exist) — now points to `apps.html`, matching the desktop nav.
+- Cache-bust: bumped `mobile-services-nav.js?v=20260609-services-trim` → `?v=20260627-blackfix` across all 26 referencing HTML pages so users get the fixed script.
+- Verified in mobile preview: real tap opens the popout with the Nova hero fully intact (no blackout), toggle-close and outside-click-close both work, popout links resolve. Validator shows only the known pre-existing noise (missing `es/` mirrors, node_modules, Sean's Ads `es/` links).
+
 ## 2026-06-22 (nav flash + page fade-in fix)
 
 - Fixed the nav jump and flash on all pages. Root causes: `#sds-logo` / `#sds-logo-mobile` are empty placeholder divs until `surette-logo.js` inserts the 60×60 canvas at DOMContentLoaded, causing the nav to reflow; Tailwind CDN processes injected nav HTML (on `standard-site-nav.js` pages) asynchronously via MutationObserver, briefly showing unstyled classes.

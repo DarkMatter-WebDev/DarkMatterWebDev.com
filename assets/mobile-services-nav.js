@@ -43,7 +43,7 @@
         ['Website Design', service('website-design')],
         ['Managed Hosting', service('managed-hosting')],
         ['Website Care Plans', service('website-care-plans')],
-        ['Custom Business Web Apps', service('custom-development')]
+        ['Custom Business Web Apps', page('apps.html')]
       ],
       localLinks: [
         ['In-Home Tech Services', service('in-home-services')],
@@ -58,7 +58,7 @@
         ['Diseño de Sitios Web', service('website-design')],
         ['Hosting Administrado', service('managed-hosting')],
         ['Planes de Mantenimiento Web', service('website-care-plans')],
-        ['Aplicaciones Web Empresariales', service('custom-development')]
+        ['Aplicaciones Web Empresariales', page('apps.html')]
       ],
       localLinks: [
         ['Servicios Técnicos a Domicilio', service('in-home-services')],
@@ -99,6 +99,10 @@
   servicesTab.setAttribute('aria-expanded', 'false');
   servicesTab.addEventListener('click', function (event) {
     event.preventDefault();
+    // Keep this click from reaching document-level handlers (mobile-menu close,
+    // Nova WebGL pointer listeners). Letting it bubble while the popout opens
+    // corrupts the WebGL compositing layer and blanks the whole page on mobile.
+    event.stopPropagation();
     if (popout.classList.contains('is-open')) close();
     else open();
   }, { signal: lifecycle.signal });
