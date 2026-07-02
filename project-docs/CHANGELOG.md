@@ -2,11 +2,20 @@
 
 This file is intentionally compact. Keep only high-signal recent changes and major milestones.
 
+## 2026-07-02
+
+- Fixed the mobile header account control so it remains icon-only in signed-in state. `assets/account-nav.js` and the portal nav updater now keep `.dm-mob-acct` visually as the icon while preserving accessible `aria-label`/`title` text.
+- Cache-busted `account-nav.js` references to `v=20260702-mobile-account-icon` across HTML pages. Verified `apps.html` mobile preview loads the updated script and renders the header account control at icon-only width with no visible "Account" text.
+- Smoothed mobile homepage scrolling for the Nova particle background by compositing the fixed `#nova-bg`/canvas layer, using stable viewport sizing, and ignoring height-only mobile toolbar resize events so WebGL does not reallocate mid-scroll.
+- Verified the homepage at a 390x844 mobile viewport: `#nova-bg` and its canvas remained 390x844 before and after scroll, with no browser console errors.
+- Ran `scripts/validate-site.ps1`; it still reports pre-existing issues including missing `es/` mirrors, node_modules HTML scans, stale Sean Ads Spanish links, mojibake warnings, and the old `blackhole-icon.html` missing-video warning.
+
 ## 2026-06-27 (mobile Services tab black-screen fix)
 
 - Fixed the mobile bottom-nav **Services** tab blanking the entire page to black on tap. Root cause: the tab's `click` bubbled to document-level handlers (the hamburger-menu close handler in `index.html`, plus the Nova Three.js/OrbitControls pointer listeners) in the *same* event that opened the `.mobile-services-popout`; that combination corrupted the Nova WebGL compositing layer and blanked the page (persisting until reload). The popout CSS itself (incl. `backdrop-filter`) renders fine — proven by isolating a non-bubbling click, which worked. Fix: `assets/mobile-services-nav.js` now calls `event.stopPropagation()` in the Services-tab click handler so the popout-toggle click never reaches those global handlers.
 - Also fixed a latent 404 in the same popout: "Custom Business Web Apps" / "Aplicaciones Web Empresariales" linked to `services/custom-development.html` (does not exist) — now points to `apps.html`, matching the desktop nav.
 - Cache-bust: bumped `mobile-services-nav.js?v=20260609-services-trim` → `?v=20260627-blackfix` across all 26 referencing HTML pages so users get the fixed script.
+- `index.html` — changed the mobile bottom-nav Services tab `href` from `apps.html` (a dead duplicate of the Apps tab) to `index.html#services`, giving it a sensible no-JS fallback that scrolls to the homepage Services section. JS still intercepts it (detection matches on the "services" substring) and opens the popout; the href only matters if JS fails. Other pages' bottom Services tab still falls back to `apps.html`.
 - Verified in mobile preview: real tap opens the popout with the Nova hero fully intact (no blackout), toggle-close and outside-click-close both work, popout links resolve. Validator shows only the known pre-existing noise (missing `es/` mirrors, node_modules, Sean's Ads `es/` links).
 
 ## 2026-06-22 (nav flash + page fade-in fix)

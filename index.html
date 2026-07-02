@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html class="dark" style="background:#050505" lang="en"><head>
 <meta charset="utf-8"/>
@@ -12,8 +12,8 @@
 </style>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-<title>Surette Data Systems | Software · Websites · Business Tech · Southwest Florida</title>
-<meta name="description" content="Custom business software, managed websites, web apps, branding, and on-site tech for Southwest Florida businesses — built and maintained by Surette Data Systems."/>
+<title>Surette Data Systems | Software &middot; Websites &middot; Business Tech &middot; Southwest Florida</title>
+<meta name="description" content="Custom business software, managed websites, web apps, branding, and on-site tech for Southwest Florida businesses &mdash; built and maintained by Surette Data Systems."/>
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
 <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png"/>
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
@@ -21,16 +21,16 @@
 <meta name="theme-color" content="#050505"/>
 <meta property="og:site_name" content="Surette Data Systems"/>
 <meta property="og:type" content="website"/>
-<meta property="og:title" content="Surette Data Systems | Software · Websites · Business Tech · Southwest Florida"/>
-<meta property="og:description" content="Custom business software, managed websites, web apps, branding, and on-site tech for Southwest Florida businesses — built and maintained by Surette Data Systems."/>
+<meta property="og:title" content="Surette Data Systems | Software &middot; Websites &middot; Business Tech &middot; Southwest Florida"/>
+<meta property="og:description" content="Custom business software, managed websites, web apps, branding, and on-site tech for Southwest Florida businesses &mdash; built and maintained by Surette Data Systems."/>
 <meta property="og:url" content="https://surettesystems.com/index.html"/>
 <meta property="og:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
-<meta property="og:image:alt" content="Surette Data Systems — software, websites, and local tech for Southwest Florida"/>
+<meta property="og:image:alt" content="Surette Data Systems &mdash; software, websites, and local tech for Southwest Florida"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Surette Data Systems | Software · Websites · Business Tech · Southwest Florida"/>
-<meta name="twitter:description" content="Custom business software, managed websites, web apps, branding, and on-site tech for Southwest Florida businesses — built and maintained by Surette Data Systems."/>
+<meta name="twitter:title" content="Surette Data Systems | Software &middot; Websites &middot; Business Tech &middot; Southwest Florida"/>
+<meta name="twitter:description" content="Custom business software, managed websites, web apps, branding, and on-site tech for Southwest Florida businesses &mdash; built and maintained by Surette Data Systems."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
 <link href="assets/nav.css?v=20260624-tokens" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
@@ -192,7 +192,26 @@
     </script>
 <style>
         /* Shared */
-        #nova-bg canvas { display: block; }
+        #nova-bg {
+            width: 100vw;
+            min-height: 100vh;
+            min-height: 100svh;
+            height: 100lvh;
+            transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+            contain: strict;
+            pointer-events: none;
+        }
+        #nova-bg canvas {
+            display: block;
+            width: 100% !important;
+            height: 100% !important;
+            transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+        }
+        @supports not (height: 100lvh) {
+            #nova-bg { height: 100vh; }
+        }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
@@ -423,7 +442,7 @@
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/","gsap":"https://unpkg.com/gsap@3.12.5/index.js"}}</script>
 </head>
 <body class="bg-void-black text-on-background font-body-md overflow-x-hidden selection:bg-electric-cyan selection:text-void-black">
-<!-- Loading overlay — shown until surette-logo.js fires page reveal -->
+<!-- Loading overlay &mdash; shown until surette-logo.js fires page reveal -->
 <div id="page-loader" aria-hidden="true">
   <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="23" cy="23" r="19" stroke="rgba(0,240,255,0.12)" stroke-width="3"/>
@@ -835,7 +854,7 @@ Contact Us
 <span class="material-symbols-outlined mb-1">home</span>
 <span class="font-label-caps text-[10px]">Home</span>
 </a>
-<a href="apps.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-transform hover:text-starlight-white">
+<a href="index.html#services" class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-transform hover:text-starlight-white">
 <span class="material-symbols-outlined mb-1">design_services</span>
 <span class="font-label-caps text-[10px]">Services</span>
 </a>
@@ -906,14 +925,14 @@ Contact Us
 </script>
 
 <script src="assets/mobile-services-nav.js?v=20260627-blackfix"></script>
-<script src="assets/account-nav.js?v=20260611-no-lang"></script>
+<script src="assets/account-nav.js?v=20260702-mobile-account-icon"></script>
 <script src="assets/rail.js?v=20260602-rail-active"></script>
 <script type="module">
     import * as THREE from "https://esm.sh/three@0.136.0";
     import { OrbitControls } from "https://esm.sh/three@0.136.0/examples/jsm/controls/OrbitControls";
 
     /* ============================================================
-       ▼▼▼  MODIFIABLE VARIABLES — EDIT ONLY WHAT IS IN HERE  ▼▼▼
+       ???  MODIFIABLE VARIABLES &mdash; EDIT ONLY WHAT IS IN HERE  ???
        Everything below this block is the engine. Leave it alone.
        ============================================================ */
     const CONFIG = {
@@ -924,8 +943,8 @@ Contact Us
       backgroundColor: 0x160016,
 
       // Particle gradient. Inner = warm gold core, outer = purple rim.
-      colorInner: [227, 155, 0],   // RGB 0–255 (gold)
-      colorOuter: [100, 50, 255],  // RGB 0–255 (purple)
+      colorInner: [227, 155, 0],   // RGB 0-255 (gold)
+      colorOuter: [100, 50, 255],  // RGB 0-255 (purple)
 
       // How many particles. Higher = denser & prettier, but heavier on the GPU.
       coreParticles: 50000,   // the bright spherical "nova" core
@@ -945,16 +964,16 @@ Contact Us
       enableControls: false,
     };
     /* ============================================================
-       ▲▲▲  END OF MODIFIABLE VARIABLES  ▲▲▲
+       ???  END OF MODIFIABLE VARIABLES  ???
        ============================================================ */
 
 
     /* ----------------------------------------------------------------
-       Engine — DO NOT MODIFY below this line.
+       Engine &mdash; DO NOT MODIFY below this line.
        ---------------------------------------------------------------- */
     const mount = document.querySelector(CONFIG.mountSelector);
-    const getW = () => mount.clientWidth || window.innerWidth;
-    const getH = () => mount.clientHeight || window.innerHeight;
+    const getW = () => mount.clientWidth || document.documentElement.clientWidth || window.innerWidth;
+    const getH = () => mount.clientHeight || document.documentElement.clientHeight || window.innerHeight;
 
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(CONFIG.backgroundColor);
@@ -972,12 +991,39 @@ Contact Us
       camera.updateProjectionMatrix();
       renderer.setSize(getW(), getH());
     };
-    // Debounced resize — fires only on true window resize (orientation change, etc.).
-    // ResizeObserver is intentionally omitted: on iOS Safari the fixed #nova-bg
-    // briefly changes height when the toolbar hides/shows on scroll, which would
-    // trigger renderer.setSize() and cause a WebGL flash on every scroll gesture.
+    let lastRenderW = getW();
+    let lastRenderH = getH();
+    let lastDpr = Math.min(window.devicePixelRatio || 1, 2);
     let _novaResizeTimer;
-    window.addEventListener("resize", () => { clearTimeout(_novaResizeTimer); _novaResizeTimer = setTimeout(resize, 150); });
+    const shouldResizeNova = () => {
+      const nextW = getW();
+      const nextH = getH();
+      const nextDpr = Math.min(window.devicePixelRatio || 1, 2);
+      const widthChanged = Math.abs(nextW - lastRenderW) > 2;
+      const heightChanged = Math.abs(nextH - lastRenderH) > 2;
+      const dprChanged = Math.abs(nextDpr - lastDpr) > 0.01;
+      const mobileViewport = window.matchMedia("(max-width: 767px)").matches;
+      if (mobileViewport && heightChanged && !widthChanged && !dprChanged) return false;
+      if (!widthChanged && !heightChanged && !dprChanged) return false;
+      lastRenderW = nextW;
+      lastRenderH = nextH;
+      lastDpr = nextDpr;
+      return true;
+    };
+    const scheduleResize = () => {
+      clearTimeout(_novaResizeTimer);
+      _novaResizeTimer = setTimeout(() => {
+        if (!shouldResizeNova()) return;
+        renderer.setPixelRatio(lastDpr);
+        resize();
+      }, 180);
+    };
+    // ResizeObserver is intentionally omitted: mobile browser chrome can change the
+    // fixed background height mid-scroll, which causes visible WebGL reallocations.
+    window.addEventListener("resize", scheduleResize, { passive: true });
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", scheduleResize, { passive: true });
+    }
 
     let controls = null;
     if (CONFIG.enableControls) {

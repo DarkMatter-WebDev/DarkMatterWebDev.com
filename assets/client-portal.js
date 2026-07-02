@@ -560,7 +560,12 @@ function updateAccountNav(isSignedIn) {
       icon.textContent = iconName;
       link.append(icon);
     }
-    link.append(document.createTextNode(label));
+    if (link.classList.contains("dm-mob-acct")) {
+      link.setAttribute("aria-label", label);
+      link.setAttribute("title", label);
+    } else {
+      link.append(document.createTextNode(label));
+    }
   });
 }
 

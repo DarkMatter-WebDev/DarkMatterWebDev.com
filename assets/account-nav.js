@@ -52,9 +52,18 @@
         iconEl.textContent = "account_circle";
         a.textContent = "";
         a.appendChild(iconEl);
-        a.appendChild(document.createTextNode(label));
+        if (a.classList.contains("dm-mob-acct")) {
+          a.setAttribute("aria-label", label);
+          a.setAttribute("title", label);
+        } else {
+          a.appendChild(document.createTextNode(label));
+        }
       } else {
         a.innerHTML = a.getAttribute("data-dm-orig");
+        if (a.classList.contains("dm-mob-acct")) {
+          a.setAttribute("aria-label", "Client login");
+          a.setAttribute("title", "Client login");
+        }
       }
     }
   }

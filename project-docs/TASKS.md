@@ -1,11 +1,11 @@
 # Tasks
 
-Last updated: 2026-06-22
+Last updated: 2026-07-02
 
 ## Active
 
 - Keep memory docs compact and current after meaningful work.
-- Static validator known noise: missing `es/` mirrors, node_modules scan, Sean Ads Spanish links, mojibake warnings — these are pre-existing and do not block work.
+- Static validator known noise: missing `es/` mirrors, node_modules scan, Sean Ads Spanish links, mojibake warnings, and the old `blackhole-icon.html` missing-video warning. These are pre-existing and do not block work.
 
 ## Near-Term
 
@@ -37,6 +37,8 @@ Last updated: 2026-06-22
 
 ## Recently Completed
 
+- Smoothed the homepage Nova WebGL background on mobile by making the fixed canvas layer use stable viewport sizing/compositing and ignoring height-only mobile browser-toolbar resize events during scroll.
+- Kept the mobile header account control icon-only in signed-in state and cache-busted `assets/account-nav.js` references.
 - Added MetalsCalc — Buying Calculator as a 5th Surette Data Systems app: `metalscalc-buying-calculator.html` app profile, catalog tile #05 (PWA badge) in `app-catalog.html`, screenshots in `assets/apps/metalscalc/`, and a portfolio/website entry (`portfolio-metalscalc.html`, tile #06 in `casestudies.html`) with screenshots in `assets/portfolio/metalscalc/`.
 - Added `account-settings.html` (profile/password management), `account-created.html` (email verification landing page after signup), and `account-ads-status.html` (Google Ads workspace stub for Sean).
 - Rebuilt `app-catalog.html` gallery cards to match the Websites/Case Studies `.portfolio-tile` design (2-up mobile, 3-up desktop). Removed old "DepthFold" 3D card system.

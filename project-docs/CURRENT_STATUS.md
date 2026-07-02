@@ -1,6 +1,6 @@
 # Current Status
 
-Last updated: 2026-06-22
+Last updated: 2026-07-02
 
 ## Site State
 
@@ -11,11 +11,12 @@ Last updated: 2026-06-22
 
 ## Current Features
 
-- Homepage hero background is the Nova particle-galaxy WebGL widget (`nova/nova-widget.html`), mounted as a fixed full-viewport `#nova-bg` div at `z-index:1`. A fixed `#hero-tint` scrim at `z-index:2` anchors the gradient overlay so it doesn't scroll away. The old black-hole Three.js scene is gone. Only the `CONFIG` block in the Nova widget may be edited — leave the engine alone.
+- Homepage hero background is the Nova particle-galaxy WebGL widget (`nova/nova-widget.html`), mounted as a fixed full-viewport `#nova-bg` div at `z-index:1`. A fixed `#hero-tint` scrim at `z-index:2` anchors the gradient overlay so it doesn't scroll away. The homepage integration promotes `#nova-bg`/canvas to a composited layer and ignores height-only mobile viewport resize events so browser toolbar changes do not reallocate WebGL during scroll. The old black-hole Three.js scene is gone. Only the homepage integration and the `CONFIG` block should be changed; leave the Nova engine copy alone unless explicitly needed.
 - Non-home pages use the shared cosmic-web background system (`assets/cosmic-web.css`).
 - Services pages: Website Design, Managed Hosting, Website Care Plans, Custom Business Web Apps (links to `apps.html`), In-Home Tech Services, Office Network Setup. Website Design, Managed Hosting, Care Plans, Custom Apps, In-Home, and Office Network pages all include "View Our Process" CTAs.
 - Website Preference Builder and Contact use Netlify Forms.
 - Client portal pages are static HTML wired for Supabase auth.
+- Mobile page headers inject an icon-only account link via `assets/account-nav.js`. Signed-in state may change the accessible label/title to "Account", but the visible mobile header control should remain just the `account_circle` icon.
 
 ## Portal Pages
 
@@ -65,7 +66,7 @@ Websites gallery (`casestudies.html`) — current entries (in order):
 
 - Supabase portal auth gates are browser-only; real data security requires RLS + server-side functions.
 - `supabase/portal-role-setup.sql` must be run in the dedicated Dark Matter / Surette Data Systems Supabase project (not Naples Estate Jewelry) before the admin account-holder table and signup trigger work.
-- Static validator reports pre-existing noise: missing `es/` mirrors, `node_modules` HTML scan, stale Sean Ads Spanish links, mojibake warnings.
+- Static validator reports pre-existing noise: missing `es/` mirrors, `node_modules` HTML scan, stale Sean Ads Spanish links, mojibake warnings, plus the old `blackhole-icon.html` missing-video warning.
 - Old `antique-mall-*.png` screenshots may still be on disk alongside the current `thirdstreet-*.png` set; audit and remove if unused.
 - MetalsCalc app/portfolio OG meta URLs reference `darkmatterwebsites.com` — should be corrected to `darkmatterwebdev.com` if that is the canonical domain.
 - Admin-only ThirdStreetAuctions.com screenshots not yet captured (browser bridge was unavailable); add when an authenticated session is available.

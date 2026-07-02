@@ -1,6 +1,6 @@
 # Handoff
 
-Last updated: 2026-06-22
+Last updated: 2026-07-02
 
 ## Startup Prompt
 
@@ -20,6 +20,8 @@ Then summarize the project in a few bullets and continue with the latest request
 
 - Static Dark Matter / Surette Data Systems marketing + client portal site.
 - English root pages only; Spanish `es/` mirrors are absent from this working copy.
+- Homepage Nova WebGL background is scroll-smoothed for mobile in `index.html`: the fixed `#nova-bg`/canvas layer uses stable viewport sizing and resize logic ignores height-only mobile toolbar changes.
+- Mobile header account control is intentionally icon-only. `assets/account-nav.js` keeps `.dm-mob-acct` visually as the icon while updating `aria-label`/`title` for signed-in state.
 - App/software brand is **Surette Data Systems**. Five app profiles: Auction House, SDMS, Benji Payroll, Antique Mall (Third Street Auctions), MetalsCalc.
 - Websites/portfolio gallery has six entries: Naples Estate Jewelry, JP Surette, Elite Yacht Detailing, Sean's Ads, AuctionBuddha.com, MetalsCalc.com.
 - Portal uses a dedicated Dark Matter / Surette Data Systems Supabase project (not Naples Estate Jewelry).
@@ -64,6 +66,8 @@ Services pages in `services/`: `website-design.html`, `managed-hosting.html`, `w
 
 ## Most Recent Work
 
+- Smoothed mobile homepage scrolling for the Nova particle background by preventing WebGL renderer resize/reallocation during height-only browser toolbar changes. Verified at a 390x844 mobile viewport that the fixed layer and canvas size stay stable after scroll; no browser console errors.
+- Fixed the mobile header account control so signed-in state no longer appends the visible word "Account"; cache-busted `account-nav.js` references to `v=20260702-mobile-account-icon`.
 - Added **MetalsCalc** as the 5th Surette Data Systems app: `metalscalc-buying-calculator.html` app profile, tile #05 in `app-catalog.html`, screenshots in `assets/apps/metalscalc/`. Added `portfolio-metalscalc.html` Websites detail page as entry #06 in `casestudies.html`, screenshots in `assets/portfolio/metalscalc/`.
 - Added portal support pages: `account-created.html` (post-signup email verification), `account-settings.html` (profile/password management), `account-ads-status.html` (Google Ads workspace stub).
 - Rebuilt `app-catalog.html` gallery cards to `.portfolio-tile` design matching `casestudies.html` (2-up mobile, 3-up desktop). Removed "DepthFold" 3D card system.
@@ -85,7 +89,7 @@ Run after broad edits:
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\validate-site.ps1
 ```
 
-Known validator noise (pre-existing, not blocking): missing `es/` mirrors, node_modules HTML scan, stale Sean Ads Spanish links, mojibake warnings.
+Known validator noise (pre-existing, not blocking): missing `es/` mirrors, node_modules HTML scan, stale Sean Ads Spanish links, mojibake warnings, and `blackhole-icon.html` missing `your-blackhole.mp4`.
 
 ## Do Not Forget
 
