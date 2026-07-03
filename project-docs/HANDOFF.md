@@ -20,6 +20,7 @@ Then summarize the project in a few bullets and continue with the latest request
 
 - Static Dark Matter / Surette Data Systems marketing + client portal site.
 - English root pages only; Spanish `es/` mirrors are absent from this working copy.
+- No-white-flash baseline is sitewide: HTML pages include `#dm-critical-dark-baseline` in `<head>`, `assets/nav.css` anchors dark document/shell backgrounds, and public pages use `theme-color="#050505"`.
 - Homepage Nova WebGL background is scroll-smoothed for mobile in `index.html`: the fixed `#nova-bg`/canvas layer uses stable viewport sizing and resize logic ignores height-only mobile toolbar changes.
 - Mobile header account control is intentionally icon-only. `assets/account-nav.js` keeps `.dm-mob-acct` visually as the icon while updating `aria-label`/`title` for signed-in state.
 - App/software brand is **Surette Data Systems**. Five app profiles: Auction House, SDMS, Benji Payroll, Antique Mall (Third Street Auctions), MetalsCalc.
@@ -53,9 +54,6 @@ Then summarize the project in a few bullets and continue with the latest request
 | `account-created.html` | Email confirmation landing after Supabase signup |
 | `account-ads-status.html` | Google Ads workspace stub for Sean |
 | `seans-google-ads-dashboard.html` | Sean/owner-only portal UI |
-| `singularity.html` | Singularity standalone page |
-| `blackhole-icon.html` | Blackhole icon demo |
-| `surette-logo-demo.html` | Surette logo demo |
 | `auction-house-consignment-store-software.html` | Auction app profile |
 | `secondhand-dealer-management-system.html` | SDMS app profile |
 | `benji-payroll-management-system.html` | Benji Payroll app profile |
@@ -72,6 +70,7 @@ Services pages in `services/`: `website-design.html`, `managed-hosting.html`, `w
 
 ## Most Recent Work
 
+- Added a sitewide no-white-flash dark loading baseline: inline critical background CSS, shared `assets/nav.css` dark document/shell defaults, normalized dark `theme-color`, and checked repeated desktop/mobile route loads and hard reloads for home, apps/pricing, contact, legal, accessibility, and SDMS compliance pages.
 - Removed Netlify Forms from Contact, Apps consultation, and App Checkout. Added shared Supabase form submission JS, public `submit_site_message()` SQL, optional photo attachment upload support, and Admin Center attachment rendering.
 - Replaced the account dashboard request form's Netlify Form submission with a Supabase `submit_portal_message()` RPC. Added `client_messages` schema/RLS plus owner-only list/delete RPCs to `supabase/portal-role-setup.sql`, and added a Message Center tab to `account-admin.html`.
 - Added Delete actions to the Admin Center Subscribers and Account holders tables. Each opens a confirmation modal before calling owner-only Supabase RPCs; the signed-in owner account row is protected from self-delete.
@@ -105,7 +104,7 @@ Run after broad edits:
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\validate-site.ps1
 ```
 
-Known validator noise (pre-existing, not blocking): missing `es/` mirrors, node_modules HTML scan, stale Sean Ads Spanish links, mojibake warnings, and `blackhole-icon.html` missing `your-blackhole.mp4`.
+Known validator noise (pre-existing, not blocking): missing `es/` mirrors, node_modules HTML scan, stale Sean Ads Spanish links, and mojibake warnings.
 
 ## Do Not Forget
 

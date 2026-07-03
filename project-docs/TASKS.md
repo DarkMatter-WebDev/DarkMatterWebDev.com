@@ -5,7 +5,7 @@ Last updated: 2026-07-03
 ## Active
 
 - Keep memory docs compact and current after meaningful work.
-- Static validator known noise: missing `es/` mirrors, node_modules scan, Sean Ads Spanish links, mojibake warnings, and the old `blackhole-icon.html` missing-video warning. These are pre-existing and do not block work.
+- Static validator known noise: missing `es/` mirrors, node_modules scan, Sean Ads Spanish links, and mojibake warnings. These are pre-existing and do not block work.
 - Audit finding: service-detail pages use a different mobile header markup path than most root marketing/app pages; header dimensions are stable in preview, but consolidating service-page mobile nav into the shared pattern remains a good future polish item.
 - Confirm Supabase Auth URL configuration in the hosted project: Site URL should be `https://surettesystems.com`, and redirect allowlist should include `https://surettesystems.com/account.html`, `https://surettesystems.com/account-settings.html`, `https://surettesystems.com/account-admin.html`, `https://surettesystems.com/account-users.html`, plus local preview URLs only for development.
 - Run the updated `supabase/portal-role-setup.sql` in the hosted Supabase project so homepage newsletter submissions, account-signup mirroring into `homepage_email_signups`, public form message submission/photo attachment support, account-dashboard message submission/list/delete RPCs, and Admin Center delete RPCs work live. If Supabase reports a changed return type for `list_portal_messages()`, rerun the current file, which includes `drop function if exists public.list_portal_messages();` before the recreated function.
@@ -45,6 +45,10 @@ Last updated: 2026-07-03
 
 ## Recently Completed
 
+- Added a sitewide no-white-flash dark loading baseline: critical inline head CSS on HTML pages, shared `assets/nav.css` dark document/shell defaults, normalized `theme-color` to `#050505`, and verified repeated desktop/mobile route loads across home, apps/pricing, contact, legal, accessibility, and SDMS compliance pages.
+- Added the shared desktop site footer to the remaining service-page outliers, `services/in-home-services.html` and `services/office-network-setup.html`.
+- Removed stale standalone demo pages that were not linked from the live site: `surette-logo-demo.html`, `blackhole-icon.html`, and `singularity.html`.
+- Added a sitewide object-level reveal for repeated cards, panels, pricing tiles, glass blocks, and portfolio tiles so whole objects fade in together after page-ready instead of text appearing before the background/border treatment.
 - Added a same-site outbound navigation loader: link clicks now show the small black spinner overlay briefly before navigation so page changes feel intentional instead of frozen.
 - Stabilized page reveal after the white-screen regression: restored the `html`-based fade path, kept the root/background black, added a CSS safety fallback for logo pages if JS reveal is interrupted, and updated `surette-logo.js` cache keys across pages.
 - Updated public/site contact email links and visible contact text to `info@SuretteSystems.com` across contact, portfolio, case study, process, and service pages. Form placeholder examples and Supabase/admin role setup emails were intentionally left unchanged.

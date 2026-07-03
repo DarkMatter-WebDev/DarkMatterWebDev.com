@@ -4,6 +4,10 @@ This file is intentionally compact. Keep only high-signal recent changes and maj
 
 ## 2026-07-03
 
+- Added a no-white-flash dark loading baseline across the static site: critical inline head CSS on HTML pages, stronger shared dark `html`/`body`/shell defaults in `assets/nav.css`, `theme-color` normalized to `#050505`, and desktop/mobile navigation/reload verification across the main public routes.
+- Added the shared desktop site footer to the remaining service-page outliers, `services/in-home-services.html` and `services/office-network-setup.html`.
+- Removed stale standalone demo pages that were not linked from the live site: `surette-logo-demo.html`, `blackhole-icon.html`, and `singularity.html`.
+- Added a sitewide object-level reveal for repeated cards, panels, pricing tiles, glass blocks, and portfolio tiles so whole objects fade in together after page-ready instead of text appearing before the background/border treatment.
 - Added a same-site outbound navigation loader: link clicks now show the small black spinner overlay briefly before navigation so page changes feel intentional instead of frozen.
 - Stabilized the page reveal after the white-screen regression: restored the `html`-based fade path, kept the root/background black, added a CSS safety fallback for logo pages if JS reveal is interrupted, and cache-busted `surette-logo.js` across pages.
 - Updated public-facing contact email references from legacy/old addresses to `info@SuretteSystems.com` across site pages while leaving sample input placeholders and Supabase/admin setup emails unchanged.
@@ -35,7 +39,7 @@ This file is intentionally compact. Keep only high-signal recent changes and maj
 - Cache-busted `account-nav.js` references to `v=20260702-mobile-account-icon` across HTML pages. Verified `apps.html` mobile preview loads the updated script and renders the header account control at icon-only width with no visible "Account" text.
 - Smoothed mobile homepage scrolling for the Nova particle background by compositing the fixed `#nova-bg`/canvas layer, using stable viewport sizing, and ignoring height-only mobile toolbar resize events so WebGL does not reallocate mid-scroll.
 - Verified the homepage at a 390x844 mobile viewport: `#nova-bg` and its canvas remained 390x844 before and after scroll, with no browser console errors.
-- Ran `scripts/validate-site.ps1`; it still reports pre-existing issues including missing `es/` mirrors, node_modules HTML scans, stale Sean Ads Spanish links, mojibake warnings, and the old `blackhole-icon.html` missing-video warning.
+- Ran `scripts/validate-site.ps1`; it still reports pre-existing issues including missing `es/` mirrors, node_modules HTML scans, stale Sean Ads Spanish links, and mojibake warnings.
 
 ## 2026-06-27 (mobile Services tab black-screen fix)
 

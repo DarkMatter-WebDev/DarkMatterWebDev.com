@@ -118,10 +118,33 @@ html {
   /* Matches the site's void-black body background. Without this, the browser
      shows white <html> between page navigations. */
   background-color: #050505;
+  color: #ffffff;
+  min-height: 100%;
+  color-scheme: dark;
 }
 
 body {
   background-color: #050505;
+  color: var(--c-text);
+  min-height: 100vh;
+}
+
+body > main {
+  min-height: 100vh;
+}
+
+#__next,
+#root,
+.app,
+.page,
+.client-portal-shell,
+.client-settings-shell,
+.checkout-shell,
+.ads-shell,
+.downloads-main,
+.catalog-main {
+  background-color: #050505;
+  min-height: 100vh;
 }
 
 #page-loader {
@@ -168,10 +191,90 @@ html.sds-logo-loaded {
   animation: dm-page-show 0s 0.9s forwards;
 }
 
+/* Object reveal
+   Keep repeated cards/panels hidden as whole objects until the page-ready
+   marker is applied. This prevents child text from appearing before borders,
+   backgrounds, blur, images, and other object styling have settled. */
+html.sds-logo-loaded:not(.page-content-ready) :where(
+  .glass,
+  .glass-card,
+  .panel,
+  .card,
+  .portfolio-tile,
+  .portfolio-card,
+  .pricing-banner,
+  .pricing-tier-link,
+  .feature-card,
+  .service-card,
+  .case-card,
+  .checkout-panel,
+  .account-card,
+  .portal-card,
+  .dashboard-card,
+  .message-card,
+  .stat-card,
+  .sds-card,
+  .app-card
+) {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+html.page-content-ready :where(
+  .glass,
+  .glass-card,
+  .panel,
+  .card,
+  .portfolio-tile,
+  .portfolio-card,
+  .pricing-banner,
+  .pricing-tier-link,
+  .feature-card,
+  .service-card,
+  .case-card,
+  .checkout-panel,
+  .account-card,
+  .portal-card,
+  .dashboard-card,
+  .message-card,
+  .stat-card,
+  .sds-card,
+  .app-card
+) {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.32s ease, transform 0.32s ease;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { transition: none; }
   html:not(.sds-logo-loaded) { animation: dm-page-show 0s 0s forwards; }
   html.sds-logo-loaded { animation: dm-page-show 0s 0s forwards; }
+  html.sds-logo-loaded :where(
+    .glass,
+    .glass-card,
+    .panel,
+    .card,
+    .portfolio-tile,
+    .portfolio-card,
+    .pricing-banner,
+    .pricing-tier-link,
+    .feature-card,
+    .service-card,
+    .case-card,
+    .checkout-panel,
+    .account-card,
+    .portal-card,
+    .dashboard-card,
+    .message-card,
+    .stat-card,
+    .sds-card,
+    .app-card
+  ) {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* Logo lockup — row layout so icon sits left of wordmark (not stacked) */
