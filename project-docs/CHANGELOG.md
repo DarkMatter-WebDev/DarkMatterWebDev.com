@@ -4,7 +4,12 @@ This file is intentionally compact. Keep only high-signal recent changes and maj
 
 ## 2026-07-03
 
-- Added a no-white-flash dark loading baseline across the static site: critical inline head CSS on HTML pages, stronger shared dark `html`/`body`/shell defaults in `assets/nav.css`, `theme-color` normalized to `#050505`, and desktop/mobile navigation/reload verification across the main public routes.
+- Widened Admin Center Subscribers and Account holders table name/email columns with explicit column groups, and narrowed the Subscribers source column so "Account signup" can wrap compactly.
+
+- Made the mobile header account icon color state consistent across pages: `assets/account-nav.js` and portal nav updates now render the icon grey while signed out and cyan/blue while signed in, with cache-busted script references.
+- Added the standard mobile header/menu chrome to the service-page mobile markup path: fixed Surette logo header, account icon injection target, promoted top nav row, active Services tab, and working shared services popout.
+- Added compact mobile footers to the service-page mobile markup path for Website Design, Managed Hosting, Website Care Plans, In-Home Tech Services, and Office Network Setup. The existing desktop service footer remains unchanged and hidden correctly on mobile.
+- Added a no-white-flash dark loading baseline across the static site: critical inline head CSS on HTML pages, stronger shared dark `html`/`body`/app-root defaults in `assets/nav.css`, `theme-color` normalized to `#050505`, and desktop/mobile navigation/reload verification across the main public routes. Kept visual page shells transparent after verification so the account page's animated portal background remains visible.
 - Added the shared desktop site footer to the remaining service-page outliers, `services/in-home-services.html` and `services/office-network-setup.html`.
 - Removed stale standalone demo pages that were not linked from the live site: `surette-logo-demo.html`, `blackhole-icon.html`, and `singularity.html`.
 - Added a sitewide object-level reveal for repeated cards, panels, pricing tiles, glass blocks, and portfolio tiles so whole objects fade in together after page-ready instead of text appearing before the background/border treatment.

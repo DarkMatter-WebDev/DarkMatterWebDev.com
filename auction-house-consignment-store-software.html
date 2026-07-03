@@ -6,7 +6,8 @@
 <style id="dm-critical-dark-baseline">
   html,body{background:#050505;color:#fff;min-height:100%;color-scheme:dark;}
   body{margin:0;min-height:100vh;}
-  #__next,#root,.app,.page,.client-portal-shell,.client-settings-shell,.checkout-shell,.ads-shell,.downloads-main,.catalog-main{background:#050505;min-height:100vh;}
+  #__next,#root,.app{background:#050505;min-height:100vh;}
+  body>main{min-height:100vh;}
   #page-loader,.sds-apps-loader{background:#050505;}
 </style>
 <meta name="theme-color" content="#050505"/>
@@ -27,7 +28,7 @@
 <meta name="twitter:description" content="Full profile for Surette Data Systems's auction house and consignment store management app, including live demo access, screenshots, app flow, customization, layouts, and feature expansion options."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
-<link href="assets/nav.css?v=20260703-nav-loader" rel="stylesheet"/>
+<link href="assets/nav.css?v=20260703-dark-baseline-shells" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
   #sds-logo a.sds-anchor,
@@ -184,7 +185,7 @@ document.addEventListener("keydown",function(event){if(event.key==="Escape"&&!mo
 })();
 </script>
 <script src="assets/mobile-services-nav.js?v=20260627-blackfix"></script>
-<script src="assets/account-nav.js?v=20260702-mobile-account-icon"></script>
+<script src="assets/account-nav.js?v=20260703-mobile-account-color"></script>
 <script src="surette-logo.js?v=20260703-nav-loader"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
 </body>

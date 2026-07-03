@@ -464,6 +464,7 @@ function updateAccountNav(isSignedIn) {
   const isSpanish = document.documentElement.lang.startsWith("es");
   const label = isSignedIn ? (isSpanish ? "Cuenta" : "Account") : (isSpanish ? "Acceso" : "Client Login");
   const iconName = "account_circle";
+  const mobileAccountColor = isSignedIn ? "#00F0FF" : "rgba(196, 199, 199, 0.55)";
 
   els.navLoginLinks?.forEach((link) => {
     const icon = link.querySelector(".material-symbols-outlined");
@@ -475,6 +476,9 @@ function updateAccountNav(isSignedIn) {
     if (link.classList.contains("dm-mob-acct")) {
       link.setAttribute("aria-label", label);
       link.setAttribute("title", label);
+      link.dataset.dmSignedIn = isSignedIn ? "true" : "false";
+      link.style.color = mobileAccountColor;
+      link.style.opacity = isSignedIn ? "1" : "0.92";
     } else {
       link.append(document.createTextNode(label));
     }

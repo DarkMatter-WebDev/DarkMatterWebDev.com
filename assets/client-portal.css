@@ -932,6 +932,7 @@
 .client-admin-table {
   width: 100%;
   min-width: 980px;
+  table-layout: fixed;
   border-collapse: collapse;
   color: var(--c-text);
   font-size: 0.86rem;
@@ -968,6 +969,87 @@
 
 .client-admin-table--messages {
   min-width: 1120px;
+}
+
+.client-admin-table--subscribers {
+  min-width: 1420px;
+}
+
+.client-admin-table--accounts {
+  min-width: 1400px;
+}
+
+.client-admin-table--subscribers .client-admin-col-source {
+  width: 6.25rem;
+}
+
+.client-admin-table--subscribers .client-admin-col-name {
+  width: 15rem;
+}
+
+.client-admin-table--subscribers .client-admin-col-email {
+  width: 21rem;
+}
+
+.client-admin-table--subscribers .client-admin-col-company {
+  width: 9rem;
+}
+
+.client-admin-table--subscribers .client-admin-col-origin,
+.client-admin-table--subscribers .client-admin-col-status {
+  width: 8.5rem;
+}
+
+.client-admin-table--accounts .client-admin-col-name {
+  width: 15rem;
+}
+
+.client-admin-table--accounts .client-admin-col-email {
+  width: 20rem;
+}
+
+.client-admin-table--accounts .client-admin-col-company {
+  width: 10rem;
+}
+
+.client-admin-table--accounts .client-admin-col-phone {
+  width: 8.5rem;
+}
+
+.client-admin-table--accounts .client-admin-col-website {
+  width: 12rem;
+}
+
+.client-admin-table--accounts .client-admin-col-role {
+  width: 7rem;
+}
+
+.client-admin-col-date {
+  width: 9rem;
+}
+
+.client-admin-col-actions {
+  width: 5.75rem;
+}
+
+.client-admin-table-cell--name,
+.client-admin-table-cell--email {
+  overflow-wrap: anywhere;
+}
+
+.client-admin-table-cell--email {
+  color: #ffffff;
+}
+
+.client-admin-table-cell--source .client-pill {
+  display: inline-flex;
+  max-width: 4.9rem;
+  justify-content: center;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.15;
+  padding-inline: 0.5rem;
 }
 
 .client-admin-message-body {

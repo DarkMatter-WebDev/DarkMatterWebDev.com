@@ -133,16 +133,64 @@ body > main {
   min-height: 100vh;
 }
 
+/* Compact footer used by hand-authored mobile service-page markup. */
+.service-mobile-footer {
+  margin-top: 3.5rem;
+  padding: 2rem 0 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.service-mobile-footer__brand {
+  margin: 0 0 0.9rem;
+  color: #ffffff;
+  font: 800 1.05rem "Space Grotesk", sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.service-mobile-footer__meta {
+  margin: 0;
+  color: var(--c-text-3);
+  font: 700 0.68rem/1.8 "JetBrains Mono", monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.service-mobile-footer__meta a,
+.service-mobile-footer__links a {
+  color: var(--c-primary);
+  text-decoration: none;
+}
+
+.service-mobile-footer__links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.4rem;
+  margin-top: 1.6rem;
+}
+
+.service-mobile-footer__links span {
+  display: block;
+  margin-bottom: 0.8rem;
+  color: #ffffff;
+  font: 800 0.68rem "JetBrains Mono", monospace;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.service-mobile-footer__links a {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  margin-top: 0.65rem;
+  font: 700 0.75rem "JetBrains Mono", monospace;
+  letter-spacing: 0.06em;
+  overflow-wrap: anywhere;
+}
+
 #__next,
 #root,
-.app,
-.page,
-.client-portal-shell,
-.client-settings-shell,
-.checkout-shell,
-.ads-shell,
-.downloads-main,
-.catalog-main {
+.app {
   background-color: #050505;
   min-height: 100vh;
 }

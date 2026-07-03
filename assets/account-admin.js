@@ -612,9 +612,9 @@ function renderSubscribers(rows) {
       });
     return `
       <tr>
-        <td><span class="client-pill">${escapeHtml(row.source)}</span></td>
-        <td><strong>${escapeHtml(row.name || "Unknown")}</strong></td>
-        <td>${escapeHtml(row.email || "")}</td>
+        <td class="client-admin-table-cell--source"><span class="client-pill">${escapeHtml(row.source)}</span></td>
+        <td class="client-admin-table-cell--name"><strong>${escapeHtml(row.name || "Unknown")}</strong></td>
+        <td class="client-admin-table-cell--email">${escapeHtml(row.email || "")}</td>
         <td>${escapeHtml(row.companyPhone || "")}</td>
         <td>${escapeHtml(row.origin || "")}</td>
         <td>${escapeHtml(row.roleStatus || "")}</td>
@@ -695,8 +695,8 @@ function renderAccountHolders(rows) {
       : "";
     return `
       <tr>
-        <td><strong>${escapeHtml(name)}</strong>${row.user_id ? `<div class="client-muted">${escapeHtml(row.user_id)}</div>` : ""}</td>
-        <td>${escapeHtml(row.email || "")}</td>
+        <td class="client-admin-table-cell--name"><strong>${escapeHtml(name)}</strong>${row.user_id ? `<div class="client-muted">${escapeHtml(row.user_id)}</div>` : ""}</td>
+        <td class="client-admin-table-cell--email">${escapeHtml(row.email || "")}</td>
         <td>${escapeHtml(row.company_name || "")}</td>
         <td>${escapeHtml(row.phone || "")}</td>
         <td>${website}</td>

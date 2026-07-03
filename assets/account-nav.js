@@ -12,6 +12,11 @@
    As a fallback it also detects a Supabase auth token directly (matching
    any sb-...-auth-token key, including chunked variants). */
 (function () {
+  var MOBILE_ACCOUNT_COLORS = {
+    signedIn: "#00F0FF",
+    signedOut: "rgba(196, 199, 199, 0.55)"
+  };
+
   function hasSession() {
     try {
       if (localStorage.getItem("dm_logged_in") === "1") return true;
@@ -55,6 +60,7 @@
         if (a.classList.contains("dm-mob-acct")) {
           a.setAttribute("aria-label", label);
           a.setAttribute("title", label);
+          setMobileAccountColor(a, true);
         } else {
           a.appendChild(document.createTextNode(label));
         }
@@ -63,9 +69,18 @@
         if (a.classList.contains("dm-mob-acct")) {
           a.setAttribute("aria-label", "Client login");
           a.setAttribute("title", "Client login");
+          setMobileAccountColor(a, false);
         }
       }
     }
+  }
+
+  function setMobileAccountColor(link, signedIn) {
+    if (!link || !link.classList || !link.classList.contains("dm-mob-acct")) return;
+    var color = signedIn ? MOBILE_ACCOUNT_COLORS.signedIn : MOBILE_ACCOUNT_COLORS.signedOut;
+    link.dataset.dmSignedIn = signedIn ? "true" : "false";
+    link.style.color = color;
+    link.style.opacity = signedIn ? "1" : "0.92";
   }
 
   // ── Mobile header: inject account icon into header flex row ──────────────
@@ -94,7 +109,7 @@
     var depth = Math.max(0, parts.length - 1);
     var prefix = depth > 0 ? Array(depth).fill('..').join('/') + '/' : '';
     var href = prefix + 'account.html';
-    var onAcct = /(^|\/)account(\.html)?([?#]|$)/i.test(path);
+    var signedIn = hasSession();
 
     var a = document.createElement('a');
     a.href = href;
@@ -103,11 +118,13 @@
     a.style.cssText = [
       'display:flex', 'align-items:center', 'text-decoration:none',
       'transition:color 0.2s',
-      'color:' + (onAcct ? '#00F0FF' : 'rgba(196,199,199,0.55)')
+      'color:' + (signedIn ? MOBILE_ACCOUNT_COLORS.signedIn : MOBILE_ACCOUNT_COLORS.signedOut)
     ].join(';');
-    a.addEventListener('mouseenter', function () { this.style.color = '#00F0FF'; });
+    a.addEventListener('mouseenter', function () {
+      setMobileAccountColor(this, this.dataset.dmSignedIn === "true");
+    });
     a.addEventListener('mouseleave', function () {
-      if (!onAcct) this.style.color = 'rgba(196,199,199,0.55)';
+      setMobileAccountColor(this, this.dataset.dmSignedIn === "true");
     });
 
     var icon = document.createElement('span');
@@ -115,6 +132,7 @@
     icon.style.cssText = 'font-size:18px;line-height:1;';
     icon.textContent = 'account_circle';
     a.appendChild(icon);
+    setMobileAccountColor(a, signedIn);
 
     container.appendChild(a);
   }

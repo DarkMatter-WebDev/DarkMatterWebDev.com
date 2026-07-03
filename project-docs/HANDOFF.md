@@ -20,9 +20,10 @@ Then summarize the project in a few bullets and continue with the latest request
 
 - Static Dark Matter / Surette Data Systems marketing + client portal site.
 - English root pages only; Spanish `es/` mirrors are absent from this working copy.
-- No-white-flash baseline is sitewide: HTML pages include `#dm-critical-dark-baseline` in `<head>`, `assets/nav.css` anchors dark document/shell backgrounds, and public pages use `theme-color="#050505"`.
+- No-white-flash baseline is sitewide: HTML pages include `#dm-critical-dark-baseline` in `<head>`, `assets/nav.css` anchors dark document/app-root backgrounds, visual shells stay transparent for animated/cosmic backgrounds, and public pages use `theme-color="#050505"`.
 - Homepage Nova WebGL background is scroll-smoothed for mobile in `index.html`: the fixed `#nova-bg`/canvas layer uses stable viewport sizing and resize logic ignores height-only mobile toolbar changes.
-- Mobile header account control is intentionally icon-only. `assets/account-nav.js` keeps `.dm-mob-acct` visually as the icon while updating `aria-label`/`title` for signed-in state.
+- Mobile header account control is intentionally icon-only. `assets/account-nav.js` keeps `.dm-mob-acct` visually as the icon while updating `aria-label`/`title` for signed-in state. The mobile icon renders grey when signed out and cyan/blue when signed in.
+- Service pages have separate desktop and mobile markup paths; mobile now includes the fixed Surette logo/header, account icon injection target, promoted top nav row with working Services popout, and compact `.service-mobile-footer` inside each page's `md:hidden` wrapper.
 - App/software brand is **Surette Data Systems**. Five app profiles: Auction House, SDMS, Benji Payroll, Antique Mall (Third Street Auctions), MetalsCalc.
 - Websites/portfolio gallery has six entries: Naples Estate Jewelry, JP Surette, Elite Yacht Detailing, Sean's Ads, AuctionBuddha.com, MetalsCalc.com.
 - Portal uses a dedicated Dark Matter / Surette Data Systems Supabase project (not Naples Estate Jewelry).
@@ -30,6 +31,7 @@ Then summarize the project in a few bullets and continue with the latest request
 - Homepage newsletter signup forms are wired to Supabase `homepage_email_signups`; live use requires running the updated `supabase/portal-role-setup.sql` in the hosted project.
 - Public website forms and account-dashboard support/change requests are no longer Netlify Forms. Public forms call Supabase `submit_site_message()` through `assets/site-message-forms.js`; account requests call `submit_portal_message()`. Admin Center has a Messages tab that lists/deletes them via `list_portal_messages()` / `delete_portal_message()` and can render signed links for optional photo attachments. Live use requires running the updated `supabase/portal-role-setup.sql`; the current SQL includes `drop function if exists public.list_portal_messages();` because the return shape changed to include source/page/attachment fields.
 - Admin Center table deletes are wired in `account-admin.html` / `assets/account-admin.js` with a confirmation modal. Live delete actions require `delete_portal_message()`, `delete_newsletter_subscriber()`, and `delete_portal_account_holder()` from the updated `supabase/portal-role-setup.sql`.
+- Admin Center Subscribers and Account holders tables use explicit column groups; name/email columns are wider, and the Subscribers source pill can wrap in a narrow column.
 - Local preview: `http://127.0.0.1:4173/` (start with `npx http-server` or `start-preview.bat`).
 - Production: `https://surettesystems.com/`.
 - Sean's Ads source is intentionally not here â€” do not recreate it.
@@ -70,7 +72,12 @@ Services pages in `services/`: `website-design.html`, `managed-hosting.html`, `w
 
 ## Most Recent Work
 
-- Added a sitewide no-white-flash dark loading baseline: inline critical background CSS, shared `assets/nav.css` dark document/shell defaults, normalized dark `theme-color`, and checked repeated desktop/mobile route loads and hard reloads for home, apps/pricing, contact, legal, accessibility, and SDMS compliance pages.
+- Widened Admin Center Subscribers and Account holders table name/email columns, especially subscriber email, and narrowed/wrapped the Subscribers source column. Verified the updated CSS/script cache keys and computed column widths in local preview.
+
+- Made the mobile header account icon color state consistent across pages: grey when signed out, cyan/blue when signed in. Verified the logged-out state on a mobile service-page preview.
+- Added consistent mobile header/menu chrome to all service umbrella pages and verified at 390px that the logo, account icon, promoted nav row, and Services popout render without horizontal overflow.
+- Added compact mobile footers to all service umbrella pages and verified at 390px that the mobile footer is visible, contained, and does not create horizontal overflow; desktop still shows only the original desktop footer.
+- Added a sitewide no-white-flash dark loading baseline: inline critical background CSS, shared `assets/nav.css` dark document/app-root defaults, normalized dark `theme-color`, and checked repeated desktop/mobile route loads and hard reloads for home, apps/pricing, contact, legal, accessibility, and SDMS compliance pages. Then corrected the account page regression by removing opaque backgrounds from visual shells so the animated portal hero remains visible.
 - Removed Netlify Forms from Contact, Apps consultation, and App Checkout. Added shared Supabase form submission JS, public `submit_site_message()` SQL, optional photo attachment upload support, and Admin Center attachment rendering.
 - Replaced the account dashboard request form's Netlify Form submission with a Supabase `submit_portal_message()` RPC. Added `client_messages` schema/RLS plus owner-only list/delete RPCs to `supabase/portal-role-setup.sql`, and added a Message Center tab to `account-admin.html`.
 - Added Delete actions to the Admin Center Subscribers and Account holders tables. Each opens a confirmation modal before calling owner-only Supabase RPCs; the signed-in owner account row is protected from self-delete.

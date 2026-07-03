@@ -5,7 +5,8 @@
 <style id="dm-critical-dark-baseline">
   html,body{background:#050505;color:#fff;min-height:100%;color-scheme:dark;}
   body{margin:0;min-height:100vh;}
-  #__next,#root,.app,.page,.client-portal-shell,.client-settings-shell,.checkout-shell,.ads-shell,.downloads-main,.catalog-main{background:#050505;min-height:100vh;}
+  #__next,#root,.app{background:#050505;min-height:100vh;}
+  body>main{min-height:100vh;}
   #page-loader,.sds-apps-loader{background:#050505;}
 </style>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -30,7 +31,7 @@
 <meta name="twitter:title" content="Office Network Setup | Surette Data Systems"/>
 <meta name="twitter:description" content="Local office technology setup for Southwest Florida businesses: Wi-Fi, networking, workstations, printers, shared tools, and clean handoff support."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
-<link href="../assets/nav.css?v=20260703-nav-loader" rel="stylesheet"/>
+<link href="../assets/nav.css?v=20260703-dark-baseline-shells" rel="stylesheet"/>
 <link href="../assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
   #sds-logo a.sds-anchor,
@@ -154,7 +155,27 @@
 </div>
 </footer>
 </div>
-<div class="md:hidden min-h-screen pt-20 px-margin-mobile pb-24">
+<div class="md:hidden min-h-screen pt-32 px-margin-mobile pb-24">
+<div class="fixed inset-0 grid-overlay pointer-events-none z-0"></div>
+<header class="fixed top-0 w-full bg-surface/10 backdrop-blur-xl z-50 border-b border-starlight-white/10 shadow-[0_0_20px_rgba(0,240,255,0.1)]">
+<div class="flex items-center justify-between px-margin-mobile h-16 w-full mx-auto">
+<div id="sds-logo-mobile"></div>
+<div class="flex items-center gap-3">
+<button type="button" id="mobile-menu-btn" class="flex flex-col justify-center items-end gap-1.5 w-10 h-10 rounded-lg active:scale-95 transition-transform" aria-expanded="false" aria-controls="mobile-menu-dropdown" aria-label="Open menu">
+<span class="mobile-menu-line-top h-px w-8 bg-electric-cyan animate-pulse-cyan transition-all duration-300"></span>
+<span class="mobile-menu-line-mid h-px w-6 bg-starlight-white/55 transition-all duration-300"></span>
+<span class="mobile-menu-line-bot h-px w-4 bg-starlight-white/35 transition-all duration-300"></span>
+</button>
+</div>
+</div>
+</header>
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface/10 backdrop-blur-2xl border-t border-starlight-white/10 shadow-[0_-10px_30px_rgba(112,0,255,0.15)] rounded-t-xl" aria-label="Mobile navigation">
+<a href="../index.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90"><span class="material-symbols-outlined">home</span><span class="font-label-caps text-[10px] mt-1">Home</span></a>
+<a href="../apps.html" class="flex flex-col items-center justify-center text-electric-cyan transition-all active:scale-90"><span class="material-symbols-outlined">design_services</span><span class="font-label-caps text-[10px] mt-1">Services</span></a>
+<a href="../apps.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90"><span class="material-symbols-outlined">download</span><span class="font-label-caps text-[10px] mt-1">Apps</span></a>
+<a href="../casestudies.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90"><span class="material-symbols-outlined">work</span><span class="font-label-caps text-[10px] mt-1">Websites</span></a>
+<a href="../contact.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90"><span class="material-symbols-outlined">mail</span><span class="font-label-caps text-[10px] mt-1">Contact</span></a>
+</nav>
 <div class="flex items-center justify-between mb-8">
 <a href="../index.html" class="font-label-mono text-sm text-electric-cyan inline-block">&larr; Back to Home</a>
 </div>
@@ -164,9 +185,27 @@
 <ul class="space-y-3 mb-10"><li class="flex gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan">check</span>Business and guest Wi-Fi</li><li class="flex gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan">check</span>Shared office devices</li><li class="flex gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan">check</span>Simple setup notes and handoff</li></ul>
 <a href="../contact.html" class="block text-center py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps rounded-sm">Plan an Office Setup</a>
 <a href="../process.html" class="block text-center py-4 mt-3 border border-white/10 text-starlight-white font-label-caps rounded-sm">View Our Process</a>
+<footer class="service-mobile-footer">
+<div class="service-mobile-footer__brand">Surette Data Systems</div>
+<p class="service-mobile-footer__meta">&copy; 2026 Surette Data Systems<br/>Naples, FL<br/>Call or text <a href="tel:+12394048505">(239) 404-8505</a><br/><a href="mailto:info@SuretteSystems.com">info@SuretteSystems.com</a></p>
+<div class="service-mobile-footer__links">
+<div>
+<span>Legal</span>
+<a href="../privacy.html">Privacy</a>
+<a href="../privacy.html">Security</a>
+<a href="../accessibility.html">Accessibility</a>
+</div>
+<div>
+<span>Resources</span>
+<a href="../terms.html">Terms</a>
+<a href="../contact.html">Contact</a>
+<a href="../casestudies.html">Websites</a>
+</div>
+</div>
+</footer>
 </div>
 <script src="../assets/mobile-services-nav.js?v=20260627-blackfix"></script>
-<script src="../assets/account-nav.js?v=20260702-mobile-account-icon"></script>
+<script src="../assets/account-nav.js?v=20260703-mobile-account-color"></script>
 <script src="../assets/rail.js?v=20260602-rail-active"></script>
 <script src="../surette-logo.js?v=20260703-nav-loader"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>

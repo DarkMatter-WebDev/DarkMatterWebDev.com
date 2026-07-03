@@ -45,7 +45,12 @@ Last updated: 2026-07-03
 
 ## Recently Completed
 
-- Added a sitewide no-white-flash dark loading baseline: critical inline head CSS on HTML pages, shared `assets/nav.css` dark document/shell defaults, normalized `theme-color` to `#050505`, and verified repeated desktop/mobile route loads across home, apps/pricing, contact, legal, accessibility, and SDMS compliance pages.
+- Widened Admin Center Subscribers and Account holders table name/email columns, especially subscriber email, and narrowed/wrapped the Subscribers source column.
+
+- Made the mobile header account icon color state consistent sitewide: grey when signed out, cyan/blue when signed in, while keeping the control icon-only on mobile.
+- Added the standard fixed mobile logo/header and promoted mobile nav row to all service umbrella pages so their mobile menu matches the rest of the site and the Services tab opens the shared services popout.
+- Added compact mobile footers to all service umbrella pages (`services/website-design.html`, `managed-hosting.html`, `website-care-plans.html`, `in-home-services.html`, and `office-network-setup.html`) while keeping the existing desktop footer behavior unchanged.
+- Added a sitewide no-white-flash dark loading baseline: critical inline head CSS on HTML pages, shared `assets/nav.css` dark document/root defaults, normalized `theme-color` to `#050505`, and verified repeated desktop/mobile route loads across home, apps/pricing, contact, legal, accessibility, and SDMS compliance pages. Follow-up fixed the account page by keeping visual shells transparent so the animated portal background remains visible.
 - Added the shared desktop site footer to the remaining service-page outliers, `services/in-home-services.html` and `services/office-network-setup.html`.
 - Removed stale standalone demo pages that were not linked from the live site: `surette-logo-demo.html`, `blackhole-icon.html`, and `singularity.html`.
 - Added a sitewide object-level reveal for repeated cards, panels, pricing tiles, glass blocks, and portfolio tiles so whole objects fade in together after page-ready instead of text appearing before the background/border treatment.

@@ -6,7 +6,8 @@
 <style id="dm-critical-dark-baseline">
   html,body{background:#050505;color:#fff;min-height:100%;color-scheme:dark;}
   body{margin:0;min-height:100vh;}
-  #__next,#root,.app,.page,.client-portal-shell,.client-settings-shell,.checkout-shell,.ads-shell,.downloads-main,.catalog-main{background:#050505;min-height:100vh;}
+  #__next,#root,.app{background:#050505;min-height:100vh;}
+  body>main{min-height:100vh;}
   #page-loader,.sds-apps-loader{background:#050505;}
 </style>
 <meta name="theme-color" content="#050505"/>
@@ -14,9 +15,9 @@
 <title>Admin Center | Surette Data Systems</title>
 <meta name="description" content="Owner-only Surette Data Systems portal administration."/>
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
-<link href="assets/nav.css?v=20260703-nav-loader" rel="stylesheet"/>
+<link href="assets/nav.css?v=20260703-dark-baseline-shells" rel="stylesheet"/>
 <link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/>
-<link href="assets/client-portal.css?v=20260702-admin-message-attachments" rel="stylesheet"/>
+<link href="assets/client-portal.css?v=20260703-admin-table-columns" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <style>
@@ -131,6 +132,17 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <div class="client-portal-status" data-admin-subscribers-status></div>
 <div class="client-admin-table-wrap">
 <table class="client-admin-table client-admin-table--subscribers">
+<colgroup>
+<col class="client-admin-col-source"/>
+<col class="client-admin-col-name"/>
+<col class="client-admin-col-email"/>
+<col class="client-admin-col-company"/>
+<col class="client-admin-col-origin"/>
+<col class="client-admin-col-status"/>
+<col class="client-admin-col-date"/>
+<col class="client-admin-col-date"/>
+<col class="client-admin-col-actions"/>
+</colgroup>
 <thead><tr><th>Source</th><th>Name</th><th>Email</th><th>Company / Phone</th><th>Signup origin</th><th>Status</th><th>Subscribed</th><th>Last activity</th><th>Actions</th></tr></thead>
 <tbody data-admin-subscribers-table></tbody>
 </table>
@@ -148,7 +160,18 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <section class="client-admin-accounts" data-admin-account-holders-panel>
 <div class="client-portal-status" data-admin-account-holders-status></div>
 <div class="client-admin-table-wrap">
-<table class="client-admin-table">
+<table class="client-admin-table client-admin-table--accounts">
+<colgroup>
+<col class="client-admin-col-name"/>
+<col class="client-admin-col-email"/>
+<col class="client-admin-col-company"/>
+<col class="client-admin-col-phone"/>
+<col class="client-admin-col-website"/>
+<col class="client-admin-col-role"/>
+<col class="client-admin-col-date"/>
+<col class="client-admin-col-date"/>
+<col class="client-admin-col-actions"/>
+</colgroup>
 <thead><tr><th>Name</th><th>Email</th><th>Company</th><th>Phone</th><th>Website</th><th>Role</th><th>Created</th><th>Last sign in</th><th>Actions</th></tr></thead>
 <tbody data-admin-account-holders-table></tbody>
 </table>
@@ -216,6 +239,6 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 </div>
 </div>
 <script src="assets/supabase-config.js"></script>
-<script type="module" src="assets/account-admin.js?v=20260702-admin-message-center"></script>
+<script type="module" src="assets/account-admin.js?v=20260703-admin-table-columns"></script>
 </body>
 </html>
