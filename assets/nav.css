@@ -96,8 +96,8 @@
 
 /* ── Page reveal ─────────────────────────────────────────────────────────────
    nav.css is the first render-blocking stylesheet on every page, guaranteeing
-   body { opacity: 0 } is applied before the browser's first paint while
-   html keeps the black page background visible.
+   html { opacity: 0 } and the black root background are applied before the
+   browser's first paint.
 
    Pages that load surette-logo.js: that script adds class="sds-logo-loaded"
    to <html> synchronously at parse time, suppressing the CSS animation below.
@@ -113,25 +113,31 @@
 @keyframes dm-page-show { to { opacity: 1; } }
 
 html {
+  opacity: 0;
+  transition: opacity 0.38s ease;
   /* Matches the site's void-black body background. Without this, the browser
      shows white <html> between page navigations. */
   background-color: #050505;
 }
 
 body {
-  opacity: 0;
-  transition: opacity 0.38s ease;
   background-color: #050505;
 }
 
-/* CSS-only fallback: only for pages that DON'T load surette-logo.js */
-html:not(.sds-logo-loaded) body {
+/* CSS-only fallback for pages that do not load surette-logo.js. */
+html:not(.sds-logo-loaded) {
   animation: dm-page-show 0s 0.2s forwards;
 }
 
+/* Safety fallback for logo pages if JS reveal is interrupted. */
+html.sds-logo-loaded {
+  animation: dm-page-show 0s 0.9s forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  body { transition: none; }
-  html:not(.sds-logo-loaded) body { animation: dm-page-show 0s 0s forwards; }
+  html { transition: none; }
+  html:not(.sds-logo-loaded) { animation: dm-page-show 0s 0s forwards; }
+  html.sds-logo-loaded { animation: dm-page-show 0s 0s forwards; }
 }
 
 /* Logo lockup — row layout so icon sits left of wordmark (not stacked) */

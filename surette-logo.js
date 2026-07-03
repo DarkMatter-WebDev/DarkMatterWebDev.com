@@ -345,7 +345,7 @@
   // nav.css sets html { opacity: 0 } from first paint to prevent the nav-logo
   // canvas jump and Tailwind FOUC from being visible.
   function dmRevealPage() {
-    if (document.body) document.body.style.opacity = '1';
+    document.documentElement.style.opacity = '1';
 
     // Fade the loading spinner out immediately — it sits above the page while
     // the html opacity transition runs, then disappears revealing live content.
@@ -421,22 +421,13 @@
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a[href]');
     if (!a || a.target === '_blank') return;
-    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     var href = a.getAttribute('href');
     if (!href || href.charAt(0) === '#' || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0) return;
-    if (a.hasAttribute('download')) return;
-    var url;
     try {
-      url = new URL(href, location.href);
-      if (url.origin !== location.origin) return;
+      if (new URL(href, location.href).origin !== location.origin) return;
     } catch (_) { return; }
-    if (!document.body || url.href === location.href) return;
-    e.preventDefault();
-    document.body.style.transition = 'opacity 0.15s ease';
-    document.body.style.opacity = '0';
-    window.setTimeout(function () {
-      window.location.href = url.href;
-    }, 160);
+    document.documentElement.style.transition = 'opacity 0.15s ease';
+    document.documentElement.style.opacity = '0';
   });
 
 }(window));

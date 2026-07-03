@@ -4,7 +4,7 @@ This file is intentionally compact. Keep only high-signal recent changes and maj
 
 ## 2026-07-03
 
-- Reduced inter-page white flashes by moving reveal/exit opacity from `html` to `body`, keeping the root page background black, delaying normal same-site navigation for the fade to paint, and cache-busting `surette-logo.js` across pages.
+- Stabilized the page reveal after the white-screen regression: restored the `html`-based fade path, kept the root/background black, added a CSS safety fallback for logo pages if JS reveal is interrupted, and cache-busted `surette-logo.js` across pages.
 - Updated public-facing contact email references from legacy/old addresses to `info@SuretteSystems.com` across site pages while leaving sample input placeholders and Supabase/admin setup emails unchanged.
 - Ran a focused header/transition audit across representative desktop and mobile pages. Confirmed the standard reveal settles cleanly, validator noise remains pre-existing, and service-detail mobile nav is the main remaining consolidation opportunity.
 - Normalized the account page desktop header to match the main site nav: "Client Login" label, account-circle icon, matching font classes, and a cache-busted `client-portal.js` reference so the runtime signed-out state no longer rewrites it to "Login".
