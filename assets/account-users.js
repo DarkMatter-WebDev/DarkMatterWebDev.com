@@ -31,7 +31,7 @@ const t = {
   loading: "Loading newsletter subscribers...",
   noRows: "No newsletter subscribers were returned.",
   homepagePending: "Homepage newsletter sign-up source is not connected yet.",
-  accountSignupPending: "Run the updated portal role setup SQL so account signups mirror into the newsletter subscriber source."
+  accountSignupPending: "Run the updated portal role setup SQL so future account signups are mirrored into the newsletter subscriber source."
 };
 
 function setSessionStatus(message, icon = "lock") {
@@ -77,20 +77,6 @@ function formatDateTime(value) {
     hour: "numeric",
     minute: "2-digit"
   });
-}
-
-function normalizePortalAccountSubscriber(row) {
-  return {
-    source: "Account signup",
-    name: pickField(row, ["display_name", "full_name", "name"], "Account holder"),
-    email: pickField(row, ["email"]),
-    companyPhone: [pickField(row, ["company_name", "company"]), pickField(row, ["phone"])].filter(Boolean).join(" / "),
-    origin: pickField(row, ["website", "site_url"], "Client portal account"),
-    roleStatus: "Newsletter subscriber",
-    created: pickField(row, ["created_at"]),
-    lastActivity: pickField(row, ["last_sign_in_at", "confirmed_at", "email_confirmed_at"]),
-    priority: 2
-  };
 }
 
 function normalizeNewsletterSignup(row) {
@@ -184,19 +170,6 @@ function renderRows(rows) {
   `).join("");
 }
 
-async function loadPortalAccountSubscribers(supabase) {
-  try {
-    const { data, error } = await supabase.rpc("list_portal_account_holders");
-    if (error) throw error;
-    return (Array.isArray(data) ? data : []).map(normalizePortalAccountSubscriber).filter((row) => row.email);
-  } catch {
-    const table = config.tables?.profile || "client_profiles";
-    const { data, error } = await supabase.from(table).select("*").order("created_at", { ascending: false });
-    if (error) return [];
-    return (Array.isArray(data) ? data : []).map(normalizePortalAccountSubscriber).filter((row) => row.email);
-  }
-}
-
 async function loadNewsletterSignups(supabase) {
   const table = config.tables?.homepageEmailSignups || "homepage_email_signups";
   try {
@@ -215,16 +188,13 @@ async function loadSubscribers(supabase) {
   if (els.load) els.load.disabled = true;
   setPanelStatus(t.loading);
   try {
-    const [accountSubscriberRows, newsletterResult] = await Promise.all([
-      loadPortalAccountSubscribers(supabase),
-      loadNewsletterSignups(supabase)
-    ]);
-    const rows = mergeSubscriberRows([...accountSubscriberRows, ...newsletterResult.rows]);
+    const newsletterResult = await loadNewsletterSignups(supabase);
+    const rows = mergeSubscriberRows(newsletterResult.rows);
     const statusMessages = [];
     if (!newsletterResult.connected) {
       rows.push(pendingNewsletterSignupRow());
       statusMessages.push(t.homepagePending);
-      if (!accountSubscriberRows.length) statusMessages.push(t.accountSignupPending);
+      statusMessages.push(t.accountSignupPending);
     }
     renderRows(rows);
     setPanelStatus(statusMessages.join(" "), statusMessages.length > 0);

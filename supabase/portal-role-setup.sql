@@ -45,9 +45,11 @@ grant execute on function public.is_portal_super_admin() to authenticated;
 grant execute on function public.is_portal_sean_ads_admin() to authenticated;
 
 -- Newsletter subscriber source for the owner-only Subscribers table.
--- Homepage email captures should write here. Portal account signups are mirrored
--- here by handle_new_portal_user() so every account signup also counts as a
--- newsletter email.
+-- Homepage email captures should write here. New portal account signups are
+-- mirrored here by handle_new_portal_user() so every new account signup also
+-- starts as a newsletter subscriber. Account holders and subscribers remain
+-- separate lists: deleting from this table does not delete the portal account,
+-- and deleting a portal account does not delete the subscriber row.
 create table if not exists public.homepage_email_signups (
   id uuid primary key default gen_random_uuid(),
   email text not null,
@@ -399,47 +401,11 @@ create trigger on_auth_user_created_portal_profile
 after insert on auth.users
 for each row execute function public.handle_new_portal_user();
 
-insert into public.homepage_email_signups (
-  email,
-  display_name,
-  full_name,
-  name,
-  phone,
-  source,
-  origin,
-  status,
-  submitted_at,
-  created_at,
-  updated_at
-)
-select
-  u.email::text,
-  nullif(coalesce(u.raw_user_meta_data ->> 'display_name', u.raw_user_meta_data ->> 'full_name', ''), ''),
-  nullif(coalesce(u.raw_user_meta_data ->> 'full_name', u.raw_user_meta_data ->> 'display_name', ''), ''),
-  nullif(coalesce(u.raw_user_meta_data ->> 'name', u.raw_user_meta_data ->> 'display_name', u.raw_user_meta_data ->> 'full_name', ''), ''),
-  nullif(coalesce(u.raw_user_meta_data ->> 'phone', ''), ''),
-  'portal_account',
-  'Client portal account signup',
-  'Newsletter subscriber',
-  coalesce(u.created_at, now()),
-  coalesce(u.created_at, now()),
-  now()
-from auth.users u
-where u.email is not null
-on conflict ((lower(email))) do update
-  set
-    display_name = coalesce(public.homepage_email_signups.display_name, excluded.display_name),
-    full_name = coalesce(public.homepage_email_signups.full_name, excluded.full_name),
-    name = coalesce(public.homepage_email_signups.name, excluded.name),
-    phone = coalesce(public.homepage_email_signups.phone, excluded.phone),
-    source = case
-      when public.homepage_email_signups.source = excluded.source then public.homepage_email_signups.source
-      when public.homepage_email_signups.source like '%' || excluded.source || '%' then public.homepage_email_signups.source
-      else concat_ws(' + ', public.homepage_email_signups.source, excluded.source)
-    end,
-    origin = coalesce(public.homepage_email_signups.origin, excluded.origin),
-    status = 'Newsletter subscriber',
-    updated_at = now();
+-- Intentional: no automatic backfill from existing auth.users here.
+-- Re-running this setup file should not re-add subscriber rows that an owner
+-- deliberately deleted from homepage_email_signups. If a one-time import of
+-- existing account emails is needed, do it manually and only for the desired rows.
+
 
 -- Super-admin dashboard account holder list.
 -- This safely exposes auth account metadata to authenticated super admins only.
@@ -648,20 +614,6 @@ begin
   if to_regclass('public.client_profiles') is not null then
     execute 'delete from public.client_profiles where user_id = $1' using target_user_id;
   end if;
-
-  update public.homepage_email_signups
-  set
-    source = 'homepage_newsletter',
-    origin = coalesce(nullif(origin, 'Client portal account signup'), 'Homepage newsletter'),
-    updated_at = now()
-  where lower(email) = lower(target_email)
-    and source like '%homepage_newsletter%'
-    and source like '%portal_account%';
-
-  delete from public.homepage_email_signups
-  where lower(email) = lower(target_email)
-    and source like '%portal_account%'
-    and source not like '%homepage_newsletter%';
 
   delete from auth.users
   where id = target_user_id;

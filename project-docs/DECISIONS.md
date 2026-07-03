@@ -74,6 +74,12 @@ Decision: destructive Admin Center table actions must use a confirmation modal i
 
 Reason: browser-side gates are not enough for privileged operations, and account deletion needs server-side checks such as owner role verification and self-delete prevention.
 
+## Subscriber And Account Lists
+
+Decision: Admin Center account holders and newsletter subscribers are separate lists. New portal account creation mirrors the account email/profile info into `homepage_email_signups`, but the Subscribers UI reads only subscriber rows and never falls back to auth/account-holder rows.
+
+Reason: an account holder may or may not be a subscriber, and deleting someone from Subscribers should remove them from that table without deleting or re-showing their portal account.
+
 ## Portal Message Center
 
 Decision: authenticated account-dashboard support/change requests should write to Supabase `client_messages` and be reviewed in the owner-only Admin Center Message Center instead of using Netlify Forms.

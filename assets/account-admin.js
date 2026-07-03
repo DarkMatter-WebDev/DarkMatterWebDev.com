@@ -62,7 +62,7 @@ const t = {
   loadingSubscribers: "Loading newsletter subscribers...",
   noSubscribers: "No newsletter subscribers were returned.",
   homepagePending: "Homepage newsletter sign-up source is not connected yet.",
-  accountSignupPending: "Run the updated portal role setup SQL so account signups mirror into the newsletter subscriber source.",
+  accountSignupPending: "Run the updated portal role setup SQL so future account signups are mirrored into the newsletter subscriber source.",
   loadingAccountHolders: "Loading account holders from Supabase...",
   noAccountHolders: "No account holders were returned from Supabase.",
   accountHoldersSetup: "Install the list_portal_account_holders() Supabase RPC to view auth account emails here.",
@@ -358,21 +358,6 @@ function normalizeAttachments(value) {
     }
   }
   return [];
-}
-
-function normalizePortalAccountSubscriber(row) {
-  return {
-    source: "Account signup",
-    name: pickField(row, ["display_name", "full_name", "name"], "Account holder"),
-    email: pickField(row, ["email"]),
-    companyPhone: [pickField(row, ["company_name", "company"]), pickField(row, ["phone"])].filter(Boolean).join(" / "),
-    origin: pickField(row, ["website", "site_url"], "Client portal account"),
-    roleStatus: "Newsletter subscriber",
-    created: pickField(row, ["created_at"]),
-    lastActivity: pickField(row, ["last_sign_in_at", "confirmed_at", "email_confirmed_at"]),
-    priority: 2,
-    canDeleteSubscriber: false
-  };
 }
 
 function normalizeNewsletterSignup(row) {
@@ -848,19 +833,6 @@ async function loadAccountHolders(supabase) {
   }
 }
 
-async function loadPortalAccountSubscribers(supabase) {
-  try {
-    const { data, error } = await supabase.rpc("list_portal_account_holders");
-    if (error) throw error;
-    return (Array.isArray(data) ? data : []).map(normalizePortalAccountSubscriber).filter((row) => row.email);
-  } catch {
-    const table = config.tables?.profile || "client_profiles";
-    const { data, error } = await supabase.from(table).select("*").order("created_at", { ascending: false });
-    if (error) return [];
-    return (Array.isArray(data) ? data : []).map(normalizePortalAccountSubscriber).filter((row) => row.email);
-  }
-}
-
 async function loadNewsletterSignups(supabase) {
   const table = config.tables?.homepageEmailSignups || "homepage_email_signups";
   try {
@@ -877,18 +849,13 @@ async function loadNewsletterSignups(supabase) {
 
 async function loadSubscribers(supabase) {
   setPanelStatus(els.subscribersStatus, t.loadingSubscribers);
-  const [accountSubscriberRows, newsletterResult] = await Promise.all([
-    loadPortalAccountSubscribers(supabase),
-    loadNewsletterSignups(supabase)
-  ]);
-  const rows = mergeSubscriberRows([...accountSubscriberRows, ...newsletterResult.rows]);
+  const newsletterResult = await loadNewsletterSignups(supabase);
+  const rows = mergeSubscriberRows(newsletterResult.rows);
   const statusMessages = [];
   if (!newsletterResult.connected) {
     rows.push(pendingNewsletterSignupRow());
     statusMessages.push(t.homepagePending);
-    if (!accountSubscriberRows.length) statusMessages.push(t.accountSignupPending);
-  } else if (accountSubscriberRows.some((row) => row.email) && !newsletterResult.rows.length) {
-    statusMessages.push("Portal accounts are shown here as subscribers. Run the updated portal role setup SQL to mirror existing accounts into the newsletter table for subscriber-row deletion.");
+    statusMessages.push(t.accountSignupPending);
   }
   renderSubscribers(rows);
   setPanelStatus(els.subscribersStatus, statusMessages.join(" "), statusMessages.length > 0);

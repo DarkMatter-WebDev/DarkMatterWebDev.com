@@ -47,7 +47,7 @@ Last updated: 2026-07-03
 - `assets/mobile-services-nav.js` supports mobile services navigation.
 - `assets/client-portal.js` handles portal UI/auth behavior, safe `next` redirects for the regular account dashboard, and account-dashboard support/change request submissions through `submit_portal_message()`.
 - `assets/account-admin.js` handles the owner-only ultra-wide left-tab Admin Center, tab state/hash behavior, message center with signed attachment links, embedded subscriber table, subscriber email export/copy modal, account-holder viewer, and confirmation-modal delete flow (calls `list_portal_messages()`, `delete_portal_message()`, `list_portal_account_holders()`, `delete_newsletter_subscriber()`, and `delete_portal_account_holder()` Supabase RPCs).
-- `assets/account-users.js` handles the owner-only newsletter subscriber table, combining portal account signup emails with the `homepage_email_signups` newsletter source and de-duping by email.
+- `assets/account-users.js` handles the owner-only newsletter subscriber table from `homepage_email_signups` rows only, matching the Admin Center Subscribers tab.
 - `assets/newsletter-signup.js` handles public homepage newsletter email submissions into `homepage_email_signups` using the browser Supabase client.
 - `assets/portal-auth.js` reads Supabase `app_metadata.role` for privileged portal access; email allowlist fallback in `assets/supabase-config.js`.
 - `assets/seans-ads-dashboard.js` gates Sean's Google Ads dashboard page using shared portal auth helpers.
@@ -63,7 +63,7 @@ Last updated: 2026-07-03
 - Supabase browser auth (email/password and magic-link) â€” dedicated Dark Matter / Surette Data Systems project.
 - Portal privileged roles: `super_admin` (owner), `sean_ads_admin` (Sean). Primary source: `app_metadata.role`. Fallback: email allowlist in `assets/supabase-config.js`.
 - Owner-only admin UX is split from the regular dashboard: `account.html` exposes only an Admin Center link for super-admins, while `account-admin.html` and `account-users.html` hold the private admin surfaces.
-- Newsletter subscriber source: `homepage_email_signups`. The updated portal role setup SQL creates this table, backfills current Auth account emails, and mirrors new Auth account signups into it so every account signup also counts as a newsletter email.
+- Newsletter subscriber source: `homepage_email_signups`. The updated portal role setup SQL creates this table and mirrors new Auth account signups into it. It does not backfill all existing Auth users on every rerun, so owner-deleted subscriber rows do not reappear from account-holder fallback data.
 - Supabase SQL:
   - `supabase/client-portal-schema.sql` â€” schema setup.
   - `supabase/portal-role-setup.sql` â€” `client_messages`, `portal-message-attachments` storage setup, `submit_site_message()`, `submit_portal_message()`, `list_portal_messages()`, `delete_portal_message()`, `list_portal_account_holders()`, `delete_newsletter_subscriber()`, `delete_portal_account_holder()` RPCs, and `handle_new_portal_user()` Auth signup trigger. It intentionally drops `list_portal_messages()` before recreating it because the returned columns have changed over time.

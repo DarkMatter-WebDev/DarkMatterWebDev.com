@@ -45,6 +45,7 @@ Last updated: 2026-07-03
 
 ## Recently Completed
 
+- Separated Admin Center Subscribers from Account holders: Subscribers now reads only `homepage_email_signups`, account holders stay in their own auth/profile table, new account signups still mirror into subscriber rows, and subscriber deletion no longer reappears from account-holder fallback data.
 - Widened Admin Center Subscribers and Account holders table name/email columns, especially subscriber email, and narrowed/wrapped the Subscribers source column.
 
 - Made the mobile header account icon color state consistent sitewide: grey when signed out, cyan/blue when signed in, while keeping the control icon-only on mobile.

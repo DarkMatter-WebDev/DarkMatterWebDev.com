@@ -32,6 +32,7 @@ Then summarize the project in a few bullets and continue with the latest request
 - Public website forms and account-dashboard support/change requests are no longer Netlify Forms. Public forms call Supabase `submit_site_message()` through `assets/site-message-forms.js`; account requests call `submit_portal_message()`. Admin Center has a Messages tab that lists/deletes them via `list_portal_messages()` / `delete_portal_message()` and can render signed links for optional photo attachments. Live use requires running the updated `supabase/portal-role-setup.sql`; the current SQL includes `drop function if exists public.list_portal_messages();` because the return shape changed to include source/page/attachment fields.
 - Admin Center table deletes are wired in `account-admin.html` / `assets/account-admin.js` with a confirmation modal. Live delete actions require `delete_portal_message()`, `delete_newsletter_subscriber()`, and `delete_portal_account_holder()` from the updated `supabase/portal-role-setup.sql`.
 - Admin Center Subscribers and Account holders tables use explicit column groups; name/email columns are wider, and the Subscribers source pill can wrap in a narrow column.
+- Admin Center Subscribers and Account holders are independent lists. New portal account signups mirror into `homepage_email_signups`, but Subscribers reads only subscriber rows; deleting a subscriber row does not delete or re-show the account holder.
 - Local preview: `http://127.0.0.1:4173/` (start with `npx http-server` or `start-preview.bat`).
 - Production: `https://surettesystems.com/`.
 - Sean's Ads source is intentionally not here â€” do not recreate it.
@@ -72,6 +73,7 @@ Services pages in `services/`: `website-design.html`, `managed-hosting.html`, `w
 
 ## Most Recent Work
 
+- Separated Admin Center Subscribers from Account holders: Subscribers now reads only `homepage_email_signups`, Account holders remains auth/profile driven, new account signups still mirror into subscriber rows, and the SQL setup no longer re-backfills all auth users into Subscribers on rerun.
 - Widened Admin Center Subscribers and Account holders table name/email columns, especially subscriber email, and narrowed/wrapped the Subscribers source column. Verified the updated CSS/script cache keys and computed column widths in local preview.
 
 - Made the mobile header account icon color state consistent across pages: grey when signed out, cyan/blue when signed in. Verified the logged-out state on a mobile service-page preview.

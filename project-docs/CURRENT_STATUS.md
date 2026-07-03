@@ -25,6 +25,7 @@ Last updated: 2026-07-03
 ## Portal Pages
 
 - Admin Center Subscribers and Account holders tables use explicit column sizing so name/email fields get more room, with the Subscribers source pill allowed to wrap in a narrower column.
+- Admin Center Subscribers and Account holders are independent lists. New portal account signups mirror into `homepage_email_signups`, but deleting a subscriber row removes it from Subscribers even if the portal account remains.
 
 - `account.html` â€” Client dashboard. Supabase email/password auth. Super-admin dashboard now looks like a normal client account except for an owner-only "Admin Center" card linking to `account-admin.html`. Sean sees Google Ads links plus the member workspace in oversight mode.
 - `account-admin.html` â€” Owner-only Admin Center. Gated by Supabase super-admin role; organized as an ultra-wide left-anchored tab workspace with Overview, Messages, Subscribers, Account holders, and Sean Ads sections. The Messages tab is the unified message center for public website forms and account-dashboard support/change requests. Messages, Subscribers, and Account holders render their tables directly inside the selected tab. The Subscribers table includes a copy/export email modal with line-list, comma-list, and CSV formats. Message, Subscriber, and Account-holder tables have Delete actions behind a confirmation modal; message attachments render as signed owner-only links.
