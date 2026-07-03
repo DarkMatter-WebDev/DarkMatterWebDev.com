@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html class="dark" style="background:#050505" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Center | Surette Data Systems</title>
+<meta name="description" content="Owner-only Surette Data Systems portal administration."/>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
+<link href="assets/nav.css?v=20260624-tokens" rel="stylesheet"/>
+<link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/>
+<link href="assets/client-portal.css?v=20260702-admin-message-attachments" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",sans-serif;overflow-x:hidden}.grid-overlay{position:fixed;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.05) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:-1}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24}
+</style>
+</head>
+<body class="bg-void-black cosmic-page cosmic-tint-services">
+<div class="fixed inset-0 grid-overlay"></div>
+<div class="fixed inset-0 z-0 pointer-events-none"><div class="absolute inset-0 cosmic-web-bg opacity-70"></div><div class="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(5,5,5,0.42),#050505_86%)]"></div></div>
+<main class="client-settings-shell client-admin-shell">
+<section class="client-portal-card client-portal-panel">
+<div class="client-settings-header">
+<div>
+<div class="client-portal-kicker">Owner Tools</div>
+<h1 class="client-portal-title client-portal-title--split"><span>Admin Center</span><small>private command room</small></h1>
+<div class="client-settings-email" data-admin-email></div>
+<div class="client-settings-badge" data-admin-session-status style="margin-top:14px;"><span class="material-symbols-outlined">lock</span>Checking session</div>
+</div>
+<div class="client-settings-actions">
+<a class="client-portal-button client-portal-button--ghost" href="account.html"><span class="material-symbols-outlined">arrow_back</span>Back to account</a>
+<button class="client-portal-button client-portal-button--ghost" type="button" data-admin-signout><span class="material-symbols-outlined">logout</span>Sign out</button>
+</div>
+</div>
+<div class="client-settings-gate" data-admin-gate>
+<p class="client-muted">Sign in with the owner account to open Admin Center.</p>
+<div class="client-settings-actions"><a class="client-portal-button" data-admin-login-link href="account.html"><span class="material-symbols-outlined">login</span>Log in to continue</a></div>
+</div>
+<div class="client-settings-stack" data-admin-content hidden>
+<section class="client-admin-tabs-shell" aria-label="Admin Center">
+<aside class="client-admin-tabs-rail" aria-label="Admin sections">
+<div class="client-admin-tabs-rail__brand">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+<div>
+<strong>Admin Center</strong>
+<span>Owner only</span>
+</div>
+</div>
+<nav class="client-admin-tabs-nav" role="tablist" aria-orientation="vertical">
+<button class="client-admin-tab is-active" id="admin-tab-overview" type="button" role="tab" aria-selected="true" aria-controls="admin-panel-overview" data-admin-tab="overview"><span class="material-symbols-outlined">dashboard</span><span>Overview</span></button>
+<button class="client-admin-tab" id="admin-tab-messages" type="button" role="tab" aria-selected="false" aria-controls="admin-panel-messages" data-admin-tab="messages"><span class="material-symbols-outlined">forum</span><span>Messages</span></button>
+<button class="client-admin-tab" id="admin-tab-subscribers" type="button" role="tab" aria-selected="false" aria-controls="admin-panel-subscribers" data-admin-tab="subscribers"><span class="material-symbols-outlined">mark_email_read</span><span>Subscribers</span></button>
+<button class="client-admin-tab" id="admin-tab-accounts" type="button" role="tab" aria-selected="false" aria-controls="admin-panel-accounts" data-admin-tab="accounts"><span class="material-symbols-outlined">group</span><span>Account holders</span></button>
+<button class="client-admin-tab" id="admin-tab-sean" type="button" role="tab" aria-selected="false" aria-controls="admin-panel-sean" data-admin-tab="sean"><span class="material-symbols-outlined">ads_click</span><span>Sean Ads</span></button>
+</nav>
+<div class="client-admin-tabs-rail__footer">
+<a class="client-admin-rail-link" href="account.html"><span class="material-symbols-outlined">arrow_back</span><span>Account</span></a>
+</div>
+</aside>
+<div class="client-admin-tabs-panels">
+<section class="client-admin-tab-panel is-active" id="admin-panel-overview" role="tabpanel" aria-labelledby="admin-tab-overview" data-admin-tab-panel="overview">
+<div class="client-admin-panel-header">
+<div>
+<div class="client-portal-kicker">Owner Admin Console</div>
+<h3>Super user access</h3>
+<p>Owner-only controls and review surfaces live here, separate from the normal client account dashboard.</p>
+</div>
+<span class="client-super-admin-badge"><span class="material-symbols-outlined">verified_user</span>Owner only</span>
+</div>
+<div class="client-admin-overview-grid">
+<button class="client-admin-action-card" type="button" data-admin-open-tab="messages">
+<span class="material-symbols-outlined">forum</span>
+<strong>Message center</strong>
+<small>Review account-submitted website updates, questions, and support notes.</small>
+</button>
+<button class="client-admin-action-card" type="button" data-admin-open-tab="subscribers">
+<span class="material-symbols-outlined">mark_email_read</span>
+<strong>Newsletter subscribers</strong>
+<small>Newsletter sign-ups plus every portal account signup.</small>
+</button>
+<button class="client-admin-action-card" type="button" data-admin-open-tab="accounts">
+<span class="material-symbols-outlined">group</span>
+<strong>Account holders</strong>
+<small>Review Supabase portal account profile rows.</small>
+</button>
+<button class="client-admin-action-card" type="button" data-admin-open-tab="sean">
+<span class="material-symbols-outlined">visibility</span>
+<strong>Sean Ads backend</strong>
+<small>Open the protected Google Ads portal view.</small>
+</button>
+</div>
+<p class="client-admin-note">Real cross-account data access still needs Supabase roles, policies, or server-side functions before sensitive member records are stored.</p>
+</section>
+<section class="client-admin-tab-panel" id="admin-panel-messages" role="tabpanel" aria-labelledby="admin-tab-messages" data-admin-tab-panel="messages" hidden>
+<div class="client-admin-panel-header">
+<div>
+<div class="client-portal-kicker">Portal Requests</div>
+<h3>Message center</h3>
+<p>Account-submitted website updates, content changes, questions, billing notes, and support requests.</p>
+</div>
+<span class="client-super-admin-badge"><span class="material-symbols-outlined">forum</span><span data-admin-messages-count>0 messages</span></span>
+</div>
+<div class="client-portal-status" data-admin-messages-status></div>
+<div class="client-admin-table-wrap">
+<table class="client-admin-table client-admin-table--messages">
+<thead><tr><th>Client</th><th>Type</th><th>Subject</th><th>Details</th><th>Status</th><th>Submitted</th><th>Actions</th></tr></thead>
+<tbody data-admin-messages-table></tbody>
+</table>
+</div>
+</section>
+<section class="client-admin-tab-panel" id="admin-panel-subscribers" role="tabpanel" aria-labelledby="admin-tab-subscribers" data-admin-tab-panel="subscribers" hidden>
+<div class="client-admin-panel-header">
+<div>
+<div class="client-portal-kicker">Newsletter List</div>
+<h3>Subscribers</h3>
+<p>Homepage newsletter sign-ups and portal accounts, which count as newsletter emails too.</p>
+</div>
+<div class="client-admin-panel-actions">
+<button class="client-portal-button client-portal-button--ghost client-admin-copy-button" type="button" data-admin-copy-subscribers disabled><span class="material-symbols-outlined">content_copy</span>Copy emails</button>
+<span class="client-super-admin-badge"><span class="material-symbols-outlined">mark_email_read</span><span data-admin-subscribers-count>0 subscribers</span></span>
+</div>
+</div>
+<div class="client-portal-status" data-admin-subscribers-status></div>
+<div class="client-admin-table-wrap">
+<table class="client-admin-table client-admin-table--subscribers">
+<thead><tr><th>Source</th><th>Name</th><th>Email</th><th>Company / Phone</th><th>Signup origin</th><th>Status</th><th>Subscribed</th><th>Last activity</th><th>Actions</th></tr></thead>
+<tbody data-admin-subscribers-table></tbody>
+</table>
+</div>
+</section>
+<section class="client-admin-tab-panel" id="admin-panel-accounts" role="tabpanel" aria-labelledby="admin-tab-accounts" data-admin-tab-panel="accounts" hidden>
+<div class="client-admin-panel-header">
+<div>
+<div class="client-portal-kicker">Supabase Accounts</div>
+<h3>Account holders</h3>
+<p>Review account rows returned for the owner account.</p>
+</div>
+<span class="client-super-admin-badge"><span class="material-symbols-outlined">database</span><span data-admin-account-holders-count>0 records</span></span>
+</div>
+<section class="client-admin-accounts" data-admin-account-holders-panel>
+<div class="client-portal-status" data-admin-account-holders-status></div>
+<div class="client-admin-table-wrap">
+<table class="client-admin-table">
+<thead><tr><th>Name</th><th>Email</th><th>Company</th><th>Phone</th><th>Website</th><th>Role</th><th>Created</th><th>Last sign in</th><th>Actions</th></tr></thead>
+<tbody data-admin-account-holders-table></tbody>
+</table>
+</div>
+</section>
+</section>
+<section class="client-admin-tab-panel" id="admin-panel-sean" role="tabpanel" aria-labelledby="admin-tab-sean" data-admin-tab-panel="sean" hidden>
+<div class="client-admin-panel-header">
+<div>
+<div class="client-portal-kicker">Sean Ads</div>
+<h3>Google Ads portal</h3>
+<p>Open the protected Sean Ads backend view from the owner console.</p>
+</div>
+<span class="client-super-admin-badge"><span class="material-symbols-outlined">visibility</span>Protected</span>
+</div>
+<div class="client-admin-feature-row">
+<div>
+<strong>Sean's direct portal backend view</strong>
+<span>This stays separate from the external Sean's Ads source site.</span>
+</div>
+<a class="client-portal-button client-portal-button--secondary" href="seans-google-ads-dashboard.html"><span class="material-symbols-outlined">open_in_new</span>Open backend view</a>
+</div>
+</section>
+</div>
+</section>
+</div>
+</section>
+</main>
+<div class="client-admin-confirm-overlay" data-admin-delete-modal hidden>
+<div class="client-admin-confirm-modal" role="dialog" aria-modal="true" aria-labelledby="admin-delete-title" aria-describedby="admin-delete-body">
+<button class="client-admin-confirm-close" type="button" aria-label="Close confirmation" data-admin-delete-close><span class="material-symbols-outlined">close</span></button>
+<div class="client-admin-confirm-icon"><span class="material-symbols-outlined">warning</span></div>
+<div>
+<div class="client-portal-kicker">Confirm delete</div>
+<h2 id="admin-delete-title" data-admin-delete-title>Delete record?</h2>
+<p id="admin-delete-body" data-admin-delete-body>This action cannot be undone.</p>
+<div class="client-admin-confirm-error" data-admin-delete-error hidden></div>
+</div>
+<div class="client-admin-confirm-actions">
+<button class="client-portal-button client-portal-button--ghost" type="button" data-admin-delete-cancel><span class="material-symbols-outlined">arrow_back</span>Cancel</button>
+<button class="client-portal-button client-admin-confirm-danger" type="button" data-admin-delete-confirm><span class="material-symbols-outlined">delete_forever</span>Delete</button>
+</div>
+</div>
+</div>
+<div class="client-admin-confirm-overlay" data-admin-export-modal hidden>
+<div class="client-admin-confirm-modal client-admin-export-modal" role="dialog" aria-modal="true" aria-labelledby="admin-export-title" aria-describedby="admin-export-body">
+<button class="client-admin-confirm-close" type="button" aria-label="Close export" data-admin-export-close><span class="material-symbols-outlined">close</span></button>
+<div class="client-admin-confirm-icon client-admin-export-icon"><span class="material-symbols-outlined">alternate_email</span></div>
+<div>
+<div class="client-portal-kicker">Subscriber export</div>
+<h2 id="admin-export-title">Copy subscriber emails</h2>
+<p id="admin-export-body">Choose a format, review the scrollable list, then copy it to your clipboard.</p>
+</div>
+<fieldset class="client-admin-export-formats" aria-label="Email copy format">
+<label><input type="radio" name="admin-export-format" value="lines" checked data-admin-export-format><span><strong>Line list</strong><small>One email per line</small></span></label>
+<label><input type="radio" name="admin-export-format" value="comma" data-admin-export-format><span><strong>Comma list</strong><small>Emails separated by commas</small></span></label>
+<label><input type="radio" name="admin-export-format" value="csv" data-admin-export-format><span><strong>CSV</strong><small>Header row plus email column</small></span></label>
+</fieldset>
+<div class="client-admin-export-meta"><span data-admin-export-count>0 emails</span><span data-admin-export-status></span></div>
+<textarea class="client-admin-export-preview" data-admin-export-preview readonly spellcheck="false" aria-label="Formatted subscriber emails"></textarea>
+<div class="client-admin-confirm-actions">
+<button class="client-portal-button client-portal-button--ghost" type="button" data-admin-export-cancel><span class="material-symbols-outlined">arrow_back</span>Close</button>
+<button class="client-portal-button" type="button" data-admin-export-copy><span class="material-symbols-outlined">content_copy</span>Quick copy</button>
+</div>
+</div>
+</div>
+<script src="assets/supabase-config.js"></script>
+<script type="module" src="assets/account-admin.js?v=20260702-admin-message-center"></script>
+</body>
+</html>

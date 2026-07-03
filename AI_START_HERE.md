@@ -16,15 +16,15 @@ Then summarize the current state in a few bullets and continue with the user's l
 
 ## Project Snapshot
 
-- Static bilingual Dark Matter Surette Systems Portal site.
-- English pages live at the repo root; Spanish mirrors live under `es/`.
+- Static Dark Matter / Surette Data Systems marketing, app-library, and client-portal site.
+- English pages live at the repo root. Spanish `es/` mirrors are currently absent from this working copy and should be regenerated/reconciled before a bilingual launch.
 - Main app library page is `apps.html`; app brand is Surette Data Systems; old `downloads.html` paths redirect.
 - Sean's Google Ads source is intentionally not in this repo. It lives separately at `https://seansads.com/`.
 - Local preview usually runs at `http://127.0.0.1:4173/`.
 
 ## Core Rules
 
-- Keep English and Spanish pages in sync.
+- Keep English and Spanish pages in sync if/when Spanish mirrors are restored.
 - Do not recreate or edit the removed Sean's Ads mini-site source.
 - Use `apply_patch` for manual file edits.
 - After broad HTML/CSS/JS edits run:

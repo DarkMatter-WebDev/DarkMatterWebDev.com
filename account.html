@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="dark" style="background:#050505" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -24,7 +24,7 @@
 <meta name="twitter:description" content="Client login for Surette Data Systems accounts, active services, support status, and recurring billing information."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
 <link href="assets/nav.css?v=20260624-tokens" rel="stylesheet"/>
-<link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/><link href="assets/client-portal.css?v=20260615-admin-accounts" rel="stylesheet"/>
+<link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/><link href="assets/client-portal.css?v=20260702-portal-messages" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
   #sds-logo a.sds-anchor,
@@ -212,6 +212,7 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <a class="client-workspace-card client-workspace-card--traffic" href="#client-messages"><span class="material-symbols-outlined">mail</span><strong>Portal messages</strong><small>Updates, notes, and replies from your Surette Data Systems workspace.</small></a>
 <a class="client-workspace-card client-workspace-card--request" href="#client-contact"><span class="material-symbols-outlined">send</span><strong>Send a change</strong><small>Ask a question or queue website updates directly from your account.</small></a>
 <a class="client-workspace-card client-workspace-card--settings" href="account-settings.html"><span class="material-symbols-outlined">tune</span><strong>Account settings</strong><small>Update your profile, password, contact details, and workspace preferences.</small></a>
+<a class="client-workspace-card client-workspace-card--admin" href="account-admin.html" data-admin-center-link hidden><span class="material-symbols-outlined">admin_panel_settings</span><strong>Admin Center</strong><small>Open owner-only tools, account-holder review, and administrative shortcuts.</small></a>
 </div>
 <section class="client-super-admin-panel client-sean-ads-panel" data-sean-ads-portal-panel hidden>
 <div class="client-super-admin-panel__header">
@@ -225,34 +226,6 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <div class="client-super-admin-actions">
 <a class="client-portal-button client-portal-button--secondary" href="seans-google-ads-dashboard.html"><span class="material-symbols-outlined">visibility</span>Open Sean's portal</a>
 </div>
-</section>
-<section class="client-super-admin-panel" data-super-admin-panel hidden>
-<div class="client-super-admin-panel__header">
-<div>
-<div class="client-portal-kicker">Owner Admin Console</div>
-<h3>Super user access</h3>
-<p>Your owner account can open member portal views and future admin tools from inside the normal Surette Data Systems account dashboard.</p>
-</div>
-<span class="client-super-admin-badge"><span class="material-symbols-outlined">admin_panel_settings</span>Owner only</span>
-</div>
-<div class="client-super-admin-actions">
-<a class="client-portal-button client-portal-button--secondary" href="seans-google-ads-dashboard.html"><span class="material-symbols-outlined">visibility</span>Open Sean's direct portal backend view</a>
-<button class="client-portal-button client-portal-button--secondary" type="button" data-admin-account-holders-load><span class="material-symbols-outlined">group</span>View all site account holders</button>
-</div>
-<p class="client-muted mt-4">This page only controls what admin shortcuts are visible in the browser. Real cross-account data access must be enforced with Supabase roles, policies, or server-side functions before sensitive member records are stored.</p>
-<section class="client-admin-accounts" data-admin-account-holders-panel hidden>
-<div class="client-section-heading">
-<div><h3 class="text-xl font-headline text-white">Site account holders</h3><span class="client-muted">Pulled from Supabase for super-admin review.</span></div>
-<span class="client-super-admin-badge"><span class="material-symbols-outlined">database</span><span data-admin-account-holders-count>0 records</span></span>
-</div>
-<div class="client-portal-status" data-admin-account-holders-status></div>
-<div class="client-admin-table-wrap">
-<table class="client-admin-table">
-<thead><tr><th>Name</th><th>Email</th><th>Company</th><th>Phone</th><th>Website</th><th>Role</th><th>Created</th><th>Last sign in</th></tr></thead>
-<tbody data-admin-account-holders-table></tbody>
-</table>
-</div>
-</section>
 </section>
 <div class="client-metric-grid">
 <div class="client-metric"><span class="client-muted">Services</span><strong data-metric-services>0</strong></div>
@@ -275,9 +248,7 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <section class="client-request-panel" id="client-contact">
 <span class="client-anchor-alias" id="client-request" aria-hidden="true"></span>
 <div class="client-section-heading"><h3 class="text-xl font-headline text-white">Request a change or ask a question</h3><span class="client-muted">Send website updates, content changes, quick questions, or support notes directly from your account.</span></div>
-<form class="client-portal-form" name="client-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-client-request-form>
-<input type="hidden" name="form-name" value="client-request"/>
-<p class="hidden"><label>Do not fill this out <input name="bot-field"/></label></p>
+<form class="client-portal-form" data-client-request-form>
 <input type="hidden" name="client_email" data-request-email/>
 <label class="client-portal-label">Request type<span class="client-select-wrap"><select class="client-portal-input" name="request_type" required><option value="Website update">Website update</option><option value="Question">Question</option><option value="Billing question">Billing question</option><option value="Technical support">Technical support</option></select><span class="material-symbols-outlined client-select-arrow">expand_more</span></span></label>
 <label class="client-portal-label">Subject<input class="client-portal-input" type="text" name="subject" required placeholder="Update homepage hours, add photos, billing question..."/></label>
@@ -338,16 +309,8 @@ window.DM_CLIENT_PORTAL_COPY = {
   requestSent: "Request sent. We will review it and follow up soon."
 };
 </script>
-<script type="module" src="assets/client-portal.js?v=20260615-admin-accounts"></script>
+<script type="module" src="assets/client-portal.js?v=20260702-portal-messages"></script>
 <script src="surette-logo.js?v=2"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
 <script type="module" src="fractal.js"></script>
-<script>
-document.getElementById('forgot-pw-btn')?.addEventListener('click', async () => {
-  const email = document.querySelector('#sign-in-email, input[type="email"]')?.value?.trim()
-  if (!email) { alert('Enter your email address first.'); return; }
-  const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: window.location.origin + '/account-settings.html' })
-  if (error) { alert('Error: ' + error.message); } else { alert('Password reset email sent. Check your inbox.'); }
-})
-</script>
 </body></html>

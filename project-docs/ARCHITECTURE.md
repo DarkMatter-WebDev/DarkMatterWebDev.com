@@ -1,10 +1,10 @@
 # Architecture
 
-Last updated: 2026-06-22
+Last updated: 2026-07-02
 
 ## Current Stack
 
-- Static HTML/CSS/JS — no build step required for normal editing.
+- Static HTML/CSS/JS â€” no build step required for normal editing.
 - English pages at repo root. Spanish mirrors (`es/`) are the intended pattern but are absent from this working copy.
 - Local preview commonly uses a static server at `http://127.0.0.1:4173/` (`npx http-server` or `start-preview.bat`).
 - Netlify static deployment and redirects via `netlify.toml`.
@@ -12,28 +12,28 @@ Last updated: 2026-06-22
 
 ## Key Directories
 
-- `assets/` — shared CSS, JS, images, SVGs, app screenshots, portfolio media.
-- `assets/apps/auction/` — Auction app WebP screenshots.
-- `assets/apps/sdms/` — SDMS WebP screenshots.
-- `assets/apps/benji/` — Benji Payroll WebP + SVG screenshots.
-- `assets/apps/antique-mall/` — Antique Mall screenshots (current: `thirdstreet-*.png`; older `antique-mall-*.png` may be stale).
-- `assets/apps/metalscalc/` — MetalsCalc PNG screenshots.
-- `assets/portfolio/` — Portfolio/website detail media.
-- `services/` — English service pages.
-- `nova/` — Nova particle-galaxy WebGL widget (`nova-widget.html` + `HANDOFF.md`). Only the `CONFIG` block should be edited — do not modify the engine.
-- `project-docs/` — compact AI/project memory system.
-- `supabase/` — starter SQL for the client portal.
-- `scripts/validate-site.ps1` — static-site link validator.
+- `assets/` â€” shared CSS, JS, images, SVGs, app screenshots, portfolio media.
+- `assets/apps/auction/` â€” Auction app WebP screenshots.
+- `assets/apps/sdms/` â€” SDMS WebP screenshots.
+- `assets/apps/benji/` â€” Benji Payroll WebP + SVG screenshots.
+- `assets/apps/antique-mall/` â€” Antique Mall screenshots (current: `thirdstreet-*.png`; older `antique-mall-*.png` may be stale).
+- `assets/apps/metalscalc/` â€” MetalsCalc PNG screenshots.
+- `assets/portfolio/` â€” Portfolio/website detail media.
+- `services/` â€” English service pages.
+- `nova/` â€” Nova particle-galaxy WebGL widget (`nova-widget.html` + `HANDOFF.md`). Only the `CONFIG` block should be edited â€” do not modify the engine.
+- `project-docs/` â€” compact AI/project memory system.
+- `supabase/` â€” starter SQL for the client portal.
+- `scripts/validate-site.ps1` â€” static-site link validator.
 
 ## Surette Data Systems Brand Assets
 
-- `assets/surette-data-systems-logo.webp` — full wordmark logo.
-- `assets/surette-data-systems-icon.webp` — icon variant.
-- `assets/surette-data-systems-geometric-icon.webp` — transparent geometric icon used site-wide.
-- `assets/surette-data-systems-floating-icon.webp` — floating icon variant.
-- `assets/surette-data-systems-floating-orange-blocks.webp` — large orange/purple block mark used in apps hero drift animation.
-- `assets/surette-data-systems-og.png` — Open Graph image.
-- `assets/case-studies-building-blocks.webp` — floating block visual used in case studies hero.
+- `assets/surette-data-systems-logo.webp` â€” full wordmark logo.
+- `assets/surette-data-systems-icon.webp` â€” icon variant.
+- `assets/surette-data-systems-geometric-icon.webp` â€” transparent geometric icon used site-wide.
+- `assets/surette-data-systems-floating-icon.webp` â€” floating icon variant.
+- `assets/surette-data-systems-floating-orange-blocks.webp` â€” large orange/purple block mark used in apps hero drift animation.
+- `assets/surette-data-systems-og.png` â€” Open Graph image.
+- `assets/case-studies-building-blocks.webp` â€” floating block visual used in case studies hero.
 
 ## Homepage Hero
 
@@ -45,7 +45,10 @@ Last updated: 2026-06-22
 
 - Navigation is shared via `assets/standard-site-nav.js`; hand-authored fallbacks exist on some pages.
 - `assets/mobile-services-nav.js` supports mobile services navigation.
-- `assets/client-portal.js` handles portal UI/auth behavior, safe `next` redirects, and the super-admin account-holder table (calls `list_portal_account_holders()` Supabase RPC).
+- `assets/client-portal.js` handles portal UI/auth behavior, safe `next` redirects for the regular account dashboard, and account-dashboard support/change request submissions through `submit_portal_message()`.
+- `assets/account-admin.js` handles the owner-only ultra-wide left-tab Admin Center, tab state/hash behavior, message center with signed attachment links, embedded subscriber table, subscriber email export/copy modal, account-holder viewer, and confirmation-modal delete flow (calls `list_portal_messages()`, `delete_portal_message()`, `list_portal_account_holders()`, `delete_newsletter_subscriber()`, and `delete_portal_account_holder()` Supabase RPCs).
+- `assets/account-users.js` handles the owner-only newsletter subscriber table, combining portal account signup emails with the `homepage_email_signups` newsletter source and de-duping by email.
+- `assets/newsletter-signup.js` handles public homepage newsletter email submissions into `homepage_email_signups` using the browser Supabase client.
 - `assets/portal-auth.js` reads Supabase `app_metadata.role` for privileged portal access; email allowlist fallback in `assets/supabase-config.js`.
 - `assets/seans-ads-dashboard.js` gates Sean's Google Ads dashboard page using shared portal auth helpers.
 - `assets/account-settings.js` handles the account settings page session/profile logic.
@@ -55,19 +58,25 @@ Last updated: 2026-06-22
 
 ## Auth / Portal
 
-- Supabase browser auth (email/password and magic-link) — dedicated Dark Matter / Surette Data Systems project.
+- Auth email redirect URLs are built from `assets/supabase-config.js` `siteUrl` (`https://surettesystems.com`) instead of the current browser origin, so local preview cannot generate localhost password reset links.
+
+- Supabase browser auth (email/password and magic-link) â€” dedicated Dark Matter / Surette Data Systems project.
 - Portal privileged roles: `super_admin` (owner), `sean_ads_admin` (Sean). Primary source: `app_metadata.role`. Fallback: email allowlist in `assets/supabase-config.js`.
+- Owner-only admin UX is split from the regular dashboard: `account.html` exposes only an Admin Center link for super-admins, while `account-admin.html` and `account-users.html` hold the private admin surfaces.
+- Newsletter subscriber source: `homepage_email_signups`. The updated portal role setup SQL creates this table, backfills current Auth account emails, and mirrors new Auth account signups into it so every account signup also counts as a newsletter email.
 - Supabase SQL:
-  - `supabase/client-portal-schema.sql` — schema setup.
-  - `supabase/portal-role-setup.sql` — `list_portal_account_holders()` RPC and `handle_new_portal_user()` Auth signup trigger.
-  - `supabase/client-profile-write-policies.sql` — RLS write policies.
+  - `supabase/client-portal-schema.sql` â€” schema setup.
+  - `supabase/portal-role-setup.sql` â€” `client_messages`, `portal-message-attachments` storage setup, `submit_site_message()`, `submit_portal_message()`, `list_portal_messages()`, `delete_portal_message()`, `list_portal_account_holders()`, `delete_newsletter_subscriber()`, `delete_portal_account_holder()` RPCs, and `handle_new_portal_user()` Auth signup trigger.
+  - `supabase/client-profile-write-policies.sql` â€” RLS write policies.
 - No local `admin` / `admin` bypass.
-- Real customer/admin data must be protected by Supabase RLS or server-side functions — browser gating alone is not sufficient.
+- Real customer/admin data must be protected by Supabase RLS or server-side functions â€” browser gating alone is not sufficient.
 
 ## Forms
 
-- Contact, request, and checkout flows use Netlify form markup.
-- Keep form names/field names stable across language mirrors.
+- Public website forms use `assets/site-message-forms.js` to call Supabase `submit_site_message()` into `client_messages`; Contact and App Checkout also support optional image/photo attachments through the private `portal-message-attachments` storage bucket.
+- Account-dashboard support/change requests use Supabase `client_messages` and the owner-only Admin Center Message Center.
+- Homepage newsletter signup uses Supabase `homepage_email_signups` rather than Netlify Forms.
+- Keep form field names and `data-message-source` values stable across language mirrors.
 
 ## Future Direction
 

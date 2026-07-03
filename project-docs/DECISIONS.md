@@ -1,6 +1,6 @@
 # Decisions
 
-Last updated: 2026-06-14
+Last updated: 2026-07-02
 
 Record only durable decisions here. Do not add routine change history.
 
@@ -55,6 +55,36 @@ Reason: portal auth, account-holder lists, billing, app checkout, support messag
 Decision: public app pricing/profile CTAs route purchase intent through the client portal before the shared checkout pages.
 
 Reason: shopping cart/payment request flow should live behind portal login.
+
+## Auth Redirect Base
+
+Decision: Supabase auth email redirects should use the canonical production site URL from `assets/supabase-config.js` instead of `window.location.origin`.
+
+Reason: password reset and magic-link emails requested from local preview must not send users to localhost or `127.0.0.1`.
+
+## Admin Surface Split
+
+Decision: keep owner-only admin features out of the regular client dashboard. Super-admin users should see the same account dashboard as clients except for an Admin Center link, and private admin views should live on separate owner-only pages.
+
+Reason: this keeps the normal client account experience clean while leaving room for larger admin tools such as the subscriber table. The Admin Center can use a left-anchored tab workspace as those private tools grow.
+
+## Admin Destructive Actions
+
+Decision: destructive Admin Center table actions must use a confirmation modal in the UI and owner-only Supabase RPCs for the actual delete operation.
+
+Reason: browser-side gates are not enough for privileged operations, and account deletion needs server-side checks such as owner role verification and self-delete prevention.
+
+## Portal Message Center
+
+Decision: authenticated account-dashboard support/change requests should write to Supabase `client_messages` and be reviewed in the owner-only Admin Center Message Center instead of using Netlify Forms.
+
+Reason: authenticated client messages belong with portal/account data, and the owner needs a single admin surface for reviewing and deleting account-originated requests.
+
+## Public Form Messages
+
+Decision: public website forms should also write to Supabase `client_messages` through `submit_site_message()` instead of Netlify Forms, with optional image attachments stored in a private Supabase Storage bucket.
+
+Reason: keeping contact, consultation, checkout, and portal messages in one owner-only Message Center gives the admin one operational inbox while avoiding Netlify dashboard/email fragmentation.
 
 ## Future Structure
 

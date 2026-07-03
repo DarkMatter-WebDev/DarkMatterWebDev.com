@@ -24,6 +24,7 @@ const els = {
   signupPasswordConfirm: document.querySelector("[data-signup-password-confirm]"),
   signupStatus: document.querySelector("[data-signup-status]"),
   signupResetBtn: document.querySelector("[data-signup-reset-btn]"),
+  forgotPassword: document.querySelector("#forgot-pw-btn"),
   magic: document.querySelector("[data-client-magic]"),
   status: document.querySelector("[data-client-status]"),
   introPanel: document.querySelector("[data-client-intro]"),
@@ -48,12 +49,7 @@ const els = {
   seansAdsBanner: document.querySelector("[data-seansads-banner]"),
   navLoginLinks: document.querySelectorAll(".nav-login-link"),
   seanAdsPortalPanel: document.querySelector("[data-sean-ads-portal-panel]"),
-  superAdminPanel: document.querySelector("[data-super-admin-panel]"),
-  adminAccountHoldersLoad: document.querySelector("[data-admin-account-holders-load]"),
-  adminAccountHoldersPanel: document.querySelector("[data-admin-account-holders-panel]"),
-  adminAccountHoldersStatus: document.querySelector("[data-admin-account-holders-status]"),
-  adminAccountHoldersTable: document.querySelector("[data-admin-account-holders-table]"),
-  adminAccountHoldersCount: document.querySelector("[data-admin-account-holders-count]")
+  adminCenterLink: document.querySelector("[data-admin-center-link]")
 };
 
 const portalNext = {
@@ -105,10 +101,21 @@ function clearStoredPortalNext() {
 
 function getAccountRedirectUrl() {
   const accountPath = document.documentElement.lang.startsWith("es") ? "/es/account.html" : "/account.html";
-  const url = new URL(accountPath, window.location.origin);
+  const url = new URL(accountPath, getAuthRedirectOrigin());
   const next = portalNext.path || getStoredPortalNext();
   if (next) url.searchParams.set("next", next);
   return url.href;
+}
+
+function getPasswordResetRedirectUrl() {
+  const settingsPath = document.documentElement.lang.startsWith("es") ? "/es/account-settings.html" : "/account-settings.html";
+  return new URL(settingsPath, getAuthRedirectOrigin()).href;
+}
+
+function getAuthRedirectOrigin() {
+  const configuredUrl = String(config.siteUrl || "").trim().replace(/\/+$/, "");
+  if (configuredUrl) return configuredUrl;
+  return window.location.origin;
 }
 
 function maybeRedirectToPortalNext() {
@@ -162,6 +169,7 @@ const t = {
   source: copy.source || "Source",
   requestSending: copy.requestSending || "Sending your request...",
   requestSent: copy.requestSent || "Request sent. We will review it and follow up soon.",
+  requestSetup: copy.requestSetup || "Install the submit_portal_message() Supabase RPC to send account requests here.",
   loadingAccountHolders: copy.loadingAccountHolders || "Loading account holders from Supabase...",
   noAccountHolders: copy.noAccountHolders || "No account holders were returned from Supabase.",
   accountHoldersSetup: copy.accountHoldersSetup || "Install the list_portal_account_holders() Supabase RPC to view auth account emails here.",
@@ -352,64 +360,6 @@ function renderMessages(container, rows) {
   }).join("");
 }
 
-function formatDateTime(value) {
-  if (!value) return "";
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) return String(value);
-  return date.toLocaleString(document.documentElement.lang || "en", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    hour: "numeric",
-    minute: "2-digit"
-  });
-}
-
-function normalizeAccountHolderRow(row) {
-  return {
-    user_id: pickField(row, ["user_id", "id"]),
-    email: pickField(row, ["email"]),
-    display_name: pickField(row, ["display_name", "full_name", "name"]),
-    phone: pickField(row, ["phone"]),
-    company_name: pickField(row, ["company_name", "company"]),
-    website: pickField(row, ["website", "site_url"]),
-    portal_role: pickField(row, ["portal_role", "role"]),
-    created_at: pickField(row, ["created_at"]),
-    last_sign_in_at: pickField(row, ["last_sign_in_at"]),
-    confirmed_at: pickField(row, ["confirmed_at", "email_confirmed_at"])
-  };
-}
-
-function renderAccountHolders(rows) {
-  if (!els.adminAccountHoldersTable) return;
-  if (els.adminAccountHoldersCount) {
-    els.adminAccountHoldersCount.textContent = `${rows.length} record${rows.length === 1 ? "" : "s"}`;
-  }
-  if (!rows.length) {
-    els.adminAccountHoldersTable.innerHTML = `<tr><td colspan="8"><div class="client-admin-empty">${escapeHtml(t.noAccountHolders)}</div></td></tr>`;
-    return;
-  }
-  els.adminAccountHoldersTable.innerHTML = rows.map((sourceRow) => {
-    const row = normalizeAccountHolderRow(sourceRow);
-    const name = row.display_name || "Account holder";
-    const website = row.website
-      ? `<a class="client-health-url" href="${escapeHtml(row.website)}" target="_blank" rel="noopener">${escapeHtml(row.website)}</a>`
-      : "";
-    return `
-      <tr>
-        <td><strong>${escapeHtml(name)}</strong>${row.user_id ? `<div class="client-muted">${escapeHtml(row.user_id)}</div>` : ""}</td>
-        <td>${escapeHtml(row.email || "")}</td>
-        <td>${escapeHtml(row.company_name || "")}</td>
-        <td>${escapeHtml(row.phone || "")}</td>
-        <td>${website}</td>
-        <td><span class="client-pill">${escapeHtml(row.portal_role || "client")}</span></td>
-        <td>${escapeHtml(formatDateTime(row.created_at))}</td>
-        <td>${escapeHtml(formatDateTime(row.last_sign_in_at || row.confirmed_at))}</td>
-      </tr>
-    `;
-  }).join("");
-}
-
 function countOpenInvoices(rows) {
   return rows.filter((row) => {
     const status = String(pickField(row, ["status"], "")).toLowerCase();
@@ -441,38 +391,6 @@ async function maybeQuery(supabase, table, userId) {
   }
 }
 
-async function loadAccountHolders(supabase) {
-  if (!els.adminAccountHoldersPanel) return;
-  els.adminAccountHoldersPanel.hidden = false;
-  if (els.adminAccountHoldersLoad) els.adminAccountHoldersLoad.disabled = true;
-  setPanelStatus(els.adminAccountHoldersStatus, t.loadingAccountHolders);
-
-  try {
-    const { data, error } = await supabase.rpc("list_portal_account_holders");
-    if (error) throw error;
-    const rows = Array.isArray(data) ? data : [];
-    renderAccountHolders(rows);
-    setPanelStatus(els.adminAccountHoldersStatus, "", false);
-  } catch (rpcError) {
-    try {
-      const table = config.tables?.profile || "client_profiles";
-      const { data, error } = await supabase
-        .from(table)
-        .select("*")
-        .order("created_at", { ascending: false });
-      if (error) throw error;
-      const rows = Array.isArray(data) ? data : [];
-      renderAccountHolders(rows);
-      setPanelStatus(els.adminAccountHoldersStatus, rows.length ? t.accountHoldersSetup : t.noAccountHolders);
-    } catch {
-      renderAccountHolders([]);
-      setPanelStatus(els.adminAccountHoldersStatus, rpcError?.message || t.accountHoldersSetup);
-    }
-  } finally {
-    if (els.adminAccountHoldersLoad) els.adminAccountHoldersLoad.disabled = false;
-  }
-}
-
 async function renderDashboard(supabase, session) {
   const user = session?.user;
   if (!user) return;
@@ -495,16 +413,11 @@ async function renderDashboard(supabase, session) {
   const profileRole = await resolveProfilePortalRole(supabase, user, config);
   const isSuperAdmin = isSuperAdminUser(user, config, profileRole);
   const canAccessSeanPortal = canOpenSeanAdsPortal(user, config, profileRole);
+  if (els.adminCenterLink) {
+    els.adminCenterLink.hidden = !isSuperAdmin;
+  }
   if (els.seanAdsPortalPanel) {
-    els.seanAdsPortalPanel.hidden = !canAccessSeanPortal;
-  }
-  if (els.superAdminPanel) {
-    els.superAdminPanel.hidden = !isSuperAdmin;
-  }
-  if (!isSuperAdmin && els.adminAccountHoldersPanel) {
-    els.adminAccountHoldersPanel.hidden = true;
-    renderAccountHolders([]);
-    setPanelStatus(els.adminAccountHoldersStatus, "", false);
+    els.seanAdsPortalPanel.hidden = !canAccessSeanPortal || isSuperAdmin;
   }
 
   const [services, invoices, documents, messages] = await Promise.all([
@@ -538,8 +451,7 @@ function renderSignedOut() {
   els.authPanel?.removeAttribute("hidden");
   els.dashboard?.classList.remove("is-visible");
   if (els.seanAdsPortalPanel) els.seanAdsPortalPanel.hidden = true;
-  if (els.superAdminPanel) els.superAdminPanel.hidden = true;
-  if (els.adminAccountHoldersPanel) els.adminAccountHoldersPanel.hidden = true;
+  if (els.adminCenterLink) els.adminCenterLink.hidden = true;
   updateAccountNav(false);
 }
 
@@ -671,7 +583,7 @@ if (!isConfigured) {
     const email = els.signupEmail?.value.trim();
     if (!email) return;
     els.signupResetBtn.disabled = true;
-    const redirectTo = getAccountRedirectUrl();
+    const redirectTo = getPasswordResetRedirectUrl();
     const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, { redirectTo });
     els.signupResetBtn.disabled = false;
     if (resetError) {
@@ -679,6 +591,27 @@ if (!isConfigured) {
     } else {
       setSignupStatus(t.accountExistsReset, true, false);
     }
+  });
+
+  els.forgotPassword?.addEventListener("click", async () => {
+    const email = els.email?.value.trim();
+    if (!email) {
+      setStatus(t.emailRequired);
+      els.email?.focus();
+      return;
+    }
+    if (!isValidEmail(email)) {
+      setStatus(t.emailInvalid);
+      els.email?.focus();
+      return;
+    }
+
+    els.forgotPassword.disabled = true;
+    const redirectTo = getPasswordResetRedirectUrl();
+    const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo });
+    els.forgotPassword.disabled = false;
+    if (error) setStatus(error.message || t.error);
+    else setStatus(t.accountExistsReset);
   });
 
   els.signOut?.addEventListener("click", async () => {
@@ -689,14 +622,6 @@ if (!isConfigured) {
     setStatus(t.signedOut);
   });
 
-  els.adminAccountHoldersLoad?.addEventListener("click", async () => {
-    const { data } = await supabase.auth.getSession();
-    if (!data.session) return;
-    const profileRole = await resolveProfilePortalRole(supabase, data.session.user, config);
-    if (!isSuperAdminUser(data.session.user, config, profileRole)) return;
-    await loadAccountHolders(supabase);
-  });
-
   els.requestForm?.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!els.requestStatus) return;
@@ -704,19 +629,30 @@ if (!isConfigured) {
     els.requestStatus.classList.add("is-visible");
 
     const formData = new FormData(els.requestForm);
-    try {
-      const response = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString()
-      });
+    const subject = String(formData.get("subject") || "").trim();
+    const details = String(formData.get("details") || "").trim();
+    const requestType = String(formData.get("request_type") || "").trim();
+    if (!subject || !details) {
+      els.requestStatus.textContent = t.error;
+      return;
+    }
 
-      if (!response.ok) throw new Error("Request failed");
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      if (!sessionData.session) throw new Error("Signed-in session required");
+
+      const { error } = await supabase.rpc("submit_portal_message", {
+        portal_request_type: requestType,
+        message_subject: subject,
+        message_details: details
+      });
+      if (error) throw error;
       els.requestForm.reset();
       if (els.requestEmail && els.accountEmail?.textContent) els.requestEmail.value = els.accountEmail.textContent;
       els.requestStatus.textContent = t.requestSent;
-    } catch {
-      els.requestStatus.textContent = t.error;
+      await renderDashboard(supabase, sessionData.session);
+    } catch (error) {
+      els.requestStatus.textContent = /submit_portal_message/i.test(error?.message || "") ? t.requestSetup : (error?.message || t.error);
     }
   });
 }

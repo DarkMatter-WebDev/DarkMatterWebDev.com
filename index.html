@@ -437,6 +437,112 @@
         .rail-popover-ghost .rail-popover-title { text-shadow: 0 0 28px rgba(255, 255, 255, 0.1); }
         .rail-popover-ghost .rail-popover-desc { opacity: 0.82; }
         [id^="step-"] { scroll-margin-top: 6rem; }
+        .sds-newsletter-form {
+            display: grid;
+            gap: 0.7rem;
+            width: min(100%, 34rem);
+            margin: 1.25rem auto 0;
+        }
+        .sds-newsletter-action-row {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 0.9rem;
+            width: min(100%, 50rem);
+            margin: 1.25rem auto 0;
+        }
+        .sds-newsletter-action-row .sds-newsletter-form {
+            flex: 1 1 34rem;
+            width: auto;
+            margin: 0;
+        }
+        .sds-newsletter-contact {
+            flex: 0 0 auto;
+            min-height: 3.35rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+        }
+        .sds-newsletter-row {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 0.7rem;
+            padding: 0.35rem;
+            border: 1px solid rgba(0, 240, 255, 0.22);
+            border-radius: 0.8rem;
+            background: rgba(5, 5, 5, 0.62);
+            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(12px);
+        }
+        .sds-newsletter-input {
+            min-width: 0;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 0.55rem;
+            background: rgba(0, 0, 0, 0.35) !important;
+            color: #fff !important;
+            caret-color: #00f0ff !important;
+            padding: 0.95rem 1rem;
+            font: 600 0.95rem "Plus Jakarta Sans", sans-serif;
+            outline: none;
+            box-shadow: none !important;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+        .sds-newsletter-input::placeholder {
+            color: rgba(227, 226, 226, 0.52);
+        }
+        .sds-newsletter-input:focus {
+            box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.18);
+        }
+        .sds-newsletter-submit {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            border: 0;
+            border-radius: 0.55rem;
+            padding: 0.9rem 1.05rem;
+            color: #050505;
+            background: linear-gradient(90deg, #39ff88, #00f0ff);
+            font: 800 0.72rem "JetBrains Mono", monospace;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+        .sds-newsletter-submit:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.05);
+        }
+        .sds-newsletter-submit:disabled {
+            cursor: not-allowed;
+            opacity: 0.55;
+            transform: none;
+        }
+        .sds-newsletter-status {
+            min-height: 1.25rem;
+            color: rgba(227, 226, 226, 0.72);
+            font: 700 0.72rem "JetBrains Mono", monospace;
+            letter-spacing: 0.04em;
+        }
+        .sds-newsletter-status.is-success {
+            color: #39ff88;
+        }
+        .sds-newsletter-status.is-error {
+            color: #ffb4ab;
+        }
+        @media (max-width: 640px) {
+            .sds-newsletter-form {
+                margin-top: 1rem;
+            }
+            .sds-newsletter-row {
+                grid-template-columns: 1fr;
+            }
+            .sds-newsletter-submit {
+                width: 100%;
+            }
+        }
     </style>
 <script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/","gsap":"https://unpkg.com/gsap@3.12.5/index.js"}}</script>
@@ -506,13 +612,18 @@
 </div>
 <div class="hero-video-stage relative z-0" aria-hidden="true"></div>
 <div class="hero-enter hero-enter-d3 hero-bottom-band relative z-10 w-full max-w-[min(100%,56rem)] mx-auto px-margin-desktop text-center">
-<div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-4 pt-10">
-<a href="contact.html" class="inline-block px-12 py-5 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-mono text-label-mono font-bold rounded-lg hover:scale-105 active:scale-95 transition-all glow-cyan">
+<div class="sds-newsletter-action-row">
+<a href="contact.html" class="sds-newsletter-contact px-12 py-5 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-mono text-label-mono font-bold rounded-lg hover:scale-105 active:scale-95 transition-all glow-cyan">
                             Contact Us
                         </a>
-<a href="apps.html" class="inline-block px-12 py-5 glass-card text-starlight-white font-label-mono text-label-mono border border-electric-cyan/30 hover:bg-electric-cyan/10 transition-all">
-                            VIEW OUR SERVICES
-                        </a>
+<form class="sds-newsletter-form" data-newsletter-form data-newsletter-origin="homepage-desktop" novalidate>
+<label class="sr-only" for="newsletter-email-desktop">Email address</label>
+<div class="sds-newsletter-row">
+<input class="sds-newsletter-input" id="newsletter-email-desktop" name="email" type="email" autocomplete="email" placeholder="Get launch notes and useful tech updates" required/>
+<button class="sds-newsletter-submit" type="submit"><span class="material-symbols-outlined text-base">mark_email_read</span>Subscribe</button>
+</div>
+<div class="sds-newsletter-status" data-newsletter-status aria-live="polite"></div>
+</form>
 </div>
 <p class="font-label-mono text-label-mono text-on-surface-variant pt-8 tracking-wide">Southwest Florida &middot; Call or text <a class="text-electric-cyan hover:underline" href="tel:+12394048505">(239) 404-8505</a></p>
 </div>
@@ -767,10 +878,15 @@ Contact Us
 <a href="contact.html" class="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-caps text-label-caps rounded-sm transition-all active:scale-95">
                             Contact Us
                         </a>
-<a href="apps.html" class="w-full sm:w-auto px-10 py-4 border border-electric-cyan/40 text-electric-cyan font-label-caps text-label-caps rounded-sm transition-all backdrop-blur-sm">
-                            VIEW OUR SERVICES
-                        </a>
 </div>
+<form class="sds-newsletter-form" data-newsletter-form data-newsletter-origin="homepage-mobile" novalidate>
+<label class="sr-only" for="newsletter-email-mobile">Email address</label>
+<div class="sds-newsletter-row">
+<input class="sds-newsletter-input" id="newsletter-email-mobile" name="email" type="email" autocomplete="email" placeholder="Get launch notes and tech updates" required/>
+<button class="sds-newsletter-submit" type="submit"><span class="material-symbols-outlined text-base">mark_email_read</span>Subscribe</button>
+</div>
+<div class="sds-newsletter-status" data-newsletter-status aria-live="polite"></div>
+</form>
 <p class="font-label-mono text-label-mono text-on-surface-variant pt-6 tracking-wide">Southwest Florida &middot; <a class="text-electric-cyan hover:underline" href="tel:+12394048505">(239) 404-8505</a></p>
 </div>
 </section>
@@ -1126,6 +1242,8 @@ Contact Us
       renderer.render(scene, camera);
     });
 </script>
+<script src="assets/supabase-config.js"></script>
+<script type="module" src="assets/newsletter-signup.js?v=20260702-homepage-subscribers"></script>
 <script src="surette-logo.js?v=4"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
 </body></html>

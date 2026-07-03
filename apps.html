@@ -324,9 +324,7 @@ window.FRACTAL_CONFIG = {
     <h2 id="consult-modal-title" class="font-headline-lg text-2xl md:text-3xl text-starlight-white mb-1">Schedule a Meeting</h2>
     <p class="text-on-surface-variant text-sm mb-6">Tell us about your business and we'll reach out to schedule a call.</p>
 
-    <form name="consultation-request" method="POST" data-netlify="true" class="space-y-4">
-      <input type="hidden" name="form-name" value="consultation-request" />
-
+    <form class="space-y-4" data-site-message-form data-message-source="apps-consultation" data-message-type="Consultation request" data-message-subject="New app consultation request">
       <div class="grid grid-cols-2 gap-4">
         <div>
           <label class="consult-label" for="c-first">First Name</label>
@@ -394,5 +392,7 @@ window.FRACTAL_CONFIG = {
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
 })();
 </script>
+<script src="assets/supabase-config.js"></script>
+<script type="module" src="assets/site-message-forms.js?v=20260702-message-center-forms"></script>
 </body>
 </html>

@@ -41,12 +41,12 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <div><span>License setup</span><strong>Portal review</strong></div>
 <div><span>Payment status</span><strong>Ready to process</strong></div>
 </div>
-<form class="checkout-form" name="app-checkout-request" method="POST" data-netlify="true">
-<input type="hidden" name="form-name" value="app-checkout-request"/>
+<form class="checkout-form" data-site-message-form data-message-source="app-checkout-request" data-message-type="App checkout request" data-message-subject="New app checkout request">
 <input type="hidden" name="selected-app" data-selected-app-input value="sdms"/>
 <label>Account email<input type="email" name="email" data-account-email-input placeholder="you@example.com"/></label>
 <label>Version needed<select name="version"><option>Hosted SaaS access</option><option>Desktop installer</option><option>Custom branded version</option><option>Not sure yet</option></select></label>
 <label>Setup notes<textarea name="notes" placeholder="Tell us about locations, staff users, reporting needs, or any custom features."></textarea></label>
+<label>Photos or screenshots<input type="file" name="photos" accept="image/*" multiple/><span class="checkout-note">Optional: up to 5 images, 8 MB each.</span></label>
 <div class="checkout-actions"><button class="checkout-button checkout-button--primary" type="submit"><span class="material-symbols-outlined">shopping_cart_checkout</span>Process payment request</button><a class="checkout-button checkout-button--secondary" href="account.html">Back to portal</a></div>
 <p class="checkout-note">This portal cart can later connect to a secure payment processor from the server side. No payment secrets are stored in this static page.</p>
 </form>
@@ -54,6 +54,7 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 </section>
 </main>
 <script src="assets/supabase-config.js"></script>
+<script type="module" src="assets/site-message-forms.js?v=20260702-message-center-forms"></script>
 <script type="module">
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 const apps={sdms:{name:"SDMS — Secondhand Dealer Management System",short:"SDMS",description:"Florida secondhand dealer compliance, seller intake, inventory, metals, sales, reports, and audit logs.",icon:"diamond"},auction:{name:"Auction House & Consignment Store Software",short:"Auction App",description:"Consignor intake, auction events, inventory, tag printing, sales, settlements, invoices, and reports.",icon:"inventory_2"}};
