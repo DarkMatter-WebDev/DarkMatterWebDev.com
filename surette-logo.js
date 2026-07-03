@@ -365,6 +365,19 @@
     }, 120);
   }
 
+  function dmShowPageLoader() {
+    var loader = document.getElementById('page-loader');
+    if (!loader) {
+      loader = document.createElement('div');
+      loader.id = 'page-loader';
+      loader.setAttribute('aria-hidden', 'true');
+      loader.innerHTML = '<svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="23" cy="23" r="19" stroke="rgba(0,240,255,0.12)" stroke-width="3"/><path d="M23 4 A19 19 0 0 1 42 23" stroke="#00f0ff" stroke-width="3" stroke-linecap="round"/></svg><span>Loading</span>';
+      document.body.appendChild(loader);
+    }
+    loader.classList.remove('fade-out');
+    return loader;
+  }
+
   // Scroll reveal — observes any .reveal-up elements and adds .in-view when
   // they enter the viewport. Works on every page that uses the class.
   function initScrollReveal() {
@@ -415,19 +428,36 @@
     if (e.persisted) { dmRevealPage(); }
   });
 
-  // Exit fade: fade the current page to dark before navigating away so the
-  // between-pages gap is dark (not white) and the new page's fade-in feels
-  // continuous. Don't preventDefault — let the browser navigate normally.
+  // Exit transition: show the small loader briefly before same-site navigation
+  // so users see an intentional transition cue instead of a frozen page.
+  var dmNavigationPending = false;
   document.addEventListener('click', function (e) {
+    if (e.defaultPrevented || dmNavigationPending) return;
+    if (e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     var a = e.target.closest('a[href]');
-    if (!a || a.target === '_blank') return;
+    if (!a || a.target === '_blank' || a.hasAttribute('download')) return;
+    if (a.target && a.target !== '_self') return;
     var href = a.getAttribute('href');
     if (!href || href.charAt(0) === '#' || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0) return;
+    var url;
     try {
-      if (new URL(href, location.href).origin !== location.origin) return;
+      url = new URL(href, location.href);
+      if (url.origin !== location.origin) return;
     } catch (_) { return; }
-    document.documentElement.style.transition = 'opacity 0.15s ease';
-    document.documentElement.style.opacity = '0';
+    if (url.pathname === location.pathname && url.search === location.search && url.hash) return;
+
+    e.preventDefault();
+    dmNavigationPending = true;
+    dmShowPageLoader();
+    document.documentElement.style.opacity = '1';
+
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        setTimeout(function () {
+          window.location.href = url.href;
+        }, 90);
+      });
+    });
   });
 
 }(window));

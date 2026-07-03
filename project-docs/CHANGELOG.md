@@ -4,6 +4,7 @@ This file is intentionally compact. Keep only high-signal recent changes and maj
 
 ## 2026-07-03
 
+- Added a same-site outbound navigation loader: link clicks now show the small black spinner overlay briefly before navigation so page changes feel intentional instead of frozen.
 - Stabilized the page reveal after the white-screen regression: restored the `html`-based fade path, kept the root/background black, added a CSS safety fallback for logo pages if JS reveal is interrupted, and cache-busted `surette-logo.js` across pages.
 - Updated public-facing contact email references from legacy/old addresses to `info@SuretteSystems.com` across site pages while leaving sample input placeholders and Supabase/admin setup emails unchanged.
 - Ran a focused header/transition audit across representative desktop and mobile pages. Confirmed the standard reveal settles cleanly, validator noise remains pre-existing, and service-detail mobile nav is the main remaining consolidation opportunity.

@@ -124,6 +124,40 @@ body {
   background-color: #050505;
 }
 
+#page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: #050505;
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+#page-loader.fade-out {
+  opacity: 0;
+}
+
+#page-loader svg {
+  animation: sds-loader-spin 0.9s linear infinite;
+}
+
+#page-loader span {
+  color: rgba(0, 240, 255, 0.42);
+  font: 700 10px Consolas, "Courier New", monospace;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+@keyframes sds-loader-spin {
+  to { transform: rotate(360deg); }
+}
+
 /* CSS-only fallback for pages that do not load surette-logo.js. */
 html:not(.sds-logo-loaded) {
   animation: dm-page-show 0s 0.2s forwards;

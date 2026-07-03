@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="dark" style="background:#050505" lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -6,7 +6,7 @@
 <title>App Checkout | Surette Data Systems</title>
 <meta name="description" content="Portal-only app checkout and shopping cart for Surette Data Systems."/>
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
-<link href="assets/nav.css?v=20260624-tokens" rel="stylesheet"/>
+<link href="assets/nav.css?v=20260703-nav-loader" rel="stylesheet"/>
 <link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/>
 <link href="assets/client-portal.css?v=20260604-ad-status" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -57,7 +57,7 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <script type="module" src="assets/site-message-forms.js?v=20260702-message-center-forms"></script>
 <script type="module">
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
-const apps={sdms:{name:"SDMS — Secondhand Dealer Management System",short:"SDMS",description:"Florida secondhand dealer compliance, seller intake, inventory, metals, sales, reports, and audit logs.",icon:"diamond"},auction:{name:"Auction House & Consignment Store Software",short:"Auction App",description:"Consignor intake, auction events, inventory, tag printing, sales, settlements, invoices, and reports.",icon:"inventory_2"}};
+const apps={sdms:{name:"SDMS � Secondhand Dealer Management System",short:"SDMS",description:"Florida secondhand dealer compliance, seller intake, inventory, metals, sales, reports, and audit logs.",icon:"diamond"},auction:{name:"Auction House & Consignment Store Software",short:"Auction App",description:"Consignor intake, auction events, inventory, tag printing, sales, settlements, invoices, and reports.",icon:"inventory_2"}};
 const params=new URLSearchParams(location.search);
 const appKey=apps[params.get("app")]?params.get("app"):"sdms";
 const app=apps[appKey];
