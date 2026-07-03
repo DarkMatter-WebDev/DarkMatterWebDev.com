@@ -1,6 +1,6 @@
 # Structure Recommendations
 
-Last updated: 2026-06-05
+Last updated: 2026-07-03
 
 ## Current Recommendation
 
@@ -12,7 +12,7 @@ Use generated static HTML with:
 
 - shared layouts
 - shared nav/footer components
-- structured bilingual content
+- structured bilingual content when Spanish mirrors are restored
 - data-driven app/portfolio/service cards
 - image metadata helpers
 - validation checks in CI

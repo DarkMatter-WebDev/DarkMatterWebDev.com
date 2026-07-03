@@ -20,13 +20,13 @@ Use this file to track client website operations. Never store actual passwords, 
 
 ### Dark Matter Surette Systems Portal
 
-- Domain: Not documented in this workspace.
-- Hosting details: Netlify configuration exists; production site details not documented.
+- Domain: `surettesystems.com`.
+- Hosting details: Netlify configuration exists; static site deploy plus Supabase-backed portal/message-center integrations.
 - GitHub repo: Not documented in this workspace.
 - Netlify site: Not documented in this workspace.
 - Maintenance plan: Internal project.
 - Login/credential locations: Do not store secrets here; add reference only when confirmed.
-- Outstanding requests: Keep project memory updated; continue site polish and service messaging improvements.
+- Outstanding requests: Run/update Supabase setup SQL, verify public forms and Admin Center messages live, keep project memory updated, continue site polish and service messaging improvements.
 - Billing status: Internal project.
 - Notes: Marketing site for managed website services, custom business web apps, care plans, hosting, branding, SEO, and support.
 

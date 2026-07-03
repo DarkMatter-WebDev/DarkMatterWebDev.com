@@ -1,6 +1,6 @@
 # Architecture
 
-Last updated: 2026-07-02
+Last updated: 2026-07-03
 
 ## Current Stack
 
@@ -22,7 +22,7 @@ Last updated: 2026-07-02
 - `services/` â€” English service pages.
 - `nova/` â€” Nova particle-galaxy WebGL widget (`nova-widget.html` + `HANDOFF.md`). Only the `CONFIG` block should be edited â€” do not modify the engine.
 - `project-docs/` â€” compact AI/project memory system.
-- `supabase/` â€” starter SQL for the client portal.
+- `supabase/` â€” setup SQL for the client portal, message center, newsletter subscribers, and public-form message capture.
 - `scripts/validate-site.ps1` â€” static-site link validator.
 
 ## Surette Data Systems Brand Assets
@@ -66,7 +66,7 @@ Last updated: 2026-07-02
 - Newsletter subscriber source: `homepage_email_signups`. The updated portal role setup SQL creates this table, backfills current Auth account emails, and mirrors new Auth account signups into it so every account signup also counts as a newsletter email.
 - Supabase SQL:
   - `supabase/client-portal-schema.sql` â€” schema setup.
-  - `supabase/portal-role-setup.sql` â€” `client_messages`, `portal-message-attachments` storage setup, `submit_site_message()`, `submit_portal_message()`, `list_portal_messages()`, `delete_portal_message()`, `list_portal_account_holders()`, `delete_newsletter_subscriber()`, `delete_portal_account_holder()` RPCs, and `handle_new_portal_user()` Auth signup trigger.
+  - `supabase/portal-role-setup.sql` â€” `client_messages`, `portal-message-attachments` storage setup, `submit_site_message()`, `submit_portal_message()`, `list_portal_messages()`, `delete_portal_message()`, `list_portal_account_holders()`, `delete_newsletter_subscriber()`, `delete_portal_account_holder()` RPCs, and `handle_new_portal_user()` Auth signup trigger. It intentionally drops `list_portal_messages()` before recreating it because the returned columns have changed over time.
   - `supabase/client-profile-write-policies.sql` â€” RLS write policies.
 - No local `admin` / `admin` bypass.
 - Real customer/admin data must be protected by Supabase RLS or server-side functions â€” browser gating alone is not sufficient.

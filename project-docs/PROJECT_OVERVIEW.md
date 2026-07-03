@@ -9,7 +9,7 @@ Dark Matter Surette Systems Portal is a static marketing site for web services, 
 - `services/` contains English service detail pages.
 - `assets/` contains shared CSS, JS, images, video, app screenshots, and portfolio media.
 - `project-docs/` is the compact project memory system.
-- `supabase/` contains the client portal starter schema.
+- `supabase/` contains setup SQL for the client portal, message center, newsletter subscribers, public-form message capture, and related RLS/RPC helpers.
 - `scripts/validate-site.ps1` validates static links and common site issues.
 
 ## Important Boundaries

@@ -2,6 +2,16 @@
 
 This file is intentionally compact. Keep only high-signal recent changes and major milestones.
 
+## 2026-07-03
+
+- Reduced inter-page white flashes by moving reveal/exit opacity from `html` to `body`, keeping the root page background black, delaying normal same-site navigation for the fade to paint, and cache-busting `surette-logo.js` across pages.
+- Updated public-facing contact email references from legacy/old addresses to `info@SuretteSystems.com` across site pages while leaving sample input placeholders and Supabase/admin setup emails unchanged.
+- Ran a focused header/transition audit across representative desktop and mobile pages. Confirmed the standard reveal settles cleanly, validator noise remains pre-existing, and service-detail mobile nav is the main remaining consolidation opportunity.
+- Normalized the account page desktop header to match the main site nav: "Client Login" label, account-circle icon, matching font classes, and a cache-busted `client-portal.js` reference so the runtime signed-out state no longer rewrites it to "Login".
+- Matched the homepage newsletter email field more closely to the account-page inputs with a transparent wrapper, thin cyan outline, darker subtle interior, clearer sample-email placeholder, and a brighter focused state.
+- Refreshed project memory/docs to current state: English-only working copy, Supabase-backed public forms, unified Admin Center Message Center, optional message attachments, and current Supabase SQL setup requirements.
+- Added `drop function if exists public.list_portal_messages();` before recreating the RPC in `supabase/portal-role-setup.sql` so Supabase accepts the expanded message-center return columns for source/page/attachment metadata.
+
 ## 2026-07-02
 
 - Removed remaining Netlify Forms wiring from Contact, Apps consultation, and App Checkout. Added `assets/site-message-forms.js`, Supabase `submit_site_message()`, private message-attachment storage, and Admin Center attachment-link rendering so public form submissions land in the Message Center.

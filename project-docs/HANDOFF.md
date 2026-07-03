@@ -1,6 +1,6 @@
 # Handoff
 
-Last updated: 2026-07-02
+Last updated: 2026-07-03
 
 ## Startup Prompt
 
@@ -27,7 +27,7 @@ Then summarize the project in a few bullets and continue with the latest request
 - Portal uses a dedicated Dark Matter / Surette Data Systems Supabase project (not Naples Estate Jewelry).
 - Portal auth email redirects use `assets/supabase-config.js` `siteUrl` (`https://surettesystems.com`) as the canonical base, so local reset requests do not create localhost links.
 - Homepage newsletter signup forms are wired to Supabase `homepage_email_signups`; live use requires running the updated `supabase/portal-role-setup.sql` in the hosted project.
-- Public website forms and account-dashboard support/change requests are no longer Netlify Forms. Public forms call Supabase `submit_site_message()` through `assets/site-message-forms.js`; account requests call `submit_portal_message()`. Admin Center has a Messages tab that lists/deletes them via `list_portal_messages()` / `delete_portal_message()` and can render signed links for optional photo attachments. Live use requires running the updated `supabase/portal-role-setup.sql`.
+- Public website forms and account-dashboard support/change requests are no longer Netlify Forms. Public forms call Supabase `submit_site_message()` through `assets/site-message-forms.js`; account requests call `submit_portal_message()`. Admin Center has a Messages tab that lists/deletes them via `list_portal_messages()` / `delete_portal_message()` and can render signed links for optional photo attachments. Live use requires running the updated `supabase/portal-role-setup.sql`; the current SQL includes `drop function if exists public.list_portal_messages();` because the return shape changed to include source/page/attachment fields.
 - Admin Center table deletes are wired in `account-admin.html` / `assets/account-admin.js` with a confirmation modal. Live delete actions require `delete_portal_message()`, `delete_newsletter_subscriber()`, and `delete_portal_account_holder()` from the updated `supabase/portal-role-setup.sql`.
 - Local preview: `http://127.0.0.1:4173/` (start with `npx http-server` or `start-preview.bat`).
 - Production: `https://surettesystems.com/`.
@@ -43,11 +43,11 @@ Then summarize the project in a few bullets and continue with the latest request
 | `app-pricing.html` | 4 pricing tiers routing through client portal to checkout |
 | `app-checkout.html` | Portal checkout context |
 | `casestudies.html` | Websites We've Built gallery (6 tiles) |
-| `contact.html` | Contact form (Netlify) |
+| `contact.html` | Contact page; public form submits to Supabase Message Center and supports optional photos/screenshots |
 | `process.html` | Process page (not in main nav; reached via service-page CTAs) |
 | `built-by.html` | Built By page |
 | `account.html` | Client portal dashboard (Supabase auth; owner sees Admin Center link only) |
-| `account-admin.html` | Owner-only ultra-wide left-tab Admin Center with embedded subscriber/account-holder tables |
+| `account-admin.html` | Owner-only ultra-wide left-tab Admin Center with Messages, Subscribers, Account holders, and Sean Ads tabs |
 | `account-users.html` | Owner-only newsletter subscriber table for account signups and homepage email sign-ups |
 | `account-settings.html` | Profile/password management (Supabase gated) |
 | `account-created.html` | Email confirmation landing after Supabase signup |

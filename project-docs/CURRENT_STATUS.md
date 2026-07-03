@@ -15,9 +15,10 @@ Last updated: 2026-07-03
 - Non-home pages use the shared cosmic-web background system (`assets/cosmic-web.css`).
 - Services pages: Website Design, Managed Hosting, Website Care Plans, Custom Business Web Apps (links to `apps.html`), In-Home Tech Services, Office Network Setup. Website Design, Managed Hosting, Care Plans, Custom Apps, In-Home, and Office Network pages all include "View Our Process" CTAs.
 - Public website forms no longer use Netlify Forms. Contact, Apps consultation, and App Checkout submit to Supabase `client_messages` through `assets/site-message-forms.js`; Contact and Checkout support optional photo/screenshot attachments for the Admin Center Message Center via the private `portal-message-attachments` storage bucket.
-- Homepage desktop/mobile hero now includes a newsletter subscriber email field wired to Supabase `homepage_email_signups` through `assets/newsletter-signup.js`.
+- Homepage desktop/mobile hero now includes a newsletter subscriber email field wired to Supabase `homepage_email_signups` through `assets/newsletter-signup.js`. The email input uses an account-page-inspired transparent field with a thin cyan outline over the Nova background.
 - Client portal pages are static HTML wired for Supabase auth. Auth email redirects use `assets/supabase-config.js` `siteUrl` (`https://surettesystems.com`) as the canonical base, so password reset emails generated during local preview should no longer point at localhost. Account-dashboard support/change requests now submit to Supabase `client_messages` through `submit_portal_message()` instead of Netlify Forms.
 - Mobile page headers inject an icon-only account link via `assets/account-nav.js`. Signed-in state may change the accessible label/title to "Account", but the visible mobile header control should remain just the `account_circle` icon.
+- Account-page desktop nav has been normalized to the same "Client Login" label/account icon styling used by the main marketing header; `assets/client-portal.js` preserves "Account" only for signed-in state.
 
 ## Portal Pages
 

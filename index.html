@@ -468,32 +468,33 @@
             display: grid;
             grid-template-columns: minmax(0, 1fr) auto;
             gap: 0.7rem;
-            padding: 0.35rem;
-            border: 1px solid rgba(0, 240, 255, 0.22);
-            border-radius: 0.8rem;
-            background: rgba(5, 5, 5, 0.62);
-            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(12px);
+            padding: 0;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
         }
         .sds-newsletter-input {
             min-width: 0;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
-            border-radius: 0.55rem;
-            background: rgba(0, 0, 0, 0.35) !important;
+            border: 1px solid rgba(0, 240, 255, 0.28) !important;
+            border-radius: 0.15rem;
+            background: rgba(0, 0, 0, 0.26) !important;
             color: #fff !important;
             caret-color: #00f0ff !important;
             padding: 0.95rem 1rem;
-            font: 600 0.95rem "Plus Jakarta Sans", sans-serif;
+            font: 500 1rem "Plus Jakarta Sans", sans-serif;
             outline: none;
             box-shadow: none !important;
             appearance: none;
             -webkit-appearance: none;
         }
         .sds-newsletter-input::placeholder {
-            color: rgba(227, 226, 226, 0.52);
+            color: rgba(227, 226, 226, 0.68);
         }
         .sds-newsletter-input:focus {
-            box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.18);
+            background: rgba(0, 0, 0, 0.32) !important;
+            border-color: rgba(0, 240, 255, 0.72) !important;
+            box-shadow: 0 0 0 4px rgba(0, 240, 255, 0.1) !important;
         }
         .sds-newsletter-submit {
             display: inline-flex;
@@ -619,7 +620,7 @@
 <form class="sds-newsletter-form" data-newsletter-form data-newsletter-origin="homepage-desktop" novalidate>
 <label class="sr-only" for="newsletter-email-desktop">Email address</label>
 <div class="sds-newsletter-row">
-<input class="sds-newsletter-input" id="newsletter-email-desktop" name="email" type="email" autocomplete="email" placeholder="Get launch notes and useful tech updates" required/>
+<input class="sds-newsletter-input" id="newsletter-email-desktop" name="email" type="email" autocomplete="email" placeholder="you@example.com" required/>
 <button class="sds-newsletter-submit" type="submit"><span class="material-symbols-outlined text-base">mark_email_read</span>Subscribe</button>
 </div>
 <div class="sds-newsletter-status" data-newsletter-status aria-live="polite"></div>
@@ -882,7 +883,7 @@ Contact Us
 <form class="sds-newsletter-form" data-newsletter-form data-newsletter-origin="homepage-mobile" novalidate>
 <label class="sr-only" for="newsletter-email-mobile">Email address</label>
 <div class="sds-newsletter-row">
-<input class="sds-newsletter-input" id="newsletter-email-mobile" name="email" type="email" autocomplete="email" placeholder="Get launch notes and tech updates" required/>
+<input class="sds-newsletter-input" id="newsletter-email-mobile" name="email" type="email" autocomplete="email" placeholder="you@example.com" required/>
 <button class="sds-newsletter-submit" type="submit"><span class="material-symbols-outlined text-base">mark_email_read</span>Subscribe</button>
 </div>
 <div class="sds-newsletter-status" data-newsletter-status aria-live="polite"></div>
@@ -1244,6 +1245,6 @@ Contact Us
 </script>
 <script src="assets/supabase-config.js"></script>
 <script type="module" src="assets/newsletter-signup.js?v=20260702-homepage-subscribers"></script>
-<script src="surette-logo.js?v=4"></script>
+<script src="surette-logo.js?v=20260703-black-transition-delay"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
 </body></html>

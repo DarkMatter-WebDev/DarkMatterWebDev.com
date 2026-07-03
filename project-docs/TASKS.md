@@ -6,6 +6,7 @@ Last updated: 2026-07-03
 
 - Keep memory docs compact and current after meaningful work.
 - Static validator known noise: missing `es/` mirrors, node_modules scan, Sean Ads Spanish links, mojibake warnings, and the old `blackhole-icon.html` missing-video warning. These are pre-existing and do not block work.
+- Audit finding: service-detail pages use a different mobile header markup path than most root marketing/app pages; header dimensions are stable in preview, but consolidating service-page mobile nav into the shared pattern remains a good future polish item.
 - Confirm Supabase Auth URL configuration in the hosted project: Site URL should be `https://surettesystems.com`, and redirect allowlist should include `https://surettesystems.com/account.html`, `https://surettesystems.com/account-settings.html`, `https://surettesystems.com/account-admin.html`, `https://surettesystems.com/account-users.html`, plus local preview URLs only for development.
 - Run the updated `supabase/portal-role-setup.sql` in the hosted Supabase project so homepage newsletter submissions, account-signup mirroring into `homepage_email_signups`, public form message submission/photo attachment support, account-dashboard message submission/list/delete RPCs, and Admin Center delete RPCs work live. If Supabase reports a changed return type for `list_portal_messages()`, rerun the current file, which includes `drop function if exists public.list_portal_messages();` before the recreated function.
 
@@ -44,6 +45,11 @@ Last updated: 2026-07-03
 
 ## Recently Completed
 
+- Changed page reveal/exit fade so `body` fades while `html` stays black, then delayed same-site link navigation briefly so the black fade can paint before the next page load. Updated `surette-logo.js` cache keys across pages.
+- Updated public/site contact email links and visible contact text to `info@SuretteSystems.com` across contact, portfolio, case study, process, and service pages. Form placeholder examples and Supabase/admin role setup emails were intentionally left unchanged.
+- Audited representative desktop/mobile page transitions and header consistency. Confirmed core marketing/app pages settle to `html` opacity 1 with stable desktop nav height and no leftover homepage loader markup after reveal.
+- Normalized `account.html` desktop nav and `assets/client-portal.js` signed-out state so the account page shows the same "Client Login" label/account icon as the rest of the site, with cache-busted script reference.
+- Matched the homepage newsletter email field more closely to the account-page inputs: transparent wrapper, thin cyan outline, darker subtle interior, clearer sample-email placeholder, and unchanged Supabase signup wiring.
 - Removed remaining Netlify Forms wiring from Contact, Apps consultation, and App Checkout. Public forms now submit into the Admin Center Message Center through Supabase `submit_site_message()`, with optional photo/screenshot attachment support on Contact and Checkout.
 - Replaced the account dashboard "Request a change or ask a question" Netlify Form flow with Supabase `client_messages` submission and added an owner-only Message Center tab in Admin Center to list/delete those portal messages.
 - Added a Subscribers table copy/export modal in Admin Center with line-list, comma-list, and CSV formatting plus quick-copy/manual-selection fallback.

@@ -462,8 +462,8 @@ function updateAccountNav(isSignedIn) {
     else localStorage.removeItem("dm_logged_in");
   } catch (e) {}
   const isSpanish = document.documentElement.lang.startsWith("es");
-  const label = isSignedIn ? (isSpanish ? "Cuenta" : "Account") : (isSpanish ? "Acceso" : "Login");
-  const iconName = isSignedIn ? "account_circle" : "login";
+  const label = isSignedIn ? (isSpanish ? "Cuenta" : "Account") : (isSpanish ? "Acceso" : "Client Login");
+  const iconName = "account_circle";
 
   els.navLoginLinks?.forEach((link) => {
     const icon = link.querySelector(".material-symbols-outlined");
