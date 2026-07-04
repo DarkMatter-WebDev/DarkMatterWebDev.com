@@ -51,7 +51,7 @@ Last updated: 2026-07-03
 - `assets/newsletter-signup.js` handles public homepage newsletter email submissions into `homepage_email_signups` using the browser Supabase client.
 - `assets/portal-auth.js` reads Supabase `app_metadata.role` for privileged portal access; email allowlist fallback in `assets/supabase-config.js`.
 - `assets/seans-ads-dashboard.js` gates Sean's Google Ads dashboard page using shared portal auth helpers.
-- `assets/account-settings.js` handles the account settings page session/profile logic.
+- `assets/account-settings.js` handles the account settings page session/profile logic. Profile data is intentionally minimal: name, phone, email, and portal role only; no profile-level business/company or website URL fields.
 - `assets/account-nav.js` handles account navigation.
 - `assets/supabase-config.js` stores public Supabase config (dedicated Dark Matter / Surette Data Systems project, not Naples Estate Jewelry) plus non-secret email allowlists.
 - `assets/surette-physics-wordmark-canvas.js` + `assets/surette-physics-wordmark.css` drive the interactive mosaic wordmark on the apps hero.
@@ -63,6 +63,7 @@ Last updated: 2026-07-03
 - Supabase browser auth (email/password and magic-link) â€” dedicated Dark Matter / Surette Data Systems project.
 - Portal privileged roles: `super_admin` (owner), `sean_ads_admin` (Sean). Primary source: `app_metadata.role`. Fallback: email allowlist in `assets/supabase-config.js`.
 - Owner-only admin UX is split from the regular dashboard: `account.html` exposes only an Admin Center link for super-admins, while `account-admin.html` and `account-users.html` hold the private admin surfaces.
+- Client profile schema intentionally excludes business/company name and website URL fields. The setup SQL drops old `company_name`/`company`/`website`/`site_url` profile/subscriber columns if they exist.
 - Newsletter subscriber source: `homepage_email_signups`. The updated portal role setup SQL creates this table and mirrors new Auth account signups into it. It does not backfill all existing Auth users on every rerun, so owner-deleted subscriber rows do not reappear from account-holder fallback data.
 - Supabase SQL:
   - `supabase/client-portal-schema.sql` â€” schema setup.

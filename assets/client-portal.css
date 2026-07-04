@@ -972,11 +972,11 @@
 }
 
 .client-admin-table--subscribers {
-  min-width: 1420px;
+  min-width: 1320px;
 }
 
 .client-admin-table--accounts {
-  min-width: 1400px;
+  min-width: 1060px;
 }
 
 .client-admin-table--subscribers .client-admin-col-source {
@@ -991,8 +991,8 @@
   width: 21rem;
 }
 
-.client-admin-table--subscribers .client-admin-col-company {
-  width: 9rem;
+.client-admin-table--subscribers .client-admin-col-phone {
+  width: 8.5rem;
 }
 
 .client-admin-table--subscribers .client-admin-col-origin,
@@ -1008,16 +1008,8 @@
   width: 20rem;
 }
 
-.client-admin-table--accounts .client-admin-col-company {
-  width: 10rem;
-}
-
 .client-admin-table--accounts .client-admin-col-phone {
   width: 8.5rem;
-}
-
-.client-admin-table--accounts .client-admin-col-website {
-  width: 12rem;
 }
 
 .client-admin-table--accounts .client-admin-col-role {

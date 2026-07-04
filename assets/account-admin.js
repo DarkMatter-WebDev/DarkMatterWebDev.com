@@ -318,8 +318,6 @@ function normalizeAccountHolderRow(row) {
     email: pickField(row, ["email"]),
     display_name: pickField(row, ["display_name", "full_name", "name"]),
     phone: pickField(row, ["phone"]),
-    company_name: pickField(row, ["company_name", "company"]),
-    website: pickField(row, ["website", "site_url"]),
     portal_role: pickField(row, ["portal_role", "role"]),
     created_at: pickField(row, ["created_at"]),
     last_sign_in_at: pickField(row, ["last_sign_in_at"]),
@@ -368,7 +366,7 @@ function normalizeNewsletterSignup(row) {
     source: isAccountSignup ? "Account signup" : "Newsletter sign-up",
     name: pickField(row, ["display_name", "full_name", "name"]),
     email: pickField(row, ["email", "email_address"]),
-    companyPhone: [pickField(row, ["company_name", "company"]), pickField(row, ["phone"])].filter(Boolean).join(" / "),
+    phone: pickField(row, ["phone"]),
     origin: pickField(row, ["page", "origin"], isAccountSignup ? "Client portal account" : "Homepage newsletter"),
     roleStatus: pickField(row, ["status"], "Newsletter subscriber"),
     created: pickField(row, ["created_at", "submitted_at"]),
@@ -407,7 +405,7 @@ function pendingNewsletterSignupRow() {
     source: "Newsletter sign-up",
     name: "Capture source pending",
     email: "",
-    companyPhone: "",
+    phone: "",
     origin: "Add homepage newsletter form/table",
     roleStatus: "Not connected yet",
     created: "",
@@ -438,7 +436,7 @@ function mergeSubscriberRows(rows) {
       ...preferred,
       source: preferred.source === secondary.source ? preferred.source : `${preferred.source} + ${secondary.source}`,
       name: preferred.name || secondary.name,
-      companyPhone: preferred.companyPhone || secondary.companyPhone,
+      phone: preferred.phone || secondary.phone,
       origin: preferred.origin || secondary.origin,
       roleStatus: "Newsletter subscriber",
       created: preferred.created || secondary.created,
@@ -600,7 +598,7 @@ function renderSubscribers(rows) {
         <td class="client-admin-table-cell--source"><span class="client-pill">${escapeHtml(row.source)}</span></td>
         <td class="client-admin-table-cell--name"><strong>${escapeHtml(row.name || "Unknown")}</strong></td>
         <td class="client-admin-table-cell--email">${escapeHtml(row.email || "")}</td>
-        <td>${escapeHtml(row.companyPhone || "")}</td>
+        <td>${escapeHtml(row.phone || "")}</td>
         <td>${escapeHtml(row.origin || "")}</td>
         <td>${escapeHtml(row.roleStatus || "")}</td>
         <td>${escapeHtml(formatDateTime(row.created))}</td>
@@ -667,7 +665,7 @@ function renderAccountHolders(rows) {
     els.accountHoldersCount.textContent = `${rows.length} record${rows.length === 1 ? "" : "s"}`;
   }
   if (!rows.length) {
-    els.accountHoldersTable.innerHTML = `<tr><td colspan="9"><div class="client-admin-empty">${escapeHtml(t.noAccountHolders)}</div></td></tr>`;
+    els.accountHoldersTable.innerHTML = `<tr><td colspan="7"><div class="client-admin-empty">${escapeHtml(t.noAccountHolders)}</div></td></tr>`;
     return;
   }
   els.accountHoldersTable.innerHTML = rows.map((sourceRow) => {
@@ -675,16 +673,11 @@ function renderAccountHolders(rows) {
     const name = row.display_name || "Account holder";
     const label = row.email || name;
     const isCurrentAdmin = currentAdminUserId && row.user_id === currentAdminUserId;
-    const website = row.website
-      ? `<a class="client-health-url" href="${escapeHtml(row.website)}" target="_blank" rel="noopener">${escapeHtml(row.website)}</a>`
-      : "";
     return `
       <tr>
         <td class="client-admin-table-cell--name"><strong>${escapeHtml(name)}</strong>${row.user_id ? `<div class="client-muted">${escapeHtml(row.user_id)}</div>` : ""}</td>
         <td class="client-admin-table-cell--email">${escapeHtml(row.email || "")}</td>
-        <td>${escapeHtml(row.company_name || "")}</td>
         <td>${escapeHtml(row.phone || "")}</td>
-        <td>${website}</td>
         <td><span class="client-pill">${escapeHtml(row.portal_role || "client")}</span></td>
         <td>${escapeHtml(formatDateTime(row.created_at))}</td>
         <td>${escapeHtml(formatDateTime(row.last_sign_in_at || row.confirmed_at))}</td>

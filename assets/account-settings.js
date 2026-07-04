@@ -32,8 +32,6 @@ const els = {
   profileStatus: document.querySelector("[data-profile-status]"),
   profileName: document.querySelector("[data-profile-name]"),
   profilePhone: document.querySelector("[data-profile-phone]"),
-  profileCompany: document.querySelector("[data-profile-company]"),
-  profileWebsite: document.querySelector("[data-profile-website]"),
   profileEmail: document.querySelector("[data-profile-email]"),
   passwordForm: document.querySelector("[data-password-form]"),
   passwordStatus: document.querySelector("[data-password-status]"),
@@ -88,8 +86,6 @@ async function loadProfile(supabase, user) {
     if (error || !data) return;
     if (els.profileName && !els.profileName.value) els.profileName.value = data.display_name || "";
     if (els.profilePhone && !els.profilePhone.value) els.profilePhone.value = data.phone || "";
-    if (els.profileCompany) els.profileCompany.value = data.company_name || "";
-    if (els.profileWebsite) els.profileWebsite.value = data.website || "";
   } catch {
     // Profile table may not exist yet.
   }
@@ -98,9 +94,6 @@ async function loadProfile(supabase, user) {
 async function saveProfile(supabase, user) {
   const displayName = els.profileName?.value.trim() || "";
   const phone = els.profilePhone?.value.trim() || "";
-  const companyName = els.profileCompany?.value.trim() || "";
-  const website = els.profileWebsite?.value.trim() || "";
-
   if (!displayName) {
     setPanelStatus(els.profileStatus, t.nameRequired);
     return;
@@ -123,9 +116,7 @@ async function saveProfile(supabase, user) {
       {
         user_id: user.id,
         display_name: displayName,
-        phone,
-        company_name: companyName || null,
-        website: website || null
+        phone
       },
       { onConflict: "user_id" }
     );

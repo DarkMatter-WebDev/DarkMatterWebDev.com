@@ -10,13 +10,16 @@ create table if not exists public.client_profiles (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users(id) on delete cascade,
   display_name text,
-  company_name text,
   phone text,
-  website text,
   portal_role text,
   created_at timestamptz not null default now(),
   unique (user_id)
 );
+
+alter table public.client_profiles drop column if exists company_name;
+alter table public.client_profiles drop column if exists company;
+alter table public.client_profiles drop column if exists website;
+alter table public.client_profiles drop column if exists site_url;
 
 create table if not exists public.client_services (
   id uuid primary key default gen_random_uuid(),

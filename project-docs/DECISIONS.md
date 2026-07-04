@@ -80,6 +80,12 @@ Decision: Admin Center account holders and newsletter subscribers are separate l
 
 Reason: an account holder may or may not be a subscriber, and deleting someone from Subscribers should remove them from that table without deleting or re-showing their portal account.
 
+## Minimal Client Profiles
+
+Decision: client profile data is limited to account identity/contact essentials such as name, phone, email, and portal role. Do not collect or store profile-level business/company name or website URL fields.
+
+Reason: those fields are not needed for the current portal experience and add clutter to account settings, Admin Center tables, and Supabase schema setup.
+
 ## Portal Message Center
 
 Decision: authenticated account-dashboard support/change requests should write to Supabase `client_messages` and be reviewed in the owner-only Admin Center Message Center instead of using Netlify Forms.

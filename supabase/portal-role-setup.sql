@@ -56,8 +56,6 @@ create table if not exists public.homepage_email_signups (
   display_name text,
   full_name text,
   name text,
-  company_name text,
-  company text,
   phone text,
   source text not null default 'homepage_newsletter',
   page text,
@@ -70,6 +68,11 @@ create table if not exists public.homepage_email_signups (
 
 create unique index if not exists homepage_email_signups_email_key
 on public.homepage_email_signups (lower(email));
+
+alter table public.homepage_email_signups drop column if exists company_name;
+alter table public.homepage_email_signups drop column if exists company;
+alter table public.homepage_email_signups drop column if exists website;
+alter table public.homepage_email_signups drop column if exists site_url;
 
 alter table public.homepage_email_signups enable row level security;
 
@@ -94,9 +97,11 @@ with check (
 grant insert on public.homepage_email_signups to anon, authenticated;
 grant select on public.homepage_email_signups to authenticated;
 
-alter table public.client_profiles add column if not exists company_name text;
-alter table public.client_profiles add column if not exists website text;
 alter table public.client_profiles add column if not exists portal_role text;
+alter table public.client_profiles drop column if exists company_name;
+alter table public.client_profiles drop column if exists company;
+alter table public.client_profiles drop column if exists website;
+alter table public.client_profiles drop column if exists site_url;
 
 -- Account request/message center.
 -- Client account requests now write to client_messages instead of Netlify Forms.
@@ -411,14 +416,14 @@ for each row execute function public.handle_new_portal_user();
 -- This safely exposes auth account metadata to authenticated super admins only.
 -- The browser should call `supabase.rpc('list_portal_account_holders')`;
 -- never expose a service-role key in frontend code.
+drop function if exists public.list_portal_account_holders();
+
 create or replace function public.list_portal_account_holders()
 returns table (
   user_id uuid,
   email text,
   display_name text,
   phone text,
-  company_name text,
-  website text,
   portal_role text,
   created_at timestamptz,
   confirmed_at timestamptz,
@@ -434,8 +439,6 @@ as $$
     u.email::text as email,
     coalesce(cp.display_name, u.raw_user_meta_data ->> 'display_name', u.raw_user_meta_data ->> 'full_name', '') as display_name,
     coalesce(cp.phone, u.raw_user_meta_data ->> 'phone', '') as phone,
-    coalesce(cp.company_name, '') as company_name,
-    coalesce(cp.website, '') as website,
     coalesce(
       u.raw_app_meta_data ->> 'portal_role',
       u.raw_app_meta_data ->> 'role',

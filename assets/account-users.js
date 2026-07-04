@@ -86,7 +86,7 @@ function normalizeNewsletterSignup(row) {
     source: isAccountSignup ? "Account signup" : "Newsletter sign-up",
     name: pickField(row, ["display_name", "full_name", "name"]),
     email: pickField(row, ["email", "email_address"]),
-    companyPhone: [pickField(row, ["company_name", "company"]), pickField(row, ["phone"])].filter(Boolean).join(" / "),
+    phone: pickField(row, ["phone"]),
     origin: pickField(row, ["page", "origin"], isAccountSignup ? "Client portal account" : "Homepage newsletter"),
     roleStatus: pickField(row, ["status"], "Newsletter subscriber"),
     created: pickField(row, ["created_at", "submitted_at"]),
@@ -100,7 +100,7 @@ function pendingNewsletterSignupRow() {
     source: "Newsletter sign-up",
     name: "Capture source pending",
     email: "",
-    companyPhone: "",
+    phone: "",
     origin: "Add homepage newsletter form/table",
     roleStatus: "Not connected yet",
     created: "",
@@ -131,7 +131,7 @@ function mergeSubscriberRows(rows) {
       ...preferred,
       source: preferred.source === secondary.source ? preferred.source : `${preferred.source} + ${secondary.source}`,
       name: preferred.name || secondary.name,
-      companyPhone: preferred.companyPhone || secondary.companyPhone,
+      phone: preferred.phone || secondary.phone,
       origin: preferred.origin || secondary.origin,
       roleStatus: "Newsletter subscriber",
       created: preferred.created || secondary.created,
@@ -161,7 +161,7 @@ function renderRows(rows) {
       <td><span class="client-pill">${escapeHtml(row.source)}</span></td>
       <td><strong>${escapeHtml(row.name || "Unknown")}</strong></td>
       <td>${escapeHtml(row.email || "")}</td>
-      <td>${escapeHtml(row.companyPhone || "")}</td>
+      <td>${escapeHtml(row.phone || "")}</td>
       <td>${escapeHtml(row.origin || "")}</td>
       <td>${escapeHtml(row.roleStatus || "")}</td>
       <td>${escapeHtml(formatDateTime(row.created))}</td>
