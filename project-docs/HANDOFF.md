@@ -24,6 +24,7 @@ Then summarize the project in a few bullets and continue with the latest request
 - Homepage Nova WebGL background is scroll-smoothed for mobile in `index.html`: the fixed `#nova-bg`/canvas layer uses stable viewport sizing and resize logic ignores height-only mobile toolbar changes.
 - Mobile header account control is intentionally icon-only. `assets/account-nav.js` keeps `.dm-mob-acct` visually as the icon while updating `aria-label`/`title` for signed-in state. The mobile icon renders grey when signed out and cyan/blue when signed in.
 - Service pages have separate desktop and mobile markup paths; mobile now includes the fixed Surette logo/header, account icon injection target, promoted top nav row with working Services popout, and compact `.service-mobile-footer` inside each page's `md:hidden` wrapper.
+- Service-page fixed top headers are anchored through shared `assets/nav.css` so the padded mobile service wrapper cannot shift the header/menu row to the right.
 - App/software brand is **Surette Data Systems**. Five app profiles: Auction House, SDMS, Benji Payroll, Antique Mall (Third Street Auctions), MetalsCalc.
 - Websites/portfolio gallery has six entries: Naples Estate Jewelry, JP Surette, Elite Yacht Detailing, Sean's Ads, AuctionBuddha.com, MetalsCalc.com.
 - Portal uses a dedicated Dark Matter / Surette Data Systems Supabase project (not Naples Estate Jewelry).
@@ -74,6 +75,7 @@ Services pages in `services/`: `website-design.html`, `managed-hosting.html`, `w
 
 ## Most Recent Work
 
+- Fixed the service-page header/menu right-shift by anchoring fixed top headers to the viewport in shared `assets/nav.css` and cache-busting `nav.css`. Verified all five service pages at mobile width and checked Website Design on desktop.
 - Removed profile-level business/company and website URL fields from account settings, Admin Center subscriber/account-holder tables, and Supabase setup/schema cleanup. Verified preview headers/forms no longer expose those fields.
 - Separated Admin Center Subscribers from Account holders: Subscribers now reads only `homepage_email_signups`, Account holders remains auth/profile driven, new account signups still mirror into subscriber rows, and the SQL setup no longer re-backfills all auth users into Subscribers on rerun.
 - Widened Admin Center Subscribers and Account holders table name/email columns, especially subscriber email, and narrowed/wrapped the Subscribers source column. Verified the updated CSS/script cache keys and computed column widths in local preview.

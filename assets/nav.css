@@ -133,6 +133,15 @@ body > main {
   min-height: 100vh;
 }
 
+/* Fixed headers must anchor to the viewport, even when they appear inside a
+   padded wrapper such as the hand-authored mobile service-page shell. */
+nav.fixed.top-0.w-full,
+header.fixed.top-0.w-full {
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+}
+
 /* Compact footer used by hand-authored mobile service-page markup. */
 .service-mobile-footer {
   margin-top: 3.5rem;

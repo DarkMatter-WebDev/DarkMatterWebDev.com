@@ -45,6 +45,7 @@ Last updated: 2026-07-03
 
 ## Recently Completed
 
+- Fixed service-page header/menu alignment by anchoring fixed top headers to the viewport in shared `assets/nav.css`; verified all service pages on mobile and the Website Design service page on desktop.
 - Removed profile-level business/company and website URL fields from account settings, Admin Center subscriber/account-holder tables, and Supabase setup/schema cleanup.
 - Separated Admin Center Subscribers from Account holders: Subscribers now reads only `homepage_email_signups`, account holders stay in their own auth/profile table, new account signups still mirror into subscriber rows, and subscriber deletion no longer reappears from account-holder fallback data.
 - Widened Admin Center Subscribers and Account holders table name/email columns, especially subscriber email, and narrowed/wrapped the Subscribers source column.

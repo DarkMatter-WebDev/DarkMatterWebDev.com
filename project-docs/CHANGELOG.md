@@ -4,6 +4,7 @@ This file is intentionally compact. Keep only high-signal recent changes and maj
 
 ## 2026-07-03
 
+- Fixed service-page header/menu alignment by anchoring fixed top headers to the viewport in shared `assets/nav.css`, then cache-busted `nav.css` references. Verified all service pages no longer show the mobile header shifted right.
 - Removed profile-level business/company and website URL fields from account settings and Admin Center tables. Supabase setup/schema files now omit those columns and drop old `company_name`/`company`/`website`/`site_url` profile/subscriber columns if present.
 - Separated Admin Center Subscribers from Account holders. Subscriber tables now read only `homepage_email_signups`, account holders stay in the account-holder tab, new account signups still mirror into subscriber rows, and rerunning `portal-role-setup.sql` no longer backfills all auth users into Subscribers after an owner deletion.
 - Widened Admin Center Subscribers and Account holders table name/email columns with explicit column groups, and narrowed the Subscribers source column so "Account signup" can wrap compactly.
