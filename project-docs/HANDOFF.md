@@ -1,6 +1,6 @@
 # Handoff
 
-Last updated: 2026-07-03
+Last updated: 2026-07-04
 
 ## Startup Prompt
 
@@ -30,7 +30,7 @@ Then summarize the project in a few bullets and continue with the latest request
 - Portal uses a dedicated Dark Matter / Surette Data Systems Supabase project (not Naples Estate Jewelry).
 - Portal auth email redirects use `assets/supabase-config.js` `siteUrl` (`https://surettesystems.com`) as the canonical base, so local reset requests do not create localhost links.
 - Homepage newsletter signup forms are wired to Supabase `homepage_email_signups`; live use requires running the updated `supabase/portal-role-setup.sql` in the hosted project.
-- Public website forms and account-dashboard support/change requests are no longer Netlify Forms. Public forms call Supabase `submit_site_message()` through `assets/site-message-forms.js`; account requests call `submit_portal_message()`. Admin Center has a Messages tab that lists/deletes them via `list_portal_messages()` / `delete_portal_message()` and can render signed links for optional photo attachments. Live use requires running the updated `supabase/portal-role-setup.sql`; the current SQL includes `drop function if exists public.list_portal_messages();` because the return shape changed to include source/page/attachment fields.
+- Public website forms and account-dashboard support/change requests are dual-routed. Public forms call Supabase `submit_site_message()` through `assets/site-message-forms.js`; account requests call `submit_portal_message()`. After the Supabase save, the same forms post to Netlify Forms so Netlify can send owner notification emails. Admin Center has a Messages tab that lists/deletes them via `list_portal_messages()` / `delete_portal_message()` and can render signed links for optional photo attachments. Live use requires running the updated `supabase/portal-role-setup.sql`; the current SQL includes `drop function if exists public.list_portal_messages();` because the return shape changed to include source/page/attachment fields.
 - Admin Center table deletes are wired in `account-admin.html` / `assets/account-admin.js` with a confirmation modal. Live delete actions require `delete_portal_message()`, `delete_newsletter_subscriber()`, and `delete_portal_account_holder()` from the updated `supabase/portal-role-setup.sql`.
 - Admin Center Subscribers and Account holders tables use explicit column groups; name/email columns are wider, and the Subscribers source pill can wrap in a narrow column.
 - Admin Center Subscribers and Account holders are independent lists. New portal account signups mirror into `homepage_email_signups`, but Subscribers reads only subscriber rows; deleting a subscriber row does not delete or re-show the account holder.
@@ -75,6 +75,7 @@ Services pages in `services/`: `website-design.html`, `managed-hosting.html`, `w
 
 ## Most Recent Work
 
+- Restored Netlify Forms capture for Contact, Apps consultation, App Checkout, and account-dashboard request forms while keeping Supabase/Admin Center message saves. Removed the Resend notification function path.
 - Fixed the service-page header/menu right-shift by anchoring fixed top headers to the viewport in shared `assets/nav.css` and cache-busting `nav.css`. Verified all five service pages at mobile width and checked Website Design on desktop.
 - Removed profile-level business/company and website URL fields from account settings, Admin Center subscriber/account-holder tables, and Supabase setup/schema cleanup. Verified preview headers/forms no longer expose those fields.
 - Separated Admin Center Subscribers from Account holders: Subscribers now reads only `homepage_email_signups`, Account holders remains auth/profile driven, new account signups still mirror into subscriber rows, and the SQL setup no longer re-backfills all auth users into Subscribers on rerun.

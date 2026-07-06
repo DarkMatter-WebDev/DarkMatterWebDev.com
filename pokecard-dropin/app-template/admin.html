@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Admin — Business Name</title>
+<meta name="robots" content="noindex" />
+<meta name="theme-color" content="#06060f" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='8'%20fill='%236d5dfc'/%3E%3Crect%20x='9'%20y='9'%20width='14'%20height='14'%20rx='4'%20fill='%2306060f'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  body{ overflow-x:hidden }
+  .admin-shell{ display:grid; grid-template-columns:230px 1fr; min-height:100svh }
+  .admin-side{ border-right:1px solid var(--line); padding:1.6rem 1.2rem; display:flex; flex-direction:column; gap:.3rem }
+  .admin-side .brand{ margin-bottom:1.6rem }
+  .admin-side button{ text-align:left; background:none; border:0; color:var(--muted); font-family:var(--font-body); font-size:.96rem; font-weight:500; padding:.65rem .8rem; border-radius:10px; cursor:pointer; transition:.2s }
+  .admin-side button:hover{ color:var(--ink); background:rgba(255,255,255,.04) }
+  .admin-side button.on{ color:var(--ink); background:color-mix(in srgb,var(--accent) 16%,transparent); }
+  .admin-side .who{ margin-top:auto; padding-top:1rem; border-top:1px solid var(--line); font-size:.8rem; color:var(--faint) }
+  .admin-side .who button{ padding:.5rem .8rem; margin-top:.4rem; color:var(--muted) }
+  .admin-main{ padding:2.2rem clamp(1.2rem,3vw,2.6rem); max-width:980px }
+  .admin-main h1{ font-size:1.8rem; margin-bottom:1.6rem }
+  .panel{ display:none }
+  .panel.on{ display:block }
+  .card{ border:1px solid var(--line); border-radius:var(--radius); background:var(--glass); backdrop-filter:blur(10px); padding:1.6rem 1.7rem; margin-bottom:1.4rem }
+  .card h2{ font-size:1.1rem; margin-bottom:1.2rem }
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:1rem }
+  @media (max-width:760px){ .grid2{ grid-template-columns:1fr } .admin-shell{ grid-template-columns:1fr } .admin-side{ position:sticky; top:0; z-index:20; flex-direction:row; overflow-x:auto; background:var(--bg-0); border-right:0; border-bottom:1px solid var(--line) } .admin-side .who{ display:none } }
+  .field{ margin-bottom:1rem }
+  .field label{ display:block; font-family:var(--font-mono); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); margin-bottom:.45rem }
+  .field input, .field textarea{ width:100%; background:rgba(0,0,0,.35); border:1px solid var(--line); color:var(--ink); border-radius:10px; padding:.65rem .85rem; font-size:.94rem; font-family:var(--font-body) }
+  .field input[type=color]{ padding:.3rem; height:2.6rem }
+  .field textarea{ font-family:var(--font-mono); font-size:.82rem; line-height:1.6 }
+  .field input:focus, .field textarea:focus{ outline:none; border-color:var(--accent) }
+  .colorrow{ display:flex; gap:1rem; align-items:center }
+  .colorrow .field{ flex:1 }
+  table{ width:100%; border-collapse:collapse; font-size:.9rem }
+  th{ text-align:left; color:var(--faint); font-family:var(--font-mono); font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; padding:.6rem .7rem; border-bottom:1px solid var(--line) }
+  td{ padding:.7rem; border-bottom:1px solid var(--line); vertical-align:top }
+  td .msg{ color:var(--muted); max-width:280px; white-space:pre-wrap }
+  select{ background:rgba(0,0,0,.35); border:1px solid var(--line); color:var(--ink); border-radius:8px; padding:.4rem .6rem; font-family:var(--font-body); font-size:.85rem }
+  .pill{ font-family:var(--font-mono); font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; padding:.2rem .55rem; border-radius:999px; border:1px solid var(--line) }
+  .pill.new{ color:var(--cyan); border-color:rgba(58,214,255,.4) }
+  .pill.contacted{ color:#e0c674; border-color:rgba(224,198,116,.4) }
+  .pill.won{ color:var(--t-ok); border-color:rgba(125,255,196,.4) }
+  .pill.lost{ color:var(--faint) }
+  .toolbar{ display:flex; justify-content:space-between; align-items:center; margin-bottom:1.2rem; flex-wrap:wrap; gap:.8rem }
+  .savebar{ position:sticky; bottom:0; padding:1rem 0; margin-top:1rem }
+  .formmsg{ font-size:.85rem; padding:.7rem .9rem; border-radius:10px; margin-bottom:1rem; display:none }
+  .formmsg.error{ display:block; color:#ffb4c8; background:rgba(255,72,208,.09); border:1px solid rgba(255,72,208,.3) }
+  .formmsg.success{ display:block; color:var(--t-ok); background:rgba(125,255,196,.08); border:1px solid rgba(125,255,196,.35) }
+  .empty{ color:var(--muted); font-size:.92rem; padding:1rem 0 }
+  .del{ background:none; border:1px solid var(--line); color:var(--faint); border-radius:8px; padding:.3rem .6rem; font-size:.78rem; cursor:pointer }
+  .del:hover{ color:#ff8fae; border-color:rgba(255,72,208,.4) }
+  details.adv{ border:1px solid var(--line); border-radius:14px; margin-bottom:1rem; overflow:hidden }
+  details.adv summary{ cursor:pointer; padding:.9rem 1.1rem; font-weight:600; list-style:none }
+  details.adv summary::-webkit-details-marker{ display:none }
+  details.adv .field{ padding:0 1.1rem 1.1rem }
+</style>
+</head>
+<body>
+<div class="sds-back" role="navigation" aria-label="Return to Surette Systems">
+  <a href="../../casestudies.html">&#8592; Back to Surette Systems</a>
+</div>
+<div id="gate" style="min-height:100svh;display:flex;align-items:center;justify-content:center;color:var(--muted)">Checking session…</div>
+
+<div class="admin-shell" id="shell" style="display:none">
+  <aside class="admin-side">
+    <a class="brand" href="index.html" id="navBrand"><span class="mark" aria-hidden="true"></span><span id="navBrandText"></span></a>
+    <button data-tab="leads" class="on">Leads</button>
+    <button data-tab="content">Site content</button>
+    <button data-tab="settings">Settings</button>
+    <div class="who">
+      <div id="whoEmail"></div>
+      <button id="logoutBtn">Log out</button>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+    <!-- LEADS -->
+    <section class="panel on" id="panel-leads">
+      <div class="toolbar"><h1 style="margin:0">Quote requests</h1><button class="btn btn-ghost btn-sm" id="refreshLeads"><span>Refresh</span></button></div>
+      <div class="card">
+        <table>
+          <thead><tr><th>When</th><th>Name</th><th>Contact</th><th>Service</th><th>Message</th><th>Status</th><th></th></tr></thead>
+          <tbody id="leadsBody"></tbody>
+        </table>
+        <div class="empty" id="leadsEmpty" style="display:none">No quote requests yet — they'll show up here as soon as someone submits the form.</div>
+      </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="panel" id="panel-content">
+      <h1>Site content</h1>
+      <div class="formmsg" id="contentMsg"></div>
+
+      <div class="card">
+        <h2>Business &amp; brand</h2>
+        <div class="grid2">
+          <div class="field"><label>Business name</label><input id="cBusinessName" /></div>
+          <div class="field"><label>Short name (nav mark)</label><input id="cShortName" /></div>
+          <div class="field"><label>Tagline</label><input id="cTagline" /></div>
+          <div class="field"><label>Service area</label><input id="cServiceArea" /></div>
+          <div class="field"><label>Phone</label><input id="cPhone" /></div>
+          <div class="field"><label>Email</label><input id="cEmail" /></div>
+          <div class="field" style="grid-column:1/-1"><label>Address</label><input id="cAddress" /></div>
+        </div>
+        <div class="colorrow">
+          <div class="field"><label>Indigo accent</label><input type="color" id="cIndigo" /></div>
+          <div class="field"><label>Cyan accent</label><input type="color" id="cCyan" /></div>
+          <div class="field"><label>Magenta accent</label><input type="color" id="cMagenta" /></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Hero section</h2>
+        <div class="field"><label>Eyebrow</label><input id="hEyebrow" /></div>
+        <div class="grid2">
+          <div class="field"><label>Headline (before accent)</label><input id="hHeadline" /></div>
+          <div class="field"><label>Headline accent (gradient)</label><input id="hHeadlineAccent" /></div>
+        </div>
+        <div class="field"><label>Subheadline</label><textarea id="hSub" rows="2"></textarea></div>
+        <div class="grid2">
+          <div class="field"><label>Primary CTA label</label><input id="hPrimaryCta" /></div>
+          <div class="field"><label>Primary CTA link</label><input id="hPrimaryHref" /></div>
+          <div class="field"><label>Secondary CTA label</label><input id="hSecondaryCta" /></div>
+          <div class="field"><label>Secondary CTA link</label><input id="hSecondaryHref" /></div>
+        </div>
+        <div class="field"><label>Tags (comma separated)</label><input id="hTags" /></div>
+      </div>
+
+      <div class="card">
+        <h2>Advanced sections (JSON)</h2>
+        <p style="color:var(--muted);font-size:.88rem;margin-bottom:1rem">Everything else — services, pricing, testimonials, FAQ, showcase and more — edits here as raw JSON. Keep the same shape and it'll flow straight into the page.</p>
+        <div id="advancedSections"></div>
+      </div>
+
+      <div class="savebar"><button class="btn btn-primary" id="saveContent"><span>Save changes</span></button></div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section class="panel" id="panel-settings">
+      <h1>Settings</h1>
+      <div class="card" style="max-width:420px">
+        <h2>Change password</h2>
+        <div class="formmsg" id="pwMsg"></div>
+        <div class="field"><label>Current password</label><input type="password" id="curPw" /></div>
+        <div class="field"><label>New password (min 8 characters)</label><input type="password" id="newPw" /></div>
+        <button class="btn btn-primary" id="pwSave"><span>Update password</span></button>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="siteConfig.js"></script>
+<script>
+(function(){
+  function esc(s){ return String(s).replace(/[&<>"']/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+  var CONFIG = null;
+  var ADV_KEYS = ["seo","nav","marquee","demo","pipeline","dissect","services","showcase","valueProp","testimonials","faq","pricing","cta","footer"];
+
+  fetch("/api/auth/me").then(function(r){
+    if(!r.ok){ window.location.href="login.html"; return Promise.reject(); }
+    return r.json();
+  }).then(function(data){
+    document.getElementById("gate").style.display="none";
+    document.getElementById("shell").style.display="grid";
+    document.getElementById("whoEmail").textContent = data.user.email;
+    boot();
+  }).catch(function(){});
+
+  function boot(){
+    var brandDefault = window.SITE_CONFIG;
+    if(brandDefault){
+      var letter=(brandDefault.business.shortName||brandDefault.business.name).charAt(0), rest=(brandDefault.business.shortName||brandDefault.business.name).slice(1);
+      document.getElementById("navBrandText").innerHTML = '<span class="one">'+esc(letter)+'</span>'+esc(rest);
+    }
+
+    /* tabs */
+    document.querySelectorAll(".admin-side button[data-tab]").forEach(function(b){
+      b.addEventListener("click", function(){
+        document.querySelectorAll(".admin-side button[data-tab]").forEach(function(x){ x.classList.remove("on"); });
+        document.querySelectorAll(".panel").forEach(function(p){ p.classList.remove("on"); });
+        b.classList.add("on");
+        document.getElementById("panel-"+b.getAttribute("data-tab")).classList.add("on");
+        if(b.getAttribute("data-tab")==="leads") loadLeads();
+      });
+    });
+
+    document.getElementById("logoutBtn").addEventListener("click", function(){
+      fetch("/api/auth/logout", { method:"POST" }).then(function(){ window.location.href="login.html"; });
+    });
+
+    loadLeads();
+    loadConfig();
+
+    /* password change */
+    document.getElementById("pwSave").addEventListener("click", function(){
+      var msg=document.getElementById("pwMsg");
+      msg.className="formmsg";
+      var cur=document.getElementById("curPw").value, next=document.getElementById("newPw").value;
+      fetch("/api/account/password", { method:"PUT", headers:{"Content-Type":"application/json"}, body: JSON.stringify({currentPassword:cur,newPassword:next}) })
+        .then(function(r){ return r.json().then(function(d){ return {ok:r.ok,data:d}; }); })
+        .then(function(res){
+          if(!res.ok){ msg.className="formmsg error"; msg.textContent=res.data.error||"Could not update password."; return; }
+          msg.className="formmsg success"; msg.textContent="Password updated."; document.getElementById("curPw").value=""; document.getElementById("newPw").value="";
+        }).catch(function(){ msg.className="formmsg error"; msg.textContent="Network error."; });
+    });
+  }
+
+  /* ---------------- LEADS ---------------- */
+  function loadLeads(){
+    fetch("/api/leads").then(function(r){ return r.json(); }).then(function(data){
+      var leads=data.leads||[];
+      var body=document.getElementById("leadsBody");
+      document.getElementById("leadsEmpty").style.display = leads.length ? "none" : "block";
+      body.innerHTML = leads.map(function(l){
+        var contact=[l.phone,l.email].filter(Boolean).join(" · ");
+        var when=new Date(l.createdAt).toLocaleString();
+        return '<tr data-id="'+l.id+'">'
+          + '<td>'+esc(when)+'</td>'
+          + '<td>'+esc(l.name)+'</td>'
+          + '<td>'+esc(contact)+'</td>'
+          + '<td>'+esc(l.service||"—")+'</td>'
+          + '<td class="msg">'+esc(l.message||"")+'</td>'
+          + '<td><select class="statusSel">'+["new","contacted","won","lost"].map(function(s){ return '<option value="'+s+'"'+(s===l.status?" selected":"")+'>'+s+'</option>'; }).join("")+'</select></td>'
+          + '<td><button class="del">Delete</button></td>'
+          + '</tr>';
+      }).join("");
+      body.querySelectorAll("tr").forEach(function(tr){
+        var id=tr.getAttribute("data-id");
+        tr.querySelector(".statusSel").addEventListener("change", function(e){
+          fetch("/api/leads/"+id, { method:"PATCH", headers:{"Content-Type":"application/json"}, body: JSON.stringify({status:e.target.value}) });
+        });
+        tr.querySelector(".del").addEventListener("click", function(){
+          if(!confirm("Delete this quote request?")) return;
+          fetch("/api/leads/"+id, { method:"DELETE" }).then(loadLeads);
+        });
+      });
+    });
+    document.getElementById("refreshLeads").onclick = loadLeads;
+  }
+
+  /* ---------------- CONTENT ---------------- */
+  function loadConfig(){
+    fetch("/api/config").then(function(r){ return r.json(); }).then(function(cfg){
+      CONFIG = cfg;
+      var letter=(cfg.business.shortName||cfg.business.name).charAt(0), rest=(cfg.business.shortName||cfg.business.name).slice(1);
+      document.getElementById("navBrandText").innerHTML = '<span class="one">'+esc(letter)+'</span>'+esc(rest);
+      document.title = "Admin — " + cfg.business.name;
+      document.getElementById("cBusinessName").value = cfg.business.name || "";
+      document.getElementById("cShortName").value = cfg.business.shortName || "";
+      document.getElementById("cTagline").value = cfg.business.tagline || "";
+      document.getElementById("cServiceArea").value = cfg.business.serviceArea || "";
+      document.getElementById("cPhone").value = cfg.business.phone || "";
+      document.getElementById("cEmail").value = cfg.business.email || "";
+      document.getElementById("cAddress").value = cfg.business.address || "";
+      document.getElementById("cIndigo").value = cfg.business.accent.indigo || "#6d5dfc";
+      document.getElementById("cCyan").value = cfg.business.accent.cyan || "#3ad6ff";
+      document.getElementById("cMagenta").value = cfg.business.accent.magenta || "#ff48d0";
+
+      document.getElementById("hEyebrow").value = cfg.hero.eyebrow || "";
+      document.getElementById("hHeadline").value = cfg.hero.headline || "";
+      document.getElementById("hHeadlineAccent").value = cfg.hero.headlineAccent || "";
+      document.getElementById("hSub").value = cfg.hero.subheadline || "";
+      document.getElementById("hPrimaryCta").value = cfg.hero.primaryCta || "";
+      document.getElementById("hPrimaryHref").value = cfg.hero.primaryCtaHref || "";
+      document.getElementById("hSecondaryCta").value = cfg.hero.secondaryCta || "";
+      document.getElementById("hSecondaryHref").value = cfg.hero.secondaryCtaHref || "";
+      document.getElementById("hTags").value = (cfg.hero.tags||[]).join(", ");
+
+      var advWrap = document.getElementById("advancedSections");
+      advWrap.innerHTML = ADV_KEYS.map(function(key){
+        return '<details class="adv"><summary>'+key+'</summary><div class="field"><textarea data-key="'+key+'" rows="10">'+esc(JSON.stringify(cfg[key], null, 2))+'</textarea></div></details>';
+      }).join("");
+    });
+
+    document.getElementById("saveContent").addEventListener("click", function(){
+      var msg=document.getElementById("contentMsg");
+      msg.className="formmsg";
+      if(!CONFIG){ return; }
+
+      CONFIG.business.name = document.getElementById("cBusinessName").value.trim();
+      CONFIG.business.shortName = document.getElementById("cShortName").value.trim();
+      CONFIG.business.tagline = document.getElementById("cTagline").value.trim();
+      CONFIG.business.serviceArea = document.getElementById("cServiceArea").value.trim();
+      CONFIG.business.phone = document.getElementById("cPhone").value.trim();
+      CONFIG.business.email = document.getElementById("cEmail").value.trim();
+      CONFIG.business.address = document.getElementById("cAddress").value.trim();
+      CONFIG.business.accent = { indigo: document.getElementById("cIndigo").value, cyan: document.getElementById("cCyan").value, magenta: document.getElementById("cMagenta").value };
+
+      CONFIG.hero.eyebrow = document.getElementById("hEyebrow").value.trim();
+      CONFIG.hero.headline = document.getElementById("hHeadline").value;
+      CONFIG.hero.headlineAccent = document.getElementById("hHeadlineAccent").value.trim();
+      CONFIG.hero.subheadline = document.getElementById("hSub").value.trim();
+      CONFIG.hero.primaryCta = document.getElementById("hPrimaryCta").value.trim();
+      CONFIG.hero.primaryCtaHref = document.getElementById("hPrimaryHref").value.trim();
+      CONFIG.hero.secondaryCta = document.getElementById("hSecondaryCta").value.trim();
+      CONFIG.hero.secondaryCtaHref = document.getElementById("hSecondaryHref").value.trim();
+      CONFIG.hero.tags = document.getElementById("hTags").value.split(",").map(function(s){ return s.trim(); }).filter(Boolean);
+
+      var badKeys=[];
+      document.querySelectorAll('#advancedSections textarea[data-key]').forEach(function(ta){
+        try{ CONFIG[ta.getAttribute("data-key")] = JSON.parse(ta.value); }
+        catch(e){ badKeys.push(ta.getAttribute("data-key")); }
+      });
+      if(badKeys.length){ msg.className="formmsg error"; msg.textContent="Invalid JSON in: "+badKeys.join(", ")+" — fix it before saving."; return; }
+
+      fetch("/api/config", { method:"PUT", headers:{"Content-Type":"application/json"}, body: JSON.stringify(CONFIG) })
+        .then(function(r){ return r.json().then(function(d){ return {ok:r.ok,data:d}; }); })
+        .then(function(res){
+          if(!res.ok){ msg.className="formmsg error"; msg.textContent=res.data.error||"Could not save."; return; }
+          msg.className="formmsg success"; msg.textContent="Saved. Refresh the storefront to see it live.";
+        }).catch(function(){ msg.className="formmsg error"; msg.textContent="Network error."; });
+    });
+  }
+})();
+</script>
+</body>
+</html>

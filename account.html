@@ -256,7 +256,9 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <section class="client-request-panel" id="client-contact">
 <span class="client-anchor-alias" id="client-request" aria-hidden="true"></span>
 <div class="client-section-heading"><h3 class="text-xl font-headline text-white">Request a change or ask a question</h3><span class="client-muted">Send website updates, content changes, quick questions, or support notes directly from your account.</span></div>
-<form class="client-portal-form" data-client-request-form>
+<form class="client-portal-form" name="client-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-client-request-form>
+<input type="hidden" name="form-name" value="client-request"/>
+<p class="hidden"><label>Do not fill this out <input name="bot-field"/></label></p>
 <input type="hidden" name="client_email" data-request-email/>
 <label class="client-portal-label">Request type<span class="client-select-wrap"><select class="client-portal-input" name="request_type" required><option value="Website update">Website update</option><option value="Question">Question</option><option value="Billing question">Billing question</option><option value="Technical support">Technical support</option></select><span class="material-symbols-outlined client-select-arrow">expand_more</span></span></label>
 <label class="client-portal-label">Subject<input class="client-portal-input" type="text" name="subject" required placeholder="Update homepage hours, add photos, billing question..."/></label>
@@ -317,7 +319,7 @@ window.DM_CLIENT_PORTAL_COPY = {
   requestSent: "Request sent. We will review it and follow up soon."
 };
 </script>
-<script type="module" src="assets/client-portal.js?v=20260703-nav-label"></script>
+<script type="module" src="assets/client-portal.js?v=20260704-netlify-supabase"></script>
 <script src="surette-logo.js?v=20260703-nav-loader"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
 <script type="module" src="fractal.js"></script>

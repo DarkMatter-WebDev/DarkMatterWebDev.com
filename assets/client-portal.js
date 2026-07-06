@@ -212,6 +212,26 @@ function setPanelStatus(element, message, visible = true) {
   element.classList.toggle("is-visible", visible);
 }
 
+async function submitNetlifyForm(form, fallbackName) {
+  const formName = form.getAttribute("name") || fallbackName || "client-request";
+  const data = new FormData(form);
+  data.set("form-name", formName);
+
+  const response = await fetch("/", {
+    method: "POST",
+    body: data
+  });
+  if (!response.ok) throw new Error(`Netlify form submission failed with ${response.status}`);
+}
+
+async function submitNetlifyFormSafely(form, fallbackName) {
+  try {
+    await submitNetlifyForm(form, fallbackName);
+  } catch (error) {
+    console.warn("Portal request was saved, but Netlify form notification submission failed.", error);
+  }
+}
+
 function openSignupModal() {
   if (!els.signupModal) return;
   els.signupModal.hidden = false;
@@ -651,6 +671,7 @@ if (!isConfigured) {
         message_details: details
       });
       if (error) throw error;
+      await submitNetlifyFormSafely(els.requestForm, "client-request");
       els.requestForm.reset();
       if (els.requestEmail && els.accountEmail?.textContent) els.requestEmail.value = els.accountEmail.textContent;
       els.requestStatus.textContent = t.requestSent;

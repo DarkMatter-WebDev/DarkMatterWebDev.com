@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>My account — Business Name</title>
+<meta name="robots" content="noindex" />
+<meta name="theme-color" content="#06060f" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='8'%20fill='%236d5dfc'/%3E%3Crect%20x='9'%20y='9'%20width='14'%20height='14'%20rx='4'%20fill='%2306060f'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .acct-wrap{ max-width:820px; margin:0 auto; padding:calc(var(--nav-h) + 2.6rem) var(--pad) 6rem }
+  .acct-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; flex-wrap:wrap; margin-bottom:1.8rem }
+  .acct-head h1{ font-size:clamp(1.8rem,1.3rem+1.6vw,2.4rem) }
+  .acct-head p{ color:var(--muted); margin-top:.4rem }
+  .card{ border:1px solid var(--line); border-radius:var(--radius); background:var(--glass); backdrop-filter:blur(10px); padding:1.6rem 1.7rem; margin-bottom:1.4rem }
+  .card h2{ font-size:1.1rem; margin-bottom:1.2rem }
+  table{ width:100%; border-collapse:collapse; font-size:.9rem }
+  th{ text-align:left; color:var(--faint); font-family:var(--font-mono); font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; padding:.6rem .7rem; border-bottom:1px solid var(--line) }
+  td{ padding:.7rem; border-bottom:1px solid var(--line); vertical-align:top }
+  td.msg{ color:var(--muted); max-width:320px; white-space:pre-wrap }
+  .pill{ font-family:var(--font-mono); font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; padding:.2rem .55rem; border-radius:999px; border:1px solid var(--line); display:inline-block }
+  .pill.new{ color:var(--cyan); border-color:rgba(58,214,255,.4) }
+  .pill.contacted{ color:#e0c674; border-color:rgba(224,198,116,.4) }
+  .pill.won{ color:var(--t-ok); border-color:rgba(125,255,196,.4) }
+  .pill.lost{ color:var(--faint) }
+  .empty{ color:var(--muted); font-size:.92rem; padding:.5rem 0 }
+  .field{ margin-bottom:1rem }
+  .field label{ display:block; font-family:var(--font-mono); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); margin-bottom:.45rem }
+  .field input{ width:100%; background:rgba(0,0,0,.35); border:1px solid var(--line); color:var(--ink); border-radius:10px; padding:.65rem .85rem; font-size:.94rem; font-family:var(--font-body) }
+  .field input:focus{ outline:none; border-color:var(--accent) }
+  .formmsg{ font-size:.85rem; padding:.7rem .9rem; border-radius:10px; margin-bottom:1rem; display:none }
+  .formmsg.error{ display:block; color:#ffb4c8; background:rgba(255,72,208,.09); border:1px solid rgba(255,72,208,.3) }
+  .formmsg.success{ display:block; color:var(--t-ok); background:rgba(125,255,196,.08); border:1px solid rgba(125,255,196,.35) }
+  .settings-row{ display:flex; gap:.8rem; flex-wrap:wrap }
+</style>
+</head>
+<body>
+<div class="sds-back" role="navigation" aria-label="Return to Surette Systems">
+  <a href="../../casestudies.html">&#8592; Back to Surette Systems</a>
+</div>
+<div id="gate" style="min-height:100svh;display:flex;align-items:center;justify-content:center;color:var(--muted)">Checking session…</div>
+
+<div id="shell" style="display:none">
+<canvas id="gl" aria-hidden="true" style="display:none"></canvas>
+<div class="bg-fallback" aria-hidden="true"></div>
+<div class="veil" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="container">
+    <a class="brand" href="index.html" id="navBrand"><span class="mark" aria-hidden="true"></span><span id="navBrandText"></span></a>
+    <nav class="nav-links" id="navLinks" aria-label="Primary"></nav>
+    <a class="btn btn-primary btn-sm nav-cta" href="quote.html"><span>Request a Quote</span></a>
+  </div>
+</header>
+
+<div class="acct-wrap">
+  <div class="acct-head">
+    <div>
+      <h1 id="welcome">Welcome back</h1>
+      <p id="whoLine"></p>
+    </div>
+    <button class="btn btn-ghost btn-sm" id="logoutBtn"><span>Log out</span></button>
+  </div>
+
+  <div class="card">
+    <h2>My quote requests</h2>
+    <table>
+      <thead><tr><th>When</th><th>Service</th><th>Message</th><th>Status</th></tr></thead>
+      <tbody id="leadsBody"></tbody>
+    </table>
+    <div class="empty" id="leadsEmpty" style="display:none">No quote requests yet. <a href="quote.html" style="color:var(--accent)">Request one</a> and it'll show up here.</div>
+  </div>
+
+  <div class="card" style="max-width:420px">
+    <h2>Change password</h2>
+    <div class="formmsg" id="pwMsg"></div>
+    <div class="field"><label>Current password</label><input type="password" id="curPw" /></div>
+    <div class="field"><label>New password (min 8 characters)</label><input type="password" id="newPw" /></div>
+    <button class="btn btn-primary btn-sm" id="pwSave"><span>Update password</span></button>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <a class="brand" href="index.html" id="footerBrand"><span class="mark" aria-hidden="true"></span><span id="footerBrandText"></span></a>
+    <nav class="fl" id="footerLinks" aria-label="Footer"></nav>
+    <span class="cp" id="footerCopyright"></span>
+  </div>
+</footer>
+</div>
+
+<script src="siteConfig.js"></script>
+<script>
+(function(){
+  function esc(s){ return String(s).replace(/[&<>"']/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+  try{ var xhr=new XMLHttpRequest(); xhr.open("GET","/api/config",false); xhr.send(null); if(xhr.status===200){ var remote=JSON.parse(xhr.responseText); if(remote&&remote.business) window.SITE_CONFIG=remote; } }catch(e){}
+
+  fetch("/api/auth/me").then(function(r){
+    if(!r.ok){ window.location.href="login.html"; return Promise.reject(); }
+    return r.json();
+  }).then(function(data){
+    document.getElementById("gate").style.display="none";
+    document.getElementById("shell").style.display="block";
+    boot(data.user);
+  }).catch(function(){});
+
+  function boot(user){
+    var C = window.SITE_CONFIG;
+    if(C){
+      var letter=(C.business.shortName||C.business.name).charAt(0), rest=(C.business.shortName||C.business.name).slice(1);
+      document.getElementById("navBrandText").innerHTML = '<span class="one">'+esc(letter)+'</span>'+esc(rest);
+      document.getElementById("footerBrandText").innerHTML = '<span class="one">'+esc(letter)+'</span>'+esc(rest);
+      document.getElementById("navLinks").innerHTML = C.nav.links.filter(function(l){ return l.href!=="/login"; }).map(function(l){ return '<a href="'+esc(l.href)+'">'+esc(l.label)+'</a>'; }).join("");
+      document.getElementById("footerLinks").innerHTML = C.footer.links.filter(function(l){ return l.href!=="/login"; }).map(function(l){ return '<a href="'+esc(l.href)+'">'+esc(l.label)+'</a>'; }).join("");
+      document.getElementById("footerCopyright").textContent = C.footer.copyright;
+      document.title = "My account — " + C.business.name;
+    }
+    document.getElementById("welcome").textContent = "Welcome back, " + (user.name || "there") + ".";
+    document.getElementById("whoLine").textContent = user.email;
+
+    document.getElementById("logoutBtn").addEventListener("click", function(){
+      fetch("/api/auth/logout", { method:"POST" }).then(function(){ window.location.href="index.html"; });
+    });
+
+    fetch("/api/my/leads").then(function(r){ return r.json(); }).then(function(data){
+      var leads=data.leads||[];
+      var body=document.getElementById("leadsBody");
+      document.getElementById("leadsEmpty").style.display = leads.length ? "none" : "block";
+      body.innerHTML = leads.map(function(l){
+        var when=new Date(l.createdAt).toLocaleString();
+        return '<tr>'
+          + '<td>'+esc(when)+'</td>'
+          + '<td>'+esc(l.service||"—")+'</td>'
+          + '<td class="msg">'+esc(l.message||"")+'</td>'
+          + '<td><span class="pill '+esc(l.status)+'">'+esc(l.status)+'</span></td>'
+          + '</tr>';
+      }).join("");
+    });
+
+    document.getElementById("pwSave").addEventListener("click", function(){
+      var msg=document.getElementById("pwMsg");
+      msg.className="formmsg";
+      var cur=document.getElementById("curPw").value, next=document.getElementById("newPw").value;
+      fetch("/api/account/password", { method:"PUT", headers:{"Content-Type":"application/json"}, body: JSON.stringify({currentPassword:cur,newPassword:next}) })
+        .then(function(r){ return r.json().then(function(d){ return {ok:r.ok,data:d}; }); })
+        .then(function(res){
+          if(!res.ok){ msg.className="formmsg error"; msg.textContent=res.data.error||"Could not update password."; return; }
+          msg.className="formmsg success"; msg.textContent="Password updated."; document.getElementById("curPw").value=""; document.getElementById("newPw").value="";
+        }).catch(function(){ msg.className="formmsg error"; msg.textContent="Network error."; });
+    });
+  }
+})();
+</script>
+</body>
+</html>

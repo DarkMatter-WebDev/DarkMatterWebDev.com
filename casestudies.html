@@ -33,6 +33,7 @@
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
 <link href="assets/nav.css?v=20260703-fixed-header-anchor" rel="stylesheet"/>
 <link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/><link href="assets/portfolio-mobile-fixes.css?v=20260605-title-fit" rel="stylesheet"/>
+<link rel="stylesheet" href="pokecard-dropin/pokecard/pokecard.css">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
   #sds-logo a.sds-anchor,
@@ -289,6 +290,11 @@
             .portfolio-tile:hover { transform: none; }
             .portfolio-tile:hover .portfolio-tile__img { transform: none; }
             .case-studies-hero__blocks { animation: none; }
+        }
+        /* Tighten the widget's default generous padding when used in the hero */
+        .lab-poke-section {
+            padding-top: 0.75rem;
+            padding-bottom: 1.5rem;
         }
         /* Ghost rail popover */
         .rail-popover-ghost {
@@ -563,9 +569,99 @@
 <h4 class="font-label-caps text-label-caps text-electric-cyan mb-4 tracking-[0.2em]">SELECTED WORK</h4>
 <h1 class="font-headline-xl text-headline-xl text-starlight-white mb-8">Websites <span class="gradient-text-nebula">We've Built.</span></h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">Real sites for real businesses and working brands. We start with the building blocks of a strong business foundation, then shape each build to load fast, look sharp, and turn visitors into customers.</p>
+<p class="mt-6 inline-flex items-center gap-2 font-label-mono text-sm font-semibold tracking-wide" style="background:linear-gradient(90deg,#00F0FF,#7000FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Try one of our templates live&nbsp;<span class="material-symbols-outlined" style="-webkit-text-fill-color:#00F0FF;font-size:20px;vertical-align:middle;">arrow_forward</span></p>
 </div>
-<div class="case-studies-hero__visual" aria-hidden="true">
-<img class="case-studies-hero__blocks" src="assets/case-studies-building-blocks.webp" width="1024" height="1024" alt=""/>
+<div class="case-studies-hero__visual">
+<section class="lab-poke-section" aria-label="Website template — sample card">
+
+  <div class="poke-scene" data-flip="0">
+    <div class="poke-card" role="button" tabindex="0" aria-pressed="false"
+         aria-label="Business Site Template card. Click or press Enter to flip for full details.">
+
+      <!-- ---------- FRONT FACE ---------- -->
+      <div class="poke-face poke-face--front">
+        <div class="poke-plate">
+
+          <div class="poke-top">
+            <h2 class="poke-name">Business Site Template</h2>
+            <span class="poke-hp"><span class="hp-label">HP</span><span class="hp-val">100</span></span>
+          </div>
+
+          <div class="poke-art">
+            <img src="pokecard-dropin/pokecard/template-preview.jpg"
+                 alt="Screenshot of the Business Site Template landing page hero"
+                 loading="lazy" decoding="async">
+          </div>
+          <div class="poke-stage-line">
+            <span>Stage · Landing + Admin</span>
+            <span>No. 001</span>
+          </div>
+
+          <div class="poke-badges" aria-label="Tech stack">
+            <span class="poke-badge">HTML</span>
+            <span class="poke-badge">CSS</span>
+            <span class="poke-badge">Vanilla JS</span>
+            <span class="poke-badge">Three.js</span>
+            <span class="poke-badge">GSAP</span>
+            <span class="poke-badge">Node / Express</span>
+          </div>
+
+          <div class="poke-body">
+            <span class="attack-name">One-Config Rebrand</span>
+            Swap every headline, price and colour from a single config
+            object — one template, any service business.
+          </div>
+
+          <div class="poke-foot">
+            <span class="poke-tag">weakness · brings in too much business</span>
+            <div class="poke-links">
+              <a class="poke-btn poke-btn--primary" href="pokecard-dropin/app-template/index.html">View Live</a>
+              <a class="poke-btn" href="#" aria-label="Source code (link pending)">Code</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ---------- BACK FACE (revealed on flip) ---------- -->
+      <div class="poke-face poke-face--back">
+        <div class="poke-plate">
+          <div class="poke-back-inner">
+            <h3>Business Site Template</h3>
+            <p>A reusable, single-config marketing site for service
+               businesses: animated 3D hero, a live "one call → full
+               estimate" demo, services, pricing, testimonials and FAQ —
+               plus a small admin backend (login, lead inbox, live
+               content editor).</p>
+            <p>Everything on the page is driven by one
+               <code>siteConfig.js</code> object, so the whole site
+               rebrands in minutes with no build step.</p>
+
+            <div class="back-badges" aria-label="Tech stack">
+              <span class="poke-badge">HTML</span>
+              <span class="poke-badge">CSS</span>
+              <span class="poke-badge">Vanilla JS</span>
+              <span class="poke-badge">Three.js</span>
+              <span class="poke-badge">GSAP</span>
+              <span class="poke-badge">Node / Express</span>
+            </div>
+
+            <div class="poke-links">
+              <a class="poke-btn poke-btn--primary" href="pokecard-dropin/app-template/index.html">View Live</a>
+              <a class="poke-btn" href="#" aria-label="Source code (link pending)">Code</a>
+            </div>
+            <span class="poke-flip-hint">Tap / press Enter to flip back</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="poke-glare" aria-hidden="true"></div>
+
+    </div>
+  </div>
+
+  <p class="poke-kicker">click to flip template</p>
+</section>
 </div>
 </section>
 
@@ -729,7 +825,97 @@
 <span class="font-label-mono text-label-mono text-electric-cyan tracking-widest uppercase">Selected Work</span>
 </div>
 <h2 class="font-headline-xl text-headline-lg-mobile text-starlight-white">Websites We've Built</h2>
-<img class="case-studies-hero__blocks w-full max-w-[18rem] self-center -my-2" src="assets/case-studies-building-blocks.webp" width="1024" height="1024" alt="" aria-hidden="true"/>
+<p class="mt-1 mb-2 inline-flex items-center gap-1 font-label-mono text-xs font-semibold tracking-wide" style="background:linear-gradient(90deg,#00F0FF,#7000FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Try one of our templates live&nbsp;<span class="material-symbols-outlined" style="-webkit-text-fill-color:#00F0FF;font-size:16px;vertical-align:middle;">arrow_downward</span></p>
+<section class="lab-poke-section" aria-label="Website template — sample card">
+
+  <div class="poke-scene" data-flip="0">
+    <div class="poke-card" role="button" tabindex="0" aria-pressed="false"
+         aria-label="Business Site Template card. Click or press Enter to flip for full details.">
+
+      <!-- ---------- FRONT FACE ---------- -->
+      <div class="poke-face poke-face--front">
+        <div class="poke-plate">
+
+          <div class="poke-top">
+            <h2 class="poke-name">Business Site Template</h2>
+            <span class="poke-hp"><span class="hp-label">HP</span><span class="hp-val">100</span></span>
+          </div>
+
+          <div class="poke-art">
+            <img src="pokecard-dropin/pokecard/template-preview.jpg"
+                 alt="Screenshot of the Business Site Template landing page hero"
+                 loading="lazy" decoding="async">
+          </div>
+          <div class="poke-stage-line">
+            <span>Stage · Landing + Admin</span>
+            <span>No. 001</span>
+          </div>
+
+          <div class="poke-badges" aria-label="Tech stack">
+            <span class="poke-badge">HTML</span>
+            <span class="poke-badge">CSS</span>
+            <span class="poke-badge">Vanilla JS</span>
+            <span class="poke-badge">Three.js</span>
+            <span class="poke-badge">GSAP</span>
+            <span class="poke-badge">Node / Express</span>
+          </div>
+
+          <div class="poke-body">
+            <span class="attack-name">One-Config Rebrand</span>
+            Swap every headline, price and colour from a single config
+            object — one template, any service business.
+          </div>
+
+          <div class="poke-foot">
+            <span class="poke-tag">weakness · brings in too much business</span>
+            <div class="poke-links">
+              <a class="poke-btn poke-btn--primary" href="pokecard-dropin/app-template/index.html">View Live</a>
+              <a class="poke-btn" href="#" aria-label="Source code (link pending)">Code</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ---------- BACK FACE (revealed on flip) ---------- -->
+      <div class="poke-face poke-face--back">
+        <div class="poke-plate">
+          <div class="poke-back-inner">
+            <h3>Business Site Template</h3>
+            <p>A reusable, single-config marketing site for service
+               businesses: animated 3D hero, a live "one call → full
+               estimate" demo, services, pricing, testimonials and FAQ —
+               plus a small admin backend (login, lead inbox, live
+               content editor).</p>
+            <p>Everything on the page is driven by one
+               <code>siteConfig.js</code> object, so the whole site
+               rebrands in minutes with no build step.</p>
+
+            <div class="back-badges" aria-label="Tech stack">
+              <span class="poke-badge">HTML</span>
+              <span class="poke-badge">CSS</span>
+              <span class="poke-badge">Vanilla JS</span>
+              <span class="poke-badge">Three.js</span>
+              <span class="poke-badge">GSAP</span>
+              <span class="poke-badge">Node / Express</span>
+            </div>
+
+            <div class="poke-links">
+              <a class="poke-btn poke-btn--primary" href="pokecard-dropin/app-template/index.html">View Live</a>
+              <a class="poke-btn" href="#" aria-label="Source code (link pending)">Code</a>
+            </div>
+            <span class="poke-flip-hint">Tap / press Enter to flip back</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="poke-glare" aria-hidden="true"></div>
+
+    </div>
+  </div>
+
+  <p class="poke-kicker">click to flip template</p>
+</section>
 <p class="font-body-lg text-body-md text-on-surface-variant">We start with the building blocks of a strong business foundation, then build fast sites that turn visitors into customers.</p>
 </div>
 
@@ -847,6 +1033,7 @@
 </div>
 <!-- /MOBILE -->
 
+<script src="pokecard-dropin/pokecard/pokecard.js"></script>
 <script src="assets/mobile-services-nav.js?v=20260627-blackfix"></script>
 <script src="assets/account-nav.js?v=20260703-mobile-account-color"></script>
 <script src="assets/rail.js?v=20260602-rail-active"></script>

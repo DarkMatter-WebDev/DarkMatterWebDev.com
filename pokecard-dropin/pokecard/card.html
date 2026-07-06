@@ -1,0 +1,108 @@
+<!-- ============================================================
+     POKÉCARD WIDGET — copy this block into any page.
+
+     Requirements on the host page:
+       <head>  <link rel="stylesheet" href="PATH/pokecard/pokecard.css">
+       <body>  ...this markup...
+       end     <script src="PATH/pokecard/pokecard.js"></script>
+
+     Two paths to set for YOUR layout (marked "EDIT" below):
+       1. .poke-art <img src> ....... path to pokecard/template-preview.jpg
+       2. "View Live" <a href> (x2) . where you deploy the app-template/ site
+          (matches the original, which linked to  /app-template/ )
+     ============================================================ -->
+<section class="lab-poke-section" aria-label="Website template — sample card">
+  <p class="poke-kicker">// Sample card — a website template as a collectible</p>
+
+  <div class="poke-scene" data-flip="0">
+    <div class="poke-card" role="button" tabindex="0" aria-pressed="false"
+         aria-label="Business Site Template card. Click or press Enter to flip for full details.">
+
+      <!-- ---------- FRONT FACE ---------- -->
+      <div class="poke-face poke-face--front">
+        <div class="poke-plate">
+
+          <div class="poke-top">
+            <h2 class="poke-name">Business Site Template</h2>
+            <span class="poke-hp"><span class="hp-label">HP</span><span class="hp-val">100</span></span>
+          </div>
+
+          <div class="poke-art">
+            <!-- EDIT 1: path to the bundled screenshot -->
+            <img src="pokecard/template-preview.jpg"
+                 alt="Screenshot of the Business Site Template landing page hero"
+                 loading="lazy" decoding="async">
+          </div>
+          <div class="poke-stage-line">
+            <span>Stage · Landing + Admin</span>
+            <span>No. 001</span>
+          </div>
+
+          <div class="poke-badges" aria-label="Tech stack">
+            <span class="poke-badge">HTML</span>
+            <span class="poke-badge">CSS</span>
+            <span class="poke-badge">Vanilla JS</span>
+            <span class="poke-badge">Three.js</span>
+            <span class="poke-badge">GSAP</span>
+            <span class="poke-badge">Node / Express</span>
+          </div>
+
+          <div class="poke-body">
+            <span class="attack-name">One-Config Rebrand</span>
+            Swap every headline, price and colour from a single config
+            object — one template, any service business.
+          </div>
+
+          <div class="poke-foot">
+            <span class="poke-tag">weakness · brings in too much business</span>
+            <div class="poke-links">
+              <!-- EDIT 2: where you host the app-template/ site -->
+              <a class="poke-btn poke-btn--primary" href="/app-template/">View Live</a>
+              <a class="poke-btn" href="#" aria-label="Source code (link pending)">Code</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ---------- BACK FACE (revealed on flip) ---------- -->
+      <div class="poke-face poke-face--back">
+        <div class="poke-plate">
+          <div class="poke-back-inner">
+            <h3>Business Site Template</h3>
+            <p>A reusable, single-config marketing site for service
+               businesses: animated 3D hero, a live “one call → full
+               estimate” demo, services, pricing, testimonials and FAQ —
+               plus a small admin backend (login, lead inbox, live
+               content editor).</p>
+            <p>Everything on the page is driven by one
+               <code>siteConfig.js</code> object, so the whole site
+               rebrands in minutes with no build step.</p>
+
+            <div class="back-badges" aria-label="Tech stack">
+              <span class="poke-badge">HTML</span>
+              <span class="poke-badge">CSS</span>
+              <span class="poke-badge">Vanilla JS</span>
+              <span class="poke-badge">Three.js</span>
+              <span class="poke-badge">GSAP</span>
+              <span class="poke-badge">Node / Express</span>
+            </div>
+
+            <div class="poke-links">
+              <!-- EDIT 2: where you host the app-template/ site -->
+              <a class="poke-btn poke-btn--primary" href="/app-template/">View Live</a>
+              <a class="poke-btn" href="#" aria-label="Source code (link pending)">Code</a>
+            </div>
+            <span class="poke-flip-hint">Tap / press Enter to flip back</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- glare: soft diagonal sheen that follows the cursor on hover -->
+      <div class="poke-glare" aria-hidden="true"></div>
+
+    </div>
+  </div>
+
+  <p class="poke-kicker">Hover to tilt · click or press Enter to flip</p>
+</section>

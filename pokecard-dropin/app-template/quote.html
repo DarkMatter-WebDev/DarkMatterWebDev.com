@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Request a Quote — Business Name</title>
+<meta name="theme-color" content="#06060f" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='8'%20fill='%236d5dfc'/%3E%3Crect%20x='9'%20y='9'%20width='14'%20height='14'%20rx='4'%20fill='%2306060f'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  .qwrap{ max-width:640px; margin:0 auto; padding:calc(var(--nav-h) + 3rem) var(--pad) 6rem }
+  .qcard{ border-radius:var(--radius); border:1px solid var(--line); background:linear-gradient(180deg,rgba(18,18,42,.82),rgba(10,10,26,.9)); box-shadow:0 30px 80px -30px rgba(0,0,0,.8); backdrop-filter:blur(14px); padding:clamp(1.8rem,4vw,2.6rem); margin-top:2rem }
+  .field{ margin-bottom:1.1rem }
+  .field label{ display:block; font-family:var(--font-mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); margin-bottom:.5rem }
+  .field input, .field textarea{ width:100%; background:rgba(0,0,0,.35); border:1px solid var(--line); color:var(--ink); border-radius:10px; padding:.75rem .9rem; font-size:.98rem; font-family:var(--font-body); transition:border-color .2s; resize:vertical }
+  .field input:focus, .field textarea:focus{ outline:none; border-color:var(--accent) }
+  .row2{ display:grid; grid-template-columns:1fr 1fr; gap:1rem }
+  @media (max-width:620px){ .row2{ grid-template-columns:1fr } }
+  .qcard .btn{ width:100%; margin-top:.5rem }
+  .formmsg{ font-size:.85rem; padding:.7rem .9rem; border-radius:10px; margin-bottom:1.1rem; display:none }
+  .formmsg.error{ display:block; color:#ffb4c8; background:rgba(255,72,208,.09); border:1px solid rgba(255,72,208,.3) }
+  .formmsg.success{ display:block; color:var(--t-ok); background:rgba(125,255,196,.08); border:1px solid rgba(125,255,196,.35) }
+</style>
+</head>
+<body class="has-livingbg">
+<div class="sds-back" role="navigation" aria-label="Return to Surette Systems">
+  <a href="../../casestudies.html">&#8592; Back to Surette Systems</a>
+</div>
+<div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+
+<header class="nav" id="nav">
+  <div class="container">
+    <a class="brand" href="index.html" id="navBrand"><span class="mark" aria-hidden="true"></span><span id="navBrandText"></span></a>
+    <nav class="nav-links" id="navLinks" aria-label="Primary"></nav>
+  </div>
+</header>
+
+<div class="qwrap">
+  <p class="eyebrow" id="qEyebrow">Request a Quote</p>
+  <h1 style="font-size:clamp(2rem,1.3rem+2.6vw,3rem)" id="qHeadline">Tell us about the job.</h1>
+  <p style="color:var(--muted);margin-top:.8rem" id="qSub">Free, no-obligation estimate — we'll follow up by phone or email, usually same-day.</p>
+
+  <div class="qcard">
+    <div class="formmsg" id="formMsg"></div>
+    <form id="quoteForm" novalidate>
+      <div class="row2">
+        <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" required /></div>
+        <div class="field"><label for="service">Service needed</label><input id="service" name="service" type="text" placeholder="e.g. water heater repair" /></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" /></div>
+        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" /></div>
+      </div>
+      <div class="field"><label for="message">Tell us what's going on</label><textarea id="message" name="message" rows="4"></textarea></div>
+      <button class="btn btn-primary" type="submit" id="submitBtn"><span>Request a Quote</span></button>
+    </form>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <a class="brand" href="index.html" id="footerBrand"><span class="mark" aria-hidden="true"></span><span id="footerBrandText"></span></a>
+    <nav class="fl" id="footerLinks" aria-label="Footer"></nav>
+    <span class="cp" id="footerCopyright"></span>
+  </div>
+</footer>
+
+<script src="siteConfig.js"></script>
+<script>
+(function(){
+  function esc(s){ return String(s).replace(/[&<>"']/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+  var xhr = new XMLHttpRequest();
+  try{ xhr.open("GET","/api/config",false); xhr.send(null); if(xhr.status===200){ var remote=JSON.parse(xhr.responseText); if(remote&&remote.business) window.SITE_CONFIG=remote; } }catch(e){}
+  var C = window.SITE_CONFIG; if(!C) return;
+
+  document.title = "Request a Quote — " + C.business.name;
+  var letter=(C.business.shortName||C.business.name).charAt(0), rest=(C.business.shortName||C.business.name).slice(1);
+  document.getElementById("navBrandText").innerHTML = '<span class="one">'+esc(letter)+'</span>'+esc(rest);
+  document.getElementById("footerBrandText").innerHTML = '<span class="one">'+esc(letter)+'</span>'+esc(rest);
+  document.getElementById("navLinks").innerHTML = C.nav.links.map(function(l){ return '<a href="'+esc(l.href)+'">'+esc(l.label)+'</a>'; }).join("");
+  document.getElementById("footerLinks").innerHTML = C.footer.links.map(function(l){ return '<a href="'+esc(l.href)+'">'+esc(l.label)+'</a>'; }).join("");
+  document.getElementById("footerCopyright").textContent = C.footer.copyright;
+  document.getElementById("qSub").textContent = "Free, no-obligation estimate from " + C.business.name + " — we'll follow up by phone or email, usually same-day.";
+
+  /* signed-in visitors: swap the Login link and prefill their details */
+  fetch("/api/auth/me").then(function(r){ return r.ok ? r.json() : null; }).then(function(data){
+    if(!data) return;
+    var dest = data.user.role === "admin" ? "/admin" : "/account";
+    var label = data.user.role === "admin" ? "Admin" : "My Account";
+    document.querySelectorAll('a[href="login.html"]').forEach(function(a){ a.textContent = label; a.href = dest; });
+    if(data.user.role !== "admin"){
+      var nameEl=document.getElementById("name"), emailEl=document.getElementById("email");
+      if(nameEl && !nameEl.value) nameEl.value = data.user.name || "";
+      if(emailEl && !emailEl.value) emailEl.value = data.user.email || "";
+    }
+  }).catch(function(){});
+
+  var form=document.getElementById("quoteForm"), msg=document.getElementById("formMsg"), btn=document.getElementById("submitBtn");
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    msg.className="formmsg"; msg.textContent="";
+    var name=document.getElementById("name").value.trim();
+    var phone=document.getElementById("phone").value.trim();
+    var email=document.getElementById("email").value.trim();
+    if(!name || (!phone && !email)){
+      msg.className="formmsg error"; msg.textContent="Please enter your name and at least a phone number or email."; return;
+    }
+    btn.disabled=true; btn.querySelector("span").textContent="Sending…";
+    fetch("/api/leads", {
+      method:"POST", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({ name:name, phone:phone, email:email, service:document.getElementById("service").value.trim(), message:document.getElementById("message").value.trim() })
+    }).then(function(r){ return r.json().then(function(data){ return {ok:r.ok, data:data}; }); })
+      .then(function(res){
+        btn.disabled=false; btn.querySelector("span").textContent="Request a Quote";
+        if(!res.ok){ msg.className="formmsg error"; msg.textContent=res.data.error||"Something went wrong."; return; }
+        msg.className="formmsg success"; msg.textContent="Thanks — we've got your request and will be in touch shortly.";
+        form.reset();
+      }).catch(function(){ btn.disabled=false; btn.querySelector("span").textContent="Request a Quote"; msg.className="formmsg error"; msg.textContent="Network error — please try again."; });
+  });
+})();
+</script>
+<script defer src="vendor/three.min.js"></script>
+<script defer src="site-bg.js"></script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 # Architecture
 
-Last updated: 2026-07-03
+Last updated: 2026-07-04
 
 ## Current Stack
 
@@ -75,7 +75,8 @@ Last updated: 2026-07-03
 ## Forms
 
 - Public website forms use `assets/site-message-forms.js` to call Supabase `submit_site_message()` into `client_messages`; Contact and App Checkout also support optional image/photo attachments through the private `portal-message-attachments` storage bucket.
-- Account-dashboard support/change requests use Supabase `client_messages` and the owner-only Admin Center Message Center.
+- Public website forms also post to Netlify Forms after the Supabase save so Netlify can send owner notification emails.
+- Account-dashboard support/change requests use Supabase `client_messages` and the owner-only Admin Center Message Center, then post to the `client-request` Netlify Form for owner notification email.
 - Homepage newsletter signup uses Supabase `homepage_email_signups` rather than Netlify Forms.
 - Keep form field names and `data-message-source` values stable across language mirrors.
 

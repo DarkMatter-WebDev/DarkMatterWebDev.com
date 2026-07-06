@@ -181,6 +181,26 @@ function metadataForForm(form) {
   };
 }
 
+async function submitNetlifyForm(form, fallbackName) {
+  const formName = form.getAttribute("name") || fallbackName || "site-message";
+  const data = new FormData(form);
+  data.set("form-name", formName);
+
+  const response = await fetch("/", {
+    method: "POST",
+    body: data
+  });
+  if (!response.ok) throw new Error(`Netlify form submission failed with ${response.status}`);
+}
+
+async function submitNetlifyFormSafely(form, fallbackName) {
+  try {
+    await submitNetlifyForm(form, fallbackName);
+  } catch (error) {
+    console.warn("Message was saved, but Netlify form notification submission failed.", error);
+  }
+}
+
 async function submitForm(form) {
   if (!supabase) throw new Error(copy.setup);
   if (!form.reportValidity()) return;
@@ -194,20 +214,27 @@ async function submitForm(form) {
   const attachments = await uploadAttachments(files, source);
   const body = buildBody(form);
   const subject = getSubject(form);
+  const requestType = getRequestType(form);
+  const senderName = buildName(form);
+  const senderEmail = getNamedValue(form, ["email", "client_email"]);
+  const senderPhone = getNamedValue(form, ["phone", "tel"]);
+  const metadata = metadataForForm(form);
 
   const { error } = await supabase.rpc("submit_site_message", {
     form_source: source,
-    request_type: getRequestType(form),
+    request_type: requestType,
     message_subject: subject,
     message_body: body || subject,
-    sender_name: buildName(form),
-    sender_email: getNamedValue(form, ["email", "client_email"]),
-    sender_phone: getNamedValue(form, ["phone", "tel"]),
+    sender_name: senderName,
+    sender_email: senderEmail,
+    sender_phone: senderPhone,
     page_url: window.location.href,
-    metadata: metadataForForm(form),
+    metadata,
     attachments
   });
   if (error) throw error;
+
+  await submitNetlifyFormSafely(form, source);
 }
 
 function bindSiteMessageForms() {

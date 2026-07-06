@@ -348,7 +348,9 @@
 <h1 class="font-headline-xl text-headline-xl text-starlight-white mb-2">Start Your Project</h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">Tell us what you need and we'll get back to you fast. Prefer to talk? Call, text, or email us directly.</p>
 </header>
-<form class="glass-card p-8 rounded-xl flex flex-col gap-8 relative overflow-hidden" data-site-message-form data-message-source="contact-desktop" data-message-type="Contact form" data-message-subject="New website contact">
+<form class="glass-card p-8 rounded-xl flex flex-col gap-8 relative overflow-hidden" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" data-site-message-form data-message-source="contact-desktop" data-message-type="Contact form" data-message-subject="New website contact">
+<input type="hidden" name="form-name" value="contact"/>
+<p class="hidden"><label>Do not fill this out <input name="bot-field"/></label></p>
 <div class="scanning-line"></div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <div class="flex flex-col gap-2">
@@ -493,7 +495,9 @@
 <h1 class="font-headline-xl text-headline-lg-mobile text-starlight-white mb-3">Start Your Project</h1>
 <p class="font-body-lg text-body-md text-on-surface-variant">Tell us what you need, or skip the form and call, text, or email us directly.</p>
 </section>
-<form class="glass-card p-6 rounded-xl flex flex-col gap-7 relative overflow-hidden" data-site-message-form data-message-source="contact-mobile" data-message-type="Contact form" data-message-subject="New website contact">
+<form class="glass-card p-6 rounded-xl flex flex-col gap-7 relative overflow-hidden" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" data-site-message-form data-message-source="contact-mobile" data-message-type="Contact form" data-message-subject="New website contact">
+<input type="hidden" name="form-name" value="contact"/>
+<p class="hidden"><label>Do not fill this out <input name="bot-field"/></label></p>
 <div class="scanning-line"></div>
 <div class="flex flex-col gap-2">
 <label class="font-label-mono text-label-mono text-outline uppercase" for="contact-name-mobile">Your Name</label>
@@ -596,7 +600,7 @@
 <!-- /MOBILE -->
 
 <script src="assets/supabase-config.js"></script>
-<script type="module" src="assets/site-message-forms.js?v=20260702-message-center-forms"></script>
+<script type="module" src="assets/site-message-forms.js?v=20260704-netlify-supabase"></script>
 <script src="assets/mobile-services-nav.js?v=20260627-blackfix"></script>
 <script src="assets/account-nav.js?v=20260703-mobile-account-color"></script>
 <script src="assets/rail.js?v=20260602-rail-active"></script>

@@ -1,0 +1,434 @@
+/* ============================================================
+   BUNDLED FONTS — the card's retro/mono look. Self-contained so the
+   widget renders identically in any project (falls back to the
+   system monospace stack if these ever fail to load).
+   ============================================================ */
+@font-face {
+  font-display: swap; font-family: vcr-osd-mono; font-style: normal; font-weight: 400;
+  src: url("fonts/vcr_osd_mono01.woff2") format("woff2");
+}
+@font-face {
+  font-display: swap; font-family: ibm-plex-mono; font-style: normal; font-weight: 400;
+  src: url("fonts/ibmplexmono.woff2") format("woff2");
+}
+
+/* ============================================================
+   POKECARD.CSS — a single Pokémon-trading-card-style tile that
+   showcases a website template as if it were a collectible card.
+
+   Interaction model (all driven by CSS custom properties that
+   pokecard.js writes):
+     --rx / --ry : 3D tilt rotation in deg (desktop hover)
+     --px / --py : glare highlight position in %  (desktop hover)
+     --glow      : glare opacity 0..1             (0 off, 1 on)
+     --flip      : 0 = front face, 1 = flipped to back (touch/kbd)
+
+   Only transform + opacity animate (GPU-friendly). The face itself
+   is never re-rasterized by the tilt — rotation lives on the 3D
+   wrapper, text stays crisp. Matches the site's retro/CRT mono
+   aesthetic (vcr-osd-mono / ibm-plex-mono, 2px ink borders, hard
+   offset shadows) — see projects.css / card.css.
+   ============================================================ */
+
+/* ---------- section wrapper: gives the card room under the intro ---------- */
+.lab-poke-section {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem clamp(1rem, 4vw, 3rem) 7rem;
+}
+
+.lab-poke-section .poke-kicker {
+  margin: 0;
+  font-family: ibm-plex-mono, monospace;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  color: #9b9bb4;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* ---------- perspective stage: the mouse listener lives here ----------
+   perspective on the parent makes the child's rotateX/rotateY read as
+   real 3D depth. A generous perspective keeps the tilt subtle. */
+.poke-scene {
+  --rx: 0deg;
+  --ry: 0deg;
+  --px: 50%;
+  --py: 50%;
+  --glow: 0;
+  --flip: 0;
+
+  width: min(360px, 86vw);
+  aspect-ratio: 2.5 / 3.5;         /* real trading-card proportions */
+  perspective: 1100px;
+  /* space for the tilt/shadow so neighbours never clip */
+  margin: 0.5rem;
+}
+
+/* ---------- the tilting / flipping card body ----------
+   transform order matters: translateZ lifts it toward the viewer a
+   touch on hover for presence; rotateX/Y do the tilt; the flip adds
+   180deg of Y. preserve-3d lets the two faces sit back-to-back. */
+.poke-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform:
+    rotateX(var(--rx))
+    rotateY(calc(var(--ry) + var(--flip) * 180deg));
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+  border-radius: 18px;
+  /* hard offset shadow (site convention: box-shadow, not filter) */
+  box-shadow: 10px 14px 0 rgba(0, 0, 0, 0.45);
+}
+
+/* while actively hovering, the JS sets --active:1 and we drop the
+   easing so the tilt tracks the cursor 1:1 (no rubber-banding) */
+.poke-scene[data-active="1"] .poke-card {
+  transition: transform 0.08s linear;
+}
+
+.poke-card:focus-visible {
+  outline: none;
+}
+.poke-scene:focus-within .poke-card {
+  box-shadow: 10px 14px 0 rgba(0, 0, 0, 0.45),
+              0 0 0 3px #90ffa8,
+              0 0 22px rgba(144, 255, 168, 0.55);
+}
+
+/* ============================================================
+   FACES — front + back, back-to-back via backface-visibility
+   ============================================================ */
+.poke-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+
+  /* Pokémon-card framing: a bright "type" border ring around an inner
+     content plate. Uses the Lab green so the card belongs to /lab/. */
+  --card-face: #90ffa8;      /* border-ring / accent */
+  --card-plate: #f3f1ea;     /* inner paper plate */
+  --card-ink: #14101f;       /* ink lines + text */
+  --card-side: #457750;      /* deep green shade */
+
+  padding: 12px;
+  background:
+    linear-gradient(150deg, #b9ffc8 0%, var(--card-face) 42%, #58c479 100%);
+  border: 2px solid var(--card-ink);
+  color: var(--card-ink);
+  font-family: ibm-plex-mono, ui-monospace, monospace;
+}
+
+.poke-face--back {
+  transform: rotateY(180deg);
+}
+
+/* inner content plate that holds all the rows */
+.poke-plate {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--card-plate);
+  border: 2px solid var(--card-ink);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* ---------- TOP BAR: title + HP/type line ---------- */
+.poke-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.55rem 0.7rem 0.5rem;
+  border-bottom: 2px solid var(--card-ink);
+  background: linear-gradient(180deg, rgba(144, 255, 168, 0.35), transparent);
+}
+
+.poke-name {
+  margin: 0;
+  font-family: vcr-osd-mono, ibm-plex-mono, monospace;
+  font-weight: 400;
+  font-size: clamp(0.95rem, 3.4vw, 1.15rem);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 1.05;
+}
+
+.poke-hp {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 3px;
+  font-family: vcr-osd-mono, ibm-plex-mono, monospace;
+  white-space: nowrap;
+}
+.poke-hp .hp-label {
+  font-size: 0.55rem;
+  letter-spacing: 1px;
+}
+.poke-hp .hp-val {
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+}
+
+/* ---------- ART WINDOW: framed screenshot ---------- */
+.poke-art {
+  position: relative;
+  margin: 0.6rem 0.7rem 0;
+  border: 2px solid var(--card-ink);
+  border-radius: 6px;
+  /* flex-fill the leftover card height so the fixed-ratio card never
+     overflows regardless of copy length */
+  flex: 1 1 auto;
+  min-height: 64px;
+  overflow: hidden;
+  background:
+    repeating-linear-gradient(45deg, #dfe9df 0 8px, #d3ddd3 8px 16px);
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+.poke-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* placeholder caption shown until a real screenshot is dropped in */
+.poke-art .art-ph {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 0.5rem;
+  font-family: ibm-plex-mono, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 1px;
+  color: #5c6b5c;
+  text-transform: uppercase;
+}
+
+/* stage / illustrator strip under the art, like the flavour line */
+.poke-stage-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin: 0.35rem 0.7rem 0;
+  font-family: ibm-plex-mono, monospace;
+  font-size: 0.55rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #5c6b5c;
+}
+
+/* ---------- TYPE / TECH BADGES ---------- */
+.poke-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 0.55rem 0.7rem 0.4rem;
+}
+.poke-badge {
+  font-family: ibm-plex-mono, monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border: 1.5px solid var(--card-ink);
+  border-radius: 999px;
+  background: var(--card-face);
+  color: var(--card-ink);
+  white-space: nowrap;
+}
+
+/* ---------- BODY STRIP: short description (attack text) ---------- */
+.poke-body {
+  margin: 0.15rem 0.7rem 0.5rem;
+  padding: 0.5rem 0.6rem;
+  border: 1.5px solid rgba(20, 16, 31, 0.4);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.55);
+  font-size: 0.68rem;
+  line-height: 1.5;
+}
+.poke-body .attack-name {
+  display: block;
+  font-family: vcr-osd-mono, ibm-plex-mono, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+/* ---------- FOOTER: tags + links ---------- */
+.poke-foot {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.7rem 0.6rem;
+  border-top: 2px solid var(--card-ink);
+  background: linear-gradient(0deg, rgba(144, 255, 168, 0.35), transparent);
+}
+
+.poke-tag {
+  font-family: ibm-plex-mono, monospace;
+  font-size: 0.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #4a574a;
+}
+
+.poke-links {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.poke-btn {
+  font-family: vcr-osd-mono, ibm-plex-mono, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 0.35rem 0.6rem;
+  border: 2px solid var(--card-ink);
+  border-radius: 5px;
+  color: var(--card-ink);
+  background: #fff;
+  box-shadow: 2px 2px 0 var(--card-ink);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.2s ease;
+}
+.poke-btn--primary { background: var(--card-face); }
+.poke-btn:hover,
+.poke-btn:focus-visible {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--card-ink);
+  background: #ffe27a;
+  outline: none;
+}
+.poke-btn:focus-visible {
+  box-shadow: 0 0 0 3px #90ffa8;
+}
+
+/* ============================================================
+   GLARE — soft radial highlight tracking the cursor. Sits above the
+   faces but never eats pointer events. Fades via --glow on hover.
+   ============================================================ */
+.poke-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  pointer-events: none;
+  z-index: 3;
+  /* lives inside .poke-card so it tilts with the card; float it just
+     above the front face and hide it on the back */
+  transform: translateZ(2px);
+  opacity: var(--glow);
+  transition: opacity 0.35s ease;
+
+  /* A single diagonal sheen band — like light reflecting off a flat
+     glossy card. The band is baked into an oversized gradient; the
+     cursor (--px/--py) just slides the whole thing across via
+     background-position, so the streak sweeps rather than a spotlight
+     following the pointer. */
+  background-image: linear-gradient(
+    108deg,
+    rgba(255, 255, 255, 0) 38%,
+    rgba(255, 255, 255, 0.15) 45%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0.15) 55%,
+    rgba(255, 255, 255, 0) 62%
+  );
+  background-repeat: no-repeat;
+  background-size: 230% 230%;
+  background-position: var(--px) var(--py);
+  mix-blend-mode: screen;
+  /* only reveal the glare on the side currently facing the viewer */
+  backface-visibility: hidden;
+}
+
+/* ============================================================
+   BACK FACE CONTENT — fuller description + links (mobile flip / kbd)
+   ============================================================ */
+.poke-back-inner {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 0.85rem 0.9rem;
+  overflow: auto;
+}
+.poke-back-inner h3 {
+  margin: 0;
+  font-family: vcr-osd-mono, ibm-plex-mono, monospace;
+  font-weight: 400;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.poke-back-inner p {
+  margin: 0;
+  font-size: 0.72rem;
+  line-height: 1.6;
+}
+.poke-back-inner .back-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.poke-back-inner .poke-links {
+  margin-left: 0;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+.poke-flip-hint {
+  font-family: ibm-plex-mono, monospace;
+  font-size: 0.55rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #5c6b5c;
+}
+
+/* ============================================================
+   REDUCED MOTION — kill the tilt/flip transforms + glare entirely.
+   The flip still works as a state toggle, but with no animation the
+   card simply swaps faces via opacity (handled below) instead of a
+   360-ish spin that could trigger vestibular discomfort.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .poke-card {
+    transition: none;
+    transform: none !important;
+  }
+  .poke-glare { display: none; }
+
+  /* swap faces with opacity instead of a 3D rotation */
+  .poke-face { backface-visibility: visible; -webkit-backface-visibility: visible; }
+  .poke-face--back {
+    transform: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  .poke-scene[data-flip="1"] .poke-face--front { opacity: 0; }
+  .poke-scene[data-flip="1"] .poke-face--back  { opacity: 1; }
+  .poke-scene[data-flip="1"] .poke-face--front,
+  .poke-scene[data-flip="0"] .poke-face--back {
+    pointer-events: none;
+  }
+}

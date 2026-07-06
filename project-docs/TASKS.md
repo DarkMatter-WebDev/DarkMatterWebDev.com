@@ -1,6 +1,6 @@
 # Tasks
 
-Last updated: 2026-07-03
+Last updated: 2026-07-04
 
 ## Active
 
@@ -9,6 +9,7 @@ Last updated: 2026-07-03
 - Audit finding: service-detail pages use a different mobile header markup path than most root marketing/app pages; header dimensions are stable in preview, but consolidating service-page mobile nav into the shared pattern remains a good future polish item.
 - Confirm Supabase Auth URL configuration in the hosted project: Site URL should be `https://surettesystems.com`, and redirect allowlist should include `https://surettesystems.com/account.html`, `https://surettesystems.com/account-settings.html`, `https://surettesystems.com/account-admin.html`, `https://surettesystems.com/account-users.html`, plus local preview URLs only for development.
 - Run the updated `supabase/portal-role-setup.sql` in the hosted Supabase project so homepage newsletter submissions, account-signup mirroring into `homepage_email_signups`, public form message submission/photo attachment support, account-dashboard message submission/list/delete RPCs, and Admin Center delete RPCs work live. If Supabase reports a changed return type for `list_portal_messages()`, rerun the current file, which includes `drop function if exists public.list_portal_messages();` before the recreated function.
+- Configure Netlify Forms notifications for the detected forms (`contact`, `apps-consultation`, `app-checkout-request`, and `client-request`) so submissions email `info@surettesystems.com`, then submit production tests and confirm each message also appears in Admin Center Messages.
 
 ## Near-Term
 
@@ -45,6 +46,7 @@ Last updated: 2026-07-03
 
 ## Recently Completed
 
+- Restored Netlify Forms capture for Contact, Apps consultation, App Checkout, and account-dashboard request forms while keeping Supabase/Admin Center message saves.
 - Fixed service-page header/menu alignment by anchoring fixed top headers to the viewport in shared `assets/nav.css`; verified all service pages on mobile and the Website Design service page on desktop.
 - Removed profile-level business/company and website URL fields from account settings, Admin Center subscriber/account-holder tables, and Supabase setup/schema cleanup.
 - Separated Admin Center Subscribers from Account holders: Subscribers now reads only `homepage_email_signups`, account holders stay in their own auth/profile table, new account signups still mirror into subscriber rows, and subscriber deletion no longer reappears from account-holder fallback data.

@@ -1,6 +1,6 @@
 # Decisions
 
-Last updated: 2026-07-03
+Last updated: 2026-07-04
 
 Record only durable decisions here. Do not add routine change history.
 
@@ -97,6 +97,12 @@ Reason: authenticated client messages belong with portal/account data, and the o
 Decision: public website forms should also write to Supabase `client_messages` through `submit_site_message()` instead of Netlify Forms, with optional image attachments stored in a private Supabase Storage bucket.
 
 Reason: keeping contact, consultation, checkout, and portal messages in one owner-only Message Center gives the admin one operational inbox while avoiding Netlify dashboard/email fragmentation.
+
+## Owner Email Notifications
+
+Decision: message email notifications should use Netlify Forms notifications, while Supabase remains the durable message-center record.
+
+Reason: Netlify can provide owner email alerts without adding a separate email API provider or storing notification credentials in the project.
 
 ## Future Structure
 

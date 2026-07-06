@@ -2,6 +2,11 @@
 
 This file is intentionally compact. Keep only high-signal recent changes and major milestones.
 
+## 2026-07-04
+
+- Restored Netlify Forms capture for customer message forms while keeping Supabase/Admin Center saves. Contact, Apps consultation, App Checkout, and account-dashboard requests now save to Supabase first and then post to Netlify Forms so Netlify can send the owner notification email.
+- Removed the Resend/Netlify Function notification path and cache-busted `assets/site-message-forms.js` / `assets/client-portal.js` references on the affected pages. Verified JS syntax and reran the static validator; validator still fails only on documented pre-existing noise.
+
 ## 2026-07-03
 
 - Fixed service-page header/menu alignment by anchoring fixed top headers to the viewport in shared `assets/nav.css`, then cache-busted `nav.css` references. Verified all service pages no longer show the mobile header shifted right.
