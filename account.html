@@ -93,8 +93,10 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
   #canvas-container { position:fixed; inset:0; z-index:1; background:#020205; pointer-events:none; }
   #canvas-container canvas { position:absolute !important; top:50%; left:30%; transform:translate(-50%,-50%); pointer-events:none; }
   main.client-portal-shell { position:relative; z-index:2; }
-  @media (max-width: 767px) {
+  @media (max-width: 1279px) {
     #canvas-container canvas { top:50% !important; left:50% !important; transform:translate(-50%,-50%) !important; }
+  }
+  @media (max-width: 767px) {
     #fractal-gui-toggle { top:auto !important; bottom:90px; }
     .lil-gui.root { top:auto !important; bottom:122px !important; right:0 !important; max-height:55vh !important; overflow-y:auto !important; }
     main.client-portal-shell { padding-top:15vh; padding-bottom:90px; }

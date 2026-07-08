@@ -12,7 +12,7 @@
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>SeansAds.com | Portfolio | Surette Data Systems</title>
-<meta name="description" content="SeansAds.com portfolio detail by Surette Data Systems: a standalone Google Ads mini-site with bilingual pages, pricing paths, portfolio content, and account portal routing."/>
+<meta name="description" content="SeansAds.com portfolio detail by Surette Data Systems: a live standalone Google Ads mini-site with bilingual pages, pricing paths, portfolio content, and account portal routing."/>
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
 <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png"/>
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
@@ -21,18 +21,19 @@
 <meta property="og:site_name" content="Surette Data Systems"/>
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="SeansAds.com | Portfolio | Surette Data Systems"/>
-<meta property="og:description" content="A launch-ready standalone Google Ads mini-site created for Sean Cochrane."/>
+<meta property="og:description" content="A live standalone Google Ads mini-site at SeansAds.com, built for Sean Cochrane by Surette Data Systems."/>
 <meta property="og:url" content="https://surettesystems.com/portfolio-seansads.html"/>
 <meta property="og:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="SeansAds.com | Portfolio | Surette Data Systems"/>
-<meta name="twitter:description" content="A launch-ready standalone Google Ads mini-site created for Sean Cochrane."/>
+<meta name="twitter:description" content="A live standalone Google Ads mini-site at SeansAds.com, built for Sean Cochrane by Surette Data Systems."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
 <link href="assets/nav.css?v=20260703-fixed-header-anchor" rel="stylesheet"/>
 <link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/><link href="assets/portfolio-mobile-fixes.css?v=20260605-title-fit" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="assets/tailwind-nav-config.js"></script>
 <style>
   #sds-logo a.sds-anchor,
   #sds-logo-mobile a.sds-anchor {
@@ -89,36 +90,47 @@ body{background:#050505;color:#e3e2e2;overflow-x:hidden}.material-symbols-outlin
 <div class="absolute inset-0 cosmic-web-bg opacity-70"></div>
 <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,240,255,0.16),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(112,0,255,0.16),transparent_38%),linear-gradient(to_bottom,rgba(5,5,5,0.35),#050505_82%)]"></div>
 </div>
-<header class="fixed top-0 left-0 right-0 z-50 bg-void-black/70 backdrop-blur-xl border-b border-white/10">
-<div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-5">
+<nav class="fixed top-0 w-full bg-surface/10 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 z-50">
 <div id="sds-logo"></div>
-<nav class="hidden md:flex items-center gap-7 font-['JetBrains_Mono'] text-xs text-on-surface-variant">
-<a class="hover:text-electric-cyan" href="index.html">Home</a>
-<a class="hover:text-electric-cyan" href="apps.html">Services</a>
-<a class="hover:text-electric-cyan" href="contact.html">Contact</a>
+<div class="hidden md:flex gap-10 items-center">
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="index.html">Home</a>
+<div class="relative services-nav-group">
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" tabindex="0" aria-haspopup="true">Services</a>
+<div class="services-nav-menu">
+<div class="services-nav-panel">
+<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Online Services</div>
+<a href="services/website-design.html">Website Design</a>
+<a href="services/managed-hosting.html">Managed Hosting</a>
+<a href="services/website-care-plans.html">Website Care Plans</a>
+<a href="apps.html">Custom Business Web Apps</a>
+<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">home_pin</span>In-Home &amp; Office Services</div>
+<a href="services/in-home-services.html">In-Home Tech Services</a>
+<a href="services/office-network-setup.html">Office Network Setup</a>
+</div>
+</div>
+</div>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="apps.html">Apps</a>
+<a class="font-label-mono text-label-mono text-electric-cyan border-b-2 border-electric-cyan pb-1 transition-colors duration-300 portfolio-nav-button" href="casestudies.html" aria-current="page">Websites</a>
+<a class="font-label-mono text-label-mono text-electric-cyan hover:underline transition-colors duration-300 inline-flex items-center gap-1.5" href="account.html"><span class="material-symbols-outlined text-base">account_circle</span>Client Login</a>
+<a href="contact.html" class="ml-4 inline-block px-6 py-2 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-lg hover:opacity-90 active:scale-95 transition-all">Contact Us</a>
+</div>
 </nav>
-<div class="flex items-center gap-3">
-<a href="es/portfolio-seansads.html" class="font-['JetBrains_Mono'] text-xs text-on-surface-variant hover:text-electric-cyan">ES</a>
-<a href="contact.html" class="hidden sm:inline-flex px-4 py-2 rounded-lg bg-electric-cyan text-void-black font-['JetBrains_Mono'] text-xs font-bold">Contact Us</a>
-</div>
-</div>
-</header>
-<main class="relative z-10 pt-32 pb-24 px-6">
+<main class="relative z-10 pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto md:pl-28">
 <section class="max-w-6xl mx-auto">
 <a href="casestudies.html#case-seansads" class="inline-flex items-center gap-2 text-electric-cyan font-['JetBrains_Mono'] text-xs mb-10"><span class="material-symbols-outlined text-base">arrow_back</span> Back to portfolio</a>
 <div class="grid lg:grid-cols-[0.95fr_1.05fr] gap-10 items-center mb-16">
 <div>
-<p class="font-['JetBrains_Mono'] text-xs tracking-[0.22em] text-electric-cyan mb-4 uppercase">Project 04 // Launch Ready</p>
+<p class="font-['JetBrains_Mono'] text-xs tracking-[0.22em] text-electric-cyan mb-4 uppercase">Project 04 // Live</p>
 <h1 class="portfolio-detail-title font-['Space_Grotesk'] text-5xl md:text-7xl font-bold leading-none mb-6">Seans<span class="gradient-text-nebula">Ads.com</span></h1>
 <p class="text-xl text-on-surface-variant leading-relaxed mb-8">A standalone Google Ads service website for Sean Cochrane, built as its own focused lead funnel while still connecting customers back into the Surette Data Systems account portal.</p>
 <div class="flex flex-wrap gap-3 mb-8 font-['JetBrains_Mono'] text-[11px]">
 <span class="px-3 py-1.5 rounded-full border border-electric-cyan/30 bg-electric-cyan/10 text-electric-cyan">MINI-SITE</span>
 <span class="px-3 py-1.5 rounded-full border border-nebula-purple/30 bg-nebula-purple/10 text-nebula-purple">GOOGLE ADS</span>
 <span class="px-3 py-1.5 rounded-full border border-white/15 bg-white/5 text-on-surface-variant">BILINGUAL</span>
-<span class="px-3 py-1.5 rounded-full border border-white/15 bg-white/5 text-on-surface-variant">NETLIFY READY</span>
+<span class="px-3 py-1.5 rounded-full border border-white/15 bg-white/5 text-on-surface-variant">LIVE SITE</span>
 </div>
 <div class="flex flex-wrap gap-4">
-<a href="https://seansads.com/" class="inline-flex items-center gap-2 px-7 py-3 rounded-lg bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-['JetBrains_Mono'] text-xs font-bold"><span class="material-symbols-outlined text-base">open_in_new</span> Open Mini-Site</a>
+<a href="https://seansads.com/" class="inline-flex items-center gap-2 px-7 py-3 rounded-lg bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-['JetBrains_Mono'] text-xs font-bold"><span class="material-symbols-outlined text-base">open_in_new</span> Visit Live Site</a>
 <a href="casestudies.html#case-seansads" class="inline-flex items-center gap-2 px-7 py-3 rounded-lg border border-white/20 text-starlight-white font-['JetBrains_Mono'] text-xs">View Summary</a>
 </div>
 </div>
@@ -139,8 +151,8 @@ body{background:#050505;color:#e3e2e2;overflow-x:hidden}.material-symbols-outlin
 </div>
 <div class="glass-card rounded-xl p-6">
 <p class="font-['JetBrains_Mono'] text-xs text-electric-cyan mb-3">03</p>
-<h2 class="font-['Space_Grotesk'] text-2xl text-starlight-white mb-3">Launch Package</h2>
-<p class="text-on-surface-variant text-sm leading-relaxed">Bilingual pages, social preview metadata, compressed WebP graphics, Sean portrait assets, and a static structure ready for GitHub and Netlify.</p>
+<h2 class="font-['Space_Grotesk'] text-2xl text-starlight-white mb-3">Live Production Site</h2>
+<p class="text-on-surface-variant text-sm leading-relaxed">Bilingual pages, social preview metadata, compressed WebP graphics, Sean portrait assets, and a fast static site deployed at seansads.com.</p>
 </div>
 </div>
 <div class="glass-panel rounded-2xl p-6 md:p-10 mb-16">
@@ -163,16 +175,20 @@ body{background:#050505;color:#e3e2e2;overflow-x:hidden}.material-symbols-outlin
 </div>
 </div>
 <section class="text-center glass-card rounded-2xl p-10">
-<p class="font-['JetBrains_Mono'] text-xs text-electric-cyan mb-3 uppercase tracking-[0.18em]">Launch Domain</p>
-<h2 class="font-['Space_Grotesk'] text-4xl text-starlight-white mb-4">Built for SeansAds.com</h2>
-<p class="max-w-2xl mx-auto text-on-surface-variant leading-relaxed mb-8">The project is ready to be uploaded to GitHub and launched on Netlify once the final domain destination is connected.</p>
+<p class="font-['JetBrains_Mono'] text-xs text-electric-cyan mb-3 uppercase tracking-[0.18em]">Live Site</p>
+<h2 class="font-['Space_Grotesk'] text-4xl text-starlight-white mb-4">Now live at SeansAds.com</h2>
+<p class="max-w-2xl mx-auto text-on-surface-variant leading-relaxed mb-8">The mini-site is live and serving campaign setup, cleanup, launch, and management paths in English and Spanish, with plan selection and contact flows routed back into the Surette Data Systems account portal.</p>
+<a href="https://seansads.com/" class="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-['JetBrains_Mono'] text-xs font-bold mr-3"><span class="material-symbols-outlined text-base">open_in_new</span> Visit SeansAds.com</a>
 <a href="contact.html" class="inline-flex items-center gap-2 px-8 py-4 rounded-lg border border-electric-cyan/40 text-electric-cyan font-['JetBrains_Mono'] text-xs">Start a project like this <span class="material-symbols-outlined text-base">arrow_forward</span></a>
 </section>
 </section>
 </main>
 <footer class="relative z-10 border-t border-white/10 py-10 px-6 text-center text-on-surface-variant font-['JetBrains_Mono'] text-xs">Surette Data Systems &middot; Naples, FL &middot; <a class="text-electric-cyan" href="mailto:info@SuretteSystems.com">info@SuretteSystems.com</a></footer>
+<script src="assets/mobile-services-nav.js?v=20260627-blackfix"></script>
+<script src="assets/account-nav.js?v=20260703-mobile-account-color"></script>
+<script src="assets/rail.js?v=20260602-rail-active"></script>
 <script src="assets/portfolio-title-fit.js?v=20260605-title-fit"></script>
 <script src="surette-logo.js?v=20260703-nav-loader"></script>
-<script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
+<script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo'); });</script>
 </body>
 </html>

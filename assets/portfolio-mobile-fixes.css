@@ -138,4 +138,10 @@
   .portfolio-tile .font-label-caps {
     font-size: clamp(0.52rem, 1vw, 0.625rem) !important;
   }
+
+  .portfolio-detail-title {
+    font-size: clamp(1.5rem, 4.5vw, 2.75rem);
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
 }

@@ -491,7 +491,8 @@ nav .hidden.md\:flex,
   }
 
   /* Brand back into the flex flow (was position:absolute). */
-  nav.fixed.top-0.w-full > .site-brand {
+  nav.fixed.top-0.w-full > .site-brand,
+  nav.fixed.top-0.w-full > #sds-logo {
     position: static;
     left: auto;
     top: auto;
@@ -819,5 +820,29 @@ nav .hidden.md\:flex,
 
   body.has-dm-standard-nav .app-footer {
     padding-bottom: 2rem !important;
+  }
+}
+
+/* ── Tablet band (768px–1279px): rail inset + stacked columns ── */
+@media (min-width: 768px) and (max-width: 1279.98px) {
+  /* Left rail padding is for wide desktop; at tablet it steals horizontal room. */
+  .md\:pl-28 {
+    padding-left: clamp(1.25rem, 4vw, 4rem) !important;
+  }
+
+  /* Contact and similar two-column layouts: stack until lg. */
+  main .max-w-container-max.flex.flex-col.md\:flex-row {
+    flex-direction: column !important;
+  }
+
+  main .max-w-container-max.flex.flex-col.md\:flex-row > * {
+    min-width: 0;
+    width: 100%;
+  }
+
+  /* Portfolio detail hero rows with live-site widget. */
+  section .flex.flex-col.md\:flex-row.md\:items-end.justify-between {
+    flex-direction: column !important;
+    align-items: stretch !important;
   }
 }

@@ -1,6 +1,6 @@
 # Current Status
 
-Last updated: 2026-07-04
+Last updated: 2026-07-08
 
 ## Site State
 
@@ -68,10 +68,12 @@ Websites gallery (`casestudies.html`) â€” current entries (in order):
 1. Naples Estate Jewelry â€” `portfolio-naplesestatejewelry.html`. Screenshots under `assets/portfolio/naples-estate-jewelry/` (PNG + WebP).
 2. JP Surette â€” `portfolio-jpsurette.html`. Screenshots under `assets/portfolio/jpsurette/`.
 3. Elite Yacht Detailing â€” `portfolio-eliteyachtdetailing.html`. Screenshots under `assets/portfolio/elite/`.
-4. Sean's Ads â€” `portfolio-seansads.html`. Screenshots under `assets/portfolio/seansads/`.
+4. Sean's Ads — `portfolio-seansads.html`. Live at `https://seansads.com/`. Screenshots under `assets/portfolio/seansads/`. Copy reflects live production status.
 5. AuctionBuddha.com â€” `portfolio-auctionbuddha.html`. Screenshots under `assets/portfolio/auction-buddha/` (PNG).
 6. MetalsCalc.com â€” `portfolio-metalscalc.html`. Product landing and PWA install page. Screenshots under `assets/portfolio/metalscalc/` (PNG).
 - Open "Your Project Here" tile.
+
+Tablet layout (768px–1279px): shared fixes in `assets/nav.css` reduce left-rail padding, stack contact/portfolio two-column layouts, and treat `#sds-logo` as a flex nav brand. `casestudies.html` hero stacks below 1024px; `portfolio-live-widget.css` constrains the live-site CTA on tablet. Playwright audit (`scripts/tablet-audit.js`) reports zero overflow/clipping issues across 16 key pages at 834×1194, 1024×768, and 768×1024.
 
 ## Known Cautions
 

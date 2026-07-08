@@ -1,6 +1,6 @@
 # Tasks
 
-Last updated: 2026-07-04
+Last updated: 2026-07-08
 
 ## Active
 
@@ -45,6 +45,9 @@ Last updated: 2026-07-04
 - Consider future migration from duplicated hand-authored HTML to generated static HTML with shared layouts (Astro candidate for marketing pages).
 
 ## Recently Completed
+
+- Updated Sean's Ads portfolio (`portfolio-seansads.html`, `casestudies.html`) to reflect live production at SeansAds.com; aligned `portfolio-seansads.html` with the standard sitewide top nav.
+- Fixed tablet overflow/clipping sitewide: shared `assets/nav.css` tablet band, casestudies hero stack, contact page `lg:flex-row`, portfolio live-widget sizing, and nav `#sds-logo` flex treatment. Playwright tablet audit clean on 16 pages × 3 viewports.
 
 - Restored Netlify Forms capture for Contact, Apps consultation, App Checkout, and account-dashboard request forms while keeping Supabase/Admin Center message saves.
 - Fixed service-page header/menu alignment by anchoring fixed top headers to the viewport in shared `assets/nav.css`; verified all service pages on mobile and the Website Design service page on desktop.

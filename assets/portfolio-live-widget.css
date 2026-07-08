@@ -172,6 +172,22 @@
     50% { transform: scale(1.35); opacity: 1; box-shadow: 0 0 0 6px rgba(5, 5, 5, 0); }
 }
 
+@media (min-width: 641px) and (max-width: 1279.98px) {
+    .portfolio-live-widget {
+        width: 100%;
+        max-width: min(100%, 22rem);
+        flex-shrink: 1;
+        min-width: 0;
+        align-self: flex-start;
+    }
+
+    .portfolio-live-widget__copy {
+        min-width: 0;
+        flex: 1 1 auto;
+        overflow: hidden;
+    }
+}
+
 @media (max-width: 640px) {
     .portfolio-live-widget {
         width: 100%;

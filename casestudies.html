@@ -296,6 +296,19 @@
             padding-top: 0.75rem;
             padding-bottom: 1.5rem;
         }
+        @media (max-width: 1023px) {
+            .case-studies-hero {
+                grid-template-columns: minmax(0, 1fr);
+                gap: clamp(1.25rem, 3vw, 2.5rem);
+            }
+            .case-studies-hero__visual {
+                min-height: auto;
+                padding-top: 0.25rem;
+            }
+            .case-studies-hero__copy p.inline-flex .material-symbols-outlined {
+                transform: rotate(90deg);
+            }
+        }
         /* Ghost rail popover */
         .rail-popover-ghost {
             visibility: hidden;
@@ -714,7 +727,7 @@
 <a href="portfolio-seansads.html" class="portfolio-tile">
 <div class="portfolio-tile__media">
 <img src="assets/portfolio/seansads/home.webp" alt="SeansAds.com Google Ads mini-site homepage" class="portfolio-tile__img" loading="lazy"/>
-<span class="portfolio-tile__badge">04 &middot; LAUNCH READY</span>
+<span class="portfolio-tile__badge">04 &middot; LIVE</span>
 </div>
 <div class="p-7 flex flex-col gap-4 flex-1">
 <div class="flex flex-wrap gap-2">
@@ -722,7 +735,7 @@
 <span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">GOOGLE ADS</span>
 </div>
 <h3 class="portfolio-card-title font-headline-md text-headline-md text-starlight-white">SeansAds.com</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed flex-1">Standalone Google Ads service site for campaign setup, pricing tiers, bilingual pages, client-account routing, and portfolio content.</p>
+<p class="text-on-surface-variant text-sm leading-relaxed flex-1">Live Google Ads service site at SeansAds.com with campaign setup, pricing tiers, bilingual pages, client-account routing, and portfolio content.</p>
 <span class="portfolio-tile__cta">View case study <span class="material-symbols-outlined">arrow_forward</span></span>
 </div>
 </a>
@@ -953,11 +966,11 @@
 <a href="portfolio-seansads.html" class="portfolio-tile active:scale-[0.98]">
 <div class="portfolio-tile__media">
 <img src="assets/portfolio/seansads/home.webp" alt="SeansAds.com Google Ads mini-site homepage" class="portfolio-tile__img" loading="lazy"/>
-<span class="portfolio-tile__badge">04 &middot; LAUNCH READY</span>
+<span class="portfolio-tile__badge">04 &middot; LIVE</span>
 </div>
 <div class="p-5 flex flex-col gap-3">
 <h3 class="portfolio-card-title font-headline-md text-[18px] text-starlight-white">SeansAds.com</h3>
-<p class="font-body-md text-[13px] text-on-surface-variant">Standalone Google Ads mini-site with pricing paths, bilingual pages, and Surette Data Systems portal routing.</p>
+<p class="font-body-md text-[13px] text-on-surface-variant">Live Google Ads mini-site at SeansAds.com with pricing paths, bilingual pages, and Surette Data Systems portal routing.</p>
 <span class="font-label-mono text-[11px] text-electric-cyan inline-flex items-center gap-1">View case study <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
 </div>
 </a>
