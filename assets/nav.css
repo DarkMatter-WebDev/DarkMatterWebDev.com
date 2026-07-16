@@ -630,6 +630,34 @@ nav .hidden.md\:flex,
   }
 }
 
+/* Tint for the three fixed injected bars (desktop header, phone header, phone
+   bottom tab bar).
+
+   These float over the page, so whatever scrolls behind them decides whether
+   their labels survive — and both galleries now pass bright pastel cards and
+   near-white screenshots underneath. At the old `bg-surface/10` the bar labels
+   measured **1.17:1** against a light card and the active cyan item 1.09:1:
+   not dim, invisible. Over the site's dark background the same labels measure
+   4.68:1, which is the intended look.
+
+   0.9 restores almost all of that (label ~4.25:1 over a near-white backdrop,
+   active ~11:1) while keeping the blur and a little colour bleed. It is cheap
+   to be this dark: the tint is within a few points of the page background, so
+   over normal dark pages every alpha from 0.1 to 1.0 measures the same 4.68 —
+   this only bites where light content is behind, which is the whole point.
+
+   Set here in plain CSS rather than as a Tailwind utility on injected markup,
+   per DECISIONS: the CDN only builds classes it finds in a page's static HTML,
+   and `bg-surface/10` appeared in none of them — it was surviving on the CDN's
+   DOM observer, the same bet that already rendered a footer line white and a
+   hamburger invisible. `!important` matches this file's established pattern for
+   injected nav markup. */
+.dm-standard-desktop-nav,
+.dm-unified-mobile-header,
+.dm-standard-bottom-nav {
+  background: rgba(8, 10, 14, 0.9) !important;
+}
+
 .services-nav-menu {
   position: absolute;
   top: 100%;
@@ -1019,13 +1047,25 @@ nav .hidden.md\:flex,
   color: #ffffff;
 }
 
+/* Phrase-atomic, same as the legal block below. This column is the one that
+   gives up width once the legal block stops shrinking, so the tagline is the
+   most likely thing in the footer to wrap — it should break between phrases,
+   not strand "Florida" from "Southwest". */
 .dm-footer__tagline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 6px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
   line-height: 1.5;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #8e9192;
+}
+
+.dm-footer__tagline > * {
+  white-space: nowrap;
 }
 
 .dm-footer__links {
@@ -1049,20 +1089,45 @@ nav .hidden.md\:flex,
   color: #00f0ff;
 }
 
+/* Legal/meta block. Each line is a flex row of atomic phrases (see the
+   `phrases()` helper in standard-site-footer.js): it wraps *between* phrases
+   when the column is tight and never inside one. As one plain string it broke
+   at any space, which is what split the phone across two lines as "404-" /
+   "8505" — and at 1440px, not just on phones. */
 .dm-footer__legal {
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
 }
 
-.dm-footer__legal span {
-  display: block;
+.dm-footer__legal-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 6px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
   line-height: 1.5;
   color: #8e9192;
 }
 
-.dm-footer__legal span + span {
-  margin-top: 4px;
+.dm-footer__legal-line > * {
+  white-space: nowrap;
+}
+
+.dm-legal-sep {
+  opacity: 0.45;
+}
+
+.dm-footer__legal a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.dm-footer__legal a:hover {
+  color: #00f0ff;
 }
 
 @media (min-width: 880px) {
@@ -1078,8 +1143,18 @@ nav .hidden.md\:flex,
     flex-direction: row;
   }
 
+  /* Once the three columns are side by side, the link list is the elastic one —
+     it already wraps. This column must not be: `space-between` was shrinking it
+     to 159px even at 1440px, well under the 282px its two lines need, which is
+     what forced the phone to break. Let it take its content and make the links
+     wrap a row earlier instead. */
   .dm-footer__legal {
-    text-align: right;
+    align-items: flex-end;
+    flex-shrink: 0;
+  }
+
+  .dm-footer__legal-line {
+    justify-content: flex-end;
   }
 }
 
@@ -1141,15 +1216,26 @@ nav .hidden.md\:flex,
   color: #00f0ff;
 }
 
+/* Same phrase-atomic treatment as the wide footer's legal block: centred text
+   is the easiest place to notice a word breaking away from its phrase. */
 .dm-footer-mobile__legal {
   margin: 0;
   max-width: 32rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0 6px;
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
   line-height: 1.5;
   letter-spacing: 0.1em;
   text-align: center;
   color: rgba(121, 119, 119, 0.6);
+}
+
+.dm-footer-mobile__legal > * {
+  white-space: nowrap;
 }
 
 /* ── Tablet band (768px–1279px): rail inset + stacked columns ── */

@@ -35,8 +35,11 @@
 <meta name="twitter:description" content="Browse the full Surette Data Systems software catalog &mdash; live-demo CRM, compliance, payroll, and operations apps."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
 <meta name="twitter:image:alt" content="Surette Data Systems &mdash; high-tech business software for mobile, web, and desktop"/>
-<link href="assets/nav.css?v=20260716-md880" rel="stylesheet"/>
-<link href="assets/cosmic-web.css?v=20260716-md880" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="assets/nav.css?v=20260716-footer-meta2" rel="stylesheet"/>
+<link href="assets/cosmic-web.css?v=20260716-md880" rel="stylesheet"/>
+<link rel="stylesheet" href="pokecard-dropin/pokecard/pokecard.css">
+<link rel="stylesheet" href="assets/collectible-card.css?v=20260716-pill-backface">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
   #sds-logo a.sds-anchor,
   #sds-logo-mobile a.sds-anchor {
@@ -92,14 +95,18 @@
 tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors:{"on-background":"#e3e2e2","deep-space-grey":"#1A1A1A","primary-container":"#050505","on-surface":"#e3e2e2","void-black":"#050505","on-surface-variant":"#c4c7c7","surface-container-high":"#292a2a","on-tertiary-container":"#00848d","surface":"#121414","surface-container-low":"#1a1c1c","on-tertiary-fixed-variant":"#004f54","tertiary":"#00dbe9","electric-cyan":"#00F0FF","surface-bright":"#383939","on-tertiary":"#00363a","on-primary":"#313030","surface-container-highest":"#343535","on-secondary-container":"#ddcdff","secondary":"#d1bcff","surface-container":"#1f2020","background":"#121414","outline":"#8e9192","surface-container-lowest":"#0d0e0f","primary-fixed":"#e5e2e1","on-secondary":"#3c0090","on-error":"#690005","on-primary-fixed":"#1c1b1b","on-primary-container":"#797777","tertiary-fixed-dim":"#00dbe9","on-error-container":"#ffdad6","surface-dim":"#121414","surface-tint":"#c9c6c5","tertiary-container":"#000607","on-primary-fixed-variant":"#474646","nebula-purple":"#7000FF","inverse-primary":"#5f5e5e","on-secondary-fixed-variant":"#5700c9","secondary-container":"#7000ff","error-container":"#93000a","tertiary-fixed":"#7df4ff","error":"#ffb4ab","inverse-on-surface":"#2f3131","primary-fixed-dim":"#c9c6c5","secondary-fixed-dim":"#d1bcff","primary":"#c9c6c5","on-secondary-fixed":"#23005b","starlight-white":"#FFFFFF","surface-variant":"#343535","inverse-surface":"#e3e2e2","on-tertiary-fixed":"#002022","outline-variant":"#444748","secondary-fixed":"#e9ddff"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{unit:"8px","margin-desktop":"64px","margin-mobile":"20px",gutter:"24px","container-max":"1440px"},fontFamily:{"headline-lg-mobile":["Space Grotesk"],"body-md":["Plus Jakarta Sans"],"label-mono":["JetBrains Mono"],"label-caps":["JetBrains Mono"],"body-lg":["Plus Jakarta Sans"],"headline-xl":["Space Grotesk"],"headline-md":["Space Grotesk"],"headline-lg":["Space Grotesk"]},fontSize:{"headline-lg-mobile":["32px",{lineHeight:"1.2",fontWeight:"600"}],"body-md":["16px",{lineHeight:"1.6",fontWeight:"400"}],"label-mono":["14px",{lineHeight:"1.4",letterSpacing:"0.05em",fontWeight:"500"}],"label-caps":["12px",{lineHeight:"1.2",letterSpacing:"0.1em",fontWeight:"700"}],"body-lg":["18px",{lineHeight:"1.6",fontWeight:"400"}],"headline-xl":["64px",{lineHeight:"1.1",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-md":["24px",{lineHeight:"1.3",fontWeight:"500"}],"headline-lg":["40px",{lineHeight:"1.2",letterSpacing:"-0.01em",fontWeight:"600"}]}}}};
 </script>
 <style>
-/* App catalog cards &mdash; product-listing style (mirrors the Websites/Case Studies gallery) */
+/* Both galleries are collectible cards now (assets/collectible-card.css +
+   pokecard-dropin). What survives here is only what the "Let's build yours
+   today" open slot still needs: the surface, the hover, and the CTA row. The
+   media/img/badge rules and the per-tile nth-child backgrounds went with the
+   tiles — the cards carry their own hue via .tcg-card--app-* now. */
 .portfolio-tile {
     position: relative;
     display: flex;
     flex-direction: column;
-    border-radius: 1rem;
+    border-radius: 18px;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.025);
     border: 1px solid rgba(255, 255, 255, 0.1);
     text-decoration: none;
     scroll-margin-top: 7rem;
@@ -108,63 +115,12 @@ tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors
                 border-color 0.5s ease;
     will-change: transform;
 }
-/* Per-app solid background colors */
-.portfolio-tile:nth-child(1) { background: #1a1209; } /* Auction &mdash; dark amber */
-.portfolio-tile:nth-child(2) { background: #071618; } /* SDMS &mdash; dark ocean */
-.portfolio-tile:nth-child(3) { background: #081211; } /* Benji &mdash; dark jade */
-.portfolio-tile:nth-child(4) { background: #120c1a; } /* Antique Mall &mdash; dark violet */
-.portfolio-tile:nth-child(5) { background: #17120a; } /* MetalsCalc &mdash; dark gold */
-.portfolio-tile:nth-child(6) { background: #080d14; } /* MetalsPredictor &mdash; dark navy */
-.portfolio-tile:nth-child(7) { background: #0c0c14; } /* Open tile &mdash; dark indigo */
 .portfolio-tile:hover,
 .portfolio-tile:focus-visible {
     transform: translateY(-8px);
     border-color: rgba(0, 240, 255, 0.45);
     box-shadow: 0 26px 60px rgba(0, 0, 0, 0.55), 0 0 46px rgba(112, 0, 255, 0.18);
     outline: none;
-}
-.portfolio-tile__media {
-    position: relative;
-    aspect-ratio: 16 / 10;
-    overflow: hidden;
-    background: #050505;
-}
-.portfolio-tile__img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top center;
-    transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.portfolio-tile:hover .portfolio-tile__img,
-.portfolio-tile:focus-visible .portfolio-tile__img {
-    transform: scale(1.07);
-}
-.portfolio-tile__media::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(5, 5, 5, 0.78) 0%, rgba(5, 5, 5, 0.12) 52%, transparent 100%);
-    opacity: 0.85;
-    transition: opacity 0.5s ease;
-    pointer-events: none;
-}
-.portfolio-tile:hover .portfolio-tile__media::after { opacity: 0.6; }
-.portfolio-tile__badge {
-    position: absolute;
-    top: 0.85rem;
-    left: 0.85rem;
-    z-index: 2;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    padding: 0.25rem 0.6rem;
-    border-radius: 9999px;
-    background: rgba(0, 240, 255, 0.15);
-    color: #00F0FF;
-    border: 1px solid rgba(0, 240, 255, 0.3);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
 }
 .portfolio-tile__cta {
     display: inline-flex;
@@ -174,14 +130,7 @@ tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
     letter-spacing: 0.08em;
-    opacity: 0;
-    transform: translateX(-8px);
     transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.portfolio-tile:hover .portfolio-tile__cta,
-.portfolio-tile:focus-visible .portfolio-tile__cta {
-    opacity: 1;
-    transform: translateX(0);
 }
 .portfolio-tile__cta .material-symbols-outlined {
     font-size: 16px;
@@ -190,57 +139,27 @@ tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors
 .portfolio-tile:hover .portfolio-tile__cta .material-symbols-outlined {
     transform: translateX(4px);
 }
+/* Placeholder slot: deliberately flatter than a real app card. */
 .portfolio-tile--open {
     border-style: dashed;
-    border-color: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.2);
     justify-content: center;
     align-items: flex-start;
     text-align: left;
 }
 .portfolio-tile--open:hover,
 .portfolio-tile--open:focus-visible {
-    border-color: rgba(0, 240, 255, 0.4);
-}
-@media (max-width: 879.98px) {
-    .portfolio-tile { min-height: auto; }
-    .portfolio-tile__badge {
-        top: 0.55rem;
-        left: 0.55rem;
-        font-size: 8px;
-        letter-spacing: 0.08em;
-        padding: 0.2rem 0.42rem;
-    }
-    .portfolio-tile__media { aspect-ratio: 4 / 3; }
-    .portfolio-tile > div:not(.portfolio-tile__media) {
-        gap: 0.55rem !important;
-        padding: 0.8rem !important;
-    }
-    .portfolio-tile .portfolio-card-title {
-        font-size: 1.05rem !important;
-        line-height: 1.2;
-    }
-    .portfolio-tile p {
-        font-size: 0.75rem !important;
-        line-height: 1.35;
-    }
-    .portfolio-tile__cta,
-    .portfolio-tile .font-label-mono {
-        font-size: 9px !important;
-        line-height: 1.25;
-        letter-spacing: 0.06em;
-    }
+    border-color: rgba(0, 240, 255, 0.5);
 }
 @media (prefers-reduced-motion: reduce) {
     .portfolio-tile,
-    .portfolio-tile__img,
     .portfolio-tile__cta { transition: none; }
     .portfolio-tile:hover { transform: none; }
-    .portfolio-tile:hover .portfolio-tile__img { transform: none; }
 }
 </style>
 </head>
 <body class="font-['Plus_Jakarta_Sans',sans-serif] min-h-screen flex flex-col cosmic-page cosmic-tint-services sds-apps-page">
-<script src="assets/standard-site-nav.js?v=20260716-nav-880" data-active="apps"></script>
+<script src="assets/standard-site-nav.js?v=20260716-bar-tint" data-active="apps"></script>
 <div class="relative z-10 pt-32 md:pt-28 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
 <a href="apps.html" class="inline-flex items-center gap-2 font-label-mono text-label-mono text-starlight-white/70 hover:text-electric-cyan transition-colors duration-300">
 <span class="material-symbols-outlined text-base">arrow_back</span>Back to Apps
@@ -248,115 +167,350 @@ tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors
 </div>
 <main class="catalog-main relative z-10 pt-6 md:pt-10 pb-28 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
 <section class="mb-16">
-<div class="grid grid-cols-2 xl:grid-cols-3 gap-3 md:gap-gutter">
+<!-- One-up on phones, not two: the card is a fixed 2.5/3.5 ratio, so a 2-up
+     phone column can't hold the anatomy (it needs ~312px even with the art at
+     its 64px floor). Card CSS is shared with the Websites gallery — see
+     assets/collectible-card.css; the palette here is the tcg-card--app-* set,
+     kept deliberately distinct from that gallery's hues. -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-gutter">
 
-<a href="auction-house-consignment-store-software.html" class="portfolio-tile">
-<div class="portfolio-tile__media">
-<img src="assets/apps/auction/auction-dashboard.webp" alt="Auction House &amp; Consignment Store Software dashboard" class="portfolio-tile__img" loading="lazy"/>
-<span class="portfolio-tile__badge">01 &middot; LIVE DEMO</span>
+<div class="poke-scene tcg-card tcg-card--app-auction-house" data-flip="0">
+<div class="poke-card" role="button" tabindex="0" aria-pressed="false"
+     aria-label="Auction House &amp; Consignment app card. Click or press Enter to flip for full details.">
+<div class="poke-face poke-face--front">
+<div class="poke-plate">
+<div class="poke-top">
+<h3 class="poke-name">Auction House<wbr/> &amp; Consignment</h3>
+<span class="tcg-flip-top" aria-hidden="true">Flip<span class="material-symbols-outlined">autorenew</span></span>
 </div>
-<div class="p-7 flex flex-col gap-4 flex-1">
-<div class="flex flex-wrap gap-2">
-<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">MANAGEMENT</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">CONSIGNMENT</span>
+<div class="poke-art">
+<img src="assets/apps/auction/auction-dashboard.webp" alt="Auction House &amp; Consignment Store Software dashboard" loading="lazy" decoding="async"/>
+<span class="tcg-stat-pill">Live Demo</span>
 </div>
-<h3 class="portfolio-card-title font-headline-md text-headline-md text-starlight-white">Auction House &amp; Consignment Store</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed flex-1">Consignors, inventory, labels, invoices, and settlements for floor sales and live auctions.</p>
-<span class="portfolio-tile__cta">Open profile <span class="material-symbols-outlined">arrow_forward</span></span>
+<div class="poke-stage-line">
+<span>Stage &middot; Management</span>
+<span>No. 001</span>
 </div>
-</a>
+<div class="poke-badges" aria-label="App type">
+<span class="poke-badge">Management</span>
+<span class="poke-badge">Consignment</span>
+<span class="poke-badge">Labels</span>
+</div>
+<div class="poke-body">
+<span class="attack-name">Floor To Gavel</span>
+Consignors, inventory, labels, invoices, and settlements for floor sales and live auctions.
+</div>
+<div class="poke-foot">
+<span class="poke-tag">built for &middot; auction houses</span>
+<div class="poke-links">
+<a class="poke-btn poke-btn--primary" href="auction-house-consignment-store-software.html">Open Profile</a>
+</div>
+</div>
+</div>
+</div>
+<div class="poke-face poke-face--back">
+<div class="poke-plate">
+<div class="poke-back-inner">
+<h3>Auction House &amp; Consignment</h3>
+<p>Runs a consignment floor and a live auction room from one system &mdash; consignor accounts, intake and inventory, label printing, invoicing, and settlement payouts.</p>
+<div class="back-badges" aria-label="App type">
+<span class="poke-badge">Management</span>
+<span class="poke-badge">Consignment</span>
+<span class="poke-badge">Labels</span>
+</div>
+<div class="poke-links">
+<a class="poke-btn poke-btn--primary" href="auction-house-consignment-store-software.html">Open Profile</a>
+</div>
+<span class="poke-flip-hint">Click / press Enter to flip back</span>
+</div>
+</div>
+</div>
+<div class="poke-glare" aria-hidden="true"></div>
+</div>
+</div>
+<div class="poke-scene tcg-card tcg-card--app-sdms" data-flip="0">
+<div class="poke-card" role="button" tabindex="0" aria-pressed="false"
+     aria-label="Secondhand Dealer Management app card. Click or press Enter to flip for full details.">
+<div class="poke-face poke-face--front">
+<div class="poke-plate">
+<div class="poke-top">
+<h3 class="poke-name">Secondhand Dealer<wbr/> Management</h3>
+<span class="tcg-flip-top" aria-hidden="true">Flip<span class="material-symbols-outlined">autorenew</span></span>
+</div>
+<div class="poke-art">
+<img src="assets/apps/sdms/sdms-dashboard.webp" alt="Secondhand Dealer Management System dashboard" loading="lazy" decoding="async"/>
+<span class="tcg-stat-pill">Live Demo</span>
+</div>
+<div class="poke-stage-line">
+<span>Stage &middot; Compliance</span>
+<span>No. 002</span>
+</div>
+<div class="poke-badges" aria-label="App type">
+<span class="poke-badge">Compliance</span>
+<span class="poke-badge">FL 538</span>
+<span class="poke-badge">Audit Logs</span>
+</div>
+<div class="poke-body">
+<span class="attack-name">Stays Legal For You</span>
+FL 538 compliance, seller intake, 15-day holds, live metals pricing, and full audit logs.
+</div>
+<div class="poke-foot">
+<span class="poke-tag">built for &middot; FL 538 dealers</span>
+<div class="poke-links">
+<a class="poke-btn poke-btn--primary" href="secondhand-dealer-management-system.html">Open Profile</a>
+</div>
+</div>
+</div>
+</div>
+<div class="poke-face poke-face--back">
+<div class="poke-plate">
+<div class="poke-back-inner">
+<h3>Secondhand Dealer Management</h3>
+<p>Built around Florida Statute 538: seller intake and ID capture, automatic 15-day holds, live metals pricing at the counter, and an audit log that stands up to a records request.</p>
+<div class="back-badges" aria-label="App type">
+<span class="poke-badge">Compliance</span>
+<span class="poke-badge">FL 538</span>
+<span class="poke-badge">Audit Logs</span>
+</div>
+<div class="poke-links">
+<a class="poke-btn poke-btn--primary" href="secondhand-dealer-management-system.html">Open Profile</a>
+</div>
+<span class="poke-flip-hint">Click / press Enter to flip back</span>
+</div>
+</div>
+</div>
+<div class="poke-glare" aria-hidden="true"></div>
+</div>
+</div>
+<div class="poke-scene tcg-card tcg-card--app-benji" data-flip="0">
+<div class="poke-card" role="button" tabindex="0" aria-pressed="false"
+     aria-label="Benji &mdash; Payroll app card. Click or press Enter to flip for full details.">
+<div class="poke-face poke-face--front">
+<div class="poke-plate">
+<div class="poke-top">
+<h3 class="poke-name">Benji<wbr/> &mdash; Payroll</h3>
+<span class="tcg-flip-top" aria-hidden="true">Flip<span class="material-symbols-outlined">autorenew</span></span>
+</div>
+<div class="poke-art">
+<img src="assets/apps/benji/benji-dashboard.webp" alt="Benji Payroll Management System dashboard" loading="lazy" decoding="async"/>
+<span class="tcg-stat-pill">Live Demo</span>
+</div>
+<div class="poke-stage-line">
+<span>Stage &middot; Payroll</span>
+<span>No. 003</span>
+</div>
+<div class="poke-badges" aria-label="App type">
+<span class="poke-badge">Payroll</span>
+<span class="poke-badge">Time Tracking</span>
+<span class="poke-badge">Pay Stubs</span>
+</div>
+<div class="poke-body">
+<span class="attack-name">Hours To Paid</span>
+Time entry, approvals, auto pay calculations, pay stubs, and auditable payroll reports.
+</div>
+<div class="poke-foot">
+<span class="poke-tag">built for &middot; small teams</span>
+<div class="poke-links">
+<a class="poke-btn poke-btn--primary" href="benji-payroll-management-system.html">Open Profile</a>
+</div>
+</div>
+</div>
+</div>
+<div class="poke-face poke-face--back">
+<div class="poke-plate">
+<div class="poke-back-inner">
+<h3>Benji &mdash; Payroll</h3>
+<p>Takes a small team from clocked hours to paid: time entry, an approval queue, automatic pay calculation, printable stubs, and payroll reports that reconcile.</p>
+<div class="back-badges" aria-label="App type">
+<span class="poke-badge">Payroll</span>
+<span class="poke-badge">Time Tracking</span>
+<span class="poke-badge">Pay Stubs</span>
+</div>
+<div class="poke-links">
+<a class="poke-btn poke-btn--primary" href="benji-payroll-management-system.html">Open Profile</a>
+</div>
+<span class="poke-flip-hint">Click / press Enter to flip back</span>
+</div>
+</div>
+</div>
+<div class="poke-glare" aria-hidden="true"></div>
+</div>
+</div>
+<div class="poke-scene tcg-card tcg-card--app-mall" data-flip="0">
+<div class="poke-card" role="button" tabindex="0" aria-pressed="false"
+     aria-label="Third Street Auction Marketplace app card. Click or press Enter to flip for full details.">
+<div class="poke-face poke-face--front">
+<div class="poke-plate">
+<div class="poke-top">
+<h3 class="poke-name">Third Street<wbr/> Auction Marketplace</h3>
+<span class="tcg-flip-top" aria-hidden="true">Flip<span class="material-symbols-outlined">autorenew</span></span>
+</div>
+<div class="poke-art">
+<img src="assets/apps/antique-mall/thirdstreet-home.png" alt="Third Street Auction Marketplace homepage" loading="lazy" decoding="async"/>
+<span class="tcg-stat-pill">Live Demo</span>
+</div>
+<div class="poke-stage-line">
+<span>Stage &middot; Marketplace</span>
+<span>No. 004</span>
+</div>
+<div class="poke-badges" aria-label="App type">
+<span class="poke-badge">Marketplace</span>
+<span class="poke-badge">Auctions</span>
+<span class="poke-badge">Vendor Shops</span>
+</div>
+<div class="poke-body">
+<span class="attack-name">A Mall Online</span>
+Vendor shops, filtered catalog browsing, carts, account access, and timed auction lot pages.
+</div>
+<div class="poke-foot">
+<span class="poke-tag">built for &middot; vendor malls</span>
+<div class="poke-links">
+<a class="poke-btn poke-btn--primary" href="antique-mall-vendor-management-system-and-auction-platform.html">Open Profile</a>
+</div>
+</div>
+</div>
+</div>
+<div class="poke-face poke-face--back">
+<div class="poke-plate">
+<div class="poke-back-inner">
+<h3>Third Street Auction Marketplace</h3>
+<p>Puts a vendor mall online: each vendor gets a shop, buyers get a filtered catalog and cart, and timed auction lots run alongside the everyday inventory.</p>
+<div class="back-badges" aria-label="App type">
+<span class="poke-badge">Marketplace</span>
+<span class="poke-badge">Auctions</span>
+<span class="poke-badge">Vendor Shops</span>
+</div>
+<div class="poke-links">
+<a class="poke-btn poke-btn--primary" href="antique-mall-vendor-management-system-and-auction-platform.html">Open Profile</a>
+</div>
+<span class="poke-flip-hint">Click / press Enter to flip back</span>
+</div>
+</div>
+</div>
+<div class="poke-glare" aria-hidden="true"></div>
+</div>
+</div>
+<div class="poke-scene tcg-card tcg-card--app-metalscalc" data-flip="0">
+<div class="poke-card" role="button" tabindex="0" aria-pressed="false"
+     aria-label="MetalsCalc &mdash; Buying Calc app card. Click or press Enter to flip for full details.">
+<div class="poke-face poke-face--front">
+<div class="poke-plate">
+<div class="poke-top">
+<h3 class="poke-name">MetalsCalc<wbr/> &mdash; Buying Calc</h3>
+<span class="tcg-flip-top" aria-hidden="true">Flip<span class="material-symbols-outlined">autorenew</span></span>
+</div>
+<div class="poke-art">
+<img src="assets/apps/metalscalc/metalscalc-tile.webp" alt="MetalsCalc precious metal buying calculator &mdash; list mode with live spot prices" loading="lazy" decoding="async"/>
+<span class="tcg-stat-pill">PWA</span>
+</div>
+<div class="poke-stage-line">
+<span>Stage &middot; PWA Tool</span>
+<span>No. 005</span>
+</div>
+<div class="poke-badges" aria-label="App type">
+<span class="poke-badge">Precious Metals</span>
+<span class="poke-badge">Buying Calc</span>
+<span class="poke-badge">Offline</span>
+</div>
+<div class="poke-body">
+<span class="attack-name">Weigh-In To Offer</span>
+Live Au/Ag/Pt spot pricing, custom buy percentages, a coin library, and one-tap PDF invoices.
+</div>
+<div class="poke-foot">
+<span class="poke-tag">built for &middot; metal buyers</span>
+<div class="poke-links">
+<a class="poke-btn poke-btn--primary" href="metalscalc-buying-calculator.html">Open Profile</a>
+</div>
+</div>
+</div>
+</div>
+<div class="poke-face poke-face--back">
+<div class="poke-plate">
+<div class="poke-back-inner">
+<h3>MetalsCalc &mdash; Buying Calc</h3>
+<p>From weigh-in to a finished invoice in under ten seconds: live Au/Ag/Pt spot pricing, editable buy percentages per grade, a coin library, and one-tap PDF, photo, or email invoices. Installs to a phone and works fully offline.</p>
+<div class="back-badges" aria-label="App type">
+<span class="poke-badge">Precious Metals</span>
+<span class="poke-badge">Buying Calc</span>
+<span class="poke-badge">Offline</span>
+</div>
+<div class="poke-links">
+<a class="poke-btn poke-btn--primary" href="metalscalc-buying-calculator.html">Open Profile</a>
+</div>
+<span class="poke-flip-hint">Click / press Enter to flip back</span>
+</div>
+</div>
+</div>
+<div class="poke-glare" aria-hidden="true"></div>
+</div>
+</div>
+<div class="poke-scene tcg-card tcg-card--app-predictor" data-flip="0">
+<div class="poke-card" role="button" tabindex="0" aria-pressed="false"
+     aria-label="MetalsPredictor &mdash; Analyzer app card. Click or press Enter to flip for full details.">
+<div class="poke-face poke-face--front">
+<div class="poke-plate">
+<div class="poke-top">
+<h3 class="poke-name">MetalsPredictor<wbr/> &mdash; Analyzer</h3>
+<span class="tcg-flip-top" aria-hidden="true">Flip<span class="material-symbols-outlined">autorenew</span></span>
+</div>
+<div class="poke-art">
+<img src="assets/apps/metalspredictor/metalspredictor-dashboard.png" alt="MetalsPredictor &mdash; Gold &amp; Silver Trend Analyzer dashboard with live spot prices and candlestick chart" loading="lazy" decoding="async"/>
+<span class="tcg-stat-pill">Web App</span>
+</div>
+<div class="poke-stage-line">
+<span>Stage &middot; Analytics</span>
+<span>No. 006</span>
+</div>
+<div class="poke-badges" aria-label="App type">
+<span class="poke-badge">Precious Metals</span>
+<span class="poke-badge">Analytics</span>
+<span class="poke-badge">Charting</span>
+</div>
+<div class="poke-body">
+<span class="attack-name">Read The Trend</span>
+Live Au/Ag spot prices, candlestick charts, RSI, MACD, Bollinger Bands, and a forecast score.
+</div>
+<div class="poke-foot">
+<span class="poke-tag">built for &middot; metal traders</span>
+<div class="poke-links">
+<a class="poke-btn poke-btn--primary" href="metalspredictor-gold-silver-analyzer.html">Open Profile</a>
+</div>
+</div>
+</div>
+</div>
+<div class="poke-face poke-face--back">
+<div class="poke-plate">
+<div class="poke-back-inner">
+<h3>MetalsPredictor &mdash; Analyzer</h3>
+<p>A trend desk for gold and silver: live spot prices, candlestick charts, RSI, MACD and Bollinger Bands, plus an analytical forecast score for reading direction.</p>
+<div class="back-badges" aria-label="App type">
+<span class="poke-badge">Precious Metals</span>
+<span class="poke-badge">Analytics</span>
+<span class="poke-badge">Charting</span>
+</div>
+<div class="poke-links">
+<a class="poke-btn poke-btn--primary" href="metalspredictor-gold-silver-analyzer.html">Open Profile</a>
+</div>
+<span class="poke-flip-hint">Click / press Enter to flip back</span>
+</div>
+</div>
+</div>
+<div class="poke-glare" aria-hidden="true"></div>
+</div>
+</div>
 
-<a href="secondhand-dealer-management-system.html" class="portfolio-tile">
-<div class="portfolio-tile__media">
-<img src="assets/apps/sdms/sdms-dashboard.webp" alt="Secondhand Dealer Management System dashboard" class="portfolio-tile__img" loading="lazy"/>
-<span class="portfolio-tile__badge">02 &middot; LIVE DEMO</span>
-</div>
-<div class="p-7 flex flex-col gap-4 flex-1">
-<div class="flex flex-wrap gap-2">
-<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">COMPLIANCE</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">FL 538</span>
-</div>
-<h3 class="portfolio-card-title font-headline-md text-headline-md text-starlight-white">Secondhand Dealer Management</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed flex-1">FL 538 compliance, seller intake, 15-day holds, live metals pricing, and full audit logs.</p>
-<span class="portfolio-tile__cta">Open profile <span class="material-symbols-outlined">arrow_forward</span></span>
-</div>
-</a>
-
-<a href="benji-payroll-management-system.html" class="portfolio-tile">
-<div class="portfolio-tile__media">
-<img src="assets/apps/benji/benji-dashboard.webp" alt="Benji Payroll Management System dashboard" class="portfolio-tile__img" loading="lazy"/>
-<span class="portfolio-tile__badge">03 &middot; LIVE DEMO</span>
-</div>
-<div class="p-7 flex flex-col gap-4 flex-1">
-<div class="flex flex-wrap gap-2">
-<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">PAYROLL</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">TIME TRACKING</span>
-</div>
-<h3 class="portfolio-card-title font-headline-md text-headline-md text-starlight-white">Benji &mdash; Payroll Management</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed flex-1">Time entry, approvals, auto pay calculations, pay stubs, and auditable payroll reports.</p>
-<span class="portfolio-tile__cta">Open profile <span class="material-symbols-outlined">arrow_forward</span></span>
-</div>
-</a>
-
-<a href="antique-mall-vendor-management-system-and-auction-platform.html" class="portfolio-tile">
-<div class="portfolio-tile__media">
-<img src="assets/apps/antique-mall/thirdstreet-home.png" alt="Third Street Auction Marketplace homepage" class="portfolio-tile__img" loading="lazy"/>
-<span class="portfolio-tile__badge">04 &middot; LIVE DEMO</span>
-</div>
-<div class="p-7 flex flex-col gap-4 flex-1">
-<div class="flex flex-wrap gap-2">
-<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">MARKETPLACE</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">AUCTIONS</span>
-</div>
-<h3 class="portfolio-card-title font-headline-md text-headline-md text-starlight-white">Third Street Auction Marketplace</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed flex-1">Vendor shops, filtered catalog browsing, carts, account access, and timed auction lot pages.</p>
-<span class="portfolio-tile__cta">Open profile <span class="material-symbols-outlined">arrow_forward</span></span>
-</div>
-</a>
-
-<a href="metalscalc-buying-calculator.html" class="portfolio-tile">
-<div class="portfolio-tile__media">
-<img src="assets/apps/metalscalc/metalscalc-tile.webp" alt="MetalsCalc precious metal buying calculator &mdash; list mode with live spot prices" class="portfolio-tile__img" loading="lazy"/>
-<span class="portfolio-tile__badge">05 &middot; PWA</span>
-</div>
-<div class="p-7 flex flex-col gap-4 flex-1">
-<div class="flex flex-wrap gap-2">
-<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">PRECIOUS METALS</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">BUYING CALC</span>
-</div>
-<h3 class="portfolio-card-title font-headline-md text-headline-md text-starlight-white">MetalsCalc &mdash; Buying Calculator</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed flex-1">Live Au/Ag/Pt spot pricing, customizable buy percentages, coin library, and one-tap PDF invoices for precious-metal dealers.</p>
-<span class="portfolio-tile__cta">Open profile <span class="material-symbols-outlined">arrow_forward</span></span>
-</div>
-</a>
-
-<a href="metalspredictor-gold-silver-analyzer.html" class="portfolio-tile">
-<div class="portfolio-tile__media">
-<img src="assets/apps/metalspredictor/metalspredictor-dashboard.png" alt="MetalsPredictor &mdash; Gold &amp; Silver Trend Analyzer dashboard with live spot prices and candlestick chart" class="portfolio-tile__img" loading="lazy"/>
-<span class="portfolio-tile__badge">06 &middot; WEB APP</span>
-</div>
-<div class="p-7 flex flex-col gap-4 flex-1">
-<div class="flex flex-wrap gap-2">
-<span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">PRECIOUS METALS</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">ANALYTICS</span>
-</div>
-<h3 class="portfolio-card-title font-headline-md text-headline-md text-starlight-white">MetalsPredictor &mdash; Gold &amp; Silver Analyzer</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed flex-1">Live Au/Ag spot prices, candlestick charts, RSI, MACD, Bollinger Bands, and an analytical forecast score for precious metal trend analysis.</p>
-<span class="portfolio-tile__cta">Open profile <span class="material-symbols-outlined">arrow_forward</span></span>
-</div>
-</a>
-
-<a href="contact.html" class="portfolio-tile portfolio-tile--open p-8 gap-4">
+<a href="contact.html" class="portfolio-tile portfolio-tile--open tcg-open-slot p-8 gap-4">
 <span class="material-symbols-outlined text-4xl text-electric-cyan">add_circle</span>
 <h3 class="portfolio-card-title font-headline-md text-headline-md text-starlight-white">Let&rsquo;s build yours today</h3>
 <p class="text-on-surface-variant text-sm leading-relaxed">Tell us what you need to track, manage, or automate &mdash; we&rsquo;ll build a custom app for your workflow.</p>
-<span class="portfolio-tile__cta" style="opacity:1;transform:none;">Start a project <span class="material-symbols-outlined">arrow_forward</span></span>
+<span class="portfolio-tile__cta">Start a project <span class="material-symbols-outlined">arrow_forward</span></span>
 </a>
 
 </div>
 </section>
 </main>
-<script src="assets/standard-site-footer.js?v=20260716-shared-footer"></script>
+<script src="assets/standard-site-footer.js?v=20260716-footer-3line"></script>
+<script src="pokecard-dropin/pokecard/pokecard.js"></script>
 <script src="assets/mobile-services-nav.js?v=20260715-services-merge"></script>
 <script src="assets/account-nav.js?v=20260715-login-highlight"></script>
 <script src="surette-logo.js?v=20260715-reveal-margin"></script>

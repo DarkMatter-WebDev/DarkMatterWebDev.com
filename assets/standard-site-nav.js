@@ -146,7 +146,7 @@
   }
 
   var html =
-    '<nav class="dm-standard-desktop-nav hidden md:flex fixed top-0 w-full z-50 bg-surface/10 backdrop-blur-xl border-b border-white/10 justify-between items-center px-margin-desktop py-4">' +
+    '<nav class="dm-standard-desktop-nav hidden md:flex fixed top-0 w-full z-50 backdrop-blur-xl border-b border-white/10 justify-between items-center px-margin-desktop py-4">' +
     '<div id="sds-logo"></div><div class="hidden md:flex items-center gap-10">' +
     '<a class="' +
     desktopClass("home") +
@@ -181,7 +181,7 @@
     // dm-standard-mobile-shell lets nav.css flip this on at 880px without
     // touching the identical md:hidden class that page layouts use for their
     // own phone wrapper. md:hidden stays so the shell still hides above that.
-    '<div class="dm-standard-mobile-shell md:hidden"><header class="dm-unified-mobile-header fixed top-0 w-full bg-surface/10 backdrop-blur-xl z-50 border-b border-starlight-white/10 shadow-[0_0_20px_rgba(0,240,255,0.1)]">' +
+    '<div class="dm-standard-mobile-shell md:hidden"><header class="dm-unified-mobile-header fixed top-0 w-full backdrop-blur-xl z-50 border-b border-starlight-white/10 shadow-[0_0_20px_rgba(0,240,255,0.1)]">' +
     '<div class="dm-unified-mobile-header-content flex items-center justify-between px-margin-mobile h-16 w-full mx-auto"><div id="sds-logo-mobile"></div>' +
     '<div class="dm-mobile-menu-controls flex items-center gap-3">' +
     (langAlt ? '<div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0">' + langToggleHtml() + "</div>" : "") +
@@ -204,7 +204,7 @@
     '<a href="' + u("contact.html") + '" class="' + mobileMenuLinkClass("contact") + '"><span class="material-symbols-outlined text-lg">mail</span>' + (isSpanish ? "Contacto" : "Contact") + '</a>' +
     '<a href="' + u("contact.html") + '" class="flex items-center gap-3 px-4 py-3 text-void-black bg-gradient-to-r from-electric-cyan to-nebula-purple font-label-mono text-sm mx-2 my-1 rounded-lg"><span class="material-symbols-outlined text-lg">calendar_month</span>' + copy.contact + '</a>' +
     '</div></div></div></div>' +
-    '</div></header><nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface/10 backdrop-blur-2xl border-t border-starlight-white/10 shadow-[0_-10px_30px_rgba(112,0,255,0.15)] rounded-t-xl">' +
+    '</div></header><nav class="dm-standard-bottom-nav fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe backdrop-blur-2xl border-t border-starlight-white/10 shadow-[0_-10px_30px_rgba(112,0,255,0.15)] rounded-t-xl">' +
     '<a href="' + u("index.html") + '" class="' +
     mobileClass("home") +
     '"><span class="material-symbols-outlined">home</span><span class="font-label-caps text-[10px] mt-1">' +

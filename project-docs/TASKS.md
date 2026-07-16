@@ -1,6 +1,6 @@
 # Tasks
 
-Last updated: 2026-07-15
+Last updated: 2026-07-16
 
 ## Active
 
@@ -13,6 +13,13 @@ Last updated: 2026-07-15
 - Configure Netlify Forms notifications for the detected forms (`contact`, `apps-consultation`, `app-checkout-request`, and `client-request`) so submissions email `info@surettesystems.com`, then submit production tests and confirm each message also appears in Admin Center Messages.
 
 ## Near-Term
+
+- **Consider raising the mobile tab bar's inactive label opacity.** They are `rgba(196,199,199,0.6)` in `assets/standard-site-nav.js`, so they composite onto the bar itself — as the bar darkens the label darkens too, which caps them at **4.69:1 even against a pure black bar** (AA wants 4.5, so they are marginal *everywhere*, not just over light content). The 2026-07-16 bar-tint fix took them from 1.17:1 to ~4.25:1 over a light card, which is as far as tint alone can go. Raising the label to ~0.85 opacity would reach ~6:1, at the cost of some active/inactive hierarchy. Owner's call.
+
+
+- **The Websites gallery cards are duplicated across two layouts — keep them in sync.** `casestudies.html` renders the same six collectible cards twice: desktop (`.hidden md:block`, 2/3-up) and phone (`.md:hidden`, 1-up). Any card edit (copy, estimate, links, theme) must land in both or they drift. Worth revisiting if this page is ever unified into a single responsive layout, or if the cards move to a shared injected component — but note they are static HTML on purpose (SEO).
+- **`.footer-meta` / `.footer-meta-sep` in `assets/nav.css` are dead.** They styled the pre-2026-07-16 hand-authored footers; the shared footer uses `.dm-footer__legal-line` / `.dm-legal-sep` instead. Safe to delete once confirmed no page still emits `.footer-meta` markup.
+- **`assets/portfolio-mobile-fixes.css` may now be partly dead.** It still carries `.portfolio-tile__media`-era rules, but neither gallery renders tiles any more (only the open slots use `.portfolio-tile`). Audit which of its rules still apply and to which pages before deleting anything — it is loaded by several portfolio detail pages too.
 
 - **Fix MetalsCalc OG/meta URLs** — `metalscalc-buying-calculator.html` and `portfolio-metalscalc.html` reference `darkmatterwebsites.com` in OG/meta URLs; should be `surettesystems.com` if that is the canonical production domain.
 - **Clean up stale antique mall screenshots** — `assets/apps/antique-mall/antique-mall-*.png` (old captures) may still be on disk alongside the current `thirdstreet-*.png` set; audit and delete unused files.
@@ -35,6 +42,7 @@ Last updated: 2026-07-15
 - **Add a secure backend/server-side payment layer** before real Stripe recurring billing or privileged admin operations.
 - **Keep app screenshots current** — Auction, SDMS, and Antique Mall screenshots should stay in sync with hosted demos.
 - **Review app pricing copy and rates** after real client feedback.
+- **Keep portfolio build estimates in sync with pricing.** The gallery price pills (`casestudies.html`, 12 pills across desktop + mobile grids) and the six detail-page `#build-pricing` sections are derived from the one-time build scale in `website_pricing_plan.txt`. If plan starting prices change, update both surfaces.
 
 ## Backlog
 
@@ -46,6 +54,8 @@ Last updated: 2026-07-15
 - Consider future migration from duplicated hand-authored HTML to generated static HTML with shared layouts (Astro candidate for marketing pages).
 
 ## Recently Completed
+
+- **Build-cost estimates on the Websites gallery + all six portfolio detail pages (2026-07-16):** gold "EST. $X+" pills on every gallery tile and a `#build-pricing` estimate section on every detail page, priced against `website_pricing_plan.txt` one-time build packages with the required estimate-only disclosure. Naples $12K–$16K, Elite $8.5K–$10K, JPSurette $4.5K–$6.5K, SeansAds $7.5K–$10K, AuctionBuddha $35K–$55K+ (repriced later the same day once the full ecosystem scope was known), MetalsCalc $2K–$2.5K. Verified in-browser (pill styles, no collisions at 375px, sections on all six pages, no overflow, no console errors); validator baseline unchanged.
 
 - **Nav single-source migration (2026-07-15):** migrated all 16 remaining public pages with inline/hand-copied nav markup to the `assets/standard-site-nav.js` generator, fixed the generator to emit `../`-prefixed links on `services/*` pages (all its injected links there 404'd before), deleted `assets/unified-mobile-menu.js` + its 28 script tags + dead nav.css shell rules, removed `app-pricing.html`'s broken `es/` lang toggle, and unified every loader reference to `v=20260715-nav-unify`. Fixes wrong active-page highlights (Portfolio shown active on apps/app-catalog/casestudies/built-by/accessibility/process), hardcoded-cyan Client Login on legacy pages, homepage's divergent hamburger structure, missing mobile nav markup on portfolio detail pages, and terms.html's missing nav logo. Verified in-browser at mobile + desktop across all migrated page types; no console errors; validator baseline unchanged.
 - Completed `services/website-design-hosting.html` as a full public pricing page implementing `website_pricing_plan.txt` (project root, source of truth for plan names/prices/policies): managed plans ($0 upfront Starter/Mini/Lead Capture + Local Business + Growth), one-time builds (8 packages), hosting/care plans, update-allowance/support/revision policies, ownership/renewal/handoff, add-on price list, and a 36-question FAQ. Verified anchors, overflow (375px clean), and content coverage in-browser; validator noise unchanged.

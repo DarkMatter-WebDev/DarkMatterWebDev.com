@@ -36,7 +36,23 @@
 
   var YEAR = "2026";
   var PHONE = "(239) 404-8505";
-  var TAGLINE = "Software &middot; Websites &middot; Business Tech &middot; Southwest Florida";
+  var TEL = "tel:+12394048505";
+  var TAGLINE_PARTS = ["Software", "Websites", "Business Tech", "Southwest Florida"];
+  var TAGLINE = TAGLINE_PARTS.join(" &middot; ");
+
+  // Legal/meta text is built from atomic phrases rather than one string. A plain
+  // string can break at any space, which is how "Call or text (239) 404-8505"
+  // ended up splitting the number across two lines ("404-" / "8505"). Each
+  // phrase is nowrap in CSS, so a tight column wraps *between* phrases and never
+  // inside one. Separators are their own elements so they can dim, and are
+  // aria-hidden so a screen reader hears the phrases, not the dots.
+  function phrases(parts) {
+    return parts
+      .map(function (part) {
+        return "<span>" + part + "</span>";
+      })
+      .join('<span class="dm-legal-sep" aria-hidden="true">&middot;</span>');
+  }
 
   // Wide screens list every destination; the phone footer drops the two that
   // the bottom tab bar already covers and shortens the rest to fit one row.
@@ -75,12 +91,25 @@
       '<div class="dm-footer__inner">' +
         '<div class="dm-footer__brand">' +
           '<span class="dm-footer__wordmark">SURETTE DATA SYSTEMS</span>' +
-          '<span class="dm-footer__tagline">' + TAGLINE + "</span>" +
+          '<span class="dm-footer__tagline">' + phrases(TAGLINE_PARTS) + "</span>" +
         "</div>" +
         '<nav class="dm-footer__links" aria-label="Footer">' + links(wideLinks) + "</nav>" +
+        // Three short lines rather than two long ones. "Southwest Florida" used
+        // to ride the copyright line behind a "·", which made that line 282px —
+        // the widest thing in the column by far. On its own line the column is
+        // only as wide as the phone line (~162px), so the block reads as a tidy
+        // stack instead of one long run, and hands ~120px back to the brand.
         '<div class="dm-footer__legal">' +
-          "<span>&copy; " + YEAR + " Surette Data Systems &middot; Southwest Florida</span>" +
-          "<span>Call or text " + PHONE + "</span>" +
+          '<div class="dm-footer__legal-line">' +
+            "<span>&copy; " + YEAR + " Surette Data Systems</span>" +
+          "</div>" +
+          '<div class="dm-footer__legal-line">' +
+            "<span>Call or text</span>" +
+            '<a href="' + TEL + '">' + PHONE + "</a>" +
+          "</div>" +
+          '<div class="dm-footer__legal-line">' +
+            "<span>Southwest Florida</span>" +
+          "</div>" +
         "</div>" +
       "</div>" +
     "</footer>";
@@ -92,7 +121,12 @@
         '<span class="dm-footer-mobile__wordmark">SURETTE DATA SYSTEMS</span>' +
       "</div>" +
       '<nav class="dm-footer-mobile__links" aria-label="Footer">' + links(phoneLinks) + "</nav>" +
-      '<p class="dm-footer-mobile__legal">&copy; ' + YEAR + " Surette Data Systems &middot; " + TAGLINE + "</p>" +
+      // Phrase-atomic like the wide footer, so this centred line breaks between
+      // phrases instead of mid-phrase ("Business" / "Tech"). No phone here — the
+      // phone footer mirrors the homepage's, which does not carry one.
+      '<p class="dm-footer-mobile__legal">' +
+        phrases(["&copy; " + YEAR + " Surette Data Systems"].concat(TAGLINE_PARTS)) +
+      "</p>" +
     "</footer>";
 
   var html = variant === "desktop" ? wide : variant === "mobile" ? phone : wide + phone;

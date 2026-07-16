@@ -1,0 +1,154 @@
+/* collectible-card.css
+   The gallery card shared by the Websites gallery (casestudies.html) and the
+   Apps gallery (app-catalog.html): a themed copy of the Tech Business Site
+   Template card from pokecard-dropin, one hue per entry.
+
+   Pair with the widget itself — a page using this must also load
+   pokecard-dropin/pokecard/pokecard.css and .../pokecard.js. The JS wires every
+   .poke-scene it finds, so cards need no per-page script.
+
+   Why the theming lives here and not in the drop-in: .poke-face exposes
+   --card-face, but the widget also hardcodes its green in three places the vars
+   don't reach — the 150deg face gradient's light/deep stops, and the .poke-top /
+   .poke-foot tint washes. Those three rules are re-pointed here at component
+   level so the drop-in stays reusable and its own hero card stays green.
+
+   Prefix is tcg- (trading-card gallery), deliberately not cs-: both galleries
+   use it, and "cs" would read as case-study on the Apps page.
+
+   Layout note: the card is a fixed 2.5/3.5 ratio, so it needs ~312px of height
+   before the art hits its 64px floor. A 2-up phone column (~162px wide -> 226px
+   tall) cannot hold it. Phone grids must be 1-up. */
+
+/* ============================================================
+   STRUCTURE
+   ============================================================ */
+.poke-scene.tcg-card {
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;            /* centre in its grid column */
+}
+
+.tcg-card .poke-face {
+  --card-face: var(--tcg-face);
+  background: linear-gradient(150deg, var(--tcg-light) 0%, var(--tcg-face) 42%, var(--tcg-deep) 100%);
+}
+.tcg-card .poke-top { background: linear-gradient(180deg, var(--tcg-tint), transparent); }
+.tcg-card .poke-foot { background: linear-gradient(0deg, var(--tcg-tint), transparent); }
+
+.tcg-card:focus-within .poke-card {
+  box-shadow: 10px 14px 0 rgba(0, 0, 0, 0.45),
+              0 0 0 3px var(--tcg-face),
+              0 0 22px var(--tcg-tint);
+}
+.tcg-card .poke-btn:focus-visible { box-shadow: 0 0 0 3px var(--tcg-face); }
+
+/* the art is a full-page capture — show the hero, not the middle */
+.tcg-card .poke-art img { object-position: top center; }
+
+/* A domain or product name is one unbreakable token: unlike the template's
+   "Tech Business Site Template" it cannot wrap on a space, so at the widget's
+   native 1.15rem a long one widens the top row and shoves whatever sits
+   opposite it out of the overflow-hidden plate. Three parts as a set: names
+   step down, the flip cue never shrinks, and a <wbr> before each TLD/suffix
+   gives a long name somewhere to break. overflow-wrap is a last-resort guard. */
+.tcg-card .poke-name {
+  min-width: 0;
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+.tcg-card .tcg-flip-top { flex-shrink: 0; }
+
+/* Headline stat, as a pill on the art corner — a build estimate on Websites, a
+   delivery type on Apps. Rides the art absolutely so it costs no row height and
+   takes the card's own hue. pointer-events off so the click still reaches the
+   card and flips it. Deliberately NOT aria-hidden: unlike the flip cue, this is
+   real information.
+
+   backface-visibility is load-bearing, not decoration. The card is preserve-3d
+   and the face is transform-style: flat, which on desktop flattens this pill
+   into the face's own rasterisation so it hides with it. Mobile GPUs promote an
+   absolutely-positioned, z-indexed element to its own compositing layer; that
+   layer escapes the flattening, joins the card's 3D context, and renders its
+   backface — so the pill showed through the flipped card, mirrored, on real
+   phones and tablets while desktop looked fine. This is the same reason the
+   widget sets it on .poke-glare, the one other absolute + z-indexed element in
+   the card. Any future overlay added inside a face needs it too. */
+.tcg-stat-pill {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  z-index: 2;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1.5px solid var(--card-ink);
+  background: var(--tcg-face);
+  color: var(--card-ink);
+  box-shadow: 1px 1px 0 var(--card-ink);
+  font-family: vcr-osd-mono, ibm-plex-mono, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Flip affordance, in the top bar. The card is a role="button" that flips and
+   nothing on the front said so; the hero card's "click to flip" kicker has
+   nowhere to live in a grid. aria-hidden — the card's own aria-label says it. */
+.tcg-flip-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-family: ibm-plex-mono, monospace;
+  font-size: 0.55rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--card-ink);
+  opacity: 0.8;
+  white-space: nowrap;
+}
+.tcg-flip-top .material-symbols-outlined {
+  font-size: 12px;
+  line-height: 1;
+}
+
+/* The open/placeholder slot sits in the same grid: match the card silhouette so
+   it reads as an empty sleeve rather than a stray wide panel. Its surface and
+   dashed border stay page-local — the two galleries style theirs differently. */
+.tcg-open-slot {
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+  aspect-ratio: 2.5 / 3.5;
+  border-radius: 18px;
+}
+
+/* ============================================================
+   THEMES — light -> face -> deep drive the 150deg face gradient;
+   tint is the same hue at 0.35 for the top/foot washes. Every face
+   must stay light: the plate is paper and the ink is near-black.
+   ============================================================ */
+
+/* Websites gallery (casestudies.html) */
+.tcg-card--jewelry { --tcg-face: #ffd76a; --tcg-light: #fff3cd; --tcg-deep: #c9922a; --tcg-tint: rgba(255, 215, 106, 0.35); }
+.tcg-card--yacht   { --tcg-face: #7de8ff; --tcg-light: #d2f7ff; --tcg-deep: #2f9cc2; --tcg-tint: rgba(125, 232, 255, 0.35); }
+.tcg-card--photo   { --tcg-face: #ff9aa8; --tcg-light: #ffd8de; --tcg-deep: #c04a5e; --tcg-tint: rgba(255, 154, 168, 0.35); }
+.tcg-card--ads     { --tcg-face: #9dbcff; --tcg-light: #dbe6ff; --tcg-deep: #4c69c6; --tcg-tint: rgba(157, 188, 255, 0.35); }
+.tcg-card--auction { --tcg-face: #cba6ff; --tcg-light: #ecdcff; --tcg-deep: #7a4fc0; --tcg-tint: rgba(203, 166, 255, 0.35); }
+.tcg-card--metals  { --tcg-face: #c3cede; --tcg-light: #e9eff7; --tcg-deep: #6b7a8f; --tcg-tint: rgba(195, 206, 222, 0.35); }
+
+/* Apps gallery (app-catalog.html) — a deliberately separate palette so the two
+   galleries don't read as the same set. Hues sit in the gaps the Websites set
+   leaves (~20/75/120/172/248/315 vs ~45/190/215/280/350), and every pair within
+   this set is >=45 deg apart. */
+.tcg-card--app-auction-house { --tcg-face: #ff9d73; --tcg-light: #ffd9c6; --tcg-deep: #c4522a; --tcg-tint: rgba(255, 157, 115, 0.35); }
+.tcg-card--app-sdms          { --tcg-face: #d7f77e; --tcg-light: #f0fcc4; --tcg-deep: #8aad2e; --tcg-tint: rgba(215, 247, 126, 0.35); }
+.tcg-card--app-benji         { --tcg-face: #8cf2a0; --tcg-light: #cdfad6; --tcg-deep: #2f9e56; --tcg-tint: rgba(140, 242, 160, 0.35); }
+.tcg-card--app-mall          { --tcg-face: #66ead9; --tcg-light: #c6f7f0; --tcg-deep: #22998c; --tcg-tint: rgba(102, 234, 217, 0.35); }
+.tcg-card--app-metalscalc    { --tcg-face: #a9a2ff; --tcg-light: #ddd9ff; --tcg-deep: #5b52c4; --tcg-tint: rgba(169, 162, 255, 0.35); }
+.tcg-card--app-predictor     { --tcg-face: #ff9ae0; --tcg-light: #ffd6f4; --tcg-deep: #c04a9e; --tcg-tint: rgba(255, 154, 224, 0.35); }

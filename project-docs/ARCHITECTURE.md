@@ -49,6 +49,7 @@ Last updated: 2026-07-15
 
 ## Shared Behavior
 
+- `assets/collectible-card.css` styles the gallery card shared by `casestudies.html` (Websites) and `app-catalog.html` (Apps) — a themed copy of the `pokecard-dropin` template card. Pages using it must also load `pokecard-dropin/pokecard/pokecard.css` and `.../pokecard.js` (the JS wires every `.poke-scene` it finds, so cards need no per-page script). Prefix is `tcg-`. Themes are `.tcg-card--*` (Websites) and `.tcg-card--app-*` (Apps, a deliberately separate palette). The widget hardcodes its green in three spots its own vars don't cover (face gradient stops, `.poke-top`/`.poke-foot` tints) — this file re-points those, so **do not edit `pokecard-dropin/`**; its hero card must stay green.
 - `assets/standard-site-nav.js` renders the shared public desktop and mobile navigation for standard-nav pages.
 - `assets/unified-mobile-menu.js` upgrades hand-authored legacy public headers and creates the mobile shell on the older portfolio-detail templates. It must be included after `assets/account-nav.js` on public pages that use those legacy templates.
 - `assets/nav.css` contains the cross-template header, menu, breakpoint, and overflow rules. Keep public fixed headers viewport-anchored and verify both sides of the 768px breakpoint after nav changes.
