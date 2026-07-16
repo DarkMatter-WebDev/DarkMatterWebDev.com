@@ -22,6 +22,18 @@ Decision: Sean's Google Ads source is intentionally external and absent from thi
 
 Reason: it is now separately hosted/managed at `https://seansads.com/`; Dark Matter should only link to it or expose portal-related Dark Matter pages.
 
+## Injected Shared Components Are Styled in Plain CSS
+
+Decision (2026-07-16): markup injected at runtime by a shared component (`standard-site-nav.js`, `standard-site-footer.js`) is styled with plain CSS in `assets/nav.css`, not Tailwind utilities.
+
+Reason: the Tailwind CDN only generates a utility if it finds that class in the page's own static HTML. A class used *only* inside injected markup exists nowhere for it to find, so it silently resolves to nothing — not an error, just wrong. Observed twice: `text-on-primary-container/60` rendered the footer's legal line white, and `portfolio.html`'s hamburger lines resolved to transparent, leaving a clickable but invisible menu button. Failures are per-page and invisible until someone looks, which makes them exactly the kind of drift this repo keeps paying for.
+
+## Footer Single Source of Truth
+
+Decision (2026-07-16): all public pages render one footer, injected from `assets/standard-site-footer.js`. Two variants mirror the homepage — the wide footer from 768px up and the phone footer below it. No page may carry inline footer markup.
+
+Reason: the site had drifted to roughly ten hand-copied footers with differing link sets, so any change to "the footer" only reached the page it was made on — the same failure the navigation had.
+
 ## Navigation Single Source of Truth
 
 Decision (2026-07-15): all public pages render their navigation — desktop header, mobile header + hamburger dropdown, and mobile bottom tab bar — exclusively from `assets/standard-site-nav.js` via one `<script ... data-active="...">` tag. No page may carry hand-copied inline nav markup; the legacy runtime shim `assets/unified-mobile-menu.js` was removed. Portal utility pages (account-admin/-users/-settings/-created, app-checkout) are the deliberate exception and keep minimal chrome.

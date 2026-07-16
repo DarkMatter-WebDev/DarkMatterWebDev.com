@@ -13,9 +13,9 @@
 
 <title>Website Design &amp; Hosting Pricing | Surette Data Systems</title>
 <meta name="description" content="Transparent website pricing for Southwest Florida small businesses &mdash; managed website plans starting at $125/month with a $0 upfront build, or one-time website builds you own and manage yourself."/>
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
-<link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png"/>
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
+<link rel="icon" href="/assets/favicon.svg?v=20260716-blur-on" type="image/svg+xml"/>
+<link rel="icon" href="/assets/favicon-32.png?v=20260716-blur-on" sizes="32x32" type="image/png"/>
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=20260716-blur-on"/>
 <link rel="manifest" href="/site.webmanifest"/>
 <meta name="theme-color" content="#050505"/>
 <meta property="og:site_name" content="Surette Data Systems"/>
@@ -31,7 +31,7 @@
 <meta name="twitter:title" content="Website Design &amp; Hosting Pricing | Surette Data Systems"/>
 <meta name="twitter:description" content="Transparent website pricing for Southwest Florida small businesses &mdash; managed website plans starting at $125/month with a $0 upfront build, or one-time website builds you own and manage yourself."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
-<link href="../assets/nav.css?v=20260715-login-highlight" rel="stylesheet"/>
+<link href="../assets/nav.css?v=20260716-shared-footer" rel="stylesheet"/>
 <link href="../assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
   #sds-logo a.sds-anchor,
@@ -87,7 +87,15 @@
 
 /* ---- Pricing page components ---- */
 html { scroll-behavior: smooth; }
-section[id] { scroll-margin-top: 110px; }
+/* The shared nav is fixed, so it covers the top of whatever an in-page link
+   lands on. It measures ~101px from 768px up (logo canvas + py-4) and 64px for
+   the mobile header, so a single offset can't clear both: 110px left only 15px
+   above the eyebrow at desktop/tablet, which read as the heading being tucked
+   under the nav. Each value below clears its own nav plus ~50px to breathe. */
+section[id] { scroll-margin-top: 145px; }
+@media (max-width: 767.98px) {
+  section[id] { scroll-margin-top: 110px; }
+}
 
 .wp-eyebrow { font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.18em; font-weight:700; color:#00F0FF; text-transform:uppercase; }
 .wp-h2 { font-family:'Space Grotesk',sans-serif; font-size:clamp(28px,4vw,40px); line-height:1.2; font-weight:700; color:#fff; margin-top:10px; letter-spacing:-.01em; }
@@ -1778,7 +1786,7 @@ section[id] { scroll-margin-top: 110px; }
       <p class="text-sm font-semibold text-electric-cyan mb-2 font-label-mono">STANDARD SUPPORT</p>
       <ul class="wp-list">
         <li>Provided through email, a support form, or a designated support channel</li>
-        <li>Initial response target: approximately 1&ndash;2 business days</li>
+        <li>Initial response: we reply as soon as we can</li>
         <li>Minor update completion target: approximately 3&ndash;5 business days</li>
         <li>Complex requests may require a quote and a separate timeline</li>
       </ul>
@@ -1787,7 +1795,7 @@ section[id] { scroll-margin-top: 110px; }
       <p class="text-sm font-semibold text-electric-cyan mb-2 font-label-mono">PRIORITY SUPPORT</p>
       <ul class="wp-list">
         <li>Business Care and higher plans may receive priority placement</li>
-        <li>Initial response target: approximately 1 business day</li>
+        <li>Initial response: we reply as soon as we can</li>
         <li>Minor-update completion target: approximately 1&ndash;3 business days when practical</li>
       </ul>
     </div>
@@ -2509,38 +2517,10 @@ section[id] { scroll-margin-top: 110px; }
 </section>
 
 </main>
-<footer class="w-full mt-auto bg-void-black border-t border-white/5">
-<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-12 w-full gap-8">
-<div class="flex flex-col gap-4">
-<div class="flex flex-col leading-none">
-<div class="font-headline-md text-headline-md text-starlight-white font-bold">SURETTE DATA SYSTEMS</div>
-
-</div>
-<div class="font-label-mono text-label-mono text-outline footer-meta">
-  <span>&copy; 2026 Surette Data Systems</span>
-  <span class="footer-meta-sep" aria-hidden="true">&middot;</span>
-  <span>Southwest Florida</span>
-  <span class="footer-meta-sep" aria-hidden="true">&middot;</span>
-  <span>Call or text <a class="text-electric-cyan hover:underline" href="tel:+12394048505" style="white-space:nowrap;">(239) 404-8505</a></span>
-  <span class="footer-meta-sep" aria-hidden="true">&middot;</span>
-  <a class="text-electric-cyan hover:underline" href="mailto:info@SuretteSystems.com" style="white-space:nowrap;">info@SuretteSystems.com</a>
-</div>
-</div>
-<div class="flex gap-12">
-<div class="flex flex-col gap-4">
-<span class="font-label-caps text-label-caps text-starlight-white">LEGAL</span>
-<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="../privacy.html">Privacy</a>
-<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="../accessibility.html">Accessibility</a>
-</div>
-<div class="flex flex-col gap-4">
-<span class="font-label-caps text-label-caps text-starlight-white">RESOURCES</span>
-<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="../terms.html">Terms</a>
-</div>
-</div>
-</div>
-</footer>
+<script src="../assets/standard-site-footer.js?v=20260716-shared-footer"></script>
 <script src="../assets/mobile-services-nav.js?v=20260715-services-merge"></script>
 <script src="../assets/account-nav.js?v=20260715-login-highlight"></script>
+<script src="../assets/table-scroll-hint.js?v=20260716-table-scroll-hint"></script>
 <script src="../surette-logo.js?v=20260715-reveal-margin"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo'); SuretteLogo.init('sds-logo-mobile'); });</script>
 </body></html>

@@ -819,6 +819,18 @@ nav .hidden.md\:flex,
     min-width: 0;
   }
 
+  /* The three hamburger lines take their colour from Tailwind utilities
+     (bg-electric-cyan, bg-starlight-white/55, bg-starlight-white/35) sitting on
+     injected nav markup, and the CDN only builds a utility it can find in the
+     page's own static HTML. portfolio.html never used them anywhere else, so
+     the lines resolved to transparent: the menu button was present and
+     clickable but completely invisible. Pin the colours here, where the rest of
+     the injected nav's fallbacks already live. Same values the utilities
+     produce, so pages where the CDN does generate them are unaffected. */
+  .mobile-menu-line-top { background-color: #00f0ff; }
+  .mobile-menu-line-mid { background-color: rgba(255, 255, 255, 0.55); }
+  .mobile-menu-line-bot { background-color: rgba(255, 255, 255, 0.35); }
+
   #mobile-menu-btn[aria-expanded="true"] .mobile-menu-line-top { width: 1.25rem; }
   #mobile-menu-btn[aria-expanded="true"] .mobile-menu-line-mid { width: 1rem; opacity: 0.9; }
   #mobile-menu-btn[aria-expanded="true"] .mobile-menu-line-bot { width: 0.75rem; opacity: 0.75; }
@@ -906,6 +918,20 @@ nav .hidden.md\:flex,
     background: rgba(var(--c-primary-rgb), 0.08);
   }
 
+  /* The bottom tab bar is fixed, so it reserves no space of its own — it simply
+     covers the last 5rem of the page, and footers were ending underneath it
+     (Privacy/Terms/Accessibility were unreachable on the portfolio detail pages,
+     Accessibility on the pricing page). The homepage already solved this with a
+     `mb-20` on its footer — 5rem, exactly the bar's height — so this applies
+     that same idiom everywhere instead of asking each page to remember it.
+     Deliberately a margin on the footer rather than padding on the body: the
+     footer then still ends flush against the bar, where padding would push it
+     up and expose a strip of the fixed starfield underneath it. Pages already
+     using mb-20 resolve to the identical 5rem and so are unchanged. */
+  body.has-dm-standard-nav footer {
+    margin-bottom: calc(5rem + env(safe-area-inset-bottom, 0px));
+  }
+
   body.has-dm-standard-nav .page {
     padding: 7.75rem 20px 5.5rem !important;
   }
@@ -921,6 +947,189 @@ nav .hidden.md\:flex,
     right: 0;
     width: auto;
   }
+}
+
+/* ── Shared site footer (injected by assets/standard-site-footer.js) ─────────
+   Plain CSS rather than the Tailwind utilities the homepage footer was written
+   with, because the CDN only builds utilities it can see in a page's static
+   HTML: once the footer is injected these classes exist nowhere else, and
+   `text-on-primary-container/60` silently rendered white when tested that way.
+   Every value here is what the homepage footer already resolved to.
+
+   Two variants, matching the homepage: .dm-footer from 768px up (so tablet
+   gets the wide one) and .dm-footer-mobile below it. Clearance above the fixed
+   bottom tab bar is not set here — `body.has-dm-standard-nav footer` above
+   already owns that for every footer on the site.
+   ─────────────────────────────────────────────────────────────────────────── */
+.dm-footer,
+.dm-footer-mobile {
+  width: 100%;
+  position: relative;
+  z-index: 10;
+  background: #050505;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dm-footer {
+  display: none;
+  margin-top: auto;
+  padding: 48px 64px;
+}
+
+.dm-footer__inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.dm-footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dm-footer__wordmark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #ffffff;
+}
+
+.dm-footer__tagline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8e9192;
+}
+
+.dm-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 40px;
+}
+
+.dm-footer__links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  color: #8e9192;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.dm-footer__links a:hover {
+  color: #00f0ff;
+}
+
+.dm-footer__legal {
+  text-align: left;
+}
+
+.dm-footer__legal span {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  line-height: 1.5;
+  color: #8e9192;
+}
+
+.dm-footer__legal span + span {
+  margin-top: 4px;
+}
+
+@media (min-width: 768px) {
+  .dm-footer {
+    display: block;
+  }
+}
+
+/* The three columns only sit side by side once there is room; 768–1023px keeps
+   them stacked, which is what the homepage footer already did at tablet. */
+@media (min-width: 1024px) {
+  .dm-footer__inner {
+    flex-direction: row;
+  }
+
+  .dm-footer__legal {
+    text-align: right;
+  }
+}
+
+.dm-footer-mobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 48px 20px;
+}
+
+@media (min-width: 768px) {
+  .dm-footer-mobile {
+    display: none;
+  }
+}
+
+.dm-footer-mobile__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  opacity: 0.8;
+}
+
+.dm-footer-mobile__brand .material-symbols-outlined {
+  font-size: 20px;
+  line-height: 28px;
+  color: #00f0ff;
+}
+
+.dm-footer-mobile__wordmark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.05em;
+  color: #ffffff;
+}
+
+.dm-footer-mobile__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 24px;
+  text-align: center;
+}
+
+.dm-footer-mobile__links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #8e9192;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.dm-footer-mobile__links a:hover {
+  color: #00f0ff;
+}
+
+.dm-footer-mobile__legal {
+  margin: 0;
+  max-width: 32rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  text-align: center;
+  color: rgba(121, 119, 119, 0.6);
 }
 
 /* ── Tablet band (768px–1279px): rail inset + stacked columns ── */
