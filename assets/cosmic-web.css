@@ -116,7 +116,7 @@ body.cosmic-tint-office {
   --cosmic-position: center 46%;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 879.98px) {
   body::before {
     height: 68vh;
     background-position: center top;

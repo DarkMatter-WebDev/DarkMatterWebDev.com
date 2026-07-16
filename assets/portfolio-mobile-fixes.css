@@ -24,7 +24,7 @@
   container-name: portfolio-tile;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 879.98px) {
   .portfolio-tile {
     min-height: auto;
     height: auto;
@@ -120,7 +120,7 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 1279px) {
+@media (min-width: 880px) and (max-width: 1279px) {
   .portfolio-tile {
     min-width: 0;
   }

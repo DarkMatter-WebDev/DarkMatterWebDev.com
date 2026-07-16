@@ -178,7 +178,10 @@
     '</div><a href="' + u("contact.html") + '" class="hidden sm:inline-block bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-mono text-label-mono px-6 py-2 rounded-lg hover:scale-105 active:scale-95 transition-all glow-cyan">' +
     copy.contact +
     "</a></nav>" +
-    '<div class="md:hidden"><header class="dm-unified-mobile-header fixed top-0 w-full bg-surface/10 backdrop-blur-xl z-50 border-b border-starlight-white/10 shadow-[0_0_20px_rgba(0,240,255,0.1)]">' +
+    // dm-standard-mobile-shell lets nav.css flip this on at 880px without
+    // touching the identical md:hidden class that page layouts use for their
+    // own phone wrapper. md:hidden stays so the shell still hides above that.
+    '<div class="dm-standard-mobile-shell md:hidden"><header class="dm-unified-mobile-header fixed top-0 w-full bg-surface/10 backdrop-blur-xl z-50 border-b border-starlight-white/10 shadow-[0_0_20px_rgba(0,240,255,0.1)]">' +
     '<div class="dm-unified-mobile-header-content flex items-center justify-between px-margin-mobile h-16 w-full mx-auto"><div id="sds-logo-mobile"></div>' +
     '<div class="dm-mobile-menu-controls flex items-center gap-3">' +
     (langAlt ? '<div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0">' + langToggleHtml() + "</div>" : "") +

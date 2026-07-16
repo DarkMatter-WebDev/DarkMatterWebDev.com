@@ -31,8 +31,8 @@
 <meta name="twitter:title" content="Our Process | Surette Data Systems"/>
 <meta name="twitter:description" content="Custom business software, web apps, websites, hosting, support, and local IT for Southwest Florida &mdash; one clear, proven process."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
-<link href="assets/nav.css?v=20260716-shared-footer" rel="stylesheet"/>
-<link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="assets/nav.css?v=20260716-md880" rel="stylesheet"/>
+<link href="assets/cosmic-web.css?v=20260716-md880" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
   #sds-logo a.sds-anchor,
   #sds-logo-mobile a.sds-anchor {
@@ -250,7 +250,7 @@
         tailwind.config = {
             darkMode: "class",
             theme: {
-                extend: {
+                extend: {"screens":{"md":"880px"},
                     "colors": {
                         "on-background": "#e3e2e2",
                         "deep-space-grey": "#1A1A1A",
@@ -361,7 +361,7 @@
     background:rgba(5,5,5,0.7);
   }
   #fractal-gui-toggle .material-symbols-outlined { font-size:15px; }
-  @media (max-width: 767px) {
+  @media (max-width: 879.98px) {
     #canvas-container canvas { top:50% !important; left:50% !important; transform:translate(-50%,-50%) !important; }
     #fractal-gui-toggle { top:auto !important; bottom:90px; }
     .lil-gui.root { top:auto !important; bottom:122px !important; right:0 !important; max-height:55vh !important; overflow-y:auto !important; }
@@ -369,7 +369,7 @@
 </style>
 </head>
 <body class="font-body-md text-body-md min-h-screen relative overflow-x-hidden selection:bg-electric-cyan selection:text-void-black">
-<script src="assets/standard-site-nav.js?v=20260715-nav-unify" data-active="none"></script>
+<script src="assets/standard-site-nav.js?v=20260716-nav-880" data-active="none"></script>
 <div id="canvas-container" aria-hidden="true"></div>
 <button id="fractal-gui-toggle" title="Visual settings" aria-label="Toggle visual settings" onclick="if(window._fractalGUI){window._fractalGUI._hidden?window._fractalGUI.show():window._fractalGUI.hide()}"><span class="material-symbols-outlined">grain</span></button>
 

@@ -284,7 +284,7 @@ html:lang(es) .sds-hero__flick-reveal-sub {
   animation: sds-logo-float 7.2s ease-in-out infinite;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 880px) {
   .sds-hero__floating-stage {
     pointer-events: auto;
     cursor: pointer;
@@ -369,7 +369,7 @@ html:lang(es) .sds-hero__flick-reveal-sub {
   50% { transform: translateX(4px); }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 879.98px) {
   .sds-hero__click-hint {
     display: none;
   }
@@ -963,7 +963,7 @@ body.sds-apps-page {
   background: rgba(245, 158, 11, 0.22);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 879.98px) {
   .sds-hero {
     min-height: clamp(24rem, 104vw, 31rem);
     margin-inline: -1rem;
@@ -1390,13 +1390,13 @@ body.is-apps-ready > :not(#sds-apps-loader) {
   pointer-events: auto;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 879.98px) {
   .sds-apps-page .sds-hero .sds-physics-toggle {
     right: 0.5rem;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 880px) {
   .sds-apps-page .sds-nav-contact-stack {
     display: flex;
     flex-direction: column;
@@ -1447,7 +1447,7 @@ body.is-apps-ready > :not(#sds-apps-loader) {
    adapts to any width instead of snapping between two fixed states.
    Scoped to .sds-apps-page so other pages keep the base nav.
    ─────────────────────────────────────────────────────────────── */
-@media (min-width: 768px) {
+@media (min-width: 880px) {
   .sds-apps-page {
     /* Edge inset shared by the brand (left) and Contact CTA (right);
        tightens as the viewport narrows but reaches the original 4rem
@@ -1493,20 +1493,9 @@ body.is-apps-ready > :not(#sds-apps-loader) {
   }
 }
 
-/* Tight band: below ≈880px there isn't room for the floating Contact
-   CTA alongside the full link row. Drop the CTA and reclaim its gutter
-   so the links keep one clean, non-overlapping row down to the mobile
-   breakpoint (Contact is still reachable from the footer, and from the
-   bottom nav once below 768px). */
-@media (min-width: 768px) and (max-width: 879.98px) {
-  .sds-apps-page {
-    --dm-nav-contact-reserve: 0rem;
-  }
-
-  .sds-apps-page .sds-nav-contact-stack {
-    display: none !important;
-  }
-}
+/* The apps pages' floating `.sds-nav-contact-stack` CTA was removed when they
+   moved to the shared nav (which carries its own Contact button), so the
+   tight-band rule that used to hide it here is gone with it. */
 
 .sds-physics-toggle__label {
   display: inline-flex;

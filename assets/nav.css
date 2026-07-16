@@ -530,7 +530,7 @@ nav .hidden.md\:flex,
    The apps page overrides the gutter in surette-data-systems-apps.css
    (its CTA is a separate fixed overlay rather than a nav child).
    ─────────────────────────────────────────────────────────────── */
-@media (min-width: 768px) {
+@media (min-width: 880px) {
   nav.fixed.top-0.w-full {
     /* Edge inset; tightens as the viewport narrows, reaches the
        original 4rem by standard desktop widths (~1280px). */
@@ -607,18 +607,26 @@ nav .hidden.md\:flex,
   }
 }
 
-/* Tight band: below ≈880px there isn't room for the CTA alongside the
-   full link row. Drop the CTA and reclaim its gutter so the links keep
-   one clean, non-overlapping row down to the mobile breakpoint (Contact
-   stays reachable from the footer, and from the bottom nav below 768px). */
-@media (min-width: 768px) and (max-width: 879.98px) {
-  nav.fixed.top-0.w-full {
-    --dm-nav-contact-reserve: 0rem;
+/* Where the header switches to the hamburger.
+   The wide header only fits its full link row plus the Contact CTA down to
+   ~880px. It used to keep going to 768px by dropping the CTA, which left a
+   half-collapsed header: links on the left, a dead gutter on the right where
+   the button had been, and no way to reach Contact from the header at all.
+   Switch to the hamburger at that point instead, so the header is either whole
+   or a menu and never partway.
+
+   The injected nav's own classes are `hidden md:flex` / `md:hidden`, i.e. baked
+   to Tailwind's 768px. These two rules move that boundary for the nav only —
+   `.dm-standard-mobile-shell` is on the injected shell specifically, so page
+   layouts that use the same `md:hidden` class for their phone wrapper are not
+   dragged along and keep switching at 768px. */
+@media (max-width: 879.98px) {
+  .dm-standard-desktop-nav {
+    display: none !important;
   }
 
-  nav.fixed.top-0.w-full > a.bg-gradient-to-r,
-  nav.fixed.top-0.w-full > .hidden.md\:flex > a.bg-gradient-to-r {
-    display: none !important;
+  .dm-standard-mobile-shell {
+    display: block !important;
   }
 }
 
@@ -729,7 +737,12 @@ nav .hidden.md\:flex,
   background: rgba(var(--c-primary-rgb), 0.06);
 }
 
-@media (max-width: 767px) {
+/* Mobile nav chrome. Runs to 880px, not 768px, because that is where the
+   header switches to the hamburger (see the switch rules above) — the dropdown,
+   popout and bottom bar have to be styled wherever they are actually shown.
+   Page-layout rules do NOT belong in here; they keep the 767px phone
+   breakpoint and live in their own block further down. */
+@media (max-width: 879.98px) {
   html,
   body {
     overflow-x: hidden;
@@ -932,6 +945,13 @@ nav .hidden.md\:flex,
     margin-bottom: calc(5rem + env(safe-area-inset-bottom, 0px));
   }
 
+}
+
+/* These two are page layout, not nav chrome, so they stay on the real phone
+   breakpoint: between 768px and 880px the page still renders its wide layout
+   (only the header switches to the hamburger), and forcing 20px gutters there
+   would squeeze the app pages for no reason. */
+@media (max-width: 879.98px) {
   body.has-dm-standard-nav .page {
     padding: 7.75rem 20px 5.5rem !important;
   }
@@ -941,7 +961,7 @@ nav .hidden.md\:flex,
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 880px) {
   .dm-standard-desktop-nav {
     left: 0;
     right: 0;
@@ -1045,7 +1065,7 @@ nav .hidden.md\:flex,
   margin-top: 4px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 880px) {
   .dm-footer {
     display: block;
   }
@@ -1071,7 +1091,7 @@ nav .hidden.md\:flex,
   padding: 48px 20px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 880px) {
   .dm-footer-mobile {
     display: none;
   }
@@ -1133,7 +1153,7 @@ nav .hidden.md\:flex,
 }
 
 /* ── Tablet band (768px–1279px): rail inset + stacked columns ── */
-@media (min-width: 768px) and (max-width: 1279.98px) {
+@media (min-width: 880px) and (max-width: 1279.98px) {
   /* Left rail padding is for wide desktop; at tablet it steals horizontal room. */
   .md\:pl-28 {
     padding-left: clamp(1.25rem, 4vw, 4rem) !important;

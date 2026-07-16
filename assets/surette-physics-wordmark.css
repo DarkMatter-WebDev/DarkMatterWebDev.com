@@ -463,7 +463,7 @@
   cursor: default;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 879.98px) {
   .sds-physics-wordmark__arena {
     min-height: clamp(2.8rem, 12vw, 4rem);
   }
@@ -496,7 +496,7 @@
   overflow: visible;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 880px) {
   .sds-physics-desktop-mark {
     display: block;
     object-fit: contain;

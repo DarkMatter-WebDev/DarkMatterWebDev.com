@@ -31,14 +31,14 @@
 <meta name="twitter:title" content="Portfolio | Surette Data Systems"/>
 <meta name="twitter:description" content="Explore custom apps and websites built by Surette Data Systems."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
-<link href="assets/nav.css?v=20260716-shared-footer" rel="stylesheet"/>
-<link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/>
+<link href="assets/nav.css?v=20260716-md880" rel="stylesheet"/>
+<link href="assets/cosmic-web.css?v=20260716-md880" rel="stylesheet"/>
 <script>
 tailwind = window.tailwind || {};
 tailwind.config = {
   darkMode: "class",
   theme: {
-    extend: {
+    extend: {"screens":{"md":"880px"},
       colors: {
         "void-black": "#050505",
         "surface": "#121414",
@@ -286,7 +286,7 @@ tailwind.config = {
   .portfolio-hub-footer a:hover {
     color: #00F0FF;
   }
-  @media (max-width: 767px) {
+  @media (max-width: 879.98px) {
     .portfolio-hub-shell,
     .portfolio-hub-footer__inner {
       width: calc(100% - 40px);
@@ -355,7 +355,7 @@ tailwind.config = {
 </style>
 </head>
 <body class="font-body-md text-on-surface bg-void-black cosmic-tint-apps">
-<script src="assets/standard-site-nav.js?v=20260715-nav-unify" data-active="portfolio"></script>
+<script src="assets/standard-site-nav.js?v=20260716-nav-880" data-active="portfolio"></script>
 <div class="fixed inset-0 grid-overlay pointer-events-none z-0"></div>
 <main class="portfolio-hub-shell">
 <section class="portfolio-hub-hero">

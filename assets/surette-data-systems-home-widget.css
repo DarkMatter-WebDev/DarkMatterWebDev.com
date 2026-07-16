@@ -198,7 +198,7 @@
   color: #c084fc;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 880px) {
   .sds-home-widget--desktop {
     display: block;
   }

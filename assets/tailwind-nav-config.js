@@ -1,7 +1,7 @@
 tailwind.config = {
   darkMode: "class",
   theme: {
-    extend: {
+    extend: {"screens":{"md":"880px"},
       colors: {
         "on-background": "#e3e2e2",
         "on-surface": "#e3e2e2",

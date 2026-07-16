@@ -31,8 +31,8 @@
 <meta name="twitter:title" content="Websites We've Built | Surette Data Systems"/>
 <meta name="twitter:description" content="Managed websites, business web apps, hosting, support, and local IT setup for Southwest Florida businesses."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
-<link href="assets/nav.css?v=20260716-shared-footer" rel="stylesheet"/>
-<link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/><link href="assets/portfolio-mobile-fixes.css?v=20260605-title-fit" rel="stylesheet"/>
+<link href="assets/nav.css?v=20260716-md880" rel="stylesheet"/>
+<link href="assets/cosmic-web.css?v=20260716-md880" rel="stylesheet"/><link href="assets/portfolio-mobile-fixes.css?v=20260716-md880" rel="stylesheet"/>
 <link rel="stylesheet" href="pokecard-dropin/pokecard/pokecard.css">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
@@ -254,7 +254,7 @@
         .portfolio-tile--open:focus-visible {
             border-color: rgba(0, 240, 255, 0.4);
         }
-        @media (max-width: 767px) {
+        @media (max-width: 879.98px) {
             .portfolio-tile {
                 min-height: auto;
             }
@@ -435,7 +435,7 @@
             object-fit: cover;
             object-position: center center;
         }
-        @media (min-width: 768px) {
+        @media (min-width: 880px) {
             .elite-feature-hero { height: 480px; }
         }
     </style>
@@ -443,7 +443,7 @@
       tailwind.config = {
         darkMode: "class",
         theme: {
-          extend: {
+          extend: {"screens":{"md":"880px"},
             "colors": {
                     "on-background": "#e3e2e2",
                     "deep-space-grey": "#1A1A1A",
@@ -537,7 +537,7 @@
     </script>
 </head>
 <body class="font-body-md text-on-surface bg-void-black">
-<script src="assets/standard-site-nav.js?v=20260715-nav-unify" data-active="portfolio"></script>
+<script src="assets/standard-site-nav.js?v=20260716-nav-880" data-active="portfolio"></script>
 
 <!-- ============================================================ -->
 <!-- DESKTOP LAYOUT (>= md / 768px)                               -->

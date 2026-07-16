@@ -32,7 +32,7 @@
 <meta name="twitter:title" content="Surette Data Systems | Agentic AI-Powered Business Software &middot; Southwest Florida"/>
 <meta name="twitter:description" content="Custom agentic AI-powered business software, managed websites, web apps, branding, and on-site tech for Southwest Florida businesses &mdash; built and maintained by Surette Data Systems."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
-<link href="assets/nav.css?v=20260716-shared-footer" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="assets/nav.css?v=20260716-md880" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
   #sds-logo a.sds-anchor,
   #sds-logo-mobile a.sds-anchor {
@@ -78,12 +78,12 @@
     line-height: 1 !important;
     opacity: 0.7 !important;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 880px) {
     #hero .hero-headline-band {
       padding-top: 22vh !important;
     }
   }
-  @media (max-width: 767px) {
+  @media (max-width: 879.98px) {
     .md\:hidden main {
       padding-top: 5.25rem !important;
     }
@@ -99,6 +99,13 @@
         darkMode: "class",
         theme: {
           extend: {
+            // The whole site treats 880px as the mobile/desktop line: that is
+            // where the header becomes the hamburger and the bottom tab bar
+            // appears. Tailwind's stock md: is 768px, which left a 768-880 band
+            // showing the mobile bar over a desktop layout — four-column grids
+            // squeezed into unreadable vertical strips. Moving md: here keeps
+            // every responsive utility on the same boundary as the nav.
+            "screens": { "md": "880px" },
             "colors": {
                     "on-background": "#e3e2e2",
                     "deep-space-grey": "#1A1A1A",
@@ -223,8 +230,28 @@
             min-height: clamp(1rem, 4vh, 3rem);
             flex: 1 1 auto;
         }
+        /* The hero is a flex column whose middle stage grows to absorb whatever
+           space is left, so the CTA rides at the bottom of whatever height this
+           sets. 74vh is a ratio, not a distance: on a phone it leaves a good
+           ~160px of sky above the button, but on a tall tablet-sized window —
+           still under 768px, so still the mobile layout — the same ratio becomes
+           ~450px of empty starfield and pushes the button, and every section
+           after it, far down the page. The cap bites only once 74vh exceeds
+           700px (viewports over ~945px tall), so phones keep the tuned ratio and
+           there is no jump at a breakpoint. Headline spacing is untouched: this
+           takes the space out of the middle, below the copy. */
         #hero-mobile {
-            min-height: 74vh;
+            min-height: min(74vh, 700px);
+        }
+        /* Same story on the wide hero, which is min-h-screen: at a laptop's
+           ~800-980px the CTA sits ~82% down with a ~180px gap, which is the
+           tuned look, but a tall window stretches the same 100vh into a ~550px
+           void and drops the button to 87% — barely above the fold, with the
+           next section pushed off it. Capping at 1000px leaves every common
+           desktop height (800, 900, 982) exactly as it was and only reins in
+           windows taller than that. */
+        #hero {
+            min-height: min(100vh, 1000px);
         }
         .hidden.md\:block .hero-video-stage {
             min-height: clamp(2rem, 5vh, 4rem);
@@ -251,7 +278,7 @@
         .hero-headline-line {
             display: block;
         }
-        @media (min-width: 768px) {
+        @media (min-width: 880px) {
             .hero-headline-line {
                 white-space: nowrap;
             }
@@ -549,7 +576,7 @@
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/","gsap":"https://unpkg.com/gsap@3.12.5/index.js"}}</script>
 </head>
 <body class="bg-void-black text-on-background font-body-md overflow-x-hidden selection:bg-electric-cyan selection:text-void-black">
-<script src="assets/standard-site-nav.js?v=20260715-nav-unify" data-active="home"></script>
+<script src="assets/standard-site-nav.js?v=20260716-nav-880" data-active="home"></script>
 <!-- Loading overlay &mdash; shown until surette-logo.js fires page reveal -->
 <div id="page-loader" aria-hidden="true">
   <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -946,7 +973,7 @@ Message Us on WhatsApp
       const widthChanged = Math.abs(nextW - lastRenderW) > 2;
       const heightChanged = Math.abs(nextH - lastRenderH) > 2;
       const dprChanged = Math.abs(nextDpr - lastDpr) > 0.01;
-      const mobileViewport = window.matchMedia("(max-width: 767px)").matches;
+      const mobileViewport = window.matchMedia("(max-width: 879.98px)").matches;
       if (mobileViewport && heightChanged && !widthChanged && !dprChanged) return false;
       if (!widthChanged && !heightChanged && !dprChanged) return false;
       lastRenderW = nextW;

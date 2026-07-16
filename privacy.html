@@ -31,7 +31,7 @@
 <meta name="twitter:title" content="Privacy Policy | Surette Data Systems"/>
 <meta name="twitter:description" content="Privacy Policy for Surette Data Systems &mdash; how we collect, use, and protect your information."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
-<link href="assets/nav.css?v=20260716-shared-footer" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="assets/nav.css?v=20260716-md880" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
   #sds-logo a.sds-anchor,
   #sds-logo-mobile a.sds-anchor {
@@ -195,7 +195,7 @@
   tailwind.config = {
     darkMode: "class",
     theme: {
-      extend: {
+      extend: {"screens":{"md":"880px"},
         "colors": {
           "on-background": "#e3e2e2",
           "deep-space-grey": "#1A1A1A",
@@ -276,7 +276,7 @@
 </script>
 </head>
 <body class="bg-void-black text-on-background font-body-md overflow-x-hidden selection:bg-electric-cyan selection:text-void-black">
-<script src="assets/standard-site-nav.js?v=20260715-nav-unify" data-active="none"></script>
+<script src="assets/standard-site-nav.js?v=20260716-nav-880" data-active="none"></script>
 
 <!-- Atmospheric background elements -->
 <div class="fixed inset-0 z-0" style="background:#050505;"></div>
