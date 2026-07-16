@@ -53,6 +53,12 @@
       // Remember the page's original (logged-out) button markup exactly once, so
       // signing out restores it verbatim instead of leaving a stale "Account".
       if (!a.hasAttribute("data-dm-orig")) a.setAttribute("data-dm-orig", a.innerHTML);
+      // Full-row/full-link "Client Login" nav items (desktop nav link, mobile
+      // hamburger menu row) only look highlighted once actually signed in —
+      // previously these were hardcoded cyan regardless of session state.
+      if (a.classList.contains("dm-account-link-desktop") || a.classList.contains("dm-account-link-mobile")) {
+        a.classList.toggle("is-signed-in", signedIn);
+      }
       if (signedIn) {
         iconEl.textContent = "account_circle";
         a.textContent = "";
@@ -100,6 +106,10 @@
     } else {
       container = mobileSection.querySelector('.flex.items-center.justify-between');
     }
+    var rightControls = container && Array.prototype.slice.call(container.children).find(function (child) {
+      return child.classList && child.classList.contains('flex') && child.classList.contains('items-center') && child.classList.contains('gap-3');
+    });
+    if (rightControls) container = rightControls;
     if (!container) return;
     if (container.querySelector('.dm-mob-acct')) return; // already injected
 
@@ -134,7 +144,13 @@
     a.appendChild(icon);
     setMobileAccountColor(a, signedIn);
 
-    container.appendChild(a);
+    var menuButton = container.querySelector('#mobile-menu-btn');
+    var menuControl = menuButton && menuButton.closest('.relative');
+    if (menuControl && menuControl.parentElement === container) {
+      container.insertBefore(a, menuControl);
+    } else {
+      container.appendChild(a);
+    }
   }
 
   if (document.readyState === "loading") {

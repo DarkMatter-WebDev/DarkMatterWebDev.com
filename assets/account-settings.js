@@ -1,5 +1,5 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
-import { canOpenSeanAdsPortal, isSuperAdminUser, resolveProfilePortalRole } from "./portal-auth.js";
+import { isSuperAdminUser, resolveProfilePortalRole } from "./portal-auth.js";
 
 const config = window.DM_SUPABASE_CONFIG || {};
 const copy = window.DM_ACCOUNT_SETTINGS_COPY || {};
@@ -37,7 +37,6 @@ const els = {
   passwordStatus: document.querySelector("[data-password-status]"),
   passwordNew: document.querySelector("[data-password-new]"),
   passwordConfirm: document.querySelector("[data-password-confirm]"),
-  seanPanel: document.querySelector("[data-settings-sean-panel]"),
   adminPanel: document.querySelector("[data-settings-admin-panel]")
 };
 
@@ -70,8 +69,6 @@ function showContent(user, profileRole = "") {
   }
 
   const isSuperAdmin = isSuperAdminUser(user, config, profileRole);
-  const canAccessSean = canOpenSeanAdsPortal(user, config, profileRole);
-  if (els.seanPanel) els.seanPanel.hidden = !canAccessSean;
   if (els.adminPanel) els.adminPanel.hidden = !isSuperAdmin;
 }
 

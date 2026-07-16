@@ -1,6 +1,6 @@
 # Handoff
 
-Last updated: 2026-07-04
+Last updated: 2026-07-15
 
 ## Startup Prompt
 
@@ -20,6 +20,8 @@ Then summarize the project in a few bullets and continue with the latest request
 
 - Static Dark Matter / Surette Data Systems marketing + client portal site.
 - English root pages only; Spanish `es/` mirrors are absent from this working copy.
+- Top-level public navigation now uses one Portfolio item (`portfolio.html`) instead of separate Apps and Websites items. `portfolio.html` links to the existing Apps (`apps.html`) and Websites (`casestudies.html`) pages.
+- Public navigation has ONE source of truth (2026-07-15): every public page renders its full nav (desktop header, mobile header + hamburger dropdown, mobile bottom tab bar) from `assets/standard-site-nav.js` via a single `<script ... data-active="...">` tag near the top of `<body>`. `assets/unified-mobile-menu.js` was deleted; no page carries inline nav markup. New pages must add the loader tag (with `../assets/...` under `services/` — the loader auto-prefixes its links there), never a hand-copied nav. Valid `data-active`: `home`, `services`, `portfolio`, `apps` (→ portfolio highlight), `account`, `contact`, `none`.
 - No-white-flash baseline is sitewide: HTML pages include `#dm-critical-dark-baseline` in `<head>`, `assets/nav.css` anchors dark document/app-root backgrounds, visual shells stay transparent for animated/cosmic backgrounds, and public pages use `theme-color="#050505"`.
 - Homepage Nova WebGL background is scroll-smoothed for mobile in `index.html`: the fixed `#nova-bg`/canvas layer uses stable viewport sizing and resize logic ignores height-only mobile toolbar changes.
 - Mobile header account control is intentionally icon-only. `assets/account-nav.js` keeps `.dm-mob-acct` visually as the icon while updating `aria-label`/`title` for signed-in state. The mobile icon renders grey when signed out and cyan/blue when signed in.
@@ -37,15 +39,16 @@ Then summarize the project in a few bullets and continue with the latest request
 - Client profiles are intentionally minimal. Account settings and Admin Center no longer collect or display business/company name or website URL profile fields; Supabase setup drops those old columns if present.
 - Local preview: `http://127.0.0.1:4173/` (start with `npx http-server` or `start-preview.bat`).
 - Production: `https://surettesystems.com/`.
-- Sean's Ads source is intentionally not here â€” do not recreate it.
+- Sean's Ads source is intentionally not here — do not recreate it.
 
 ## Page Inventory (root)
 
 | Page | Purpose |
 |---|---|
-| `index.html` | Homepage â€” Nova WebGL hero, Surette Data Systems widget |
+| `index.html` | Homepage — Nova WebGL hero, Surette Data Systems widget |
+| `portfolio.html` | Portfolio hub linking to Apps and Websites |
 | `apps.html` | Surette Data Systems app library (interactive wordmark hero) |
-| `app-catalog.html` | App gallery â€” 5 `.portfolio-tile` cards + open tile |
+| `app-catalog.html` | App gallery — 5 `.portfolio-tile` cards + open tile |
 | `app-pricing.html` | 4 pricing tiers routing through client portal to checkout |
 | `app-checkout.html` | Portal checkout context |
 | `casestudies.html` | Websites We've Built gallery (6 tiles) |
@@ -53,12 +56,10 @@ Then summarize the project in a few bullets and continue with the latest request
 | `process.html` | Process page (not in main nav; reached via service-page CTAs) |
 | `built-by.html` | Built By page |
 | `account.html` | Client portal dashboard (Supabase auth; owner sees Admin Center link only) |
-| `account-admin.html` | Owner-only ultra-wide left-tab Admin Center with Messages, Subscribers, Account holders, and Sean Ads tabs |
+| `account-admin.html` | Owner-only ultra-wide left-tab Admin Center with Messages, Subscribers, and Account holders tabs |
 | `account-users.html` | Owner-only newsletter subscriber table for account signups and homepage email sign-ups |
 | `account-settings.html` | Profile/password management (Supabase gated) |
 | `account-created.html` | Email confirmation landing after Supabase signup |
-| `account-ads-status.html` | Google Ads workspace stub for Sean |
-| `seans-google-ads-dashboard.html` | Sean/owner-only portal UI |
 | `auction-house-consignment-store-software.html` | Auction app profile |
 | `secondhand-dealer-management-system.html` | SDMS app profile |
 | `benji-payroll-management-system.html` | Benji Payroll app profile |
@@ -71,10 +72,16 @@ Then summarize the project in a few bullets and continue with the latest request
 | `portfolio-auctionbuddha.html` | AuctionBuddha.com detail |
 | `portfolio-metalscalc.html` | MetalsCalc.com detail |
 
-Services pages in `services/`: `website-design.html`, `managed-hosting.html`, `website-care-plans.html`, `in-home-services.html`, `office-network-setup.html`.
+Services pages in `services/`: `website-design-hosting.html` (merged Website Design + Managed Hosting + Website Care Plans; now the complete public pricing page — content spec lives in `website_pricing_plan.txt` at the project root and is the source of truth for all plan names, prices, and policies), `in-home-services.html`, `office-network-setup.html`.
 
 ## Most Recent Work
 
+- **Nav single-source migration (2026-07-15).** All ~16 public pages that still carried hand-copied inline nav markup (index, contact, apps, app-catalog, casestudies, built-by, accessibility, process, terms, privacy, the five portfolio-* detail pages, and both remaining `services/*` pages) were converted to the `assets/standard-site-nav.js` loader; the loader now `../`-prefixes its links on `services/*` pages (they all 404'd before); `assets/unified-mobile-menu.js` (the legacy runtime shim) was deleted along with its 28 script tags and its nav.css shell rules; `app-pricing.html`'s broken `es/` lang toggle was removed; all loader references now use `v=20260715-nav-unify`. This closed several live bugs: wrong active-page highlight in the mobile menu/bottom bar on six pages, hardcoded-cyan Client Login on legacy pages, the homepage's structurally different hamburger menu, portfolio detail pages having no mobile nav in markup, and terms.html's empty nav logo. Portal utility pages (account-admin/-users/-settings/-created, app-checkout) intentionally keep their own minimal chrome.
+- UX iteration pass on the pricing page: type-hierarchy split (`wp-h4`/`wp-label` tiers), scroll-reveal with stagger on all cards/tables, contrast/tint pass (purple pills with arrow affordance), hero simplified with jump-pills relocated below the "Two Ways" section, plain-English glossary + guidance links for non-technical visitors, and a sitewide reveal-trigger fix in `surette-logo.js` (now fires 320px below the fold; cache-busted on all 27 pages).
+- Completed the Website Design &amp; Hosting pricing page (`services/website-design-hosting.html`) from the owner's `website_pricing_plan.txt` spec: hero, two purchasing paths, featured $0 Upfront Starter Website, 5-plan managed comparison + detail cards, after-12-months ownership/renewal rules, 8-package one-time build comparison + details, care plans, update/support/revision policies, lead capture, scheduling, 8-step process with fine-print accordions, ownership/handoff, add-on pricing, 36-question FAQ, and final CTA. Page uses native `<details>` accordions, scrollable comparison tables, and page-scoped `wp-*` styles; verified anchors/IDs/overflow/content in-browser and reran the validator (pre-existing noise only). Do not change plan names, prices, allowances, or policy wording without consulting `website_pricing_plan.txt`.
+- Fixed the mobile Services popout (`assets/mobile-services-nav.js`) still linking to the three retired service pages; replaced with one "Website Design / Hosting" entry (EN + ES) and cache-busted all 28 referencing pages to `v=20260715-services-merge`.
+- Repaired public header/nav consistency across desktop, tablet, and phone breakpoints. Added `assets/unified-mobile-menu.js`, updated `assets/standard-site-nav.js` hooks and shared `assets/nav.css` gutters/overflow behavior, and included the compatibility layer on legacy public routes. Verified Portfolio, Client Login, service pages, app pages, legal pages, and legacy portfolio details through a 150-case browser sweep (30 routes x 5 widths); all checks passed.
+- Added `portfolio.html` as an intermediate Portfolio hub and changed hand-authored desktop/mobile navigation so Portfolio is the top-level work category. Existing Apps (`apps.html`) and Websites (`casestudies.html`) pages remain live downstream. `portfolio.html` now uses the shared `assets/standard-site-nav.js` generator with `data-active="portfolio"` instead of one-off nav markup. Verified desktop and 390px mobile preview; static validator still reports documented pre-existing noise plus the expected missing Spanish mirror for `portfolio.html`.
 - Restored Netlify Forms capture for Contact, Apps consultation, App Checkout, and account-dashboard request forms while keeping Supabase/Admin Center message saves. Removed the Resend notification function path.
 - Fixed the service-page header/menu right-shift by anchoring fixed top headers to the viewport in shared `assets/nav.css` and cache-busting `nav.css`. Verified all five service pages at mobile width and checked Website Design on desktop.
 - Removed profile-level business/company and website URL fields from account settings, Admin Center subscriber/account-holder tables, and Supabase setup/schema cleanup. Verified preview headers/forms no longer expose those fields.
@@ -101,7 +108,7 @@ Services pages in `services/`: `website-design.html`, `managed-hosting.html`, `w
 - Added portal support pages: `account-created.html` (post-signup email verification), `account-settings.html` (profile/password management), `account-ads-status.html` (Google Ads workspace stub).
 - Rebuilt `app-catalog.html` gallery cards to `.portfolio-tile` design matching `casestudies.html` (2-up mobile, 3-up desktop). Removed "DepthFold" 3D card system.
 - Removed "fly" WebGL canvas hero from `app-catalog.html`; restored cosmic-web background.
-- Replaced top-level `Process` nav item with `Websites` â†’ `casestudies.html` across all shared/hand-authored nav. Added "View Our Process" CTAs to Website Design, Managed Hosting, Care Plans, Custom Apps, In-Home Tech, and Office Network service pages.
+- Replaced top-level `Process` nav item with `Websites` → `casestudies.html` across all shared/hand-authored nav. Added "View Our Process" CTAs to Website Design, Managed Hosting, Care Plans, Custom Apps, In-Home Tech, and Office Network service pages.
 - Added AuctionBuddha.com entry (`portfolio-auctionbuddha.html`) + screenshots to Websites gallery.
 - Refreshed NaplesEstateJewelry.co portfolio content and screenshots.
 - Refreshed Antique Mall profile around `thirdstreetauctions.com` with 7 new public captures and updated feature copy. Fixed overlapping marketplace-flow diagram.
@@ -118,13 +125,13 @@ Run after broad edits:
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\validate-site.ps1
 ```
 
-Known validator noise (pre-existing, not blocking): missing `es/` mirrors, node_modules HTML scan, stale Sean Ads Spanish links, and mojibake warnings.
+Known validator noise (pre-existing, not blocking): missing `es/` mirrors and the node_modules HTML scan. Mojibake in site content was fully repaired 2026-07-15 — a clean run should show zero mojibake findings outside `node_modules`. Note: in restricted sessions run the validator as `& .\scripts\validate-site.ps1` (the `-ExecutionPolicy Bypass` form can be blocked).
 
 ## Do Not Forget
 
 - Mirror English/Spanish changes when `es/` mirrors are restored.
 - Do not store secrets in markdown.
 - Browser-side portal gates are not true security.
-- MetalsCalc OG URLs reference `darkmatterwebsites.com` â€” verify/correct domain.
+- MetalsCalc OG URLs reference `darkmatterwebsites.com` — verify/correct domain.
 - Old `antique-mall-*.png` screenshots may be unused alongside current `thirdstreet-*.png` files.
 - Update compact memory docs before ending meaningful sessions.

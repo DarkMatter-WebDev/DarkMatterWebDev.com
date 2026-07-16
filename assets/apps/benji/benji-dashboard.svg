@@ -19,7 +19,7 @@
   <rect x="24" y="234" width="172" height="34" rx="8" fill="#111827"/>
   <rect x="248" y="28" width="928" height="64" rx="14" fill="#ffffff" stroke="#dbeafe"/>
   <text x="272" y="54" fill="#0f172a" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">Payroll dashboard</text>
-  <text x="272" y="76" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="13">Current pay period � 12 employees � 3 pending approvals</text>
+  <text x="272" y="76" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="13">Current pay period · 12 employees · 3 pending approvals</text>
   <rect x="248" y="108" width="220" height="110" rx="14" fill="#ffffff" stroke="#dbeafe"/>
   <rect x="488" y="108" width="220" height="110" rx="14" fill="#ffffff" stroke="#dbeafe"/>
   <rect x="728" y="108" width="220" height="110" rx="14" fill="#ffffff" stroke="#dbeafe"/>

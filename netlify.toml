@@ -102,3 +102,35 @@
   from = "/es/preference-builder.html"
   to = "/es/contact.html"
   status = 301
+
+# Retired standalone Website Design / Managed Hosting / Website Care Plans
+# pages → merged Website Design & Hosting page
+[[redirects]]
+  from = "/services/website-design.html"
+  to = "/services/website-design-hosting.html"
+  status = 301
+
+[[redirects]]
+  from = "/services/managed-hosting.html"
+  to = "/services/website-design-hosting.html"
+  status = 301
+
+[[redirects]]
+  from = "/services/website-care-plans.html"
+  to = "/services/website-design-hosting.html"
+  status = 301
+
+[[redirects]]
+  from = "/es/services/website-design.html"
+  to = "/es/services/website-design-hosting.html"
+  status = 301
+
+[[redirects]]
+  from = "/es/services/managed-hosting.html"
+  to = "/es/services/website-design-hosting.html"
+  status = 301
+
+[[redirects]]
+  from = "/es/services/website-care-plans.html"
+  to = "/es/services/website-design-hosting.html"
+  status = 301

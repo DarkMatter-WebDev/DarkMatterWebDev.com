@@ -30,7 +30,7 @@
 <meta name="twitter:title" content="EliteYachtDetailing.com | Portfolio | Surette Data Systems"/>
 <meta name="twitter:description" content="Managed websites, business web apps, hosting, support, and local IT setup for Southwest Florida businesses."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
-<link href="assets/nav.css?v=20260703-fixed-header-anchor" rel="stylesheet"/>
+<link href="assets/nav.css?v=20260715-login-highlight" rel="stylesheet"/>
 <link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/><link href="assets/portfolio-live-widget.css?v=20260605-live-widget-shrink" rel="stylesheet"/>
 <link href="assets/portfolio-mobile-fixes.css?v=20260605-title-fit" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -330,10 +330,6 @@
         .screenshot-live {
             position: relative;
         }
-        .elite-fleet-callout {
-            border: 1px solid rgba(0, 240, 255, 0.25);
-            background: linear-gradient(135deg, rgba(0, 240, 255, 0.06) 0%, rgba(112, 0, 255, 0.08) 100%);
-        }
         .elite-feature-hero {
             display: block;
             width: 100%;
@@ -514,35 +510,7 @@
 <div class="absolute -top-[20%] -left-[10%] w-[60%] h-[60%] bg-nebula-purple/10 blur-[120px] rounded-full"></div>
 <div class="absolute -bottom-[20%] -right-[10%] w-[60%] h-[60%] bg-electric-cyan/5 blur-[120px] rounded-full"></div>
 </div>
-<nav class="fixed top-0 w-full bg-surface/10 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-margin-desktop py-4 z-50">
-<div id="sds-logo"></div>
-<div class="hidden md:flex gap-10 items-center">
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="index.html">Home</a>
-<div class="relative services-nav-group">
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" tabindex="0" aria-haspopup="true">Services</a>
-<div class="services-nav-menu">
-<div class="services-nav-panel">
-<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Online Services</div>
-
-
-<a href="services/website-design.html">Website Design</a>
-
-<a href="services/managed-hosting.html">Managed Hosting</a>
-<a href="services/website-care-plans.html">Website Care Plans</a>
-
-<a href="apps.html">Custom Business Web Apps</a>
-<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">home_pin</span>In-Home &amp; Office Services</div>
-<a href="services/in-home-services.html">In-Home Tech Services</a>
-<a href="services/office-network-setup.html">Office Network Setup</a>
-</div>
-</div>
-</div>
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="apps.html">Apps</a>
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300 portfolio-nav-button" href="casestudies.html">Websites</a>
-<a class="font-label-mono text-label-mono text-electric-cyan hover:underline transition-colors duration-300 inline-flex items-center gap-1.5" href="account.html"><span class="material-symbols-outlined text-base">account_circle</span>Client Login</a>
-<a href="contact.html" class="ml-4 inline-block px-6 py-2 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-lg hover:opacity-90 active:scale-95 transition-all">Contact Us</a>
-</div>
-</nav>
+<script src="assets/standard-site-nav.js?v=20260715-nav-unify" data-active="portfolio"></script>
 <main class="relative z-10 pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto md:pl-28">
 <a href="casestudies.html" class="inline-flex items-center gap-2 font-label-mono text-sm text-electric-cyan hover:underline mb-10"><span class="material-symbols-outlined text-base">arrow_back</span>Back to Portfolio</a>
 <section class="mb-14 max-w-[1264px] mx-auto">
@@ -550,7 +518,7 @@
 <div>
 <span class="font-label-mono text-label-mono text-electric-cyan tracking-widest uppercase">02 // LIVE</span>
 <h1 class="portfolio-detail-title font-headline-xl text-headline-lg md:text-headline-xl text-starlight-white mt-4">EliteYachtDetailing.com</h1>
-<p class="mt-4 max-w-2xl text-on-surface-variant text-body-lg leading-relaxed">Luxury yacht detailing website and fleet service portal.</p>
+<p class="mt-4 max-w-2xl text-on-surface-variant text-body-lg leading-relaxed">Luxury yacht detailing website with a cinematic homepage and restoration showcase.</p>
 </div>
 <a href="https://EliteYachtDetailing.com" target="_blank" rel="noopener" class="portfolio-live-widget" aria-label="View This Site Live">
 <span class="portfolio-live-widget__orb" aria-hidden="true"><span class="material-symbols-outlined">open_in_new</span></span>
@@ -561,67 +529,28 @@
 <span class="portfolio-live-widget__arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span>
 </a>
 </div>
-<p class="text-on-surface-variant max-w-3xl leading-relaxed">A closer look at the fleet portal direction, live site surfaces, restoration comparison, and full-page yacht detailing experience.</p>
+<p class="text-on-surface-variant max-w-3xl leading-relaxed">A closer look at the live site surfaces, restoration comparison, and full-page yacht detailing experience.</p>
 </section>
 <section class="max-w-[1264px] mx-auto">
-<!-- Fleet login & management highlight -->
-<div class="glass-card elite-fleet-callout rounded-xl p-8 md:p-10 mt-10 mb-12">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-<div>
-<div class="flex items-center gap-3 mb-4">
-<span class="material-symbols-outlined text-electric-cyan text-3xl">sailing</span>
-<span class="font-label-caps text-label-caps text-electric-cyan tracking-[0.2em]">FLEET LOGIN &amp; MANAGEMENT</span>
-</div>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Built for captains, fleet managers &amp; marina programs.</h3>
-<p class="text-on-surface-variant leading-relaxed mb-4">We implemented a dedicated <strong class="text-starlight-white font-normal">Fleet Login</strong> area linked from the fleet page and site footer &mdash; a secure client portal preview for recurring fleet and marina accounts. Sign-in is staged for launch; the full UX is in place today.</p>
-<ul class="space-y-2 font-label-mono text-[13px] text-on-surface-variant">
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-nebula-purple text-sm">arrow_forward</span> Multi-vessel scheduling across fleet or marina slip assignments</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-nebula-purple text-sm">arrow_forward</span> Service history, ceramic coating records &amp; before/after documentation</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-nebula-purple text-sm">arrow_forward</span> Priority contact lane for captains &amp; fleet managers in SWFL</li>
-<li class="flex items-start gap-2"><span class="material-symbols-outlined text-nebula-purple text-sm">arrow_forward</span> Invoices &amp; approved maintenance protocols for recurring programs</li>
-</ul>
-<a href="https://EliteYachtDetailing.com/desktop/fleet-login.html" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-6 font-label-mono text-sm text-electric-cyan hover:underline">
-<span class="material-symbols-outlined text-base">login</span>
-Preview Fleet Login portal ?
-</a>
-</div>
-<div class="rounded-xl overflow-hidden border border-white/10 bg-void-black/40">
-<img alt="Elite Yacht Detailing fleet page &mdash; vessel gallery and fleet login entry" class="w-full h-auto block" loading="lazy" src="assets/portfolio/elite/screenshot-fleet.jpg"/>
-</div>
-</div>
-</div>
-
 <div class="mt-4">
 <h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Site highlights</h3>
-<p class="text-on-surface-variant mb-8 max-w-2xl leading-relaxed">Captures from the live build &mdash; homepage cinema, fleet gallery, restoration compare, and the fleet client portal preview.</p>
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<p class="text-on-surface-variant mb-8 max-w-2xl leading-relaxed">Captures from the live build &mdash; homepage cinema, restoration compare, and service details.</p>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter items-start">
 <div class="glass-card rounded-xl overflow-hidden detail-color-card detail-color-card--cyan">
-<div class="border-b border-white/10">
-<img alt="Elite Yacht Detailing homepage &mdash; The Art of the Reflection" class="w-full h-auto block" loading="lazy" src="assets/portfolio/elite/screenshot-home.png"/>
+<div class="border-b border-white/10 aspect-[16/10] overflow-hidden">
+<img alt="Elite Yacht Detailing homepage &mdash; The Art of the Reflection" class="w-full h-full object-cover object-top block" loading="lazy" src="assets/portfolio/elite/screenshot-home.png"/>
 </div>
 <div class="p-6">
 <div class="flex items-center gap-3 mb-2">
 <span class="material-symbols-outlined text-electric-cyan">home</span>
 <h4 class="font-headline-md text-[18px] text-starlight-white">Homepage</h4>
 </div>
-<p class="text-on-surface-variant text-sm leading-relaxed">Cinematic hero, real SWFL detailing video, drag-to-compare mirror finish, and fleet CTAs.</p>
-</div>
-</div>
-<div class="glass-card rounded-xl overflow-hidden detail-color-card detail-color-card--violet">
-<div class="border-b border-white/10">
-<img alt="Elite Yacht Detailing fleet gallery &mdash; 400+ vessels serviced" class="w-full h-auto block" loading="lazy" src="assets/portfolio/elite/screenshot-gallery.png"/>
-</div>
-<div class="p-6">
-<div class="flex items-center gap-3 mb-2">
-<span class="material-symbols-outlined text-nebula-purple">sailing</span>
-<h4 class="font-headline-md text-[18px] text-starlight-white">Fleet gallery</h4>
-</div>
-<p class="text-on-surface-variant text-sm leading-relaxed">400+ vessels serviced &mdash; uniform client tiles, featured Sunseeker 630 S, and stats for SWFL coverage.</p>
+<p class="text-on-surface-variant text-sm leading-relaxed">Cinematic hero, real SWFL detailing video, and drag-to-compare mirror finish.</p>
 </div>
 </div>
 <div class="glass-card rounded-xl overflow-hidden detail-color-card detail-color-card--pink">
-<div class="border-b border-white/10">
-<img alt="Before and after hull restoration compare slider" class="w-full h-auto block" loading="lazy" src="assets/portfolio/elite/screenshot-compare.jpg"/>
+<div class="border-b border-white/10 aspect-[16/10] overflow-hidden">
+<img alt="Before and after hull restoration compare slider" class="w-full h-full object-cover object-center block" loading="lazy" src="assets/portfolio/elite/screenshot-compare.jpg"/>
 </div>
 <div class="p-6">
 <div class="flex items-center gap-3 mb-2">
@@ -632,8 +561,8 @@ Preview Fleet Login portal ?
 </div>
 </div>
 <div class="glass-card rounded-xl overflow-hidden detail-color-card detail-color-card--gold">
-<div class="border-b border-white/10">
-<img alt="Elite Yacht Detailing services catalogue" class="w-full h-auto block" loading="lazy" src="assets/portfolio/elite/screenshot-services.png"/>
+<div class="border-b border-white/10 aspect-[16/10] overflow-hidden">
+<img alt="Elite Yacht Detailing services catalogue" class="w-full h-full object-cover object-top block" loading="lazy" src="assets/portfolio/elite/screenshot-services.png"/>
 </div>
 <div class="p-6">
 <div class="flex items-center gap-3 mb-2">
@@ -646,22 +575,14 @@ Preview Fleet Login portal ?
 </div>
 </div>
 
-<div class="mt-12" data-preview-group="Elite homepage and fleet mini previews">
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Full-page mini previews</h3>
-<p class="text-on-surface-variant mb-8 max-w-2xl leading-relaxed">Two larger page captures show the luxury homepage direction and the fleet-management experience as full site surfaces, not just cropped thumbnails.</p>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
-<div class="space-y-4">
-<div class="h-[520px] md:h-[680px] flex justify-center overflow-visible">
-<img alt="Floating full-page preview of the Elite Yacht Detailing homepage" class="h-full w-auto object-contain object-top rounded-md shadow-2xl shadow-black/50" loading="lazy" src="assets/portfolio/elite/screenshot-home.png"/>
+<div class="mt-12" data-preview-group="Elite homepage mini preview">
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Full-page preview</h3>
+<p class="text-on-surface-variant mb-8 max-w-2xl leading-relaxed">A larger page capture shows the luxury homepage direction as a full site surface, not just a cropped thumbnail.</p>
+<div class="max-w-3xl mx-auto space-y-4">
+<div class="rounded-md overflow-hidden shadow-2xl shadow-black/50">
+<img alt="Floating full-page preview of the Elite Yacht Detailing homepage" class="w-full h-auto block" loading="lazy" src="assets/portfolio/elite/screenshot-home.png"/>
 </div>
-<div class="px-1"><h4 class="font-headline-md text-[18px] text-starlight-white mb-2">Luxury homepage surface</h4><p class="text-on-surface-variant text-sm leading-relaxed">A cinematic first impression with the yacht brand, restoration story, and service paths presented as a premium client experience.</p></div>
-</div>
-<div class="space-y-4">
-<div class="h-[520px] md:h-[680px] flex justify-center overflow-visible">
-<img alt="Floating full-page preview of the Elite Yacht Detailing fleet page" class="h-full w-auto object-contain object-top rounded-md shadow-2xl shadow-black/50" loading="lazy" src="assets/portfolio/elite/screenshot-fleet.jpg"/>
-</div>
-<div class="px-1"><h4 class="font-headline-md text-[18px] text-starlight-white mb-2">Fleet and portal direction</h4><p class="text-on-surface-variant text-sm leading-relaxed">A fleet-focused surface for recurring vessel accounts, marina programs, login direction, and long-term service management.</p></div>
-</div>
+<div class="px-1 text-center"><h4 class="font-headline-md text-[18px] text-starlight-white mb-2">Luxury homepage surface</h4><p class="text-on-surface-variant text-sm leading-relaxed max-w-xl mx-auto">A cinematic first impression with the yacht brand, restoration story, and service paths presented as a premium client experience.</p></div>
 </div>
 </div>
 </section>
@@ -675,7 +596,7 @@ Preview Fleet Login portal ?
 </main>
 <footer class="relative z-10 w-full py-12 px-margin-mobile md:px-margin-desktop flex flex-col items-center gap-4 border-t border-starlight-white/5 bg-void-black">
 <div class="flex flex-col leading-none items-center"><div class="font-headline-md text-headline-md text-starlight-white tracking-tighter">SURETTE DATA SYSTEMS</div></div>
-<div class="font-label-caps text-[10px] text-on-primary-container opacity-60 text-center tracking-widest">&copy; 2026 Surette Data Systems &middot; NAPLES, FL &middot; CALL OR TEXT (239) 404-8505  <a class="text-electric-cyan hover:underline" href="mailto:info@SuretteSystems.com">info@SuretteSystems.com</a></div>
+<div class="font-label-caps text-[10px] text-on-primary-container opacity-60 text-center tracking-widest footer-meta justify-center"><span>&copy; 2026 Surette Data Systems</span><span class="footer-meta-sep" aria-hidden="true">&middot;</span><span>Southwest Florida</span><span class="footer-meta-sep" aria-hidden="true">&middot;</span><span>Call or text <a class="text-electric-cyan hover:underline" href="tel:+12394048505">(239) 404-8505</a></span><span class="footer-meta-sep" aria-hidden="true">&middot;</span><a class="text-electric-cyan hover:underline" href="mailto:info@SuretteSystems.com">info@SuretteSystems.com</a></div>
 <div class="flex gap-4 font-label-mono text-[11px] text-on-surface-variant mt-2">
 <a href="privacy.html" class="hover:text-electric-cyan transition-colors">Privacy</a>
 <a href="terms.html" class="hover:text-electric-cyan transition-colors">Terms</a>
@@ -684,10 +605,10 @@ Preview Fleet Login portal ?
 </footer>
 </div>
 
-<script src="assets/mobile-services-nav.js?v=20260627-blackfix"></script>
-<script src="assets/account-nav.js?v=20260703-mobile-account-color"></script>
+<script src="assets/mobile-services-nav.js?v=20260715-services-merge"></script>
+<script src="assets/account-nav.js?v=20260715-login-highlight"></script>
 <script src="assets/rail.js?v=20260602-rail-active"></script>
 <script src="assets/portfolio-title-fit.js?v=20260605-title-fit"></script>
-<script src="surette-logo.js?v=20260703-nav-loader"></script>
+<script src="surette-logo.js?v=20260715-reveal-margin"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
 </body></html>

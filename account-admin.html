@@ -15,7 +15,7 @@
 <title>Admin Center | Surette Data Systems</title>
 <meta name="description" content="Owner-only Surette Data Systems portal administration."/>
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"/>
-<link href="assets/nav.css?v=20260703-fixed-header-anchor" rel="stylesheet"/>
+<link href="assets/nav.css?v=20260715-login-highlight" rel="stylesheet"/>
 <link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/>
 <link href="assets/client-portal.css?v=20260703-admin-table-columns" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -60,7 +60,6 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <button class="client-admin-tab" id="admin-tab-messages" type="button" role="tab" aria-selected="false" aria-controls="admin-panel-messages" data-admin-tab="messages"><span class="material-symbols-outlined">forum</span><span>Messages</span></button>
 <button class="client-admin-tab" id="admin-tab-subscribers" type="button" role="tab" aria-selected="false" aria-controls="admin-panel-subscribers" data-admin-tab="subscribers"><span class="material-symbols-outlined">mark_email_read</span><span>Subscribers</span></button>
 <button class="client-admin-tab" id="admin-tab-accounts" type="button" role="tab" aria-selected="false" aria-controls="admin-panel-accounts" data-admin-tab="accounts"><span class="material-symbols-outlined">group</span><span>Account holders</span></button>
-<button class="client-admin-tab" id="admin-tab-sean" type="button" role="tab" aria-selected="false" aria-controls="admin-panel-sean" data-admin-tab="sean"><span class="material-symbols-outlined">ads_click</span><span>Sean Ads</span></button>
 </nav>
 <div class="client-admin-tabs-rail__footer">
 <a class="client-admin-rail-link" href="account.html"><span class="material-symbols-outlined">arrow_back</span><span>Account</span></a>
@@ -91,11 +90,6 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <span class="material-symbols-outlined">group</span>
 <strong>Account holders</strong>
 <small>Review Supabase portal account profile rows.</small>
-</button>
-<button class="client-admin-action-card" type="button" data-admin-open-tab="sean">
-<span class="material-symbols-outlined">visibility</span>
-<strong>Sean Ads backend</strong>
-<small>Open the protected Google Ads portal view.</small>
 </button>
 </div>
 <p class="client-admin-note">Real cross-account data access still needs Supabase roles, policies, or server-side functions before sensitive member records are stored.</p>
@@ -175,23 +169,6 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 </table>
 </div>
 </section>
-</section>
-<section class="client-admin-tab-panel" id="admin-panel-sean" role="tabpanel" aria-labelledby="admin-tab-sean" data-admin-tab-panel="sean" hidden>
-<div class="client-admin-panel-header">
-<div>
-<div class="client-portal-kicker">Sean Ads</div>
-<h3>Google Ads portal</h3>
-<p>Open the protected Sean Ads backend view from the owner console.</p>
-</div>
-<span class="client-super-admin-badge"><span class="material-symbols-outlined">visibility</span>Protected</span>
-</div>
-<div class="client-admin-feature-row">
-<div>
-<strong>Sean's direct portal backend view</strong>
-<span>This stays separate from the external Sean's Ads source site.</span>
-</div>
-<a class="client-portal-button client-portal-button--secondary" href="seans-google-ads-dashboard.html"><span class="material-symbols-outlined">open_in_new</span>Open backend view</a>
-</div>
 </section>
 </div>
 </section>

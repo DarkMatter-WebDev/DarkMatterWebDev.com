@@ -31,7 +31,7 @@
 <meta name="twitter:title" content="Websites We've Built | Surette Data Systems"/>
 <meta name="twitter:description" content="Managed websites, business web apps, hosting, support, and local IT setup for Southwest Florida businesses."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
-<link href="assets/nav.css?v=20260703-fixed-header-anchor" rel="stylesheet"/>
+<link href="assets/nav.css?v=20260715-login-highlight" rel="stylesheet"/>
 <link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/><link href="assets/portfolio-mobile-fixes.css?v=20260605-title-fit" rel="stylesheet"/>
 <link rel="stylesheet" href="pokecard-dropin/pokecard/pokecard.css">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -296,17 +296,22 @@
             padding-top: 0.75rem;
             padding-bottom: 1.5rem;
         }
+        /* Below lg (1024px), the template widget moves out of the hero and
+           renders after the case-study gallery instead; see .tablet-template-widget. */
+        .tablet-template-widget { display: none; }
         @media (max-width: 1023px) {
             .case-studies-hero {
                 grid-template-columns: minmax(0, 1fr);
                 gap: clamp(1.25rem, 3vw, 2.5rem);
             }
             .case-studies-hero__visual {
-                min-height: auto;
-                padding-top: 0.25rem;
+                display: none;
             }
-            .case-studies-hero__copy p.inline-flex .material-symbols-outlined {
-                transform: rotate(90deg);
+            .case-studies-hero__template-cta {
+                display: none !important;
+            }
+            .tablet-template-widget {
+                display: block;
             }
         }
         /* Ghost rail popover */
@@ -532,6 +537,7 @@
     </script>
 </head>
 <body class="font-body-md text-on-surface bg-void-black">
+<script src="assets/standard-site-nav.js?v=20260715-nav-unify" data-active="portfolio"></script>
 
 <!-- ============================================================ -->
 <!-- DESKTOP LAYOUT (>= md / 768px)                               -->
@@ -542,47 +548,13 @@
 <div class="absolute -top-[20%] -left-[10%] w-[60%] h-[60%] bg-nebula-purple/10 blur-[120px] rounded-full"></div>
 <div class="absolute -bottom-[20%] -right-[10%] w-[60%] h-[60%] bg-electric-cyan/5 blur-[120px] rounded-full"></div>
 </div>
-<nav class="fixed top-0 w-full bg-surface/10 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-margin-desktop py-4 z-50">
-<div id="sds-logo"></div>
-<div class="hidden md:flex gap-10 items-center">
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="index.html">Home</a>
-<div class="relative services-nav-group">
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" tabindex="0" aria-haspopup="true">Services</a>
-<div class="services-nav-menu">
-<div class="services-nav-panel">
-<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Online Services</div>
-
-
-<a href="services/website-design.html">Website Design</a>
-
-<a href="services/managed-hosting.html">Managed Hosting</a>
-<a href="services/website-care-plans.html">Website Care Plans</a>
-
-<a href="apps.html">Custom Business Web Apps</a>
-<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">home_pin</span>In-Home &amp; Office Services</div>
-<a href="services/in-home-services.html">In-Home Tech Services</a>
-<a href="services/office-network-setup.html">Office Network Setup</a>
-</div>
-</div>
-</div>
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="apps.html">Apps</a>
-<a class="font-label-mono text-label-mono text-electric-cyan border-b-2 border-electric-cyan pb-1 transition-colors duration-300 portfolio-nav-button" href="casestudies.html" aria-current="page">Websites</a>
-<a class="font-label-mono text-label-mono text-electric-cyan hover:underline transition-colors duration-300 inline-flex items-center gap-1.5" href="account.html"><span class="material-symbols-outlined text-base">account_circle</span>Client Login</a>
-<a href="contact.html" class="ml-4 inline-block px-6 py-2 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-lg hover:opacity-90 active:scale-95 transition-all">Contact Us</a>
-</div>
-</nav>
 <main class="relative z-10 pt-32 pb-24 px-margin-desktop max-w-container-max mx-auto md:pl-28">
-<div class="mb-8 hidden" data-website-design-back>
-<a href="services/website-design.html" class="inline-flex items-center gap-2 font-label-mono text-sm text-electric-cyan hover:underline">
-<span class="material-symbols-outlined text-base">arrow_back</span> Back to Website Design
-</a>
-</div>
 <section class="case-studies-hero mb-12">
 <div class="case-studies-hero__copy">
 <h4 class="font-label-caps text-label-caps text-electric-cyan mb-4 tracking-[0.2em]">SELECTED WORK</h4>
 <h1 class="font-headline-xl text-headline-xl text-starlight-white mb-8">Websites <span class="gradient-text-nebula">We've Built.</span></h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">Real sites for real businesses and working brands. We start with the building blocks of a strong business foundation, then shape each build to load fast, look sharp, and turn visitors into customers.</p>
-<p class="mt-6 inline-flex items-center gap-2 font-label-mono text-sm font-semibold tracking-wide" style="background:linear-gradient(90deg,#00F0FF,#7000FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Try one of our templates live&nbsp;<span class="material-symbols-outlined" style="-webkit-text-fill-color:#00F0FF;font-size:20px;vertical-align:middle;">arrow_forward</span></p>
+<p class="mt-6 case-studies-hero__template-cta inline-flex items-center gap-2 font-label-mono text-sm font-semibold tracking-wide" style="background:linear-gradient(90deg,#00F0FF,#7000FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Try one of our templates live&nbsp;<span class="material-symbols-outlined" style="-webkit-text-fill-color:#00F0FF;font-size:20px;vertical-align:middle;">arrow_forward</span></p>
 </div>
 <div class="case-studies-hero__visual">
 <section class="lab-poke-section" aria-label="Website template — sample card">
@@ -641,7 +613,7 @@
           <div class="poke-back-inner">
             <h3>Tech Business Site Template</h3>
             <p>A reusable, single-config marketing site for service
-               businesses: animated 3D hero, a live "one call → full
+               businesses: animated 3D hero, a live "one call â†’ full
                estimate" demo, services, pricing, testimonials and FAQ —
                plus a small admin backend (login, lead inbox, live
                content editor).</p>
@@ -702,10 +674,10 @@
 <div class="p-7 flex flex-col gap-4 flex-1">
 <div class="flex flex-wrap gap-2">
 <span class="font-label-caps text-[10px] px-2 py-1 bg-electric-cyan/10 text-electric-cyan border border-electric-cyan/20 rounded">WEB DESIGN</span>
-<span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">FLEET PORTAL</span>
+<span class="font-label-caps text-[10px] px-2 py-1 bg-nebula-purple/10 text-nebula-purple border border-nebula-purple/20 rounded">COMPARE SLIDER</span>
 </div>
 <h3 class="portfolio-card-title font-headline-md text-headline-md text-starlight-white">EliteYachtDetailing.com</h3>
-<p class="text-on-surface-variant text-sm leading-relaxed flex-1">Luxury SWFL yacht detailing site - cinematic homepage, before/after compare slider, 400+ vessel fleet gallery, and a Fleet Login client portal.</p>
+<p class="text-on-surface-variant text-sm leading-relaxed flex-1">Luxury SWFL yacht detailing site - cinematic homepage, before/after restoration compare slider, and a full services showcase.</p>
 <span class="portfolio-tile__cta">View case study <span class="material-symbols-outlined">arrow_forward</span></span>
 </div>
 </a>
@@ -778,65 +750,10 @@
 </div>
 </section>
 
-<!-- CTA -->
-<section class="text-center">
-<div class="glass-panel rounded-2xl p-16 relative overflow-hidden">
-<h2 class="font-headline-xl text-headline-lg text-starlight-white mb-6">Want to be next?</h2>
-<p class="max-w-xl mx-auto text-on-surface-variant text-body-lg mb-10">Based in Naples, FL. Call or text and we'll talk through your project - no pressure, no jargon.</p>
-<div class="flex flex-wrap justify-center gap-4">
-<a href="tel:+12394048505" class="inline-flex items-center gap-2 px-10 py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-xl font-bold hover:scale-105 active:scale-95 transition-all shadow-2xl">
-<span class="material-symbols-outlined text-base">call</span> Call or Text (239) 404-8505
-                    </a>
-<a href="contact.html" class="inline-block px-10 py-4 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-xl hover:bg-white/5 transition-all">Send a Message</a>
-</div>
-</div>
-</section>
-</main>
-<footer class="w-full mt-auto bg-void-black border-t border-white/5">
-<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-12 w-full gap-8">
-<div class="flex flex-col gap-4">
-<div class="flex flex-col leading-none">
-<div class="font-headline-md text-headline-md text-starlight-white font-bold">SURETTE DATA SYSTEMS</div>
-
-</div>
-<div class="font-label-mono text-label-mono text-outline">&copy; 2026 Surette Data Systems &middot; NAPLES, FL &middot; CALL OR TEXT (239) 404-8505 &middot; <a class="text-electric-cyan hover:underline" href="mailto:info@SuretteSystems.com">info@SuretteSystems.com</a></div>
-</div>
-<div class="flex gap-12">
-<div class="flex flex-col gap-4">
-<span class="font-label-caps text-label-caps text-starlight-white">LEGAL</span>
-<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="privacy.html">Privacy</a>
-<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="privacy.html">Security</a>
-<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="accessibility.html">Accessibility</a>
-</div>
-<div class="flex flex-col gap-4">
-<span class="font-label-caps text-label-caps text-starlight-white">RESOURCES</span>
-<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="terms.html">Terms</a>
-</div>
-</div>
-</div>
-</footer>
-</div>
-<!-- /DESKTOP -->
-
-<!-- ============================================================ -->
-<!-- MOBILE LAYOUT (< md / 768px)                                 -->
-<!-- ============================================================ -->
-<div class="md:hidden">
-<div class="fixed inset-0 grid-overlay z-0 pointer-events-none opacity-20"></div>
-<header class="fixed top-0 w-full z-50 bg-surface/10 backdrop-blur-xl border-b border-starlight-white/10 shadow-[0_0_20px_rgba(0,240,255,0.1)] flex items-center justify-between px-margin-mobile h-16">
-<div id="sds-logo-mobile"></div>
-</header>
-<main class="relative z-10 pt-28 pb-28 px-margin-mobile">
-<a href="services/website-design.html" class="hidden inline-flex items-center gap-2 font-label-mono text-sm text-electric-cyan mb-6 hover:underline" data-website-design-back>
-<span class="material-symbols-outlined text-base">arrow_back</span> Back to Website Design
-</a>
-<div class="mb-6 flex flex-col gap-4">
-<div class="flex items-center gap-4">
-<div class="h-[1px] w-12 bg-electric-cyan"></div>
-<span class="font-label-mono text-label-mono text-electric-cyan tracking-widest uppercase">Selected Work</span>
-</div>
-<h2 class="font-headline-xl text-headline-lg-mobile text-starlight-white">Websites We've Built</h2>
-<p class="mt-1 mb-2 inline-flex items-center gap-1 font-label-mono text-xs font-semibold tracking-wide" style="background:linear-gradient(90deg,#00F0FF,#7000FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Try one of our templates live&nbsp;<span class="material-symbols-outlined" style="-webkit-text-fill-color:#00F0FF;font-size:16px;vertical-align:middle;">arrow_downward</span></p>
+<!-- Template widget: tablet-only copy (768-1023px). Desktop (>=1024px) keeps
+     the widget in the hero above; see .tablet-template-widget CSS. -->
+<div class="tablet-template-widget mb-20">
+<p class="mb-4 inline-flex items-center gap-2 font-label-mono text-sm font-semibold tracking-wide" style="background:linear-gradient(90deg,#00F0FF,#7000FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Try one of our templates live&nbsp;<span class="material-symbols-outlined" style="-webkit-text-fill-color:#00F0FF;font-size:20px;vertical-align:middle;">arrow_forward</span></p>
 <section class="lab-poke-section" aria-label="Website template — sample card">
 
   <div class="poke-scene" data-flip="0">
@@ -893,7 +810,7 @@
           <div class="poke-back-inner">
             <h3>Tech Business Site Template</h3>
             <p>A reusable, single-config marketing site for service
-               businesses: animated 3D hero, a live "one call → full
+               businesses: animated 3D hero, a live "one call â†’ full
                estimate" demo, services, pricing, testimonials and FAQ —
                plus a small admin backend (login, lead inbox, live
                content editor).</p>
@@ -925,6 +842,59 @@
 
   <p class="poke-kicker">click to flip template</p>
 </section>
+</div>
+
+<!-- CTA -->
+<section class="text-center">
+<div class="glass-panel rounded-2xl p-16 relative overflow-hidden">
+<h2 class="font-headline-xl text-headline-lg text-starlight-white mb-6">Want to be next?</h2>
+<p class="max-w-xl mx-auto text-on-surface-variant text-body-lg mb-10">Based in Southwest Florida. Call or text and we'll talk through your project - no pressure, no jargon.</p>
+<div class="flex flex-wrap justify-center gap-4">
+<a href="tel:+12394048505" class="inline-flex items-center gap-2 px-10 py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-xl font-bold hover:scale-105 active:scale-95 transition-all shadow-2xl">
+<span class="material-symbols-outlined text-base">call</span> Call or Text (239) 404-8505
+                    </a>
+<a href="contact.html" class="inline-block px-10 py-4 border border-white/20 text-starlight-white font-label-caps text-label-caps rounded-xl hover:bg-white/5 transition-all">Send a Message</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="w-full mt-auto bg-void-black border-t border-white/5">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-12 w-full gap-8">
+<div class="flex flex-col gap-4">
+<div class="flex flex-col leading-none">
+<div class="font-headline-md text-headline-md text-starlight-white font-bold">SURETTE DATA SYSTEMS</div>
+
+</div>
+<div class="font-label-mono text-label-mono text-outline footer-meta"><span>&copy; 2026 Surette Data Systems</span><span class="footer-meta-sep" aria-hidden="true">&middot;</span><span>Southwest Florida</span><span class="footer-meta-sep" aria-hidden="true">&middot;</span><span>Call or text <a class="text-electric-cyan hover:underline" href="tel:+12394048505">(239) 404-8505</a></span><span class="footer-meta-sep" aria-hidden="true">&middot;</span><a class="text-electric-cyan hover:underline" href="mailto:info@SuretteSystems.com">info@SuretteSystems.com</a></div>
+</div>
+<div class="flex gap-12">
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-label-caps text-starlight-white">LEGAL</span>
+<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="privacy.html">Privacy</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="accessibility.html">Accessibility</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-label-caps text-starlight-white">RESOURCES</span>
+<a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors" href="terms.html">Terms</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<!-- /DESKTOP -->
+
+<!-- ============================================================ -->
+<!-- MOBILE LAYOUT (< md / 768px)                                 -->
+<!-- ============================================================ -->
+<div class="md:hidden">
+<div class="fixed inset-0 grid-overlay z-0 pointer-events-none opacity-20"></div>
+<main class="relative z-10 pt-28 pb-28 px-margin-mobile">
+<div class="mb-6 flex flex-col gap-4">
+<div class="flex items-center gap-4">
+<div class="h-[1px] w-12 bg-electric-cyan"></div>
+<span class="font-label-mono text-label-mono text-electric-cyan tracking-widest uppercase">Selected Work</span>
+</div>
+<h2 class="font-headline-xl text-headline-lg-mobile text-starlight-white">Websites We've Built</h2>
 <p class="font-body-lg text-body-md text-on-surface-variant">We start with the building blocks of a strong business foundation, then build fast sites that turn visitors into customers.</p>
 </div>
 
@@ -948,7 +918,7 @@
 </div>
 <div class="p-5 flex flex-col gap-3">
 <h3 class="portfolio-card-title font-headline-md text-[18px] text-starlight-white">EliteYachtDetailing.com</h3>
-<p class="font-body-md text-[13px] text-on-surface-variant">Luxury yacht detailing site - compare slider, 400+ vessel fleet gallery, and a Fleet Login portal.</p>
+<p class="font-body-md text-[13px] text-on-surface-variant">Luxury yacht detailing site - cinematic homepage, before/after compare slider, and a full services showcase.</p>
 <span class="font-label-mono text-[11px] text-electric-cyan inline-flex items-center gap-1">View case study <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
 </div>
 </a>
@@ -1004,10 +974,103 @@
 </a>
 </div>
 
+<!-- Template widget (moved below case studies on mobile) -->
+<div class="mb-10">
+<p class="mb-2 inline-flex items-center gap-1 font-label-mono text-xs font-semibold tracking-wide" style="background:linear-gradient(90deg,#00F0FF,#7000FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Try one of our templates live&nbsp;<span class="material-symbols-outlined" style="-webkit-text-fill-color:#00F0FF;font-size:16px;vertical-align:middle;">arrow_downward</span></p>
+<section class="lab-poke-section" aria-label="Website template — sample card">
+
+  <div class="poke-scene" data-flip="0">
+    <div class="poke-card" role="button" tabindex="0" aria-pressed="false"
+         aria-label="Tech Business Site Template card. Click or press Enter to flip for full details.">
+
+      <!-- ---------- FRONT FACE ---------- -->
+      <div class="poke-face poke-face--front">
+        <div class="poke-plate">
+
+          <div class="poke-top">
+            <h2 class="poke-name">Tech Business Site Template</h2>
+            <span class="poke-hp"><span class="hp-label">HP</span><span class="hp-val">100</span></span>
+          </div>
+
+          <div class="poke-art">
+            <img src="pokecard-dropin/pokecard/template-preview.jpg"
+                 alt="Screenshot of the Tech Business Site Template landing page hero"
+                 loading="lazy" decoding="async">
+          </div>
+          <div class="poke-stage-line">
+            <span>Stage · Landing + Admin</span>
+            <span>No. 001</span>
+          </div>
+
+          <div class="poke-badges" aria-label="Tech stack">
+            <span class="poke-badge">HTML</span>
+            <span class="poke-badge">CSS</span>
+            <span class="poke-badge">Vanilla JS</span>
+            <span class="poke-badge">Three.js</span>
+            <span class="poke-badge">GSAP</span>
+            <span class="poke-badge">Node / Express</span>
+          </div>
+
+          <div class="poke-body">
+            <span class="attack-name">One-Config Rebrand</span>
+            Swap every headline, price and colour from a single config
+            object — one template, any service business.
+          </div>
+
+          <div class="poke-foot">
+            <span class="poke-tag">weakness · brings in too much business</span>
+            <div class="poke-links">
+              <a class="poke-btn poke-btn--primary" href="pokecard-dropin/app-template/index.html">View Live</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ---------- BACK FACE (revealed on flip) ---------- -->
+      <div class="poke-face poke-face--back">
+        <div class="poke-plate">
+          <div class="poke-back-inner">
+            <h3>Tech Business Site Template</h3>
+            <p>A reusable, single-config marketing site for service
+               businesses: animated 3D hero, a live "one call â†’ full
+               estimate" demo, services, pricing, testimonials and FAQ —
+               plus a small admin backend (login, lead inbox, live
+               content editor).</p>
+            <p>Everything on the page is driven by one
+               <code>siteConfig.js</code> object, so the whole site
+               rebrands in minutes with no build step.</p>
+
+            <div class="back-badges" aria-label="Tech stack">
+              <span class="poke-badge">HTML</span>
+              <span class="poke-badge">CSS</span>
+              <span class="poke-badge">Vanilla JS</span>
+              <span class="poke-badge">Three.js</span>
+              <span class="poke-badge">GSAP</span>
+              <span class="poke-badge">Node / Express</span>
+            </div>
+
+            <div class="poke-links">
+              <a class="poke-btn poke-btn--primary" href="pokecard-dropin/app-template/index.html">View Live</a>
+            </div>
+            <span class="poke-flip-hint">Tap / press Enter to flip back</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="poke-glare" aria-hidden="true"></div>
+
+    </div>
+  </div>
+
+  <p class="poke-kicker">click to flip template</p>
+</section>
+</div>
+
 <!-- CTA -->
 <div class="glass-card rounded-xl p-8 text-center">
 <h2 class="font-headline-lg text-headline-md text-starlight-white mb-3">Want to be next?</h2>
-<p class="font-body-md text-on-surface-variant mb-6">Based in Naples, FL. Call or text us.</p>
+<p class="font-body-md text-on-surface-variant mb-6">Based in Southwest Florida. Call or text us.</p>
 <a href="tel:+12394048505" class="flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-sm active:scale-[0.98] transition-all">
 <span class="material-symbols-outlined text-base">call</span> Call or Text (239) 404-8505
             </a>
@@ -1018,36 +1081,22 @@
 <div class="font-headline-md text-headline-md text-starlight-white tracking-tighter">SURETTE DATA SYSTEMS</div>
 
 </div>
-<div class="font-label-caps text-[10px] text-on-primary-container opacity-60 text-center tracking-widest">&copy; 2026 Surette Data Systems &middot; NAPLES, FL &middot; CALL OR TEXT (239) 404-8505 &middot; <a class="text-electric-cyan hover:underline" href="mailto:info@SuretteSystems.com">info@SuretteSystems.com</a></div>
+<div class="font-label-caps text-[10px] text-on-primary-container opacity-60 text-center tracking-widest footer-meta justify-center"><span>&copy; 2026 Surette Data Systems</span><span class="footer-meta-sep" aria-hidden="true">&middot;</span><span>Southwest Florida</span><span class="footer-meta-sep" aria-hidden="true">&middot;</span><span>Call or text <a class="text-electric-cyan hover:underline" href="tel:+12394048505">(239) 404-8505</a></span><span class="footer-meta-sep" aria-hidden="true">&middot;</span><a class="text-electric-cyan hover:underline" href="mailto:info@SuretteSystems.com">info@SuretteSystems.com</a></div>
+<div class="flex flex-wrap justify-center gap-x-5 gap-y-1">
+<a class="font-label-mono text-[10px] text-outline hover:text-electric-cyan transition-colors" href="privacy.html">Privacy</a>
+<a class="font-label-mono text-[10px] text-outline hover:text-electric-cyan transition-colors" href="terms.html">Terms</a>
+<a class="font-label-mono text-[10px] text-outline hover:text-electric-cyan transition-colors" href="accessibility.html">Accessibility</a>
+</div>
 </footer>
-<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface/10 backdrop-blur-2xl border-t border-starlight-white/10 shadow-[0_-10px_30px_rgba(112,0,255,0.15)] rounded-t-xl">
-<a class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-all hover:text-starlight-white" href="index.html">
-<span class="material-symbols-outlined">home</span>
-<span class="font-label-caps text-[10px] mt-1">Home</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-all hover:text-starlight-white" href="apps.html">
-<span class="material-symbols-outlined">design_services</span>
-<span class="font-label-caps text-[10px] mt-1">Services</span>
-</a>
-<a href="apps.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90"><span class="material-symbols-outlined">download</span><span class="font-label-caps text-[9px] mt-1">Apps</span></a>
-<a class="flex flex-col items-center justify-center text-electric-cyan drop-shadow-[0_0_8px_rgba(0,240,255,0.8)] active:scale-90 transition-all" href="casestudies.html">
-<span class="material-symbols-outlined">work</span>
-<span class="font-label-caps text-[10px] mt-1">Websites</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-all hover:text-starlight-white" href="contact.html">
-<span class="material-symbols-outlined">mail</span>
-<span class="font-label-caps text-[10px] mt-1">Contact</span>
-</a>
-</nav>
 </div>
 <!-- /MOBILE -->
 
 <script src="pokecard-dropin/pokecard/pokecard.js"></script>
-<script src="assets/mobile-services-nav.js?v=20260627-blackfix"></script>
-<script src="assets/account-nav.js?v=20260703-mobile-account-color"></script>
+<script src="assets/mobile-services-nav.js?v=20260715-services-merge"></script>
+<script src="assets/account-nav.js?v=20260715-login-highlight"></script>
 <script src="assets/rail.js?v=20260602-rail-active"></script>
 <script src="assets/portfolio-title-fit.js?v=20260605-title-fit"></script>
-<script src="surette-logo.js?v=20260703-nav-loader"></script>
+<script src="surette-logo.js?v=20260715-reveal-margin"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   var fromWebsiteDesign = false;

@@ -1,5 +1,5 @@
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
-import { canOpenSeanAdsPortal, isSuperAdminUser, resolveProfilePortalRole } from "./portal-auth.js";
+import { isSuperAdminUser, resolveProfilePortalRole } from "./portal-auth.js";
 
 const config = window.DM_SUPABASE_CONFIG || {};
 const copy = window.DM_CLIENT_PORTAL_COPY || {};
@@ -46,9 +46,7 @@ const els = {
   metricInvoices: document.querySelector("[data-metric-invoices]"),
   metricBilling: document.querySelector("[data-metric-billing]"),
   metricSupport: document.querySelector("[data-metric-support]"),
-  seansAdsBanner: document.querySelector("[data-seansads-banner]"),
   navLoginLinks: document.querySelectorAll(".nav-login-link"),
-  seanAdsPortalPanel: document.querySelector("[data-sean-ads-portal-panel]"),
   adminCenterLink: document.querySelector("[data-admin-center-link]")
 };
 
@@ -67,9 +65,7 @@ function getSafePortalNext(value) {
     const isSpanishCheckout = path.startsWith("/es/app-checkout.html");
     const isEnglishSettings = path.startsWith("/account-settings.html");
     const isSpanishSettings = path.startsWith("/es/account-settings.html");
-    const isEnglishAdsDashboard = path.startsWith("/seans-google-ads-dashboard.html");
-    const isSpanishAdsDashboard = path.startsWith("/es/seans-google-ads-dashboard.html");
-    return isEnglishCheckout || isSpanishCheckout || isEnglishAdsDashboard || isSpanishAdsDashboard || isEnglishSettings || isSpanishSettings ? path : "";
+    return isEnglishCheckout || isSpanishCheckout || isEnglishSettings || isSpanishSettings ? path : "";
   } catch {
     return "";
   }
@@ -134,11 +130,6 @@ try {
   if (emailParam && els.email && !els.email.value) els.email.value = emailParam;
   portalNext.path = getSafePortalNext(params.get("next"));
   if (portalNext.path) setStoredPortalNext(portalNext.path);
-  const source = (params.get("source") || "").toLowerCase();
-  const referrer = document.referrer || "";
-  if (els.seansAdsBanner && (source === "seansads" || referrer.includes("seansads.com"))) {
-    els.seansAdsBanner.hidden = false;
-  }
 } catch {
   // Ignore malformed query strings; the form still works without prefill or source hints.
 }
@@ -432,12 +423,8 @@ async function renderDashboard(supabase, session) {
   if (els.accountEmail) els.accountEmail.textContent = user.email || "";
   const profileRole = await resolveProfilePortalRole(supabase, user, config);
   const isSuperAdmin = isSuperAdminUser(user, config, profileRole);
-  const canAccessSeanPortal = canOpenSeanAdsPortal(user, config, profileRole);
   if (els.adminCenterLink) {
     els.adminCenterLink.hidden = !isSuperAdmin;
-  }
-  if (els.seanAdsPortalPanel) {
-    els.seanAdsPortalPanel.hidden = !canAccessSeanPortal || isSuperAdmin;
   }
 
   const [services, invoices, documents, messages] = await Promise.all([
@@ -470,7 +457,6 @@ function renderSignedOut() {
   els.introPanel?.removeAttribute("hidden");
   els.authPanel?.removeAttribute("hidden");
   els.dashboard?.classList.remove("is-visible");
-  if (els.seanAdsPortalPanel) els.seanAdsPortalPanel.hidden = true;
   if (els.adminCenterLink) els.adminCenterLink.hidden = true;
   updateAccountNav(false);
 }

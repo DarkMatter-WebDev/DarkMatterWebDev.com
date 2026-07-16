@@ -2,10 +2,10 @@
   <rect width="1200" height="420" fill="#eef2ff"/>
   <rect x="320" y="24" width="560" height="372" rx="16" fill="#fff" stroke="#dbeafe"/>
   <text x="352" y="68" fill="#0f172a" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700">Pay stub</text>
-  <text x="352" y="96" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="14">Pay period ending Apr 12, 2026 � Jordan Lee</text>
+  <text x="352" y="96" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="14">Pay period ending Apr 12, 2026 · Jordan Lee</text>
   <rect x="352" y="118" width="496" height="1" fill="#e2e8f0"/>
-  <text x="352" y="152" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="13">Regular hours</text><text x="760" y="152" fill="#0f172a" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="end">40.0 � $960.00</text>
-  <text x="352" y="182" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="13">Overtime (1.5x)</text><text x="760" y="182" fill="#0f172a" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="end">4.0 � $144.00</text>
+  <text x="352" y="152" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="13">Regular hours</text><text x="760" y="152" fill="#0f172a" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="end">40.0 · $960.00</text>
+  <text x="352" y="182" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="13">Overtime (1.5x)</text><text x="760" y="182" fill="#0f172a" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="end">4.0 · $144.00</text>
   <text x="352" y="212" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="13">Gross pay</text><text x="760" y="212" fill="#0f172a" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="end">$1,104.00</text>
   <text x="352" y="252" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="13">Federal withholding</text><text x="760" y="252" fill="#ef4444" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="end">-$118.40</text>
   <text x="352" y="282" fill="#64748b" font-family="Segoe UI, Arial, sans-serif" font-size="13">State withholding</text><text x="760" y="282" fill="#ef4444" font-family="Segoe UI, Arial, sans-serif" font-size="13" text-anchor="end">-$42.10</text>

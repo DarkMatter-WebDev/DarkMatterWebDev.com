@@ -94,6 +94,12 @@
   .btn, .btn:hover, .btn:active { transform: none !important; transition: opacity 0.2s ease; }
 }
 
+/* Shared nav Contact Us CTA glow. Previously duplicated inline on a handful of
+   pages instead of centralized, so pages without their own copy rendered the
+   button without the glow. nav.css loads sitewide, so this is now the single
+   source of truth. */
+.glow-cyan { box-shadow: 0 0 20px rgba(0, 240, 255, 0.3); }
+
 /* ── Page reveal ─────────────────────────────────────────────────────────────
    nav.css is the first render-blocking stylesheet on every page, guaranteeing
    html { opacity: 0 } and the black root background are applied before the
@@ -106,7 +112,7 @@
    logo canvases are mounted and the nav is at its full painted size.
 
    Portal/utility pages that do NOT load surette-logo.js (account-settings,
-   account-ads-status, account-created, app-checkout, seans-google-ads-dashboard):
+   account-created, app-checkout):
    they never get .sds-logo-loaded, so the CSS animation below fires at 200ms.
    Those pages have no SDS logo canvas, so there's nothing to hide.
    ─────────────────────────────────────────────────────────────────────────── */
@@ -362,6 +368,48 @@ html.page-content-ready :where(
   min-width: 0;
 }
 
+/* Explicit fallback for the label-mono / label-caps utility classes used
+   throughout the nav (Home/Services/Portfolio/Client Login/Contact Us).
+   These are custom Tailwind theme keys, not built-in utilities, so they only
+   render correctly if a page's own tailwind.config defines them AND the
+   Tailwind CDN's runtime JIT scanner catches the class on the element. Nav
+   markup injected after page load by assets/standard-site-nav.js is not
+   reliably caught by that scanner, and at least one page (account.html) was
+   missing these theme keys from its config entirely, so nav text silently
+   fell back to the page's default sans-serif font. Defining the concrete
+   CSS here removes both failure modes for every page, regardless of its own
+   Tailwind config.
+   ─────────────────────────────────────────────────────────────────────────── */
+.font-label-mono { font-family: 'JetBrains Mono', monospace; }
+.text-label-mono { font-size: 14px; line-height: 1.4; letter-spacing: 0.05em; font-weight: 500; }
+.font-label-caps { font-family: 'JetBrains Mono', monospace; }
+.text-label-caps { font-size: 12px; line-height: 1.2; letter-spacing: 0.1em; font-weight: 700; }
+
+/* Same failure mode, same fix, for the custom-theme color utilities used in
+   the nav (Home/Services/Portfolio/Client Login/Contact Us and the mobile
+   dropdown). Without these, an element can keep the default text color
+   instead of showing as highlighted/cyan even when its class list is
+   correct — e.g. the Account link reading as "unhighlighted" on pages where
+   the JIT scanner missed it. */
+.text-electric-cyan { color: #00F0FF; }
+.text-nebula-purple { color: #7000FF; }
+.text-on-surface-variant { color: #c4c7c7; }
+.text-starlight-white { color: #FFFFFF; }
+.text-outline { color: #8e9192; }
+.text-void-black { color: #050505; }
+.border-electric-cyan { border-color: #00F0FF; }
+.bg-electric-cyan\/5 { background-color: rgba(0, 240, 255, 0.05); }
+
+/* Same failure mode again, this time for the gradient-stop utilities on the
+   Contact Us CTA. bg-gradient-to-r sets background-image from the
+   --tw-gradient-from/--tw-gradient-to custom properties that from-* / to-*
+   are supposed to set — when the JIT scanner misses from-electric-cyan and
+   to-nebula-purple, background-image silently resolves to "none" and the
+   button renders with no visible background at all. */
+.bg-gradient-to-r.from-electric-cyan.to-nebula-purple {
+  background-image: linear-gradient(90deg, #00F0FF, #7000FF);
+}
+
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined';
   font-weight: normal;
@@ -445,6 +493,12 @@ nav .hidden.md\:flex > a.font-label-mono:not(.bg-gradient-to-r),
   border-bottom: 2px solid transparent;
   box-sizing: border-box;
   line-height: 1.4;
+}
+
+/* The Services trigger has no href (it opens a hover dropdown, not a page),
+   so browsers show the default text-select cursor instead of a pointer. */
+.services-nav-group > a:first-child {
+  cursor: pointer;
 }
 
 nav .hidden.md\:flex > a.font-label-mono.border-b-2,
@@ -676,9 +730,9 @@ nav .hidden.md\:flex,
 }
 
 @media (max-width: 767px) {
-  #mobile-menu-btn,
-  #mobile-menu-dropdown {
-    display: none !important;
+  html,
+  body {
+    overflow-x: hidden;
   }
 
   .md\:hidden header {
@@ -690,46 +744,8 @@ nav .hidden.md\:flex,
     padding-right: 0.35rem;
   }
 
-  .md\:hidden > nav.fixed.bottom-0,
-  .md\:hidden nav.fixed.bottom-0,
-  nav.fixed.bottom-0.md\:hidden {
-    top: 4rem !important;
-    bottom: auto !important;
-    height: 3.05rem !important;
-    padding: 0.2rem 0.35rem !important;
-    border-top: 0 !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 0 !important;
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28), 0 0 18px rgba(0, 240, 255, 0.08) !important;
-  }
-
-  .md\:hidden nav.fixed.bottom-0 a,
-  .md\:hidden nav.fixed.bottom-0 button,
-  nav.fixed.bottom-0.md\:hidden a,
-  nav.fixed.bottom-0.md\:hidden button {
-    min-width: 0;
-    flex: 1 1 0;
-    height: 100%;
-    gap: 0.1rem;
-    font-size: 0.62rem;
-  }
-
-  .md\:hidden nav.fixed.bottom-0 .material-symbols-outlined,
-  nav.fixed.bottom-0.md\:hidden .material-symbols-outlined {
-    font-size: 1.15rem !important;
-    margin-bottom: 0.05rem !important;
-  }
-
-  .md\:hidden nav.fixed.bottom-0 .font-label-caps,
-  nav.fixed.bottom-0.md\:hidden .font-label-caps {
-    font-size: 0.52rem !important;
-    line-height: 1.1 !important;
-    margin-top: 0.05rem !important;
-    white-space: nowrap;
-  }
-
   .md\:hidden main {
-    padding-top: 7.75rem !important;
+    padding-top: 5.25rem !important;
   }
 
   .md\:hidden main .hero-headline-band {
@@ -740,7 +756,7 @@ nav .hidden.md\:flex,
     position: fixed;
     left: 0.65rem;
     right: 0.65rem;
-    top: 7.55rem;
+    bottom: 5.75rem;
     z-index: 70;
     max-height: min(72vh, 34rem);
     overflow: auto;
@@ -760,6 +776,82 @@ nav .hidden.md\:flex,
       opacity 0.3s ease,
       transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
       visibility 0s linear 0.3s;
+  }
+
+  .mobile-nav-dropdown {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px) scale(0.96);
+    pointer-events: none;
+    transition:
+      opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 0.32s;
+  }
+
+  .mobile-nav-dropdown.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  .mobile-nav-dropdown-panel {
+    background: rgba(8, 10, 14, 0.96);
+    backdrop-filter: blur(20px) saturate(1.25);
+    -webkit-backdrop-filter: blur(20px) saturate(1.25);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.65);
+  }
+
+  .dm-unified-mobile-header {
+    left: 0;
+    right: 0;
+    width: auto;
+  }
+
+  .dm-unified-mobile-header-content {
+    padding-inline: clamp(1rem, 5.333vw, 2rem) !important;
+  }
+
+  .dm-mobile-menu-controls {
+    margin-left: auto;
+    min-width: 0;
+  }
+
+  #mobile-menu-btn[aria-expanded="true"] .mobile-menu-line-top { width: 1.25rem; }
+  #mobile-menu-btn[aria-expanded="true"] .mobile-menu-line-mid { width: 1rem; opacity: 0.9; }
+  #mobile-menu-btn[aria-expanded="true"] .mobile-menu-line-bot { width: 0.75rem; opacity: 0.75; }
+
+  .mobile-acc-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .mobile-acc-panel.is-open { max-height: 30rem; }
+  .mobile-acc-chevron { transition: transform 0.3s ease; }
+  .mobile-acc-toggle[aria-expanded="true"] .mobile-acc-chevron { transform: rotate(180deg); }
+  .mobile-acc-toggle[aria-expanded="true"] { color: #fff; }
+
+  /* Small non-interactive category tag inside the "All Services" accordion
+     panel — same visual language as .mobile-services-popout__heading (the
+     bottom-nav Services popout, which already got this right), just indented
+     to nest under the All Services toggle instead of being its own button. */
+  .mobile-menu-group-label {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.65rem 1rem 0.35rem 1.75rem;
+    color: var(--c-primary);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .mobile-menu-group-label:not(:first-child) {
+    margin-top: 0.35rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   .mobile-services-popout.is-open {
@@ -823,6 +915,14 @@ nav .hidden.md\:flex,
   }
 }
 
+@media (min-width: 768px) {
+  .dm-standard-desktop-nav {
+    left: 0;
+    right: 0;
+    width: auto;
+  }
+}
+
 /* ── Tablet band (768px–1279px): rail inset + stacked columns ── */
 @media (min-width: 768px) and (max-width: 1279.98px) {
   /* Left rail padding is for wide desktop; at tablet it steals horizontal room. */
@@ -846,3 +946,26 @@ nav .hidden.md\:flex,
     align-items: stretch !important;
   }
 }
+
+/* ── Footer copyright/contact line ──────────────────────────────────────────
+   Wraps as whole phrases (flex-wrap items) instead of breaking mid-phrase at
+   arbitrary word boundaries — the bug that let "Call or text" split away
+   from the phone number on narrow screens. Each phrase's own text still
+   wraps internally if it has to; the phone number and email stay nowrap
+   since a broken phone number or email address reads as visibly wrong. */
+.footer-meta { display:flex; flex-wrap:wrap; align-items:center; gap:5px 9px; }
+.footer-meta-sep { opacity:.45; }
+.footer-meta a[href^="tel:"], .footer-meta a[href^="mailto:"] { white-space:nowrap; }
+
+/* ── "Client Login" nav link ─────────────────────────────────────────────────
+   Signed-out is a normal (non-highlighted) nav link; account-nav.js adds
+   .is-signed-in only once an actual session is detected. Previously this
+   link was hardcoded cyan/highlighted unconditionally, which read as "the
+   user is logged in" even when they weren't. Not scoped to a media query —
+   the desktop/mobile variants are only ever visible in their own nav anyway.
+   !important guards against Tailwind's CDN-JIT utility classes winning a
+   cascade tie on dynamically injected markup (a recurring issue on this
+   site — see CHANGELOG for the color-utility-fallback fixes). */
+.dm-account-link-desktop.is-signed-in { color: #00F0FF !important; }
+.dm-account-link-desktop.is-signed-in:hover { color: #fff !important; }
+.dm-account-link-mobile.is-signed-in { color: #00F0FF !important; background-color: rgba(0, 240, 255, 0.05) !important; }

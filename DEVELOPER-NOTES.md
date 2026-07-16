@@ -1,4 +1,4 @@
-# Developer Notes â€” Dark Matter site (surettesystems.com)
+# Developer Notes — Dark Matter site (surettesystems.com)
 
 Handoff notes for whoever (human or AI) works on this site next. Last updated **2026-06-10**.
 
@@ -13,11 +13,11 @@ A client portal is layered on top using **Supabase** (auth + a few tables).
 - English pages live at the root; Spanish mirrors live under `es/`.
 - Styling is Tailwind utility classes (precompiled) + a few custom CSS files in `assets/`.
 
-## 2. Deployment â€” READ THIS FIRST
+## 2. Deployment — READ THIS FIRST
 
 - The live site is published by **drag-and-dropping a folder into Netlify** (manual deploy, not Git-connected).
 - **Netlify "Pretty URLs" is ON.** At deploy time Netlify rewrites in-page links from
-  `account.html` â†’ `/account` (drops the `.html`). So the **live HTML differs from the source**:
+  `account.html` → `/account` (drops the `.html`). So the **live HTML differs from the source**:
   source says `href="account.html"`, the live site serves `href="/account"`.
   Any JavaScript that matches links by URL must handle **both** forms.
 - There are **many near-identical local copies** of this project on the machine
@@ -55,7 +55,7 @@ This is the most-touched, most-subtle part of the site. How it works:
     and on **`storage`** (so logging in/out in one tab updates other open tabs).
   - Link matching uses the regex `/(^|\/)account(\.html)?([?#]|$)/i` so it matches
     `account.html`, `/account`, `../account.html`, `/account.html`, `account`, and `?query`/`#hash`
-    variants â€” but **not** `account-settings`, `account-created`, `account-ads-status`.
+    variants — but **not** `account-settings`, `account-created`, `account-ads-status`.
 
 - **The account page itself** (`account.html`) does NOT rely on `account-nav.js` for its button.
   Its own script `assets/client-portal.js` updates its nav button directly and is the source of truth
@@ -76,12 +76,12 @@ console.log('flag:', localStorage.getItem('dm_logged_in'),
             '| sb keys:', Object.keys(localStorage).filter(k=>k.startsWith('sb-')),
             '| nav script:', !!document.querySelector('script[src*="account-nav"]'));
 ```
-- `flag`/`sb keys` present but button wrong â†’ the reader isn't matching the link (URL form) or isn't loaded.
-- `nav script: false` â†’ the page isn't loading `account-nav.js` (or Netlify renamed it via JS bundling).
+- `flag`/`sb keys` present but button wrong → the reader isn't matching the link (URL form) or isn't loaded.
+- `nav script: false` → the page isn't loading `account-nav.js` (or Netlify renamed it via JS bundling).
 
 ## 5. Supabase
 
-- Config (public) is in `assets/supabase-config.js` â€” project `evzluixourmsefwdsieu`, a **publishable**
+- Config (public) is in `assets/supabase-config.js` — project `evzluixourmsefwdsieu`, a **publishable**
   anon key (`sb_publishable_...`). Tables: `client_profiles`, `client_services`, `client_invoices`,
   `client_documents`, `client_messages`. Super-admin / Sean-ads-admin gating is by email allowlist +
   `client_profiles.portal_role` + `app_metadata`.
@@ -99,9 +99,9 @@ console.log('flag:', localStorage.getItem('dm_logged_in'),
 
 ## 7. Files changed on 2026-06-10 (this handoff)
 
-- `assets/account-nav.js` â€” clean-URL-tolerant link matching; `pageshow` + `storage` re-runs;
+- `assets/account-nav.js` — clean-URL-tolerant link matching; `pageshow` + `storage` re-runs;
   symmetric logout via `data-dm-orig` snapshot/restore.
-- `assets/client-portal.js` â€” set `dm_logged_in` the instant a session exists (before any
+- `assets/client-portal.js` — set `dm_logged_in` the instant a session exists (before any
   post-login redirect); clear it immediately in the sign-out handler.
-- All 38 nav pages â€” bumped `account-nav.js?v=` to `20260610d-account-logout`.
-- `account.html`, `es/account.html` â€” bumped `client-portal.js?v=` to `20260610c-login-flag`.
+- All 38 nav pages — bumped `account-nav.js?v=` to `20260610d-account-logout`.
+- `account.html`, `es/account.html` — bumped `client-portal.js?v=` to `20260610c-login-flag`.

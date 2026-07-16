@@ -393,7 +393,7 @@
         e.target.classList.add('in-view');
         io.unobserve(e.target);
       });
-    }, { rootMargin: '0px 0px -60px 0px', threshold: 0.08 });
+    }, { rootMargin: '0px 0px 320px 0px', threshold: 0 });
     document.querySelectorAll('.reveal-up').forEach(function (el) { io.observe(el); });
   }
 

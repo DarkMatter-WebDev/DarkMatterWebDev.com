@@ -40,9 +40,7 @@
       online: 'Web & Online Services',
       local: 'In-Home & Office',
       links: [
-        ['Website Design', service('website-design')],
-        ['Managed Hosting', service('managed-hosting')],
-        ['Website Care Plans', service('website-care-plans')],
+        ['Website Design / Hosting', service('website-design-hosting')],
         ['Custom Business Web Apps', page('apps.html')]
       ],
       localLinks: [
@@ -55,9 +53,7 @@
       online: 'Servicios Web y en Línea',
       local: 'A Domicilio y Oficina',
       links: [
-        ['Diseño de Sitios Web', service('website-design')],
-        ['Hosting Administrado', service('managed-hosting')],
-        ['Planes de Mantenimiento Web', service('website-care-plans')],
+        ['Diseño Web / Hosting', service('website-design-hosting')],
         ['Aplicaciones Web Empresariales', page('apps.html')]
       ],
       localLinks: [

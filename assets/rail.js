@@ -8,10 +8,10 @@
   var closeTimer = null;
 
   var stepSlugs = {
-    design: 'website-design',
+    design: 'website-design-hosting',
     build: 'custom-development',
     launch: 'process',
-    maintain: 'website-care-plans'
+    maintain: 'website-design-hosting'
   };
 
   var stepsByLang = {
@@ -102,11 +102,10 @@
   function activeKeyFromPath(path) {
     var normalized = path.replace(/\/+$/, '/').toLowerCase();
     var file = normalized.split('/').pop() || 'index.html';
-    if (normalized.indexOf('website-design') !== -1) return 'design';
+    if (normalized.indexOf('website-design-hosting') !== -1) return 'design';
     if (normalized.indexOf('custom-development') !== -1) return 'build';
     if (file === 'process.html') return 'launch';
-    if (normalized.indexOf('managed-hosting') !== -1) return 'launch';
-    if (normalized.indexOf('website-care-plans') !== -1 || normalized.indexOf('in-home-services') !== -1 || normalized.indexOf('office-network-setup') !== -1) return 'maintain';
+    if (normalized.indexOf('in-home-services') !== -1 || normalized.indexOf('office-network-setup') !== -1) return 'maintain';
     if (file === 'index.html' || /\/$/.test(normalized)) return 'design';
     return null;
   }

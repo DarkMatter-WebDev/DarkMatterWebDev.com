@@ -30,7 +30,7 @@
 <meta name="twitter:title" content="JPSurette.com | Portfolio | Surette Data Systems"/>
 <meta name="twitter:description" content="Managed websites, business web apps, hosting, support, and local IT setup for Southwest Florida businesses."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
-<link href="assets/nav.css?v=20260703-fixed-header-anchor" rel="stylesheet"/>
+<link href="assets/nav.css?v=20260715-login-highlight" rel="stylesheet"/>
 <link href="assets/cosmic-web.css?v=20260602-cosmic-colorways" rel="stylesheet"/><link href="assets/portfolio-live-widget.css?v=20260605-live-widget-shrink" rel="stylesheet"/>
 <link href="assets/portfolio-mobile-fixes.css?v=20260605-title-fit" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -506,35 +506,7 @@
 <div class="absolute -top-[20%] -left-[10%] w-[60%] h-[60%] bg-nebula-purple/10 blur-[120px] rounded-full"></div>
 <div class="absolute -bottom-[20%] -right-[10%] w-[60%] h-[60%] bg-electric-cyan/5 blur-[120px] rounded-full"></div>
 </div>
-<nav class="fixed top-0 w-full bg-surface/10 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-margin-desktop py-4 z-50">
-<div id="sds-logo"></div>
-<div class="hidden md:flex gap-10 items-center">
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="index.html">Home</a>
-<div class="relative services-nav-group">
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" tabindex="0" aria-haspopup="true">Services</a>
-<div class="services-nav-menu">
-<div class="services-nav-panel">
-<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Online Services</div>
-
-
-<a href="services/website-design.html">Website Design</a>
-
-<a href="services/managed-hosting.html">Managed Hosting</a>
-<a href="services/website-care-plans.html">Website Care Plans</a>
-
-<a href="apps.html">Custom Business Web Apps</a>
-<div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">home_pin</span>In-Home &amp; Office Services</div>
-<a href="services/in-home-services.html">In-Home Tech Services</a>
-<a href="services/office-network-setup.html">Office Network Setup</a>
-</div>
-</div>
-</div>
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="apps.html">Apps</a>
-<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300 portfolio-nav-button" href="casestudies.html">Websites</a>
-<a class="font-label-mono text-label-mono text-electric-cyan hover:underline transition-colors duration-300 inline-flex items-center gap-1.5" href="account.html"><span class="material-symbols-outlined text-base">account_circle</span>Client Login</a>
-<a href="contact.html" class="ml-4 inline-block px-6 py-2 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-lg hover:opacity-90 active:scale-95 transition-all">Contact Us</a>
-</div>
-</nav>
+<script src="assets/standard-site-nav.js?v=20260715-nav-unify" data-active="portfolio"></script>
 <main class="relative z-10 pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto md:pl-28">
 <a href="casestudies.html" class="inline-flex items-center gap-2 font-label-mono text-sm text-electric-cyan hover:underline mb-10"><span class="material-symbols-outlined text-base">arrow_back</span>Back to Portfolio</a>
 <section class="mb-14 max-w-[1264px] mx-auto">
@@ -603,7 +575,7 @@
 </main>
 <footer class="relative z-10 w-full py-12 px-margin-mobile md:px-margin-desktop flex flex-col items-center gap-4 border-t border-starlight-white/5 bg-void-black">
 <div class="flex flex-col leading-none items-center"><div class="font-headline-md text-headline-md text-starlight-white tracking-tighter">SURETTE DATA SYSTEMS</div></div>
-<div class="font-label-caps text-[10px] text-on-primary-container opacity-60 text-center tracking-widest">&copy; 2026 Surette Data Systems &middot; NAPLES, FL &middot; CALL OR TEXT (239) 404-8505  <a class="text-electric-cyan hover:underline" href="mailto:info@SuretteSystems.com">info@SuretteSystems.com</a></div>
+<div class="font-label-caps text-[10px] text-on-primary-container opacity-60 text-center tracking-widest footer-meta justify-center"><span>&copy; 2026 Surette Data Systems</span><span class="footer-meta-sep" aria-hidden="true">&middot;</span><span>Southwest Florida</span><span class="footer-meta-sep" aria-hidden="true">&middot;</span><span>Call or text <a class="text-electric-cyan hover:underline" href="tel:+12394048505">(239) 404-8505</a></span><span class="footer-meta-sep" aria-hidden="true">&middot;</span><a class="text-electric-cyan hover:underline" href="mailto:info@SuretteSystems.com">info@SuretteSystems.com</a></div>
 <div class="flex gap-4 mt-4 font-label-mono text-[11px] text-on-surface-variant">
   <a href="privacy.html" class="hover:text-electric-cyan transition-colors">Privacy</a>
   <a href="terms.html" class="hover:text-electric-cyan transition-colors">Terms</a>
@@ -612,10 +584,10 @@
 </footer>
 </div>
 
-<script src="assets/mobile-services-nav.js?v=20260627-blackfix"></script>
-<script src="assets/account-nav.js?v=20260703-mobile-account-color"></script>
+<script src="assets/mobile-services-nav.js?v=20260715-services-merge"></script>
+<script src="assets/account-nav.js?v=20260715-login-highlight"></script>
 <script src="assets/rail.js?v=20260602-rail-active"></script>
 <script src="assets/portfolio-title-fit.js?v=20260605-title-fit"></script>
-<script src="surette-logo.js?v=20260703-nav-loader"></script>
+<script src="surette-logo.js?v=20260715-reveal-margin"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
 </body></html>

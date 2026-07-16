@@ -1,6 +1,6 @@
 # Decisions
 
-Last updated: 2026-07-04
+Last updated: 2026-07-15
 
 Record only durable decisions here. Do not add routine change history.
 
@@ -22,11 +22,29 @@ Decision: Sean's Google Ads source is intentionally external and absent from thi
 
 Reason: it is now separately hosted/managed at `https://seansads.com/`; Dark Matter should only link to it or expose portal-related Dark Matter pages.
 
+## Navigation Single Source of Truth
+
+Decision (2026-07-15): all public pages render their navigation — desktop header, mobile header + hamburger dropdown, and mobile bottom tab bar — exclusively from `assets/standard-site-nav.js` via one `<script ... data-active="...">` tag. No page may carry hand-copied inline nav markup; the legacy runtime shim `assets/unified-mobile-menu.js` was removed. Portal utility pages (account-admin/-users/-settings/-created, app-checkout) are the deliberate exception and keep minimal chrome.
+
+Reason: the nav previously existed in one generator plus ~16 hand-pasted copies in four vintages, patched at runtime by shims. Every nav change landed in the generator and silently missed the copies, producing constant visible drift (wrong active highlights, stale login styling, structurally different menus per page). One injection point makes drift structurally impossible.
+
 ## Apps URL
 
 Decision: the app library is `apps.html` / `es/apps.html`; old Downloads paths redirect.
 
 Reason: user-facing naming changed from Downloads to Apps.
+
+## Portfolio Hub
+
+Decision: use `portfolio.html` as the top-level navigation category for work examples, with Apps (`apps.html`) and Websites (`casestudies.html`) as downstream pages.
+
+Reason: the header needs one concise Portfolio category instead of separate Apps and Websites items, while preserving the existing full pages and detail routes.
+
+## Public Navigation Compatibility
+
+Decision: retain the homepage/`assets/standard-site-nav.js` navigation design as the public visual standard, and use `assets/unified-mobile-menu.js` to give legacy public templates the same phone navigation behavior until the HTML can be consolidated.
+
+Reason: the project has several historical header markup paths. A compatibility layer keeps the visible header, menu, account control, and bottom nav consistent across current public pages without a risky full-template rewrite.
 
 ## App Brand
 
@@ -40,9 +58,14 @@ Decision: no local `admin` / `admin` bypass. Privileged UI uses Supabase Auth `a
 
 Roles:
 - `super_admin` for the Dark Matter owner account
-- `sean_ads_admin` for Sean's Google Ads portal access
 
 Reason: roles in `app_metadata` are server-controlled and prepare the portal for RLS-backed data access. Email allowlists remain only as a fallback during account setup.
+
+## Removed Sean's Ads Portal
+
+Decision: removed the internal Sean's Google Ads portal feature entirely (`seans-google-ads-dashboard.html`, `account-ads-status.html`, `assets/seans-ads-dashboard.js`, the `sean_ads_admin` role, and all UI wiring in `account.html`/`account-settings.html`/`account-admin.html`). The public SeansAds.com portfolio case study (`portfolio-seansads.html`, its `casestudies.html` tile) is a separate showcased client website and was intentionally left in place.
+
+Reason: owner decision to discontinue the internal Sean-specific portal/dashboard feature.
 
 ## Dedicated Portal Supabase
 
@@ -103,6 +126,12 @@ Reason: keeping contact, consultation, checkout, and portal messages in one owne
 Decision: message email notifications should use Netlify Forms notifications, while Supabase remains the durable message-center record.
 
 Reason: Netlify can provide owner email alerts without adding a separate email API provider or storing notification credentials in the project.
+
+## Website Pricing Model
+
+Decision: website services are sold through two purchasing paths — managed website plans (12-month initial agreement, $0 upfront build on qualifying tiers, monthly or discounted annual prepay) and one-time website builds (customer owns and manages after handoff). `website_pricing_plan.txt` at the project root is the source of truth for all plan names, prices, allowances, ownership rules, and customer policies shown on `services/website-design-hosting.html`.
+
+Reason: owner-defined pricing/policy model; the public page must never drift from the spec file. Never describe the $0 upfront offer as a "free website."
 
 ## Future Structure
 

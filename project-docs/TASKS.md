@@ -1,21 +1,22 @@
 # Tasks
 
-Last updated: 2026-07-08
+Last updated: 2026-07-15
 
 ## Active
 
 - Keep memory docs compact and current after meaningful work.
-- Static validator known noise: missing `es/` mirrors, node_modules scan, Sean Ads Spanish links, and mojibake warnings. These are pre-existing and do not block work.
-- Audit finding: service-detail pages use a different mobile header markup path than most root marketing/app pages; header dimensions are stable in preview, but consolidating service-page mobile nav into the shared pattern remains a good future polish item.
+- Static validator known noise: missing `es/` mirrors and node_modules/pokecard template scans. New English-only pages also appear as missing Spanish mirrors until bilingual pages are restored. Mojibake was swept site-wide and repaired 2026-07-15 — the only remaining validator mojibake hit is inside `node_modules` (vendor file, ignore).
+- Nav rule for all new pages: never hand-copy nav markup — add `<script src="assets/standard-site-nav.js?v=20260715-nav-unify" data-active="...">` (use `../assets/...` under `services/`). `assets/unified-mobile-menu.js` was deleted 2026-07-15; all public pages now use the generator.
+- `_enum_out.txt` (root) is stale generated output from `_enum_artifacts.py` with ~380 unrecoverable U+FFFD characters (it enumerated the since-removed `es/` pages). Not served content and the validator ignores `.txt` for mojibake — regenerate or delete when convenient.
 - Confirm Supabase Auth URL configuration in the hosted project: Site URL should be `https://surettesystems.com`, and redirect allowlist should include `https://surettesystems.com/account.html`, `https://surettesystems.com/account-settings.html`, `https://surettesystems.com/account-admin.html`, `https://surettesystems.com/account-users.html`, plus local preview URLs only for development.
 - Run the updated `supabase/portal-role-setup.sql` in the hosted Supabase project so homepage newsletter submissions, account-signup mirroring into `homepage_email_signups`, public form message submission/photo attachment support, account-dashboard message submission/list/delete RPCs, and Admin Center delete RPCs work live. If Supabase reports a changed return type for `list_portal_messages()`, rerun the current file, which includes `drop function if exists public.list_portal_messages();` before the recreated function.
 - Configure Netlify Forms notifications for the detected forms (`contact`, `apps-consultation`, `app-checkout-request`, and `client-request`) so submissions email `info@surettesystems.com`, then submit production tests and confirm each message also appears in Admin Center Messages.
 
 ## Near-Term
 
-- **Fix MetalsCalc OG/meta URLs** â€” `metalscalc-buying-calculator.html` and `portfolio-metalscalc.html` reference `darkmatterwebsites.com` in OG/meta URLs; should be `surettesystems.com` if that is the canonical production domain.
-- **Clean up stale antique mall screenshots** â€” `assets/apps/antique-mall/antique-mall-*.png` (old captures) may still be on disk alongside the current `thirdstreet-*.png` set; audit and delete unused files.
-- **Capture ThirdStreetAuctions admin/vendor dashboard screenshots** â€” public captures are done; logged-in admin/vendor screens still needed once an authenticated browser session is available.
+- **Fix MetalsCalc OG/meta URLs** — `metalscalc-buying-calculator.html` and `portfolio-metalscalc.html` reference `darkmatterwebsites.com` in OG/meta URLs; should be `surettesystems.com` if that is the canonical production domain.
+- **Clean up stale antique mall screenshots** — `assets/apps/antique-mall/antique-mall-*.png` (old captures) may still be on disk alongside the current `thirdstreet-*.png` set; audit and delete unused files.
+- **Capture ThirdStreetAuctions admin/vendor dashboard screenshots** — public captures are done; logged-in admin/vendor screens still needed once an authenticated browser session is available.
 - **Finish Supabase portal setup** (dedicated Dark Matter / Surette Data Systems project):
 - **Reconcile Supabase starter SQL** with the frontend's live table config (`client_invoices`, `client_documents`, `client_messages`) before using it to bootstrap a fresh database.
   - Run `supabase/client-portal-schema.sql`
@@ -26,13 +27,13 @@ Last updated: 2026-07-08
   - Run the updated `homepage_email_signups` setup so homepage submissions insert and account signups mirror into the newsletter subscriber source
   - Confirm `delete_newsletter_subscriber()` and `delete_portal_account_holder()` RPCs work for the super-admin and reject non-owner users
   - Confirm `handle_new_portal_user()` trigger creates `client_profiles` rows on signup
-  - Set `app_metadata.role`: `rcman12589@aol.com` â†’ `super_admin`, `scochrane495@gmail.com` â†’ `sean_ads_admin`
-  - Configure Auth redirects and email templates (signup redirect â†’ `account-created.html`)
+  - Set `app_metadata.role`: `rcman12589@aol.com` → `super_admin`, `scochrane495@gmail.com` → `sean_ads_admin`
+  - Configure Auth redirects and email templates (signup redirect → `account-created.html`)
   - Create test users/client rows and verify RLS
   - Confirm Contact, Apps consultation, App Checkout, and portal account request submissions all appear in Admin Center Messages
 - **Review all high-value pages** on desktop and mobile before launch.
 - **Add a secure backend/server-side payment layer** before real Stripe recurring billing or privileged admin operations.
-- **Keep app screenshots current** â€” Auction, SDMS, and Antique Mall screenshots should stay in sync with hosted demos.
+- **Keep app screenshots current** — Auction, SDMS, and Antique Mall screenshots should stay in sync with hosted demos.
 - **Review app pricing copy and rates** after real client feedback.
 
 ## Backlog
@@ -45,6 +46,12 @@ Last updated: 2026-07-08
 - Consider future migration from duplicated hand-authored HTML to generated static HTML with shared layouts (Astro candidate for marketing pages).
 
 ## Recently Completed
+
+- **Nav single-source migration (2026-07-15):** migrated all 16 remaining public pages with inline/hand-copied nav markup to the `assets/standard-site-nav.js` generator, fixed the generator to emit `../`-prefixed links on `services/*` pages (all its injected links there 404'd before), deleted `assets/unified-mobile-menu.js` + its 28 script tags + dead nav.css shell rules, removed `app-pricing.html`'s broken `es/` lang toggle, and unified every loader reference to `v=20260715-nav-unify`. Fixes wrong active-page highlights (Portfolio shown active on apps/app-catalog/casestudies/built-by/accessibility/process), hardcoded-cyan Client Login on legacy pages, homepage's divergent hamburger structure, missing mobile nav markup on portfolio detail pages, and terms.html's missing nav logo. Verified in-browser at mobile + desktop across all migrated page types; no console errors; validator baseline unchanged.
+- Completed `services/website-design-hosting.html` as a full public pricing page implementing `website_pricing_plan.txt` (project root, source of truth for plan names/prices/policies): managed plans ($0 upfront Starter/Mini/Lead Capture + Local Business + Growth), one-time builds (8 packages), hosting/care plans, update-allowance/support/revision policies, ownership/renewal/handoff, add-on price list, and a 36-question FAQ. Verified anchors, overflow (375px clean), and content coverage in-browser; validator noise unchanged.
+- Fixed `assets/mobile-services-nav.js` mobile Services popout still linking to the three retired service pages; now a single "Website Design / Hosting" entry (EN + ES), cache-busted on all 28 referencing pages (`v=20260715-services-merge`).
+- Unified public navigation behavior across legacy, standard-nav, service, Portfolio, and client-login pages. Added `assets/unified-mobile-menu.js` as a compatibility layer, corrected shared fixed-header gutters/overflow rules, and verified 30 public routes at 1440px, 834px, 768px, 767px, and 390px with zero header/navigation failures.
+- Added `portfolio.html` as the top-level Portfolio hub and folded the header/mobile nav Apps + Websites entries into one Portfolio item. The hub links to the existing Apps (`apps.html`) and Websites (`casestudies.html`) pages with short category explanations and existing visual assets. Verified desktop/mobile preview and reran the static validator; remaining failures are documented noise plus the expected missing Spanish mirror for the new page.
 
 - Updated Sean's Ads portfolio (`portfolio-seansads.html`, `casestudies.html`) to reflect live production at SeansAds.com; aligned `portfolio-seansads.html` with the standard sitewide top nav.
 - Fixed tablet overflow/clipping sitewide: shared `assets/nav.css` tablet band, casestudies hero stack, contact page `lg:flex-row`, portfolio live-widget sizing, and nav `#sds-logo` flex treatment. Playwright tablet audit clean on 16 pages × 3 viewports.
@@ -74,7 +81,7 @@ Last updated: 2026-07-08
 - Added Admin Center Delete actions to the Subscribers and Account holders tables, each routed through a confirmation modal and owner-only Supabase RPCs. The signed-in owner account is protected from self-delete in the UI and RPC.
 - Smoothed the homepage Nova WebGL background on mobile by making the fixed canvas layer use stable viewport sizing/compositing and ignoring height-only mobile browser-toolbar resize events during scroll.
 - Kept the mobile header account control icon-only in signed-in state and cache-busted `assets/account-nav.js` references.
-- Added MetalsCalc â€” Buying Calculator as a 5th Surette Data Systems app: `metalscalc-buying-calculator.html` app profile, catalog tile #05 (PWA badge) in `app-catalog.html`, screenshots in `assets/apps/metalscalc/`, and a portfolio/website entry (`portfolio-metalscalc.html`, tile #06 in `casestudies.html`) with screenshots in `assets/portfolio/metalscalc/`.
+- Added MetalsCalc — Buying Calculator as a 5th Surette Data Systems app: `metalscalc-buying-calculator.html` app profile, catalog tile #05 (PWA badge) in `app-catalog.html`, screenshots in `assets/apps/metalscalc/`, and a portfolio/website entry (`portfolio-metalscalc.html`, tile #06 in `casestudies.html`) with screenshots in `assets/portfolio/metalscalc/`.
 - Added `account-settings.html` (profile/password management), `account-created.html` (email verification landing page after signup), and `account-ads-status.html` (Google Ads workspace stub for Sean).
 - Rebuilt `app-catalog.html` gallery cards to match the Websites/Case Studies `.portfolio-tile` design (2-up mobile, 3-up desktop). Removed old "DepthFold" 3D card system.
 - Removed "fly" canvas hero background from `app-catalog.html` after `assets/fly/` was deleted; restored cosmic-web background.

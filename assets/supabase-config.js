@@ -16,8 +16,7 @@ window.DM_SUPABASE_CONFIG = {
   anonKey: "sb_publishable_qKXSXbrUR-sW0tJ1ul3upw__X8IBqh9",
   siteUrl: "https://surettesystems.com",
   portalRoles: {
-    superAdmin: "super_admin",
-    seanAdsAdmin: "sean_ads_admin"
+    superAdmin: "super_admin"
   },
   tables: {
     profile: "client_profiles",
@@ -28,8 +27,5 @@ window.DM_SUPABASE_CONFIG = {
     homepageEmailSignups: "homepage_email_signups"
   },
   // Admin role resolved from Supabase app_metadata.role - no emails hardcoded here
-  superAdminEmails: [],
-  seanGoogleAdsAdminEmails: [
-    "scochrane495@gmail.com"
-  ]
+  superAdminEmails: []
 };

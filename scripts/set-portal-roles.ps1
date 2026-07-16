@@ -26,8 +26,7 @@ if ([string]::IsNullOrWhiteSpace($serviceRoleKey)) {
 }
 
 $roleAssignments = @(
-  @{ Email = "rcman12589@aol.com"; Role = "super_admin" },
-  @{ Email = "scochrane495@gmail.com"; Role = "sean_ads_admin" }
+  @{ Email = "rcman12589@aol.com"; Role = "super_admin" }
 )
 
 $headers = @{

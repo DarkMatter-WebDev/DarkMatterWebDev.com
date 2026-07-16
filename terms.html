@@ -23,7 +23,7 @@
 <meta property="og:title" content="Terms of Service | Surette Data Systems"/>
 <meta property="og:description" content="Terms of Service for Surette Data Systems &mdash; website design, managed hosting, care plans, custom software, and in-home tech services in Southwest Florida."/>
 <meta property="og:url" content="https://surettesystems.com/terms.html"/>
-<link href="assets/nav.css?v=20260703-fixed-header-anchor" rel="stylesheet"/>
+<link href="assets/nav.css?v=20260715-login-highlight" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
   #sds-logo a.sds-anchor,
@@ -283,6 +283,7 @@
 </style>
 </head>
 <body class="bg-void-black text-on-background font-body-md overflow-x-hidden selection:bg-electric-cyan selection:text-void-black">
+<script src="assets/standard-site-nav.js?v=20260715-nav-unify" data-active="none"></script>
 
 <!-- Background -->
 <div aria-hidden="true" style="position:fixed;inset:0;z-index:1;overflow:hidden;background:#0a0010;"></div>
@@ -296,34 +297,6 @@
 <div class="fixed top-[-10%] right-[-5%] w-[600px] h-[600px] bg-nebula-purple nebula-blur rounded-full z-[-1]"></div>
 <div class="fixed bottom-[-10%] left-[-5%] w-[600px] h-[600px] bg-electric-cyan nebula-blur rounded-full z-[-1]"></div>
 
-<!-- Navigation -->
-<nav class="fixed top-0 w-full z-50 bg-surface/10 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-margin-desktop py-4">
-  <div id="sds-logo"></div>
-  <div class="hidden md:flex items-center gap-10">
-    <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="index.html">Home</a>
-    <div class="relative services-nav-group">
-      <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" tabindex="0" aria-haspopup="true">Services</a>
-      <div class="services-nav-menu">
-        <div class="services-nav-panel">
-          <div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">language</span>Online Services</div>
-          <a href="services/website-design.html">Website Design</a>
-          <a href="services/managed-hosting.html">Managed Hosting</a>
-          <a href="services/website-care-plans.html">Website Care Plans</a>
-          <a href="apps.html">Custom Business Web Apps</a>
-          <div class="services-nav-heading"><span class="material-symbols-outlined services-nav-heading-icon text-electric-cyan" aria-hidden="true">home_pin</span>In-Home &amp; Office Services</div>
-          <a href="services/in-home-services.html">In-Home Tech Services</a>
-          <a href="services/office-network-setup.html">Office Network Setup</a>
-        </div>
-      </div>
-    </div>
-    <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="apps.html">Apps</a>
-    <a class="font-label-mono text-label-mono text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="casestudies.html">Websites</a>
-    <a class="font-label-mono text-label-mono text-electric-cyan hover:underline transition-colors duration-300 inline-flex items-center gap-1.5" href="account.html"><span class="material-symbols-outlined text-base">account_circle</span>Client Login</a>
-  </div>
-  <a href="contact.html" class="inline-block bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-mono text-label-mono px-6 py-2 rounded-lg hover:scale-105 active:scale-95 transition-all glow-cyan">
-    Contact Us
-  </a>
-</nav>
 
 <main class="relative z-10 pt-32 pb-24 px-margin-desktop">
   <div class="max-w-[860px] mx-auto">
@@ -517,16 +490,15 @@
     <div class="flex flex-col gap-3">
       <div class="flex flex-col leading-none">
         <span class="font-headline-md text-headline-md text-starlight-white">SURETTE DATA SYSTEMS</span>
-        <span class="font-label-mono text-[10px] text-outline tracking-[0.2em] uppercase mt-1">Software &middot; Websites &middot; Business Tech &middot; Southwest Florida</span>
+
       </div>
+      <span class="font-label-mono text-[10px] text-outline tracking-[0.2em] uppercase">Software &middot; Websites &middot; Business Tech &middot; Southwest Florida</span>
     </div>
     <div class="flex flex-wrap gap-x-10 gap-y-4">
-      <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="services/website-design.html">Website Design</a>
-      <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="services/managed-hosting.html">Managed Hosting</a>
-      <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="services/website-care-plans.html">Website Care Plans</a>
+      <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="services/website-design-hosting.html">Website Design / Hosting</a>
       <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="apps.html">Custom Business Web Apps</a>
       <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="services/in-home-services.html">In-Home Tech Services</a>
-      <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="casestudies.html">Websites / Portfolio</a>
+      <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="portfolio.html">Portfolio</a>
       <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="contact.html">Contact</a>
       <a class="font-label-mono text-label-mono text-outline hover:text-electric-cyan transition-colors duration-300" href="account.html">Client Login</a>
     </div>
@@ -534,8 +506,8 @@
       <span class="font-label-mono text-[10px] text-outline block">&copy; 2026 Surette Data Systems &middot; Southwest Florida</span>
       <span class="font-label-mono text-[10px] text-outline block mt-1">Call or text (239) 404-8505</span>
       <div class="flex lg:justify-end gap-4 mt-3">
-        <a class="font-label-mono text-[10px] text-outline hover:text-electric-cyan transition-colors duration-300" href="privacy.html">Privacy Policy</a>
-        <a class="font-label-mono text-[10px] text-electric-cyan" href="terms.html">Terms of Service</a>
+        <a class="font-label-mono text-[10px] text-outline hover:text-electric-cyan transition-colors duration-300" href="privacy.html">Privacy</a>
+        <a class="font-label-mono text-[10px] text-electric-cyan" href="terms.html">Terms</a>
         <a class="font-label-mono text-[10px] text-outline hover:text-electric-cyan transition-colors duration-300" href="accessibility.html">Accessibility</a>
       </div>
     </div>
@@ -550,62 +522,6 @@
 <div class="md:hidden">
 <div class="fixed inset-0 grid-overlay pointer-events-none z-0"></div>
 
-<!-- TopAppBar -->
-<header class="fixed top-0 w-full bg-surface/10 backdrop-blur-xl z-50 border-b border-starlight-white/10 shadow-[0_0_20px_rgba(0,240,255,0.1)]">
-  <div class="flex items-center justify-between px-margin-mobile h-16 w-full mx-auto">
-    <div id="sds-logo-mobile"></div>
-    <div class="flex items-center gap-3">
-      <div class="relative">
-        <button type="button" id="mobile-menu-btn" class="flex flex-col justify-center items-end gap-1.5 w-10 h-10 rounded-lg active:scale-95 transition-transform" aria-expanded="false" aria-controls="mobile-menu-dropdown" aria-label="Open menu">
-          <span class="mobile-menu-line-top h-px w-8 bg-electric-cyan animate-pulse-cyan transition-all duration-300"></span>
-          <span class="mobile-menu-line-mid h-px w-6 bg-starlight-white/55 transition-all duration-300"></span>
-          <span class="mobile-menu-line-bot h-px w-4 bg-starlight-white/35 transition-all duration-300"></span>
-        </button>
-        <div id="mobile-menu-dropdown" class="mobile-nav-dropdown absolute right-0 top-full mt-3 w-64 z-[60]">
-          <div class="mobile-nav-dropdown-panel rounded-xl py-2 overflow-hidden">
-            <p class="font-label-caps text-[10px] text-outline px-4 pt-2 pb-1 tracking-widest">Menu</p>
-            <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-sm transition-colors">
-              <span class="material-symbols-outlined text-lg">home</span>Home
-            </a>
-            <a href="apps.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-sm transition-colors">
-              <span class="material-symbols-outlined text-lg">design_services</span>All Services
-            </a>
-            <button type="button" class="mobile-acc-toggle w-full flex items-center justify-between gap-3 px-4 py-3 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-sm transition-colors border-t border-white/5 mt-1" aria-expanded="false" aria-controls="m-acc-online">
-              <span class="flex items-center gap-3"><span class="material-symbols-outlined text-lg">language</span>Online Services</span>
-              <span class="material-symbols-outlined text-base mobile-acc-chevron">expand_more</span>
-            </button>
-            <div id="m-acc-online" class="mobile-acc-panel">
-              <a href="services/website-design.html" class="block px-4 py-2.5 pl-12 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-xs transition-colors">Website Design</a>
-              <a href="services/website-care-plans.html" class="block px-4 py-2.5 pl-12 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-xs transition-colors">Website Care Plans</a>
-              <a href="services/managed-hosting.html" class="block px-4 py-2.5 pl-12 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-xs transition-colors">Managed Hosting</a>
-              <a href="apps.html" class="block px-4 py-2.5 pl-12 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-xs transition-colors">Custom Business Web Apps</a>
-            </div>
-            <button type="button" class="mobile-acc-toggle w-full flex items-center justify-between gap-3 px-4 py-3 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-sm transition-colors border-t border-white/5" aria-expanded="false" aria-controls="m-acc-local">
-              <span class="flex items-center gap-3"><span class="material-symbols-outlined text-lg">home_pin</span>In-Home &amp; Office</span>
-              <span class="material-symbols-outlined text-base mobile-acc-chevron">expand_more</span>
-            </button>
-            <div id="m-acc-local" class="mobile-acc-panel">
-              <a href="services/in-home-services.html" class="block px-4 py-2.5 pl-12 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-xs transition-colors">In-Home Tech Services</a>
-              <a href="services/office-network-setup.html" class="block px-4 py-2.5 pl-12 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-xs transition-colors">Office Network Setup</a>
-            </div>
-            <a href="casestudies.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-sm transition-colors">
-              <span class="material-symbols-outlined text-lg">work</span>Portfolio
-            </a>
-            <a href="account.html" class="flex items-center gap-3 px-4 py-3 text-electric-cyan hover:text-starlight-white hover:bg-white/5 font-label-mono text-sm transition-colors">
-              <span class="material-symbols-outlined text-lg">account_circle</span>Client Login
-            </a>
-            <a href="contact.html" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-sm transition-colors">
-              <span class="material-symbols-outlined text-lg">mail</span>Contact
-            </a>
-            <a href="contact.html" class="flex items-center gap-3 px-4 py-3 text-void-black bg-gradient-to-r from-electric-cyan to-nebula-purple font-label-mono text-sm mx-2 my-1 rounded-lg">
-              <span class="material-symbols-outlined text-lg">calendar_month</span>Contact Us
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
 
 <main class="relative z-10 pt-20 pb-24 px-margin-mobile">
   <div class="max-w-[860px] mx-auto">
@@ -736,101 +652,29 @@
     </span>
   </div>
   <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-center">
-    <a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="services/website-design.html">Website Design</a>
-    <a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="services/website-care-plans.html">Care Plans</a>
+    <a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="services/website-design-hosting.html">Design/Hosting</a>
     <a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="apps.html">Web Apps</a>
-    <a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="casestudies.html">Portfolio</a>
+    <a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="portfolio.html">Portfolio</a>
     <a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="contact.html">Contact</a>
   </div>
-  <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-center">
-    <a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="privacy.html">Privacy Policy</a>
-    <a class="font-label-mono text-[11px] text-electric-cyan" href="terms.html">Terms of Service</a>
-    <a class="font-label-mono text-[11px] text-outline hover:text-electric-cyan" href="accessibility.html">Accessibility</a>
+  <div class="flex flex-wrap justify-center gap-x-5 gap-y-1">
+    <a class="font-label-mono text-[10px] text-outline hover:text-electric-cyan transition-colors" href="privacy.html">Privacy</a>
+    <a class="font-label-mono text-[10px] text-electric-cyan" href="terms.html">Terms</a>
+    <a class="font-label-mono text-[10px] text-outline hover:text-electric-cyan transition-colors" href="accessibility.html">Accessibility</a>
   </div>
   <p class="font-label-caps text-[10px] text-on-primary-container/60 tracking-widest text-center max-w-lg">
     &copy; 2026 Surette Data Systems &middot; Software &middot; Websites &middot; Business Tech &middot; Southwest Florida
   </p>
 </footer>
 
-<!-- BottomNavBar (Mobile) -->
-<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface/10 backdrop-blur-2xl border-t border-starlight-white/10 shadow-[0_-10px_30px_rgba(112,0,255,0.15)] rounded-t-xl">
-  <a href="index.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-transform hover:text-starlight-white">
-    <span class="material-symbols-outlined mb-1">home</span>
-    <span class="font-label-caps text-[10px]">Home</span>
-  </a>
-  <a href="apps.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-transform hover:text-starlight-white">
-    <span class="material-symbols-outlined mb-1">design_services</span>
-    <span class="font-label-caps text-[10px]">Services</span>
-  </a>
-  <a href="apps.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-starlight-white transition-all active:scale-90"><span class="material-symbols-outlined">download</span><span class="font-label-caps text-[9px] mt-1">Apps</span></a>
-  <a href="casestudies.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-transform hover:text-starlight-white">
-    <span class="material-symbols-outlined mb-1">work</span>
-    <span class="font-label-caps text-[10px]">Websites</span>
-  </a>
-  <a href="contact.html" class="flex flex-col items-center justify-center text-on-surface-variant/60 active:scale-90 transition-transform hover:text-starlight-white">
-    <span class="material-symbols-outlined mb-1">mail</span>
-    <span class="font-label-caps text-[10px]">Contact</span>
-  </a>
-</nav>
 </div>
 <!-- /MOBILE -->
 
-<script>
-(function () {
-  var root = document.querySelector('.md\\:hidden');
-  if (!root) return;
-  var btn = root.querySelector('#mobile-menu-btn');
-  var menu = root.querySelector('#mobile-menu-dropdown');
-  if (!btn || !menu) return;
-  var accToggles = menu.querySelectorAll('.mobile-acc-toggle');
-  function collapseAccordions() {
-    accToggles.forEach(function (t) {
-      t.setAttribute('aria-expanded', 'false');
-      var panel = menu.querySelector('#' + t.getAttribute('aria-controls'));
-      if (panel) panel.classList.remove('is-open');
-    });
-  }
-  function closeMenu() {
-    menu.classList.remove('is-open');
-    btn.setAttribute('aria-expanded', 'false');
-    btn.setAttribute('aria-label', 'Open menu');
-    collapseAccordions();
-  }
-  function openMenu() {
-    menu.classList.add('is-open');
-    btn.setAttribute('aria-expanded', 'true');
-    btn.setAttribute('aria-label', 'Close menu');
-  }
-  btn.addEventListener('click', function (e) {
-    e.stopPropagation();
-    if (menu.classList.contains('is-open')) closeMenu();
-    else openMenu();
-  });
-  menu.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', closeMenu);
-  });
-  accToggles.forEach(function (toggle) {
-    toggle.addEventListener('click', function (e) {
-      e.stopPropagation();
-      var panel = menu.querySelector('#' + toggle.getAttribute('aria-controls'));
-      var isOpen = toggle.getAttribute('aria-expanded') === 'true';
-      collapseAccordions();
-      if (!isOpen) {
-        toggle.setAttribute('aria-expanded', 'true');
-        if (panel) panel.classList.add('is-open');
-      }
-    });
-  });
-  document.addEventListener('click', function (e) {
-    if (!btn.contains(e.target) && !menu.contains(e.target)) closeMenu();
-  });
-  window.addEventListener('resize', closeMenu);
-})();
-</script>
-
-<script src="assets/mobile-services-nav.js?v=20260622-fade"></script>
-<script src="assets/account-nav.js?v=20260703-mobile-account-color"></script>
+<script src="assets/mobile-services-nav.js?v=20260715-services-merge"></script>
+<script src="assets/account-nav.js?v=20260715-login-highlight"></script>
 <script src="assets/surette-physics-wordmark-canvas.js?v=20260622-fade"></script>
+<script src="surette-logo.js?v=20260715-reveal-margin"></script>
+<script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
 
 </body>
 </html>
