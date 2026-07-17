@@ -27,6 +27,8 @@
   width: 100%;
   max-width: 340px;
   margin: 0 auto;            /* centre in its grid column */
+  container-type: inline-size;
+  container-name: tcg-card;
 }
 
 .tcg-card .poke-face {
@@ -46,6 +48,15 @@
 /* the art is a full-page capture — show the hero, not the middle */
 .tcg-card .poke-art img { object-position: top center; }
 
+/* The drop-in makes .poke-art position:relative (it anchors the template
+   card's .art-ph placeholder, which our cards don't use). A positioned box
+   paints above ALL in-flow content in its stacking context — which would put
+   the image over the in-flow stat pill below, tree order notwithstanding.
+   Static art restores plain tree-order painting: the pill row that follows
+   the art draws on top of it. Scoped to .tcg-card so the hero template card
+   keeps its placeholder anchoring. */
+.tcg-card .poke-art { position: static; }
+
 /* A domain or product name is one unbreakable token: unlike the template's
    "Tech Business Site Template" it cannot wrap on a space, so at the widget's
    native 1.15rem a long one widens the top row and shoves whatever sits
@@ -59,31 +70,59 @@
 }
 .tcg-card .tcg-flip-top { flex-shrink: 0; }
 
-/* Headline stat, as a pill on the art corner — a build estimate on Websites, a
-   delivery type on Apps. Rides the art absolutely so it costs no row height and
-   takes the card's own hue. pointer-events off so the click still reaches the
-   card and flips it. Deliberately NOT aria-hidden: unlike the flip cue, this is
-   real information.
+/* Back-face title, up from the widget's 0.95rem (owner request, 2026-07-17):
+   the back is the card's roomiest face — the buttons' margin-top:auto pushes
+   them to the foot and leaves the middle empty on most cards — so the name
+   can afford front-name size. overflow-wrap is mandatory here, same reason
+   as .poke-name above: a domain is one unbreakable token and the back h3
+   markup carries no <wbr>; without a break guard a long name at this size
+   would overflow the overflow:auto back panel HORIZONTALLY — a scrollbar,
+   which backs must never show. */
+.tcg-card .poke-back-inner h3 {
+  font-size: 1.15rem;
+  overflow-wrap: anywhere;
+}
 
-   backface-visibility is load-bearing, not decoration. The card is preserve-3d
-   and the face is transform-style: flat, which on desktop flattens this pill
-   into the face's own rasterisation so it hides with it. Mobile GPUs promote an
-   absolutely-positioned, z-indexed element to its own compositing layer; that
-   layer escapes the flattening, joins the card's 3D context, and renders its
-   backface — so the pill showed through the flipped card, mirrored, on real
-   phones and tablets while desktop looked fine. This is the same reason the
-   widget sets it on .poke-glare, the one other absolute + z-indexed element in
-   the card. Any future overlay added inside a face needs it too. */
+/* Headline stat, as a pill on the art corner — a build estimate on Websites, a
+   delivery type on Apps. Deliberately NOT aria-hidden: unlike the flip cue,
+   this is real information.
+
+   HOW IT'S PLACED — and why it must stay IN-FLOW. The pill sits in a
+   zero-height flex row that follows the art in normal flow, pulled up over the
+   image with a negative margin: it contributes nothing to layout (row height 0,
+   pill's own height cancelled by the margin) and paints above the img by tree
+   order. It must never gain position:absolute, z-index, transform, opacity
+   transitions, or will-change — each of those invites a mobile compositor to
+   promote it to its own layer, and a promoted descendant of the flattened face
+   escapes the card's 3D flattening. That exact failure shipped twice on real
+   phones/tablets while desktop looked fine: first the pill painted mirrored
+   through the back of flipped cards (backface-visibility on the pill was
+   ignored — a promoted transform-less layer culls against an identity
+   transform), then a state-driven opacity hide fixed the bleed but flickered
+   during the flip-back, because that same promoted layer is misdrawn
+   mid-rotation. In-flow content is rasterised into the face itself — exactly
+   like .poke-badge, which is the same kind of chip and never glitched once —
+   so the pill rides the card through the whole flip and is culled with the
+   face at 90deg. No state juggling, no timing gates.
+
+   The numbers mirror the old absolute inset (6px inside the art's 2px border):
+   pill height 22px, pulled up 30px so it floats 8px above the art's outer
+   bottom edge; right inset = the art's 0.7rem side margin + 8px. */
+.tcg-stat-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  height: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
 .tcg-stat-pill {
-  position: absolute;
-  right: 6px;
-  bottom: 6px;
-  z-index: 2;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
   display: inline-flex;
   align-items: center;
-  padding: 2px 8px;
+  height: 22px;
+  margin: -30px calc(0.7rem + 8px) 0 0;
+  padding: 0 8px;
   border-radius: 999px;
   border: 1.5px solid var(--card-ink);
   background: var(--tcg-face);
@@ -115,6 +154,54 @@
 .tcg-flip-top .material-symbols-outlined {
   font-size: 12px;
   line-height: 1;
+}
+
+/* Back faces must never scroll (owner rule). The widget gives .poke-back-inner
+   overflow:auto, so the guarantee is that the copy FITS — deliberately not
+   overflow:hidden, because that would change the failure mode from a visible
+   scrollbar to a silently clipped Case Study button.
+
+   Keyed off the CARD's own rendered width (a container query on
+   .poke-scene.tcg-card, set up top), not the viewport. It has to be: on
+   casestudies.html the mobile zigzag (portfolio-mobile-fixes.css) shrinks the
+   card to make room for its number chip, so card width no longer tracks
+   viewport width the way it used to — a viewport media query would tighten
+   (or fail to tighten) the wrong cards. One tier, sized for the tightest case
+   the zigzag produces (236.8px, at a 320px viewport) — proven at 0px to spare
+   there, which only means MORE spare room as width grows toward the 336px
+   cutoff (a plain text-reflow property, holding font-size/line-height fixed).
+   Do not split this back into two tiers without re-sweeping the whole
+   245-336px range: an earlier two-tier attempt left a gap where the milder
+   tier wasn't tight enough right above the aggressive tier's cutoff.
+   If you edit back copy OR the zigzag's reserved badge space, re-verify every
+   back across BOTH galleries at a 320px viewport: scrollHeight must equal
+   clientHeight. */
+@container tcg-card (max-width: 336px) {
+  .tcg-card .poke-back-inner {
+    gap: 0.14rem;
+    padding: 0.35rem 0.4rem;
+  }
+  .tcg-card .poke-back-inner h3 { font-size: 0.95rem; }
+  .tcg-card .poke-back-inner p { font-size: 0.68rem; line-height: 1.18; }
+  .tcg-card .poke-back-inner .poke-badge { font-size: 0.4rem; padding: 1px 3px; }
+  .tcg-card .poke-back-inner .poke-links .poke-btn { font-size: 0.54rem; padding: 0.26rem 0.42rem; }
+  .tcg-card .poke-back-inner .poke-flip-hint { font-size: 0.4rem; }
+
+  /* FRONT face, same narrow-card tier (2026-07-17). On a ~237px zigzag card
+     the front's fixed-size sections (body at 0.68rem, wrapped badges) eat the
+     whole plate and pin the flex-fill art at its 64px floor. Tightening the
+     body and badge rows hands ~25px back to the art — the section that is
+     actually the card's hero. Same signal as the back rules on purpose: the
+     squeeze is a function of card width, not viewport width. */
+  .tcg-card .poke-body {
+    font-size: 0.58rem;
+    line-height: 1.35;
+    padding: 0.35rem 0.45rem;
+    margin-bottom: 0.35rem;
+  }
+  .tcg-card .poke-body .attack-name { font-size: 0.62rem; }
+  .tcg-card .poke-badges { padding: 0.3rem 0.7rem 0.25rem; gap: 3px; }
+  .tcg-card .poke-stage-line { font-size: 0.5rem; }
 }
 
 /* The open/placeholder slot sits in the same grid: match the card silhouette so

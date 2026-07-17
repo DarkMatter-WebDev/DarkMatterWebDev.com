@@ -1,6 +1,6 @@
 # Architecture
 
-Last updated: 2026-07-15
+Last updated: 2026-07-17
 
 ## Current Stack
 
@@ -45,14 +45,14 @@ Last updated: 2026-07-15
 
 - The public header uses a single top-level Portfolio item (`portfolio.html`) for work examples. `portfolio.html` is an intermediate hub that links to Apps (`apps.html`) and Websites (`casestudies.html`).
 - Apps and Websites pages remain standalone downstream pages; their detail/profile routes are unchanged.
-- Mobile nav rows use the same Portfolio destination. At widths below 768px, public pages use the fixed homepage-style logo/header, icon-only account control, hamburger dropdown, and bottom nav; the desktop header takes over at 768px and above.
+- Mobile nav rows use the same Portfolio destination. At widths below 880px (the site-wide mobile/desktop line since 2026-07-16), public pages use the fixed homepage-style logo/header, icon-only account control, hamburger dropdown, and bottom nav; the desktop header takes over at 880px and above. Tailwind `md:` is retargeted to 880 via each page's inline `tailwind.config` — new pages must carry that override.
 
 ## Shared Behavior
 
-- `assets/collectible-card.css` styles the gallery card shared by `casestudies.html` (Websites) and `app-catalog.html` (Apps) — a themed copy of the `pokecard-dropin` template card. Pages using it must also load `pokecard-dropin/pokecard/pokecard.css` and `.../pokecard.js` (the JS wires every `.poke-scene` it finds, so cards need no per-page script). Prefix is `tcg-`. Themes are `.tcg-card--*` (Websites) and `.tcg-card--app-*` (Apps, a deliberately separate palette). The widget hardcodes its green in three spots its own vars don't cover (face gradient stops, `.poke-top`/`.poke-foot` tints) — this file re-points those, so **do not edit `pokecard-dropin/`**; its hero card must stay green.
-- `assets/standard-site-nav.js` renders the shared public desktop and mobile navigation for standard-nav pages.
-- `assets/unified-mobile-menu.js` upgrades hand-authored legacy public headers and creates the mobile shell on the older portfolio-detail templates. It must be included after `assets/account-nav.js` on public pages that use those legacy templates.
-- `assets/nav.css` contains the cross-template header, menu, breakpoint, and overflow rules. Keep public fixed headers viewport-anchored and verify both sides of the 768px breakpoint after nav changes.
+- `assets/collectible-card.css` styles the gallery card shared by `casestudies.html` (Websites) and `app-catalog.html` (Apps) — a themed copy of the `pokecard-dropin` template card. Pages using it must also load `pokecard-dropin/pokecard/pokecard.css` and `.../pokecard.js` (the JS wires every `.poke-scene` it finds, so cards need no per-page script). Prefix is `tcg-`. Themes are `.tcg-card--*` (Websites) and `.tcg-card--app-*` (Apps, a deliberately separate palette). The widget hardcodes its green in three spots its own vars don't cover (face gradient stops, `.poke-top`/`.poke-foot` tints) — this file re-points those, so **do not edit `pokecard-dropin/`**; its hero card must stay green. `.poke-scene.tcg-card` is a size container (`container-type: inline-size`); a `@container tcg-card (max-width: 336px)` tier tightens BOTH faces on narrow cards, keyed to the card's own rendered width because layouts (the casestudies zigzag) can shrink the card independently of the viewport. Back faces must never scroll, in either axis — see DECISIONS.
+- `assets/portfolio-mobile-fixes.css` is the mobile redesign home for `casestudies.html`'s phone gallery (plus shared title-shrink hooks for the portfolio detail pages): the numbered zigzag rows (`.tcg-mobile-row`/`.tcg-mobile-num`), the front declutter (`display: none` on stage line + status tag, full-width foot buttons), the 70% stat pill, title/badge shrinks, and the mobile reformat of the Tech Business Site Template hero widget (`.lab-poke-section` scope — that card is not a `.tcg-card`, so the container tier does not protect it).
+- `assets/standard-site-nav.js` renders the shared public desktop and mobile navigation for standard-nav pages (the single source of truth since 2026-07-15; `assets/unified-mobile-menu.js` was deleted).
+- `assets/nav.css` contains the cross-template header, menu, breakpoint, and overflow rules. Keep public fixed headers viewport-anchored and verify both sides of the 880px breakpoint after nav changes.
 - `assets/mobile-services-nav.js` supports mobile services navigation.
 - `assets/client-portal.js` handles portal UI/auth behavior, safe `next` redirects for the regular account dashboard, and account-dashboard support/change request submissions through `submit_portal_message()`.
 - `assets/account-admin.js` handles the owner-only ultra-wide left-tab Admin Center, tab state/hash behavior, message center with signed attachment links, embedded subscriber table, subscriber email export/copy modal, account-holder viewer, and confirmation-modal delete flow (calls `list_portal_messages()`, `delete_portal_message()`, `list_portal_account_holders()`, `delete_newsletter_subscriber()`, and `delete_portal_account_holder()` Supabase RPCs).

@@ -2233,3 +2233,15 @@ Before considering the pricing page complete, verify that it clearly answers all
 * Is every material limitation visible before a customer signs up?
 
 Do not consider the page finished until a first-time, non-technical customer can understand the total cost, included service, limitations, ownership, renewal process, support level, and responsibilities without needing to interpret technical language.
+
+---
+
+# 37. Published Hourly Rate (Addendum — 2026-07-16)
+
+The public shop rate is $125 per hour.
+
+Use this single rate wherever the website shows one hourly figure, including the portfolio's build-time estimates (estimated hours are derived from project scope at this rate). Public marketing surfaces show $125/hr, not a range.
+
+The $95–$150 per hour range remains valid for scoped hourly work defined in a proposal: simple overage tasks may bill toward the lower end, specialized or complex custom work toward the higher end.
+
+Build-time estimates are estimates only. Do not present hours × rate as a quote formula — packages remain fixed-price, and final scope, pricing, and timeline are governed by the signed proposal.

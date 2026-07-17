@@ -1,5 +1,211 @@
 /* Case study gallery + portfolio detail — layout fixes + title shrink hooks */
 
+/* Mobile case-study gallery — numbered zigzag stagger (casestudies.html only).
+   Each of the 6 cards sits in a row with a number chip; odd cards (1/3/5) push
+   toward the row's right edge with the chip on the card's left, even cards
+   (2/4/6) push toward the left edge with the chip on the card's right — the
+   set reads as a staggered timeline instead of a stacked list.
+
+   The card is trimmed just enough to leave room for the chip: reserved space
+   (chip 2rem + gap 0.6rem = 2.6rem) is subtracted at 2.7rem, leaving a small
+   safety margin so chip + gap + card never exceeds the row. At the 320px
+   floor (280px available after px-margin-mobile) that's a 236.8px-wide card,
+   ~331px tall at the fixed 2.5/3.5 ratio — still ~19px above the ~312px point
+   where collectible-card.css's own layout note says the art hits its floor.
+   Don't shrink the reserved space further without re-checking that math. */
+.tcg-mobile-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+}
+
+.tcg-mobile-row .poke-scene.tcg-card {
+  width: calc(100% - 2.7rem);
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.tcg-mobile-row--odd {
+  justify-content: flex-end;
+}
+
+.tcg-mobile-row--even {
+  justify-content: flex-start;
+}
+
+.tcg-mobile-num {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--tcg-face, #7de8ff);
+  border: 1.5px solid #14101f;
+  box-shadow: 1px 1px 0 #14101f;
+  color: #14101f;
+  font-family: vcr-osd-mono, ibm-plex-mono, monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+/* Time-estimate pill at ~70% footprint, mobile gallery only (owner request,
+   2026-07-17 — raised from an initial 50% pass, which read as too small to
+   comfortably read). Scoped to `.md\:hidden` — the casestudies phone grid
+   wrapper — so desktop cards and app-catalog.html (which doesn't load this
+   file) keep the full-size pill from collectible-card.css.
+
+   Dimensions only — never `transform: scale()` here. A transform promotes
+   the pill to its own compositing layer on mobile GPUs, which is exactly
+   what caused it to bleed mirrored through flipped cards before (see
+   DECISIONS.md "Card Face Overlays Stay In Flow"); this pill must stay
+   in-flow like every other face overlay. Font-size is cut alongside the box
+   because the base rule has no vertical padding — at the base font-size a
+   shrunk box would clip the text, not just look smaller. The pull-up margin
+   is recalculated, not just scaled, to preserve the same 8px gap above the
+   art's bottom edge at the new 15.4px height (15.4 + 8 = 23.4). */
+.md\:hidden .tcg-stat-pill {
+  height: 15.4px;
+  margin: -23.4px calc(0.7rem + 8px) 0 0;
+  padding: 0 5.6px;
+  border-width: 1.05px;
+  font-size: 0.434rem;
+  letter-spacing: 0.7px;
+}
+
+/* Mobile card front decluttered (owner request, 2026-07-17: "keep only
+   what's needed and completely design each card at this size"). Measured at
+   375px, the screenshot — the card's hero — was getting ~122-139px of a
+   409px card while flavour chrome ate the rest. Two elements are hidden:
+
+   - .poke-stage-line ("STAGE · X / NO. 00N"): pure duplication on this grid.
+     The zigzag's number chip already numbers the card and the badges already
+     carry the type. (Desktop keeps it — there's no number chip there.)
+   - .poke-foot .poke-tag ("status · ..."): it wrapped to 2 lines on jewelry/
+     auction and 3 on photo ("STATUS · IN PROGRESS"), and it's implied anyway —
+     the Live/Preview button says whether it's live.
+
+   Hidden via CSS, NOT deleted from markup, deliberately: the phone and
+   desktop grids are hand-duplicated identical copies (see the "edit BOTH or
+   they drift" rule), and forking the mobile copy's structure would break
+   every future both-grids edit. Same visual result, one reversible rule.
+
+   With the tag gone the foot is buttons-only: they split the row 50/50 as
+   full-width tap targets. The freed height (~25px) flows into .poke-art
+   automatically — it's the flex-fill element on the face. */
+.md\:hidden .tcg-card .poke-stage-line,
+.md\:hidden .tcg-card .poke-foot .poke-tag {
+  display: none;
+}
+
+.md\:hidden .tcg-card .poke-foot .poke-links {
+  width: 100%;
+  margin-left: 0;
+}
+
+.md\:hidden .tcg-card .poke-foot .poke-btn {
+  flex: 1 1 0;
+  text-align: center;
+  padding-top: 0.45rem;
+  padding-bottom: 0.45rem;
+}
+
+/* The Tech Business Site Template card (the drop-in's own hero widget, in the
+   mobile layout's "Try one of our templates live" section) gets the same
+   mobile reformat as the gallery cards (owner request, 2026-07-17). It is NOT
+   a .tcg-card, so none of the gallery declutter or collectible-card.css's
+   narrow-card container tier reaches it — and unchecked, its back face
+   overflowed by 148px at a 320px viewport and scrolled, which the no-scroll
+   owner rule forbids. Values mirror the gallery treatment; scoped to
+   .md\:hidden so the two desktop copies of the widget keep the full design
+   (weakness joke, stage line, native type). This card's width tracks the
+   viewport (min(360px, 86vw), no zigzag), so viewport scoping is the right
+   signal here — no container query needed. */
+.md\:hidden .lab-poke-section .poke-stage-line,
+.md\:hidden .lab-poke-section .poke-foot .poke-tag {
+  display: none;
+}
+
+.md\:hidden .lab-poke-section .poke-foot .poke-links {
+  width: 100%;
+  margin-left: 0;
+}
+
+.md\:hidden .lab-poke-section .poke-foot .poke-btn {
+  flex: 1 1 0;
+  text-align: center;
+  padding-top: 0.45rem;
+  padding-bottom: 0.45rem;
+}
+
+.md\:hidden .lab-poke-section .poke-name { font-size: 0.8rem; }
+
+.md\:hidden .lab-poke-section .poke-body {
+  font-size: 0.58rem;
+  line-height: 1.35;
+  padding: 0.35rem 0.45rem;
+  margin-bottom: 0.35rem;
+}
+.md\:hidden .lab-poke-section .poke-body .attack-name { font-size: 0.62rem; }
+.md\:hidden .lab-poke-section .poke-badges { padding: 0.3rem 0.7rem 0.25rem; gap: 3px; }
+.md\:hidden .lab-poke-section .poke-badges .poke-badge {
+  font-size: 0.46rem;
+  padding: 1px 5px;
+  border-width: 1px;
+  letter-spacing: 0.3px;
+}
+
+/* Template back face — same budget treatment as the gallery backs' narrow
+   tier. The template's back is the densest on the page (two paragraphs plus
+   six stack badges); after editing its copy re-verify scrollHeight AND
+   scrollWidth against client* at a 320px viewport, same rule as the
+   gallery cards. */
+.md\:hidden .lab-poke-section .poke-back-inner {
+  gap: 0.14rem;
+  padding: 0.35rem 0.4rem;
+}
+.md\:hidden .lab-poke-section .poke-back-inner h3 { font-size: 0.95rem; }
+.md\:hidden .lab-poke-section .poke-back-inner p { font-size: 0.68rem; line-height: 1.18; }
+.md\:hidden .lab-poke-section .poke-back-inner .poke-badge { font-size: 0.4rem; padding: 1px 3px; }
+.md\:hidden .lab-poke-section .poke-back-inner .poke-links .poke-btn { font-size: 0.54rem; padding: 0.26rem 0.42rem; }
+.md\:hidden .lab-poke-section .poke-back-inner .poke-flip-hint { font-size: 0.4rem; }
+
+/* Card title + front-face type badges shrunk, mobile gallery only (owner
+   request, 2026-07-17: "larger than they need to be given the text size
+   within them" — the badges' padding/border were sized for the base 0.58rem
+   type, not the tighter mobile card, so they read as oversized capsules
+   around small text; shrunk font and tightened padding/border together
+   rather than just scaling font down.
+
+   Selectors add `.tcg-card` to out-specificity collectible-card.css's own
+   `.tcg-card .poke-name` rule — same 2-class specificity would otherwise
+   lose on source order, since collectible-card.css loads after this file.
+
+   Back-face badges (`.back-badges .poke-badge`, inside `.poke-back-inner`)
+   are deliberately untouched here: their size already comes from the
+   back-fit container query's zero-slack budget (see the "never scroll" rule
+   in collectible-card.css), and changing it needs the same full-viewport
+   re-verification as any other back-copy edit — out of scope for a front-face
+   sizing pass. */
+.md\:hidden .tcg-card .poke-name {
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+}
+
+.md\:hidden .tcg-card .poke-badges {
+  gap: 4px;
+}
+
+.md\:hidden .tcg-card .poke-badges .poke-badge {
+  font-size: 0.46rem;
+  padding: 1px 5px;
+  border-width: 1px;
+  letter-spacing: 0.3px;
+}
+
 .portfolio-card-title,
 .portfolio-detail-title {
   display: block;

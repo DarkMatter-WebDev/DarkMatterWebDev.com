@@ -170,70 +170,195 @@ tailwind.config = {
     gap: clamp(2.5rem, 4.5vw, 3.75rem);
     margin-bottom: clamp(4.5rem, 8vw, 6rem);
   }
-  .portfolio-hub-card {
-    position: relative;
-    display: grid;
-    min-height: 34rem;
-    overflow: hidden;
-    border: 1px solid rgba(0,240,255,0.24);
-    border-radius: 0.5rem;
-    background: rgba(255,255,255,0.035);
+  /* ── Category cards: "collection folders" ────────────────────────────
+     Same universe as the trading cards on the Apps/Websites galleries —
+     paper plate, ink lines, hue frame, retro mono, hard offset shadow —
+     but deliberately a different object: these are the FOLDERS the two
+     card sets live in. Folder tab on top, a fanned stack peeking out
+     behind the screenshot, landscape layout, and no flip or tilt (they
+     are plain links; pure CSS, no widget JS). Hues quote each gallery's
+     palette: teal from the apps set, gold from the websites set.
+     position:absolute is safe here — there is no preserve-3d/flip
+     context on this page (the in-flow rule is for the gallery cards'
+     FACES, see CURRENT_STATUS). */
+  @font-face {
+    font-display: swap;
+    font-family: vcr-osd-mono;
+    font-style: normal;
+    font-weight: 400;
+    src: url("pokecard-dropin/pokecard/fonts/vcr_osd_mono01.woff2") format("woff2");
+  }
+  /* Flex column so both folders in a row stretch to the same height —
+     tab stays content-sized, frame absorbs the difference. */
+  .folio-set {
+    --fs-ink: #14101f;
+    --fs-paper: #f3f1ea;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     text-decoration: none;
-    box-shadow: 0 18px 46px rgba(0,0,0,0.26), inset 0 1px 0 rgba(255,255,255,0.08);
-    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .portfolio-hub-card:hover,
-  .portfolio-hub-card:focus-visible {
-    transform: translateY(-6px);
-    border-color: rgba(0,240,255,0.45);
-    box-shadow: 0 24px 56px rgba(0,0,0,0.48), 0 0 42px rgba(0,240,255,0.14);
-    outline: none;
+  .folio-set--apps { --fs-light: #c6f7f0; --fs-face: #66ead9; --fs-deep: #22998c; }
+  .folio-set--web  { --fs-light: #fff3cd; --fs-face: #ffd76a; --fs-deep: #c9922a; }
+  .folio-set:focus-visible { outline: none; }
+  .folio-set__tab {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin: 0 0 -2px 1.4rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--fs-ink);
+    border-bottom: 0;
+    border-radius: 10px 10px 0 0;
+    background: var(--fs-face);
+    color: var(--fs-ink);
+    font: 400 0.68rem/1 vcr-osd-mono, "JetBrains Mono", monospace;
+    letter-spacing: 2px;
+    text-transform: uppercase;
   }
-  .portfolio-hub-card__media {
-    aspect-ratio: 16 / 10;
-    overflow: hidden;
-    background: #050505;
+  .folio-set__frame {
+    flex: 1;
+    align-self: stretch;
+    display: flex;
+    padding: 12px;
+    border: 2px solid var(--fs-ink);
+    border-radius: 18px;
+    background: linear-gradient(150deg, var(--fs-light) 0%, var(--fs-face) 42%, var(--fs-deep) 100%);
+    box-shadow: 10px 14px 0 rgba(0, 0, 0, 0.45);
+    transition: box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .portfolio-hub-card__media img {
+  .folio-set:hover .folio-set__frame,
+  .folio-set:focus-visible .folio-set__frame {
+    box-shadow: 12px 18px 0 rgba(0, 0, 0, 0.52), 0 0 0 3px var(--fs-face);
+  }
+  .folio-set__plate {
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 1.4rem;
+    padding: 1.25rem;
+    border: 2px solid var(--fs-ink);
+    border-radius: 10px;
+    background: var(--fs-paper);
+    color: var(--fs-ink);
+  }
+  /* The art is a stack, not a fill. Square-ish, vertically centred, and
+     height-capped, so a long text column can never stretch the screenshot
+     into a portrait sliver (it did at ~960px, where two folders shared the
+     row and the text ran long). The max-height deliberately breaks the
+     ratio toward landscape rather than letting the box grow taller. */
+  .folio-set__art {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    max-height: 20rem;
+    align-self: center;
+    min-height: 0;
+  }
+  .folio-set__peek,
+  .folio-set__art img {
+    position: absolute;
+    inset: 0;
+    border: 2px solid var(--fs-ink);
+    border-radius: 8px;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .folio-set__peek--b { background: var(--fs-deep); transform: rotate(4deg) translate(7px, 5px); }
+  .folio-set__peek--a { background: var(--fs-face); transform: rotate(-3deg) translate(-6px, 2px); }
+  .folio-set__art img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: top center;
-    opacity: 0.88;
-    transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+    background: #050505;
+    transform: rotate(-0.8deg);
   }
-  .portfolio-hub-card:hover .portfolio-hub-card__media img,
-  .portfolio-hub-card:focus-visible .portfolio-hub-card__media img {
-    transform: scale(1.05);
-    opacity: 1;
-  }
-  .portfolio-hub-card__body {
+  .folio-set__info {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    padding: 2rem;
+    gap: 0.85rem;
+    min-width: 0;
   }
-  .portfolio-hub-chip {
-    width: max-content;
-    max-width: 100%;
-    border: 1px solid rgba(0,240,255,0.24);
-    background: rgba(0,240,255,0.08);
-    color: #00F0FF;
-    border-radius: 0.25rem;
-    padding: 0.35rem 0.55rem;
-    font: 800 0.68rem "JetBrains Mono", monospace;
-    letter-spacing: 0.1em;
+  .folio-set__title {
+    margin: 0;
+    font: 400 clamp(1.15rem, 1.6vw, 1.45rem)/1.15 vcr-osd-mono, "JetBrains Mono", monospace;
+    letter-spacing: 1px;
     text-transform: uppercase;
+    color: var(--fs-ink);
   }
-  .portfolio-hub-arrow {
+  .folio-set__desc {
+    margin: 0;
+    font: 400 0.85rem/1.65 "Plus Jakarta Sans", sans-serif;
+    color: rgba(20, 16, 31, 0.78);
+  }
+  .folio-set__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .folio-set__chip {
+    padding: 3px 9px;
+    border: 1.5px solid var(--fs-ink);
+    border-radius: 999px;
+    background: var(--fs-face);
+    color: var(--fs-ink);
+    font: 400 0.58rem/1.5 "JetBrains Mono", monospace;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .folio-set__cta {
     margin-top: auto;
+    align-self: flex-start;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: #00F0FF;
-    font: 700 0.8rem "JetBrains Mono", monospace;
-    letter-spacing: 0.06em;
+    padding: 0.55rem 0.9rem;
+    border: 2px solid var(--fs-ink);
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 2px 2px 0 var(--fs-ink);
+    color: var(--fs-ink);
+    font: 400 0.66rem/1 vcr-osd-mono, "JetBrains Mono", monospace;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
+  }
+  .folio-set__cta .material-symbols-outlined {
+    font-size: 15px;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .folio-set:hover .folio-set__cta,
+  .folio-set:focus-visible .folio-set__cta {
+    background: var(--fs-face);
+  }
+  /* Tablet band: two side-by-side folders only work from ~1200px up — below
+     that each plate's text column runs long and drags the row tall. One
+     full-width folder per row keeps the landscape folder shape instead.
+     (1200 is a component reflow point like client-portal's 860, not the
+     site's 880 line, which stays untouched below.) */
+  @media (min-width: 880px) and (max-width: 1199.98px) {
+    .portfolio-hub-card-grid {
+      grid-template-columns: 1fr;
+      gap: clamp(2.5rem, 4.5vw, 3.25rem);
+    }
+    .folio-set__plate {
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .folio-set:hover,
+    .folio-set:focus-visible { transform: translateY(-6px); }
+    .folio-set:hover .folio-set__peek--b,
+    .folio-set:focus-visible .folio-set__peek--b { transform: rotate(7deg) translate(12px, 8px); }
+    .folio-set:hover .folio-set__peek--a,
+    .folio-set:focus-visible .folio-set__peek--a { transform: rotate(-6deg) translate(-10px, 4px); }
+    .folio-set:hover .folio-set__art img,
+    .folio-set:focus-visible .folio-set__art img { transform: rotate(0deg); }
+    .folio-set:hover .folio-set__cta,
+    .folio-set:focus-visible .folio-set__cta { transform: translate(2px, 2px); box-shadow: 0 0 0 var(--fs-ink); }
+    .folio-set:hover .folio-set__cta .material-symbols-outlined { transform: translateX(3px); }
   }
   .portfolio-hub-stat {
     border-left: 1px solid rgba(0,240,255,0.34);
@@ -315,14 +440,17 @@ tailwind.config = {
     .portfolio-hub-stat {
       padding-left: 0.7rem;
     }
-    .portfolio-hub-card {
-      min-height: auto;
+    .folio-set__plate {
+      grid-template-columns: 1fr;
+      gap: 1.1rem;
+      padding: 1rem;
     }
-    .portfolio-hub-card__media {
-      aspect-ratio: 4 / 3;
+    .folio-set__art {
+      min-height: 0;
+      aspect-ratio: 16 / 10;
     }
-    .portfolio-hub-card__body {
-      padding: 1.25rem;
+    .folio-set__frame {
+      box-shadow: 7px 10px 0 rgba(0, 0, 0, 0.45);
     }
     .portfolio-hub-cta {
       gap: 1.5rem;
@@ -340,16 +468,16 @@ tailwind.config = {
       justify-content: center;
     }
   }
+  /* Folder-card hover motion lives inside a no-preference query above, so
+     reduced-motion only needs the transitions killed — the resting fan stays. */
   @media (prefers-reduced-motion: reduce) {
-    .portfolio-hub-card,
-    .portfolio-hub-card__media img {
+    .folio-set,
+    .folio-set__frame,
+    .folio-set__peek,
+    .folio-set__art img,
+    .folio-set__cta,
+    .folio-set__cta .material-symbols-outlined {
       transition: none;
-    }
-    .portfolio-hub-card:hover,
-    .portfolio-hub-card:focus-visible,
-    .portfolio-hub-card:hover .portfolio-hub-card__media img,
-    .portfolio-hub-card:focus-visible .portfolio-hub-card__media img {
-      transform: none;
     }
   }
 </style>
@@ -366,29 +494,55 @@ tailwind.config = {
 <div>
 <p class="portfolio-hub-lede">Explore the software and websites behind Surette Data Systems: custom business apps, client portals, storefronts, marketplace builds, and focused service sites.</p>
 <div class="portfolio-hub-stats" aria-label="Portfolio summary">
-<div class="portfolio-hub-stat"><strong>5</strong><span>Apps</span></div>
+<div class="portfolio-hub-stat"><strong>6</strong><span>Apps</span></div>
 <div class="portfolio-hub-stat"><strong>6</strong><span>Websites</span></div>
 <div class="portfolio-hub-stat"><strong>1</strong><span>Builder</span></div>
 </div>
 </div>
 </section>
 <section class="portfolio-hub-card-grid" aria-label="Portfolio categories">
-<a class="portfolio-hub-card" href="apps.html">
-<div class="portfolio-hub-card__media"><img src="assets/apps/auction/auction-dashboard.webp" alt="Auction software dashboard"/></div>
-<div class="portfolio-hub-card__body">
-<span class="portfolio-hub-chip">Apps and software</span>
-<h2 class="font-headline-lg text-headline-lg text-starlight-white">Surette Data Systems apps</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">Custom business tools for auctions, secondhand dealers, payroll, antique malls, and precious-metal buying workflows.</p>
-<span class="portfolio-hub-arrow">Explore apps <span class="material-symbols-outlined text-base">arrow_forward</span></span>
+<a class="folio-set folio-set--apps" href="apps.html">
+<span class="folio-set__tab">Set 01 &middot; Software</span>
+<div class="folio-set__frame">
+<div class="folio-set__plate">
+<div class="folio-set__art" aria-hidden="true">
+<span class="folio-set__peek folio-set__peek--b"></span>
+<span class="folio-set__peek folio-set__peek--a"></span>
+<img src="assets/apps/auction/auction-dashboard.webp" alt=""/>
+</div>
+<div class="folio-set__info">
+<h2 class="folio-set__title">Surette Data Systems apps</h2>
+<p class="folio-set__desc">Custom business tools for auctions, secondhand dealers, payroll, antique malls, and precious-metal workflows. Opens the software hub first &mdash; the six-card app gallery sits one step inside.</p>
+<span class="folio-set__chips">
+<span class="folio-set__chip">Software hub</span>
+<span class="folio-set__chip">Gallery inside</span>
+<span class="folio-set__chip">Live demos</span>
+</span>
+<span class="folio-set__cta">Open the hub <span class="material-symbols-outlined">arrow_forward</span></span>
+</div>
+</div>
 </div>
 </a>
-<a class="portfolio-hub-card" href="casestudies.html">
-<div class="portfolio-hub-card__media"><img src="assets/portfolio/naples-estate-jewelry/home.png" alt="Naples Estate Jewelry website homepage"/></div>
-<div class="portfolio-hub-card__body">
-<span class="portfolio-hub-chip">Websites and case studies</span>
-<h2 class="font-headline-lg text-headline-lg text-starlight-white">Websites we've built</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">Live websites and portfolio case studies for local brands, service businesses, e-commerce storefronts, and marketplaces.</p>
-<span class="portfolio-hub-arrow">View websites <span class="material-symbols-outlined text-base">arrow_forward</span></span>
+<a class="folio-set folio-set--web" href="casestudies.html">
+<span class="folio-set__tab">Set 02 &middot; Websites</span>
+<div class="folio-set__frame">
+<div class="folio-set__plate">
+<div class="folio-set__art" aria-hidden="true">
+<span class="folio-set__peek folio-set__peek--b"></span>
+<span class="folio-set__peek folio-set__peek--a"></span>
+<img src="assets/portfolio/naples-estate-jewelry/home.png" alt=""/>
+</div>
+<div class="folio-set__info">
+<h2 class="folio-set__title">Websites we've built</h2>
+<p class="folio-set__desc">Live websites and case studies for local brands, service businesses, e-commerce storefronts, and marketplaces &mdash; with a build-time estimate on every card.</p>
+<span class="folio-set__chips">
+<span class="folio-set__chip">6-card set</span>
+<span class="folio-set__chip">Live builds</span>
+<span class="folio-set__chip">Est. 15&ndash;440 hrs</span>
+</span>
+<span class="folio-set__cta">Open the set <span class="material-symbols-outlined">arrow_forward</span></span>
+</div>
+</div>
 </div>
 </a>
 </section>

@@ -1,6 +1,6 @@
 # Decisions
 
-Last updated: 2026-07-15
+Last updated: 2026-07-17
 
 Record only durable decisions here. Do not add routine change history.
 
@@ -52,11 +52,11 @@ Decision: use `portfolio.html` as the top-level navigation category for work exa
 
 Reason: the header needs one concise Portfolio category instead of separate Apps and Websites items, while preserving the existing full pages and detail routes.
 
-## Public Navigation Compatibility
+## Public Navigation Compatibility (SUPERSEDED 2026-07-15)
 
-Decision: retain the homepage/`assets/standard-site-nav.js` navigation design as the public visual standard, and use `assets/unified-mobile-menu.js` to give legacy public templates the same phone navigation behavior until the HTML can be consolidated.
+Superseded by "Navigation Single Source of Truth" above: the consolidation this decision deferred ("until the HTML can be consolidated") happened on 2026-07-15 — every public page now renders its nav from `assets/standard-site-nav.js`, and the `assets/unified-mobile-menu.js` compatibility layer was deleted. Kept for history only.
 
-Reason: the project has several historical header markup paths. A compatibility layer keeps the visible header, menu, account control, and bottom nav consistent across current public pages without a risky full-template rewrite.
+Original decision: retain the homepage/`assets/standard-site-nav.js` navigation design as the public visual standard, and use `assets/unified-mobile-menu.js` to give legacy public templates the same phone navigation behavior until the HTML can be consolidated.
 
 ## App Brand
 
@@ -138,6 +138,32 @@ Reason: keeping contact, consultation, checkout, and portal messages in one owne
 Decision: message email notifications should use Netlify Forms notifications, while Supabase remains the durable message-center record.
 
 Reason: Netlify can provide owner email alerts without adding a separate email API provider or storing notification credentials in the project.
+
+## Publish Build Estimates On Portfolio Work — In Hours, At A Published Rate
+
+Decision (2026-07-16, amended same day from dollar ranges to hours): every portfolio entry shows an approximate **build time in hours** — a pill on the gallery card and an hours-led `#build-pricing` breakdown on the detail page — plus the published shop rate of **$125/hr**, stated once per page. The rate lives in `website_pricing_plan.txt` §37 (owner decision; the $95–$150/hr range remains for scoped hourly work in proposals). Hours were derived from the original package-based dollar ranges at $125/hr, so hours × rate reconciles with the pricing page instead of contradicting it.
+
+Reason: the work was being shown with no sense of scale, so visitors could not tell a 15-hour landing page from a 400-hour platform; hours communicate effort with less sticker shock than dollars. Guardrails that must survive future edits: estimates are always ranges with the "estimate only / scoped and quoted individually" disclosure **plus an explicit "hours × rate is not a quote"** (packages stay fixed-price per the spec); each detail page keeps its named package's dollar anchor so the portfolio and pricing page can never tell different stories. `website_pricing_plan.txt` stays the source of truth — if the rate or plan prices change, the hours must be re-derived.
+
+## Galleries Share One Card Component
+
+Decision (2026-07-16): the Websites and Apps galleries render the same collectible card from `assets/collectible-card.css` + `pokecard-dropin`, themed per gallery via `--tcg-*` variables. Do not copy the CSS into a page; do not edit the drop-in.
+
+Reason: two pages needed the same component, and this repo's recurring failure is the hand-copied variant (the nav once had ~16, the footer ~10). The drop-in stays untouched so it remains reusable and its hero card stays green; the component overrides the three rules where the widget hardcodes its own colour.
+
+## Card Face Overlays Stay In Flow
+
+Decision (2026-07-16): anything overlaid on a flip-card face is in-flow content — no `position: absolute`, no `z-index`, no `transform`, no `will-change`, no opacity transitions. Overlap is done with layout (a zero-height row plus negative margin), not positioning.
+
+Reason: established over four device round-trips. Those properties invite a mobile compositor to promote the element out of the card's 3D flattening, after which it paints its backface through the flipped card (mirrored) and flickers mid-rotation — none of which reproduces on desktop, so it ships unseen. In-flow face content (the badges) never glitched once. Every clever workaround — `backface-visibility`, a state-driven opacity hide, a permanent `will-change` layer — was strictly worse than removing the promotion. Positioned overlays are fine on pages with no 3D context (e.g. the portfolio hub's folder cards).
+
+## Card Back Faces Must Fit By Container Width, Not Viewport Width
+
+Decision (2026-07-17): the gallery card back-face guarantee is "copy fits, never scrolls" — enforced by tightening back-face type in `assets/collectible-card.css` via a `@container tcg-card (max-width: 336px)` rule keyed to `.poke-scene.tcg-card`'s own rendered width, not a `max-width` viewport media query.
+
+Reason: `casestudies.html`'s mobile zigzag layout (`assets/portfolio-mobile-fixes.css`) shrinks the card independently of viewport width to make room for its number chip, so card width and viewport width no longer move together. A viewport query tightened (or failed to tighten) the wrong cards once that decoupling existed — it reopened the back-fit budget from the day before, badly, before being caught. A container query is correct by construction regardless of what shrinks the card. One tier only: an earlier two-tier attempt (mild tier for viewport-driven narrow widths, aggressive tier for the zigzag's narrowest case) left a gap where the mild tier wasn't tight enough just above the aggressive tier's cutoff — collapsed to a single tier sized for the tightest case, since more width only ever adds slack once font-size/line-height are fixed. Any future feature that changes card width (on either gallery) must re-sweep `scrollHeight === clientHeight` across the full width range, not just the usual 320/375/1440 spot-checks — this bug lived at a tier boundary a narrower sweep missed.
+
+**`scrollHeight === clientHeight` proves the back doesn't scroll — it does NOT prove the back is full, and don't use it to judge whether there's room to grow the text.** `.poke-back-inner .poke-links` carries `margin-top: auto` (pokecard.css), which stretches the flex column to fill `clientHeight` no matter how little text is above it — `scrollHeight` can never read below `clientHeight` once that auto-margin exists, even with 60px of genuinely empty space on screen. Learned 2026-07-17 when a font-size increase, verified "correct" by that check, turned out barely perceptible — the owner had to point at a screenshot with visible empty space for it to be caught. To judge actual slack, measure `clientHeight − (sum of the back's direct children's own heights + gaps + padding)` instead, and do it per card — the shortest-copy card (most visual slack) is not the one that constrains how far you can push a uniform font-size; the longest-copy card (AuctionBuddha) is, and it can look deceptively fuller than the short cards even while it's the actual ceiling.
 
 ## Website Pricing Model
 

@@ -147,6 +147,17 @@ tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors
 </div>
 <script src="assets/standard-site-nav.js?v=20260716-bar-tint" data-active="services"></script>
 <button id="fractal-gui-toggle" title="Visual settings" aria-label="Toggle visual settings" onclick="if(window._fractalGUI){window._fractalGUI._hidden?window._fractalGUI.show():window._fractalGUI.hide()}"><span class="material-symbols-outlined">grain</span></button>
+<!-- Shown only when the reader arrived from the Portfolio hub — see the script
+     at the end of this file. This page is primarily a Services destination (the
+     nav marks it data-active="services") and is linked from the Services
+     dropdown, the homepage, the footer, and app-catalog's own back link, so a
+     permanent "Back to Portfolio" would point most visitors somewhere they have
+     never been. Placement/styling mirror app-catalog.html's "Back to Apps". -->
+<div class="hidden relative z-10 pt-32 md:pt-28 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full" data-portfolio-back>
+<a href="portfolio.html" class="inline-flex items-center gap-2 font-label-mono text-label-mono text-starlight-white/70 hover:text-electric-cyan transition-colors duration-300">
+<span class="material-symbols-outlined text-base">arrow_back</span>Back to Portfolio
+</a>
+</div>
 <main class="downloads-main relative z-10 pt-8 md:pt-16 pb-28 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
 <section class="sds-hero max-w-container-max mb-14">
 <div class="sds-hero__grid">
@@ -370,6 +381,40 @@ window.FRACTAL_CONFIG = {
   closeBtn.addEventListener('click', closeModal);
   modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+})();
+</script>
+<script>
+/* Reveal the "Back to Portfolio" link only for readers who came from the
+   Portfolio hub. Referrer rather than a ?from= param: both pages are
+   same-origin, where the default referrer policy sends the full URL, so this is
+   reliable without putting a query string on a canonical marketing URL.
+
+   This is now the only referrer-reveal on the site. casestudies.html had one of
+   the same shape; it was deleted 2026-07-16 after being found dead three ways
+   over (it tested for the retired services/website-design.html, its
+   [data-website-design-back] element existed nowhere, and the surviving pricing
+   page does not link to casestudies at all). If this link ever stops appearing,
+   suspect the same rot: check that portfolio.html still links here. */
+(function () {
+  function reveal() {
+    var fromPortfolio = false;
+    try {
+      var ref = document.referrer ? new URL(document.referrer, window.location.href) : null;
+      fromPortfolio = !!ref && ref.origin === window.location.origin &&
+        /(^|\/)portfolio\.html$/.test(ref.pathname);
+    } catch (e) {
+      fromPortfolio = false;
+    }
+    if (!fromPortfolio) return;
+    document.querySelectorAll('[data-portfolio-back]').forEach(function (el) {
+      el.classList.remove('hidden');
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', reveal, { once: true });
+  } else {
+    reveal();
+  }
 })();
 </script>
 <script src="assets/supabase-config.js"></script>
