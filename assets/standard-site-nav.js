@@ -201,7 +201,10 @@
     '</div>' +
     '<a href="' + u("portfolio.html") + '" class="' + mobileMenuLinkClass("portfolio") + '"><span class="material-symbols-outlined text-lg">work</span>' + copy.portfolio + '</a>' +
     '<a href="' + u("account.html") + '" class="' + mobileMenuLinkClass("account") + '"><span class="material-symbols-outlined text-lg">account_circle</span>' + copy.login + '</a>' +
-    '<a href="' + u("contact.html") + '" class="' + mobileMenuLinkClass("contact") + '"><span class="material-symbols-outlined text-lg">mail</span>' + (isSpanish ? "Contacto" : "Contact") + '</a>' +
+    // One contact entry only: the gradient CTA (mirrors the desktop nav's
+    // Contact Us button). The plain "Contact" row it sat next to was redundant
+    // with it AND with the bottom tab bar's Contact item, which keeps the
+    // active-page highlight for contact.html.
     '<a href="' + u("contact.html") + '" class="flex items-center gap-3 px-4 py-3 text-void-black bg-gradient-to-r from-electric-cyan to-nebula-purple font-label-mono text-sm mx-2 my-1 rounded-lg"><span class="material-symbols-outlined text-lg">calendar_month</span>' + copy.contact + '</a>' +
     '</div></div></div></div>' +
     '</div></header><nav class="dm-standard-bottom-nav fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe backdrop-blur-2xl border-t border-starlight-white/10 shadow-[0_-10px_30px_rgba(112,0,255,0.15)] rounded-t-xl">' +

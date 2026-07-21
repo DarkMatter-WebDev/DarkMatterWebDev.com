@@ -18,7 +18,8 @@
       "Bash(python apply_logo.py)",
       "Bash(python -c ' *)",
       "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\rcman\\\\OneDrive\\\\Documents\\\\DarkMatter - Codex - Copy \\(7\\) - Copy - Copy - Copy - Copy\" -Recurse -Force)",
-      "Bash(Select-Object FullName)"
+      "Bash(Select-Object FullName)",
+      "Bash(xargs sed -i 's/nav\\\\.css?v=20260716-footer-meta2/nav.css?v=20260721-nav-border-pin/g')"
     ]
   }
 }

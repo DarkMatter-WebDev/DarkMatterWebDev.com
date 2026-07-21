@@ -1,6 +1,6 @@
 # Decisions
 
-Last updated: 2026-07-17
+Last updated: 2026-07-21
 
 Record only durable decisions here. Do not add routine change history.
 
@@ -26,7 +26,7 @@ Reason: it is now separately hosted/managed at `https://seansads.com/`; Dark Mat
 
 Decision (2026-07-16): markup injected at runtime by a shared component (`standard-site-nav.js`, `standard-site-footer.js`) is styled with plain CSS in `assets/nav.css`, not Tailwind utilities.
 
-Reason: the Tailwind CDN only generates a utility if it finds that class in the page's own static HTML. A class used *only* inside injected markup exists nowhere for it to find, so it silently resolves to nothing — not an error, just wrong. Observed twice: `text-on-primary-container/60` rendered the footer's legal line white, and `portfolio.html`'s hamburger lines resolved to transparent, leaving a clickable but invisible menu button. Failures are per-page and invisible until someone looks, which makes them exactly the kind of drift this repo keeps paying for.
+Reason: the Tailwind CDN only generates a utility if it finds that class in the page's own static HTML. A class used *only* inside injected markup exists nowhere for it to find, so it silently resolves to nothing — not an error, just wrong. Observed three times: `text-on-primary-container/60` rendered the footer's legal line white; `portfolio.html`'s hamburger lines resolved to transparent, leaving a clickable but invisible menu button; and (2026-07-21) the nav bars' `border-starlight-white/10` hairlines fell back to preflight `#e5e7eb` on portfolio.html only — a solid light-gray line under the header and above the bottom tab bar, proving the failure is also *per-page nondeterministic* (the CDN's DOM observer caught the class on 27 pages and missed one). Failures are per-page and invisible until someone looks, which makes them exactly the kind of drift this repo keeps paying for. Bar backgrounds AND bar borders are both pinned in `nav.css` now.
 
 ## Footer Single Source of Truth
 

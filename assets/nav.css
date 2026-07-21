@@ -658,6 +658,21 @@ nav .hidden.md\:flex,
   background: rgba(8, 10, 14, 0.9) !important;
 }
 
+/* Hairline borders for the same three bars, pinned here for the same reason as
+   the tint above: the injected markup's `border-white/10` /
+   `border-starlight-white/10` utilities exist in no page's static HTML, so
+   they ride on the CDN's DOM observer — which missed on portfolio.html and
+   left both bars with Tailwind's preflight fallback border (#e5e7eb), a solid
+   light-gray 1px line across the header bottom and above the footer. */
+.dm-standard-desktop-nav,
+.dm-unified-mobile-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.dm-standard-bottom-nav {
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
 .services-nav-menu {
   position: absolute;
   top: 100%;
