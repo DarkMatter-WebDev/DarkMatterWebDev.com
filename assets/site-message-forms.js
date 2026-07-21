@@ -1,9 +1,29 @@
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+// supabase-js is loaded lazily, NOT as a top-level import: the static import
+// fetched+parsed the whole bundle right at DOMContentLoaded — the exact window
+// where the page reveal fade and glass-card reveals run — and the main-thread
+// hit made pages with these forms load visibly choppy. The client is only
+// needed at submit time, so we import on demand and warm the cache during
+// post-load idle.
+const SUPABASE_ESM_URL = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
 const config = window.DM_SUPABASE_CONFIG || {};
 const MAX_FILES = 5;
 const MAX_FILE_SIZE = 8 * 1024 * 1024;
 const ATTACHMENT_BUCKET = "portal-message-attachments";
+
+let supabasePromise = null;
+function loadSupabase() {
+  if (!config.url || !config.anonKey || config.url.includes("YOUR_PROJECT_REF")) {
+    return Promise.resolve(null);
+  }
+  if (!supabasePromise) {
+    supabasePromise = import(SUPABASE_ESM_URL).then((mod) => mod.createClient(config.url, config.anonKey));
+    // A failed load (offline, CDN hiccup) must not poison the cache — clear it
+    // so the next submit retries the import.
+    supabasePromise.catch(() => { supabasePromise = null; });
+  }
+  return supabasePromise;
+}
 
 const copy = {
   setup: "Message center setup is pending. Please call or text (239) 404-8505.",
@@ -15,9 +35,6 @@ const copy = {
   fileSize: "Each photo must be 8 MB or smaller."
 };
 
-const supabase = config.url && config.anonKey && !config.url.includes("YOUR_PROJECT_REF")
-  ? createClient(config.url, config.anonKey)
-  : null;
 
 function fieldLabel(field) {
   const explicit = field.id ? document.querySelector(`label[for="${CSS.escape(field.id)}"]`) : null;
@@ -142,7 +159,7 @@ function cleanFileName(name) {
     .slice(0, 90);
 }
 
-async function uploadAttachments(files, source) {
+async function uploadAttachments(supabase, files, source) {
   if (!files.length) return [];
   const batchId = crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
   const day = new Date().toISOString().slice(0, 10);
@@ -202,16 +219,18 @@ async function submitNetlifyFormSafely(form, fallbackName) {
 }
 
 async function submitForm(form) {
-  if (!supabase) throw new Error(copy.setup);
   if (!form.reportValidity()) return;
   const botField = form.elements["bot-field"];
   if (botField && String(botField.value || "").trim()) return;
+
+  const supabase = await loadSupabase();
+  if (!supabase) throw new Error(copy.setup);
 
   const files = collectFiles(form);
   validateFiles(files);
 
   const source = form.dataset.messageSource || form.getAttribute("name") || "site-form";
-  const attachments = await uploadAttachments(files, source);
+  const attachments = await uploadAttachments(supabase, files, source);
   const body = buildBody(form);
   const subject = getSubject(form);
   const requestType = getRequestType(form);
@@ -260,3 +279,19 @@ function bindSiteMessageForms() {
 
 bindSiteMessageForms();
 document.addEventListener("DOMContentLoaded", bindSiteMessageForms);
+
+// Warm the supabase-js cache once the page is fully loaded AND idle, so the
+// first submit doesn't pay the import either — while keeping the fetch/parse
+// far away from the reveal-animation window that motivated the lazy load.
+function warmSupabase() {
+  if ("requestIdleCallback" in window) {
+    requestIdleCallback(() => loadSupabase(), { timeout: 6000 });
+  } else {
+    setTimeout(() => loadSupabase(), 3000);
+  }
+}
+if (document.readyState === "complete") {
+  warmSupabase();
+} else {
+  window.addEventListener("load", warmSupabase, { once: true });
+}

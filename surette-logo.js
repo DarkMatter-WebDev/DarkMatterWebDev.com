@@ -397,13 +397,25 @@
     document.querySelectorAll('.reveal-up').forEach(function (el) { io.observe(el); });
   }
 
-  // Wait for all DCL handlers to finish (setTimeout 0), then two rAFs so the
-  // logo canvas and any Tailwind-processed nav classes have been laid out and
-  // painted before we reveal.
+  // Wait for all DCL handlers to finish (setTimeout 0), then for webfonts
+  // (capped at 500ms so a stalled font can't hold the page), then two rAFs so
+  // the logo canvas and any Tailwind-processed nav classes have been laid out
+  // and painted before we reveal. The fonts gate exists because display=swap
+  // fonts arriving DURING the 0.38s fade re-layout the text mid-animation —
+  // one visible source of the "choppy load". Cached fonts resolve instantly,
+  // and the 850ms absolute safety below still bounds the worst case.
   function dmScheduleReveal() {
     setTimeout(function () {
-      requestAnimationFrame(function () {
-        requestAnimationFrame(dmRevealPage);
+      var fontsReady = (document.fonts && document.fonts.ready)
+        ? document.fonts.ready
+        : Promise.resolve();
+      Promise.race([
+        fontsReady,
+        new Promise(function (res) { setTimeout(res, 500); })
+      ]).then(function () {
+        requestAnimationFrame(function () {
+          requestAnimationFrame(dmRevealPage);
+        });
       });
     }, 0);
   }
