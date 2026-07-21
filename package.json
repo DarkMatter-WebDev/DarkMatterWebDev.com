@@ -1,0 +1,8 @@
+{
+  "name": "surette-data-systems-site",
+  "private": true,
+  "description": "Static site — no build step. Netlify serves the repo root as-is. Dev-only dependencies below power scripts/tablet-audit.js; run `npm install` to restore them.",
+  "devDependencies": {
+    "playwright": "^1.60.0"
+  }
+}

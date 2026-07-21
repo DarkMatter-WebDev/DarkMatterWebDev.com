@@ -628,10 +628,35 @@
         }
 
         // --- EVENT LISTENERS & ANIMATION LOOP ---
+        // Resize is debounced and skips mobile height-only changes: collapsing
+        // browser chrome fires height-only resizes mid-scroll, and each
+        // renderer.setSize() reallocates the WebGL buffer — the background
+        // visibly stuttered on phones. Same treatment as the homepage Nova
+        // background (index.html, shouldResizeNova).
+        let lastRenderW = window.innerWidth;
+        let lastRenderH = window.innerHeight;
+        let lastDpr = Math.min(window.devicePixelRatio || 1, 2);
+        let resizeTimer;
         function onWindowResize() {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                const nextW = window.innerWidth;
+                const nextH = window.innerHeight;
+                const nextDpr = Math.min(window.devicePixelRatio || 1, 2);
+                const widthChanged = Math.abs(nextW - lastRenderW) > 2;
+                const heightChanged = Math.abs(nextH - lastRenderH) > 2;
+                const dprChanged = Math.abs(nextDpr - lastDpr) > 0.01;
+                const mobileViewport = window.matchMedia('(max-width: 879.98px)').matches;
+                if (mobileViewport && heightChanged && !widthChanged && !dprChanged) return;
+                if (!widthChanged && !heightChanged && !dprChanged) return;
+                lastRenderW = nextW;
+                lastRenderH = nextH;
+                lastDpr = nextDpr;
+                camera.aspect = nextW / nextH;
+                camera.updateProjectionMatrix();
+                renderer.setPixelRatio(lastDpr);
+                renderer.setSize(nextW, nextH);
+            }, 180);
         }
 
         function animate() {

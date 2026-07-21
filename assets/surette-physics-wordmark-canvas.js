@@ -245,9 +245,17 @@
     // ─── Resize ────────────────────────────────────────────────────────────────
 
     _resize() {
-      this._DPR = devicePixelRatio || 1;
-      this._W   = this._canvas.clientWidth  || innerWidth;
-      this._H   = this._canvas.clientHeight || innerHeight;
+      var dpr = devicePixelRatio || 1;
+      var w   = this._canvas.clientWidth  || innerWidth;
+      var h   = this._canvas.clientHeight || innerHeight;
+      // Skip no-op resizes: mobile browser chrome fires height-only window
+      // resizes mid-scroll, and when the canvas box itself is unchanged,
+      // resetting canvas.width clears the bitmap for nothing — a visible
+      // blink of the wordmark while scrolling.
+      if (w === this._W && h === this._H && dpr === this._DPR) return;
+      this._DPR = dpr;
+      this._W   = w;
+      this._H   = h;
       this._canvas.width  = Math.round(this._W * this._DPR);
       this._canvas.height = Math.round(this._H * this._DPR);
       this._ctx.setTransform(this._DPR, 0, 0, this._DPR, 0, 0);

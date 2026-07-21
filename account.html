@@ -90,11 +90,14 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 <script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/","lil-gui":"https://cdn.jsdelivr.net/npm/lil-gui@0.20.0/dist/lil-gui.esm.js"}}</script>
 <style>
-  #canvas-container { position:fixed; inset:0; z-index:1; background:#020205; pointer-events:none; }
-  #canvas-container canvas { position:absolute !important; top:50%; left:30%; transform:translate(-50%,-50%); pointer-events:none; }
+  /* translate3d/backface/contain promote the background to its own composited
+     layer so scrolling never repaints it — same treatment as #nova-bg on the
+     homepage. Pairs with fractal.js ignoring mobile height-only resizes. */
+  #canvas-container { position:fixed; inset:0; z-index:1; background:#020205; pointer-events:none; transform:translate3d(0,0,0); backface-visibility:hidden; contain:strict; }
+  #canvas-container canvas { position:absolute !important; top:50%; left:30%; transform:translate3d(-50%,-50%,0); backface-visibility:hidden; pointer-events:none; }
   main.client-portal-shell { position:relative; z-index:2; }
   @media (max-width: 1279px) {
-    #canvas-container canvas { top:50% !important; left:50% !important; transform:translate(-50%,-50%) !important; }
+    #canvas-container canvas { top:50% !important; left:50% !important; transform:translate3d(-50%,-50%,0) !important; }
   }
   @media (max-width: 879.98px) {
     #fractal-gui-toggle { top:auto !important; bottom:90px; }
@@ -275,5 +278,5 @@ window.DM_CLIENT_PORTAL_COPY = {
 <script type="module" src="assets/client-portal.js?v=20260704-netlify-supabase"></script>
 <script src="surette-logo.js?v=20260715-reveal-margin"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo'); SuretteLogo.init('sds-logo-mobile'); });</script>
-<script type="module" src="fractal.js"></script>
+<script type="module" src="fractal.js?v=20260721-scroll-stutter"></script>
 </body></html>

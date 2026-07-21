@@ -1,6 +1,13 @@
 # Original Stitch exports (kept locally, not deployed). Remove this line to track them.
 _source/
 
+# Dev-only dependencies (playwright for scripts/tablet-audit.js) — never deploy.
+# Restore with `npm install` (see package.json).
+node_modules/
+
+# Local Claude Code permissions — machine-specific, do not commit.
+.claude/settings.local.json
+
 # OS / editor cruft
 .env.local
 scripts/.env.local
