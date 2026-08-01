@@ -1,6 +1,6 @@
 # Tasks
 
-Last updated: 2026-07-21
+Last updated: 2026-08-01
 
 ## Active
 
@@ -54,6 +54,8 @@ Last updated: 2026-07-21
 - Consider future migration from duplicated hand-authored HTML to generated static HTML with shared layouts (Astro candidate for marketing pages).
 
 ## Recently Completed
+
+- **Homepage responsive symmetry and card-interaction pass (2026-08-01).** Centered every section-heading group, replaced the Services four-card 3+1 desktop layout with a balanced 2x2 tier from 880-1279px and a single 4-card row at 1280px+, made every desktop and compact-layout service card a full-surface anchor, and equalized repeated card/quote heights. Audited 320, 375, 414, 768, 879, 880, 1024, 1279, 1280, 1440, 1536, and 1920px; all card edges resolve to their links, and no orphaned groups, misaligned headers, unequal repeated-object heights, or horizontal overflow remain. Validator remains at the documented 65-item baseline.
 
 - **Choppy contact-page load fixed (2026-07-21).** supabase-js is now lazy-imported in `site-message-forms.js` (was a static top-level import executing at DCL, mid-reveal; now first-submit + post-load idle warm-up — measured fetching after the load event), and `surette-logo.js`'s reveal waits for fonts (500ms cap) so swaps can't re-layout mid-fade. All three form pages verified bound; validator 65 baseline. → `site-message-forms.js?v=20260721-lazy-supabase`, `surette-logo.js?v=20260721-fonts-gate`.
 - **Double-blink load fix + total knock-loose removal (2026-07-21).** Head-stamped `sds-logo-loaded` before first paint on all 28 surette-logo.js pages (kills the 0.2s-fallback flash→hide→reveal race that hit apps + the pricing page); apps.html pre-hides content until `is-apps-ready` with a 5s CSS safety (kills the loader's 50ms race); `#wm-canvas` pointer-events none at every width + dead handler code removed (terms.html wordmark unaffected). Verified end-states + zero console errors; validator 65 baseline.

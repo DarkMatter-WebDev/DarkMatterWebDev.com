@@ -1,6 +1,6 @@
 # Current Status
 
-Last updated: 2026-07-21
+Last updated: 2026-08-01
 
 ## Site State
 
@@ -11,6 +11,7 @@ Last updated: 2026-07-21
 
 ## Current Features
 
+- **Homepage repeated objects are symmetric at every layout tier (2026-08-01):** the Services heading/copy and all other section-heading groups are centered; the four wide-layout service cards render 2x2 from 880-1279px and one 4-card row from 1280px upward; each service card is itself a full-surface link; and repeated cards/quote boxes use equal-height grid tracks on both desktop and phone layouts. A 320-1920px sweep confirmed no orphan rows, uneven repeated-object heights, misaligned section headers, incomplete card hitboxes, or horizontal overflow.
 - Homepage hero background is the Nova particle-galaxy WebGL widget (`nova/nova-widget.html`), mounted as a fixed full-viewport `#nova-bg` div at `z-index:1`. A fixed `#hero-tint` scrim at `z-index:2` anchors the gradient overlay so it doesn't scroll away. The homepage integration promotes `#nova-bg`/canvas to a composited layer and ignores height-only mobile viewport resize events so browser toolbar changes do not reallocate WebGL during scroll. The old black-hole Three.js scene is gone. Only the homepage integration and the `CONFIG` block should be changed; leave the Nova engine copy alone unless explicitly needed.
 - Non-home pages use the shared cosmic-web background system (`assets/cosmic-web.css`).
 - Services pages: Website Design &amp; Hosting (`services/website-design-hosting.html`, merged from the former separate Website Design, Managed Hosting, and Website Care Plans pages; now a complete public pricing page implementing `website_pricing_plan.txt` — managed plans, one-time builds, care plans, policies, add-ons, FAQ), Custom Business Web Apps (links to `apps.html`), In-Home Tech Services, Office Network Setup. Custom Apps, In-Home, and Office Network pages include "View Our Process" CTAs.
