@@ -287,4 +287,112 @@
       if (event.key === "Escape") closeMenu();
     });
   }
+
+  // Conventional mobile bottom-navigation behavior: make room for content
+  // while the user moves down the page, then return the destinations as soon
+  // as the scroll direction reverses. Small distance thresholds prevent touch
+  // jitter from flickering the bar. Keyboard focus always brings it back and
+  // keeps it present while a keyboard user is navigating inside it.
+  var bottomNav = mobileRoot && mobileRoot.querySelector(".dm-standard-bottom-nav");
+  if (bottomNav) {
+    var lastScrollY = Math.max(window.scrollY || window.pageYOffset || 0, 0);
+    var scrollDirection = 0;
+    var directionDistance = 0;
+    var bottomNavHidden = false;
+    var keyboardNavigation = false;
+    var trackedViewportWidth = window.innerWidth;
+
+    function isMobileNavViewport() {
+      return window.innerWidth < 880;
+    }
+
+    function setBottomNavHidden(shouldHide) {
+      shouldHide = Boolean(shouldHide && isMobileNavViewport());
+      if (bottomNavHidden === shouldHide) return;
+
+      bottomNavHidden = shouldHide;
+      bottomNav.classList.toggle("dm-standard-bottom-nav--hidden", shouldHide);
+    }
+
+    function showBottomNav() {
+      setBottomNavHidden(false);
+    }
+
+    function resetBottomNavTracking() {
+      lastScrollY = Math.max(window.scrollY || window.pageYOffset || 0, 0);
+      scrollDirection = 0;
+      directionDistance = 0;
+      showBottomNav();
+    }
+
+    function handleBottomNavResize() {
+      var nextViewportWidth = window.innerWidth;
+      if (nextViewportWidth === trackedViewportWidth) return;
+      trackedViewportWidth = nextViewportWidth;
+      resetBottomNavTracking();
+    }
+
+    function updateBottomNavOnScroll() {
+      if (!isMobileNavViewport()) {
+        resetBottomNavTracking();
+        return;
+      }
+
+      var currentScrollY = Math.max(window.scrollY || window.pageYOffset || 0, 0);
+      var delta = currentScrollY - lastScrollY;
+      lastScrollY = currentScrollY;
+
+      if (keyboardNavigation) {
+        scrollDirection = 0;
+        directionDistance = 0;
+        showBottomNav();
+        return;
+      }
+
+      if (currentScrollY <= 24) {
+        scrollDirection = 0;
+        directionDistance = 0;
+        showBottomNav();
+        return;
+      }
+
+      if (Math.abs(delta) < 1) return;
+
+      var nextDirection = delta > 0 ? 1 : -1;
+      if (nextDirection !== scrollDirection) {
+        scrollDirection = nextDirection;
+        directionDistance = 0;
+      }
+      directionDistance += Math.abs(delta);
+
+      if (scrollDirection < 0 && directionDistance >= 6) {
+        showBottomNav();
+      } else if (
+        scrollDirection > 0 &&
+        directionDistance >= 24 &&
+        !(keyboardNavigation && bottomNav.contains(document.activeElement))
+      ) {
+        setBottomNavHidden(true);
+      }
+    }
+
+    window.addEventListener("scroll", updateBottomNavOnScroll, { passive: true });
+    // Mobile browser chrome commonly fires height-only resize events during a
+    // normal scroll. Ignore those so the bar does not flash back into view;
+    // only a real width/mode change resets the directional state.
+    window.addEventListener("resize", handleBottomNavResize, { passive: true });
+    window.addEventListener("pageshow", resetBottomNavTracking);
+
+    document.addEventListener("keydown", function () {
+      keyboardNavigation = true;
+      showBottomNav();
+    }, true);
+    document.addEventListener("pointerdown", function () {
+      keyboardNavigation = false;
+    }, { capture: true, passive: true });
+    document.addEventListener("wheel", function () {
+      keyboardNavigation = false;
+    }, { capture: true, passive: true });
+    bottomNav.addEventListener("focusin", showBottomNav);
+  }
 })();

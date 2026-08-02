@@ -46,6 +46,12 @@ Decision (2026-07-15): all public pages render their navigation — desktop head
 
 Reason: the nav previously existed in one generator plus ~16 hand-pasted copies in four vintages, patched at runtime by shims. Every nav change landed in the generator and silently missed the copies, producing constant visible drift (wrong active highlights, stale login styling, structurally different menus per page). One injection point makes drift structurally impossible.
 
+## Mobile Bottom Navigation Scroll Behavior
+
+Decision (2026-08-01): on viewports below 880px, the shared bottom navigation hides while the user scrolls down and reappears when the user scrolls up. Use directional distance thresholds (24px down, 6px up) to suppress jitter; keep it visible at the top and outside the mobile range. Keyboard input must reveal it immediately, and reduced-motion preferences must remove the transition rather than remove navigation access.
+
+Reason: this is the conventional Material bottom-navigation behavior, recovers meaningful phone viewport space while reading, and keeps the four top-level destinations close as soon as the user reverses direction. Thresholds and accessibility fallbacks prevent a noisy or keyboard-hostile implementation.
+
 ## Apps URL
 
 Decision: the app library is `apps.html` / `es/apps.html`; old Downloads paths redirect.

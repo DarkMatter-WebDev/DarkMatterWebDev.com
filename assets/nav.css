@@ -673,6 +673,38 @@ nav .hidden.md\:flex,
   border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
+/* The phone tab bar follows the platform-standard directional scroll pattern:
+   down gets the chrome out of the content's way; up brings the destinations
+   back. Transform + opacity keep the transition compositor-friendly. It stays
+   in the accessibility tree while visually tucked away, so keyboard focus or
+   assistive navigation can reveal it immediately. */
+@media (max-width: 879.98px) {
+  .dm-standard-bottom-nav {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    will-change: transform, opacity;
+    transition:
+      transform 0.52s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.38s ease-out;
+  }
+
+  .dm-standard-bottom-nav.dm-standard-bottom-nav--hidden {
+    opacity: 0;
+    transform: translate3d(0, calc(100% + env(safe-area-inset-bottom, 0px) + 1rem), 0);
+    pointer-events: none;
+    transition:
+      transform 0.46s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.34s ease-in;
+  }
+}
+
+@media (max-width: 879.98px) and (prefers-reduced-motion: reduce) {
+  .dm-standard-bottom-nav,
+  .dm-standard-bottom-nav.dm-standard-bottom-nav--hidden {
+    transition: none;
+  }
+}
+
 .services-nav-menu {
   position: absolute;
   top: 100%;
