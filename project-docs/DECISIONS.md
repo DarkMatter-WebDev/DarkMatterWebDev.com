@@ -1,6 +1,6 @@
 # Decisions
 
-Last updated: 2026-07-21
+Last updated: 2026-08-01
 
 Record only durable decisions here. Do not add routine change history.
 
@@ -9,6 +9,12 @@ Record only durable decisions here. Do not add routine change history.
 Decision: keep the current site as static HTML/CSS/JS for now, with English at root and Spanish under `es/`.
 
 Reason: simple deployment, easy preview, and no build pipeline required.
+
+## Multichannel Commerce Product Positioning
+
+Decision (2026-08-01, amended): sell the Naples Estate Jewelry-derived platform as the **Complete Multichannel Commerce Website** with the lead promise **"List it once. Sell everywhere."** The central benefit is removing duplicate work. The core entry workflow is an **AI Listing Assistant**: the seller uploads product images, speaks naturally about the item, and receives a structured, prefilled listing form to review, edit, and approve. That one approved product record supplies the customer's branded store, eBay, Etsy, and Instagram/Facebook product and advertising posts. Website, eBay, Etsy, Instagram, and Facebook publishing are all live and should be presented as available now.
+
+Reason: this language is understandable to sellers and galleries, preserves the ownership advantage without ambiguous "self-hosted" jargon, and reflects the completed marketplace and social publishing rollout.
 
 ## Memory System
 
