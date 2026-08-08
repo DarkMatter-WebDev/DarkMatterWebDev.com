@@ -1,6 +1,6 @@
 # Decisions
 
-Last updated: 2026-08-01
+Last updated: 2026-08-08
 
 Record only durable decisions here. Do not add routine change history.
 
@@ -51,6 +51,38 @@ Reason: the nav previously existed in one generator plus ~16 hand-pasted copies 
 Decision (2026-08-01): on viewports below 880px, the shared bottom navigation hides while the user scrolls down and reappears when the user scrolls up. Use directional distance thresholds (24px down, 6px up) to suppress jitter; keep it visible at the top and outside the mobile range. Keyboard input must reveal it immediately, and reduced-motion preferences must remove the transition rather than remove navigation access.
 
 Reason: this is the conventional Material bottom-navigation behavior, recovers meaningful phone viewport space while reading, and keeps the four top-level destinations close as soon as the user reverses direction. Thresholds and accessibility fallbacks prevent a noisy or keyboard-hostile implementation.
+
+## Hosted App Demos Retired — Access By Request
+
+Decision (2026-08-08): five of the six Surette Data Systems apps — Auction House & Consignment, SDMS, Benji Payroll, Third Street / Antique Mall, and MetalsPredictor — are no longer online for open evaluation. Every public surface presents them as **access by request**, routing to `contact.html`. All outbound links to the retired instances (`auctionconsignmentapp.netlify.app`, `secondhanddealer.netlify.app`, `benjipayroll.netlify.app`, `thirdstreetauctions.com`, `chrisappmet.netlify.app`, and the shared `portal.darkmatterapps.com`) were removed from the site. SpotCalc is the one exception and stays live.
+
+The `.tcg-stat-pill` on `app-catalog.html` now carries **availability** rather than delivery type: five cards read `By Request`, SpotCalc reads `PWA`. This is a deliberate change of meaning from the 2026-07-16 catalog design (LIVE DEMO / PWA / WEB APP) — with nothing self-serve, delivery type was the less useful thing to spend that corner on.
+
+The retirement notice is a shared `.app-access-notice` rule in `assets/surette-data-systems-app-profile.css`, not five copies in five inline `<style>` blocks. Same reasoning as the nav and footer decisions above: this repo's recurring failure is the hand-copied variant.
+
+**`thirdstreetauctions.com` is offline too** (owner-confirmed 2026-08-08). It is included in the five deliberately, not by mistake. Earlier docs describe it as a live client site and the CHANGELOG records a 2026-07 refresh "around the live ThirdStreetAuctions.com app" — that is history. Do not "restore" its links on the strength of those entries.
+
+Reason: owner decision. The demo instances are gone, so leaving "Open Live App Demo" buttons on the site pointed visitors at dead URLs and advertised evaluation access that no longer existed.
+
+## App Brand Renamed MetalsCalc → SpotCalc
+
+Decision (2026-08-08): the precious-metal buying calculator is named **SpotCalc**, at `spotcalc.com` with the app at `app.spotcalc.com`. The rename is site-wide and covers both the app surfaces (`app-catalog.html`, the app profile) and the Websites gallery surfaces (`casestudies.html`'s two duplicated grids, `portfolio-metalscalc.html`).
+
+**Page filenames and asset directories deliberately keep the old `metalscalc` spelling** — `metalscalc-buying-calculator.html`, `portfolio-metalscalc.html`, `assets/apps/metalscalc/`, `assets/portfolio/metalscalc/`. Renaming files would change live URLs and require redirects for no user-visible benefit; the paths are not user-facing. This split is also what makes the rename safely scriptable: the brand strings are `MetalsCalc` / `metalscalc.com`, the paths are lowercase `metalscalc-` / `metalscalc/`, so a case-sensitive substitution hits every brand string and no path. **If the brand ever changes again, use that same distinction rather than a blanket case-insensitive replace.**
+
+Reason: owner decision on product naming.
+
+## Portfolio Sites: Only Naples Estate Jewelry And SpotCalc Are Live
+
+Decision (2026-08-08): of the six Websites gallery entries, only **NaplesEstateJewelry.com** and **SpotCalc.com** remain online. Elite Yacht Detailing, JPSurette, Sean's Ads, and AuctionBuddha are offline; their outbound links were removed everywhere and replaced with a request-to-view path into `contact.html`. Gallery card status tags read `status - offline`, and the detail pages' `.portfolio-live-widget` gets a `--offline` modifier.
+
+**This supersedes the "Sean's Ads Boundary" decision's link guidance.** That entry says Sean's Ads production links should point to `https://seansads.com/`; that site is down, so the link is gone. The rest of that decision still holds — the Sean's Ads *source* is still intentionally absent from this repo and must not be recreated here.
+
+**Naples Estate Jewelry moved from `.co` to `.com`** in the same pass. There is no redirect assumption baked into the site: every reference was rewritten.
+
+Label note: the gallery card button says **"Ask to View"**, not "Request Viewing". That is a fit constraint, not a style preference - see the card-back entry below.
+
+Reason: owner decision; the sites are down, and a portfolio full of dead "Live" buttons is worse than no button at all.
 
 ## Apps URL
 
@@ -174,6 +206,8 @@ Reason: established over four device round-trips. Those properties invite a mobi
 Decision (2026-07-17): the gallery card back-face guarantee is "copy fits, never scrolls" — enforced by tightening back-face type in `assets/collectible-card.css` via a `@container tcg-card (max-width: 336px)` rule keyed to `.poke-scene.tcg-card`'s own rendered width, not a `max-width` viewport media query.
 
 Reason: `casestudies.html`'s mobile zigzag layout (`assets/portfolio-mobile-fixes.css`) shrinks the card independently of viewport width to make room for its number chip, so card width and viewport width no longer move together. A viewport query tightened (or failed to tighten) the wrong cards once that decoupling existed — it reopened the back-fit budget from the day before, badly, before being caught. A container query is correct by construction regardless of what shrinks the card. One tier only: an earlier two-tier attempt (mild tier for viewport-driven narrow widths, aggressive tier for the zigzag's narrowest case) left a gap where the mild tier wasn't tight enough just above the aggressive tier's cutoff — collapsed to a single tier sized for the tightest case, since more width only ever adds slack once font-size/line-height are fixed. Any future feature that changes card width (on either gallery) must re-sweep `scrollHeight === clientHeight` across the full width range, not just the usual 320/375/1440 spot-checks — this bug lived at a tier boundary a narrower sweep missed.
+
+**Foot-button labels are part of that budget (2026-08-08).** Changing the gallery cards' outbound button from `Live` / `Live Site` to a request-to-view label re-broke AuctionBuddha's back by **24px** at 320px. The button itself did not wrap — its height stayed 25px. The **`.poke-links` row** wrapped: two buttons no longer fit side by side, so the row became two rows. The threshold at a 237px card is ~105px of button width: `Request Viewing` renders 108px (overflows), `Request Access` 102px (fits, but barely), `Ask to View` 84px (fits with real margin) — hence the shipped label is **"Ask to View"**. When changing any card foot/back button text, measure the *row* height, not just the button, and prefer margin over a squeaker; the 2026-07-17 regression came from razor-thin margins. Note also that the desktop grid is `display:none` below 880px, so its 6 backs report fake zero-overflow at 320px — filter to cards with a non-zero rect or you will "verify" nothing.
 
 **`scrollHeight === clientHeight` proves the back doesn't scroll — it does NOT prove the back is full, and don't use it to judge whether there's room to grow the text.** `.poke-back-inner .poke-links` carries `margin-top: auto` (pokecard.css), which stretches the flex column to fill `clientHeight` no matter how little text is above it — `scrollHeight` can never read below `clientHeight` once that auto-margin exists, even with 60px of genuinely empty space on screen. Learned 2026-07-17 when a font-size increase, verified "correct" by that check, turned out barely perceptible — the owner had to point at a screenshot with visible empty space for it to be caught. To judge actual slack, measure `clientHeight − (sum of the back's direct children's own heights + gaps + padding)` instead, and do it per card — the shortest-copy card (most visual slack) is not the one that constrains how far you can push a uniform font-size; the longest-copy card (AuctionBuddha) is, and it can look deceptively fuller than the short cards even while it's the actual ceiling.
 

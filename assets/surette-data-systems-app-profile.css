@@ -59,3 +59,42 @@
     margin-bottom: 1rem;
   }
 }
+
+/* Access notice — the hosted demo instances for these apps have been retired,
+   so every profile page states that access is arranged by request. Defined here
+   rather than in each page's inline <style> block: five hand-copied variants is
+   exactly the drift this repo keeps paying for (see DECISIONS on the nav and
+   footer). Amber rather than red — unavailable, not broken. */
+.app-access-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin: 1.5rem 0 0;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid rgba(255, 176, 32, 0.34);
+  border-left: 3px solid rgba(255, 176, 32, 0.75);
+  border-radius: 10px;
+  background: rgba(255, 176, 32, 0.07);
+  color: #ecdfc8;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.app-access-notice .material-symbols-outlined {
+  flex: 0 0 auto;
+  margin-top: 0.1rem;
+  font-size: 1.25rem;
+  color: #ffb020;
+}
+
+.app-access-notice strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .app-access-notice {
+    padding: 0.8rem 0.9rem;
+    font-size: 0.9rem;
+  }
+}

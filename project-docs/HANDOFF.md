@@ -1,6 +1,6 @@
 # Handoff
 
-Last updated: 2026-08-01
+Last updated: 2026-08-08
 
 ## Startup Prompt
 
@@ -18,6 +18,10 @@ Then summarize the project in a few bullets and continue with the latest request
 
 ## Immediate Context
 
+- **Portfolio: only `naplesestatejewelry.com` and `spotcalc.com` are live (2026-08-08).** Elite Yacht Detailing, JPSurette, Sean's Ads, and AuctionBuddha are offline — cards show `status - offline` with an `Ask to View` button to `contact.html`, and detail pages use `.portfolio-live-widget--offline`. Naples moved `.co` -> `.com` in the same pass. **The `Ask to View` label is load-bearing:** anything past ~105px wraps the `.poke-links` row and scrolls AuctionBuddha's back face at 320px. Sean's Ads keeps its "source stays out of this repo" boundary; only the dead link was removed.
+- **Only SpotCalc is live (2026-08-08).** The other five apps have no public instance; the whole site now says "access by request" and routes to `contact.html`. If you touch app messaging, four surfaces must agree: the profile page's CTA + `.app-access-notice`, the `.tcg-stat-pill` on `app-catalog.html` (it carries **availability** now, not delivery type), any per-app CTA on `app-pricing.html`, and the catalog meta descriptions. The notice is one shared rule in `assets/surette-data-systems-app-profile.css` — add the markup, never a page-local copy of the CSS.
+- **MetalsCalc is now SpotCalc (2026-08-08)** at `spotcalc.com` / `app.spotcalc.com`. **The filenames and asset paths still say `metalscalc` on purpose** (`metalscalc-buying-calculator.html`, `portfolio-metalscalc.html`, `assets/apps/metalscalc/`, `assets/portfolio/metalscalc/`) so no live URL moved. Brand strings are capitalised, paths are lowercase — that case split is what makes the rename safely scriptable, so never apply a case-insensitive replace here. Neither spotcalc URL has been reachability-tested; confirm after deploy.
+
 - The shared phone bottom nav uses directional scroll behavior: 24px downward hides it, 6px upward reveals it, and the top of the page always shows it. Keyboard input reveals it; reduced motion disables only the animation. Height-only resize events from collapsing/expanding mobile browser chrome are deliberately ignored so they cannot flash the bar back in mid-scroll. Motion timing is 460ms out and 520ms in with separate easing/opacity curves. The current asset versions are `standard-site-nav.js?v=20260801-scroll-hide3` (29 public pages) and `nav.css?v=20260801-scroll-hide3` (34 pages). Preserve the <880px boundary and the Services-popout close-on-scroll interaction.
 - `multichannel-commerce-website-test-4.html` is an intentionally unlinked, noindex design experiment. It re-presents the current Complete Multichannel Commerce content in a cream/cobalt/coral/lime spatial editorial style inspired by the owner's Treasure Island `test-4` reference. It has no inbound navigation and must not replace or be linked from the live page unless the owner later approves it.
 - The multichannel page's desktop and mobile logo mounts both require the established forced-flex page CSS because `surette-logo.js` creates only one first-mount-scoped `#sds-styles` block. `multichannel-commerce-website.html` has the correct two-mount styles and initializes both IDs; preserve that when editing its header dependencies.
@@ -32,8 +36,8 @@ Then summarize the project in a few bullets and continue with the latest request
 - Mobile header account control is intentionally icon-only. `assets/account-nav.js` keeps `.dm-mob-acct` visually as the icon while updating `aria-label`/`title` for signed-in state. The mobile icon renders grey when signed out and cyan/blue when signed in.
 - Service pages have separate desktop and mobile markup paths; mobile now includes the fixed Surette logo/header, account icon injection target, promoted top nav row with working Services popout, and compact `.service-mobile-footer` inside each page's `md:hidden` wrapper.
 - Service-page fixed top headers are anchored through shared `assets/nav.css` so the padded mobile service wrapper cannot shift the header/menu row to the right.
-- App/software brand is **Surette Data Systems**. **Six** app profiles: Auction House, SDMS, Benji Payroll, Antique Mall (Third Street Auctions), MetalsCalc, MetalsPredictor. (The docs said five until 2026-07-16 — MetalsPredictor had been added without them being updated.)
-- Websites/portfolio gallery has six entries: Naples Estate Jewelry, JP Surette, Elite Yacht Detailing, Sean's Ads, AuctionBuddha.com, MetalsCalc.com.
+- App/software brand is **Surette Data Systems**. **Six** app profiles: Auction House, SDMS, Benji Payroll, Antique Mall (Third Street Auctions), SpotCalc (renamed from MetalsCalc 2026-08-08), MetalsPredictor. Only SpotCalc is live; the other five are access-by-request. (The docs said five until 2026-07-16 — MetalsPredictor had been added without them being updated.)
+- Websites/portfolio gallery has six entries: Naples Estate Jewelry (**live**, `.com` as of 2026-08-08), JP Surette (offline), Elite Yacht Detailing (offline), Sean's Ads (offline), AuctionBuddha.com (offline), SpotCalc.com (**live**, renamed from MetalsCalc.com 2026-08-08).
 - Portal uses a dedicated Dark Matter / Surette Data Systems Supabase project (not Naples Estate Jewelry).
 - Portal auth email redirects use `assets/supabase-config.js` `siteUrl` (`https://surettesystems.com`) as the canonical base, so local reset requests do not create localhost links.
 - Homepage newsletter signup forms are wired to Supabase `homepage_email_signups`; live use requires running the updated `supabase/portal-role-setup.sql` in the hosted project.
@@ -44,7 +48,7 @@ Then summarize the project in a few bullets and continue with the latest request
 - Client profiles are intentionally minimal. Account settings and Admin Center no longer collect or display business/company name or website URL profile fields; Supabase setup drops those old columns if present.
 - Local preview: `http://127.0.0.1:4173/` (start with `npx http-server` or `start-preview.bat`).
 - Production: `https://surettesystems.com/`.
-- Sean's Ads source is intentionally not here — do not recreate it.
+- Sean's Ads source is intentionally not here — do not recreate it. `seansads.com` is also offline as of 2026-08-08; the site no longer links to it.
 
 ## Page Inventory (root)
 
@@ -71,17 +75,20 @@ Then summarize the project in a few bullets and continue with the latest request
 | `secondhand-dealer-management-system.html` | SDMS app profile |
 | `benji-payroll-management-system.html` | Benji Payroll app profile |
 | `antique-mall-vendor-management-system-and-auction-platform.html` | Antique Mall / Third Street app profile |
-| `metalscalc-buying-calculator.html` | MetalsCalc app profile (PWA, precious-metal buying calc) |
+| `metalscalc-buying-calculator.html` | SpotCalc app profile (PWA, precious-metal buying calc) — filename intentionally keeps the old spelling |
 | `portfolio-naplesestatejewelry.html` | Naples Estate Jewelry detail |
 | `portfolio-jpsurette.html` | JP Surette detail |
 | `portfolio-eliteyachtdetailing.html` | Elite Yacht detail |
 | `portfolio-seansads.html` | Sean's Ads detail |
 | `portfolio-auctionbuddha.html` | AuctionBuddha.com detail |
-| `portfolio-metalscalc.html` | MetalsCalc.com detail |
+| `portfolio-metalscalc.html` | SpotCalc.com detail — filename intentionally keeps the old spelling |
 
 Services pages in `services/`: `website-design-hosting.html` (merged Website Design + Managed Hosting + Website Care Plans; now the complete public pricing page — content spec lives in `website_pricing_plan.txt` at the project root and is the source of truth for all plan names, prices, and policies), `in-home-services.html`, `office-network-setup.html`.
 
 ## Most Recent Work
+
+- **Four portfolio sites marked offline + Naples renamed to .com (2026-08-08, latest).** Removed every link to the four dead domains and replaced them with a request-to-view path; rewrote Sean's Ads' detail page, which had "live" baked into its eyebrow, a status chip, a section heading, a closing section, and its meta descriptions. Added a `--offline` variant to the live-site widget that stops its pulsing dot (a live heartbeat beside the word "Offline" read as a bug). Verified all 12 card backs at 320/880/1280px, zero dead links sitewide, zero page overflow. Validator: 67 baseline. A first attempt using the longer label `Request Viewing` regressed AuctionBuddha's back by 24px and was caught by the documented never-scroll check.
+- **App demos retired + MetalsCalc renamed to SpotCalc (2026-08-08, latest).** Five apps lost their public instances, so every "Open Live App Demo" / "Launch App" path was replaced with `Request Access` → `contact.html`, backed by a shared `.app-access-notice` panel and supporting copy rewrites in the sections that assumed self-serve access. Catalog stat pills now read `By Request` (SpotCalc keeps `PWA`). A dead `benjipayroll.netlify.app` button on `app-pricing.html` was caught outside the named scope. Separately, MetalsCalc became SpotCalc across 44 brand strings on four pages plus the dev capture script, with filenames and asset paths intentionally left alone. Verified at 320px and 1280px: zero dead external links, zero page overflow on any touched page, all 18 collectible-card backs still non-scrolling, all six catalog palettes intact. Validator: 67-item baseline, unchanged. **Not verified:** that `spotcalc.com` / `app.spotcalc.com` actually resolve — no reachability test was run.
 
 - **Mobile bottom-nav motion softened (2026-08-01, latest).** The original 300ms transform / 220ms fade read as a hard snap. Hide now runs 460ms with a smooth ease-in/out and 340ms opacity fade; reveal runs 520ms with a softer spring-like ease-out and 380ms fade. Mid-transition computed-style sampling confirmed continuous interpolation (hide: 1.0 to 0.526 to 0 opacity; reveal: 0.335 to 0.836 to 1.0), not endpoint snapping. Verified on the nested website-design service page at 390px with zero overflow; 34 nav.css consumers are cache-busted to `v=20260801-scroll-hide3`. Validator remains at the 67-item known baseline.
 - **Site-wide mobile bottom nav now hides down / reveals up (2026-08-01, latest).** Added the conventional directional behavior in the shared generator: 24px of downward travel slides/fades the bar below the viewport; 6px upward restores it; small reversals do not flicker it. The bar resets at the top and at the 879/880px mode switch. Keyboard activity restores it immediately, and the reduced-motion media query removes animation. The existing Services popout closes before the bar hides. Verified on `index.html` and nested `services/website-design-hosting.html` at 390px, at 879/880px, and through open-popout/scroll interaction with zero page overflow. JS syntax passes; validator remains at the 67-item known baseline.
@@ -192,6 +199,6 @@ Known validator noise (pre-existing, not blocking): missing `es/` mirrors and th
 - Mirror English/Spanish changes when `es/` mirrors are restored.
 - Do not store secrets in markdown.
 - Browser-side portal gates are not true security.
-- MetalsCalc OG URLs reference `darkmatterwebsites.com` — verify/correct domain.
+- ~~MetalsCalc OG URLs reference `darkmatterwebsites.com`~~ — stale note, closed 2026-08-08: zero `darkmatterwebsites.com` references remain in any HTML/JS/CSS.
 - Deploy cleanup done 2026-07-21: stale captures/scripts deleted, `node_modules` gitignored (on disk only, `npm install` restores), git index reconciled with disk. `pokecard-dropin/app-template/` is the live "Tech Business Site Template" demo — never delete it as "vendor cruft". Netlify publishes the repo root as-is, so project docs, supabase SQL, and `website_pricing_plan.txt` are publicly fetchable URLs — owner-accepted tradeoff.
 - Update compact memory docs before ending meaningful sessions.

@@ -237,5 +237,5 @@
 .tcg-card--app-sdms          { --tcg-face: #d7f77e; --tcg-light: #f0fcc4; --tcg-deep: #8aad2e; --tcg-tint: rgba(215, 247, 126, 0.35); }
 .tcg-card--app-benji         { --tcg-face: #8cf2a0; --tcg-light: #cdfad6; --tcg-deep: #2f9e56; --tcg-tint: rgba(140, 242, 160, 0.35); }
 .tcg-card--app-mall          { --tcg-face: #66ead9; --tcg-light: #c6f7f0; --tcg-deep: #22998c; --tcg-tint: rgba(102, 234, 217, 0.35); }
-.tcg-card--app-metalscalc    { --tcg-face: #a9a2ff; --tcg-light: #ddd9ff; --tcg-deep: #5b52c4; --tcg-tint: rgba(169, 162, 255, 0.35); }
+.tcg-card--app-spotcalc    { --tcg-face: #a9a2ff; --tcg-light: #ddd9ff; --tcg-deep: #5b52c4; --tcg-tint: rgba(169, 162, 255, 0.35); }
 .tcg-card--app-predictor     { --tcg-face: #ff9ae0; --tcg-light: #ffd6f4; --tcg-deep: #c04a9e; --tcg-tint: rgba(255, 154, 224, 0.35); }

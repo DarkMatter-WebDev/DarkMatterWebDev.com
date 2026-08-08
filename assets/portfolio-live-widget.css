@@ -227,3 +227,11 @@
         transform: none;
     }
 }
+
+/* Offline variant (2026-08-08) — the dot pulses as a live heartbeat, which reads
+   as a contradiction next to "Offline / Request a Viewing". Kill the animation
+   rather than the dot: the widget's layout reserves space for it. */
+.portfolio-live-widget--offline .portfolio-live-widget__dot {
+    animation: none;
+    opacity: 0.55;
+}
