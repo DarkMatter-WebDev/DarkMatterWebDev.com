@@ -1,8 +1,123 @@
 # Decisions
 
-Last updated: 2026-08-08
+Last updated: 2026-08-27
 
 Record only durable decisions here. Do not add routine change history.
+
+## Packaged business apps and stores are no longer sold (2026-08-27)
+
+**Decision:** Surette Data Systems sells websites. Packaged business applications and
+e-commerce stores are withdrawn as products.
+
+**Why it matters later:** this is a positioning change, not a page cleanup. The company
+was previously described as "custom desktop and web-based CRM, ERP, inventory, workflow
+and operations software, plus websites/hosting". That sentence, and the sales paths that
+went with it, are gone from the site.
+
+**What was kept and why:** the six app profiles survive as **case studies**. They are
+proof that the shop can build serious systems, which helps sell website work. `apps.html`
+was repurposed from a sales page into a case-study index rather than deleted, because 17
+pages linked to it. **Do not re-add `app-catalog.html`, `app-pricing.html`,
+`app-checkout.html`, a Software nav pill, or store/app options in the contact form.**
+
+## AI is a website feature, not a product (2026-08-27)
+
+**Decision:** AI is sold as part of a website, never as an application.
+
+**The test, recorded in `website_pricing_plan.txt` §29c:** *if the customer switched it
+off tomorrow, would they lose a feature or lose their operations?* Visitor-facing AI —
+answering, qualifying, routing, drafting, summarising, booking — is a website feature;
+data passes through it and lands in email, a CRM, or a spreadsheet. Logins, roles,
+inventory, payroll, scheduling, or AI that reads and writes the business's own records
+are custom software and are out of scope.
+
+**Why this exists:** the one-time build ladder includes a tier described as "multi-page
+with backend tables, forms". Backend tables are stored business records, which is
+app-shaped and carries app-shaped support expectations. Without this boundary the app
+business returns under a website label, at website prices, with no maintenance contract.
+Tier 3 is therefore capped at **records the customer reads**, not records they operate.
+
+## Hosting-account ownership splits by payment model (2026-08-27)
+
+**Decision:** on a managed monthly plan, Surette Data Systems owns and operates the
+hosting account, because hosting is part of the service being paid for. On a one-time
+build with **Self-Hosting Setup** (`§29b`, $450 / $750), every account — hosting, domain,
+email, analytics — is created **in the customer's name**, and SDS is added as an
+administrator only where continued access is needed.
+
+**Why:** a one-time customer who has paid in full should not depend on a Surette Data
+Systems account to keep their website online. This makes "you own it" literally true
+rather than a marketing phrase, and it matches §8, which already preferred
+customer-owned accounts. Support after handover is 14 days, then the published $125/hr.
+
+
+## Home Is a Conditional Pill, Not a Permanent Nav Item
+
+Decision (2026-08-17, owner request): the desktop bar shows a **Home pill on every page except the homepage itself**. It is generated in `standard-site-nav.js` and is the first pill in the row.
+
+This **amends, but does not reverse**, the earlier "there is no Home item — the logo carries it, following funnls.com" rule. The logo still links home from everywhere. What changed is that once a visitor has navigated away, the route home is now explicit rather than implied by a logo, which is a convention most visitors expect. The homepage itself still spends no slot on a self-link, so the clean funnls-style bar survives where the reference site's reasoning actually applied.
+
+**Detection deliberately checks two things**, in `isHomePage()`: `data-active === "home"` is the fast path, but a page that forgot to set it would otherwise render a Home pill pointing at itself, so the URL is checked too. The pattern must accept a bare directory (`/`, `/es/`) because **Netlify Pretty URLs serve the homepage as `/`, not `/index.html`** — and must not match extensionless Pretty URLs like `/account`. Both forms were verified.
+
+Nav width was the risk worth checking: the row is now four pills plus the icon-only login, the theme toggle, and the CTA. Verified fitting with no overflow down to **880px**, the narrowest width at which the desktop bar renders at all.
+
+**The hamburger dropdown follows the same rule** (owner request, same day): its Home row is omitted on the homepage, so the desktop pill and the phone menu agree. Homepage dropdown is 5 rows; every other page is 6.
+
+**The phone bottom tab bar deliberately does NOT follow it.** It keeps its Home tab on every page. A tab bar holds a *constant* set of destinations and marks the current one — dropping a tab on one page would shift the remaining three horizontally under the user's thumb, so a tap lands on a different destination depending on which page you were on. That is a different component from a menu, and the inconsistency is intentional.
+
+## Nav Names What You Can Buy — Proof Is Never Its Own Destination
+
+Decision (2026-08-17, owner-approved): the header carries **`Websites · Software · Pricing`** plus an icon-only Client Login and a "Get started" CTA. The **`Work` item is retired and must not return as a fourth sibling.** Galleries hang off their parent service page: Websites → `casestudies.html`, Software → `app-catalog.html`.
+
+Reason: three of the four items resolved to pages showing built work, so nothing predicted which held what. The decisive evidence was structural, not aesthetic — `portfolio.html` was a two-card interstitial and **one of its cards led to `apps.html`, which was already the Software nav item**. Clicking Work → Apps landed exactly where Software would have.
+
+The principle is taken from **funnls.com** (`Why Funnls · Businesses · Pricing · Blog`), the owner's design reference, which carries no portfolio item at all: the nav follows the visitor's decision path — *is this for me → what does it cost* — and proof is embedded as evidence inside those pages. Consult funnls.com before any future IA change.
+
+Rejected alternative: keeping `Work` and merging both galleries into `portfolio.html`. It resolves the ambiguity in the other direction but contradicts the goal of condensing and would collapse two well-developed SEO pages into one.
+
+`portfolio.html` is **kept live and deliberately not redirected** — it has 6 inbound in-page links and legitimately serves anyone searching "portfolio". It is simply unlinked from the header. `process.html` is the standing candidate if a fourth slot is ever wanted; it exists already and is currently in no menu.
+
+## Never Bulk-Edit HTML Through PowerShell Text Cmdlets
+
+Decision (2026-08-17): bulk edits to `.html` in this repo must use `[IO.File]::ReadAllText/WriteAllText` with an explicit `UTF8Encoding($false,$true)`, the editor's own edit tooling, or git-bash `sed`. **Never `Get-Content`/`Set-Content`/`Out-File`.**
+
+Reason: Windows PowerShell 5.1 decodes UTF-8-without-BOM as Windows-1252, so a read-modify-write round-trip re-encodes every non-ASCII character. A cache-buster bump across 31 pages turned every curly quote, em-dash and middot into `â€™`/`â€”`/`Â·`. The failure is **silent** — the intended edit lands correctly and the page still loads — and was caught only by the validator jumping from its 69 baseline to 271. This is the same class of corruption as the site-wide mojibake swept in July 2026, and it will recur on any machine using Windows PowerShell.
+
+Corollary: **always re-run `scripts/validate-site.ps1` after a bulk pass.** The baseline delta is the cheapest available detector. To reverse the damage: decode the bytes as UTF-8, re-encode that string as CP1252, and those bytes are the original file — build both encoders with exception fallbacks so an unmangled file throws instead of being corrupted, and loop while the marker count strictly decreases.
+
+## Theming: Flip Token Values, Never Add `dark:` Variants
+
+Decision: the light theme works by swapping the *values* of CSS custom properties under `:root[data-theme="light"]`. Selectors and class names never change. The Tailwind palette lives in `assets/nav.css` as space-separated RGB channel triplets (`--t-void-black: 5 5 5`), and every page's inline `tailwind.config` consumes them as `rgb(var(--t-NAME) / <alpha-value>)`.
+
+Reason: the two workhorse utilities, `text-starlight-white` (306 uses) and `text-on-surface-variant` (280), carry most of the site's copy. Variable-backed values make them follow the theme with **zero markup changes**. The alternative — adding `dark:` variants — would have meant editing thousands of class attributes across 34 hand-authored pages. The channel-triplet form is mandatory: `<alpha-value>` only works inside `rgb()`, so the opacity variants (`/10`, `/60`) break if the palette is stored as hex.
+
+Consequence: **never hardcode a palette colour again.** A literal defeats the theme silently, with no error — see the next decision.
+
+## nav.css's Pinned Utility Fallbacks Must Stay Token-Driven
+
+Decision: the hand-pinned Tailwind utility duplicates in `nav.css` (`.text-starlight-white`, `.text-electric-cyan`, …) must reference `--t-*` tokens, never literals.
+
+Reason: those pins exist because the Tailwind CDN only builds classes found in a page's *static* HTML, so injected nav/footer markup can't rely on it. But `nav.css` loads **after** the CDN's injected `<style>`, so the pins win on cascade order. On the first light-theme pass the CDN correctly emitted `rgb(var(--t-starlight-white) / …)` while this block still forced `#FFFFFF` — producing white body text on the light ground. This is the fourth distinct bug caused by the injected-markup/Tailwind interaction.
+
+## `starlight-white` Is Two Different Things; `--c-on-accent` Splits Them
+
+Decision: text sitting on a brand-accent fill uses `.sds-on-accent` / `--c-on-accent` (white in both themes), not `text-starlight-white`.
+
+Reason: `starlight-white` is a literal colour name doing two jobs — primary body/heading text (301 of 306 uses, which must flip to ink) and labels on the cyan→purple gradient (3 uses plus the nav CTA, which must stay white because that gradient is dark in both themes). Flipping all of them turned the gradient CTAs invisible.
+
+## Dark Mode Is the Default and Must Stay Byte-Identical
+
+Decision: a visitor with no stored choice gets dark, regardless of `prefers-color-scheme`. Every light-mode rule is *additive* — dark values are never consolidated, refactored, or "tidied" while adding light ones.
+
+Reason: dark is the brand's intended look and the only one with years of visual QA behind it. Honouring the OS preference would have silently flipped a large share of visitors into a theme that had never been the primary experience. Concretely, this is why the seven bespoke page-panel colours (`--t-panel-*`) each keep their exact original hex on the dark side rather than collapsing onto one surface token, and why the cosmic-web light variant is a separate `:root[data-theme="light"]` block rather than a restructuring of the shared rule.
+
+## The Theme Must Resolve Before First Paint
+
+Decision: an inline `<script id="sds-theme-resolver">` is the **first** script in every page's `<head>`, and `#dm-critical-dark-baseline` keeps hardcoded literals.
+
+Reason: the no-white-flash baseline paints `#050505` from three places before any content shows — the `<html>` inline `style` attribute, the critical `<style>` block, and `nav.css`. Applying a stored light theme any later means a black flash on every navigation. The baseline block cannot use `var()` because it runs before `nav.css` has defined anything; tokenising it would reintroduce the very flash it exists to prevent. The resolver also overwrites the inline `style` attribute, which outranks every stylesheet rule.
+
+`theme-color` is deliberately *not* set by the resolver: the `<meta>` tag is parsed later in `<head>` than the script runs, so it does not exist yet. `standard-site-nav.js` sets it once the DOM is ready — it only tints mobile browser chrome, so a few ms late is imperceptible.
 
 ## Static Bilingual Site
 

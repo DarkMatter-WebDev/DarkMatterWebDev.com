@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html class="dark" style="background:#050505" lang="en">
+<head>
+<meta charset="utf-8"/>
+<script id="sds-theme-resolver">/* Pre-paint theme resolver — must stay the first script in <head>. Stamps data-theme on <html> from the stored choice before anything paints, and overwrites the inline dark background attribute. Dark is the brand default when nothing is stored, so a visitor whose OS prefers light still gets the site's intended look until they choose. */(function(){var d=document.documentElement,t;try{t=localStorage.getItem("sds-theme")}catch(e){}if(t!=="light")t="dark";d.setAttribute("data-theme",t);d.classList.toggle("dark",t==="dark");d.style.background=t==="light"?"#f4f2ee":"#050505"})();</script>
+
+<script>/* Head-stamp: nav.css reveals un-stamped pages at 0.2s (its no-logo-script fallback). On heavy pages the bottom-of-body surette-logo.js stamp lands after that, so content flashed in at 0.2s, vanished when the stamp arrived, then faded back in. Stamping before first paint makes JS the only revealer. */document.documentElement.classList.add("sds-logo-loaded");</script>
+<style id="dm-critical-dark-baseline">
+  html,body{background:#050505;color:#fff;min-height:100%;color-scheme:dark;}
+  body{margin:0;min-height:100vh;}
+  #__next,#root,.app{background:#050505;min-height:100vh;}
+  body>main{min-height:100vh;}
+  #page-loader,.sds-apps-loader{background:#050505;}
+html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:#0b0e10;color-scheme:light}html[data-theme="light"] #__next,html[data-theme="light"] #root,html[data-theme="light"] .app{background:#f4f2ee}html[data-theme="light"] #page-loader,html[data-theme="light"] .sds-apps-loader{background:#f4f2ee}
+</style>
+<meta name="robots" content="noindex,nofollow"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>POST TITLE | Surette Data Systems</title>
+<meta name="description" content="REPLACE ME &mdash; one or two sentences. This same text should be the summary on the blog index card."/>
+<link rel="canonical" href="https://surettesystems.com/blog-your-slug.html"/>
+<link rel="icon" href="/assets/favicon.svg?v=20260716-blur-on" type="image/svg+xml"/>
+<link rel="icon" href="/assets/favicon-32.png?v=20260716-blur-on" sizes="32x32" type="image/png"/>
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=20260716-blur-on"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<meta name="theme-color" content="#050505"/>
+<meta property="og:site_name" content="Surette Data Systems"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="POST TITLE"/>
+<meta property="og:description" content="REPLACE ME &mdash; one or two sentences. This same text should be the summary on the blog index card."/>
+<meta property="og:url" content="https://surettesystems.com/blog-your-slug.html"/>
+<meta property="og:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="Surette Data Systems &mdash; high-tech business software for mobile, web, and desktop"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="POST TITLE"/>
+<meta name="twitter:description" content="REPLACE ME &mdash; one or two sentences. This same text should be the summary on the blog index card."/>
+<meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
+<meta name="twitter:image:alt" content="Surette Data Systems &mdash; high-tech business software for mobile, web, and desktop"/>
+<link href="assets/nav.css?v=20260829-apps-retired" rel="stylesheet"/>
+<link href="assets/cosmic-web.css?v=20260827-contrast-nav" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors:{
+        "white": "rgb(var(--t-starlight-white) / <alpha-value>)","on-background":"rgb(var(--t-on-background) / <alpha-value>)","deep-space-grey":"rgb(var(--t-deep-space-grey) / <alpha-value>)","primary-container":"rgb(var(--t-primary-container) / <alpha-value>)","on-surface":"rgb(var(--t-on-surface) / <alpha-value>)","void-black":"rgb(var(--t-void-black) / <alpha-value>)","on-surface-variant":"rgb(var(--t-on-surface-variant) / <alpha-value>)","surface-container-high":"rgb(var(--t-surface-container-high) / <alpha-value>)","on-tertiary-container":"rgb(var(--t-on-tertiary-container) / <alpha-value>)","surface":"rgb(var(--t-surface) / <alpha-value>)","surface-container-low":"rgb(var(--t-surface-container-low) / <alpha-value>)","on-tertiary-fixed-variant":"rgb(var(--t-on-tertiary-fixed-variant) / <alpha-value>)","tertiary":"rgb(var(--t-tertiary) / <alpha-value>)","electric-cyan":"rgb(var(--t-electric-cyan) / <alpha-value>)","surface-bright":"rgb(var(--t-surface-bright) / <alpha-value>)","on-tertiary":"rgb(var(--t-on-tertiary) / <alpha-value>)","on-primary":"rgb(var(--t-on-primary) / <alpha-value>)","surface-container-highest":"rgb(var(--t-surface-container-highest) / <alpha-value>)","on-secondary-container":"rgb(var(--t-on-secondary-container) / <alpha-value>)","secondary":"rgb(var(--t-secondary) / <alpha-value>)","surface-container":"rgb(var(--t-surface-container) / <alpha-value>)","background":"rgb(var(--t-background) / <alpha-value>)","outline":"rgb(var(--t-outline) / <alpha-value>)","surface-container-lowest":"rgb(var(--t-surface-container-lowest) / <alpha-value>)","primary-fixed":"rgb(var(--t-primary-fixed) / <alpha-value>)","on-secondary":"rgb(var(--t-on-secondary) / <alpha-value>)","on-error":"rgb(var(--t-on-error) / <alpha-value>)","on-primary-fixed":"rgb(var(--t-on-primary-fixed) / <alpha-value>)","on-primary-container":"rgb(var(--t-on-primary-container) / <alpha-value>)","tertiary-fixed-dim":"rgb(var(--t-tertiary-fixed-dim) / <alpha-value>)","on-error-container":"rgb(var(--t-on-error-container) / <alpha-value>)","surface-dim":"rgb(var(--t-surface-dim) / <alpha-value>)","surface-tint":"rgb(var(--t-surface-tint) / <alpha-value>)","tertiary-container":"rgb(var(--t-tertiary-container) / <alpha-value>)","on-primary-fixed-variant":"rgb(var(--t-on-primary-fixed-variant) / <alpha-value>)","nebula-purple":"rgb(var(--t-nebula-purple) / <alpha-value>)","inverse-primary":"rgb(var(--t-inverse-primary) / <alpha-value>)","on-secondary-fixed-variant":"rgb(var(--t-on-secondary-fixed-variant) / <alpha-value>)","secondary-container":"rgb(var(--t-secondary-container) / <alpha-value>)","error-container":"rgb(var(--t-error-container) / <alpha-value>)","tertiary-fixed":"rgb(var(--t-tertiary-fixed) / <alpha-value>)","error":"rgb(var(--t-error) / <alpha-value>)","inverse-on-surface":"rgb(var(--t-inverse-on-surface) / <alpha-value>)","primary-fixed-dim":"rgb(var(--t-primary-fixed-dim) / <alpha-value>)","secondary-fixed-dim":"rgb(var(--t-secondary-fixed-dim) / <alpha-value>)","primary":"rgb(var(--t-primary) / <alpha-value>)","on-secondary-fixed":"rgb(var(--t-on-secondary-fixed) / <alpha-value>)","starlight-white":"rgb(var(--t-starlight-white) / <alpha-value>)","surface-variant":"rgb(var(--t-surface-variant) / <alpha-value>)","inverse-surface":"rgb(var(--t-inverse-surface) / <alpha-value>)","on-tertiary-fixed":"rgb(var(--t-on-tertiary-fixed) / <alpha-value>)","outline-variant":"rgb(var(--t-outline-variant) / <alpha-value>)","secondary-fixed":"rgb(var(--t-secondary-fixed) / <alpha-value>)"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{unit:"8px","margin-desktop":"64px","margin-mobile":"20px",gutter:"24px","container-max":"1440px"},fontFamily:{"headline-lg-mobile":["Space Grotesk"],"body-md":["Plus Jakarta Sans"],"label-mono":["JetBrains Mono"],"label-caps":["JetBrains Mono"],"body-lg":["Plus Jakarta Sans"],"headline-xl":["Space Grotesk"],"headline-md":["Space Grotesk"],"headline-lg":["Space Grotesk"]},fontSize:{"headline-lg-mobile":["32px",{lineHeight:"1.2",fontWeight:"600"}],"body-md":["16px",{lineHeight:"1.6",fontWeight:"400"}],"label-mono":["14px",{lineHeight:"1.4",letterSpacing:"0.05em",fontWeight:"500"}],"label-caps":["12px",{lineHeight:"1.2",letterSpacing:"0.1em",fontWeight:"700"}],"body-lg":["18px",{lineHeight:"1.6",fontWeight:"400"}],"headline-xl":["64px",{lineHeight:"1.1",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-md":["24px",{lineHeight:"1.3",fontWeight:"500"}],"headline-lg":["40px",{lineHeight:"1.2",letterSpacing:"-0.01em",fontWeight:"600"}]}}}};
+</script>
+<style>
+/* Post body rhythm, page-scoped .bp-* (2026-08-18). Copy this block into each
+   new post. Token-driven only. */
+.bp-body { max-width: 46rem; }
+.bp-body p { color: rgb(var(--t-on-surface-variant)); font-size: 1.0625rem; line-height: 1.75; margin-top: 20px; }
+.bp-body h2 { font-family:'Space Grotesk',sans-serif; font-size:clamp(24px,3.2vw,32px); line-height:1.2; font-weight:700; color:rgb(var(--t-starlight-white)); margin-top:44px; }
+.bp-body h3 { font-family:'Space Grotesk',sans-serif; font-size:1.15rem; font-weight:700; color:rgb(var(--t-starlight-white)); margin-top:30px; }
+.bp-body ul { list-style:none; padding:0; margin:20px 0 0; display:grid; gap:11px; }
+.bp-body ul li { display:flex; gap:10px; color:rgb(var(--t-on-surface-variant)); line-height:1.65; }
+.bp-body ul li::before { content:'4'; color:rgb(var(--t-electric-cyan)); flex-shrink:0; }
+.bp-body a { color:rgb(var(--t-electric-cyan)); }
+.bp-meta { display:flex; flex-wrap:wrap; gap:8px; align-items:center; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:rgb(var(--t-on-surface-variant)); }
+.bp-meta__cat { color:rgb(var(--t-electric-cyan)); }
+</style>
+</head>
+<body class="font-['Plus_Jakarta_Sans',sans-serif] min-h-screen flex flex-col cosmic-page cosmic-tint-design">
+<script src="assets/standard-site-nav.js?v=20260829-apps-retired" data-active="none"></script>
+
+<!-- ======================================================================
+     BLOG POST TEMPLATE — copy to blog-<slug>.html, then:
+       1. Replace every POST TITLE / REPLACE ME / your-slug.
+       2. REMOVE the noindex meta in <head> (it exists so this template file
+          is never indexed; a real post must not carry it).
+       3. Set the <time> datetime and the visible date.
+       4. Add a matching card to #bl-grid in blog.html with a data-category of
+          websites | software | local | process.
+       5. Each new page adds 1 to the validator baseline (currently 68).
+     This file is intentionally unlinked from the site.
+     ====================================================================== -->
+
+<main class="relative z-10 pt-28 md:pt-32 pb-24">
+  <div class="sds-wrap">
+
+    <header>
+      <p class="bp-meta"><span class="bp-meta__cat">Websites</span><span>&middot;</span><time datetime="2026-01-01">Jan 1, 2026</time><span>&middot;</span><span>4 min read</span></p>
+      <h1 class="sds-h1" style="margin-top:14px">POST TITLE goes here,<br/>ideally on two lines.</h1>
+      <p class="sds-lead">REPLACE ME &mdash; the same one-or-two-sentence summary you put in the meta description and on the index card. It should stand alone if someone reads only this.</p>
+    </header>
+
+    <article class="sds-section bp-body">
+      <p>Opening paragraph. Say the useful thing first &mdash; do not warm up.</p>
+
+      <h2>A section heading</h2>
+      <p>Body copy.</p>
+      <ul>
+        <li>A point worth making</li>
+        <li>Another one</li>
+      </ul>
+
+      <h2>Another section</h2>
+      <p>More body copy. Link like <a href="pricing.html">this</a>.</p>
+    </article>
+
+    <section class="sds-section">
+      <div class="sds-panel" style="text-align:center">
+        <h2 class="sds-h2">Want this handled for you?</h2>
+        <p class="sds-lead" style="margin:0 auto 24px">We design, build, host and maintain websites for Southwest Florida businesses.</p>
+        <div class="sds-actions" style="justify-content:center;margin-top:0">
+          <a class="sds-btn sds-btn--solid" href="contact.html">Get started</a>
+          <a class="sds-btn" href="blog.html">More posts</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script src="assets/standard-site-footer.js?v=20260817-cta-r5"></script>
+<script src="assets/account-nav.js?v=20260817-cta-r5"></script>
+<script src="surette-logo.js?v=20260817-cta-r5"></script>
+<script>document.addEventListener('DOMContentLoaded', function () { SuretteLogo.init('sds-logo'); SuretteLogo.init('sds-logo-mobile'); });</script>
+</body></html>

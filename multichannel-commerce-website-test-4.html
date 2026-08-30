@@ -164,6 +164,15 @@ a{color:inherit}
   .package-layout,.faq-layout{grid-template-columns:1fr}
   .package-copy{border-right:0;border-bottom:1px solid var(--ink)}
 }
+/* The closing section's coral circle is 440px until 760px, where it drops to
+   230px. That left a gap: between about 761 and 800px the full-size circle
+   slid behind the heading, putting white "One product entry." and lime "Your
+   whole selling space." on coral — 2.6:1 and 1.9:1, with whole words on it.
+   This intermediate step closes the gap and keeps the circle stepping down
+   smoothly (440 -> 300 -> 230) instead of jumping. */
+@media(max-width:860px){
+  .closing::before{width:300px;right:-110px;top:-90px}
+}
 @media(max-width:760px){
   .concept-bar{min-height:78px;padding:12px 16px;grid-template-columns:1fr auto;gap:14px}
   .concept-note{display:none}

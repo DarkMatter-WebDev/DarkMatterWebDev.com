@@ -54,11 +54,17 @@
       sizeMin:      46,
       sizeMax:      112,
       color:        '#ffffff',
+      // A canvas cannot read CSS custom properties, so light-theme colours are
+      // declared here and swapped by applyTheme() — same approach fractal.js
+      // uses for its WebGL palette. Without this the wordmark painted #ffffff
+      // on the light page ground and measured 1.12:1 (invisible).
+      colorLight:   '#0b0e10',   // 17.3:1 on #f4f2ee — matches heading ink
       spacing:      0.062,       // letter spacing as fraction of font-size
       yFactor:      0.44,        // vertical center as fraction of canvas H
       yMobile:      0.46,
       yGap:         0,           // extra gap below previous group (px); ignored for group 0
       introTints:        ['#A020F0', '#7B2FBE', '#2347D4', '#4F86C6'],
+      introTintsLight:   ['#5a00cc', '#4a1d8f', '#1a3a9c', '#2c5580'],
       introDelay:        0,      // extra ms before this group starts
       simultaneousIntro: true,   // all letters fill at once (no per-letter stagger)
       autoDropDelay:     0,      // drop immediately after intro
@@ -80,11 +86,16 @@
       sizeMin:      13,
       sizeMax:      24,
       color:        '#AAFF00',
+      // #AAFF00 measured 1.1:1 on the light ground. This keeps the lime hue but
+      // darkens it to 6.3:1. Do not lighten it toward the dark-mode value —
+      // #4d7c0f is the last step that still reads, and it lands at 4.47:1.
+      colorLight:   '#3f6212',
       spacing:      0.08,
       yFactor:      null,        // null = auto-stack below previous group
       yMobile:      null,
       yGap:         14,          // px gap between groups
       introTints:        ['#AAFF00', '#C6FF00', '#80FF00'],
+      introTintsLight:   ['#3f6212', '#4d7c0f', '#365314'],
       introDelay:        280,
       simultaneousIntro: true,
       autoDropDelay:     0,
@@ -148,6 +159,33 @@
     return [ mergeGroup(GROUP_PRESETS.wordmark, { text: opts.text || 'SURETTE' }) ];
   }
 
+  /* ── Theme support ──────────────────────────────────────────────────────────
+     A 2D canvas cannot read CSS custom properties, so the palette is swapped
+     here on the sds-themechange event that assets/standard-site-nav.js fires —
+     the same arrangement fractal.js uses for its WebGL scene.
+
+     Each group keeps its authored dark values in _colorDark/_tintsDark, so
+     toggling back and forth is lossless and dark mode stays byte-identical to
+     what it was before this existed. A caller that passes an explicit `color`
+     still gets a light variant, because the preset's colorLight survives the
+     merge unless the caller overrides colorLight too.
+     ─────────────────────────────────────────────────────────────────────────── */
+  function isLightTheme() {
+    return document.documentElement.getAttribute('data-theme') === 'light';
+  }
+
+  function applyThemeToGroups(groups) {
+    const light = isLightTheme();
+    groups.forEach(g => {
+      if (g._colorDark === undefined) {
+        g._colorDark = g.color;
+        g._tintsDark = g.introTints;
+      }
+      g.color      = light && g.colorLight      ? g.colorLight      : g._colorDark;
+      g.introTints = light && g.introTintsLight ? g.introTintsLight : g._tintsDark;
+    });
+  }
+
   // ─── Main class ──────────────────────────────────────────────────────────────
 
   class SurettePhysicsWordmark {
@@ -161,6 +199,11 @@
 
       this._ctx     = this._canvas.getContext('2d');
       this._groups  = resolveGroups(opts);
+      applyThemeToGroups(this._groups);
+      // Colours are read from group.color at draw time, so re-applying is
+      // enough — no rebuild, and the physics state is untouched.
+      this._onThemeChange = () => applyThemeToGroups(this._groups);
+      window.addEventListener('sds-themechange', this._onThemeChange);
       this._bg      = opts.bg !== undefined ? opts.bg : BG;
 
       this._W = this._H = this._DPR = 0;

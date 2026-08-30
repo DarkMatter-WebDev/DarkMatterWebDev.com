@@ -45,6 +45,34 @@
 }
 .tcg-card .poke-btn:focus-visible { box-shadow: 0 0 0 3px var(--tcg-face); }
 
+/* ── Light theme ─────────────────────────────────────────────────────────────
+   The cards are already light "paper" objects in both themes — that is the
+   whole visual conceit — so almost nothing here needs to change. Two things do:
+
+   1. The hard offset shadow is tuned to read against a near-black page. On the
+      light ground it turns into a heavy black slab, so it softens to the
+      shared shadow token.
+   2. .poke-kicker ("click to flip") is #9b9bb4 from the drop-in, which is
+      2.43:1 on the light ground. Overridden HERE rather than in
+      pokecard-dropin/ — that directory is vendor and must stay reusable, per
+      DECISIONS; this file is the project's theming layer for the cards.
+   ─────────────────────────────────────────────────────────────────────────── */
+:root[data-theme="light"] .poke-scene.tcg-card .poke-card {
+  box-shadow: 10px 14px 0 var(--c-shadow),
+              0 1px 0 rgba(23, 26, 33, 0.10);
+}
+
+:root[data-theme="light"] .tcg-card:focus-within .poke-card {
+  box-shadow: 10px 14px 0 var(--c-shadow),
+              0 0 0 3px var(--tcg-face),
+              0 0 22px var(--tcg-tint);
+}
+
+:root[data-theme="light"] .poke-kicker,
+:root[data-theme="light"] .lab-poke-section .poke-kicker {
+  color: rgb(var(--t-on-surface-variant));
+}
+
 /* the art is a full-page capture — show the hero, not the middle */
 .tcg-card .poke-art img { object-position: top center; }
 
@@ -228,6 +256,11 @@
 .tcg-card--ads     { --tcg-face: #9dbcff; --tcg-light: #dbe6ff; --tcg-deep: #4c69c6; --tcg-tint: rgba(157, 188, 255, 0.35); }
 .tcg-card--auction { --tcg-face: #cba6ff; --tcg-light: #ecdcff; --tcg-deep: #7a4fc0; --tcg-tint: rgba(203, 166, 255, 0.35); }
 .tcg-card--metals  { --tcg-face: #c3cede; --tcg-light: #e9eff7; --tcg-deep: #6b7a8f; --tcg-tint: rgba(195, 206, 222, 0.35); }
+/* Deepfield Gallery (2026-08-17). Acid chartreuse — picked because the six hues
+   above already cover gold / aqua / rose / periwinkle / violet / steel, and the
+   site's own signature is magenta-and-acid-yellow on near-black. A pink or
+   violet face would have collided with --photo and --auction. */
+.tcg-card--gallery { --tcg-face: #d9f97a; --tcg-light: #f0fdc4; --tcg-deep: #7f9c22; --tcg-tint: rgba(217, 249, 122, 0.35); }
 
 /* Apps gallery (app-catalog.html) — a deliberately separate palette so the two
    galleries don't read as the same set. Hues sit in the gaps the Websites set

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="dark" style="background:#050505" lang="en">
+<head>
+<meta charset="utf-8"/>
+<script id="sds-theme-resolver">/* Pre-paint theme resolver — must stay the first script in <head>. Stamps data-theme on <html> from the stored choice before anything paints, and overwrites the inline dark background attribute. Dark is the brand default when nothing is stored, so a visitor whose OS prefers light still gets the site's intended look until they choose. */(function(){var d=document.documentElement,t;try{t=localStorage.getItem("sds-theme")}catch(e){}if(t!=="light")t="dark";d.setAttribute("data-theme",t);d.classList.toggle("dark",t==="dark");d.style.background=t==="light"?"#f4f2ee":"#050505"})();</script>
+
+<script>/* Head-stamp: nav.css reveals un-stamped pages at 0.2s (its no-logo-script fallback). On heavy pages the bottom-of-body surette-logo.js stamp lands after that, so content flashed in at 0.2s, vanished when the stamp arrived, then faded back in. Stamping before first paint makes JS the only revealer. */document.documentElement.classList.add("sds-logo-loaded");</script>
+<style id="dm-critical-dark-baseline">
+  html,body{background:#050505;color:#fff;min-height:100%;color-scheme:dark;}
+  body{margin:0;min-height:100vh;}
+  #__next,#root,.app{background:#050505;min-height:100vh;}
+  body>main{min-height:100vh;}
+  #page-loader,.sds-apps-loader{background:#050505;}
+html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:#0b0e10;color-scheme:light}html[data-theme="light"] #__next,html[data-theme="light"] #root,html[data-theme="light"] .app{background:#f4f2ee}html[data-theme="light"] #page-loader,html[data-theme="light"] .sds-apps-loader{background:#f4f2ee}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Law Firm Web Design in Southwest Florida | Surette Data Systems</title>
+<meta name="description" content="Websites for law firms in Southwest Florida &mdash; built around practice areas, credibility, and consultation intake."/>
+<link rel="canonical" href="https://surettesystems.com/web-design-for-law-firms.html"/>
+<link rel="icon" href="/assets/favicon.svg?v=20260716-blur-on" type="image/svg+xml"/>
+<link rel="icon" href="/assets/favicon-32.png?v=20260716-blur-on" sizes="32x32" type="image/png"/>
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=20260716-blur-on"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<meta name="theme-color" content="#050505"/>
+<meta property="og:site_name" content="Surette Data Systems"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Law Firm Web Design in Southwest Florida"/>
+<meta property="og:description" content="Websites for law firms in Southwest Florida &mdash; built around practice areas, credibility, and consultation intake."/>
+<meta property="og:url" content="https://surettesystems.com/web-design-for-law-firms.html"/>
+<meta property="og:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="Surette Data Systems &mdash; high-tech business software for mobile, web, and desktop"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Law Firm Web Design in Southwest Florida"/>
+<meta name="twitter:description" content="Websites for law firms in Southwest Florida &mdash; built around practice areas, credibility, and consultation intake."/>
+<meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
+<meta name="twitter:image:alt" content="Surette Data Systems &mdash; high-tech business software for mobile, web, and desktop"/>
+<link href="assets/nav.css?v=20260829-apps-retired" rel="stylesheet"/>
+<link href="assets/cosmic-web.css?v=20260827-contrast-nav" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors:{
+        "white": "rgb(var(--t-starlight-white) / <alpha-value>)","on-background":"rgb(var(--t-on-background) / <alpha-value>)","deep-space-grey":"rgb(var(--t-deep-space-grey) / <alpha-value>)","primary-container":"rgb(var(--t-primary-container) / <alpha-value>)","on-surface":"rgb(var(--t-on-surface) / <alpha-value>)","void-black":"rgb(var(--t-void-black) / <alpha-value>)","on-surface-variant":"rgb(var(--t-on-surface-variant) / <alpha-value>)","surface-container-high":"rgb(var(--t-surface-container-high) / <alpha-value>)","on-tertiary-container":"rgb(var(--t-on-tertiary-container) / <alpha-value>)","surface":"rgb(var(--t-surface) / <alpha-value>)","surface-container-low":"rgb(var(--t-surface-container-low) / <alpha-value>)","on-tertiary-fixed-variant":"rgb(var(--t-on-tertiary-fixed-variant) / <alpha-value>)","tertiary":"rgb(var(--t-tertiary) / <alpha-value>)","electric-cyan":"rgb(var(--t-electric-cyan) / <alpha-value>)","surface-bright":"rgb(var(--t-surface-bright) / <alpha-value>)","on-tertiary":"rgb(var(--t-on-tertiary) / <alpha-value>)","on-primary":"rgb(var(--t-on-primary) / <alpha-value>)","surface-container-highest":"rgb(var(--t-surface-container-highest) / <alpha-value>)","on-secondary-container":"rgb(var(--t-on-secondary-container) / <alpha-value>)","secondary":"rgb(var(--t-secondary) / <alpha-value>)","surface-container":"rgb(var(--t-surface-container) / <alpha-value>)","background":"rgb(var(--t-background) / <alpha-value>)","outline":"rgb(var(--t-outline) / <alpha-value>)","surface-container-lowest":"rgb(var(--t-surface-container-lowest) / <alpha-value>)","primary-fixed":"rgb(var(--t-primary-fixed) / <alpha-value>)","on-secondary":"rgb(var(--t-on-secondary) / <alpha-value>)","on-error":"rgb(var(--t-on-error) / <alpha-value>)","on-primary-fixed":"rgb(var(--t-on-primary-fixed) / <alpha-value>)","on-primary-container":"rgb(var(--t-on-primary-container) / <alpha-value>)","tertiary-fixed-dim":"rgb(var(--t-tertiary-fixed-dim) / <alpha-value>)","on-error-container":"rgb(var(--t-on-error-container) / <alpha-value>)","surface-dim":"rgb(var(--t-surface-dim) / <alpha-value>)","surface-tint":"rgb(var(--t-surface-tint) / <alpha-value>)","tertiary-container":"rgb(var(--t-tertiary-container) / <alpha-value>)","on-primary-fixed-variant":"rgb(var(--t-on-primary-fixed-variant) / <alpha-value>)","nebula-purple":"rgb(var(--t-nebula-purple) / <alpha-value>)","inverse-primary":"rgb(var(--t-inverse-primary) / <alpha-value>)","on-secondary-fixed-variant":"rgb(var(--t-on-secondary-fixed-variant) / <alpha-value>)","secondary-container":"rgb(var(--t-secondary-container) / <alpha-value>)","error-container":"rgb(var(--t-error-container) / <alpha-value>)","tertiary-fixed":"rgb(var(--t-tertiary-fixed) / <alpha-value>)","error":"rgb(var(--t-error) / <alpha-value>)","inverse-on-surface":"rgb(var(--t-inverse-on-surface) / <alpha-value>)","primary-fixed-dim":"rgb(var(--t-primary-fixed-dim) / <alpha-value>)","secondary-fixed-dim":"rgb(var(--t-secondary-fixed-dim) / <alpha-value>)","primary":"rgb(var(--t-primary) / <alpha-value>)","on-secondary-fixed":"rgb(var(--t-on-secondary-fixed) / <alpha-value>)","starlight-white":"rgb(var(--t-starlight-white) / <alpha-value>)","surface-variant":"rgb(var(--t-surface-variant) / <alpha-value>)","inverse-surface":"rgb(var(--t-inverse-surface) / <alpha-value>)","on-tertiary-fixed":"rgb(var(--t-on-tertiary-fixed) / <alpha-value>)","outline-variant":"rgb(var(--t-outline-variant) / <alpha-value>)","secondary-fixed":"rgb(var(--t-secondary-fixed) / <alpha-value>)"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{unit:"8px","margin-desktop":"64px","margin-mobile":"20px",gutter:"24px","container-max":"1440px"},fontFamily:{"headline-lg-mobile":["Space Grotesk"],"body-md":["Plus Jakarta Sans"],"label-mono":["JetBrains Mono"],"label-caps":["JetBrains Mono"],"body-lg":["Plus Jakarta Sans"],"headline-xl":["Space Grotesk"],"headline-md":["Space Grotesk"],"headline-lg":["Space Grotesk"]},fontSize:{"headline-lg-mobile":["32px",{lineHeight:"1.2",fontWeight:"600"}],"body-md":["16px",{lineHeight:"1.6",fontWeight:"400"}],"label-mono":["14px",{lineHeight:"1.4",letterSpacing:"0.05em",fontWeight:"500"}],"label-caps":["12px",{lineHeight:"1.2",letterSpacing:"0.1em",fontWeight:"700"}],"body-lg":["18px",{lineHeight:"1.6",fontWeight:"400"}],"headline-xl":["64px",{lineHeight:"1.1",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-md":["24px",{lineHeight:"1.3",fontWeight:"500"}],"headline-lg":["40px",{lineHeight:"1.2",letterSpacing:"-0.01em",fontWeight:"600"}]}}}};
+</script>
+<style>
+/* Industry landing page, page-scoped .ind-*. Layout comes from the shared
+   .sds-* system in nav.css (.sds-list / .sds-ico / .sds-card / .sds-grid-*);
+   only the numbered cards and the FAQ accordions are page-specific.
+   Token-driven only — a hex here would opt the page out of the light theme. */
+.ind-num {
+  font-family:'JetBrains Mono',monospace; font-size:.8rem; letter-spacing:.16em;
+  font-weight:700; color:rgb(var(--t-electric-cyan)); margin-bottom:10px;
+}
+/* Retint the shared .sds-list markers via the variable rather than a competing
+   colour rule — see the .sds-list block in nav.css. */
+.ind-mistakes { --sds-list-mark: rgb(var(--t-nebula-purple-on)); }
+.ind-faq { margin-top:26px; display:grid; gap:12px; }
+.ind-faq details {
+  border:1px solid var(--c-veil-3); border-radius:14px;
+  background:rgb(var(--t-surface-container-low) / 0.65); padding:0 20px;
+}
+.ind-faq summary {
+  cursor:pointer; list-style:none; padding:18px 0;
+  font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.02rem;
+  color:rgb(var(--t-starlight-white)); display:flex; justify-content:space-between; gap:16px;
+}
+.ind-faq summary::-webkit-details-marker { display:none; }
+.ind-faq summary::after { content:'+'; color:rgb(var(--t-electric-cyan)); font-weight:400; font-size:1.3rem; line-height:1; }
+.ind-faq details[open] summary::after { content:'\2212'; }
+.ind-faq p { color:rgb(var(--t-on-surface-variant)); line-height:1.7; padding-bottom:20px; margin:0; }
+</style>
+</head>
+<body class="font-['Plus_Jakarta_Sans',sans-serif] min-h-screen flex flex-col cosmic-page cosmic-tint-design">
+<script src="assets/standard-site-nav.js?v=20260829-apps-retired" data-active="websites"></script>
+
+<!-- ======================================================================
+     INDUSTRY LANDING PAGE — generated by scripts/gen-industry-pages.js
+     THE HTML IS THE SOURCE OF TRUTH once generated. Re-running the generator
+     overwrites hand edits; edit here for a one-page change, edit the generator
+     only when all 13 should change together.
+
+     NO STATISTICS ON PURPOSE. funnls' industry pages lean on unsourced market
+     claims; this project requires factual claims to be sourced or qualified.
+     Everything here is either a description of our own service or a general
+     observation about the trade.
+
+     NOTHING CLAIMS A CLIENT IN THIS TRADE — we have none yet. The proof strip
+     carries its real attribution. Swap it if a genuine client lands.
+     ====================================================================== -->
+
+<main class="relative z-10 pt-28 md:pt-32 pb-24">
+  <div class="sds-wrap">
+
+    <header>
+      <p class="sds-eyebrow">Legal &middot; Southwest Florida</p>
+      <h1 class="sds-h1">Law firm websites built<br/>to earn the first call.</h1>
+      <p class="sds-lead">Nobody hires a lawyer casually. By the time someone reaches your site they are anxious, comparing two or three firms, and deciding whether you look like the one who handles their specific problem.</p>
+      <div class="sds-proof sds-proof--hero sds-proof--start">
+        <span class="sds-proof__label"><span class="material-symbols-outlined" aria-hidden="true">verified</span>Trusted by local businesses</span>
+        <p class="sds-proof__quote">&ldquo;We send a message, and it&rsquo;s done &mdash; no back-and-forth, no confusion.&rdquo;</p>
+        <span class="sds-proof__who">Practice Manager &middot; Medical Office, Naples FL</span>
+      </div>
+      <div class="sds-actions">
+        <a class="sds-btn sds-btn--solid" href="contact.html">Get started</a>
+        <a class="sds-btn" href="pricing.html">See pricing</a>
+      </div>
+    </header>
+
+    <section class="sds-section">
+      <p class="sds-eyebrow">What makes Law Firms different</p>
+      <h2 class="sds-h2">Four things this site has to handle.</h2>
+
+      <div class="sds-grid-4" style="margin-top:34px">
+        <article class="sds-card">
+          <p class="ind-num">01</p>
+          <h3 class="sds-h3">Practice area is the whole search</h3>
+          <p class="sds-body">Almost nobody searches for &ldquo;a lawyer&rdquo;. They search for their situation. A firm page that lists eight practice areas in a sidebar answers none of them well.</p>
+        </article>
+        <article class="sds-card">
+          <p class="ind-num">02</p>
+          <h3 class="sds-h3">Credibility does the selling</h3>
+          <p class="sds-body">Bar admissions, years practising, case types handled and real attorney bios carry more weight here than design polish.</p>
+        </article>
+        <article class="sds-card">
+          <p class="ind-num">03</p>
+          <h3 class="sds-h3">Intake is delicate</h3>
+          <p class="sds-body">A contact form is a first contact with someone in a difficult moment. It should be short, clear about what happens next, and careful about what it asks up front.</p>
+        </article>
+        <article class="sds-card">
+          <p class="ind-num">04</p>
+          <h3 class="sds-h3">Claims are constrained</h3>
+          <p class="sds-body">Advertising rules limit what a firm can say about results. The site has to be persuasive without straying into claims you cannot make.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="sds-section">
+      <p class="sds-eyebrow">What we build</p>
+      <h2 class="sds-h2">A site shaped around the decision.</h2>
+
+      <div class="sds-grid-2" style="margin-top:34px">
+        <article class="sds-card">
+          <h3 class="sds-h3">A real page per practice area</h3>
+          <p class="sds-body">Each area gets a page written for the person searching for it, not a paragraph in a list.</p>
+        </article>
+        <article class="sds-card">
+          <h3 class="sds-h3">Attorney bios that read as people</h3>
+          <p class="sds-body">Photo, background, admissions and the kind of matters each attorney actually handles.</p>
+        </article>
+        <article class="sds-card">
+          <h3 class="sds-h3">A consultation request that is easy</h3>
+          <p class="sds-body">Short form, clear expectation of what happens next, tappable phone number, delivered reliably and tested.</p>
+        </article>
+        <article class="sds-card">
+          <h3 class="sds-h3">Clear, careful language</h3>
+          <p class="sds-body">We keep the copy plain and let you review anything that touches results or outcomes before it goes live.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="sds-section">
+      <p class="sds-eyebrow">What we usually find</p>
+      <h2 class="sds-h2">Four things that quietly cost work.</h2>
+
+      <div class="sds-panel" style="margin-top:30px">
+        <ul class="sds-list ind-mistakes">
+          <li><span class="material-symbols-outlined" aria-hidden="true">close</span><span><strong>One page covering every practice area.</strong> It cannot rank for any of them and it tells a worried visitor nothing about their own problem.</span></li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">close</span><span><strong>Stock photos of gavels and columns.</strong> Every firm has them. A real photo of your actual office and people does more.</span></li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">close</span><span><strong>A long intake form as the first step.</strong> Asking for case detail before any contact loses people who are not ready to write it all down.</span></li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">close</span><span><strong>No named attorneys.</strong> People hire a person. A firm-only site removes the thing they are actually deciding on.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sds-section">
+      <div class="sds-panel">
+        <p class="sds-eyebrow">Pricing</p>
+        <h2 class="sds-h2">From $65/mo. No contracts.</h2>
+        <p class="sds-lead">One monthly price covers the build, hosting, and the changes you send. Most sites launch with no setup fee at all, and you can cancel anytime. Prefer to own it outright? One-time builds start at $1,500.</p>
+        <div class="sds-actions">
+          <a class="sds-btn sds-btn--solid" href="pricing.html">See pricing</a>
+          <a class="sds-btn" href="services/website-design-hosting.html#one-time-builds">See one-time builds</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="sds-section">
+      <p class="sds-eyebrow">Also available</p>
+      <h2 class="sds-h2">Beyond the website.</h2>
+      <div class="sds-grid-3" style="margin-top:30px">
+        <a class="sds-card" href="apps.html" style="text-decoration:none">
+          <span class="sds-ico"><span class="material-symbols-outlined" aria-hidden="true">developer_board</span></span>
+          <h3 class="sds-h3">Custom business software</h3>
+          <p class="sds-body">Scheduling, inventory, reporting and agentic AI workflow systems built around how the business actually runs.</p>
+        </a>
+        <a class="sds-card" href="services/in-home-services.html" style="text-decoration:none">
+          <span class="sds-ico"><span class="material-symbols-outlined" aria-hidden="true">home_pin</span></span>
+          <h3 class="sds-h3">On-site tech services</h3>
+          <p class="sds-body">Office network setup and in-home tech help across Southwest Florida, from the same team.</p>
+        </a>
+        <a class="sds-card" href="websites.html" style="text-decoration:none">
+          <span class="sds-ico"><span class="material-symbols-outlined" aria-hidden="true">language</span></span>
+          <h3 class="sds-h3">How the service works</h3>
+          <p class="sds-body">What is included, how changes are handled, and what happens between the first call and launch.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="sds-section">
+      <p class="sds-eyebrow">Questions</p>
+      <h2 class="sds-h2">The short answers.</h2>
+      <div class="ind-faq">
+        <details>
+          <summary>How long until it is live?</summary>
+          <p>A One Page site is usually live in about 1&ndash;2 weeks once content and access are in hand. Larger builds run longer, and Fast Track is available if you are working to a deadline. Timelines are estimates measured from when we have everything, not promises.</p>
+        </details>
+        <details>
+          <summary>Can you write the practice area pages?</summary>
+          <p>We help with structure and plain-language copy, but anything describing your services or results needs your review &mdash; you are responsible for advertising compliance.</p>
+        </details>
+        <details>
+          <summary>Can the site take confidential detail?</summary>
+          <p>We keep intake forms deliberately short and do not build them as a place for sensitive case detail. Tell us your requirements and we will build to them.</p>
+        </details>
+        <details>
+          <summary>Can we add practice areas later?</summary>
+          <p>Yes. Adding pages as the firm grows is a normal change request on a managed plan.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="sds-section">
+      <div class="sds-panel" style="text-align:center">
+        <h2 class="sds-h2">Ready when they are looking.</h2>
+        <p class="sds-lead" style="margin:0 auto 24px">Tell us about the business and we will recommend the smallest plan that does the job.</p>
+        <div class="sds-actions" style="justify-content:center;margin-top:0">
+          <a class="sds-btn sds-btn--solid" href="contact.html">Get started</a>
+          <a class="sds-btn" href="industries.html">All industries</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script src="assets/standard-site-footer.js?v=20260817-cta-r5"></script>
+<script src="assets/account-nav.js?v=20260817-cta-r5"></script>
+<script src="surette-logo.js?v=20260817-cta-r5"></script>
+<script>document.addEventListener('DOMContentLoaded', function () { SuretteLogo.init('sds-logo'); SuretteLogo.init('sds-logo-mobile'); });</script>
+</body></html>

@@ -1,36 +1,555 @@
-@import url('logo.css?v=20260608-lockup-align');
+@import url('logo.css?v=20260816-proof-r3');
 
 /* ── Design Tokens ───────────────────────────────────────────────────────────
    Single source of truth for brand colours. Every file should reference these
    variables instead of hardcoding hex values.
+
+   THEMING (2026-08-16)
+   --------------------
+   Two layers live here:
+
+   1. --t-*  : the Tailwind palette, one variable per colour name, stored as
+               SPACE-SEPARATED RGB channels ("5 5 5"). Each page's inline
+               tailwind.config consumes them as
+                   "void-black": "rgb(var(--t-void-black) / <alpha-value>)"
+               so every utility (bg-void-black, text-starlight-white, and the
+               /10 /60 opacity variants) follows the theme with no markup
+               change. The channel-triplet form is required — <alpha-value>
+               only works inside rgb()/hsl(), not on a hex literal.
+
+   2. --c-*  : the older semantic aliases other stylesheets already reference.
+               They are now derived from the --t-* layer so the two can never
+               drift. Note --c-*-rgb stay COMMA-separated: existing call sites
+               use the legacy rgba(var(--c-primary-rgb), 0.08) form.
+
+   Light values are overridden in the :root[data-theme="light"] block below.
+   Dark is the default and the brand default: a visitor with no stored choice
+   gets dark regardless of prefers-color-scheme (see the pre-paint resolver in
+   each page's <head>). Material "fixed" roles are theme-independent by spec
+   and deliberately carry the same value in both blocks.
+
+   Accent contrast: #00F0FF measures 1.4:1 on a light ground and is unusable
+   as light-mode text, so electric-cyan/tertiary darken substantially in light
+   mode.
+
+   Light text tokens are sized against the DARKEST light surface
+   (--t-surface-container-highest, #e5e2db), not against the page ground.
+   Sizing them against the ground was the first pass's mistake: the accents
+   cleared 4.5:1 on #f4f2ee but landed at 4.28:1 on the slightly darker card
+   surfaces, which is where a lot of the small label text actually sits.
    ─────────────────────────────────────────────────────────────────────────── */
 :root {
-  /* Brand */
-  --c-primary:         #00f0ff;
+  /* Ground / surfaces */
+  --t-void-black:                    5 5 5;
+  --t-primary-container:             5 5 5;
+  --t-background:                    18 20 20;
+  --t-surface:                       18 20 20;
+  --t-surface-dim:                   18 20 20;
+  --t-surface-bright:                56 57 57;
+  --t-surface-container-lowest:      13 14 15;
+  --t-surface-container-low:         26 28 28;
+  --t-surface-container:             31 32 32;
+  --t-surface-container-high:        41 42 42;
+  --t-surface-container-highest:     52 53 53;
+  --t-surface-variant:               52 53 53;
+  --t-surface-tint:                  201 198 197;
+  --t-deep-space-grey:               26 26 26;
+
+  /* Text — starlight-white (306 uses) and on-surface-variant (280) carry
+     most of the site's copy; they are the two that matter most. */
+  --t-starlight-white:               255 255 255;
+  --t-on-background:                 227 226 226;
+  --t-on-surface:                    227 226 226;
+  --t-on-surface-variant:            196 199 199;
+  --t-on-primary:                    49 48 48;
+  --t-on-primary-container:          128 126 126;  /* was 121 119 119 — footer meta hit 4.42:1 over the purple bloom on services/in-home at 390px, now 4.87:1 */
+  --t-primary:                       201 198 197;
+  --t-inverse-primary:               95 94 94;
+  --t-inverse-on-surface:            47 49 49;
+  --t-inverse-surface:               227 226 226;
+  /* Lightened from 142 145 146. Calibrated against the page black (6.42:1)
+     but used as meta/link ink over tinted darks — index.html's proof line over
+     the Nova galaxy and privacy.html's footer links over the cyan bloom both
+     measured ~4.4:1 at 1024px. Now 4.95:1 there, 7.2:1 on black. */
+  --t-outline:                       151 154 155;
+  --t-outline-variant:               68 71 72;
+
+  /* Brand accents */
+  --t-electric-cyan:                 0 240 255;
+  --t-tertiary:                      0 219 233;
+  --t-tertiary-container:            0 6 7;
+  --t-tertiary-fixed-dim:            0 219 233;
+  --t-on-tertiary:                   0 54 58;
+  --t-on-tertiary-container:         0 132 141;
+  --t-nebula-purple:                 112 0 255;
+  --t-secondary:                     209 188 255;
+  --t-secondary-container:           112 0 255;
+  --t-secondary-fixed-dim:           209 188 255;
+  --t-on-secondary:                  60 0 144;
+  --t-on-secondary-container:        221 205 255;
+
+  /* Status */
+  --t-error:                         255 180 171;
+  --t-error-container:               147 0 10;
+  --t-on-error:                      105 0 5;
+  --t-on-error-container:            255 218 214;
+
+  /* Material "fixed" roles — theme-independent by spec */
+  --t-primary-fixed:                 229 226 225;
+  --t-primary-fixed-dim:             201 198 197;
+  --t-on-primary-fixed:              28 27 27;
+  --t-on-primary-fixed-variant:      71 70 70;
+  --t-secondary-fixed:               233 221 255;
+  --t-on-secondary-fixed:            35 0 91;
+  --t-on-secondary-fixed-variant:    87 0 201;
+  --t-tertiary-fixed:                125 244 255;
+  --t-on-tertiary-fixed:             0 32 34;
+  --t-on-tertiary-fixed-variant:     0 79 84;
+
+  /* ── Veils ─────────────────────────────────────────────────────────────
+     The single most common hardcoded pattern in this codebase is a
+     white-at-low-alpha overlay: glass panels, hairlines, hover fills. On a
+     light ground a white veil is invisible, so these must flip to
+     black-at-low-alpha.
+
+     --c-veil-rgb is the workhorse. Rewriting a literal white overlay to
+     rgba(var(--c-veil-rgb), <same alpha>) flips its hue between themes while
+     preserving that call site's own alpha exactly, so the conversion is
+     mechanical and lossless. Use it for any arbitrary alpha; use the
+     numbered tokens below when a standard step will do.
+
+     Do not write literal white/black rgba values in comments in this repo —
+     scripts/sweep-veils.js rewrites them wherever they appear. */
+  --c-veil-rgb:        255, 255, 255;
+  --c-shadow-rgb:      0, 0, 0;
+
+  --c-veil-1:          rgba(var(--c-veil-rgb), 0.03);
+  --c-veil-2:          rgba(var(--c-veil-rgb), 0.06);
+  --c-veil-3:          rgba(var(--c-veil-rgb), 0.10);
+  --c-veil-4:          rgba(var(--c-veil-rgb), 0.18);
+  --c-veil-strong:     rgba(var(--c-veil-rgb), 0.30);
+  --c-shadow:          rgba(var(--c-shadow-rgb), 0.45);
+  --c-shadow-soft:     rgba(var(--c-shadow-rgb), 0.25);
+
+  /* ── Semantic aliases (derived — do not hardcode) ──────────────────── */
+  --c-primary:         rgb(var(--t-electric-cyan));
   --c-primary-rgb:     0, 240, 255;
   --c-secondary:       #39ff88;
   --c-secondary-rgb:   57, 255, 136;
-  --c-purple:          #7000ff;
+  --c-purple:          rgb(var(--t-nebula-purple));
   --c-purple-rgb:      112, 0, 255;
 
-  /* Surfaces */
-  --c-bg:              #050505;
+  --c-bg:              rgb(var(--t-void-black));
   --c-overlay:         rgba(8, 10, 14, 0.97);
 
-  /* Text */
-  --c-text:            #e3e2e2;
+  --c-text:            rgb(var(--t-on-surface));
   --c-text-rgb:        227, 226, 226;
-  --c-text-2:          #c4c7c7;
-  --c-text-3:          #8e9192;
-  --c-text-inv:        #050505;
+  --c-text-2:          rgb(var(--t-on-surface-variant));
+  --c-text-3:          rgb(var(--t-outline));
+  --c-text-inv:        rgb(var(--t-void-black));
 
-  /* Borders */
-  --c-border:          rgba(255, 255, 255, 0.1);
-  --c-border-2:        rgba(255, 255, 255, 0.18);
+  --c-border:          var(--c-veil-3);
+  --c-border-2:        var(--c-veil-4);
 
-  /* Gradients */
-  --g-primary:         linear-gradient(90deg, #00f0ff, #7000ff);
-  --g-secondary:       linear-gradient(90deg, #39ff88, #00f0ff);
+  /* Fill gradient for accent CTAs. The cyan stop is darkened away from the raw
+     --t-electric-cyan (#00f0ff) on purpose: labels sit ON this fill, and white
+     on raw cyan measures 1.41:1 — the left half of every primary button was
+     effectively unreadable in dark mode. Dark labels are not an escape either;
+     they fail at the purple end (3.04:1). One label colour has to survive the
+     whole ramp, so the ramp moves. #00758e puts white at 5.3:1, the midpoint at
+     8.1:1 and the purple stop at 6.7:1.
+
+     Same reasoning as the light theme's #006a7b stop below; this value stays
+     more saturated so dark mode keeps its bite. Literal hex rather than a
+     palette token because --t-electric-cyan is correct everywhere else — it is
+     only wrong underneath text. Every var(--g-primary) call site is a
+     text-bearing fill, so nothing decorative loses the bright cyan. */
+  --g-primary:         linear-gradient(90deg, #00758e, rgb(var(--t-nebula-purple)));
+  --g-secondary:       linear-gradient(90deg, #39ff88, rgb(var(--t-electric-cyan)));
+
+  /* Bar tint for the three fixed nav surfaces. Pinned as a token because the
+     2026-07-16 contrast fix chose this value deliberately (labels measured
+     1.17:1 over light gallery cards at the old 10% tint). */
+  --c-bar-tint:        rgba(8, 10, 14, 0.9);
+
+  /* Text sitting ON a brand accent fill (the cyan→purple gradient CTAs). The
+     fill gradient is darkened in BOTH themes (see --g-primary), so this stays
+     light in both — it is the one place "white text" is correct on a light
+     page. Note the dependency runs this way round: the fill was darkened to
+     suit the label, not the other way about.
+
+     This exists because `starlight-white` is a literal colour name doing two
+     different jobs: primary body/heading text (301 of its 306 uses, which
+     must flip) and on-accent text (3 uses, which must not). Use this token
+     or .sds-on-accent for the latter rather than reaching for
+     text-starlight-white. */
+  --c-on-accent:       #ffffff;
+
+  /* Text on a BRIGHT accent fill — the mirror of --c-on-accent. The app
+     pages' .primary button is a hardcoded lime (#39ff14) that stays lime in
+     both themes, so its label must stay dark in both. It was written as
+     color: void-black, which flipped to paper in light and put light text on
+     bright lime at 1.21:1 across seven pages. A fill that does not flip needs
+     a label that does not flip either. */
+  --c-on-bright:       #06120a;
+
+  /* Nav wordmark (injected by surette-logo.js, which keeps these same values
+     as inline fallbacks). Kept as their own tokens rather than reusing the
+     palette because the wordmark is a brand lockup with its own glow. */
+  --sds-logo-co:           #ddeeff;
+  --sds-logo-co-hover:     #eef6ff;
+  --sds-logo-sub:          #00b8df;
+  --sds-logo-sub-hover:    #20d8ff;
+  --sds-logo-sub-opacity:  0.7;
+  --sds-logo-glow:         0 0 12px rgba(0, 190, 255, 0.45);
+  --sds-logo-glow-hover:   0 0 18px rgba(0, 210, 255, 0.8), 0 0 35px rgba(0, 180, 255, 0.3);
+
+  /* WhatsApp brand green. #25D366 is the official mark colour and is fine on
+     dark, but measures 1.57:1 on the light surfaces, so light mode uses a
+     darkened variant for text/icons while fills keep the true brand colour. */
+  --c-whatsapp:        #25D366;
+  --c-whatsapp-text:   #25D366;
+
+  /* Mobile header account icon (injected inline by assets/account-nav.js, so
+     it must be a variable — an inline style outranks any rule here). */
+  --sds-acct-in:       rgb(var(--t-electric-cyan));
+  --sds-acct-out:      rgb(var(--t-on-surface-variant));
+
+  /* ── Page panel surfaces ───────────────────────────────────────────────
+     A handful of pages painted their own dark panels with bespoke hexes
+     rather than a palette colour. Each keeps its EXACT original value on the
+     dark side — these are not consolidated onto one surface token, because
+     collapsing them would visibly change dark mode, which this whole change
+     is supposed to leave untouched. Only the light counterparts are new.
+
+     The bug that produced these: the pricing page's single #0c0f0f table-header
+     rule styles every <th> on the page, so leaving it dark while the text
+     flipped to ink produced 821 failing elements from one declaration. */
+  --t-panel-deep:      #080909;   /* app profile pages */
+  --t-panel-void:      #020205;   /* canvas containers: apps/process/account */
+  --t-panel-navy:      #08101e;   /* metalspredictor charts */
+  --t-panel-violet:    #0a0a14;
+  --t-panel-flat:      #0a0a0a;
+  --t-panel-table:     #0c0f0f;   /* pricing table header */
+  --t-panel-row:       #16191b;   /* pricing table row */
+
+  /* ── Page ink ─────────────────────────────────────────────────────────
+     Per-page text colours that pages defined themselves (chips, callouts,
+     accent headings) instead of using the palette. Each is a PAIR: the dark
+     side is the page's original value, byte for byte, so dark mode is
+     unchanged; the light side is the same hue darkened until it clears
+     4.6:1 on the darkest light surface (#e5e2db).
+
+     Named after their original hex on purpose. These are not a design
+     system — they are 29 one-off colours that predate one, and a literal
+     name makes it obvious which original value a call site came from. New
+     work should use the semantic palette above, not add to this block. */
+  --t-ink-18d96e: #18d96e;
+  --t-ink-39ff14: #39ff14;
+  --t-ink-39ff88: #39ff88;
+  --t-ink-7fb3c2: #7fb3c2;
+  --t-ink-8f98a6: #8f98a6;
+  --t-ink-8fe0ee: #8fe0ee;
+  --t-ink-9ba1a1: #9ba1a1;
+  --t-ink-a3e635: #a3e635;
+  --t-ink-a7ffcb: #a7ffcb;
+  --t-ink-a9b0b0: #a9b0b0;
+  --t-ink-aeb4bf: #aeb4bf;
+  --t-ink-b58cff: #b58cff;
+  --t-ink-c3a8e8: #c3a8e8;
+  --t-ink-c9b7f5: #c9b7f5;
+  --t-ink-caffdf: #caffdf;
+  --t-ink-cfaaff: #cfaaff;
+  --t-ink-d6dae1: #d6dae1;
+  --t-ink-d9c8ff: #d9c8ff;
+  --t-ink-dde3e3: #dde3e3;
+  --t-ink-dfe3e3: #dfe3e3;
+  --t-ink-ecdfc8: #ecdfc8;
+  --t-ink-f59e0b: #f59e0b;
+  --t-ink-f8fafc: #f8fafc;
+  --t-ink-fbbc05: #fbbc05;
+  --t-ink-fbbf24: #fbbf24;
+  --t-ink-ffb020: #ffb020;
+  --t-ink-ffb3b3: #ffb3b3;
+  --t-ink-ffb4ab: #ffb4ab;
+  --t-ink-ffd166: #ffd166;
+  --t-ink-ffd1d1: #ffd1d1;
+
+  /* ── Page panel surfaces, translucent ──────────────────────────────────
+     Near-opaque dark rgba() panels that pages painted with bespoke values
+     (rgba(8,9,13,.96) and friends). Missed by the earlier passes: not a
+     palette triplet, not a plain hex. Left dark while their text flipped to
+     ink, which is how multichannel-commerce-website.html ended up with 40
+     failing elements at 1.03:1.
+
+     Each keeps its exact original channels on the dark side. Alpha stays at
+     the call site, so only the colour flips. Colored status panels (the red
+     error and green success ones) keep more chroma in light so they still
+     read as status rather than going flat grey. */
+  --t-surf-040f0c: 4 15 12;
+  --t-surf-050507: 5 5 7;
+  --t-surf-07110f: 7 17 15;
+  --t-surf-08090d: 8 9 13;
+  --t-surf-080a0b: 8 10 11;
+  --t-surf-080a0e: 8 10 14;
+  --t-surf-080c14: 8 12 20;
+  --t-surf-082a19: 8 42 25;
+  --t-surf-090b0e: 9 11 14;
+  --t-surf-0c0e13: 12 14 19;
+  --t-surf-101216: 16 18 22;
+  --t-surf-12161c: 18 22 28;
+  --t-surf-12181c: 18 24 28;
+  --t-surf-141008: 20 16 8;
+  --t-surf-14181c: 20 24 28;
+  --t-surf-171a23: 23 26 35;
+  --t-surf-9b1a1a: 155 26 26;
+
+  /* nebula-purple used as TEXT/ICON, as opposed to as a gradient stop. See
+     the .text-nebula-purple override further down for why this is separate. */
+  /* Lightened from 163 92 255. That value is calibrated against the page
+     black (5.37:1), but this ink is used on tinted panels — the industry
+     pages' mistake-list marks, services/in-home's BEST FIT label, built-by's
+     card eyebrow — where it measured 4.32-4.49:1, under AA. 5.43:1 there now,
+     6.68:1 on black. Used only as ink (text and --sds-list-mark), never as a
+     fill, so lightening cannot cost contrast anywhere. */
+  --t-nebula-purple-on:              176 118 255;
+}
+
+/* Opt-in class for on-accent text. Plain CSS, not a Tailwind utility, so it
+   works on injected markup too. */
+.sds-on-accent { color: var(--c-on-accent) !important; }
+
+/* ── Opacity-modified text utilities in light mode ───────────────────────────
+   text-outline/50, text-on-surface-variant/70 and friends work on black: the
+   base colour is light, so knocking it back still leaves plenty of contrast.
+   On paper the base is already dark and the alpha washes it toward the ground
+   instead — measured 2.03:1 (text-outline/50 on contact.html) and 3.22:1
+   (text-on-surface-variant/70, on all six portfolio detail pages).
+
+   Light mode therefore restores these to full opacity. It costs a little of
+   the intended hierarchy, but the alternative is small print at 2:1. The
+   selectors are (0,3,0) so they beat the CDN's (0,1,0) utility.
+
+   text-starlight-white/70 is deliberately NOT included: it lands at ~5.5:1 on
+   paper and still passes, so it keeps its intended de-emphasis.
+   ─────────────────────────────────────────────────────────────────────────── */
+/* Applies in BOTH themes, not just light: text-outline at 40-60% measured
+   2.36:1 on black as well (contact.html's "(optional)" labels and the upload
+   hint). The alpha was failing everywhere, it was just never measured on dark
+   until the full sweep. text-on-surface-variant/70 only failed on paper, so it
+   is restored for light alone. */
+:root .text-outline\/40,
+:root .text-outline\/50,
+:root .text-outline\/60 { color: rgb(var(--t-outline)); }
+
+:root[data-theme="light"] .text-on-surface-variant\/70 { color: rgb(var(--t-on-surface-variant)); }
+
+/* ── nebula-purple as text/icon ──────────────────────────────────────────────
+   #7000FF is a saturated blue-violet: gorgeous as a gradient stop, but as a
+   foreground colour it measures 2.91:1 on the site's near-black surfaces —
+   under AA for the small-caps labels AND under the 3:1 large-text bar for the
+   36-48px feature icons. 31 elements across 8 pages, all pre-existing.
+
+   The token itself cannot simply be lightened: it is also the end stop of the
+   cyan→purple gradient on every CTA, and lightening that would wash the
+   buttons out. So text gets its own token and this override.
+
+   Specificity matters here: the Tailwind CDN emits `.text-nebula-purple` at
+   (0,1,0) and loads AFTER nav.css, so a plain pin would lose. The leading
+   :root makes this (0,2,0), which wins regardless of order.
+   ─────────────────────────────────────────────────────────────────────────── */
+:root .text-nebula-purple { color: rgb(var(--t-nebula-purple-on)); }
+
+/* The app pages' .pill and .badge are cyan text on an 8-9% cyan tint. On black
+   the tint darkens the ground and helps; on paper it lightens it and costs
+   contrast, landing at 4.35:1 and 4.29:1 — just under AA. Dropping the tint and
+   deepening the text clears it without changing the component's shape. These
+   are page-scoped classes, but the selector is (0,3,0) against their (0,1,0),
+   so specificity carries it regardless of stylesheet order. */
+:root[data-theme="light"] .pill,
+:root[data-theme="light"] .badge {
+  background: rgb(var(--t-electric-cyan) / 0.05);
+  border-color: rgb(var(--t-electric-cyan) / 0.30);
+  color: #005766;
+}
+
+/* WhatsApp text/icons. Replaced the arbitrary utility text-[#25D366] on 14
+   elements: an arbitrary value bakes the hex into the generated CSS, so there
+   is nothing to theme. Low-alpha bg-[#25D366]/10 tints and borders were left
+   alone — they read correctly on both grounds. */
+.sds-whatsapp-text { color: var(--c-whatsapp-text); }
+
+/* Status accent (was the arbitrary utility text-[#39ff88], which bakes its hex
+   into the generated CSS and so cannot be themed). #39ff88 measures 1.19:1 on
+   paper. Dark keeps the original mint; light uses the ink-token green. */
+.sds-status-live { color: #39ff88; }
+:root[data-theme="light"] .sds-status-live { color: var(--t-ink-39ff88); }
+
+/* ── Light theme ─────────────────────────────────────────────────────────────
+   Only the values change; every selector in the site stays the same. */
+:root[data-theme="light"] {
+  /* Ground / surfaces — warm paper, matching the collectible cards' plate */
+  --t-void-black:                    244 242 238;
+  --t-primary-container:             244 242 238;
+  --t-background:                    250 249 246;
+  --t-surface:                       255 255 255;
+  --t-surface-dim:                   233 230 224;
+  --t-surface-bright:                255 255 255;
+  --t-surface-container-lowest:      255 255 255;
+  --t-surface-container-low:         248 246 242;
+  --t-surface-container:             242 240 235;
+  --t-surface-container-high:        236 233 227;
+  --t-surface-container-highest:     229 226 219;
+  --t-surface-variant:               229 226 219;
+  --t-surface-tint:                  90 95 99;
+  --t-deep-space-grey:               234 231 226;
+
+  /* Text */
+  --t-starlight-white:               11 14 16;
+  --t-on-background:                 22 25 28;
+  --t-on-surface:                    22 25 28;
+  --t-on-surface-variant:            71 77 82;   /* was 77 84 89 — 4.33:1 on nested glass, now 4.82:1 */
+  --t-on-primary:                    216 213 208;
+  --t-on-primary-container:          85 89 92;
+  --t-primary:                       53 57 60;
+  --t-inverse-primary:               201 198 197;
+  --t-inverse-on-surface:            244 242 238;
+  --t-inverse-surface:               47 49 49;
+  --t-outline:                       86 91 94;   /* was 93 99 102 — 4.43:1 on tinted panels, now 5.00:1 */
+  --t-outline-variant:               207 203 196;
+
+  /* Brand accents — darkened for legibility on the light ground */
+  /* Darkened from 0 104 121. The old value cleared AA only against pure
+     paper (5.77:1); on the site's own panel surfaces (~#cccecb) it measured
+     4.07:1, which is where it is actually used — pricing check rows, portfolio
+     meta labels, legal contents links. Taken down again once the phone width
+     was measured: nested glass panels compound their tint to about #c4c1c9,
+     where 0 94 109 still read 4.19:1. Now 4.91:1 there, 7.8:1 on paper. */
+  --t-electric-cyan:                 0 83 96;
+  --t-tertiary:                      0 105 119;
+  --t-tertiary-container:            214 246 250;
+  --t-tertiary-fixed-dim:            0 179 196;
+  --t-on-tertiary:                   255 255 255;
+  --t-on-tertiary-container:         0 86 95;
+  --t-nebula-purple:                 90 0 204;
+  --t-secondary:                     91 43 214;
+  --t-secondary-container:           236 226 255;
+  --t-secondary-fixed-dim:           183 154 255;
+  --t-on-secondary:                  255 255 255;
+  --t-on-secondary-container:        45 0 114;
+
+  /* Status */
+  --t-error:                         186 26 26;
+  --t-error-container:               255 218 214;
+  --t-on-error:                      255 255 255;
+  --t-on-error-container:            65 0 2;
+
+  /* Veils invert: a white veil is invisible on paper. Flipping the channel
+     variable carries every rgba(var(--c-veil-rgb), X) call site with it. */
+  --c-veil-rgb:        9, 12, 14;
+  --c-shadow-rgb:      23, 26, 33;
+
+  --c-veil-1:          rgba(var(--c-veil-rgb), 0.03);
+  --c-veil-2:          rgba(var(--c-veil-rgb), 0.06);
+  --c-veil-3:          rgba(var(--c-veil-rgb), 0.12);
+  --c-veil-4:          rgba(var(--c-veil-rgb), 0.20);
+  --c-veil-strong:     rgba(var(--c-veil-rgb), 0.32);
+  --c-shadow:          rgba(var(--c-shadow-rgb), 0.16);
+  --c-shadow-soft:     rgba(var(--c-shadow-rgb), 0.09);
+
+  --c-primary-rgb:     0, 104, 121;
+  --c-purple-rgb:      90, 0, 204;
+  --c-secondary:       #0f8f4d;
+  --c-secondary-rgb:   15, 143, 77;
+  --c-text-rgb:        22, 25, 28;
+  --c-overlay:         rgba(250, 249, 246, 0.97);
+
+  /* The cyan gradient stop darkens further than the accent token: button
+     labels sit ON this fill, and #00798d as a fill leaves light text at
+     4.5:1. Starting at #006a7b puts it at 5.6:1. */
+  --g-primary:         linear-gradient(90deg, #006a7b, #5a00cc);
+  /* Green stop darkened from #0f8f4d, which left the paper-coloured label on
+     .btn--secondary at 3.7:1. #0d7a42 puts it at 4.9:1; the teal stop is
+     already 5.5:1. Same fix as the --g-primary cyan stop. */
+  --g-secondary:       linear-gradient(90deg, #0d7a42, #006a7b);
+
+  --c-bar-tint:        rgba(250, 249, 246, 0.9);
+
+  /* Wordmark inverts to ink. The glow is removed rather than recoloured —
+     a bloom on paper reads as a printing defect, not a light source. */
+  --sds-logo-co:           #0f2731;
+  --sds-logo-co-hover:     #04161f;
+  --sds-logo-sub:          #005c6e;
+  --sds-logo-sub-hover:    #00434f;
+  --sds-logo-sub-opacity:  1;
+  --sds-logo-glow:         none;
+  --sds-logo-glow-hover:   none;
+
+  --c-whatsapp-text:   #147137;
+
+  /* Paper counterparts. Kept slightly distinct from each other so panels that
+     were visually separated in dark mode stay separated on paper — the table
+     header in particular has to stay darker than its rows to read as a header. */
+  --t-panel-deep:      #f3f1ed;
+  --t-panel-void:      #f5f3ef;
+  --t-panel-navy:      #eef1f6;
+  --t-panel-violet:    #f2f1f6;
+  --t-panel-flat:      #f4f2ee;
+  --t-panel-table:     #e7e4dd;
+  --t-panel-row:       #f8f6f2;
+
+  /* Paper counterparts for the per-page ink above. */
+  --t-ink-18d96e: #0e612f;   /* was #10723c — 3.81:1 on panel, now 4.79:1 */
+  --t-ink-39ff14: #1a5e0e;   /* was #1f6f10 — 3.97:1 on panel, now 5.00:1 */
+  --t-ink-39ff88: #0f6933;   /* was #107237 — 4.49:1 on tinted panels, now 5.07:1 */
+  --t-ink-7fb3c2: #386875;
+  --t-ink-8f98a6: #545c69;   /* was #5b6472 — 4.44:1 on tinted panels, now 5.01:1 */
+  --t-ink-8fe0ee: #136d7d;
+  --t-ink-9ba1a1: #5c6262;
+  --t-ink-a3e635: #4a6d10;
+  --t-ink-a7ffcb: #0f6834;   /* was #107138 — 4.39:1 on the light status pill, now 4.96:1 */
+  --t-ink-a9b0b0: #596161;
+  --t-ink-aeb4bf: #505765;   /* was #575f6e — 4.40:1 on tinted panels, now 4.97:1 */
+  --t-ink-b58cff: #7132e2;
+  --t-ink-c3a8e8: #7a3ecc;
+  --t-ink-c9b7f5: #6a39e3;
+  --t-ink-caffdf: #106f36;
+  --t-ink-cfaaff: #7a2be1;
+  --t-ink-d6dae1: #566175;
+  --t-ink-d9c8ff: #6f3ce3;
+  --t-ink-dde3e3: #556767;
+  --t-ink-dfe3e3: #586464;
+  --t-ink-ecdfc8: #705627;   /* was #7a5d2a — 4.30:1 on the amber notice panel, now 4.83:1 */
+  --t-ink-f59e0b: #865b13;
+  --t-ink-f8fafc: #3c638b;
+  --t-ink-fbbc05: #795e11;
+  --t-ink-fbbf24: #7a5d11;
+  --t-ink-ffb020: #815a12;
+  --t-ink-ffb3b3: #c31c1c;
+  --t-ink-ffb4ab: #b62b1a;
+  --t-ink-ffd166: #7c5c12;
+  --t-ink-ffd1d1: #bc1b1b;
+
+  /* Paper counterparts for the translucent panels above. */
+  --t-surf-040f0c: 215 244 236;
+  --t-surf-050507: 239 239 243;
+  --t-surf-07110f: 219 240 236;
+  --t-surf-08090d: 238 239 244;
+  --t-surf-080a0b: 239 242 243;
+  --t-surf-080a0e: 237 240 245;
+  --t-surf-080c14: 219 226 240;
+  --t-surf-082a19: 215 244 230;
+  --t-surf-090b0e: 238 240 244;
+  --t-surf-0c0e13: 238 240 244;
+  --t-surf-101216: 239 240 243;
+  --t-surf-12161c: 238 240 244;
+  --t-surf-12181c: 238 242 244;
+  --t-surf-141008: 240 233 219;
+  --t-surf-14181c: 239 241 243;
+  --t-surf-171a23: 238 240 244;
+  --t-surf-9b1a1a: 244 215 215;
+
+  --t-nebula-purple-on:              90 0 204;
 }
 
 /* ── Button System ───────────────────────────────────────────────────────────
@@ -61,7 +580,9 @@
 
 .btn--primary {
   background: var(--g-primary);
-  color: var(--c-text-inv);
+  /* On-accent, not text-inv: this sits on the gradient fill, which white
+     clears at every stop and dark ink does not. */
+  color: var(--c-on-accent);
   box-shadow: 0 0 20px rgba(var(--c-primary-rgb), 0.18);
 }
 .btn--primary:hover {
@@ -72,11 +593,11 @@
   color: var(--c-text-inv);
 }
 .btn--ghost {
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(var(--c-veil-rgb), 0.07);
   color: var(--c-text);
   border: 1px solid var(--c-border-2);
 }
-.btn--ghost:hover { background: rgba(255, 255, 255, 0.11); transform: translateY(-1px); }
+.btn--ghost:hover { background: rgba(var(--c-veil-rgb), 0.11); transform: translateY(-1px); }
 .btn--outline {
   background: transparent;
   color: var(--c-primary);
@@ -98,7 +619,7 @@
    pages instead of centralized, so pages without their own copy rendered the
    button without the glow. nav.css loads sitewide, so this is now the single
    source of truth. */
-.glow-cyan { box-shadow: 0 0 20px rgba(0, 240, 255, 0.3); }
+.glow-cyan { box-shadow: 0 0 20px rgb(var(--t-electric-cyan) / 0.3); }
 
 /* ── Page reveal ─────────────────────────────────────────────────────────────
    nav.css is the first render-blocking stylesheet on every page, guaranteeing
@@ -121,16 +642,22 @@
 html {
   opacity: 0;
   transition: opacity 0.38s ease;
-  /* Matches the site's void-black body background. Without this, the browser
-     shows white <html> between page navigations. */
-  background-color: #050505;
-  color: #ffffff;
+  /* Matches the site's page ground. Without this, the browser shows white
+     <html> between page navigations. Token-driven so the light theme does not
+     flash black between pages — the pre-paint resolver in each <head> has
+     already set data-theme by the time this rule is applied. */
+  background-color: rgb(var(--t-void-black));
+  color: rgb(var(--t-starlight-white));
   min-height: 100%;
   color-scheme: dark;
 }
 
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
 body {
-  background-color: #050505;
+  background-color: rgb(var(--t-void-black));
   color: var(--c-text);
   min-height: 100vh;
 }
@@ -152,12 +679,12 @@ header.fixed.top-0.w-full {
 .service-mobile-footer {
   margin-top: 3.5rem;
   padding: 2rem 0 2.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(var(--c-veil-rgb), 0.1);
 }
 
 .service-mobile-footer__brand {
   margin: 0 0 0.9rem;
-  color: #ffffff;
+  color: rgb(var(--t-starlight-white));
   font: 800 1.05rem "Space Grotesk", sans-serif;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -187,7 +714,7 @@ header.fixed.top-0.w-full {
 .service-mobile-footer__links span {
   display: block;
   margin-bottom: 0.8rem;
-  color: #ffffff;
+  color: rgb(var(--t-starlight-white));
   font: 800 0.68rem "JetBrains Mono", monospace;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -206,7 +733,7 @@ header.fixed.top-0.w-full {
 #__next,
 #root,
 .app {
-  background-color: #050505;
+  background-color: rgb(var(--t-void-black));
   min-height: 100vh;
 }
 
@@ -219,7 +746,7 @@ header.fixed.top-0.w-full {
   align-items: center;
   justify-content: center;
   gap: 16px;
-  background: #050505;
+  background: rgb(var(--t-void-black));
   opacity: 1;
   pointer-events: none;
   transition: opacity 0.5s ease;
@@ -234,7 +761,11 @@ header.fixed.top-0.w-full {
 }
 
 #page-loader span {
-  color: rgba(0, 240, 255, 0.42);
+  /* Was 0.42 alpha, which measured 2.9:1 on black and 1.86:1 on paper — it
+     failed in both themes, so this is a pre-existing fix, not a light-theme
+     one. Full opacity clears AA on both grounds; the label is 10px and only
+     visible for a moment, so it needs the contrast more than the subtlety. */
+  color: rgb(var(--t-electric-cyan));
   font: 700 10px Consolas, "Courier New", monospace;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -390,15 +921,41 @@ html.page-content-ready :where(
    dropdown). Without these, an element can keep the default text color
    instead of showing as highlighted/cyan even when its class list is
    correct — e.g. the Account link reading as "unhighlighted" on pages where
-   the JIT scanner missed it. */
-.text-electric-cyan { color: #00F0FF; }
-.text-nebula-purple { color: #7000FF; }
-.text-on-surface-variant { color: #c4c7c7; }
-.text-starlight-white { color: #FFFFFF; }
-.text-outline { color: #8e9192; }
-.text-void-black { color: #050505; }
-.border-electric-cyan { border-color: #00F0FF; }
-.bg-electric-cyan\/5 { background-color: rgba(0, 240, 255, 0.05); }
+   the JIT scanner missed it.
+
+   These pins MUST stay token-driven. They are duplicates of utilities the
+   Tailwind CDN also generates, and because nav.css loads after the CDN's
+   injected <style>, these win on cascade order. Hardcoding a literal here
+   therefore silently defeats the whole theme system for that utility — which
+   is exactly what happened on the first light-theme pass: the CDN correctly
+   emitted rgb(var(--t-starlight-white) / …) while this block kept forcing
+   #FFFFFF, leaving white body text on the light ground. */
+.text-electric-cyan { color: rgb(var(--t-electric-cyan)); }
+.text-nebula-purple { color: rgb(var(--t-nebula-purple)); }
+.text-on-surface-variant { color: rgb(var(--t-on-surface-variant)); }
+.text-starlight-white { color: rgb(var(--t-starlight-white)); }
+.text-outline { color: rgb(var(--t-outline)); }
+.text-void-black { color: rgb(var(--t-void-black)); }
+.border-electric-cyan { border-color: rgb(var(--t-electric-cyan)); }
+.bg-electric-cyan\/5 { background-color: rgba(var(--c-primary-rgb), 0.05); }
+
+/* ── Tailwind's STOCK white ──────────────────────────────────────────────────
+   text-white / bg-white/N / border-white/N are Tailwind built-ins, not part of
+   this site's custom palette, so tokenising the palette did nothing for them:
+   they kept emitting a literal white and stayed white on the light ground.
+   138 usages site-wide, including the homepage <h1> at 1.12:1.
+
+   These are NOT pinned here, deliberately. A pin does not work for stock
+   colours: the CDN injects its <style> AFTER nav.css, and for a built-in it
+   emits a hard `rgb(255 255 255 / …)` — so at equal specificity the CDN wins.
+   (Custom colours look like they "win" from this file only because both sides
+   resolve to the same variable, so the outcome is identical either way.)
+
+   The fix is to override `white` in each page's tailwind.config, exactly like
+   the rest of the palette, so the CDN itself generates a variable-backed rule.
+   That also carries every opacity variant for free. See
+   scripts/tokenize-tailwind-config.js, which adds it.
+   ─────────────────────────────────────────────────────────────────────────── */
 
 /* Same failure mode again, this time for the gradient-stop utilities on the
    Contact Us CTA. bg-gradient-to-r sets background-image from the
@@ -407,7 +964,14 @@ html.page-content-ready :where(
    to-nebula-purple, background-image silently resolves to "none" and the
    button renders with no visible background at all. */
 .bg-gradient-to-r.from-electric-cyan.to-nebula-purple {
-  background-image: linear-gradient(90deg, #00F0FF, #7000FF);
+  background-image: var(--g-primary);
+  /* 31 call sites across 16 files put a label on this fill, and they disagree:
+     some wrote text-void-black, some .sds-on-accent. Dark labels fail on the
+     purple end (3.04:1) and the raw cyan failed light ones (1.41:1), so
+     --g-primary now carries a ramp that white clears end to end. Pinning the
+     colour here settles it in one place instead of editing 16 files, and
+     !important is required to outrank the Tailwind text-* utility. */
+  color: var(--c-on-accent) !important;
 }
 
 .material-symbols-outlined {
@@ -435,9 +999,9 @@ html.page-content-ready :where(
   border-radius: 6px;
   background: linear-gradient(
     90deg,
-    rgba(255,255,255,.06) 0%,
-    rgba(255,255,255,.14) 50%,
-    rgba(255,255,255,.06) 100%
+    rgba(var(--c-veil-rgb), .06) 0%,
+    rgba(var(--c-veil-rgb), .14) 50%,
+    rgba(var(--c-veil-rgb), .06) 100%
   );
   background-size: 1600px 100%;
   animation: skel-shimmer 1.8s ease-in-out infinite;
@@ -530,7 +1094,7 @@ nav .hidden.md\:flex,
    The apps page overrides the gutter in surette-data-systems-apps.css
    (its CTA is a separate fixed overlay rather than a nav child).
    ─────────────────────────────────────────────────────────────── */
-@media (min-width: 880px) {
+@media (min-width: 1024px) {
   nav.fixed.top-0.w-full {
     /* Edge inset; tightens as the viewport narrows, reaches the
        original 4rem by standard desktop widths (~1280px). */
@@ -584,7 +1148,8 @@ nav .hidden.md\:flex,
     min-height: 2.225rem;
     padding: 0.5rem 1.5rem !important;
     border-radius: 0.5rem !important;
-    color: #fff !important;
+    /* Sits on the cyan→purple gradient, which is dark in both themes. */
+    color: var(--c-on-accent) !important;
     font-family: 'JetBrains Mono', monospace !important;
     font-size: 0.875rem !important;
     font-weight: 500 !important;
@@ -593,7 +1158,7 @@ nav .hidden.md\:flex,
     text-decoration: none !important;
     white-space: nowrap !important;
     margin-left: 0 !important;
-    box-shadow: 0 0 24px rgba(0, 240, 255, 0.18);
+    box-shadow: 0 0 24px rgb(var(--t-electric-cyan) / 0.18);
   }
 
   nav.fixed.top-0.w-full > a.bg-gradient-to-r:hover,
@@ -609,18 +1174,37 @@ nav .hidden.md\:flex,
 
 /* Where the header switches to the hamburger.
    The wide header only fits its full link row plus the Contact CTA down to
-   ~880px. It used to keep going to 768px by dropping the CTA, which left a
+   ~1105px. It used to keep going to 768px by dropping the CTA, which left a
    half-collapsed header: links on the left, a dead gutter on the right where
    the button had been, and no way to reach Contact from the header at all.
    Switch to the hamburger at that point instead, so the header is either whole
    or a menu and never partway.
+
+   Was 880px for four pills, then 1120px when Industries made it five, and now
+   1024px since the Software pill was retired on 2026-08-27 and the row is back
+   to four. Measured on an interior page: +76px clearance at 1120, +41px at
+   1024, +9px at 960, and 0px at 920 and below — so 880 is NOT safe to return
+   to even at four pills; the row abuts the CTA there. History: an interior page carries seven items
+   (Home · Websites · Software · Industries · Pricing + login + theme toggle),
+   the row is a flex child with min-width:0 and overflow:visible, so instead of
+   wrapping it simply spilled — the theme toggle and login icon slid under the
+   Get started CTA anywhere below ~1105px. That is exactly the "partway" state
+   this rule exists to prevent, so the boundary moved to 1120px (14px
+   clearance; 33px at 1160). Measured 2026-08-20 on interior pages, which are
+   the worst case — the homepage drops the Home pill and fits ~120px lower.
+
+   Anything that is nav chrome must use this same boundary: the switch below,
+   the desktop nav geometry, the bottom bar, the mobile chrome block, and
+   .page's VERTICAL padding (which clears the fixed mobile header and tab bar).
+   Page layout — grids, .sds-proof, footer variants, phone gutters — stays on
+   880px and must not be dragged along.
 
    The injected nav's own classes are `hidden md:flex` / `md:hidden`, i.e. baked
    to Tailwind's 768px. These two rules move that boundary for the nav only —
    `.dm-standard-mobile-shell` is on the injected shell specifically, so page
    layouts that use the same `md:hidden` class for their phone wrapper are not
    dragged along and keep switching at 768px. */
-@media (max-width: 879.98px) {
+@media (max-width: 1023.98px) {
   .dm-standard-desktop-nav {
     display: none !important;
   }
@@ -655,7 +1239,7 @@ nav .hidden.md\:flex,
 .dm-standard-desktop-nav,
 .dm-unified-mobile-header,
 .dm-standard-bottom-nav {
-  background: rgba(8, 10, 14, 0.9) !important;
+  background: var(--c-bar-tint) !important;
 }
 
 /* Hairline borders for the same three bars, pinned here for the same reason as
@@ -666,11 +1250,494 @@ nav .hidden.md\:flex,
    light-gray 1px line across the header bottom and above the footer. */
 .dm-standard-desktop-nav,
 .dm-unified-mobile-header {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-bottom: 1px solid var(--c-veil-3) !important;
 }
 
 .dm-standard-bottom-nav {
-  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-top: 1px solid var(--c-veil-3) !important;
+}
+
+/* Bottom tab label colours — third instance of the same injected-markup trap.
+   The generator writes `text-on-surface-variant/60` on the inactive tabs, a
+   Tailwind alpha modifier that appears in no page's static HTML, so it rides on
+   the CDN's DOM observer: measured across two loads of the same page it
+   resolved once (rgba(77,84,89,0.6)) and not at all the other time (inheriting
+   body ink). When it did resolve, light mode put the labels at 2.83:1 on the
+   paper bar — under AA at phone width on every page.
+
+   Pinned in plain CSS, and without the 0.6: the active tab is already carried
+   by cyan plus a glow, so de-emphasis does not need to be paid for in
+   legibility. Specificity 0,1,1 beats the utility's 0,1,0; the active rule is
+   0,2,1 so it still wins, and it now also guarantees the cyan if that utility
+   misses too. */
+.dm-standard-bottom-nav > a { color: rgb(var(--t-on-surface-variant)); }
+.dm-standard-bottom-nav > a:hover { color: rgb(var(--t-starlight-white)); }
+.dm-standard-bottom-nav > a.text-electric-cyan { color: rgb(var(--t-electric-cyan)); }
+
+/* ── Layout system ───────────────────────────────────────────────────────────
+   Shared page vocabulary, introduced 2026-08-16 (Phase 5 of the layout
+   upgrade). pricing.html and websites.html had each hand-rolled the same
+   twelve patterns under different prefixes (.pr-* and .wb-*), and nine of the
+   twelve had already drifted apart on values that were meant to match —
+   2.1rem vs 2.25rem headings, 84px vs 88px section gaps, 26px vs 28px card
+   padding. None of that was intentional; it is just what happens when the
+   second page copies the first by hand.
+
+   Canonical values below split those differences. Use these on new pages
+   instead of inventing another prefix. Page-specific components (a pricing
+   toggle, a numbered step, a proof card) still belong in the page — only the
+   patterns that genuinely repeat live here.
+
+   All token-driven. Never hardcode a palette colour: the theme works by
+   swapping variable values, so a literal opts the element out silently.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Container + rhythm */
+.sds-wrap    { width: min(1240px, 100% - 3rem); margin: 0 auto; }
+.sds-section { margin-top: 88px; }
+
+/* Type scale */
+.sds-eyebrow {
+  font: 700 12px "JetBrains Mono", monospace;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgb(var(--t-electric-cyan));
+  margin: 0 0 14px;
+}
+
+.sds-h1 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2.1rem, 5.3vw, 3.65rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 18px;
+  color: rgb(var(--t-starlight-white));
+}
+
+.sds-h2 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1.55rem, 3.1vw, 2.2rem);
+  line-height: 1.15;
+  margin: 0 0 14px;
+  color: rgb(var(--t-starlight-white));
+}
+
+.sds-h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.1rem;
+  margin: 0 0 8px;
+  color: rgb(var(--t-starlight-white));
+}
+
+.sds-lead { font-size: 1.05rem; line-height: 1.7; max-width: 46rem; margin: 0; color: rgb(var(--t-on-surface-variant)); }
+.sds-body { font-size: 0.9rem;  line-height: 1.65; margin: 0; color: rgb(var(--t-on-surface-variant)); }
+
+/* Centring is a modifier, not baked into .sds-lead — pricing.html centres its
+   hero lead while websites.html left-aligns the same element. */
+.sds-lead--center { margin-left: auto; margin-right: auto; }
+
+.sds-fine { margin-top: 20px; font-size: 0.8rem; line-height: 1.6; color: rgb(var(--t-outline)); }
+
+/* Surfaces */
+.sds-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 24px;
+  border: 1px solid var(--c-veil-3);
+  border-radius: 18px;
+  background: rgb(var(--t-surface-container-low) / 0.65);
+}
+
+.sds-panel {
+  padding: 32px 28px;
+  border: 1px solid var(--c-veil-3);
+  border-radius: 20px;
+  background: rgb(var(--t-surface-container-low) / 0.55);
+}
+
+/* Checklist with a leading icon. Promoted here from websites.html's page-scoped
+   .wb-list on 2026-08-18, when web-design-for-hvac.html became the second page
+   to want it — and the first of ~13 industry pages. Per the layout-system rule:
+   if a second page would want it, it lives in nav.css.
+
+   ICON ALIGNMENT IS THE LOAD-BEARING PART. Setting only font-size leaves the
+   glyph's own line box (1.35) taller than the text's (1.55 x 0.9rem = 22.32px),
+   which pushed the marker ~1px high on websites.html — and 7px high on any page
+   that used the class without defining it. The icon is instead boxed to exactly
+   one text line and centred in it, so its optical centre lands on the FIRST
+   line's centre however many lines the item wraps to. */
+.sds-list {
+  --sds-list-mark: rgb(var(--t-electric-cyan));
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 11px;
+}
+
+.sds-list li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: rgb(var(--t-on-surface-variant));
+}
+
+/* Colour comes from --sds-list-mark, not a hardcoded rule, so a page can retint
+   its markers by setting the variable on the <ul> instead of fighting this
+   selector's specificity. */
+.sds-list li > .material-symbols-outlined {
+  font-size: 18px;
+  line-height: 1;
+  height: calc(0.9rem * 1.55);
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--sds-list-mark);
+}
+
+/* Rounded icon chip above a card heading. Promoted from websites.html's .wb-ico
+   in the same pass, for the same reason. */
+.sds-ico {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 14px;
+  border-radius: 12px;
+  background: rgba(var(--c-primary-rgb), 0.10);
+  color: rgb(var(--t-electric-cyan));
+}
+
+/* Buttons. .sds-hero-secondary (index.html's outlined hero action) is the same
+   object; it keeps its own name only because the homepage sizes it to match
+   the newsletter row. */
+.sds-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0.85rem 1.4rem;
+  border-radius: 10px;
+  border: 1px solid rgba(var(--c-primary-rgb), 0.35);
+  background: rgba(var(--c-primary-rgb), 0.08);
+  color: rgb(var(--t-electric-cyan));
+  font: 700 13px "JetBrains Mono", monospace;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.sds-btn:hover { background: rgba(var(--c-primary-rgb), 0.16); transform: translateY(-1px); }
+.sds-btn--solid { border: 0; background: var(--g-primary); color: var(--c-on-accent); }
+
+.sds-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+
+/* Outlined hero action, paired with the gradient "Get started" button on the
+   homepage's two-button hero. Same object as .sds-btn but sized to line up
+   with the newsletter row it sits beside, so it keeps its own name. */
+.sds-hero-secondary {
+  flex: 0 0 auto;
+  min-height: 3.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border: 1px solid rgba(var(--c-primary-rgb), 0.38);
+  background: rgba(var(--c-primary-rgb), 0.07);
+  color: rgb(var(--t-electric-cyan));
+  text-decoration: none;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.sds-hero-secondary:hover {
+  background: rgba(var(--c-primary-rgb), 0.15);
+  transform: translateY(-1px);
+}
+
+/* Responsive grids. Break at the site's own 880 line, then again where the
+   content actually needs the extra column. */
+.sds-grid-2, .sds-grid-3, .sds-grid-4 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  grid-auto-rows: 1fr;
+}
+
+@media (min-width: 880px) {
+  .sds-grid-2, .sds-grid-3, .sds-grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1100px) { .sds-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1200px) { .sds-grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+/* ── Proof strip ─────────────────────────────────────────────────────────────
+   A thin credibility band placed directly under the hero, answering "can I
+   trust these people?" before the visitor decides whether to keep scrolling.
+   The full testimonials section stays where it is further down the page.
+
+   Content rule: this carries REAL, already-published proof only — a verbatim
+   client quote with its existing attribution. It deliberately does not carry a
+   star rating or a "trusted by N businesses" counter, because those would be
+   factual claims about the business that nobody has verified.
+   ─────────────────────────────────────────────────────────────────────────── */
+.sds-proof {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 18px;
+  padding: 16px 22px;
+  border: 1px solid var(--c-veil-3);
+  border-radius: 999px;
+  background: var(--c-veil-1);
+  text-align: center;
+}
+
+/* In the hero it sits between the lead and the CTA row, so it needs its own
+   breathing room and must not stretch to the lead's full measure. */
+.sds-proof--hero {
+  width: fit-content;
+  max-width: 100%;
+  margin: 28px auto 0;
+}
+
+/* For heroes whose copy is left-aligned (websites.html) rather than centred
+   (index.html, pricing.html) — an auto-centred pill under left-aligned text
+   reads as a mistake. */
+.sds-proof--start { margin-left: 0; }
+
+@media (max-width: 879.98px) {
+  /* The strip goes full-width once it stacks, so start-alignment is moot. */
+  .sds-proof--hero { width: auto; }
+}
+
+.sds-proof__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font: 700 10px "JetBrains Mono", monospace;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(var(--t-electric-cyan));
+  white-space: nowrap;
+}
+
+.sds-proof__label .material-symbols-outlined { font-size: 15px; line-height: 1; }
+
+.sds-proof__quote {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgb(var(--t-on-surface));
+}
+
+.sds-proof__who {
+  font: 500 0.78rem "JetBrains Mono", monospace;
+  color: rgb(var(--t-on-surface-variant));
+  white-space: nowrap;
+}
+
+/* Below the 880 line the pill shape stops working — the quote wraps to three
+   lines and the rounded ends look like a mistake. Square it off and stack. */
+@media (max-width: 879.98px) {
+  .sds-proof {
+    flex-direction: column;
+    border-radius: 16px;
+    padding: 18px 20px;
+  }
+  .sds-proof__who { white-space: normal; }
+}
+
+/* Card art: fixed ratio + cover so screenshots of different native sizes line
+   up as a row. Top-anchored because these are page captures and the header is
+   the useful part. */
+.sds-media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top center;
+  border-bottom: 1px solid var(--c-veil-3);
+  background: rgb(var(--t-surface-container));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sds-btn, .sds-hero-secondary { transition: none; }
+  .sds-btn:hover, .sds-hero-secondary:hover { transform: none; }
+}
+
+/* ── Desktop nav pills ───────────────────────────────────────────────────────
+   The 2026-08-16 IA change (Websites · Software · Work · Pricing) moved the
+   active-page signal from a cyan underline to a filled pill, following the
+   reference site. A pill reads as "you are here" at a glance where a 2px rule
+   under one of five same-coloured words does not.
+
+   Plain CSS, not Tailwind: the nav is injected by standard-site-nav.js, and
+   the CDN only builds classes it finds in a page's STATIC html. This is the
+   same constraint that has already produced four live bugs in this repo.
+   ─────────────────────────────────────────────────────────────────────────── */
+.sds-nav-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  /* Pins every pill to the same height. Without it the icon-only Client Login
+     pill renders 1.2px shorter than the text pills (icon glyph box vs the
+     19.6px mono line-height), which reads as a misaligned bar. */
+  min-height: 2.115rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  color: rgb(var(--t-on-surface-variant));
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.sds-nav-pill:hover {
+  color: rgb(var(--t-electric-cyan));
+  background: rgba(var(--c-primary-rgb), 0.07);
+}
+
+.sds-nav-pill:focus-visible {
+  outline: 2px solid rgb(var(--t-electric-cyan));
+  outline-offset: 2px;
+}
+
+.sds-nav-pill.is-active {
+  color: rgb(var(--t-electric-cyan));
+  background: rgba(var(--c-primary-rgb), 0.12);
+  border-color: rgba(var(--c-primary-rgb), 0.35);
+}
+
+/* Client Login is icon-only on desktop now, so it needs a square-ish tap
+   target rather than the text pill's horizontal padding. */
+.sds-nav-pill--icon {
+  padding: 0.45rem 0.5rem;
+}
+
+.sds-nav-pill--icon .material-symbols-outlined {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sds-nav-pill { transition: none; }
+}
+
+/* ── Theme toggle ────────────────────────────────────────────────────────────
+   Styled entirely in plain CSS for the same reason as the bar tint and the
+   hairlines above: the control is injected by standard-site-nav.js, and the
+   Tailwind CDN only builds utilities it can find in a page's static HTML.
+   Nothing here may become a utility class.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Desktop: icon button sitting between Client Login and the Contact CTA. */
+.sds-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 1px solid var(--c-veil-3);
+  border-radius: 0.6rem;
+  background: var(--c-veil-1);
+  color: rgb(var(--t-on-surface-variant));
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease,
+    transform 0.2s ease;
+}
+
+.sds-theme-toggle:hover {
+  color: rgb(var(--t-electric-cyan));
+  border-color: rgba(var(--c-primary-rgb), 0.45);
+  background: rgba(var(--c-primary-rgb), 0.08);
+}
+
+.sds-theme-toggle:active { transform: scale(0.94); }
+
+.sds-theme-toggle:focus-visible {
+  outline: 2px solid rgb(var(--t-electric-cyan));
+  outline-offset: 2px;
+}
+
+.sds-theme-toggle__icon { font-size: 1.15rem; line-height: 1; }
+
+/* Phone: a row inside the hamburger dropdown, below the Contact CTA. Matches
+   the dropdown's other rows in metrics without borrowing their utilities. */
+.sds-theme-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  margin: 0.25rem 0 0;
+  padding: 0.75rem 1rem;
+  border: 0;
+  border-top: 1px solid var(--c-veil-2);
+  background: transparent;
+  color: rgb(var(--t-on-surface-variant));
+  font: 500 0.875rem "JetBrains Mono", monospace;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.25s ease, background 0.25s ease;
+}
+
+.sds-theme-row:hover {
+  color: rgb(var(--t-starlight-white));
+  background: var(--c-veil-2);
+}
+
+.sds-theme-row:focus-visible {
+  outline: 2px solid rgb(var(--t-electric-cyan));
+  outline-offset: -2px;
+}
+
+.sds-theme-row__icon { font-size: 1.125rem; line-height: 1; flex-shrink: 0; }
+.sds-theme-row__label { flex: 1 1 auto; }
+
+/* Switch affordance — reads as on when light is active. */
+.sds-theme-switch {
+  position: relative;
+  width: 2rem;
+  height: 1.05rem;
+  flex-shrink: 0;
+  border: 1px solid var(--c-veil-4);
+  border-radius: 999px;
+  background: var(--c-veil-2);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.sds-theme-switch__dot {
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: rgb(var(--t-on-surface-variant));
+  transform: translateY(-50%);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.sds-theme-row[aria-pressed="true"] .sds-theme-switch {
+  background: rgba(var(--c-primary-rgb), 0.28);
+  border-color: rgba(var(--c-primary-rgb), 0.55);
+}
+
+.sds-theme-row[aria-pressed="true"] .sds-theme-switch__dot {
+  background: rgb(var(--t-electric-cyan));
+  transform: translate(0.95rem, -50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sds-theme-toggle,
+  .sds-theme-row,
+  .sds-theme-switch,
+  .sds-theme-switch__dot { transition: none; }
 }
 
 /* The phone tab bar follows the platform-standard directional scroll pattern:
@@ -678,7 +1745,7 @@ nav .hidden.md\:flex,
    back. Transform + opacity keep the transition compositor-friendly. It stays
    in the accessibility tree while visually tucked away, so keyboard focus or
    assistive navigation can reveal it immediately. */
-@media (max-width: 879.98px) {
+@media (max-width: 1023.98px) {
   .dm-standard-bottom-nav {
     opacity: 1;
     transform: translate3d(0, 0, 0);
@@ -698,7 +1765,7 @@ nav .hidden.md\:flex,
   }
 }
 
-@media (max-width: 879.98px) and (prefers-reduced-motion: reduce) {
+@media (max-width: 1023.98px) and (prefers-reduced-motion: reduce) {
   .dm-standard-bottom-nav,
   .dm-standard-bottom-nav.dm-standard-bottom-nav--hidden {
     transition: none;
@@ -745,11 +1812,11 @@ nav .hidden.md\:flex,
 }
 
 .services-nav-panel {
-  background: rgba(8, 10, 14, 0.97);
+  background: rgb(var(--t-surf-080a0e) / 0.97);
   backdrop-filter: blur(20px) saturate(1.2);
   -webkit-backdrop-filter: blur(20px) saturate(1.2);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(var(--c-veil-rgb), 0.12);
+  box-shadow: 0 18px 48px rgba(var(--c-shadow-rgb), 0.65);
   border-radius: 0.75rem;
   padding: 0.65rem 0;
   min-width: 18rem;
@@ -772,7 +1839,7 @@ nav .hidden.md\:flex,
 .services-nav-heading:not(:first-child) {
   margin-top: 0.4rem;
   padding-top: 0.75rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(var(--c-veil-rgb), 0.08);
 }
 
 .services-nav-heading .material-symbols-outlined,
@@ -804,7 +1871,7 @@ nav .hidden.md\:flex,
 
 .services-nav-panel a:hover {
   color: var(--c-primary);
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(var(--c-veil-rgb), 0.06);
 }
 
 .services-nav-panel a.text-electric-cyan {
@@ -817,7 +1884,7 @@ nav .hidden.md\:flex,
    popout and bottom bar have to be styled wherever they are actually shown.
    Page-layout rules do NOT belong in here; they keep the 767px phone
    breakpoint and live in their own block further down. */
-@media (max-width: 879.98px) {
+@media (max-width: 1023.98px) {
   html,
   body {
     overflow-x: hidden;
@@ -849,12 +1916,12 @@ nav .hidden.md\:flex,
     max-height: min(72vh, 34rem);
     overflow: auto;
     padding: 0.8rem;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(var(--c-veil-rgb), 0.12);
     border-radius: 0.85rem;
-    background: rgba(8, 10, 14, 0.94);
+    background: rgb(var(--t-surf-080a0e) / 0.94);
     backdrop-filter: blur(24px) saturate(1.25);
     -webkit-backdrop-filter: blur(24px) saturate(1.25);
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.72), 0 0 26px rgba(0, 240, 255, 0.12);
+    box-shadow: 0 24px 70px rgba(var(--c-shadow-rgb), 0.72), 0 0 26px rgb(var(--t-electric-cyan) / 0.12);
     opacity: 0;
     visibility: hidden;
     transform: translateY(-0.7rem) scale(0.985);
@@ -885,11 +1952,11 @@ nav .hidden.md\:flex,
   }
 
   .mobile-nav-dropdown-panel {
-    background: rgba(8, 10, 14, 0.96);
+    background: rgb(var(--t-surf-080a0e) / 0.96);
     backdrop-filter: blur(20px) saturate(1.25);
     -webkit-backdrop-filter: blur(20px) saturate(1.25);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.65);
+    border: 1px solid rgba(var(--c-veil-rgb), 0.12);
+    box-shadow: 0 18px 48px rgba(var(--c-shadow-rgb), 0.65);
   }
 
   .dm-unified-mobile-header {
@@ -915,9 +1982,9 @@ nav .hidden.md\:flex,
      clickable but completely invisible. Pin the colours here, where the rest of
      the injected nav's fallbacks already live. Same values the utilities
      produce, so pages where the CDN does generate them are unaffected. */
-  .mobile-menu-line-top { background-color: #00f0ff; }
-  .mobile-menu-line-mid { background-color: rgba(255, 255, 255, 0.55); }
-  .mobile-menu-line-bot { background-color: rgba(255, 255, 255, 0.35); }
+  .mobile-menu-line-top { background-color: rgb(var(--t-electric-cyan)); }
+  .mobile-menu-line-mid { background-color: rgba(var(--c-veil-rgb), 0.55); }
+  .mobile-menu-line-bot { background-color: rgba(var(--c-veil-rgb), 0.35); }
 
   #mobile-menu-btn[aria-expanded="true"] .mobile-menu-line-top { width: 1.25rem; }
   #mobile-menu-btn[aria-expanded="true"] .mobile-menu-line-mid { width: 1rem; opacity: 0.9; }
@@ -932,7 +1999,7 @@ nav .hidden.md\:flex,
   .mobile-acc-panel.is-open { max-height: 30rem; }
   .mobile-acc-chevron { transition: transform 0.3s ease; }
   .mobile-acc-toggle[aria-expanded="true"] .mobile-acc-chevron { transform: rotate(180deg); }
-  .mobile-acc-toggle[aria-expanded="true"] { color: #fff; }
+  .mobile-acc-toggle[aria-expanded="true"] { color: rgb(var(--t-starlight-white)); }
 
   /* Small non-interactive category tag inside the "All Services" accordion
      panel — same visual language as .mobile-services-popout__heading (the
@@ -951,7 +2018,7 @@ nav .hidden.md\:flex,
   }
   .mobile-menu-group-label:not(:first-child) {
     margin-top: 0.35rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 1px solid rgba(var(--c-veil-rgb), 0.06);
   }
 
   .mobile-services-popout.is-open {
@@ -972,10 +2039,10 @@ nav .hidden.md\:flex,
   }
 
   .mobile-services-popout__group {
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(var(--c-veil-rgb), 0.08);
     border-radius: 0.65rem;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.035);
+    background: rgba(var(--c-veil-rgb), 0.035);
   }
 
   .mobile-services-popout__heading {
@@ -997,12 +2064,12 @@ nav .hidden.md\:flex,
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.72rem;
     line-height: 1.25;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 1px solid rgba(var(--c-veil-rgb), 0.06);
   }
 
   .mobile-services-popout a:active,
   .mobile-services-popout a:hover {
-    color: #fff;
+    color: rgb(var(--t-starlight-white));
     background: rgba(var(--c-primary-rgb), 0.08);
   }
 
@@ -1022,13 +2089,20 @@ nav .hidden.md\:flex,
 
 }
 
-/* These two are page layout, not nav chrome, so they stay on the real phone
-   breakpoint: between 768px and 880px the page still renders its wide layout
-   (only the header switches to the hamburger), and forcing 20px gutters there
-   would squeeze the app pages for no reason. */
-@media (max-width: 879.98px) {
+/* This rule mixes two concerns, so it is split.
+
+   The VERTICAL padding is nav clearance: it holds content clear of the fixed
+   mobile header and the bottom tab bar, so it has to follow wherever the nav
+   switches — now 1120px. Leaving it at 880px would have tucked content under
+   the mobile header across the whole 880-1120 band.
+
+   The 20px HORIZONTAL gutters are page layout and stay on the phone
+   breakpoint: through that band the page still renders its wide layout, and
+   forcing phone gutters there would squeeze the app pages for no reason. */
+@media (max-width: 1023.98px) {
   body.has-dm-standard-nav .page {
-    padding: 7.75rem 20px 5.5rem !important;
+    padding-top: 7.75rem !important;
+    padding-bottom: 5.5rem !important;
   }
 
   body.has-dm-standard-nav .app-footer {
@@ -1036,7 +2110,13 @@ nav .hidden.md\:flex,
   }
 }
 
-@media (min-width: 880px) {
+@media (max-width: 879.98px) {
+  body.has-dm-standard-nav .page {
+    padding: 7.75rem 20px 5.5rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
   .dm-standard-desktop-nav {
     left: 0;
     right: 0;
@@ -1061,8 +2141,8 @@ nav .hidden.md\:flex,
   width: 100%;
   position: relative;
   z-index: 10;
-  background: #050505;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgb(var(--t-void-black));
+  border-top: 1px solid rgba(var(--c-veil-rgb), 0.05);
 }
 
 .dm-footer {
@@ -1091,7 +2171,7 @@ nav .hidden.md\:flex,
   font-size: 24px;
   font-weight: 500;
   line-height: 1.3;
-  color: #ffffff;
+  color: rgb(var(--t-starlight-white));
 }
 
 /* Phrase-atomic, same as the legal block below. This column is the one that
@@ -1108,7 +2188,7 @@ nav .hidden.md\:flex,
   line-height: 1.5;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #8e9192;
+  color: rgb(var(--t-outline));
 }
 
 .dm-footer__tagline > * {
@@ -1127,13 +2207,13 @@ nav .hidden.md\:flex,
   font-weight: 500;
   line-height: 1.4;
   letter-spacing: 0.05em;
-  color: #8e9192;
+  color: rgb(var(--t-outline));
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .dm-footer__links a:hover {
-  color: #00f0ff;
+  color: rgb(var(--t-electric-cyan));
 }
 
 /* Legal/meta block. Each line is a flex row of atomic phrases (see the
@@ -1156,7 +2236,7 @@ nav .hidden.md\:flex,
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
   line-height: 1.5;
-  color: #8e9192;
+  color: rgb(var(--t-outline));
 }
 
 .dm-footer__legal-line > * {
@@ -1174,7 +2254,7 @@ nav .hidden.md\:flex,
 }
 
 .dm-footer__legal a:hover {
-  color: #00f0ff;
+  color: rgb(var(--t-electric-cyan));
 }
 
 @media (min-width: 880px) {
@@ -1230,7 +2310,7 @@ nav .hidden.md\:flex,
 .dm-footer-mobile__brand .material-symbols-outlined {
   font-size: 20px;
   line-height: 28px;
-  color: #00f0ff;
+  color: rgb(var(--t-electric-cyan));
 }
 
 .dm-footer-mobile__wordmark {
@@ -1239,7 +2319,7 @@ nav .hidden.md\:flex,
   font-weight: 500;
   line-height: 1.3;
   letter-spacing: -0.05em;
-  color: #ffffff;
+  color: rgb(var(--t-starlight-white));
 }
 
 .dm-footer-mobile__links {
@@ -1254,13 +2334,13 @@ nav .hidden.md\:flex,
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
   line-height: 1.5;
-  color: #8e9192;
+  color: rgb(var(--t-outline));
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .dm-footer-mobile__links a:hover {
-  color: #00f0ff;
+  color: rgb(var(--t-electric-cyan));
 }
 
 /* Same phrase-atomic treatment as the wide footer's legal block: centred text
@@ -1278,7 +2358,13 @@ nav .hidden.md\:flex,
   line-height: 1.5;
   letter-spacing: 0.1em;
   text-align: center;
-  color: rgba(121, 119, 119, 0.6);
+  /* Was rgba(121,119,119,0.6) — 2.28:1 on dark and 2.16:1 on paper. This is the
+     phone footer's copyright/phone/location block at 10px, so it failed AA in
+     BOTH themes and had simply never been measured at a phone width: every
+     earlier sweep ran at 1280px, where .dm-footer-mobile does not render.
+     140 elements across 28 pages. Full-opacity token: 4.58:1 dark, 6.66:1
+     light. */
+  color: rgb(var(--t-on-primary-container));
 }
 
 .dm-footer-mobile__legal > * {
@@ -1328,6 +2414,6 @@ nav .hidden.md\:flex,
    !important guards against Tailwind's CDN-JIT utility classes winning a
    cascade tie on dynamically injected markup (a recurring issue on this
    site — see CHANGELOG for the color-utility-fallback fixes). */
-.dm-account-link-desktop.is-signed-in { color: #00F0FF !important; }
-.dm-account-link-desktop.is-signed-in:hover { color: #fff !important; }
-.dm-account-link-mobile.is-signed-in { color: #00F0FF !important; background-color: rgba(0, 240, 255, 0.05) !important; }
+.dm-account-link-desktop.is-signed-in { color: rgb(var(--t-electric-cyan)) !important; }
+.dm-account-link-desktop.is-signed-in:hover { color: rgb(var(--t-starlight-white)) !important; }
+.dm-account-link-mobile.is-signed-in { color: rgb(var(--t-electric-cyan)) !important; background-color: rgb(var(--t-electric-cyan) / 0.05) !important; }

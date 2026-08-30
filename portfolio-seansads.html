@@ -2,6 +2,7 @@
 <html class="dark" style="background:#050505" lang="en">
 <head>
 <meta charset="utf-8"/>
+<script id="sds-theme-resolver">/* Pre-paint theme resolver — must stay the first script in <head>. Stamps data-theme on <html> from the stored choice before anything paints, and overwrites the inline dark background attribute. Dark is the brand default when nothing is stored, so a visitor whose OS prefers light still gets the site's intended look until they choose. */(function(){var d=document.documentElement,t;try{t=localStorage.getItem("sds-theme")}catch(e){}if(t!=="light")t="dark";d.setAttribute("data-theme",t);d.classList.toggle("dark",t==="dark");d.style.background=t==="light"?"#f4f2ee":"#050505"})();</script>
 
 <script>/* Head-stamp: nav.css reveals un-stamped pages at 0.2s (its no-logo-script fallback). On heavy pages the bottom-of-body surette-logo.js stamp lands after that, so content flashed in at 0.2s, vanished when the stamp arrived, then faded back in. Stamping before first paint makes JS the only revealer. */document.documentElement.classList.add("sds-logo-loaded");</script>
 <style id="dm-critical-dark-baseline">
@@ -10,6 +11,7 @@
   #__next,#root,.app{background:#050505;min-height:100vh;}
   body>main{min-height:100vh;}
   #page-loader,.sds-apps-loader{background:#050505;}
+html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:#0b0e10;color-scheme:light}html[data-theme="light"] #__next,html[data-theme="light"] #root,html[data-theme="light"] .app{background:#f4f2ee}html[data-theme="light"] #page-loader,html[data-theme="light"] .sds-apps-loader{background:#f4f2ee}
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>SeansAds.com | Portfolio | Surette Data Systems</title>
@@ -31,10 +33,10 @@
 <meta name="twitter:title" content="SeansAds.com | Portfolio | Surette Data Systems"/>
 <meta name="twitter:description" content="A standalone Google Ads mini-site built at SeansAds.com for Sean Cochrane by Surette Data Systems."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
-<link href="assets/nav.css?v=20260801-scroll-hide3" rel="stylesheet"/>
-<link href="assets/cosmic-web.css?v=20260716-md880" rel="stylesheet"/><link href="assets/portfolio-mobile-fixes.css?v=20260717-template-mobile" rel="stylesheet"/>
+<link href="assets/nav.css?v=20260829-apps-retired" rel="stylesheet"/>
+<link href="assets/cosmic-web.css?v=20260827-contrast-nav" rel="stylesheet"/><link href="assets/portfolio-mobile-fixes.css?v=20260817-cta-r5" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script src="assets/tailwind-nav-config.js?v=20260716-md880"></script>
+<script src="assets/tailwind-nav-config.js?v=20260817-cta-r5"></script>
 <style>
   #sds-logo a.sds-anchor,
   #sds-logo-mobile a.sds-anchor {
@@ -65,10 +67,10 @@
     font-size: 15px !important;
     font-weight: 700 !important;
     letter-spacing: 0.16em !important;
-    color: #ddeeff !important;
+    color: var(--sds-logo-co, #ddeeff) !important;
     line-height: 1 !important;
     text-transform: uppercase !important;
-    text-shadow: 0 0 12px rgba(0, 190, 255, 0.45) !important;
+    text-shadow: var(--sds-logo-glow, 0 0 12px rgba(0, 190, 255, 0.45)) !important;
   }
   #sds-logo .sds-sub,
   #sds-logo-mobile .sds-sub {
@@ -76,22 +78,22 @@
     font-size: 8px !important;
     font-weight: 300 !important;
     letter-spacing: 0.34em !important;
-    color: #00b8df !important;
+    color: var(--sds-logo-sub, #00b8df) !important;
     line-height: 1 !important;
-    opacity: 0.7 !important;
+    opacity: var(--sds-logo-sub-opacity, 0.7) !important;
   }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <style>
-body{background:#050505;color:#e3e2e2;overflow-x:hidden}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24}.glass-panel{background:rgba(255,255,255,.05);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1)}.glass-card{background:rgba(255,255,255,.035);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1)}.gradient-text-nebula{background:linear-gradient(135deg,#00f0ff 0%,#7000ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.preview-frame{border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;background:#050505;box-shadow:0 22px 60px rgba(0,0,0,.45)}.preview-frame img{width:100%;display:block;object-fit:cover;object-position:top center}@media(max-width: 879.98px){main{padding-left:20px!important;padding-right:20px!important;min-width:0}main .grid>div{min-width:0}h1{font-size:clamp(2rem,12vw,3.6rem)!important;line-height:1.05;letter-spacing:-0.02em}}
+body{background:rgb(var(--t-void-black));color:rgb(var(--t-on-surface));overflow-x:hidden}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24}.glass-panel{background:rgba(var(--c-veil-rgb), .05);backdrop-filter:blur(20px);border:1px solid rgba(var(--c-veil-rgb), .1)}.glass-card{background:rgba(var(--c-veil-rgb), .035);backdrop-filter:blur(20px);border:1px solid rgba(var(--c-veil-rgb), .1)}.gradient-text-nebula{background:linear-gradient(135deg,rgb(var(--t-electric-cyan)) 0%,rgb(var(--t-nebula-purple)) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.preview-frame{border:1px solid rgba(var(--c-veil-rgb), .12);border-radius:14px;overflow:hidden;background:rgb(var(--t-void-black));box-shadow:0 22px 60px rgba(var(--c-shadow-rgb), .45)}.preview-frame img{width:100%;display:block;object-fit:cover;object-position:top center}@media(max-width: 879.98px){main{padding-left:20px!important;padding-right:20px!important;min-width:0}main .grid>div{min-width:0}h1{font-size:clamp(2rem,12vw,3.6rem)!important;line-height:1.05;letter-spacing:-0.02em}}
 </style>
 </head>
 <body class="font-['Plus_Jakarta_Sans',sans-serif] min-h-screen flex flex-col selection:bg-electric-cyan selection:text-black cosmic-page cosmic-tint-services">
 <div class="fixed inset-0 z-0 pointer-events-none">
 <div class="absolute inset-0 cosmic-web-bg opacity-70"></div>
-<div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,240,255,0.16),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(112,0,255,0.16),transparent_38%),linear-gradient(to_bottom,rgba(5,5,5,0.35),#050505_82%)]"></div>
+<div class="absolute inset-0 sds-cosmic-veil sds-cosmic-veil--tinted bg-[radial-gradient(circle_at_top_right,rgba(0,240,255,0.16),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(112,0,255,0.16),transparent_38%),linear-gradient(to_bottom,rgba(5,5,5,0.35),#050505_82%)]"></div>
 </div>
-<script src="assets/standard-site-nav.js?v=20260801-scroll-hide3" data-active="portfolio"></script>
+<script src="assets/standard-site-nav.js?v=20260829-apps-retired" data-active="websites"></script>
 <main class="relative z-10 pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto md:pl-28">
 <section class="max-w-6xl mx-auto">
 <a href="casestudies.html#case-seansads" class="inline-flex items-center gap-2 text-electric-cyan font-['JetBrains_Mono'] text-xs mb-10"><span class="material-symbols-outlined text-base">arrow_back</span> Back to portfolio</a>
@@ -209,12 +211,10 @@ body{background:#050505;color:#e3e2e2;overflow-x:hidden}.material-symbols-outlin
 </section>
 </section>
 </main>
-<script src="assets/standard-site-footer.js?v=20260716-footer-3line"></script>
-<script src="assets/mobile-services-nav.js?v=20260715-services-merge"></script>
-<script src="assets/account-nav.js?v=20260715-login-highlight"></script>
-<script src="assets/rail.js?v=20260602-rail-active"></script>
-<script src="assets/portfolio-title-fit.js?v=20260605-title-fit"></script>
-<script src="surette-logo.js?v=20260721-fonts-gate"></script>
+<script src="assets/standard-site-footer.js?v=20260817-cta-r5"></script>
+<script src="assets/account-nav.js?v=20260817-cta-r5"></script>
+<script src="assets/portfolio-title-fit.js?v=20260829-apps-retired"></script>
+<script src="surette-logo.js?v=20260817-cta-r5"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
 </body>
 </html>

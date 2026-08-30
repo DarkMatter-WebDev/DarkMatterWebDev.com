@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html class="dark" style="background:#050505" lang="en">
+<head>
+<meta charset="utf-8"/>
+<script id="sds-theme-resolver">/* Pre-paint theme resolver — must stay the first script in <head>. Stamps data-theme on <html> from the stored choice before anything paints, and overwrites the inline dark background attribute. Dark is the brand default when nothing is stored, so a visitor whose OS prefers light still gets the site's intended look until they choose. */(function(){var d=document.documentElement,t;try{t=localStorage.getItem("sds-theme")}catch(e){}if(t!=="light")t="dark";d.setAttribute("data-theme",t);d.classList.toggle("dark",t==="dark");d.style.background=t==="light"?"#f4f2ee":"#050505"})();</script>
+
+<script>/* Head-stamp: nav.css reveals un-stamped pages at 0.2s (its no-logo-script fallback). On heavy pages the bottom-of-body surette-logo.js stamp lands after that, so content flashed in at 0.2s, vanished when the stamp arrived, then faded back in. Stamping before first paint makes JS the only revealer. */document.documentElement.classList.add("sds-logo-loaded");</script>
+<style id="dm-critical-dark-baseline">
+  html,body{background:#050505;color:#fff;min-height:100%;color-scheme:dark;}
+  body{margin:0;min-height:100vh;}
+  #__next,#root,.app{background:#050505;min-height:100vh;}
+  body>main{min-height:100vh;}
+  #page-loader,.sds-apps-loader{background:#050505;}
+html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:#0b0e10;color-scheme:light}html[data-theme="light"] #__next,html[data-theme="light"] #root,html[data-theme="light"] .app{background:#f4f2ee}html[data-theme="light"] #page-loader,html[data-theme="light"] .sds-apps-loader{background:#f4f2ee}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Industries We Build For | Surette Data Systems</title>
+<meta name="description" content="Websites for Southwest Florida businesses by trade &mdash; HVAC, plumbing, roofing, legal, medical, dental, real estate, restaurants, auto repair, contracting and more."/>
+<link rel="canonical" href="https://surettesystems.com/industries.html"/>
+<link rel="icon" href="/assets/favicon.svg?v=20260716-blur-on" type="image/svg+xml"/>
+<link rel="icon" href="/assets/favicon-32.png?v=20260716-blur-on" sizes="32x32" type="image/png"/>
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=20260716-blur-on"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<meta name="theme-color" content="#050505"/>
+<meta property="og:site_name" content="Surette Data Systems"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Industries We Build For"/>
+<meta property="og:description" content="Websites for Southwest Florida businesses by trade &mdash; HVAC, plumbing, roofing, legal, medical, dental, real estate, restaurants, auto repair, contracting and more."/>
+<meta property="og:url" content="https://surettesystems.com/industries.html"/>
+<meta property="og:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="Surette Data Systems &mdash; high-tech business software for mobile, web, and desktop"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Industries We Build For"/>
+<meta name="twitter:description" content="Websites for Southwest Florida businesses by trade &mdash; HVAC, plumbing, roofing, legal, medical, dental, real estate, restaurants, auto repair, contracting and more."/>
+<meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
+<meta name="twitter:image:alt" content="Surette Data Systems &mdash; high-tech business software for mobile, web, and desktop"/>
+<link href="assets/nav.css?v=20260829-apps-retired" rel="stylesheet"/>
+<link href="assets/cosmic-web.css?v=20260827-contrast-nav" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors:{
+        "white": "rgb(var(--t-starlight-white) / <alpha-value>)","on-background":"rgb(var(--t-on-background) / <alpha-value>)","deep-space-grey":"rgb(var(--t-deep-space-grey) / <alpha-value>)","primary-container":"rgb(var(--t-primary-container) / <alpha-value>)","on-surface":"rgb(var(--t-on-surface) / <alpha-value>)","void-black":"rgb(var(--t-void-black) / <alpha-value>)","on-surface-variant":"rgb(var(--t-on-surface-variant) / <alpha-value>)","surface-container-high":"rgb(var(--t-surface-container-high) / <alpha-value>)","on-tertiary-container":"rgb(var(--t-on-tertiary-container) / <alpha-value>)","surface":"rgb(var(--t-surface) / <alpha-value>)","surface-container-low":"rgb(var(--t-surface-container-low) / <alpha-value>)","on-tertiary-fixed-variant":"rgb(var(--t-on-tertiary-fixed-variant) / <alpha-value>)","tertiary":"rgb(var(--t-tertiary) / <alpha-value>)","electric-cyan":"rgb(var(--t-electric-cyan) / <alpha-value>)","surface-bright":"rgb(var(--t-surface-bright) / <alpha-value>)","on-tertiary":"rgb(var(--t-on-tertiary) / <alpha-value>)","on-primary":"rgb(var(--t-on-primary) / <alpha-value>)","surface-container-highest":"rgb(var(--t-surface-container-highest) / <alpha-value>)","on-secondary-container":"rgb(var(--t-on-secondary-container) / <alpha-value>)","secondary":"rgb(var(--t-secondary) / <alpha-value>)","surface-container":"rgb(var(--t-surface-container) / <alpha-value>)","background":"rgb(var(--t-background) / <alpha-value>)","outline":"rgb(var(--t-outline) / <alpha-value>)","surface-container-lowest":"rgb(var(--t-surface-container-lowest) / <alpha-value>)","primary-fixed":"rgb(var(--t-primary-fixed) / <alpha-value>)","on-secondary":"rgb(var(--t-on-secondary) / <alpha-value>)","on-error":"rgb(var(--t-on-error) / <alpha-value>)","on-primary-fixed":"rgb(var(--t-on-primary-fixed) / <alpha-value>)","on-primary-container":"rgb(var(--t-on-primary-container) / <alpha-value>)","tertiary-fixed-dim":"rgb(var(--t-tertiary-fixed-dim) / <alpha-value>)","on-error-container":"rgb(var(--t-on-error-container) / <alpha-value>)","surface-dim":"rgb(var(--t-surface-dim) / <alpha-value>)","surface-tint":"rgb(var(--t-surface-tint) / <alpha-value>)","tertiary-container":"rgb(var(--t-tertiary-container) / <alpha-value>)","on-primary-fixed-variant":"rgb(var(--t-on-primary-fixed-variant) / <alpha-value>)","nebula-purple":"rgb(var(--t-nebula-purple) / <alpha-value>)","inverse-primary":"rgb(var(--t-inverse-primary) / <alpha-value>)","on-secondary-fixed-variant":"rgb(var(--t-on-secondary-fixed-variant) / <alpha-value>)","secondary-container":"rgb(var(--t-secondary-container) / <alpha-value>)","error-container":"rgb(var(--t-error-container) / <alpha-value>)","tertiary-fixed":"rgb(var(--t-tertiary-fixed) / <alpha-value>)","error":"rgb(var(--t-error) / <alpha-value>)","inverse-on-surface":"rgb(var(--t-inverse-on-surface) / <alpha-value>)","primary-fixed-dim":"rgb(var(--t-primary-fixed-dim) / <alpha-value>)","secondary-fixed-dim":"rgb(var(--t-secondary-fixed-dim) / <alpha-value>)","primary":"rgb(var(--t-primary) / <alpha-value>)","on-secondary-fixed":"rgb(var(--t-on-secondary-fixed) / <alpha-value>)","starlight-white":"rgb(var(--t-starlight-white) / <alpha-value>)","surface-variant":"rgb(var(--t-surface-variant) / <alpha-value>)","inverse-surface":"rgb(var(--t-inverse-surface) / <alpha-value>)","on-tertiary-fixed":"rgb(var(--t-on-tertiary-fixed) / <alpha-value>)","outline-variant":"rgb(var(--t-outline-variant) / <alpha-value>)","secondary-fixed":"rgb(var(--t-secondary-fixed) / <alpha-value>)"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{unit:"8px","margin-desktop":"64px","margin-mobile":"20px",gutter:"24px","container-max":"1440px"},fontFamily:{"headline-lg-mobile":["Space Grotesk"],"body-md":["Plus Jakarta Sans"],"label-mono":["JetBrains Mono"],"label-caps":["JetBrains Mono"],"body-lg":["Plus Jakarta Sans"],"headline-xl":["Space Grotesk"],"headline-md":["Space Grotesk"],"headline-lg":["Space Grotesk"]},fontSize:{"headline-lg-mobile":["32px",{lineHeight:"1.2",fontWeight:"600"}],"body-md":["16px",{lineHeight:"1.6",fontWeight:"400"}],"label-mono":["14px",{lineHeight:"1.4",letterSpacing:"0.05em",fontWeight:"500"}],"label-caps":["12px",{lineHeight:"1.2",letterSpacing:"0.1em",fontWeight:"700"}],"body-lg":["18px",{lineHeight:"1.6",fontWeight:"400"}],"headline-xl":["64px",{lineHeight:"1.1",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-md":["24px",{lineHeight:"1.3",fontWeight:"500"}],"headline-lg":["40px",{lineHeight:"1.2",letterSpacing:"-0.01em",fontWeight:"600"}]}}}};
+</script>
+<style>
+/* Industry landing page, page-scoped .ind-*. Layout comes from the shared
+   .sds-* system in nav.css (.sds-list / .sds-ico / .sds-card / .sds-grid-*);
+   only the numbered cards and the FAQ accordions are page-specific.
+   Token-driven only — a hex here would opt the page out of the light theme. */
+.ind-num {
+  font-family:'JetBrains Mono',monospace; font-size:.8rem; letter-spacing:.16em;
+  font-weight:700; color:rgb(var(--t-electric-cyan)); margin-bottom:10px;
+}
+/* Retint the shared .sds-list markers via the variable rather than a competing
+   colour rule — see the .sds-list block in nav.css. */
+.ind-mistakes { --sds-list-mark: rgb(var(--t-nebula-purple-on)); }
+.ind-faq { margin-top:26px; display:grid; gap:12px; }
+.ind-faq details {
+  border:1px solid var(--c-veil-3); border-radius:14px;
+  background:rgb(var(--t-surface-container-low) / 0.65); padding:0 20px;
+}
+.ind-faq summary {
+  cursor:pointer; list-style:none; padding:18px 0;
+  font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.02rem;
+  color:rgb(var(--t-starlight-white)); display:flex; justify-content:space-between; gap:16px;
+}
+.ind-faq summary::-webkit-details-marker { display:none; }
+.ind-faq summary::after { content:'+'; color:rgb(var(--t-electric-cyan)); font-weight:400; font-size:1.3rem; line-height:1; }
+.ind-faq details[open] summary::after { content:'\2212'; }
+.ind-faq p { color:rgb(var(--t-on-surface-variant)); line-height:1.7; padding-bottom:20px; margin:0; }
+</style>
+</head>
+<body class="font-['Plus_Jakarta_Sans',sans-serif] min-h-screen flex flex-col cosmic-page cosmic-tint-design">
+<script src="assets/standard-site-nav.js?v=20260829-apps-retired" data-active="industries"></script>
+
+<!-- Generated by scripts/gen-industry-pages.js from the same TRADES list as the
+     pages themselves, so the hub cannot drift out of sync with them. -->
+
+<main class="relative z-10 pt-28 md:pt-32 pb-24">
+  <div class="sds-wrap">
+
+    <header>
+      <p class="sds-eyebrow">Industries</p>
+      <h1 class="sds-h1">Built for how<br/>your trade actually sells.</h1>
+      <p class="sds-lead">Some businesses share a very specific shape of problem &mdash; emergency demand, service areas, long decision windows, a menu people check from the pavement. These pages cover the trades where that shape drives the whole build. If yours is not here, that is normal and not a complication.</p>
+      <div class="sds-actions">
+        <a class="sds-btn sds-btn--solid" href="contact.html">Get started</a>
+        <a class="sds-btn" href="pricing.html">See pricing</a>
+      </div>
+    </header>
+
+    <section class="sds-section">
+      <div class="sds-grid-3" style="margin-top:10px">
+        <a class="sds-card" href="web-design-for-hvac.html" style="text-decoration:none">
+          <span class="sds-ico"><span class="material-symbols-outlined" aria-hidden="true">ac_unit</span></span>
+          <h3 class="sds-h3">HVAC</h3>
+          <p class="sds-body">Emergency calls, seasonal swing and service-area searches &mdash; built to get the phone ringing.</p>
+        </a>
+        <a class="sds-card" href="web-design-for-plumbers.html" style="text-decoration:none">
+          <span class="sds-ico"><span class="material-symbols-outlined" aria-hidden="true">plumbing</span></span>
+          <h3 class="sds-h3">Plumbing</h3>
+          <p class="sds-body">Burst pipes at 2am and planned repipes, on one site that serves both without burying either.</p>
+        </a>
+        <a class="sds-card" href="web-design-for-roofers.html" style="text-decoration:none">
+          <span class="sds-ico"><span class="material-symbols-outlined" aria-hidden="true">roofing</span></span>
+          <h3 class="sds-h3">Roofing</h3>
+          <p class="sds-body">Storm-season spikes, insurance claims and inspection requests, captured before the lull.</p>
+        </a>
+        <a class="sds-card" href="web-design-for-law-firms.html" style="text-decoration:none">
+          <span class="sds-ico"><span class="material-symbols-outlined" aria-hidden="true">gavel</span></span>
+          <h3 class="sds-h3">Law Firms</h3>
+          <p class="sds-body">Practice-area pages and real attorney credibility, for someone quietly comparing two or three firms.</p>
+        </a>
+        <a class="sds-card" href="web-design-for-medical-practices.html" style="text-decoration:none">
+          <span class="sds-ico"><span class="material-symbols-outlined" aria-hidden="true">stethoscope</span></span>
+          <h3 class="sds-h3">Medical Practices</h3>
+          <p class="sds-body">Do you take my insurance, are you accepting patients, how soon can I be seen &mdash; answered first.</p>
+        </a>
+        <a class="sds-card" href="web-design-for-dentists.html" style="text-decoration:none">
+          <span class="sds-ico"><span class="material-symbols-outlined" aria-hidden="true">dentistry</span></span>
+          <h3 class="sds-h3">Dentists</h3>
+          <p class="sds-body">An emergency and a considered cosmetic purchase, on one site without crowding either.</p>
+        </a>
+        <a class="sds-card" href="web-design-for-real-estate.html" style="text-decoration:none">
+          <span class="sds-ico"><span class="material-symbols-outlined" aria-hidden="true">real_estate_agent</span></span>
+          <h3 class="sds-h3">Real Estate</h3>
+          <p class="sds-body">Neighbourhood pages buyers actually search, plus lead capture that fits how early they are.</p>
+        </a>
+        <a class="sds-card" href="web-design-for-restaurants.html" style="text-decoration:none">
+          <span class="sds-ico"><span class="material-symbols-outlined" aria-hidden="true">restaurant</span></span>
+          <h3 class="sds-h3">Restaurants</h3>
+          <p class="sds-body">A menu that loads on a phone and hours that are never wrong. Everything else is secondary.</p>
+        </a>
+        <a class="sds-card" href="web-design-for-auto-repair.html" style="text-decoration:none">
+          <span class="sds-ico"><span class="material-symbols-outlined" aria-hidden="true">car_repair</span></span>
+          <h3 class="sds-h3">Auto Repair</h3>
+          <p class="sds-body">Trust signals, symptom-specific service pages and a location findable with a failing car.</p>
+        </a>
+        <a class="sds-card" href="web-design-for-contractors.html" style="text-decoration:none">
+          <span class="sds-ico"><span class="material-symbols-outlined" aria-hidden="true">construction</span></span>
+          <h3 class="sds-h3">Contractors</h3>
+          <p class="sds-body">Project galleries that sell the work, plus quote requests that qualify before you drive out.</p>
+        </a>
+        <a class="sds-card" href="web-design-for-home-services.html" style="text-decoration:none">
+          <span class="sds-ico"><span class="material-symbols-outlined" aria-hidden="true">home_repair_service</span></span>
+          <h3 class="sds-h3">Home Services</h3>
+          <p class="sds-body">Service plus place, with recurring plans sold as the default rather than an afterthought.</p>
+        </a>
+        <a class="sds-card" href="web-design-for-irrigation.html" style="text-decoration:none">
+          <span class="sds-ico"><span class="material-symbols-outlined" aria-hidden="true">water_drop</span></span>
+          <h3 class="sds-h3">Irrigation</h3>
+          <p class="sds-body">Repair searches, local watering rules, and turning that first call into a maintenance plan.</p>
+        </a>
+        <a class="sds-card" href="web-design-for-custom-projects.html" style="text-decoration:none">
+          <span class="sds-ico"><span class="material-symbols-outlined" aria-hidden="true">more_horiz</span></span>
+          <h3 class="sds-h3">Something Else</h3>
+          <p class="sds-body">Not on the list? That is normal &mdash; most builds start from your business, not a category.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="sds-section">
+      <div class="sds-panel" style="text-align:center">
+        <h2 class="sds-h2">Not sure which fits?</h2>
+        <p class="sds-lead" style="margin:0 auto 24px">Tell us what the business does and we will point you at the smallest plan that solves it.</p>
+        <div class="sds-actions" style="justify-content:center;margin-top:0">
+          <a class="sds-btn sds-btn--solid" href="contact.html">Get started</a>
+          <a class="sds-btn" href="websites.html">How the service works</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script src="assets/standard-site-footer.js?v=20260817-cta-r5"></script>
+<script src="assets/account-nav.js?v=20260817-cta-r5"></script>
+<script src="surette-logo.js?v=20260817-cta-r5"></script>
+<script>document.addEventListener('DOMContentLoaded', function () { SuretteLogo.init('sds-logo'); SuretteLogo.init('sds-logo-mobile'); });</script>
+</body></html>

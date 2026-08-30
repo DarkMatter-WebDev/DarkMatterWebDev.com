@@ -12,9 +12,18 @@
    As a fallback it also detects a Supabase auth token directly (matching
    any sb-...-auth-token key, including chunked variants). */
 (function () {
+  // Both values are CSS variables so the icon follows the active theme. They
+  // are applied as INLINE styles below, which outrank any stylesheet, so a
+  // literal here could not be themed from nav.css.
+  //
+  // signedOut was rgba(196,199,199,0.55): 1.28:1 on the light header bar
+  // (effectively invisible) and 4.09:1 on the dark one, under AA at this icon
+  // size. It now uses the on-surface-variant token at full opacity, which is a
+  // light grey on dark and a slate grey on paper — still clearly distinct from
+  // the cyan signed-in state, which is the distinction that carries meaning.
   var MOBILE_ACCOUNT_COLORS = {
-    signedIn: "#00F0FF",
-    signedOut: "rgba(196, 199, 199, 0.55)"
+    signedIn: "var(--sds-acct-in, #00F0FF)",
+    signedOut: "var(--sds-acct-out, rgb(196 199 199))"
   };
 
   function hasSession() {

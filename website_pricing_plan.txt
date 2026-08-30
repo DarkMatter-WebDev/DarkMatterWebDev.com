@@ -120,6 +120,21 @@ After handoff, the customer is responsible for:
 
 One-time customers may add a Surette Systems hosting and care plan at any time.
 
+### Who owns the accounts
+
+The account model differs by option, and this is deliberate:
+
+* On a managed plan, Surette Systems owns and operates the hosting account. The
+  customer owns their domain; hosting is part of the service they are paying for.
+* On a one-time build with Self-Hosting Setup, Surette Systems creates every
+  account in the customer's own name — hosting, domain, email, analytics — and
+  hands over the credentials at launch. Surette Systems is added as an
+  administrator only where continued access is needed. The customer is the
+  account holder and pays the providers directly.
+
+This means a one-time customer is never locked in, and never dependent on a
+Surette Systems account to keep their website online.
+
 ---
 
 # 3. Important Pricing Disclosures
@@ -909,23 +924,6 @@ Create a comparison table using these packages.
 * Post-launch bug-fix period: 30 days
 * Monthly updates: not included
 
-## Online Store
-
-* Starting price: $4,500
-* Initial catalog: up to 20 products
-* Initial revision rounds: 2
-* Estimated timeline: 4–8 weeks
-* Post-launch bug-fix period: 14–30 days depending on scope
-* Monthly updates: not included
-* Larger stores: commonly $7,500–$15,000 or more
-
-## Custom Software and AI Systems
-
-* Starting price: $10,000
-* Hourly range when applicable: $95–$150 per hour
-* Scope, milestones, support, and timeline: custom
-* Monthly maintenance: not included unless purchased
-
 ---
 
 # 10. One-Time Website Build Details
@@ -1082,65 +1080,6 @@ Includes:
 * 2–3 revision rounds
 * 30-day bug-fix period
 
-## Online Store — Starting at $4,500
-
-Includes:
-
-* Shopify, WooCommerce, or another approved platform
-* Homepage
-* Shop page
-* Product-page template
-* Up to 20 products entered
-* Payment setup
-* Basic shipping configuration
-* Basic tax configuration using the selected platform
-* Policy-page structure
-* Mobile-friendly design
-* Basic product SEO
-* Analytics
-* Launch support
-* Handoff
-* 2 revision rounds
-* 14–30 day bug-fix period
-
-The customer is responsible for:
-
-* Product information
-* Product images
-* Prices
-* Inventory accuracy
-* Shipping policies
-* Tax obligations
-* Refund policies
-* Legal compliance
-* Payment-processing fees
-* Platform subscriptions
-
-Do not represent Surette Systems as providing legal, tax, accounting, or payment-processing advice.
-
-## Custom Software and AI Automation — Starting at $10,000
-
-Examples:
-
-* Dashboards
-* Customer portals
-* Vendor portals
-* Inventory systems
-* Booking systems
-* Listing tools
-* AI-assisted administration
-* Workflow automation
-* Reporting systems
-* Internal business tools
-
-Support, monitoring, updates, and maintenance require:
-
-* A separate support retainer
-* A maintenance agreement
-* Or hourly billing
-
-Optional custom-software support retainers should start around $500 per month and increase based on system complexity.
-
 ---
 
 # 11. One-Time Build Payment Structure
@@ -1162,15 +1101,6 @@ Recommended payment schedule:
 * 30% due at design or milestone approval
 * 30% due before launch or final handoff
 
-## Custom Software
-
-Use milestone-based pricing defined in the proposal.
-
-The final website, production credentials, source materials, and handoff do not need to be released until the account is paid in full.
-
-Deposits and completed milestone payments are generally nonrefundable after the related work begins, except where required by law or agreed in writing.
-
----
 
 # 12. Managed Plan Payment Terms
 
@@ -1822,8 +1752,8 @@ For one-time builds and eligible managed-plan transfers, the basic handoff may i
 A basic handoff does not automatically include:
 
 * Rebuilding the site on another platform
-* Migrating it to a new host
-* Configuring a new server
+* Migrating it to an existing host the customer already runs
+* Configuring a customer-supplied server
 * Replacing paid tools
 * Recreating non-transferable features
 * Training an outside developer
@@ -1831,6 +1761,98 @@ A basic handoff does not automatically include:
 * Ongoing support
 
 Those services may be billed separately.
+
+Provisioning and configuring new hosting in the customer's name is a defined
+paid service — see Self-Hosting Setup and Handoff in the add-on list. It is not
+part of the basic handoff.
+
+---
+
+# 29b. Self-Hosting Setup and Handoff
+
+An optional add-on to any one-time website build, for customers who want to own
+and run their own hosting rather than pay a monthly managed plan.
+
+## What it is
+
+Surette Systems provisions the customer's hosting in the customer's own name,
+deploys the finished website to it, and hands over every credential.
+
+## Included
+
+* Hosting account created in the customer's name and billed to the customer
+* Domain registration or transfer into the customer's own account
+* DNS configuration and verification
+* SSL certificate setup and verification
+* Deployment of the finished website to that hosting
+* Business email connection where applicable
+* Analytics and Search Console set up under the customer's account
+* Written credential handover for every account created
+* A walkthrough covering how to edit content, where things live, and what renews
+* Launch checklist and basic editing instructions
+
+## Pricing
+
+* Single page or standard multi-page website: $450
+* Multi-page website with stored form records: $750
+
+The tier follows the website that was built. There is no separate price for
+larger builds, because the setup work does not change with page count.
+
+## Support boundary
+
+Setup-related issues are covered for 14 days after handover at no charge.
+
+After 14 days, further work is billed at the published hourly rate of $125 per
+hour. This includes hosting questions, provider changes, renewals, new
+integrations, and troubleshooting caused by third-party providers.
+
+The customer is the account holder from day one. They pay hosting, domain, and
+email providers directly, and they may add a Surette Systems hosting and care
+plan later if they would rather hand it back.
+
+## What it is not
+
+Self-Hosting Setup is a launch service, not a support contract. It does not
+include ongoing maintenance, monitoring, backups, security response, platform
+updates, or content changes. Those are what the managed plans and care plans
+are for.
+
+---
+
+# 29c. Where a Website Ends and Custom Software Begins
+
+Surette Systems no longer sells packaged business applications. Website builds
+may still store form submissions, and may still use AI. This section defines the
+boundary so that scope, price, and support expectations stay honest.
+
+## The test
+
+If the customer switched it off tomorrow, would they lose a feature, or would
+they lose their operations?
+
+Losing a feature is a website. Losing operations is custom software.
+
+## In scope for a website build
+
+* Forms whose submissions are stored and can be viewed, searched, and exported
+* A simple record of enquiries, quote requests, or bookings
+* AI that works on visitors: answering questions, qualifying and routing a lead,
+  drafting a reply, summarising a submission, booking into an existing calendar
+
+AI used this way is a website feature. Data passes through it and lands in email,
+a CRM, or a spreadsheet. It holds no records the business depends on.
+
+## Out of scope
+
+* Multi-user logins, roles, and permissions
+* Inventory, consignors, payroll, scheduling of work, or billing systems
+* Anything staff run their day inside
+* AI that reads or writes the business's own operational records
+
+These are custom software. They carry uptime, data-integrity, and support
+obligations that a one-time website price does not cover, and they are not
+offered.
 
 ---
 
@@ -1910,6 +1932,9 @@ Use these starting prices:
 * Automated intake system: $1,500+
 * Custom workflow automation: $2,500+
 * Website migration assistance: $250+ or hourly
+* Self-Hosting Setup and Handoff — Single page or standard site: $450
+* Self-Hosting Setup and Handoff — Multi-page site: $450
+* Self-Hosting Setup and Handoff — Multi-page with stored form records: $750
 * Rush-project fee: 25%–50% additional
 
 ---
@@ -2245,3 +2270,104 @@ Use this single rate wherever the website shows one hourly figure, including the
 The $95–$150 per hour range remains valid for scoped hourly work defined in a proposal: simple overage tasks may bill toward the lower end, specialized or complex custom work toward the higher end.
 
 Build-time estimates are estimates only. Do not present hours × rate as a quote formula — packages remain fixed-price, and final scope, pricing, and timeline are governed by the signed proposal.
+
+---
+
+# 38. Managed Plan Ladder Replaced (Addendum — 2026-08-17)
+
+The managed website ladder in sections 4, 5, 15 and 33 of this document is
+SUPERSEDED. Those five plans ($0 Upfront Starter $125, $0 Upfront Mini $185,
+$0 Upfront Lead Capture $250, Managed Local Business $375-500, Managed Growth
+$750) are no longer published on the website.
+
+The published ladder now mirrors funnls.com, the owner’s other website, so the
+two properties sell the same product at the same prices. Read from
+funnls.com/pricing on 2026-08-16 and 2026-08-17.
+
+## Published plans
+
+| Plan | Monthly | Billed annually | Pages |
+|---|---|---|---|
+| One Page | $65/mo | $65/mo (no discount) | 1 |
+| Starter | $149/mo | $124/mo | up to 5 |
+| Growth (Most Popular) | $249/mo | $207/mo | up to 10 |
+| Pro | $449/mo | $374/mo | up to 20 |
+
+Annual billing saves two months (10/12 of the monthly rate, rounded down to the
+dollar) on Starter, Growth and Pro. One Page carries no annual discount.
+
+## What each plan offers
+
+Feature lists are taken verbatim from funnls.com/pricing.
+
+One Page: custom one-page design; managed hosting with SSL; mobile-responsive;
+contact forms and Google Maps; reviews and photo galleries; basic SEO setup;
+ongoing edits included; email support.
+
+Starter: custom-designed website up to 5 pages; managed hosting with SSL;
+version history and rollbacks; mobile-responsive; on-page SEO basics (meta,
+headings, sitemap); email support; monthly content update (1 request).
+
+Growth: everything in Starter; up to 10 pages; conversion intelligence built in;
+1 hour monthly consultation; content and design changes included; phone, chat
+and email support; Google Analytics setup; global CDN hosting; monthly
+performance check-in.
+
+Pro: everything in Growth; up to 20 pages; 2 hours design/content support;
+quarterly SEO health check; priority support queue; advanced analytics
+integration; blog management.
+
+## Setup, Fast Track, Enterprise
+
+Most projects launch with no setup fee; the build is covered by the monthly
+plan. A one-time setup fee may apply to larger or more custom projects and is
+scoped upfront. Fast Track is an optional priority build for faster turnaround.
+Enterprise and franchise work — multi-site networks, custom e-commerce and
+checkout, CRM/ERP/API integrations, local landing page programs, white-label
+arrangements, migration from legacy platforms — is quoted separately.
+
+## Contract terms — ALSO replaced (owner decision, 2026-08-17)
+
+The owner directed a full mirror, so funnls' commercial terms were adopted too.
+These OVERRIDE sections 6, 7 and 12 for website plans:
+
+* NO minimum term and NO 12-month agreement. Plans run month to month and
+  continue until the customer cancels.
+* Cancel anytime, no penalty, no early-termination charge, no notice period.
+  Monthly plans stop at the end of the paid billing period and the current
+  period is not prorated. Annual plans stay generally nonrefundable once work
+  has begun.
+* NO ownership transfer of the finished website on a plan. Published answer:
+  "This is a fully managed website service. Your site stays live, supported,
+  and continuously maintained as part of your subscription." Customer-supplied
+  material — logo, photos, text, business information, domain — remains the
+  customer's on either path. Outright ownership is now the one-time-build path
+  only, and the site points customers there for it.
+* Managed hosting ends when the plan ends, so the site comes offline unless the
+  customer has arranged otherwise. This is stated plainly on the detail page
+  rather than buried.
+
+ACTION REQUIRED OUTSIDE THIS REPO: the signed service agreements still need to
+be updated to match. Until they are, the website advertises terms the contracts
+do not grant. Flagged to the owner on 2026-08-17; the owner confirmed the full
+mirror with the site changed first.
+
+## What did NOT change
+
+* One-time website builds (sections 9-11), care plans (section 14), add-on
+  pricing (section 32) and the $125/hr shop rate (section 37) are unchanged.
+  NOTE: the one-time build packages still use the names Starter / Mini / Lead
+  Capture / Local Business / Growth / Premium, which now overlap the managed
+  plan names at different page counts. Renaming that product line is open.
+
+## Derived, not sourced
+
+Two figures on services/website-design-hosting.html were derived rather than
+read from funnls, which publishes neither:
+
+* Estimated timelines: ~1-2 wks (One Page), ~2-3 (Starter), ~4-6 (Growth),
+  ~6-10 (Pro) — interpolated from the old per-page-count estimates.
+* Initial revision rounds: 1 / 1 / 2 / 2-3 — carried over by project size from
+  the superseded ladder.
+
+Correct these if the real policy differs.

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html class="dark" style="background:#050505" lang="en"><head>
 <meta charset="utf-8"/>
+<script id="sds-theme-resolver">/* Pre-paint theme resolver — must stay the first script in <head>. Stamps data-theme on <html> from the stored choice before anything paints, and overwrites the inline dark background attribute. Dark is the brand default when nothing is stored, so a visitor whose OS prefers light still gets the site's intended look until they choose. */(function(){var d=document.documentElement,t;try{t=localStorage.getItem("sds-theme")}catch(e){}if(t!=="light")t="dark";d.setAttribute("data-theme",t);d.classList.toggle("dark",t==="dark");d.style.background=t==="light"?"#f4f2ee":"#050505"})();</script>
 
 <script>/* Head-stamp: nav.css reveals un-stamped pages at 0.2s (its no-logo-script fallback). On heavy pages the bottom-of-body surette-logo.js stamp lands after that, so content flashed in at 0.2s, vanished when the stamp arrived, then faded back in. Stamping before first paint makes JS the only revealer. */document.documentElement.classList.add("sds-logo-loaded");</script>
 <style id="dm-critical-dark-baseline">
@@ -9,6 +10,7 @@
   #__next,#root,.app{background:#050505;min-height:100vh;}
   body>main{min-height:100vh;}
   #page-loader,.sds-apps-loader{background:#050505;}
+html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:#0b0e10;color-scheme:light}html[data-theme="light"] #__next,html[data-theme="light"] #root,html[data-theme="light"] .app{background:#f4f2ee}html[data-theme="light"] #page-loader,html[data-theme="light"] .sds-apps-loader{background:#f4f2ee}
 </style>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
@@ -33,8 +35,8 @@
 <meta name="twitter:description" content="This website is powered by Surette Data Systems &mdash; the unseen force behind professional sites. Get a mobile-friendly website for your business with design, hosting, and ongoing support."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
 <meta name="robots" content="index, follow"/>
-<link href="assets/nav.css?v=20260801-scroll-hide3" rel="stylesheet"/>
-<link href="assets/cosmic-web.css?v=20260716-md880" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="assets/nav.css?v=20260829-apps-retired" rel="stylesheet"/>
+<link href="assets/cosmic-web.css?v=20260827-contrast-nav" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
   #sds-logo a.sds-anchor,
   #sds-logo-mobile a.sds-anchor {
@@ -65,10 +67,10 @@
     font-size: 15px !important;
     font-weight: 700 !important;
     letter-spacing: 0.16em !important;
-    color: #ddeeff !important;
+    color: var(--sds-logo-co, #ddeeff) !important;
     line-height: 1 !important;
     text-transform: uppercase !important;
-    text-shadow: 0 0 12px rgba(0, 190, 255, 0.45) !important;
+    text-shadow: var(--sds-logo-glow, 0 0 12px rgba(0, 190, 255, 0.45)) !important;
   }
   #sds-logo .sds-sub,
   #sds-logo-mobile .sds-sub {
@@ -76,29 +78,30 @@
     font-size: 8px !important;
     font-weight: 300 !important;
     letter-spacing: 0.34em !important;
-    color: #00b8df !important;
+    color: var(--sds-logo-sub, #00b8df) !important;
     line-height: 1 !important;
-    opacity: 0.7 !important;
+    opacity: var(--sds-logo-sub-opacity, 0.7) !important;
   }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors:{"void-black":"#050505","electric-cyan":"#00F0FF","nebula-purple":"#7000FF","starlight-white":"#FFFFFF","on-surface-variant":"#c4c7c7","outline":"#8e9192","surface":"#121414","surface-container-lowest":"#0d0e0f"},spacing:{"margin-desktop":"64px","margin-mobile":"20px","gutter":"24px","container-max":"1440px"},fontFamily:{"headline-xl":["Space Grotesk"],"headline-lg":["Space Grotesk"],"headline-md":["Space Grotesk"],"body-md":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"label-mono":["JetBrains Mono"],"label-caps":["JetBrains Mono"]},fontSize:{"headline-xl":["64px",{lineHeight:"1.1",fontWeight:"700"}],"headline-lg":["40px",{lineHeight:"1.2",fontWeight:"600"}],"headline-md":["24px",{lineHeight:"1.3",fontWeight:"500"}],"body-lg":["18px",{lineHeight:"1.6"}],"body-md":["16px",{lineHeight:"1.6"}],"label-mono":["14px",{letterSpacing:"0.05em"}],"label-caps":["12px",{letterSpacing:"0.1em",fontWeight:"700"}]}}}}</script>
+<script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors:{
+        "white": "rgb(var(--t-starlight-white) / <alpha-value>)","void-black":"rgb(var(--t-void-black) / <alpha-value>)","electric-cyan":"rgb(var(--t-electric-cyan) / <alpha-value>)","nebula-purple":"rgb(var(--t-nebula-purple) / <alpha-value>)","starlight-white":"rgb(var(--t-starlight-white) / <alpha-value>)","on-surface-variant":"rgb(var(--t-on-surface-variant) / <alpha-value>)","outline":"rgb(var(--t-outline) / <alpha-value>)","surface":"rgb(var(--t-surface) / <alpha-value>)","surface-container-lowest":"rgb(var(--t-surface-container-lowest) / <alpha-value>)"},spacing:{"margin-desktop":"64px","margin-mobile":"20px","gutter":"24px","container-max":"1440px"},fontFamily:{"headline-xl":["Space Grotesk"],"headline-lg":["Space Grotesk"],"headline-md":["Space Grotesk"],"body-md":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"label-mono":["JetBrains Mono"],"label-caps":["JetBrains Mono"]},fontSize:{"headline-xl":["64px",{lineHeight:"1.1",fontWeight:"700"}],"headline-lg":["40px",{lineHeight:"1.2",fontWeight:"600"}],"headline-md":["24px",{lineHeight:"1.3",fontWeight:"500"}],"body-lg":["18px",{lineHeight:"1.6"}],"body-md":["16px",{lineHeight:"1.6"}],"label-mono":["14px",{letterSpacing:"0.05em"}],"label-caps":["12px",{letterSpacing:"0.1em",fontWeight:"700"}]}}}}</script>
 <style>
-.glass-card { background: rgba(255,255,255,0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); }
-.grid-overlay { background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 80px 80px; }
-.gradient-text { background: linear-gradient(135deg, #00F0FF 0%, #7000FF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.glass-card { background: rgba(var(--c-veil-rgb), 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(var(--c-veil-rgb), 0.1); }
+.grid-overlay { background-image: linear-gradient(to right, rgba(var(--c-veil-rgb), 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(var(--c-veil-rgb), 0.05) 1px, transparent 1px); background-size: 80px 80px; }
+.gradient-text { background: linear-gradient(135deg, rgb(var(--t-electric-cyan)) 0%, rgb(var(--t-nebula-purple)) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .nebula-blur { filter: blur(120px); opacity: 0.15; position: fixed; border-radius: 50%; z-index: 0; pointer-events: none; }
 @media (max-width: 879.98px) { .nebula-blur, .nebula-blur.w-\[500px\], .nebula-blur.w-\[400px\] { display: none !important; } }
 .feature-check { display: flex; align-items: flex-start; gap: 0.75rem; }
-.feature-check .material-symbols-outlined { color: #00F0FF; font-size: 1.25rem; flex-shrink: 0; margin-top: 0.125rem; }
+.feature-check .material-symbols-outlined { color: rgb(var(--t-electric-cyan)); font-size: 1.25rem; flex-shrink: 0; margin-top: 0.125rem; }
 .mystical-badge {
-  box-shadow: 0 0 24px rgba(0, 240, 255, 0.12), inset 0 0 20px rgba(112, 0, 255, 0.08);
+  box-shadow: 0 0 24px rgb(var(--t-electric-cyan) / 0.12), inset 0 0 20px rgb(var(--t-nebula-purple) / 0.08);
   animation: nebula-pulse 4s ease-in-out infinite;
 }
 @keyframes nebula-pulse {
-  0%, 100% { box-shadow: 0 0 20px rgba(0, 240, 255, 0.1), inset 0 0 16px rgba(112, 0, 255, 0.06); }
-  50% { box-shadow: 0 0 32px rgba(112, 0, 255, 0.2), inset 0 0 24px rgba(0, 240, 255, 0.1); }
+  0%, 100% { box-shadow: 0 0 20px rgb(var(--t-electric-cyan) / 0.1), inset 0 0 16px rgb(var(--t-nebula-purple) / 0.06); }
+  50% { box-shadow: 0 0 32px rgb(var(--t-nebula-purple) / 0.2), inset 0 0 24px rgb(var(--t-electric-cyan) / 0.1); }
 }
 .powered-brand-lockup .brand-subtext {
   font-size: 9px;
@@ -121,7 +124,7 @@
 <div class="nebula-blur w-[500px] h-[500px] bg-electric-cyan -top-32 -left-32"></div>
 <div class="nebula-blur w-[400px] h-[400px] bg-nebula-purple bottom-0 right-0"></div>
 
-<script src="assets/standard-site-nav.js?v=20260801-scroll-hide3" data-active="none"></script>
+<script src="assets/standard-site-nav.js?v=20260829-apps-retired" data-active="none"></script>
 
 <main class="relative z-10 pt-28 md:pt-36 pb-20 px-margin-mobile md:px-margin-desktop">
 <div class="max-w-container-max mx-auto">
@@ -190,7 +193,7 @@ You arrived from a site held together by <strong class="text-starlight-white fon
 <h2 class="font-headline-lg text-2xl md:text-headline-lg text-starlight-white mb-4">Ready to enter the orbit?</h2>
 <p class="font-body-md text-on-surface-variant mb-8 max-w-xl mx-auto">Tell us about your business. We'll chart the right path &mdash; a new site, a redesign, or full ongoing management powered by <span class="text-electric-cyan">Surette Data Systems</span>.</p>
 <div class="flex flex-col sm:flex-row justify-center gap-4">
-<a href="contact.html" class="px-10 py-4 bg-starlight-white text-void-black font-label-mono font-bold rounded-lg hover:bg-white/90 transition-colors">Schedule a Free Consultation</a>
+<a href="contact.html" class="px-10 py-4 bg-starlight-white text-void-black font-label-mono font-bold rounded-lg hover:bg-white/90 transition-colors">Get started</a>
 <a href="index.html" class="px-10 py-4 border border-white/20 font-label-mono rounded-lg hover:bg-white/5 transition-colors">Explore Surette Data Systems &rarr;</a>
 </div>
 <p class="font-label-mono text-xs text-outline mt-8">Southwest Florida &mdash; Call or text (239) 404-8505</p>
@@ -198,10 +201,9 @@ You arrived from a site held together by <strong class="text-starlight-white fon
 
 </div>
 </main>
-<script src="assets/standard-site-footer.js?v=20260716-footer-3line"></script>
-<script src="assets/mobile-services-nav.js?v=20260715-services-merge"></script>
-<script src="assets/account-nav.js?v=20260715-login-highlight"></script>
-<script src="surette-logo.js?v=20260721-fonts-gate"></script>
+<script src="assets/standard-site-footer.js?v=20260817-cta-r5"></script>
+<script src="assets/account-nav.js?v=20260817-cta-r5"></script>
+<script src="surette-logo.js?v=20260817-cta-r5"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
 </body></html>

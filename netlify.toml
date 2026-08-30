@@ -92,6 +92,19 @@
   to = "/es/apps.html"
   status = 301
 
+# Retired process page (2026-08-17) → the websites how-it-works section.
+# Its website content folded into websites.html; the software-replacement story
+# it carried moved to apps.html#software-process, which is a different audience.
+[[redirects]]
+  from = "/process.html"
+  to = "/websites.html#how-it-works"
+  status = 301
+
+[[redirects]]
+  from = "/es/process.html"
+  to = "/es/websites.html#how-it-works"
+  status = 301
+
 # Retired preference builder → contact
 [[redirects]]
   from = "/preference-builder.html"
@@ -134,3 +147,32 @@
   from = "/es/services/website-care-plans.html"
   to = "/es/services/website-design-hosting.html"
   status = 301
+
+# ─── Retired app/software offer (2026-08-27) ────────────────────────────────
+# Packaged business apps are no longer sold. The six app profiles survive as
+# case studies, so the catalog points at apps.html (now a case-study index);
+# the pricing and checkout funnels point at contact, and the store page at the
+# websites service page. 301 rather than 404 because these URLs were public.
+[[redirects]]
+  from = "/app-catalog.html"
+  to = "/apps.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/app-pricing.html"
+  to = "/contact.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/app-checkout.html"
+  to = "/contact.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/multichannel-commerce-website.html"
+  to = "/websites.html"
+  status = 301
+  force = true

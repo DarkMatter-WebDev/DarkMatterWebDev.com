@@ -89,7 +89,7 @@
   letter-spacing: inherit;
   line-height: inherit;
   text-transform: uppercase;
-  color: var(--sds-lime, #a3e635);
+  color: var(--sds-lime, var(--t-ink-a3e635));
   text-shadow: 0 0 12px rgba(163, 230, 53, 0.35);
 }
 
@@ -247,15 +247,15 @@
         0deg,
         transparent 0,
         transparent 2px,
-        color-mix(in srgb, var(--intro-tint, #00f0ff) 26%, transparent) 2px,
-        color-mix(in srgb, var(--intro-tint, #00f0ff) 26%, transparent) 3px
+        color-mix(in srgb, var(--intro-tint, rgb(var(--t-electric-cyan))) 26%, transparent) 2px,
+        color-mix(in srgb, var(--intro-tint, rgb(var(--t-electric-cyan))) 26%, transparent) 3px
       ),
       repeating-linear-gradient(
         90deg,
         transparent 0,
         transparent 6px,
-        color-mix(in srgb, var(--intro-tint, #00f0ff) 14%, transparent) 6px,
-        color-mix(in srgb, var(--intro-tint, #00f0ff) 14%, transparent) 7px
+        color-mix(in srgb, var(--intro-tint, rgb(var(--t-electric-cyan))) 14%, transparent) 6px,
+        color-mix(in srgb, var(--intro-tint, rgb(var(--t-electric-cyan))) 14%, transparent) 7px
       ),
       repeating-linear-gradient(
         128deg,
@@ -267,9 +267,9 @@
       linear-gradient(
         180deg,
         transparent 0%,
-        color-mix(in srgb, var(--intro-tint, #00f0ff) 8%, transparent) 47%,
-        color-mix(in srgb, var(--intro-tint, #00f0ff) 16%, transparent) 50%,
-        color-mix(in srgb, var(--intro-tint, #00f0ff) 8%, transparent) 53%,
+        color-mix(in srgb, var(--intro-tint, rgb(var(--t-electric-cyan))) 8%, transparent) 47%,
+        color-mix(in srgb, var(--intro-tint, rgb(var(--t-electric-cyan))) 16%, transparent) 50%,
+        color-mix(in srgb, var(--intro-tint, rgb(var(--t-electric-cyan))) 8%, transparent) 53%,
         transparent 100%
       );
     background-size: 100% 3px, 7px 100%, 14px 14px, 100% 28%;
@@ -375,7 +375,7 @@
   letter-spacing: 0.062em;
   line-height: 0.84;
   text-transform: uppercase;
-  color: #ffffff;
+  color: rgb(var(--t-starlight-white));
   text-shadow: none;
   filter: none;
 }
@@ -481,7 +481,7 @@
     object-fit: contain;
     filter:
       drop-shadow(0 0 12px rgba(168, 85, 247, 0.42))
-      drop-shadow(0 10px 22px rgba(0, 0, 0, 0.44));
+      drop-shadow(0 10px 22px rgba(var(--c-shadow-rgb), 0.44));
     will-change: transform;
   }
 
@@ -502,7 +502,7 @@
     object-fit: contain;
     filter:
       drop-shadow(0 0 14px rgba(168, 85, 247, 0.42))
-      drop-shadow(0 10px 22px rgba(0, 0, 0, 0.44));
+      drop-shadow(0 10px 22px rgba(var(--c-shadow-rgb), 0.44));
     will-change: transform;
   }
 
@@ -516,14 +516,14 @@
     transform-origin: center center;
     filter:
       drop-shadow(0 0 28px rgba(168, 85, 247, 0.34))
-      drop-shadow(0 28px 58px rgba(0, 0, 0, 0.46));
+      drop-shadow(0 28px 58px rgba(var(--c-shadow-rgb), 0.46));
     will-change: transform, opacity;
   }
 
   .sds-physics-hero-floating-mark.is-flick-launch {
     filter:
       drop-shadow(0 0 32px rgba(245, 158, 11, 0.36))
-      drop-shadow(0 30px 60px rgba(0, 0, 0, 0.48));
+      drop-shadow(0 30px 60px rgba(var(--c-shadow-rgb), 0.48));
     transition: filter 0.28s ease-out;
   }
 }
@@ -532,13 +532,13 @@
   0%, 100% {
     filter:
       drop-shadow(0 0 18px rgba(168, 85, 247, 0.5))
-      drop-shadow(0 12px 24px rgba(0, 0, 0, 0.44));
+      drop-shadow(0 12px 24px rgba(var(--c-shadow-rgb), 0.44));
   }
 
   50% {
     filter:
       drop-shadow(0 0 26px rgba(168, 85, 247, 0.72))
-      drop-shadow(0 14px 28px rgba(0, 0, 0, 0.48));
+      drop-shadow(0 14px 28px rgba(var(--c-shadow-rgb), 0.48));
   }
 }
 
@@ -554,8 +554,8 @@
     animation: none;
     --intro-fill: 100%;
     --intro-color-mix: 100%;
-    --intro-tint: #00f0ff;
-    color: #00f0ff;
+    --intro-tint: rgb(var(--t-electric-cyan));
+    color: rgb(var(--t-electric-cyan));
     -webkit-text-fill-color: currentColor;
     background-image: none;
     -webkit-background-clip: border-box;

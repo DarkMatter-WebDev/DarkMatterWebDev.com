@@ -73,15 +73,20 @@
         flex-direction: column;
         gap: 3px;
       }
+      /* Colours come from the theme tokens in assets/nav.css, with the
+         original dark values as fallbacks so the wordmark still renders
+         correctly if this script somehow runs before/without that stylesheet.
+         The light theme also drops .sds-sub's 0.7 opacity to 1 and removes the
+         glow: at 8px, a translucent cyan on paper measured 2.22:1. */
       #${id} .sds-co {
         font-family: 'Exo 2', 'Segoe UI', sans-serif;
         font-size: 15px;
         font-weight: 700;
         letter-spacing: 0.16em;
-        color: #ddeeff;
+        color: var(--sds-logo-co, #ddeeff);
         line-height: 1;
         text-transform: uppercase;
-        text-shadow: 0 0 12px rgba(0, 190, 255, 0.45);
+        text-shadow: var(--sds-logo-glow, 0 0 12px rgba(0, 190, 255, 0.45));
         transition: text-shadow 0.35s, color 0.35s;
       }
       #${id} .sds-sub {
@@ -89,19 +94,19 @@
         font-size: 8px;
         font-weight: 300;
         letter-spacing: 0.34em;
-        color: #00b8df;
+        color: var(--sds-logo-sub, #00b8df);
         line-height: 1;
         text-transform: uppercase;
-        opacity: 0.7;
+        opacity: var(--sds-logo-sub-opacity, 0.7);
         transition: opacity 0.35s, color 0.35s;
       }
       #${id} a.sds-anchor:hover .sds-co {
-        color: #eef6ff;
-        text-shadow: 0 0 18px rgba(0, 210, 255, 0.8), 0 0 35px rgba(0, 180, 255, 0.3);
+        color: var(--sds-logo-co-hover, #eef6ff);
+        text-shadow: var(--sds-logo-glow-hover, 0 0 18px rgba(0, 210, 255, 0.8), 0 0 35px rgba(0, 180, 255, 0.3));
       }
       #${id} a.sds-anchor:hover .sds-sub {
         opacity: 1;
-        color: #20d8ff;
+        color: var(--sds-logo-sub-hover, #20d8ff);
       }
     `;
     const style = document.createElement('style');

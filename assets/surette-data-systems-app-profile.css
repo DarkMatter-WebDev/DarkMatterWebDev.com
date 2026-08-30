@@ -22,7 +22,10 @@
   font: 500 10px "JetBrains Mono", monospace;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(196, 199, 199, 0.58);
+  /* Was 58% alpha, which measured 4.43:1 on dark and 2.6:1 on paper — under AA
+     in both themes at this 10px size. Full opacity is 11.4:1 on dark; the pill
+     still reads as secondary through its size and letter-spacing. */
+  color: rgb(var(--t-on-surface-variant));
   flex-shrink: 0;
 }
 
@@ -36,12 +39,34 @@
 }
 
 .sds-app-credit strong {
-  color: rgba(168, 85, 247, 0.82);
+  /* Was rgba(168,85,247,.82) = 3.69:1 on dark. Full opacity and a touch
+     lighter clears 4.71:1 against the darkest surface it sits on. */
+  color: #ab5cf7;
   font-weight: 600;
 }
 
 .sds-app-credit span {
   line-height: 1;
+}
+
+/* Light theme. This little credit pill is built from two translucent colours
+   that both wash out on paper: the label at 58% of on-surface-variant (2.6:1)
+   and the brand name at 82% of a mid purple (2.71:1). Alpha is what fails
+   here, not hue, so light mode drops to full opacity and deepens the purple
+   rather than restyling the pill. */
+:root[data-theme="light"] .sds-app-credit {
+  border-color: rgba(90, 0, 204, 0.22);
+  background: rgba(90, 0, 204, 0.05);
+  color: rgb(var(--t-on-surface-variant));
+}
+
+:root[data-theme="light"] .sds-app-credit strong {
+  color: #4a007a;
+}
+
+:root[data-theme="light"] .sds-app-credit__mark {
+  opacity: 1;
+  filter: none;
 }
 
 @media (max-width: 640px) {
@@ -75,7 +100,7 @@
   border-left: 3px solid rgba(255, 176, 32, 0.75);
   border-radius: 10px;
   background: rgba(255, 176, 32, 0.07);
-  color: #ecdfc8;
+  color: var(--t-ink-ecdfc8);
   font-size: 0.95rem;
   line-height: 1.6;
 }
@@ -84,11 +109,11 @@
   flex: 0 0 auto;
   margin-top: 0.1rem;
   font-size: 1.25rem;
-  color: #ffb020;
+  color: var(--t-ink-ffb020);
 }
 
 .app-access-notice strong {
-  color: #ffffff;
+  color: rgb(var(--t-starlight-white));
   font-weight: 600;
 }
 
@@ -98,3 +123,13 @@
     font-size: 0.9rem;
   }
 }
+
+
+/* Light-mode eyebrow (2026-08-18 contrast sweep).
+   .eyebrow is rgb(var(--t-electric-cyan)) on every app profile page. The light
+   cyan (0 104 121) is calibrated against the standard light surfaces, but these
+   pages sit it on a violet-tinted panel that composites to rgb(218,207,225) —
+   darker than the --t-surface-container-highest reference — which dropped it to
+   4.31:1. A 5%% darkening clears 4.5 without visibly changing the hue.
+   Defined here rather than per page so all six stay in step. */
+:root[data-theme="light"] .eyebrow { color: #006373; }

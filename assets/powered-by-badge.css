@@ -8,27 +8,27 @@
   gap: 0.875rem;
   padding: 1rem 1.25rem;
   border-radius: 1rem;
-  background: rgba(0, 240, 255, 0.08);
-  border: 1px solid rgba(0, 240, 255, 0.22);
+  background: rgb(var(--t-electric-cyan) / 0.08);
+  border: 1px solid rgb(var(--t-electric-cyan) / 0.22);
   box-shadow:
-    0 0 24px rgba(0, 240, 255, 0.12),
-    inset 0 0 20px rgba(112, 0, 255, 0.08);
+    0 0 24px rgb(var(--t-electric-cyan) / 0.12),
+    inset 0 0 20px rgb(var(--t-nebula-purple) / 0.08);
   text-decoration: none;
   color: inherit;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   animation: dm-nebula-pulse 4s ease-in-out infinite;
 }
 .dm-powered-badge:hover {
-  border-color: rgba(0, 240, 255, 0.4);
+  border-color: rgb(var(--t-electric-cyan) / 0.4);
   box-shadow:
-    0 0 32px rgba(112, 0, 255, 0.2),
-    inset 0 0 24px rgba(0, 240, 255, 0.1);
+    0 0 32px rgb(var(--t-nebula-purple) / 0.2),
+    inset 0 0 24px rgb(var(--t-electric-cyan) / 0.1);
 }
 .dm-powered-badge__icon {
   flex-shrink: 0;
   width: 1.5rem;
   height: 1.5rem;
-  color: #00F0FF;
+  color: rgb(var(--t-electric-cyan));
 }
 .dm-powered-badge__lockup {
   display: flex;
@@ -42,7 +42,7 @@
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #8e9192;
+  color: rgb(var(--t-outline));
   margin-bottom: 0.5rem;
 }
 .dm-powered-badge__name {
@@ -50,12 +50,12 @@
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: -0.02em;
-  background: linear-gradient(120deg, #FFFFFF 0%, #00F0FF 38%, #7000FF 88%);
+  background: linear-gradient(120deg, #FFFFFF 0%, rgb(var(--t-electric-cyan)) 38%, rgb(var(--t-nebula-purple)) 88%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.55)) drop-shadow(0 0 22px rgba(112, 0, 255, 0.4));
+  filter: drop-shadow(0 0 10px rgb(var(--t-electric-cyan) / 0.55)) drop-shadow(0 0 22px rgb(var(--t-nebula-purple) / 0.4));
   animation: dm-brand-shimmer 6s ease-in-out infinite;
 }
 .dm-powered-badge__subtext {
@@ -94,10 +94,10 @@
 }
 @keyframes dm-nebula-pulse {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.1), inset 0 0 16px rgba(112, 0, 255, 0.06);
+    box-shadow: 0 0 20px rgb(var(--t-electric-cyan) / 0.1), inset 0 0 16px rgb(var(--t-nebula-purple) / 0.06);
   }
   50% {
-    box-shadow: 0 0 32px rgba(112, 0, 255, 0.2), inset 0 0 24px rgba(0, 240, 255, 0.1);
+    box-shadow: 0 0 32px rgb(var(--t-nebula-purple) / 0.2), inset 0 0 24px rgb(var(--t-electric-cyan) / 0.1);
   }
 }
 @media (prefers-reduced-motion: reduce) {

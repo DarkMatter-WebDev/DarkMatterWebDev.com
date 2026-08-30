@@ -1,6 +1,120 @@
 # Handoff
 
-Last updated: 2026-08-08
+Last updated: 2026-08-27
+
+## Immediate Context — App line retired, self-hosting added (2026-08-27, latest)
+
+**Packaged business apps and stores are no longer sold.** Deleted `app-catalog.html`, `app-pricing.html`, `app-checkout.html`, `multichannel-commerce-website.html` (301s in `netlify.toml`). The six app profiles survive as **case studies**; `apps.html` was repurposed from a sales page into a case-study index rather than deleted, which kept its **17 inbound links** working. The **Software nav pill is gone**, and the breakpoint moved **1120 → 1024** (four pills: +41px clearance at 1024, but **0px at 920 — do not return to 880**).
+
+**New in `website_pricing_plan.txt`:**
+- **§29b Self-Hosting Setup and Handoff** — $450 (single/multi-page), $750 (multi-page with stored form records). Flat per size, since setup effort does not scale with page count. **Accounts are created in the customer's own name**; managed plans keep SDS-owned hosting. 14 days of setup fixes, then $125/hr. §29 was amended, as it previously excluded server configuration outright.
+- **§29c Where a Website Ends and Custom Software Begins** — the test is *feature vs operations*. **This is the guardrail for tier 3 ("multi-page with backend tables")**: forms whose submissions are stored and readable are in scope; logins, roles, inventory, payroll and scheduling are not. Without it, the app business returns at website prices with no maintenance contract.
+- Removed the *Online Store $4,500* and *Custom Software and AI $10,000* packages.
+
+**The public copy is done.** `pricing.html` has an "Own your own hosting" route, a self-hosting FAQ, and a rewritten ownership FAQ that explains both routes; `services/website-design-hosting.html` has a full add-on panel; `websites.html` carries the one-liner. The stale *"manage hosting yourself"* claim is gone from all three.
+
+**Retired-offer claims were purged sitewide, and the forms mattered most.** `contact.html`'s project-type dropdown was still offering *"An online store"* and *"A custom app or tool"* — actively collecting leads for work that no longer exists. Also removed: `pricing.html`'s "Software, not a website" route and its enterprise bullets (custom e-commerce, CRM/ERP/API), `websites.html`'s "Custom business software" card, and `index.html`'s meta description (3 occurrences). **When retiring an offer here, audit forms and meta, not just pages** — and search percent-encoded URLs, since one checkout CTA hid inside `account.html?next=%2Fapp-checkout...`.
+
+**State at session end:** validator **80**, zero issues in the site's own files. Full sweep **48 pages x 2 themes x 4 widths = 384 records per auditor, 0 failures**. Cache-busters bumped to `20260827-contrast-nav` for the four assets changed this session.
+
+**Two things left open — both listed in `TASKS.md`:**
+1. **Three assets from the 2026-08-19 session** (`portfolio-live-widget.css`, `client-portal.css`, `surette-data-systems-app-profile.css`) were **not** cache-busted. `/assets/*` is `immutable` for a year, so if that session did not bump them, those fixes never reach returning visitors. Worth checking before the next deploy.
+2. **Signed-in portal views have still never been audited.**
+
+## Immediate Context — Nav breakpoint history (2026-08-20)
+
+**The desktop header had been silently overflowing since `Industries` was added on 2026-08-18.** The pill row is a flex child with `min-width: 0` and `overflow: visible`, so it never wrapped or scrolled — it **spilled**, and the theme toggle and login icon slid underneath the Get started CTA. Reported from a 923px preview as "we lose some of the buttons in the main nav".
+
+`standard-site-nav.js` claimed the 5th pill "was measured at 880px and still fits". **It does not** — that is true only of the homepage (6 items, and even that collides at 960). Interior pages carry **seven** items and need **~1105px**. Clearance measured: -175px @881, -142px @923, -17px @1080, **+14px @1120**, +33px @1160.
+
+**The switch moved 880 → 1120.** That restores the rule `nav.css` already stated: *the header is either whole or a menu, never partway.*
+
+**If you touch the nav breakpoint, it lives in 7 places that must agree:** six `@media` blocks in `nav.css` (the switch, desktop nav geometry `min-width`, the bottom bar ×2, the mobile chrome block, `.dm-standard-desktop-nav` geometry) and `isMobileNavViewport()` in the generator. **`.page`'s padding rule is deliberately split** — vertical padding is nav clearance and follows the nav; the 20px horizontal gutters are page layout and stay at 880. **Do not drag page layout along**: grids, `.sds-proof`, footer variants and phone gutters all stay at 880.
+
+**Before adding a 6th pill, re-measure — on an INTERIOR page, not the homepage.** Tightening spacing was tried: gap 8px + 10px pill padding bought only ~40px.
+
+## Immediate Context — Light-mode contrast fixes (2026-08-19)
+
+**Five real light-mode defects were fixed, and `scripts/audit-contrast.js` was rebuilt because it structurally could not see them.** The short version: `getComputedStyle` only walks **ancestors**, so a `position: fixed` veil, an absolutely-positioned glow, a canvas, or a photo is invisible to it. The 2026-08-18 sweep reported the site clean while `auction-house-consignment-store-software.html` was rendering its headings at **1.05:1** in light mode.
+
+**The auditor now runs two passes and both must be clean** — the ancestor walk, and a rendered-pixel pass that hides every glyph, screenshots the viewport, and samples the exact line boxes. If you only run one, run the pixel pass; it is the one that finds real bugs. Its four traps (occlusion by flipped card backs, smooth-scroll desync, keeping the worst instead of best-centred sample, and percentile-vs-contiguity scoring) are documented at the top of the script and in `TASKS.md` — each produced false failures before being handled.
+
+**What changed in the site itself** (all light-scoped; dark mode is untouched everywhere):
+
+| Fix | Where |
+|---|---|
+| `.sds-cosmic-veil` + light rule (`--tinted` variant for seansads) | `assets/cosmic-web.css` + 15 pages |
+| Backdrop uses `rgb(var(--t-void-black))`; nebula blobs 0.3 → 0.12 in light | `privacy.html` |
+| Backdrop moved to `.sds-page-backdrop` so it can be themed | `terms.html` |
+| `--t-electric-cyan` `0 104 121 → 0 94 109`; `--t-ink-39ff14 → #1a5e0e`; `--t-ink-18d96e → #0e612f` (light) | `assets/nav.css` |
+| `body::before` mobile opacity now `calc(var(--cosmic-opacity) * 0.79)` — was a flat `0.52` that leaked dark's veil into light at 390px | `assets/cosmic-web.css` |
+| Second ink round for phone width: `--t-electric-cyan → 0 83 96`, `--t-on-surface-variant → 71 77 82`, `--t-outline → 86 91 94`, `--t-ink-ecdfc8 → #705627`, `--t-ink-8f98a6 → #545c69`, `--t-ink-39ff88 → #0f6933`; dark `--t-on-primary-container → 128 126 126` | `assets/nav.css` |
+| `--t-nebula-purple-on` `163 92 255 → 176 118 255` (dark) — fixes the 13 industry pages, `industries`, `services/in-home-services`, `built-by` in one change | `assets/nav.css` |
+| Phone auth panel keeps its glass fill | `account.html` |
+| `.transfer-badge` ink `#185d0d → #14490a` | `auction-house-…html` |
+
+**Two ink tokens turned out to be calibrated against the page ground rather than against panels** — light cyan and dark nebula-purple both cleared AA on the flat page colour and measured 4.07–4.49:1 on tinted panels, which is where they are actually used. **When one marginal miss shows up on several unrelated pages at once, suspect the token, not the pages.** Check it is only ever ink before nudging it: the same change inverts if the token is also used as a fill.
+
+**The recurring rule, now broken three different ways:** *a colour literal cannot flip, so anything written as one needs an explicit light counterpart.* It has now appeared as a Tailwind arbitrary value, as an inline `style="background:#…"`, and as a token calibrated against pure paper but used on darker panels. **When you add a fixed or absolutely-positioned decorative layer, give it a class and a light rule in the same commit.**
+
+**Validator noise baseline is now 84**, not 68 — the site gained 13 `web-design-for-*` pages plus `industries`, `blog`, `blog-post-template`, `metalspredictor`, and `multichannel-commerce-website`, and each root page adds one expected missing-`es`-mirror. Breakdown: 67 missing-es-pair + 16 `node_modules`/`pokecard-dropin` broken links + 1 mojibake inside vendored `playwright-core`. Nothing in the site's own 64 files.
+
+**Signed-in portal views have still never been audited** — every sweep sees only the signed-out shell.
+
+## Immediate Context — Nav condensed (2026-08-17)
+
+**The header is now `Websites · Software · Pricing`** + icon-only Client Login + "Get started". The **`Work` item was retired** at the owner's request: Websites, Software and Work all read as "showing work I've done", and the structure confirmed it — `portfolio.html` was a two-card interstitial and one of its cards led to `apps.html`, *already the Software nav item*.
+
+The rule going forward, taken from **funnls.com** (the owner's design reference, which has no portfolio item at all): **the nav names what a visitor can buy; proof lives as evidence inside those pages, never as its own destination.** Do not reintroduce a Work/Portfolio item as a fourth sibling. Full rationale, the rejected alternatives, and the verification checklist are in `project-docs/NAV_RESTRUCTURE_PLAN.md`.
+
+Galleries now hang off their parent service page (`websites.html` → `casestudies.html`, `apps.html` → `app-catalog.html`) — both links already existed, so **no page content was edited**. `portfolio.html` stays live with `data-active="none"` and is deliberately **not** redirected; it has 6 inbound in-page links. Only `assets/standard-site-nav.js` and 8 `data-active` attributes changed. → `standard-site-nav.js?v=20260817-nav-condense` (31 pages).
+
+**Two things to know before you touch anything in bulk:**
+
+1. **Never bulk-edit `.html` with PowerShell `Get-Content`/`Set-Content`/`Out-File`.** PowerShell 5.1 reads UTF-8-without-BOM as Windows-1252, so a read-modify-write round-trip mojibakes every curly quote, em-dash and middot. It hit **31 files** this session during the cache-buster bump. It is **silent** — the intended edit lands correctly and pages still load — and was caught only because the validator jumped **69 → 271**. Repaired losslessly; verified 0 invalid-UTF-8 files and 0 markers across 60 page-loads. Use `[IO.File]::ReadAllText/WriteAllText` with `UTF8Encoding($false,$true)`, the editor's edit tooling, or git-bash `sed`, and **always re-run the validator after a bulk pass**.
+2. **`DEVELOPER-NOTES.md` was rewritten** — it had drifted since June (wrong brand, claimed no `package.json`, claimed Spanish mirrors were present, described Tailwind as precompiled when it is the runtime CDN, said 38 nav pages where the real count is 31). It is now the accurate short orientation; `project-docs/` remains the detail.
+
+**`process.html` was deleted (2026-08-17).** Its content split by audience rather than being folded wholesale: the software-migration story it carried was explicitly `BUSINESS SOFTWARE`, so it went to **`apps.html#software-process`**, and only its Maintain detail list — real website content — went into `websites.html`. Netlify 301s `/process.html` → `/websites.html#how-it-works`. **That anchor id is load-bearing** (redirect target + both service pages' CTAs + `rail.js`'s launch step) — do not rename it. A copy of the deleted file is in the session scratchpad as `process.html-retired-20260817.bak`.
+
+**The validator baseline is now 68, not 69** — one fewer English page means one fewer expected missing-`es`-mirror.
+
+**`assets/rail.js` was deleted** — dead code on all 13 pages that loaded it (no `#rail-popover` element or `[data-step]` triggers existed anywhere, so it returned immediately). Removed with its 13 script tags and 76 lines of orphaned `.rail-popover-*` CSS. **Two unrelated "rails" live in this repo — never sweep on the bare word:** the Admin Center sidebar is `client-admin-*` prefixed and is untouched. Backup in the session scratchpad as `rail.js-retired-20260817.bak`.
+
+**Verified:** 12 pages × 5 widths (1280/1024/880/879/390) — zero overflow, desktop row fits at every width, exactly one active pill on all 15 pages checked, zero nav links to `portfolio.html`, no duplicate dropdown destinations. Validator at its baseline.
+
+**Note:** this session started with the docs one session behind the code (stamped 2026-08-16, assets on `?v=20260817-cta-r5`). `pricing.html`'s plan names are now One Page / Starter / Growth / Pro; CURRENT_STATUS still describes the older four-card set. Flagged in TASKS, not reconciled here.
+
+## Immediate Context — Light Theme (2026-08-16)
+
+The site now has a **sitewide light theme** with a toggle in the shared nav. Dark is unchanged and still the default.
+
+Three things to know before touching any colour:
+
+1. **The theme works by swapping CSS variable values, not selectors.** The Tailwind palette lives in `assets/nav.css` as RGB channel triplets (`--t-*`); page configs read them as `rgb(var(--t-NAME) / <alpha-value>)`. A hardcoded hex anywhere silently opts that element out of the theme with no error. `nav.css`'s pinned utility fallbacks are the sharpest edge here — they load *after* the Tailwind CDN and will override it, so they must stay token-driven.
+2. **The pre-paint resolver in `<head>` is load-bearing.** Move it, or drop the light rules from `#dm-critical-dark-baseline`, and light mode flashes black on every navigation. That block keeps hex literals deliberately — it runs before `nav.css` exists.
+3. **Dark mode was held byte-identical.** Every light rule is additive; nothing on the dark side was consolidated or refactored. Verified by computed-style probes matching pre-change values exactly. Please preserve that property — it's what makes the change safe to deploy.
+
+Five idempotent sweep scripts live in `scripts/` (`sweep-veils`, `tokenize-tailwind-config`, `tokenize-page-styles`, `tokenize-white-text`, `tokenize-translucent-palette`, plus `add-theme-resolver` and `audit-contrast`). Re-run them after adding content; they will not double-apply.
+
+**The funnls.com-inspired layout upgrade is complete (all 5 phases).** Nav is `Websites · Software · Work · Pricing` + a "Get started" CTA; `pricing.html` is a four-card front door over the untouched detail page; `websites.html` is the websites story; the homepage leads with websites and carries a local-services strip; and `assets/nav.css` owns a shared `.sds-*` layout system. **Use that system on new pages — do not add another page prefix.** See CURRENT_STATUS for the class table and the two live constants (`WEBSITES_HREF` / `PRICING_HREF`) in the nav generator.
+
+**Homepage in light mode has no animated background** — Nova is gated off entirely (not merely hidden), so nothing is built and nothing animates. Toggling into dark there reloads once by design. See CURRENT_STATUS for why `!important` is needed on `#nova-bg`.
+
+Asset versions were bumped to `?v=20260816-light-theme-r3` across 206 references. Anything still on an older version is a file this change didn't touch.
+
+**Verified: 34 pages × 2 themes × 2 widths (1280px and 390px) — 0 contrast failures, 0 horizontal overflow.** 3,871 elements at desktop, 3,705 at phone. Validator at the 67-item baseline.
+
+Adding the phone width found 169 failures a desktop-only sweep had reported as clean — the phone footer's legal text (2.2:1 in *both* themes, 28 pages) and the phone header's account icon (1.28:1 on light, 29 pages). Both were long-standing bugs in the mobile DOM, which simply does not render at 1280px. **Audit at both widths.**
+
+The multichannel page's long-standing 92px sideways scroll is fixed too (a decorative halo pseudo-element; see TASKS for the two non-obvious lessons — `body{overflow-x:hidden}` not propagating, and pseudo-elements being invisible to rect-based overflow hunting).
+
+Dark mode's 49 long-standing failures were fixed in the same session (they pre-dated the theme work; the light sweep is just what finally measured dark). **This changed how dark mode looks in four places** — purple feature icons are a lighter violet, the app-credit pill is brighter, small `text-outline` print is no longer dimmed, and the fractal settings toggle is visible rather than nearly hidden. Gradients, fills, surfaces and body copy are untouched. Worth an eyeball before deploying if you have strong feelings about the purple.
+
+Four portal pages report 0 checked elements because they are auth-gated — their signed-in content could not be audited.
+
+**Not verified:** no real browser screenshot was possible (the preview pane doesn't composite frames), so everything is computed-style and geometry. Signed-in portal content is unaudited.
+
+**A caution the sweep taught:** the earlier five-page spot-check concluded the rest would be fine because they share the same chrome. That was wrong — the full sweep found five systematic causes and 100+ failing elements on pages nobody had opened. Don't infer page health from shared stylesheets.
 
 ## Startup Prompt
 

@@ -6,16 +6,42 @@
     min-width: min(100%, 18rem);
     padding: 0.95rem 1.2rem;
     border-radius: 1rem;
-    color: #050505;
+    /* On-bright, not void-black. The widget's green fill is a literal that does
+       not flip, but void-black flips to paper — which put the eyebrow, title and
+       arrow (all inheriting this colour) at 3.08/3.08/2.54:1 in light mode on
+       four portfolio pages. 5.6:1+ now; dark is visually unchanged. */
+    color: var(--c-on-bright);
+
+    /* THIS COMPONENT IS THEME-INDEPENDENT BY CONSTRUCTION (2026-08-18).
+       Its fill is built from literals (#39ff88, #8dffb4) that deliberately do
+       not flip, and its text is --c-on-bright (near-black) in both themes. So
+       every colour layered on top of that fill must be theme-independent too.
+
+       Using the global --c-veil-rgb / --t-void-black here inverted them in light
+       mode against a fill that never moved:
+         - the 0.9 radial highlight became a near-black blob over the eyebrow
+           and title -> 1.21:1, and the arrow -> 1.89:1
+         - the orb flipped to paper with a dark-green icon -> 4.28:1
+       Use these two locals inside this file, never the global veil/void tokens.
+       Two forms because the syntaxes differ: comma for rgba(), space for the
+       rgb( ... / alpha ) form. */
+    --lw-light: 255, 255, 255;
+    --lw-dark: 9 12 14;
+
     background:
-        radial-gradient(circle at 18% 20%, rgba(255, 255, 255, 0.9), transparent 24%),
+        radial-gradient(circle at 18% 20%, rgba(var(--lw-light), 0.9), transparent 24%),
+        /* Middle stop is the cyan LITERAL, not --t-electric-cyan. That token
+           flips to a dark teal (0 104 121) in light, so the centre 58% of a
+           badge whose two ends are fixed bright greens went dark underneath
+           near-black text — 2.96:1. All three stops must be literals for the
+           fill to stay bright in both themes. */
         linear-gradient(135deg, #39ff88 0%, #00f0ff 58%, #8dffb4 100%);
     border: 1px solid rgba(57, 255, 136, 0.82);
     box-shadow:
-        0 0 0 1px rgba(255, 255, 255, 0.24) inset,
-        0 12px 34px rgba(0, 0, 0, 0.42),
+        0 0 0 1px rgba(var(--lw-light), 0.24) inset,
+        0 12px 34px rgba(var(--c-shadow-rgb), 0.42),
         0 0 36px rgba(57, 255, 136, 0.34),
-        0 0 72px rgba(0, 240, 255, 0.14);
+        0 0 72px rgb(var(--t-electric-cyan) / 0.14);
     overflow: hidden;
     isolation: isolate;
     transform: translateZ(0);
@@ -31,8 +57,8 @@
     inset: -1px;
     z-index: -1;
     background:
-        linear-gradient(100deg, transparent 0%, rgba(255, 255, 255, 0.45) 12%, transparent 24%),
-        repeating-linear-gradient(90deg, rgba(5, 5, 5, 0.11) 0 1px, transparent 1px 12px);
+        linear-gradient(100deg, transparent 0%, rgba(var(--lw-light), 0.45) 12%, transparent 24%),
+        repeating-linear-gradient(90deg, rgb(var(--lw-dark) / 0.11) 0 1px, transparent 1px 12px);
     transform: translateX(-130%);
     animation: live-widget-scan 3.6s ease-in-out infinite;
 }
@@ -42,19 +68,19 @@
     position: absolute;
     inset: 7px;
     border-radius: 0.72rem;
-    border: 1px solid rgba(5, 5, 5, 0.2);
+    border: 1px solid rgb(var(--lw-dark) / 0.2);
     pointer-events: none;
 }
 
 .portfolio-live-widget:hover,
 .portfolio-live-widget:focus-visible {
     transform: translateY(-4px) scale(1.03);
-    border-color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(var(--lw-light), 0.9);
     box-shadow:
-        0 0 0 1px rgba(255, 255, 255, 0.4) inset,
-        0 20px 46px rgba(0, 0, 0, 0.52),
+        0 0 0 1px rgba(var(--lw-light), 0.4) inset,
+        0 20px 46px rgba(var(--c-shadow-rgb), 0.52),
         0 0 48px rgba(57, 255, 136, 0.58),
-        0 0 105px rgba(0, 240, 255, 0.28);
+        0 0 105px rgb(var(--t-electric-cyan) / 0.28);
     outline: none;
 }
 
@@ -66,11 +92,14 @@
     height: 2.75rem;
     flex: 0 0 auto;
     border-radius: 999px;
-    background: rgba(5, 5, 5, 0.88);
+    background: rgb(var(--lw-dark) / 0.88);
+    /* Literal green, not --t-ink-39ff88. That legacy ink token flips to a dark
+       green (16 114 55) in light, which on this permanently-dark orb measured
+       2.43:1. The orb never lightens, so its icon must never darken. */
     color: #39ff88;
     box-shadow:
-        0 0 0 1px rgba(255, 255, 255, 0.18) inset,
-        0 0 28px rgba(5, 5, 5, 0.36);
+        0 0 0 1px rgba(var(--lw-light), 0.18) inset,
+        0 0 28px rgb(var(--lw-dark) / 0.36);
 }
 
 .portfolio-live-widget__orb::before,
@@ -124,8 +153,8 @@
     width: 0.45rem;
     height: 0.45rem;
     border-radius: 999px;
-    background: #050505;
-    box-shadow: 0 0 0 0 rgba(5, 5, 5, 0.36);
+    background: rgb(var(--lw-dark));
+    box-shadow: 0 0 0 0 rgb(var(--lw-dark) / 0.36);
     animation: live-widget-dot 1.65s ease-in-out infinite;
 }
 
@@ -147,14 +176,14 @@
     width: 2rem;
     height: 2rem;
     border-radius: 999px;
-    background: rgba(5, 5, 5, 0.15);
+    background: rgb(var(--lw-dark) / 0.15);
     transition: transform 0.36s cubic-bezier(0.22, 1, 0.36, 1), background 0.36s ease;
 }
 
 .portfolio-live-widget:hover .portfolio-live-widget__arrow,
 .portfolio-live-widget:focus-visible .portfolio-live-widget__arrow {
     transform: translateX(4px) rotate(-8deg);
-    background: rgba(5, 5, 5, 0.24);
+    background: rgb(var(--lw-dark) / 0.24);
 }
 
 @keyframes live-widget-scan {
@@ -168,8 +197,8 @@
 }
 
 @keyframes live-widget-dot {
-    0%, 100% { transform: scale(1); opacity: 0.82; box-shadow: 0 0 0 0 rgba(5, 5, 5, 0.36); }
-    50% { transform: scale(1.35); opacity: 1; box-shadow: 0 0 0 6px rgba(5, 5, 5, 0); }
+    0%, 100% { transform: scale(1); opacity: 0.82; box-shadow: 0 0 0 0 rgb(var(--lw-dark) / 0.36); }
+    50% { transform: scale(1.35); opacity: 1; box-shadow: 0 0 0 6px rgb(var(--lw-dark) / 0); }
 }
 
 @media (min-width: 641px) and (max-width: 1279.98px) {

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
+<script id="sds-theme-resolver">/* Pre-paint theme resolver — must stay the first script in <head>. Stamps data-theme on <html> from the stored choice before anything paints, and overwrites the inline dark background attribute. Dark is the brand default when nothing is stored, so a visitor whose OS prefers light still gets the site's intended look until they choose. */(function(){var d=document.documentElement,t;try{t=localStorage.getItem("sds-theme")}catch(e){}if(t!=="light")t="dark";d.setAttribute("data-theme",t);d.classList.toggle("dark",t==="dark");d.style.background=t==="light"?"#f4f2ee":"#050505"})();</script>
 
 <script>/* Head-stamp: nav.css reveals un-stamped pages at 0.2s (its no-logo-script fallback). On heavy pages the bottom-of-body surette-logo.js stamp lands after that, so content flashed in at 0.2s, vanished when the stamp arrived, then faded back in. Stamping before first paint makes JS the only revealer. */document.documentElement.classList.add("sds-logo-loaded");</script>
 <style id="dm-critical-dark-baseline">
@@ -9,6 +10,7 @@
   #__next,#root,.app{background:#050505;min-height:100vh;}
   body>main{min-height:100vh;}
   #page-loader,.sds-apps-loader{background:#050505;}
+html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:#0b0e10;color-scheme:light}html[data-theme="light"] #__next,html[data-theme="light"] #root,html[data-theme="light"] .app{background:#f4f2ee}html[data-theme="light"] #page-loader,html[data-theme="light"] .sds-apps-loader{background:#f4f2ee}
 </style>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
@@ -32,8 +34,8 @@
 <meta name="twitter:title" content="Office Network Setup | Surette Data Systems"/>
 <meta name="twitter:description" content="Local office technology setup for Southwest Florida businesses: Wi-Fi, networking, workstations, printers, shared tools, and clean handoff support."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
-<link href="../assets/nav.css?v=20260801-scroll-hide3" rel="stylesheet"/>
-<link href="../assets/cosmic-web.css?v=20260716-md880" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="../assets/nav.css?v=20260829-apps-retired" rel="stylesheet"/>
+<link href="../assets/cosmic-web.css?v=20260827-contrast-nav" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
   #sds-logo a.sds-anchor,
   #sds-logo-mobile a.sds-anchor {
@@ -64,10 +66,10 @@
     font-size: 15px !important;
     font-weight: 700 !important;
     letter-spacing: 0.16em !important;
-    color: #ddeeff !important;
+    color: var(--sds-logo-co, #ddeeff) !important;
     line-height: 1 !important;
     text-transform: uppercase !important;
-    text-shadow: 0 0 12px rgba(0, 190, 255, 0.45) !important;
+    text-shadow: var(--sds-logo-glow, 0 0 12px rgba(0, 190, 255, 0.45)) !important;
   }
   #sds-logo .sds-sub,
   #sds-logo-mobile .sds-sub {
@@ -75,24 +77,22 @@
     font-size: 8px !important;
     font-weight: 300 !important;
     letter-spacing: 0.34em !important;
-    color: #00b8df !important;
+    color: var(--sds-logo-sub, #00b8df) !important;
     line-height: 1 !important;
-    opacity: 0.7 !important;
+    opacity: var(--sds-logo-sub-opacity, 0.7) !important;
   }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <style>
-.glass-card { background: rgba(255,255,255,0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); }
-.grid-overlay { background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 80px 80px; }
-.rail-popover-ghost { visibility:hidden; pointer-events:none; transform:translateY(-50%) translateX(-10px); transition: visibility 0s linear 0.42s, transform 0.42s cubic-bezier(0.22,1,0.36,1); }
-.rail-popover-ghost.is-visible { visibility:visible; pointer-events:auto; transform:translateY(-50%) translateX(0); transition: visibility 0s, transform 0.42s cubic-bezier(0.22,1,0.36,1); }
-.rail-popover-ghost-inner { padding:0.7rem 1.35rem; border-radius:9999px; background:rgba(8,10,14,0.24); backdrop-filter:blur(40px); border:1px solid rgba(255,255,255,0.06); }
+.glass-card { background: rgba(var(--c-veil-rgb), 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(var(--c-veil-rgb), 0.1); }
+.grid-overlay { background-image: linear-gradient(to right, rgba(var(--c-veil-rgb), 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(var(--c-veil-rgb), 0.05) 1px, transparent 1px); background-size: 80px 80px; }
 </style>
-<script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors:{"void-black":"#050505","electric-cyan":"#00F0FF","nebula-purple":"#7000FF","starlight-white":"#FFFFFF","on-surface-variant":"#c4c7c7","outline":"#8e9192","surface":"#121414"},spacing:{"margin-desktop":"64px","margin-mobile":"20px","gutter":"24px","container-max":"1440px"},fontFamily:{"headline-xl":["Space Grotesk"],"headline-lg":["Space Grotesk"],"headline-md":["Space Grotesk"],"body-md":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"label-mono":["JetBrains Mono"],"label-caps":["JetBrains Mono"]},fontSize:{"headline-xl":["64px",{lineHeight:"1.1",fontWeight:"700"}],"headline-lg":["40px",{lineHeight:"1.2",fontWeight:"600"}],"headline-md":["24px",{lineHeight:"1.3",fontWeight:"500"}],"body-lg":["18px",{lineHeight:"1.6"}],"body-md":["16px",{lineHeight:"1.6"}],"label-mono":["14px",{letterSpacing:"0.05em"}],"label-caps":["12px",{letterSpacing:"0.1em",fontWeight:"700"}]}}}}</script>
+<script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors:{
+        "white": "rgb(var(--t-starlight-white) / <alpha-value>)","void-black":"rgb(var(--t-void-black) / <alpha-value>)","electric-cyan":"rgb(var(--t-electric-cyan) / <alpha-value>)","nebula-purple":"rgb(var(--t-nebula-purple) / <alpha-value>)","starlight-white":"rgb(var(--t-starlight-white) / <alpha-value>)","on-surface-variant":"rgb(var(--t-on-surface-variant) / <alpha-value>)","outline":"rgb(var(--t-outline) / <alpha-value>)","surface":"rgb(var(--t-surface) / <alpha-value>)"},spacing:{"margin-desktop":"64px","margin-mobile":"20px","gutter":"24px","container-max":"1440px"},fontFamily:{"headline-xl":["Space Grotesk"],"headline-lg":["Space Grotesk"],"headline-md":["Space Grotesk"],"body-md":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"label-mono":["JetBrains Mono"],"label-caps":["JetBrains Mono"]},fontSize:{"headline-xl":["64px",{lineHeight:"1.1",fontWeight:"700"}],"headline-lg":["40px",{lineHeight:"1.2",fontWeight:"600"}],"headline-md":["24px",{lineHeight:"1.3",fontWeight:"500"}],"body-lg":["18px",{lineHeight:"1.6"}],"body-md":["16px",{lineHeight:"1.6"}],"label-mono":["14px",{letterSpacing:"0.05em"}],"label-caps":["12px",{letterSpacing:"0.1em",fontWeight:"700"}]}}}}</script>
 </head>
 <body class="bg-void-black text-starlight-white font-body-md overflow-x-hidden cosmic-tint-office">
-<script src="../assets/standard-site-nav.js?v=20260801-scroll-hide3" data-active="services"></script>
+<script src="../assets/standard-site-nav.js?v=20260829-apps-retired" data-active="none"></script>
 <div class="hidden md:block">
 <div class="fixed inset-0 grid-overlay pointer-events-none z-0"></div>
 <main class="relative z-10 pt-32 pb-24 px-margin-desktop md:pl-28">
@@ -100,15 +100,15 @@
 <span class="font-label-caps text-label-caps text-electric-cyan tracking-widest">LOCAL OFFICE SETUP</span>
 <h1 class="font-headline-xl text-headline-xl text-starlight-white mt-4 mb-6">Small office networks without the mystery.</h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl leading-relaxed">For local offices that need Wi-Fi, workstations, printers, shared tools, and basic network organization set up cleanly. We help make the office technology boring in the best way: connected, labeled, documented, and ready to use.</p>
-<div class="flex flex-wrap gap-4 mt-10"><a href="../contact.html" class="px-10 py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-mono font-bold rounded-lg">Plan an Office Setup</a><a href="../process.html" class="px-10 py-4 glass-card border border-white/10 font-label-mono rounded-lg hover:bg-white/5">View Our Process</a><a href="in-home-services.html" class="px-10 py-4 glass-card border border-white/10 font-label-mono rounded-lg hover:bg-white/5">All On-Site Services</a></div>
+<div class="flex flex-wrap gap-4 mt-10"><a href="../contact.html" class="px-10 py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-mono font-bold rounded-lg">Plan an Office Setup</a><a href="../websites.html#how-it-works" class="px-10 py-4 glass-card border border-white/10 font-label-mono rounded-lg hover:bg-white/5">View Our Process</a><a href="in-home-services.html" class="px-10 py-4 glass-card border border-white/10 font-label-mono rounded-lg hover:bg-white/5">All On-Site Services</a></div>
 </section>
 <section class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-gutter mb-20">
 <div class="glass-card p-10 rounded-xl"><span class="material-symbols-outlined text-5xl text-electric-cyan mb-6">lan</span><h2 class="font-headline-lg text-headline-lg mb-4">Network foundation</h2><p class="font-body-md text-on-surface-variant mb-6">Router, switch, Wi-Fi, guest access, printer connections, and workstation setup for small teams.</p><ul class="space-y-3 text-on-surface-variant"><li class="flex gap-3"><span class="material-symbols-outlined text-electric-cyan">check</span>Business Wi-Fi and guest networks</li><li class="flex gap-3"><span class="material-symbols-outlined text-electric-cyan">check</span>Printer and scanner access</li><li class="flex gap-3"><span class="material-symbols-outlined text-electric-cyan">check</span>Workstation and monitor setup</li></ul></div>
 <div class="glass-card p-10 rounded-xl"><span class="material-symbols-outlined text-5xl text-nebula-purple mb-6">inventory_2</span><h2 class="font-headline-lg text-headline-lg mb-4">Clean handoff</h2><p class="font-body-md text-on-surface-variant mb-6">We leave behind a simple record of what was set up, what equipment you have, and what to do next.</p><ul class="space-y-3 text-on-surface-variant"><li class="flex gap-3"><span class="material-symbols-outlined text-electric-cyan">check</span>Basic network notes and labels</li><li class="flex gap-3"><span class="material-symbols-outlined text-electric-cyan">check</span>Hardware recommendations</li><li class="flex gap-3"><span class="material-symbols-outlined text-electric-cyan">check</span>Optional ongoing support plan</li></ul></div>
 </section>
-<section class="max-w-container-max mx-auto glass-card p-12 rounded-2xl text-center"><h2 class="font-headline-lg text-headline-lg mb-4">Opening, moving, or cleaning up an office?</h2><p class="font-body-md text-on-surface-variant mb-8 max-w-xl mx-auto">Tell us what equipment you have, how many people need to work, and what is currently causing friction. We will recommend a practical setup plan.</p><a href="../contact.html" class="inline-block px-12 py-5 bg-starlight-white text-void-black font-label-mono font-bold rounded-lg">Contact Us</a></section>
+<section class="max-w-container-max mx-auto glass-card p-12 rounded-2xl text-center"><h2 class="font-headline-lg text-headline-lg mb-4">Opening, moving, or cleaning up an office?</h2><p class="font-body-md text-on-surface-variant mb-8 max-w-xl mx-auto">Tell us what equipment you have, how many people need to work, and what is currently causing friction. We will recommend a practical setup plan.</p><a href="../contact.html" class="inline-block px-12 py-5 bg-starlight-white text-void-black font-label-mono font-bold rounded-lg">Get started</a></section>
 </main>
-<script src="../assets/standard-site-footer.js?v=20260716-footer-3line" data-variant="desktop"></script>
+<script src="../assets/standard-site-footer.js?v=20260817-cta-r5" data-variant="desktop"></script>
 </div>
 <div class="md:hidden min-h-screen pt-32 px-margin-mobile">
 <div class="fixed inset-0 grid-overlay pointer-events-none z-0"></div>
@@ -120,12 +120,10 @@
 <p class="font-body-md text-on-surface-variant mb-8">Wi-Fi, workstation, printer, scanner, and basic office network setup for small local teams.</p>
 <ul class="space-y-3 mb-10"><li class="flex gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan">check</span>Business and guest Wi-Fi</li><li class="flex gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan">check</span>Shared office devices</li><li class="flex gap-3 text-on-surface-variant"><span class="material-symbols-outlined text-electric-cyan">check</span>Simple setup notes and handoff</li></ul>
 <a href="../contact.html" class="block text-center py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps rounded-sm">Plan an Office Setup</a>
-<a href="../process.html" class="block text-center py-4 mt-3 border border-white/10 text-starlight-white font-label-caps rounded-sm">View Our Process</a>
-<script src="../assets/standard-site-footer.js?v=20260716-footer-3line" data-variant="mobile"></script>
+<a href="../websites.html#how-it-works" class="block text-center py-4 mt-3 border border-white/10 text-starlight-white font-label-caps rounded-sm">View Our Process</a>
+<script src="../assets/standard-site-footer.js?v=20260817-cta-r5" data-variant="mobile"></script>
 </div>
-<script src="../assets/mobile-services-nav.js?v=20260715-services-merge"></script>
-<script src="../assets/account-nav.js?v=20260715-login-highlight"></script>
-<script src="../assets/rail.js?v=20260602-rail-active"></script>
-<script src="../surette-logo.js?v=20260721-fonts-gate"></script>
+<script src="../assets/account-nav.js?v=20260817-cta-r5"></script>
+<script src="../surette-logo.js?v=20260817-cta-r5"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
 </body></html>

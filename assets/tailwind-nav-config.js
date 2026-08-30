@@ -3,16 +3,17 @@ tailwind.config = {
   theme: {
     extend: {"screens":{"md":"880px"},
       colors: {
-        "on-background": "#e3e2e2",
-        "on-surface": "#e3e2e2",
-        "void-black": "#050505",
-        "on-surface-variant": "#c4c7c7",
-        surface: "#121414",
-        "electric-cyan": "#00F0FF",
-        "nebula-purple": "#7000FF",
-        "starlight-white": "#FFFFFF",
-        outline: "#8e9192",
-        "on-primary-container": "#797777"
+        "white": "rgb(var(--t-starlight-white) / <alpha-value>)",
+        "on-background": "rgb(var(--t-on-background) / <alpha-value>)",
+        "on-surface": "rgb(var(--t-on-surface) / <alpha-value>)",
+        "void-black": "rgb(var(--t-void-black) / <alpha-value>)",
+        "on-surface-variant": "rgb(var(--t-on-surface-variant) / <alpha-value>)",
+        surface: "rgb(var(--t-surface) / <alpha-value>)",
+        "electric-cyan": "rgb(var(--t-electric-cyan) / <alpha-value>)",
+        "nebula-purple": "rgb(var(--t-nebula-purple) / <alpha-value>)",
+        "starlight-white": "rgb(var(--t-starlight-white) / <alpha-value>)",
+        outline: "rgb(var(--t-outline) / <alpha-value>)",
+        "on-primary-container": "rgb(var(--t-on-primary-container) / <alpha-value>)"
       },
       spacing: {
         "margin-desktop": "64px",

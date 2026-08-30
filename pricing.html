@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html class="dark" style="background:#050505" lang="en">
+<head>
+<meta charset="utf-8"/>
+<script id="sds-theme-resolver">/* Pre-paint theme resolver — must stay the first script in <head>. Stamps data-theme on <html> from the stored choice before anything paints, and overwrites the inline dark background attribute. Dark is the brand default when nothing is stored, so a visitor whose OS prefers light still gets the site's intended look until they choose. */(function(){var d=document.documentElement,t;try{t=localStorage.getItem("sds-theme")}catch(e){}if(t!=="light")t="dark";d.setAttribute("data-theme",t);d.classList.toggle("dark",t==="dark");d.style.background=t==="light"?"#f4f2ee":"#050505"})();</script>
+
+<script>/* Head-stamp: nav.css reveals un-stamped pages at 0.2s (its no-logo-script fallback). On heavy pages the bottom-of-body surette-logo.js stamp lands after that, so content flashed in at 0.2s, vanished when the stamp arrived, then faded back in. Stamping before first paint makes JS the only revealer. */document.documentElement.classList.add("sds-logo-loaded");</script>
+<style id="dm-critical-dark-baseline">
+  html,body{background:#050505;color:#fff;min-height:100%;color-scheme:dark;}
+  body{margin:0;min-height:100vh;}
+  #__next,#root,.app{background:#050505;min-height:100vh;}
+  body>main{min-height:100vh;}
+  #page-loader,.sds-apps-loader{background:#050505;}
+html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:#0b0e10;color-scheme:light}html[data-theme="light"] #__next,html[data-theme="light"] #root,html[data-theme="light"] .app{background:#f4f2ee}html[data-theme="light"] #page-loader,html[data-theme="light"] .sds-apps-loader{background:#f4f2ee}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Website Pricing | Surette Data Systems</title>
+<meta name="description" content="One monthly price covering custom design, managed hosting, maintenance, and support. Website plans from $65/mo."/>
+<link rel="canonical" href="https://surettesystems.com/pricing.html"/>
+<link rel="icon" href="/assets/favicon.svg?v=20260716-blur-on" type="image/svg+xml"/>
+<link rel="icon" href="/assets/favicon-32.png?v=20260716-blur-on" sizes="32x32" type="image/png"/>
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=20260716-blur-on"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<meta name="theme-color" content="#050505"/>
+<meta property="og:site_name" content="Surette Data Systems"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Website Pricing | Surette Data Systems"/>
+<meta property="og:description" content="One monthly price covering custom design, managed hosting, maintenance, and support. Website plans from $65/mo."/>
+<meta property="og:url" content="https://surettesystems.com/pricing.html"/>
+<meta property="og:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="Surette Data Systems &mdash; high-tech business software for mobile, web, and desktop"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Website Pricing | Surette Data Systems"/>
+<meta name="twitter:description" content="One monthly price covering custom design, managed hosting, maintenance, and support. Website plans from $65/mo."/>
+<meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
+<meta name="twitter:image:alt" content="Surette Data Systems &mdash; high-tech business software for mobile, web, and desktop"/>
+<link href="assets/nav.css?v=20260829-apps-retired" rel="stylesheet"/>
+<link href="assets/cosmic-web.css?v=20260827-contrast-nav" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors:{
+        "white": "rgb(var(--t-starlight-white) / <alpha-value>)","on-background":"rgb(var(--t-on-background) / <alpha-value>)","deep-space-grey":"rgb(var(--t-deep-space-grey) / <alpha-value>)","primary-container":"rgb(var(--t-primary-container) / <alpha-value>)","on-surface":"rgb(var(--t-on-surface) / <alpha-value>)","void-black":"rgb(var(--t-void-black) / <alpha-value>)","on-surface-variant":"rgb(var(--t-on-surface-variant) / <alpha-value>)","surface-container-high":"rgb(var(--t-surface-container-high) / <alpha-value>)","on-tertiary-container":"rgb(var(--t-on-tertiary-container) / <alpha-value>)","surface":"rgb(var(--t-surface) / <alpha-value>)","surface-container-low":"rgb(var(--t-surface-container-low) / <alpha-value>)","on-tertiary-fixed-variant":"rgb(var(--t-on-tertiary-fixed-variant) / <alpha-value>)","tertiary":"rgb(var(--t-tertiary) / <alpha-value>)","electric-cyan":"rgb(var(--t-electric-cyan) / <alpha-value>)","surface-bright":"rgb(var(--t-surface-bright) / <alpha-value>)","on-tertiary":"rgb(var(--t-on-tertiary) / <alpha-value>)","on-primary":"rgb(var(--t-on-primary) / <alpha-value>)","surface-container-highest":"rgb(var(--t-surface-container-highest) / <alpha-value>)","on-secondary-container":"rgb(var(--t-on-secondary-container) / <alpha-value>)","secondary":"rgb(var(--t-secondary) / <alpha-value>)","surface-container":"rgb(var(--t-surface-container) / <alpha-value>)","background":"rgb(var(--t-background) / <alpha-value>)","outline":"rgb(var(--t-outline) / <alpha-value>)","surface-container-lowest":"rgb(var(--t-surface-container-lowest) / <alpha-value>)","primary-fixed":"rgb(var(--t-primary-fixed) / <alpha-value>)","on-secondary":"rgb(var(--t-on-secondary) / <alpha-value>)","on-error":"rgb(var(--t-on-error) / <alpha-value>)","on-primary-fixed":"rgb(var(--t-on-primary-fixed) / <alpha-value>)","on-primary-container":"rgb(var(--t-on-primary-container) / <alpha-value>)","tertiary-fixed-dim":"rgb(var(--t-tertiary-fixed-dim) / <alpha-value>)","on-error-container":"rgb(var(--t-on-error-container) / <alpha-value>)","surface-dim":"rgb(var(--t-surface-dim) / <alpha-value>)","surface-tint":"rgb(var(--t-surface-tint) / <alpha-value>)","tertiary-container":"rgb(var(--t-tertiary-container) / <alpha-value>)","on-primary-fixed-variant":"rgb(var(--t-on-primary-fixed-variant) / <alpha-value>)","nebula-purple":"rgb(var(--t-nebula-purple) / <alpha-value>)","inverse-primary":"rgb(var(--t-inverse-primary) / <alpha-value>)","on-secondary-fixed-variant":"rgb(var(--t-on-secondary-fixed-variant) / <alpha-value>)","secondary-container":"rgb(var(--t-secondary-container) / <alpha-value>)","error-container":"rgb(var(--t-error-container) / <alpha-value>)","tertiary-fixed":"rgb(var(--t-tertiary-fixed) / <alpha-value>)","error":"rgb(var(--t-error) / <alpha-value>)","inverse-on-surface":"rgb(var(--t-inverse-on-surface) / <alpha-value>)","primary-fixed-dim":"rgb(var(--t-primary-fixed-dim) / <alpha-value>)","secondary-fixed-dim":"rgb(var(--t-secondary-fixed-dim) / <alpha-value>)","primary":"rgb(var(--t-primary) / <alpha-value>)","on-secondary-fixed":"rgb(var(--t-on-secondary-fixed) / <alpha-value>)","starlight-white":"rgb(var(--t-starlight-white) / <alpha-value>)","surface-variant":"rgb(var(--t-surface-variant) / <alpha-value>)","inverse-surface":"rgb(var(--t-inverse-surface) / <alpha-value>)","on-tertiary-fixed":"rgb(var(--t-on-tertiary-fixed) / <alpha-value>)","outline-variant":"rgb(var(--t-outline-variant) / <alpha-value>)","secondary-fixed":"rgb(var(--t-secondary-fixed) / <alpha-value>)"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{unit:"8px","margin-desktop":"64px","margin-mobile":"20px",gutter:"24px","container-max":"1440px"},fontFamily:{"headline-lg-mobile":["Space Grotesk"],"body-md":["Plus Jakarta Sans"],"label-mono":["JetBrains Mono"],"label-caps":["JetBrains Mono"],"body-lg":["Plus Jakarta Sans"],"headline-xl":["Space Grotesk"],"headline-md":["Space Grotesk"],"headline-lg":["Space Grotesk"]},fontSize:{"headline-lg-mobile":["32px",{lineHeight:"1.2",fontWeight:"600"}],"body-md":["16px",{lineHeight:"1.6",fontWeight:"400"}],"label-mono":["14px",{lineHeight:"1.4",letterSpacing:"0.05em",fontWeight:"500"}],"label-caps":["12px",{lineHeight:"1.2",letterSpacing:"0.1em",fontWeight:"700"}],"body-lg":["18px",{lineHeight:"1.6",fontWeight:"400"}],"headline-xl":["64px",{lineHeight:"1.1",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-md":["24px",{lineHeight:"1.3",fontWeight:"500"}],"headline-lg":["40px",{lineHeight:"1.2",letterSpacing:"-0.01em",fontWeight:"600"}]}}}};
+</script>
+<style>
+
+/* ── Monthly / annual toggle ─────────────────────────────────────────────── */
+.pr-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 30px auto 0;
+  padding: 6px;
+  border: 1px solid var(--c-veil-3);
+  border-radius: 999px;
+  background: var(--c-veil-1);
+}
+
+.pr-toggle__btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+  background: transparent;
+  color: rgb(var(--t-on-surface-variant));
+  font: 700 12px "JetBrains Mono", monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.25s ease, background 0.25s ease;
+}
+
+.pr-toggle__btn[aria-pressed="true"] {
+  background: rgba(var(--c-primary-rgb), 0.14);
+  color: rgb(var(--t-electric-cyan));
+}
+
+/* On paper the cyan tint lightens the ground instead of darkening it, so cyan
+   text on it lands at 4.44:1 — just under AA. Thinner tint, deeper text. Same
+   correction already applied to .pill / .badge in nav.css. */
+:root[data-theme="light"] .pr-toggle__btn[aria-pressed="true"] {
+  background: rgba(var(--c-primary-rgb), 0.07);
+  color: #005766;
+}
+
+.pr-save {
+  font: 700 11px "JetBrains Mono", monospace;
+  letter-spacing: 0.08em;
+  color: rgb(var(--t-tertiary));
+}
+
+/* ── Plan ladder ─────────────────────────────────────────────────────────────
+   1-up phone / 2-up at the site's 880 line / 4-up above 1200. auto-rows-fr
+   keeps the four cards equal height so the CTA row lines up. */
+.pr-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 44px;
+}
+
+@media (min-width: 880px) { .pr-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }}
+@media (min-width: 1200px) { .pr-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }}
+
+.pr-card--featured {
+  border-color: rgba(var(--c-primary-rgb), 0.42);
+  box-shadow: 0 0 44px rgba(var(--c-primary-rgb), 0.09);
+}
+
+.pr-badge {
+  position: absolute;
+  top: -11px;
+  left: 24px;
+  padding: 4px 11px;
+  border-radius: 999px;
+  background: var(--g-primary);
+  color: var(--c-on-accent);
+  font: 700 10px "JetBrains Mono", monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.pr-card__name {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.3rem;
+  margin: 0 0 6px;
+  color: rgb(var(--t-starlight-white));
+}
+
+.pr-card__blurb {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  min-height: 2.7rem;
+  margin: 0 0 20px;
+  color: rgb(var(--t-on-surface-variant));
+}
+
+.pr-price {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.pr-price__amount {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: rgb(var(--t-starlight-white));
+}
+
+.pr-price__unit {
+  font: 500 0.85rem "JetBrains Mono", monospace;
+  color: rgb(var(--t-on-surface-variant));
+}
+
+.pr-price__note {
+  min-height: 1.2rem;
+  margin: 0 0 20px;
+  font: 500 0.75rem "JetBrains Mono", monospace;
+  color: rgb(var(--t-tertiary));
+}
+
+.pr-feat {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  flex: 1 1 auto;
+}
+
+.pr-feat li {
+  display: flex;
+  gap: 9px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: rgb(var(--t-on-surface-variant));
+}
+
+.pr-feat .material-symbols-outlined {
+  font-size: 17px;
+  line-height: 1.35;
+  flex-shrink: 0;
+  color: rgb(var(--t-electric-cyan));
+}
+
+.pr-three {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+@media (min-width: 880px) { .pr-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }}
+
+/* Escape hatches — the paths that do not fit the monthly ladder. */
+.pr-route {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 24px;
+  border: 1px solid var(--c-veil-3);
+  border-radius: 16px;
+  background: var(--c-veil-1);
+}
+
+.pr-route + .pr-route { margin-top: 14px; }
+
+/* Two-column tick list — the "included on Growth & Pro" band and the
+   enterprise capability list. Collapses to one column below the 880 line. */
+.pr-cols {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px 28px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 880px) { .pr-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }}
+
+.pr-cols li {
+  display: flex;
+  gap: 9px;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: rgb(var(--t-on-surface-variant));
+}
+
+.pr-cols .material-symbols-outlined {
+  font-size: 17px;
+  line-height: 1.4;
+  flex-shrink: 0;
+  color: rgb(var(--t-electric-cyan));
+}
+
+.pr-faq { display: grid; gap: 12px; margin-top: 28px; }
+
+.pr-faq details {
+  border: 1px solid var(--c-veil-3);
+  border-radius: 14px;
+  background: var(--c-veil-1);
+  padding: 16px 20px;
+}
+
+.pr-faq summary {
+  cursor: pointer;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1rem;
+  color: rgb(var(--t-starlight-white));
+}
+
+.pr-faq p { margin: 12px 0 0; font-size: 0.9rem; line-height: 1.7; color: rgb(var(--t-on-surface-variant)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .pr-toggle__btn, .pr-cta { transition: none; }}</style>
+</head>
+<body class="font-['Plus_Jakarta_Sans',sans-serif] min-h-screen flex flex-col cosmic-page cosmic-tint-services">
+<script src="assets/standard-site-nav.js?v=20260829-apps-retired" data-active="pricing"></script>
+
+<main class="relative z-10 pt-28 md:pt-32 pb-24">
+  <div class="sds-wrap">
+
+    <!-- Hero -->
+    <header class="text-center">
+      <p class="sds-eyebrow">Plans &amp; Pricing</p>
+      <h1 class="sds-h1">One monthly price.<br/>Everything included.</h1>
+      <p class="sds-lead sds-lead--center">Every plan includes custom design, hosting, maintenance, and support. Pick the level that fits your business.</p>
+
+      <div class="pr-toggle" role="group" aria-label="Billing period">
+        <button type="button" class="pr-toggle__btn" data-bill="monthly" aria-pressed="true">Monthly</button>
+        <button type="button" class="pr-toggle__btn" data-bill="annual" aria-pressed="false">Annual</button>
+      </div>
+      <p class="pr-save" data-annual-hint hidden>Save 2 months when you pay annually.</p>
+<!-- Proof strip — verbatim quote from the testimonials section on index.html,
+     with its published attribution. Each page carries the quote that evidences
+     ITS claim rather than repeating one. No star rating or "trusted by N"
+     counter: unverified claims about the business. -->
+<div class="sds-proof sds-proof--hero">
+<span class="sds-proof__label"><span class="material-symbols-outlined" aria-hidden="true">verified</span>Trusted by local businesses</span>
+<p class="sds-proof__quote">&ldquo;We needed changes before a busy season &mdash; everything was updated within a day.&rdquo;</p>
+<span class="sds-proof__who">Office Administrator &middot; Professional Services, FL</span>
+</div>
+    </header>
+
+    <!-- Plan ladder -->
+    <div class="pr-grid">
+
+      <article class="sds-card">
+        <h2 class="pr-card__name">One Page</h2>
+        <p class="pr-card__blurb">A simple, professional one-page website.</p>
+        <div class="pr-price">
+          <span class="pr-price__amount" data-monthly="$65" data-annual="$65">$65</span>
+          <span class="pr-price__unit" data-monthly="/mo" data-annual="/mo">/mo</span>
+        </div>
+        <p class="pr-price__note" data-monthly="No setup fee" data-annual="Billed annually">No setup fee</p>
+        <ul class="pr-feat">
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Custom one-page website design</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Managed hosting with SSL included</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Mobile-responsive design</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Contact forms &amp; Google Maps</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Reviews &amp; photo galleries</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Basic SEO setup</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Ongoing edits included</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Email support</li>
+        </ul>
+        <a class="sds-btn" href="contact.html">Get started</a>
+      </article>
+
+      <article class="sds-card">
+        <h2 class="pr-card__name">Starter</h2>
+        <p class="pr-card__blurb">A professional website with hosting &amp; support essentials.</p>
+        <div class="pr-price">
+          <span class="pr-price__amount" data-monthly="$149" data-annual="$124">$149</span>
+          <span class="pr-price__unit" data-monthly="/mo" data-annual="/mo">/mo</span>
+        </div>
+        <p class="pr-price__note" data-monthly="No setup fee" data-annual="Billed annually &middot; save 2 months">No setup fee</p>
+        <ul class="pr-feat">
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Custom-designed website (up to 5 pages)</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Managed hosting with SSL included</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Version history &amp; rollbacks</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Mobile-responsive design</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>On-page SEO basics (meta, headings, sitemap)</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Email support</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Monthly content update (1 request)</li>
+        </ul>
+        <a class="sds-btn" href="contact.html">Get started</a>
+      </article>
+
+      <article class="sds-card pr-card--featured">
+        <span class="pr-badge">Most popular</span>
+        <h2 class="pr-card__name">Growth</h2>
+        <p class="pr-card__blurb">Full-service management for growing businesses.</p>
+        <div class="pr-price">
+          <span class="pr-price__amount" data-monthly="$249" data-annual="$207">$249</span>
+          <span class="pr-price__unit" data-monthly="/mo" data-annual="/mo">/mo</span>
+        </div>
+        <p class="pr-price__note" data-monthly="No setup fee" data-annual="Billed annually &middot; save 2 months">No setup fee</p>
+        <ul class="pr-feat">
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Everything in Starter</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Up to 10 pages</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Conversion intelligence, built in</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>1 hour monthly consultation</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Content &amp; design changes included</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Phone, chat &amp; email support</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Google Analytics setup</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Global CDN hosting included</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Monthly performance check-in</li>
+        </ul>
+        <a class="sds-btn sds-btn--solid" href="contact.html">Get started</a>
+      </article>
+
+      <article class="sds-card">
+        <h2 class="pr-card__name">Pro</h2>
+        <p class="pr-card__blurb">Proactive management, SEO, and priority support.</p>
+        <div class="pr-price">
+          <span class="pr-price__amount" data-monthly="$449" data-annual="$374">$449</span>
+          <span class="pr-price__unit" data-monthly="/mo" data-annual="/mo">/mo</span>
+        </div>
+        <p class="pr-price__note" data-monthly="No setup fee" data-annual="Billed annually &middot; save 2 months">No setup fee</p>
+        <ul class="pr-feat">
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Everything in Growth</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Up to 20 pages</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>2 hours design/content support</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Quarterly SEO health check</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Priority support queue</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Advanced analytics integration</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Blog management</li>
+        </ul>
+        <a class="sds-btn" href="contact.html">Get started</a>
+      </article>
+
+    </div>
+
+    <!-- Conversion intelligence -->
+    <section class="sds-section">
+      <div class="sds-panel">
+        <p class="sds-eyebrow">Included on Growth &amp; Pro</p>
+        <h2 class="sds-h2">Conversion intelligence, built in.</h2>
+        <p class="sds-body" style="max-width:52rem">We track how visitors interact with your website and use those insights to guide ongoing improvements to layout, messaging, calls to action, and page structure &mdash; so your site keeps getting better month after month.</p>
+        <ul class="pr-cols">
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Visitor behavior tracking</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Layout &amp; messaging refinements</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>CTA performance tuning</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Page structure optimization</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Setup, timeline, scope -->
+    <section class="sds-section">
+      <p class="sds-eyebrow">Getting started</p>
+      <h2 class="sds-h2">No upfront cost to get started.</h2>
+      <p class="sds-lead">Most websites launch with no setup fee. We handle the design, build, and launch as part of your monthly plan. For larger or more custom projects, a one-time setup may apply.</p>
+      <div class="pr-three" style="margin-top:26px">
+        <div class="sds-card">
+          <h3 class="sds-h3">Standard Build</h3>
+          <p class="sds-body">Included &mdash; no setup, normal timeline.</p>
+        </div>
+        <div class="sds-card">
+          <h3 class="sds-h3">Fast Track</h3>
+          <p class="sds-body">Optional priority build for faster turnaround, when you are working to a deadline.</p>
+        </div>
+        <div class="sds-card">
+          <h3 class="sds-h3">Custom Projects</h3>
+          <p class="sds-body">One-time setup may apply based on scope. We scope it with you upfront.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enterprise & franchise -->
+    <section class="sds-section">
+      <div class="sds-panel">
+        <p class="sds-eyebrow">Enterprise &amp; Franchise</p>
+        <h2 class="sds-h2">Need something bigger?<br/>Custom solutions for complex systems.</h2>
+        <p class="sds-body" style="max-width:52rem">Multi-location franchises, multi-site networks, and large content programs &mdash; scoped and priced to match the complexity of your business.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:22px">
+          <a class="sds-btn sds-btn--solid" href="contact.html">Request a quote</a>
+          <a class="sds-btn" href="portfolio.html">See our work</a>
+        </div>
+        <p class="sds-eyebrow" style="margin-top:32px">What&rsquo;s included</p>
+        <ul class="pr-cols">
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Multi-site &amp; franchise networks</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Local landing page programs</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>White-label arrangements</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Migration from legacy platforms</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Escape hatches -->
+    <section class="sds-section">
+      <p class="sds-eyebrow">Other ways to buy</p>
+      <h2 class="sds-h2">Not a monthly plan?</h2>
+
+      <div style="margin-top:24px">
+        <div class="pr-route">
+          <div>
+            <h3 class="sds-h3">Prefer to own it outright</h3>
+            <p class="sds-body">One-time website builds, from $1,500. You pay for the build and own it at handoff. Add Self-Hosting Setup and we create every account in your name &mdash; hosting, domain, email, analytics &mdash; then hand you the keys.</p>
+          </div>
+          <a class="sds-btn" href="services/website-design-hosting.html#one-time-builds">See one-time builds</a>
+        </div>
+
+        <div class="pr-route">
+          <div>
+            <h3 class="sds-h3">Own your own hosting</h3>
+            <p class="sds-body">Self-Hosting Setup and Handoff, $450 &mdash; or $750 when your site stores form records. We set up hosting, domain, DNS, SSL, email and analytics in <em>your</em> name, deploy the site, and walk you through it. You are the account holder from day one, so you are never locked in. Setup questions are covered for 14 days; after that it is $125/hr.</p>
+          </div>
+          <a class="sds-btn" href="contact.html">Ask about self-hosting</a>
+        </div>
+
+        <div class="pr-route">
+          <div>
+            <h3 class="sds-h3">Hosting and care only</h3>
+            <p class="sds-body">Already have a site? Care plans cover hosting, backups, monitoring, and a monthly update allowance.</p>
+          </div>
+          <a class="sds-btn" href="services/website-design-hosting.html#care-plans">See care plans</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="sds-section">
+      <p class="sds-eyebrow">Questions</p>
+      <h2 class="sds-h2">The short answers.</h2>
+
+      <div class="pr-faq">
+        <details>
+          <summary>Is there a setup fee?</summary>
+          <p>Most projects launch with no setup fee &mdash; your first website build is included in your monthly plan. For larger or more custom builds, a one-time setup fee may apply, and we will always scope that with you upfront.</p>
+        </details>
+        <details>
+          <summary>What if I need more pages?</summary>
+          <p>We can accommodate any size. If your project exceeds the page count in your plan, we will scope a custom quote &mdash; no surprises.</p>
+        </details>
+        <details>
+          <summary>Can I set up my own hosting instead?</summary>
+          <p>Yes. Add Self-Hosting Setup and Handoff to any one-time build &mdash; $450, or $750 if your site stores form records. We create the hosting, domain, DNS, SSL, business email and analytics accounts in your name, deploy the site, hand over every credential, and walk you through it. You pay those providers directly, typically a few dollars a month. Setup questions are covered for 14 days; after that it is billed at $125 per hour. You can still hand it back to us on a care plan later if you would rather not run it.</p>
+        </details>
+        <details>
+          <summary>Can I cancel anytime?</summary>
+          <p>Yes. There are no long-term contracts. Cancel anytime &mdash; no penalties, no hassle.</p>
+        </details>
+        <details>
+          <summary>Do I own my website?</summary>
+          <p>That depends on which route you take, and the difference is deliberate. On a monthly plan this is a fully managed service: your site stays live, supported, and continuously maintained as part of your subscription, and we hold the hosting account because hosting is part of what you are paying for. On a one-time build you own the finished website outright &mdash; and if you add Self-Hosting Setup, every account is created in <em>your</em> name, so you are the account holder and can move on without us. Either way, your own content &mdash; your logo, photos, text, and business information &mdash; is always yours.</p>
+        </details>
+        <details>
+          <summary>What&rsquo;s included in &lsquo;support&rsquo;?</summary>
+          <p>Content updates, design tweaks, troubleshooting, and third-party integration help &mdash; anything related to keeping your site running and looking great. One Page and Starter are email support; Growth adds phone and chat; Pro adds a priority queue.</p>
+        </details>
+        <details>
+          <summary>Can I pay annually instead?</summary>
+          <p>Yes. Paying annually saves you two months on Starter, Growth, and Pro &mdash; $124, $207, and $374 a month respectively instead of $149, $249, and $449. One Page stays $65 either way.</p>
+        </details>
+      </div>
+
+      <p class="sds-fine">Prices shown are starting prices and the plan summaries above are condensed. Third-party costs &mdash; domain registration and renewal, business email hosting, premium plugins or themes, paid fonts, stock photography, scheduling and CRM platforms, e-commerce and payment-processing fees &mdash; may be billed separately. One-time build packages, care plans, update and revision policies, ownership and renewal terms, and the complete FAQ live on the details page. Final scope, pricing, and terms are governed by the signed service agreement or project proposal.</p>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="sds-section">
+      <div class="sds-panel" style="text-align:center">
+        <h2 class="sds-h2">Not sure which plan fits?</h2>
+        <p class="sds-body" style="max-width:40rem;margin:0 auto 22px">Tell us about the business and we will point you at the smallest plan that does the job.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+          <a class="sds-btn sds-btn--solid" href="contact.html">Get started</a>
+          <a class="sds-btn" href="services/website-design-hosting.html">Full pricing details</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script src="assets/standard-site-footer.js?v=20260817-cta-r5"></script>
+
+<script>
+/* Monthly / annual toggle.
+
+   Each price element carries its own data-monthly and data-annual strings, so
+   switching is a text swap with no arithmetic here. Annual is billed for the
+   year but shown as an effective monthly rate, discounted by two months
+   (10/12 of the monthly price, rounded down to the dollar). One Page is the
+   exception and carries no annual discount, so both attributes read $65 —
+   deriving the figures in JS would silently discount it. */
+(function () {
+  var buttons = document.querySelectorAll("[data-bill]");
+  var hint = document.querySelector("[data-annual-hint]");
+  if (!buttons.length) return;
+
+  function apply(mode) {
+    document.querySelectorAll("[data-" + mode + "]").forEach(function (el) {
+      el.textContent = el.getAttribute("data-" + mode);
+    });
+    buttons.forEach(function (b) {
+      b.setAttribute("aria-pressed", b.getAttribute("data-bill") === mode ? "true" : "false");
+    });
+    if (hint) hint.hidden = mode !== "annual";
+  }
+
+  buttons.forEach(function (b) {
+    b.addEventListener("click", function () { apply(b.getAttribute("data-bill")); });
+  });
+})();
+</script>
+
+<script src="assets/account-nav.js?v=20260817-cta-r5"></script>
+<script src="surette-logo.js?v=20260817-cta-r5"></script>
+<script>document.addEventListener('DOMContentLoaded', function () { SuretteLogo.init('sds-logo'); SuretteLogo.init('sds-logo-mobile'); });</script>
+</body>
+</html>

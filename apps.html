@@ -2,6 +2,7 @@
 <html class="dark" style="background:#050505" lang="en">
 <head>
 <meta charset="utf-8"/>
+<script id="sds-theme-resolver">/* Pre-paint theme resolver — must stay the first script in <head>. Stamps data-theme on <html> from the stored choice before anything paints, and overwrites the inline dark background attribute. Dark is the brand default when nothing is stored, so a visitor whose OS prefers light still gets the site's intended look until they choose. */(function(){var d=document.documentElement,t;try{t=localStorage.getItem("sds-theme")}catch(e){}if(t!=="light")t="dark";d.setAttribute("data-theme",t);d.classList.toggle("dark",t==="dark");d.style.background=t==="light"?"#f4f2ee":"#050505"})();</script>
 
 <script>/* Head-stamp: nav.css reveals un-stamped pages at 0.2s (its no-logo-script fallback). On heavy pages the bottom-of-body surette-logo.js stamp lands after that, so content flashed in at 0.2s, vanished when the stamp arrived, then faded back in. Stamping before first paint makes JS the only revealer. */document.documentElement.classList.add("sds-logo-loaded");</script>
 <style id="dm-critical-dark-baseline">
@@ -10,11 +11,12 @@
   #__next,#root,.app{background:#050505;min-height:100vh;}
   body>main{min-height:100vh;}
   #page-loader,.sds-apps-loader{background:#050505;}
+html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:#0b0e10;color-scheme:light}html[data-theme="light"] #__next,html[data-theme="light"] #root,html[data-theme="light"] .app{background:#f4f2ee}html[data-theme="light"] #page-loader,html[data-theme="light"] .sds-apps-loader{background:#f4f2ee}
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>Surette Data Systems | Agentic AI-Powered Business Apps</title>
-<meta name="description" content="Surette Data Systems &mdash; custom agentic AI-powered CRM, ERP, inventory, workflows, reporting, and operations software for mobile, web, and desktop."/>
+<title>Systems We've Built | Surette Data Systems</title>
+<meta name="description" content="Surette Data Systems &mdash; case studies of custom business systems we have designed and built — shown as proof of what we can do, not as products for sale."/>
 <link rel="canonical" href="https://surettesystems.com/apps.html"/>
 <link rel="icon" href="/assets/favicon.svg?v=20260716-blur-on" type="image/svg+xml"/>
 <link rel="icon" href="/assets/favicon-32.png?v=20260716-blur-on" sizes="32x32" type="image/png"/>
@@ -36,8 +38,8 @@
 <meta name="twitter:description" content="Custom agentic AI-powered CRM, ERP, inventory, workflows, reporting, and operations software for mobile, web, and desktop."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
 <meta name="twitter:image:alt" content="Surette Data Systems &mdash; high-tech business software for mobile, web, and desktop"/>
-<link href="assets/nav.css?v=20260801-scroll-hide3" rel="stylesheet"/>
-<link href="assets/cosmic-web.css?v=20260716-md880" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="assets/nav.css?v=20260829-apps-retired" rel="stylesheet"/>
+<link href="assets/cosmic-web.css?v=20260827-contrast-nav" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
   #sds-logo a.sds-anchor,
   #sds-logo-mobile a.sds-anchor {
@@ -68,10 +70,10 @@
     font-size: 15px !important;
     font-weight: 700 !important;
     letter-spacing: 0.16em !important;
-    color: #ddeeff !important;
+    color: var(--sds-logo-co, #ddeeff) !important;
     line-height: 1 !important;
     text-transform: uppercase !important;
-    text-shadow: 0 0 12px rgba(0, 190, 255, 0.45) !important;
+    text-shadow: var(--sds-logo-glow, 0 0 12px rgba(0, 190, 255, 0.45)) !important;
   }
   #sds-logo .sds-sub,
   #sds-logo-mobile .sds-sub {
@@ -79,36 +81,36 @@
     font-size: 8px !important;
     font-weight: 300 !important;
     letter-spacing: 0.34em !important;
-    color: #00b8df !important;
+    color: var(--sds-logo-sub, #00b8df) !important;
     line-height: 1 !important;
-    opacity: 0.7 !important;
+    opacity: var(--sds-logo-sub-opacity, 0.7) !important;
   }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="assets/surette-data-systems-apps.css?v=20260716-md880" rel="stylesheet"/>
-<link href="assets/surette-physics-wordmark.css?v=20260716-md880" rel="stylesheet"/>
+<link href="assets/surette-data-systems-apps.css?v=20260827-contrast-nav" rel="stylesheet"/>
+<link href="assets/surette-physics-wordmark.css?v=20260817-cta-r5" rel="stylesheet"/>
 <script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/","lil-gui":"https://cdn.jsdelivr.net/npm/lil-gui@0.20.0/dist/lil-gui.esm.js"}}</script>
 <style>
   /* translate3d/backface/contain promote the background to its own composited
      layer so scrolling never repaints it — same treatment as #nova-bg on the
      homepage. Pairs with fractal.js ignoring mobile height-only resizes. */
-  #canvas-container { position:fixed; inset:0; z-index:1; background:#020205; pointer-events:none; transform:translate3d(0,0,0); backface-visibility:hidden; contain:strict; }
+  #canvas-container { position:fixed; inset:0; z-index:1; background:var(--t-panel-void); pointer-events:none; transform:translate3d(0,0,0); backface-visibility:hidden; contain:strict; }
   #canvas-container canvas { position:absolute !important; top:50%; left:50%; transform:translate3d(-50%,-50%,0); backface-visibility:hidden; pointer-events:auto; }
   main.downloads-main { position:relative; z-index:10; }
-  .sds-hero__lead, .sds-hero__sub { color:#ffffff !important; }
+  .sds-hero__lead, .sds-hero__sub { color: rgb(var(--t-starlight-white)) !important; }
   #fractal-gui-toggle {
     position:fixed; top:76px; right:14px; z-index:60;
     width:28px; height:28px;
     display:flex; align-items:center; justify-content:center;
-    background:rgba(5,5,5,0.4); border:1px solid rgba(255,255,255,0.06);
-    border-radius:7px; color:rgba(255,255,255,0.18); cursor:pointer;
+    background:rgb(var(--t-void-black) / 0.4); border:1px solid rgba(var(--c-veil-rgb), 0.06);
+    border-radius:7px; color:rgba(var(--c-veil-rgb), 0.6); cursor:pointer;
     backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
     transition:color 0.2s, border-color 0.2s, background 0.2s;
   }
   #fractal-gui-toggle:hover {
-    color:rgba(0,240,255,0.65); border-color:rgba(0,240,255,0.18);
-    background:rgba(5,5,5,0.7);
+    color:rgb(var(--t-electric-cyan) / 0.65); border-color:rgb(var(--t-electric-cyan) / 0.18);
+    background:rgb(var(--t-void-black) / 0.7);
   }
   #fractal-gui-toggle .material-symbols-outlined { font-size:15px; }
   /* No knock-loose interaction at ANY width (owner call, 2026-07-21 — was
@@ -116,19 +118,65 @@
      click/tap release, and the engine's dblclick release-all in one rule. The
      load intro (light-up, letters fall, settle) is frame-driven and unaffected. */
   #wm-canvas { pointer-events: none !important; }
+
+  /* Static wordmark shown in place of the physics canvas below 880px.
+     Mirrors what the canvas paints — SURETTE in Archivo Expanded over
+     DATA SYSTEMS in JetBrains Mono — so the hero keeps its brand without the
+     letters roaming across the copy.
+
+     The light-mode colours are the ones already measured for the canvas and
+     recorded in the docs: #0b0e10 (17.32:1) and #3f6212 (6.33:1). Do NOT
+     lighten the subline — #4d7c0f is the next step toward the dark-mode lime
+     and already fails at 4.47:1. */
+  .sds-wordmark__static { display: none; flex-direction: column; gap: 0.35rem; }
+  .sds-wordmark__static-name {
+    font-family: "Archivo Expanded", "Eurostile", sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.6rem, 12vw, 4.5rem);
+    line-height: 0.92;
+    letter-spacing: 0.062em;
+    color: #ffffff;
+  }
+  .sds-wordmark__static-sub {
+    font-family: "JetBrains Mono", "Fira Mono", "Courier New", monospace;
+    font-weight: 700;
+    font-size: clamp(0.7rem, 3.1vw, 1rem);
+    letter-spacing: 0.22em;
+    color: #AAFF00;
+  }
+  :root[data-theme="light"] .sds-wordmark__static-name { color: #0b0e10; }
+  :root[data-theme="light"] .sds-wordmark__static-sub  { color: #3f6212; }
   @media (max-width: 879.98px) {
     #canvas-container canvas { top:50% !important; left:50% !important; transform:translate3d(-50%,-50%,0) !important; }
     #fractal-gui-toggle { top:auto !important; bottom:90px; }
     .lil-gui.root { top:auto !important; bottom:122px !important; right:0 !important; max-height:55vh !important; overflow-y:auto !important; }
-    /* Extend physics floor so letters bounce past the lead text */
-    .sds-wordmark { overflow: visible !important; }
-    #wm-canvas { height: calc(100% + 280px) !important; }
-    /* Lead text and catalog stay above the falling letters */
-    .sds-hero__lead { position: relative; z-index: 5; }
+    /* PHYSICS WORDMARK IS OFF BELOW 880px (owner decision, 2026-08-27).
+
+       The letters came to rest wherever the simulation put them, which at
+       these widths was regularly on top of the hero copy — white letterforms
+       under white text, illegible whichever is on top. Every softer fix was
+       tried and measured, and none held: dimming to 0.45 cut the common cases
+       but still tripped ~1-2 loads in 10; an opaque chip lifted to z-index 60
+       still measured a covered ground, because the canvas paints ABOVE the
+       section no matter the stacking; guaranteeing it by dimming needs ~0.22,
+       which erases the wordmark anyway; moving the section relocates the
+       collision onto the lead paragraph; clipping the arena erases it too.
+
+       So the canvas is switched off here and a static wordmark takes its
+       place. Desktop (>=880px) keeps the physics untouched. */
+    #wm-canvas { display: none !important; }
+    .sds-wordmark__static { display: flex !important; }
+    /* Lead text and catalog stay above the falling letters.
+       These must beat the wordmark's own z-index, which surette-physics-
+       wordmark.css sets to 12 on `.sds-wordmark:has(.sds-physics-wordmark
+       .is-ready)`. At 5 and 6 they lost, so at 768px the canvas letters
+       painted OVER this paragraph — white glyphs behind white text, with
+       "agentic AI-powered" sitting on a letterform and unreadable. */
+    .sds-hero__lead { position: relative; z-index: 14; }
     /* Collapse the hero's trailing whitespace and pull catalog up */
     .sds-hero__sub-spacer { height: 0 !important; }
     .sds-hero { margin-bottom: 0 !important; }
-    .sds-hero + section { margin-top: -120px; position: relative; z-index: 6; }
+    .sds-hero + section { margin-top: -120px; position: relative; z-index: 15; }
   }
 </style>
 <script>(function(){document.documentElement.classList.add("sds-apps-boot");})();</script>
@@ -149,7 +197,8 @@
   }
 </style>
 <script id="tailwind-config">
-tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors:{"on-background":"#e3e2e2","deep-space-grey":"#1A1A1A","primary-container":"#050505","on-surface":"#e3e2e2","void-black":"#050505","on-surface-variant":"#c4c7c7","surface-container-high":"#292a2a","on-tertiary-container":"#00848d","surface":"#121414","surface-container-low":"#1a1c1c","on-tertiary-fixed-variant":"#004f54","tertiary":"#00dbe9","electric-cyan":"#00F0FF","surface-bright":"#383939","on-tertiary":"#00363a","on-primary":"#313030","surface-container-highest":"#343535","on-secondary-container":"#ddcdff","secondary":"#d1bcff","surface-container":"#1f2020","background":"#121414","outline":"#8e9192","surface-container-lowest":"#0d0e0f","primary-fixed":"#e5e2e1","on-secondary":"#3c0090","on-error":"#690005","on-primary-fixed":"#1c1b1b","on-primary-container":"#797777","tertiary-fixed-dim":"#00dbe9","on-error-container":"#ffdad6","surface-dim":"#121414","surface-tint":"#c9c6c5","tertiary-container":"#000607","on-primary-fixed-variant":"#474646","nebula-purple":"#7000FF","inverse-primary":"#5f5e5e","on-secondary-fixed-variant":"#5700c9","secondary-container":"#7000ff","error-container":"#93000a","tertiary-fixed":"#7df4ff","error":"#ffb4ab","inverse-on-surface":"#2f3131","primary-fixed-dim":"#c9c6c5","secondary-fixed-dim":"#d1bcff","primary":"#c9c6c5","on-secondary-fixed":"#23005b","starlight-white":"#FFFFFF","surface-variant":"#343535","inverse-surface":"#e3e2e2","on-tertiary-fixed":"#002022","outline-variant":"#444748","secondary-fixed":"#e9ddff"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{unit:"8px","margin-desktop":"64px","margin-mobile":"20px",gutter:"24px","container-max":"1440px"},fontFamily:{"headline-lg-mobile":["Space Grotesk"],"body-md":["Plus Jakarta Sans"],"label-mono":["JetBrains Mono"],"label-caps":["JetBrains Mono"],"body-lg":["Plus Jakarta Sans"],"headline-xl":["Space Grotesk"],"headline-md":["Space Grotesk"],"headline-lg":["Space Grotesk"]},fontSize:{"headline-lg-mobile":["32px",{lineHeight:"1.2",fontWeight:"600"}],"body-md":["16px",{lineHeight:"1.6",fontWeight:"400"}],"label-mono":["14px",{lineHeight:"1.4",letterSpacing:"0.05em",fontWeight:"500"}],"label-caps":["12px",{lineHeight:"1.2",letterSpacing:"0.1em",fontWeight:"700"}],"body-lg":["18px",{lineHeight:"1.6",fontWeight:"400"}],"headline-xl":["64px",{lineHeight:"1.1",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-md":["24px",{lineHeight:"1.3",fontWeight:"500"}],"headline-lg":["40px",{lineHeight:"1.2",letterSpacing:"-0.01em",fontWeight:"600"}]}}}};
+tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors:{
+        "white": "rgb(var(--t-starlight-white) / <alpha-value>)","on-background":"rgb(var(--t-on-background) / <alpha-value>)","deep-space-grey":"rgb(var(--t-deep-space-grey) / <alpha-value>)","primary-container":"rgb(var(--t-primary-container) / <alpha-value>)","on-surface":"rgb(var(--t-on-surface) / <alpha-value>)","void-black":"rgb(var(--t-void-black) / <alpha-value>)","on-surface-variant":"rgb(var(--t-on-surface-variant) / <alpha-value>)","surface-container-high":"rgb(var(--t-surface-container-high) / <alpha-value>)","on-tertiary-container":"rgb(var(--t-on-tertiary-container) / <alpha-value>)","surface":"rgb(var(--t-surface) / <alpha-value>)","surface-container-low":"rgb(var(--t-surface-container-low) / <alpha-value>)","on-tertiary-fixed-variant":"rgb(var(--t-on-tertiary-fixed-variant) / <alpha-value>)","tertiary":"rgb(var(--t-tertiary) / <alpha-value>)","electric-cyan":"rgb(var(--t-electric-cyan) / <alpha-value>)","surface-bright":"rgb(var(--t-surface-bright) / <alpha-value>)","on-tertiary":"rgb(var(--t-on-tertiary) / <alpha-value>)","on-primary":"rgb(var(--t-on-primary) / <alpha-value>)","surface-container-highest":"rgb(var(--t-surface-container-highest) / <alpha-value>)","on-secondary-container":"rgb(var(--t-on-secondary-container) / <alpha-value>)","secondary":"rgb(var(--t-secondary) / <alpha-value>)","surface-container":"rgb(var(--t-surface-container) / <alpha-value>)","background":"rgb(var(--t-background) / <alpha-value>)","outline":"rgb(var(--t-outline) / <alpha-value>)","surface-container-lowest":"rgb(var(--t-surface-container-lowest) / <alpha-value>)","primary-fixed":"rgb(var(--t-primary-fixed) / <alpha-value>)","on-secondary":"rgb(var(--t-on-secondary) / <alpha-value>)","on-error":"rgb(var(--t-on-error) / <alpha-value>)","on-primary-fixed":"rgb(var(--t-on-primary-fixed) / <alpha-value>)","on-primary-container":"rgb(var(--t-on-primary-container) / <alpha-value>)","tertiary-fixed-dim":"rgb(var(--t-tertiary-fixed-dim) / <alpha-value>)","on-error-container":"rgb(var(--t-on-error-container) / <alpha-value>)","surface-dim":"rgb(var(--t-surface-dim) / <alpha-value>)","surface-tint":"rgb(var(--t-surface-tint) / <alpha-value>)","tertiary-container":"rgb(var(--t-tertiary-container) / <alpha-value>)","on-primary-fixed-variant":"rgb(var(--t-on-primary-fixed-variant) / <alpha-value>)","nebula-purple":"rgb(var(--t-nebula-purple) / <alpha-value>)","inverse-primary":"rgb(var(--t-inverse-primary) / <alpha-value>)","on-secondary-fixed-variant":"rgb(var(--t-on-secondary-fixed-variant) / <alpha-value>)","secondary-container":"rgb(var(--t-secondary-container) / <alpha-value>)","error-container":"rgb(var(--t-error-container) / <alpha-value>)","tertiary-fixed":"rgb(var(--t-tertiary-fixed) / <alpha-value>)","error":"rgb(var(--t-error) / <alpha-value>)","inverse-on-surface":"rgb(var(--t-inverse-on-surface) / <alpha-value>)","primary-fixed-dim":"rgb(var(--t-primary-fixed-dim) / <alpha-value>)","secondary-fixed-dim":"rgb(var(--t-secondary-fixed-dim) / <alpha-value>)","primary":"rgb(var(--t-primary) / <alpha-value>)","on-secondary-fixed":"rgb(var(--t-on-secondary-fixed) / <alpha-value>)","starlight-white":"rgb(var(--t-starlight-white) / <alpha-value>)","surface-variant":"rgb(var(--t-surface-variant) / <alpha-value>)","inverse-surface":"rgb(var(--t-inverse-surface) / <alpha-value>)","on-tertiary-fixed":"rgb(var(--t-on-tertiary-fixed) / <alpha-value>)","outline-variant":"rgb(var(--t-outline-variant) / <alpha-value>)","secondary-fixed":"rgb(var(--t-secondary-fixed) / <alpha-value>)"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{unit:"8px","margin-desktop":"64px","margin-mobile":"20px",gutter:"24px","container-max":"1440px"},fontFamily:{"headline-lg-mobile":["Space Grotesk"],"body-md":["Plus Jakarta Sans"],"label-mono":["JetBrains Mono"],"label-caps":["JetBrains Mono"],"body-lg":["Plus Jakarta Sans"],"headline-xl":["Space Grotesk"],"headline-md":["Space Grotesk"],"headline-lg":["Space Grotesk"]},fontSize:{"headline-lg-mobile":["32px",{lineHeight:"1.2",fontWeight:"600"}],"body-md":["16px",{lineHeight:"1.6",fontWeight:"400"}],"label-mono":["14px",{lineHeight:"1.4",letterSpacing:"0.05em",fontWeight:"500"}],"label-caps":["12px",{lineHeight:"1.2",letterSpacing:"0.1em",fontWeight:"700"}],"body-lg":["18px",{lineHeight:"1.6",fontWeight:"400"}],"headline-xl":["64px",{lineHeight:"1.1",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-md":["24px",{lineHeight:"1.3",fontWeight:"500"}],"headline-lg":["40px",{lineHeight:"1.2",letterSpacing:"-0.01em",fontWeight:"600"}]}}}};
 </script>
 </head>
 <body class="font-['Plus_Jakarta_Sans',sans-serif] min-h-screen flex flex-col cosmic-page cosmic-tint-services sds-apps-page">
@@ -163,16 +212,16 @@ tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors
 </div>
 <div class="fixed inset-0 z-0 pointer-events-none">
 <div class="absolute inset-0 cosmic-web-bg opacity-70"></div>
-<div class="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(5,5,5,0.48),#050505_84%)]"></div>
+<div class="absolute inset-0 sds-cosmic-veil bg-[linear-gradient(to_bottom,rgba(5,5,5,0.48),#050505_84%)]"></div>
 </div>
-<script src="assets/standard-site-nav.js?v=20260801-scroll-hide3" data-active="services"></script>
+<script src="assets/standard-site-nav.js?v=20260829-apps-retired" data-active="none"></script>
 <button id="fractal-gui-toggle" title="Visual settings" aria-label="Toggle visual settings" onclick="if(window._fractalGUI){window._fractalGUI._hidden?window._fractalGUI.show():window._fractalGUI.hide()}"><span class="material-symbols-outlined">grain</span></button>
 <!-- Shown only when the reader arrived from the Portfolio hub — see the script
      at the end of this file. This page is primarily a Services destination (the
-     nav marks it data-active="services") and is linked from the Services
+     nav marks it data-active="none") and is linked from the Services
      dropdown, the homepage, the footer, and app-catalog's own back link, so a
      permanent "Back to Portfolio" would point most visitors somewhere they have
-     never been. Placement/styling mirror app-catalog.html's "Back to Apps". -->
+     never been. Placement/styling mirror the retired app-catalog.html's "Back to Apps". -->
 <div class="hidden relative z-10 pt-32 md:pt-28 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full" data-portfolio-back>
 <a href="portfolio.html" class="inline-flex items-center gap-2 font-label-mono text-label-mono text-starlight-white/70 hover:text-electric-cyan transition-colors duration-300">
 <span class="material-symbols-outlined text-base">arrow_back</span>Back to Portfolio
@@ -184,18 +233,22 @@ tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors
 <div class="sds-hero__copy">
 <h1 class="sds-wordmark" aria-label="Surette Data Systems" style="position:relative">
 <canvas id="wm-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;"></canvas>
+<!-- Static wordmark for <880px, where the physics canvas is switched off. The
+     h1 is otherwise nothing but the canvas, so hiding it would leave the hero
+     with no visible brand at all. Same two lines the canvas draws. -->
+<span class="sds-wordmark__static" aria-hidden="true"><span class="sds-wordmark__static-name">SURETTE</span><span class="sds-wordmark__static-sub">DATA SYSTEMS</span></span>
 </h1>
-<p class="sds-hero__lead">Custom agentic AI-powered CRM, ERP, inventory, workflows, reporting, and operations software &mdash; for mobile, web, and desktop.</p>
+<p class="sds-hero__lead">Custom business systems we designed and built — auctions, consignment, payroll, inventory and pricing tools. Shown here as proof of the work, not as products for sale.</p>
 <div class="sds-hero__sub-spacer" aria-hidden="true"></div>
 </div>
 </div>
 </section>
 <section class="mb-16">
-<p class="sds-section-kicker sds-section-kicker--gallery mb-4">Software Catalog</p>
-<h2 class="font-headline-lg text-3xl md:text-headline-lg text-starlight-white mb-4">Ready-to-deploy business apps.</h2>
-<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mb-8">Browse our full library of business apps &mdash; access by request</p>
+<p class="sds-section-kicker sds-section-kicker--gallery mb-4">Case Studies</p>
+<h2 class="font-headline-lg text-3xl md:text-headline-lg text-starlight-white mb-4">Systems we&rsquo;ve built.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mb-8">A look at systems we&rsquo;ve designed and built for real businesses</p>
 <div class="flex flex-wrap gap-3 items-center">
-  <a href="app-catalog.html" class="sds-btn-primary" style="background:linear-gradient(120deg,#65a30d,#a3e635);box-shadow:0 0 28px rgba(163,230,53,0.32);">Browse Application Gallery <span class="material-symbols-outlined text-base">grid_view</span></a>
+  <a href="#software-process" class="sds-btn-primary" style="background:linear-gradient(120deg,#65a30d,#a3e635);box-shadow:0 0 28px rgba(163,230,53,0.32);">How We Work <span class="material-symbols-outlined text-base">grid_view</span></a>
   <button id="consult-open-btn" class="sds-btn-primary" style="background:linear-gradient(120deg,#f472b6,#fbbf24);box-shadow:0 0 28px rgba(244,114,182,0.35);">Schedule a Consultation <span class="material-symbols-outlined text-base">calendar_month</span></button>
 </div>
 </section>
@@ -204,24 +257,41 @@ tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors
 <h2>List it once. Sell everywhere.</h2>
 <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mt-4">Upload product photos, speak naturally, and let the AI Listing Assistant fill the listing form for your review. Once approved, the same product record can publish to your branded store, eBay, Etsy, Instagram, and Facebook.</p>
 <div class="flex flex-wrap gap-3 mt-6">
-<a href="multichannel-commerce-website.html" class="sds-btn-primary" style="background:linear-gradient(120deg,#00f0ff,#39ff88);box-shadow:0 0 28px rgba(0,240,255,0.28);">Explore Multichannel Commerce <span class="material-symbols-outlined text-base">arrow_forward</span></a>
+
 </div>
 </section>
+<!-- Folded in from the retired process.html (2026-08-17). This section was the only
+     unique content on that page and it is explicitly software, not websites — it was
+     tagged "BUSINESS SOFTWARE" there and opens "when the project is custom business
+     software". It therefore landed here on the Software page, NOT on websites.html.
+     The page's old "View Our Process" button now anchors to it. -->
+<section class="app-custom-banner mb-4" id="software-process">
+<p class="sds-section-kicker app-custom-banner__kicker">How a software build runs</p>
+<h2>Replacing the software you already run &mdash; without the risk.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mt-4">When the project is custom business software, we usually step into a business that already has tools in place. We don&rsquo;t rip them out and hope &mdash; we study what&rsquo;s there, build the replacement beside it, prove it on your real data, and switch only when it&rsquo;s seamless.</p>
+<ol class="app-swap-steps">
+<li><span class="app-swap-steps__num">01</span><div><h3>Come in &amp; assess</h3><p>We start inside your business and map the software and systems you already have in place &mdash; how everything actually works day to day.</p></div></li>
+<li><span class="app-swap-steps__num">02</span><div><h3>Trim the fat, add what you need</h3><p>We remove what&rsquo;s slowing you down and keep what works &mdash; then build in the capabilities your team actually needs, including the exact features you&rsquo;ve always wanted but your old tools never offered.</p></div></li>
+<li><span class="app-swap-steps__num">03</span><div><h3>Design a prototype</h3><p>We design a working prototype around your real workflows &mdash; not a generic template.</p></div></li>
+<li><span class="app-swap-steps__num">04</span><div><h3>Run it in place, on real data</h3><p>We get it 100% running and in place, then make copy migrations so we can test against your real data &mdash; side by side with your current tools.</p></div></li>
+<li><span class="app-swap-steps__num">05</span><div><h3>Switch only when it&rsquo;s seamless</h3><p>We make the switch once the replacement is proven against your real work &mdash; not before.</p></div></li>
+</ol>
+</section>
+
 <section class="app-custom-banner mb-4">
 <p class="sds-section-kicker app-custom-banner__kicker">Custom Software Builds</p>
 <h2>Folded to your business, brand, and language.</h2>
 <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mt-4">Every Surette Data Systems app can be adapted with your workflows, fields, reports, layouts, terminology, and language needs &mdash; and we're building agentic AI automations into new modules so the software takes on repetitive work, not just displays it.</p>
 <div class="flex flex-wrap gap-3 mt-6">
-<a href="contact.html" class="sds-btn-primary">Customize Yours Now <span class="material-symbols-outlined text-base">arrow_forward</span></a>
-<a href="app-pricing.html" class="sds-btn-secondary">View App Pricing <span class="material-symbols-outlined text-base">sell</span></a>
-<a href="process.html" class="sds-btn-secondary">View Our Process <span class="material-symbols-outlined text-base">timeline</span></a>
+<a href="contact.html" class="sds-btn-primary">Talk to Us About a Project <span class="material-symbols-outlined text-base">arrow_forward</span></a>
+<a href="contact.html" class="sds-btn-secondary">Talk to Us About Custom Work <span class="material-symbols-outlined text-base">sell</span></a>
+<a href="#software-process" class="sds-btn-secondary">View Our Process <span class="material-symbols-outlined text-base">timeline</span></a>
 </div>
 </section>
 </main>
-<script src="assets/standard-site-footer.js?v=20260716-footer-3line"></script>
-<script src="assets/mobile-services-nav.js?v=20260715-services-merge"></script>
-<script src="assets/account-nav.js?v=20260715-login-highlight"></script>
-<script src="assets/surette-physics-wordmark-canvas.js?v=20260721-resize-guard"></script>
+<script src="assets/standard-site-footer.js?v=20260817-cta-r5"></script>
+<script src="assets/account-nav.js?v=20260817-cta-r5"></script>
+<script src="assets/surette-physics-wordmark-canvas.js?v=20260817-wordmark-theme"></script>
 <script>
 const canvas = document.getElementById('wm-canvas');
 const wm = new SurettePhysicsWordmark(canvas, {
@@ -276,8 +346,8 @@ window.FRACTAL_CONFIG = {
     params: { a: 0.2, dt: 0.01 }
 };
 </script>
-<script type="module" src="fractal.js?v=20260721-scroll-stutter"></script>
-<script src="surette-logo.js?v=20260721-fonts-gate"></script>
+<script type="module" src="fractal.js?v=20260817-cta-r5"></script>
+<script src="surette-logo.js?v=20260817-cta-r5"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
 
 <!-- Consultation Modal -->
@@ -289,28 +359,28 @@ window.FRACTAL_CONFIG = {
     font: 700 11px "JetBrains Mono", monospace;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
+    color: rgba(var(--c-veil-rgb), 0.55);
     margin-bottom: 0.375rem;
   }
   .consult-input {
     display: block;
     width: 100%;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(var(--c-veil-rgb), 0.05);
+    border: 1px solid rgba(var(--c-veil-rgb), 0.12);
     border-radius: 0.5rem;
-    color: #fff;
+    color: rgb(var(--t-starlight-white));
     font: 400 14px "Plus Jakarta Sans", sans-serif;
     padding: 0.625rem 0.875rem;
     outline: none;
     transition: border-color 0.2s;
   }
-  .consult-input::placeholder { color: rgba(255,255,255,0.25); }
-  .consult-input:focus { border-color: #00F0FF; box-shadow: 0 0 0 2px rgba(0,240,255,0.12); }
-  .consult-input option { background: #0a0a14; color: #fff; }
+  .consult-input::placeholder { color: rgba(var(--c-veil-rgb), 0.25); }
+  .consult-input:focus { border-color: rgb(var(--t-electric-cyan)); box-shadow: 0 0 0 2px rgb(var(--t-electric-cyan) / 0.12); }
+  .consult-input option { background: var(--t-panel-violet); color: rgb(var(--t-starlight-white)); }
 </style>
 
 <div id="consult-modal" class="fixed inset-0 z-[9999] items-center justify-center p-4 md:p-8" style="background:rgba(2,2,8,0.85);backdrop-filter:blur(12px);" role="dialog" aria-modal="true" aria-labelledby="consult-modal-title">
-  <div class="relative w-full max-w-lg overflow-y-auto max-h-[90vh] rounded-2xl p-6 md:p-8" style="background:rgba(8,8,20,0.97);border:1px solid rgba(255,255,255,0.09);box-shadow:0 0 80px rgba(112,0,255,0.25),0 0 160px rgba(0,240,255,0.06);">
+  <div class="relative w-full max-w-lg overflow-y-auto max-h-[90vh] rounded-2xl p-6 md:p-8" style="background:rgba(8,8,20,0.97);border:1px solid rgba(var(--c-veil-rgb), 0.09);box-shadow:0 0 80px rgb(var(--t-nebula-purple) / 0.25),0 0 160px rgb(var(--t-electric-cyan) / 0.06);">
     <button id="consult-close-btn" class="absolute top-4 right-4 text-white/30 hover:text-white transition-colors duration-200" aria-label="Close">
       <span class="material-symbols-outlined text-2xl">close</span>
     </button>

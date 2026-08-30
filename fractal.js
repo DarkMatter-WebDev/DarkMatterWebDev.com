@@ -339,7 +339,7 @@
 
             // 1. Scene setup
             scene = new THREE.Scene();
-            scene.fog = new THREE.FogExp2(0x020205, 0.015);
+            scene.fog = new THREE.FogExp2(isLightTheme() ? FOG_LIGHT : FOG_DARK, 0.015);
 
             // 2. Camera setup
             camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -390,6 +390,53 @@
         }
 
         // --- FRACTAL GENERATION LOGIC ---
+        /* ── Theme support ──────────────────────────────────────────────────
+           A WebGL scene cannot read CSS custom properties, so it listens for
+           the sds-themechange event that assets/standard-site-nav.js fires and
+           re-derives its palette here.
+
+           Light mode is the "blueprint" treatment: each page's configured
+           accent colour is pushed toward ink — heavily darkened and partly
+           desaturated — because the saturated neons that read well on black
+           (apps.html ships #2bff00 / #ff2424 / #002aff) turn garish and
+           low-contrast on paper. Fog switches from near-black to the page
+           ground so distant particles fade into the surface instead of
+           punching a dark hole in it.
+           ──────────────────────────────────────────────────────────────────── */
+        const FOG_DARK  = 0x020205;
+        const FOG_LIGHT = 0xf4f2ee;
+
+        function isLightTheme() {
+            return document.documentElement.getAttribute('data-theme') === 'light';
+        }
+
+        // Darken + desaturate toward ink. Keeps enough of the source hue that
+        // each page still reads as "its" colour.
+        function inkify(hex) {
+            const c = new THREE.Color(hex);
+            const hsl = { h: 0, s: 0, l: 0 };
+            c.getHSL(hsl);
+            c.setHSL(hsl.h, Math.min(hsl.s, 0.55), Math.min(hsl.l * 0.32, 0.28));
+            return c;
+        }
+
+        function themedColor(hex) {
+            return isLightTheme() ? inkify(hex) : new THREE.Color(hex);
+        }
+
+        function applyThemeToScene() {
+            if (scene && scene.fog) {
+                scene.fog.color.setHex(isLightTheme() ? FOG_LIGHT : FOG_DARK);
+            }
+        }
+
+        window.addEventListener('sds-themechange', function () {
+            applyThemeToScene();
+            // Particle colours are baked into the geometry's colour attribute,
+            // so the palette only changes on a rebuild.
+            if (typeof updateFractal === 'function' && geometry) updateFractal();
+        });
+
         function updateFractal() {
             const alg = algorithms[state.algorithm];
             const rawPositions = [];
@@ -430,9 +477,9 @@
             const m = matrix.elements;
 
             // Prepare colors
-            const c1 = new THREE.Color(state.color1);
-            const c2 = new THREE.Color(state.color2);
-            const c3 = new THREE.Color(state.color3);
+            const c1 = themedColor(state.color1);
+            const c2 = themedColor(state.color2);
+            const c3 = themedColor(state.color3);
 
             for(let i = 0; i < rawPositions.length; i += 3) {
                 // Apply scaling and geometry alignment

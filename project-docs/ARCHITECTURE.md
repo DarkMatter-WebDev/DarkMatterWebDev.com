@@ -1,6 +1,27 @@
 # Architecture
 
-Last updated: 2026-07-17
+Last updated: 2026-08-27
+
+## Routing changes (2026-08-27)
+
+Four pages were removed when the app/store product line was retired, each with a 301 in
+`netlify.toml` because the URLs were public:
+
+| Removed | Redirects to |
+|---|---|
+| `/app-catalog.html` | `/apps.html` (now a case-study index) |
+| `/app-pricing.html` | `/contact.html` |
+| `/app-checkout.html` | `/contact.html` |
+| `/multichannel-commerce-website.html` | `/websites.html` |
+
+Root HTML page count is now **45** (48 including `services/`). The nav's desktop/mobile
+switch is **1024px**, set independently of the page-layout breakpoint, which stays at
+880px — see `nav.css`'s switch-rule comment for the full list of blocks that must agree.
+
+Asset cache-busting is `?v=` query strings against `Cache-Control: immutable` on
+`/assets/*`; **changing a shared asset requires bumping its token across every page that
+references it**, or returning visitors keep the old file for a year. Current token:
+`20260827-contrast-nav`.
 
 ## Current Stack
 

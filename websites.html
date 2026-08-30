@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html class="dark" style="background:#050505" lang="en">
+<head>
+<meta charset="utf-8"/>
+<script id="sds-theme-resolver">/* Pre-paint theme resolver — must stay the first script in <head>. Stamps data-theme on <html> from the stored choice before anything paints, and overwrites the inline dark background attribute. Dark is the brand default when nothing is stored, so a visitor whose OS prefers light still gets the site's intended look until they choose. */(function(){var d=document.documentElement,t;try{t=localStorage.getItem("sds-theme")}catch(e){}if(t!=="light")t="dark";d.setAttribute("data-theme",t);d.classList.toggle("dark",t==="dark");d.style.background=t==="light"?"#f4f2ee":"#050505"})();</script>
+
+<script>/* Head-stamp: nav.css reveals un-stamped pages at 0.2s (its no-logo-script fallback). On heavy pages the bottom-of-body surette-logo.js stamp lands after that, so content flashed in at 0.2s, vanished when the stamp arrived, then faded back in. Stamping before first paint makes JS the only revealer. */document.documentElement.classList.add("sds-logo-loaded");</script>
+<style id="dm-critical-dark-baseline">
+  html,body{background:#050505;color:#fff;min-height:100%;color-scheme:dark;}
+  body{margin:0;min-height:100vh;}
+  #__next,#root,.app{background:#050505;min-height:100vh;}
+  body>main{min-height:100vh;}
+  #page-loader,.sds-apps-loader{background:#050505;}
+html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:#0b0e10;color-scheme:light}html[data-theme="light"] #__next,html[data-theme="light"] #root,html[data-theme="light"] .app{background:#f4f2ee}html[data-theme="light"] #page-loader,html[data-theme="light"] .sds-apps-loader{background:#f4f2ee}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Small Business Websites | Surette Data Systems</title>
+<meta name="description" content="Modern websites for Southwest Florida small businesses — designed, hosted, maintained, and supported by one team. No upfront build fee on managed plans."/>
+<link rel="canonical" href="https://surettesystems.com/websites.html"/>
+<link rel="icon" href="/assets/favicon.svg?v=20260716-blur-on" type="image/svg+xml"/>
+<link rel="icon" href="/assets/favicon-32.png?v=20260716-blur-on" sizes="32x32" type="image/png"/>
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=20260716-blur-on"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<meta name="theme-color" content="#050505"/>
+<meta property="og:site_name" content="Surette Data Systems"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Small Business Websites | Surette Data Systems"/>
+<meta property="og:description" content="Modern websites for Southwest Florida small businesses — designed, hosted, maintained, and supported by one team. No upfront build fee on managed plans."/>
+<meta property="og:url" content="https://surettesystems.com/websites.html"/>
+<meta property="og:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="Surette Data Systems &mdash; high-tech business software for mobile, web, and desktop"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Small Business Websites | Surette Data Systems"/>
+<meta name="twitter:description" content="Modern websites for Southwest Florida small businesses — designed, hosted, maintained, and supported by one team. No upfront build fee on managed plans."/>
+<meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
+<meta name="twitter:image:alt" content="Surette Data Systems &mdash; high-tech business software for mobile, web, and desktop"/>
+<link href="assets/nav.css?v=20260829-apps-retired" rel="stylesheet"/>
+<link href="assets/cosmic-web.css?v=20260827-contrast-nav" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors:{
+        "white": "rgb(var(--t-starlight-white) / <alpha-value>)","on-background":"rgb(var(--t-on-background) / <alpha-value>)","deep-space-grey":"rgb(var(--t-deep-space-grey) / <alpha-value>)","primary-container":"rgb(var(--t-primary-container) / <alpha-value>)","on-surface":"rgb(var(--t-on-surface) / <alpha-value>)","void-black":"rgb(var(--t-void-black) / <alpha-value>)","on-surface-variant":"rgb(var(--t-on-surface-variant) / <alpha-value>)","surface-container-high":"rgb(var(--t-surface-container-high) / <alpha-value>)","on-tertiary-container":"rgb(var(--t-on-tertiary-container) / <alpha-value>)","surface":"rgb(var(--t-surface) / <alpha-value>)","surface-container-low":"rgb(var(--t-surface-container-low) / <alpha-value>)","on-tertiary-fixed-variant":"rgb(var(--t-on-tertiary-fixed-variant) / <alpha-value>)","tertiary":"rgb(var(--t-tertiary) / <alpha-value>)","electric-cyan":"rgb(var(--t-electric-cyan) / <alpha-value>)","surface-bright":"rgb(var(--t-surface-bright) / <alpha-value>)","on-tertiary":"rgb(var(--t-on-tertiary) / <alpha-value>)","on-primary":"rgb(var(--t-on-primary) / <alpha-value>)","surface-container-highest":"rgb(var(--t-surface-container-highest) / <alpha-value>)","on-secondary-container":"rgb(var(--t-on-secondary-container) / <alpha-value>)","secondary":"rgb(var(--t-secondary) / <alpha-value>)","surface-container":"rgb(var(--t-surface-container) / <alpha-value>)","background":"rgb(var(--t-background) / <alpha-value>)","outline":"rgb(var(--t-outline) / <alpha-value>)","surface-container-lowest":"rgb(var(--t-surface-container-lowest) / <alpha-value>)","primary-fixed":"rgb(var(--t-primary-fixed) / <alpha-value>)","on-secondary":"rgb(var(--t-on-secondary) / <alpha-value>)","on-error":"rgb(var(--t-on-error) / <alpha-value>)","on-primary-fixed":"rgb(var(--t-on-primary-fixed) / <alpha-value>)","on-primary-container":"rgb(var(--t-on-primary-container) / <alpha-value>)","tertiary-fixed-dim":"rgb(var(--t-tertiary-fixed-dim) / <alpha-value>)","on-error-container":"rgb(var(--t-on-error-container) / <alpha-value>)","surface-dim":"rgb(var(--t-surface-dim) / <alpha-value>)","surface-tint":"rgb(var(--t-surface-tint) / <alpha-value>)","tertiary-container":"rgb(var(--t-tertiary-container) / <alpha-value>)","on-primary-fixed-variant":"rgb(var(--t-on-primary-fixed-variant) / <alpha-value>)","nebula-purple":"rgb(var(--t-nebula-purple) / <alpha-value>)","inverse-primary":"rgb(var(--t-inverse-primary) / <alpha-value>)","on-secondary-fixed-variant":"rgb(var(--t-on-secondary-fixed-variant) / <alpha-value>)","secondary-container":"rgb(var(--t-secondary-container) / <alpha-value>)","error-container":"rgb(var(--t-error-container) / <alpha-value>)","tertiary-fixed":"rgb(var(--t-tertiary-fixed) / <alpha-value>)","error":"rgb(var(--t-error) / <alpha-value>)","inverse-on-surface":"rgb(var(--t-inverse-on-surface) / <alpha-value>)","primary-fixed-dim":"rgb(var(--t-primary-fixed-dim) / <alpha-value>)","secondary-fixed-dim":"rgb(var(--t-secondary-fixed-dim) / <alpha-value>)","primary":"rgb(var(--t-primary) / <alpha-value>)","on-secondary-fixed":"rgb(var(--t-on-secondary-fixed) / <alpha-value>)","starlight-white":"rgb(var(--t-starlight-white) / <alpha-value>)","surface-variant":"rgb(var(--t-surface-variant) / <alpha-value>)","inverse-surface":"rgb(var(--t-inverse-surface) / <alpha-value>)","on-tertiary-fixed":"rgb(var(--t-on-tertiary-fixed) / <alpha-value>)","outline-variant":"rgb(var(--t-outline-variant) / <alpha-value>)","secondary-fixed":"rgb(var(--t-secondary-fixed) / <alpha-value>)"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{unit:"8px","margin-desktop":"64px","margin-mobile":"20px",gutter:"24px","container-max":"1440px"},fontFamily:{"headline-lg-mobile":["Space Grotesk"],"body-md":["Plus Jakarta Sans"],"label-mono":["JetBrains Mono"],"label-caps":["JetBrains Mono"],"body-lg":["Plus Jakarta Sans"],"headline-xl":["Space Grotesk"],"headline-md":["Space Grotesk"],"headline-lg":["Space Grotesk"]},fontSize:{"headline-lg-mobile":["32px",{lineHeight:"1.2",fontWeight:"600"}],"body-md":["16px",{lineHeight:"1.6",fontWeight:"400"}],"label-mono":["14px",{lineHeight:"1.4",letterSpacing:"0.05em",fontWeight:"500"}],"label-caps":["12px",{lineHeight:"1.2",letterSpacing:"0.1em",fontWeight:"700"}],"body-lg":["18px",{lineHeight:"1.6",fontWeight:"400"}],"headline-xl":["64px",{lineHeight:"1.1",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-md":["24px",{lineHeight:"1.3",fontWeight:"500"}],"headline-lg":["40px",{lineHeight:"1.2",letterSpacing:"-0.01em",fontWeight:"600"}]}}}};
+</script>
+<style>
+
+.wb-step-num {
+  font: 700 2rem "Space Grotesk", sans-serif;
+  line-height: 1;
+  margin: 0 0 10px;
+  color: rgba(var(--c-primary-rgb), 0.55);
+}
+
+/* 0.55 alpha knocks a bright cyan back nicely on black, but on paper it washes
+   the numeral into the card — 2.45:1 against the 3:1 bar these need at 2rem
+   bold. Full-strength accent in light. Same alpha-on-light trap that hit
+   text-outline/50 and the app-credit pill. */
+:root[data-theme="light"] .wb-step-num { color: rgb(var(--t-electric-cyan)); }
+
+
+/* Proof cards — plain links to the existing case-study pages. Deliberately NOT
+   the collectible-card component: that carries a fixed 2.5/3.5 ratio and a
+   back face with a documented never-scroll budget, none of which this page
+   needs. */
+.wb-proof {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--c-veil-3);
+  border-radius: 18px;
+  background: rgb(var(--t-surface-container-low) / 0.6);
+  text-decoration: none;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.wb-proof:hover { border-color: rgba(var(--c-primary-rgb), 0.4); transform: translateY(-3px); }
+
+
+.wb-proof__body { padding: 20px 22px 24px; }
+
+.wb-proof__tag {
+  font: 700 10px "JetBrains Mono", monospace;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(var(--t-electric-cyan));
+  margin: 0 0 8px;
+}
+
+
+/* Card visuals — inline SVG, so there is no extra request and nothing counts
+   against this page's image budget (its proof cards were once 3.2 MB).
+   Every stroke/fill reads one of these four custom properties, which are the
+   ONLY place colour is declared: a hex inside the SVG would freeze the
+   illustration to one theme with no error, the same way a hardcoded palette
+   colour does anywhere else on this site. --t-nebula-purple-on is used rather
+   than the raw purple because #7000FF is a fill colour, not a line colour, on
+   the site's near-blacks. */
+.wb-viz {
+  --wb-line:    rgb(var(--t-on-surface-variant) / 0.38);
+  --wb-dim:     rgb(var(--t-on-surface-variant) / 0.45);
+  --wb-accent:  rgb(var(--t-electric-cyan));
+  --wb-accent2: rgb(var(--t-nebula-purple-on));
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  border: 1px solid var(--c-veil-2);
+  background: rgb(var(--t-surface-container) / 0.5);
+}
+/* The list is pushed to the bottom so all three cards align their checklists
+   regardless of how long the prose above them runs — this is what removes the
+   dead space that used to sit under the shortest card. */
+.wb-card-list { margin-top: auto; padding-top: 16px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .wb-btn, .wb-proof { transition: none; }
+  .wb-btn:hover, .wb-proof:hover { transform: none; }}</style>
+</head>
+<body class="font-['Plus_Jakarta_Sans',sans-serif] min-h-screen flex flex-col cosmic-page cosmic-tint-design">
+<script src="assets/standard-site-nav.js?v=20260829-apps-retired" data-active="websites"></script>
+
+<main class="relative z-10 pt-28 md:pt-32 pb-24">
+  <div class="sds-wrap">
+
+    <!-- Hero -->
+    <header>
+      <p class="sds-eyebrow">Website Design &amp; Hosting</p>
+      <h1 class="sds-h1">A website your business<br/>doesn&rsquo;t have to babysit.</h1>
+      <p class="sds-lead">We design it, build it, host it, and keep it running &mdash; one team, one monthly price. Need a change? Send it over and we make it. No plugin updates, no hosting bill to chase, no waiting on someone else.</p>
+<!-- Proof strip — verbatim quote from the testimonials section on index.html,
+     with its published attribution. Each page carries the quote that evidences
+     ITS claim rather than repeating one. No star rating or "trusted by N"
+     counter: unverified claims about the business. -->
+<div class="sds-proof sds-proof--hero sds-proof--start">
+<span class="sds-proof__label"><span class="material-symbols-outlined" aria-hidden="true">verified</span>Trusted by local businesses</span>
+<p class="sds-proof__quote">&ldquo;We send a message, and it&rsquo;s done &mdash; no back-and-forth, no confusion.&rdquo;</p>
+<span class="sds-proof__who">Practice Manager &middot; Medical Office, Naples FL</span>
+</div>
+      <div class="sds-actions">
+        <a class="sds-btn sds-btn--solid" href="contact.html">Get started</a>
+        <a class="sds-btn" href="pricing.html">See pricing</a>
+      </div>
+    </header>
+
+    <!-- What you get -->
+    <section class="sds-section">
+      <p class="sds-eyebrow">What you get</p>
+      <h2 class="sds-h2">Everything the website needs, in one place.</h2>
+      <p class="sds-lead">One monthly price covers the build and everything after it. Most sites launch with no setup fee at all.</p>
+
+      <!-- Rebuilt 2026-08-17. Previously only the middle card carried a list, so
+           the third card ended in a large void and the row read as broken. Now all
+           three share one shape: visual → title → one short paragraph → a three-item
+           checklist pinned to the bottom by .wb-card-list. Keep that symmetry if you
+           edit these — an uneven list count is what caused the original problem.
+           The WhatsApp line also moved here from the hosting card, where it had been
+           mis-filed: it is a change-request channel, not a hosting feature. -->
+      <div class="sds-grid-3" style="margin-top:34px">
+
+        <article class="sds-card">
+          <svg class="wb-viz" viewBox="0 0 160 90" aria-hidden="true" focusable="false">
+            <rect x="12" y="10" width="136" height="70" rx="6" fill="none" stroke="var(--wb-line)" stroke-width="1.5"/>
+            <path d="M12 24h136" stroke="var(--wb-line)" stroke-width="1.5"/>
+            <circle cx="21" cy="17" r="2" fill="var(--wb-dim)"/>
+            <circle cx="29" cy="17" r="2" fill="var(--wb-dim)"/>
+            <circle cx="37" cy="17" r="2" fill="var(--wb-dim)"/>
+            <rect x="22" y="32" width="58" height="9" rx="2" fill="var(--wb-accent)"/>
+            <rect x="22" y="46" width="42" height="4" rx="2" fill="var(--wb-dim)"/>
+            <rect x="22" y="54" width="52" height="4" rx="2" fill="var(--wb-dim)"/>
+            <rect x="22" y="63" width="26" height="9" rx="4.5" fill="var(--wb-accent2)"/>
+            <rect x="92" y="32" width="46" height="24" rx="3" fill="var(--wb-dim)" opacity="0.45"/>
+            <rect x="92" y="61" width="46" height="4" rx="2" fill="var(--wb-dim)"/>
+            <rect x="92" y="69" width="30" height="4" rx="2" fill="var(--wb-dim)"/>
+          </svg>
+          <h3 class="sds-h3">Designed and built for you</h3>
+          <p class="sds-body">A custom design around your business &mdash; not a template you fill in.</p>
+          <ul class="sds-list wb-card-list">
+            <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Built for your business, not a stock theme</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check</span>The build is included in the monthly plan</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Any setup fee is quoted before we begin</li>
+          </ul>
+        </article>
+
+        <article class="sds-card">
+          <svg class="wb-viz" viewBox="0 0 160 90" aria-hidden="true" focusable="false">
+            <rect x="18" y="16" width="58" height="16" rx="3" fill="none" stroke="var(--wb-line)" stroke-width="1.5"/>
+            <rect x="18" y="37" width="58" height="16" rx="3" fill="none" stroke="var(--wb-line)" stroke-width="1.5"/>
+            <rect x="18" y="58" width="58" height="16" rx="3" fill="none" stroke="var(--wb-line)" stroke-width="1.5"/>
+            <circle cx="26" cy="24" r="2.5" fill="var(--wb-accent)"/>
+            <circle cx="26" cy="45" r="2.5" fill="var(--wb-accent)"/>
+            <circle cx="26" cy="66" r="2.5" fill="var(--wb-accent)"/>
+            <rect x="34" y="22.5" width="30" height="3" rx="1.5" fill="var(--wb-dim)"/>
+            <rect x="34" y="43.5" width="24" height="3" rx="1.5" fill="var(--wb-dim)"/>
+            <rect x="34" y="64.5" width="28" height="3" rx="1.5" fill="var(--wb-dim)"/>
+            <path d="M88 58 h9 l5-13 l6 24 l5-17 l4 6 h26" fill="none" stroke="var(--wb-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M122 14 l13 4.5 v9.5 c0 7.5-5.5 12-13 14 -7.5-2-13-6.5-13-14 v-9.5z" fill="none" stroke="var(--wb-accent2)" stroke-width="1.5"/>
+            <path d="M116 27.5 l4.5 4.5 l7.5-8" fill="none" stroke="var(--wb-accent2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3 class="sds-h3">Hosted, backed up, monitored</h3>
+          <p class="sds-body">Managed hosting with SSL is part of the plan &mdash; no separate hosting bill, no plugin subscriptions to track.</p>
+          <ul class="sds-list wb-card-list">
+            <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Automated backups and quick restore</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Security patches and uptime monitoring</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Performance tuning and speed checks</li>
+          </ul>
+        </article>
+
+        <article class="sds-card">
+          <svg class="wb-viz" viewBox="0 0 160 90" aria-hidden="true" focusable="false">
+            <path d="M18 18 h54 a5 5 0 0 1 5 5 v22 a5 5 0 0 1 -5 5 h-38 l-11 9 v-9 h-5 a5 5 0 0 1 -5 -5 v-22 a5 5 0 0 1 5 -5z" fill="none" stroke="var(--wb-line)" stroke-width="1.5"/>
+            <rect x="26" y="27" width="38" height="3.5" rx="1.75" fill="var(--wb-dim)"/>
+            <rect x="26" y="35" width="27" height="3.5" rx="1.75" fill="var(--wb-dim)"/>
+            <path d="M87 45 h15" stroke="var(--wb-accent)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M97 40 l5 5 l-5 5" fill="none" stroke="var(--wb-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="112" y="20" width="36" height="50" rx="4" fill="none" stroke="var(--wb-line)" stroke-width="1.5"/>
+            <rect x="120" y="30" width="20" height="3.5" rx="1.75" fill="var(--wb-dim)"/>
+            <rect x="120" y="39" width="13" height="3.5" rx="1.75" fill="var(--wb-dim)"/>
+            <path d="M120 55 l6 6 l13 -14" fill="none" stroke="var(--wb-accent2)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3 class="sds-h3">Changes handled for you</h3>
+          <p class="sds-body">You send the change, we make it. No tickets, no portal, no waiting on someone else.</p>
+          <ul class="sds-list wb-card-list">
+            <li><span class="material-symbols-outlined" aria-hidden="true">check</span>A dedicated WhatsApp account for requests</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check</span>One Page and Starter include content updates</li>
+            <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Growth and Pro add design changes too</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <!-- id added 2026-08-17: this section is the redirect target for the retired
+         process.html, and rail.js's "launch" step now points here. -->
+    <section class="sds-section" id="how-it-works">
+      <p class="sds-eyebrow">How it works</p>
+      <h2 class="sds-h2">From first call to launch.</h2>
+      <p class="sds-lead">A One Page site is usually live in about 1&ndash;2 weeks once content and access are in hand. Larger Growth and Pro builds run longer, and Fast Track is available if you are working to a deadline.</p>
+
+      <div class="sds-grid-4" style="margin-top:34px">
+        <article class="sds-card">
+          <p class="wb-step-num">01</p>
+          <h3 class="sds-h3">Consultation</h3>
+          <p class="sds-body">We talk through your goals, the pages you need, content, forms, scheduling, SEO, and which pricing path fits.</p>
+        </article>
+        <article class="sds-card">
+          <p class="wb-step-num">02</p>
+          <h3 class="sds-h3">Design &amp; build</h3>
+          <p class="sds-body">After onboarding we design and build the site around the agreed scope, then get it in front of you.</p>
+        </article>
+        <article class="sds-card">
+          <p class="wb-step-num">03</p>
+          <h3 class="sds-h3">Your review</h3>
+          <p class="sds-body">You review and send one consolidated list of changes, we revise within the agreed scope, then you approve. Larger builds review in stages.</p>
+        </article>
+        <article class="sds-card">
+          <p class="wb-step-num">04</p>
+          <h3 class="sds-h3">Launch &amp; care</h3>
+          <p class="sds-body">We launch it, then keep hosting, updating and supporting it &mdash; or hand it off, if you bought a one-time build.</p>
+        </article>
+      </div>
+
+      <p class="sds-fine">Timelines are estimates that start once all required content and access are received, not promises. The full eight-step process is on the <a href="services/website-design-hosting.html#process" style="color:rgb(var(--t-electric-cyan))">details page</a>.</p>
+    </section>
+
+    <!-- Proof -->
+    <section class="sds-section">
+      <p class="sds-eyebrow">Recent work</p>
+      <h2 class="sds-h2">Websites we&rsquo;ve built.</h2>
+
+      <div class="sds-grid-3" style="margin-top:34px">
+        <a class="wb-proof" href="portfolio-naplesestatejewelry.html">
+          <img class="sds-media" src="assets/portfolio/naples-estate-jewelry/home-live-20260801.png" alt="Naples Estate Jewelry storefront homepage" loading="lazy" decoding="async" width="1200" height="750"/>
+          <div class="wb-proof__body">
+            <p class="wb-proof__tag">Estate Jewelry &middot; Naples, FL</p>
+            <h3 class="sds-h3">Naples Estate Jewelry</h3>
+            <p class="sds-body">A live estate jewelry storefront that treats every piece as both jewelry and verifiable value &mdash; era and category filters, detailed condition reporting, and a full commerce back office.</p>
+          </div>
+        </a>
+
+        <!-- These three must stay in step with index.html's "Recent work" cards —
+             same three sites, all currently live. The copy is intentionally
+             longer here than on the homepage; match the SITES, not the wording.
+             Elite Yacht Detailing and AuctionBuddha were removed 2026-08-17
+             because both have been offline since 2026-08-08. -->
+        <a class="wb-proof" href="portfolio-metalscalc.html">
+          <img class="sds-media" src="assets/portfolio/metalscalc/home.png" alt="SpotCalc.com product landing page" loading="lazy" decoding="async" width="1200" height="750"/>
+          <div class="wb-proof__body">
+            <p class="wb-proof__tag">Precious Metals &middot; PWA</p>
+            <h3 class="sds-h3">SpotCalc.com</h3>
+            <p class="sds-body">A product site and install hub for a precious-metal buying calculator &mdash; live spot prices on load prove the tool works, then a one-tap install flow puts it on the buyer&rsquo;s phone.</p>
+          </div>
+        </a>
+
+        <a class="wb-proof" href="https://deepfieldgallery.com/" target="_blank" rel="noopener">
+          <img class="sds-media" src="assets/portfolio/deepfield-gallery/card.jpg" alt="Deepfield Gallery live homepage" loading="lazy" decoding="async" width="1200" height="750"/>
+          <div class="wb-proof__body">
+            <p class="wb-proof__tag">Curated Gallery &middot; Naples, FL</p>
+            <h3 class="sds-h3">Deepfield Gallery</h3>
+            <p class="sds-body">A curated gallery for art, jewelry, antiques and one-of-a-kind objects &mdash; five collections, artist profiles, saved items and accounts, with Naples pickup beside insured nationwide shipping.</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="sds-actions">
+        <a class="sds-btn" href="casestudies.html">See all websites</a>
+        <a class="sds-btn" href="portfolio.html">Browse all work</a>
+      </div>
+    </section>
+
+    <!-- Ownership / two paths -->
+    <section class="sds-section">
+      <div class="sds-panel">
+        <p class="sds-eyebrow">Two ways to buy</p>
+        <h2 class="sds-h2">Rent the whole service, or own it outright.</h2>
+        <p class="sds-lead">Most businesses take a managed plan, where the build is bundled into a monthly price and we keep running it. If you would rather pay once and manage it yourself, one-time builds start at $1,500.</p>
+        <ul class="sds-list">
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>No long-term contracts on a managed plan &mdash; cancel anytime, no penalties.</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>While the plan is active your site stays live, supported, and continuously maintained.</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Your own content &mdash; logo, photos, text, business information &mdash; is always yours.</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>One-time builds include a basic handoff, account access, and a limited post-launch bug-fix period. Add Self-Hosting Setup ($450, or $750 with stored form records) and we create hosting, domain, email and analytics accounts in your name, deploy the site, and hand over every credential &mdash; so you own the whole stack, not just the site.</li>
+        </ul>
+        <div class="sds-actions">
+          <a class="sds-btn sds-btn--solid" href="pricing.html">See pricing</a>
+          <a class="sds-btn" href="services/website-design-hosting.html">Full pricing details</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Also available -->
+    <section class="sds-section">
+      <p class="sds-eyebrow">Also available</p>
+      <h2 class="sds-h2">Beyond the website.</h2>
+
+      <div class="sds-grid-3" style="margin-top:30px">
+        <a class="sds-card" href="services/in-home-services.html" style="text-decoration:none">
+          <span class="sds-ico"><span class="material-symbols-outlined" aria-hidden="true">home_pin</span></span>
+          <h3 class="sds-h3">On-site tech services</h3>
+          <p class="sds-body">In-home tech help and office network setup across Southwest Florida, from the same team.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="sds-section">
+      <div class="sds-panel" style="text-align:center">
+        <h2 class="sds-h2">Ready when you are.</h2>
+        <p class="sds-lead" style="margin:0 auto 24px">Tell us about the business and we will recommend the smallest plan that does the job.</p>
+        <div class="sds-actions" style="justify-content:center;margin-top:0">
+          <a class="sds-btn sds-btn--solid" href="contact.html">Get started</a>
+          <a class="sds-btn" href="pricing.html">See pricing</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script src="assets/standard-site-footer.js?v=20260817-cta-r5"></script>
+<script src="assets/account-nav.js?v=20260817-cta-r5"></script>
+<script src="surette-logo.js?v=20260817-cta-r5"></script>
+<script>document.addEventListener('DOMContentLoaded', function () { SuretteLogo.init('sds-logo'); SuretteLogo.init('sds-logo-mobile'); });</script>
+</body>
+</html>

@@ -7,7 +7,7 @@
   font-weight: 400;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #8e9192;
+  color: rgb(var(--t-outline));
   line-height: 1;
   margin-top: 2px;
   transform: scaleX(1.28);
@@ -102,7 +102,7 @@
 /* Shimmering gradient wordmark — nav logo (built-by / landing page style) */
 .brand-mystical {
   display: inline-block;
-  background: linear-gradient(120deg, #FFFFFF 0%, #00F0FF 38%, #7000FF 88%);
+  background: linear-gradient(120deg, #FFFFFF 0%, rgb(var(--t-electric-cyan)) 38%, rgb(var(--t-nebula-purple)) 88%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -115,8 +115,8 @@
   /* drop-shadow breaks gradient text on mobile WebKit — use text-shadow instead */
   filter: none;
   text-shadow:
-    0 0 10px rgba(0, 240, 255, 0.55),
-    0 0 22px rgba(112, 0, 255, 0.4);
+    0 0 10px rgb(var(--t-electric-cyan) / 0.55),
+    0 0 22px rgb(var(--t-nebula-purple) / 0.4);
 }
 
 @keyframes brand-shimmer {

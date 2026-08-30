@@ -1,7 +1,7 @@
 /* Surette Data Systems — Apps page secondary brand under Dark Matter */
 
 .sds-apps-page {
-  --sds-cyan: #22d3ee;
+  --sds-cyan: rgb(var(--t-electric-cyan));
   --sds-violet: #a855f7;
   --sds-amber: #f59e0b;
   --sds-rose: #f472b6;
@@ -14,7 +14,7 @@
 }
 
 .sds-apps-page .fixed.inset-0 .bg-\[linear-gradient\(to_bottom\,rgba\(5\,5\,5\,0\.48\)\,\#050505_84\%\)\] {
-  background: linear-gradient(to bottom, rgba(5, 5, 5, 0.42), #050505 84%),
+  background: linear-gradient(to bottom, rgb(var(--t-void-black) / 0.42), rgb(var(--t-void-black)) 84%),
     radial-gradient(circle at 82% 12%, rgba(168, 85, 247, 0.16), transparent 34%),
     radial-gradient(circle at 12% 28%, rgba(245, 158, 11, 0.1), transparent 38%) !important;
 }
@@ -100,7 +100,7 @@
   pointer-events: none;
   filter:
     drop-shadow(0 0 24px rgba(168, 85, 247, 0.28))
-    drop-shadow(0 24px 54px rgba(0, 0, 0, 0.44));
+    drop-shadow(0 24px 54px rgba(var(--c-shadow-rgb), 0.44));
   transition: filter 0.75s ease-out;
 }
 
@@ -187,7 +187,7 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(227, 226, 226, 0.52);
+  color: rgb(var(--t-on-surface) / 0.52);
 }
 
 .sds-hero__flick-reveal-headline {
@@ -198,7 +198,7 @@
   font-weight: 600;
   line-height: 1.15;
   letter-spacing: -0.02em;
-  color: #f8fafc;
+  color: var(--t-ink-f8fafc);
   text-wrap: balance;
 }
 
@@ -214,7 +214,7 @@
   font-size: clamp(0.96rem, 1.45vw, 1.12rem);
   font-weight: 400;
   line-height: 1.55;
-  color: rgba(227, 226, 226, 0.72);
+  color: rgb(var(--t-on-surface) / 0.72);
   text-wrap: balance;
 }
 
@@ -263,7 +263,7 @@ html:lang(es) .sds-hero__flick-reveal-sub {
 .sds-hero__floating-wrap:has(.sds-hero__floating-stage:hover) .sds-hero__floating-mark {
   filter:
     drop-shadow(0 0 28px rgba(168, 85, 247, 0.36))
-    drop-shadow(0 28px 58px rgba(0, 0, 0, 0.46));
+    drop-shadow(0 28px 58px rgba(var(--c-shadow-rgb), 0.46));
 }
 
 .sds-hero + section {
@@ -280,7 +280,7 @@ html:lang(es) .sds-hero__flick-reveal-sub {
   object-fit: contain;
   filter:
     drop-shadow(0 0 14px rgba(168, 85, 247, 0.42))
-    drop-shadow(0 10px 22px rgba(0, 0, 0, 0.44));
+    drop-shadow(0 10px 22px rgba(var(--c-shadow-rgb), 0.44));
   animation: sds-logo-float 7.2s ease-in-out infinite;
 }
 
@@ -299,7 +299,7 @@ html:lang(es) .sds-hero__flick-reveal-sub {
   .sds-apps-page .sds-hero__brand-mark:not(.sds-hero__brand-mark--physics-captured):hover {
     filter:
       drop-shadow(0 0 18px rgba(168, 85, 247, 0.52))
-      drop-shadow(0 12px 24px rgba(0, 0, 0, 0.46));
+      drop-shadow(0 12px 24px rgba(var(--c-shadow-rgb), 0.46));
   }
 }
 
@@ -336,12 +336,12 @@ html:lang(es) .sds-hero__flick-reveal-sub {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: #0a0610;
-  background: linear-gradient(135deg, #22d3ee, #a3e635);
+  background: linear-gradient(135deg, rgb(var(--t-electric-cyan)), #a3e635);
   border-radius: 0.66rem;
   white-space: nowrap;
   pointer-events: none;
   box-shadow:
-    0 6px 18px rgba(0, 0, 0, 0.4),
+    0 6px 18px rgba(var(--c-shadow-rgb), 0.4),
     0 0 16px rgba(34, 211, 238, 0.45);
   transition: opacity 0.3s ease, visibility 0.3s ease;
   animation: sds-click-hint-bob 2.6s ease-in-out infinite;
@@ -355,7 +355,7 @@ html:lang(es) .sds-hero__flick-reveal-sub {
   transform: translateY(-50%);
   border-style: solid;
   border-width: 0.42rem 0.5rem 0.42rem 0;
-  border-color: transparent #22d3ee transparent transparent;
+  border-color: transparent rgb(var(--t-electric-cyan)) transparent transparent;
 }
 
 .sds-hero__brand-mark--physics-captured ~ .sds-hero__click-hint {
@@ -415,14 +415,14 @@ html:lang(es) .sds-hero__flick-reveal-sub {
   font: 900 clamp(1.25rem, 4.2vw, 3.2rem) "JetBrains Mono", monospace;
   letter-spacing: clamp(0.22em, 1vw, 0.48em);
   text-transform: uppercase;
-  text-shadow: 0 0 18px rgba(255, 255, 255, 0.28);
+  text-shadow: 0 0 18px rgba(var(--c-veil-rgb), 0.28);
 }
 
 .sds-wordmark__rule {
   display: block;
   height: clamp(0.18rem, 0.7vw, 0.42rem);
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 0 16px rgba(255, 255, 255, 0.24);
+  background: rgba(var(--c-veil-rgb), 0.92);
+  box-shadow: 0 0 16px rgba(var(--c-veil-rgb), 0.24);
 }
 
 .sds-wordmark__system-text {
@@ -449,7 +449,7 @@ html:lang(es) .sds-hero__flick-reveal-sub {
 .sds-hero__kicker-lead {
   font-size: 0.72em;
   letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.58);
+  color: rgba(var(--c-veil-rgb), 0.58);
 }
 
 .sds-hero__kicker-brand {
@@ -461,7 +461,7 @@ html:lang(es) .sds-hero__flick-reveal-sub {
   font-size: clamp(2.35rem, 6vw, 4rem);
   line-height: 1.02;
   letter-spacing: -0.02em;
-  color: #fff;
+  color: rgb(var(--t-starlight-white));
   margin-bottom: 1rem;
 }
 
@@ -477,7 +477,7 @@ html:lang(es) .sds-hero__flick-reveal-sub {
   line-height: 1.65;
   color: var(--sds-white);
   max-width: 42rem;
-  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.55);
+  text-shadow: 0 2px 16px rgba(var(--c-shadow-rgb), 0.55);
 }
 
 .sds-hero__sub {
@@ -485,7 +485,7 @@ html:lang(es) .sds-hero__flick-reveal-sub {
   font: 500 11px/1.4 "JetBrains Mono", monospace;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(142, 145, 146, 0.78);
+  color: rgb(var(--t-outline) / 0.78);
   overflow: visible;
 }
 
@@ -740,15 +740,15 @@ body.sds-apps-page {
 }
 
 .glass-panel {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(var(--c-veil-rgb), 0.05);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(var(--c-veil-rgb), 0.1);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(var(--c-veil-rgb), 0.035);
   backdrop-filter: blur(18px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(var(--c-veil-rgb), 0.1);
 }
 
 .material-symbols-outlined {
@@ -763,14 +763,14 @@ body.sds-apps-page {
   overflow: hidden;
   background: linear-gradient(145deg, rgba(34, 211, 238, 0.08), rgba(168, 85, 247, 0.14) 54%, rgba(245, 158, 11, 0.08));
   border-color: rgba(168, 85, 247, 0.22);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 18px 48px rgba(0, 0, 0, 0.28);
+  box-shadow: inset 0 1px 0 rgba(var(--c-veil-rgb), 0.08), 0 18px 48px rgba(var(--c-shadow-rgb), 0.28);
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .app-tile:hover {
   transform: translateY(-4px);
   border-color: rgba(34, 211, 238, 0.42);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 24px 70px rgba(168, 85, 247, 0.16);
+  box-shadow: inset 0 1px 0 rgba(var(--c-veil-rgb), 0.12), 0 24px 70px rgba(168, 85, 247, 0.16);
 }
 
 .app-tile__top {
@@ -781,7 +781,7 @@ body.sds-apps-page {
   background:
     radial-gradient(circle at 78% 18%, rgba(168, 85, 247, 0.28), transparent 32%),
     linear-gradient(135deg, rgba(245, 158, 11, 0.16), rgba(34, 211, 238, 0.08));
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(var(--c-veil-rgb), 0.1);
 }
 
 .app-tile__icon {
@@ -794,7 +794,7 @@ body.sds-apps-page {
   width: 54px;
   height: 54px;
   border-radius: 14px;
-  background: rgba(5, 5, 5, 0.82);
+  background: rgb(var(--t-void-black) / 0.82);
   border: 1px solid rgba(168, 85, 247, 0.4);
   box-shadow: 0 0 30px rgba(168, 85, 247, 0.2);
 }
@@ -838,7 +838,7 @@ body.sds-apps-page {
   font-family: "Space Grotesk", sans-serif;
   font-size: clamp(1.65rem, 4vw, 2.6rem);
   line-height: 1.08;
-  color: #fff;
+  color: rgb(var(--t-starlight-white));
 }
 
 .app-custom-banner p {
@@ -849,6 +849,53 @@ body.sds-apps-page {
   color: var(--sds-cyan);
 }
 
+/* Software-replacement steps, folded in from the retired process.html (2026-08-17).
+   Token-driven throughout — a literal here would silently opt the block out of the
+   light theme. The numerals use the -on purple variant because #7000FF measures
+   2.91:1 as a foreground on the site's near-blacks; the raw token is fill-only. */
+.app-swap-steps {
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+  max-width: 860px;
+}
+
+.app-swap-steps li {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.app-swap-steps__num {
+  flex-shrink: 0;
+  width: 2.75rem;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  color: rgb(var(--t-nebula-purple-on, var(--t-nebula-purple)));
+}
+
+.app-swap-steps h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.3;
+  margin-bottom: 0.35rem;
+  color: rgb(var(--t-starlight-white));
+}
+
+.app-swap-steps p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgb(var(--t-on-surface-variant));
+}
+
+@media (max-width: 560px) {
+  .app-swap-steps li { gap: 0.85rem; }
+  .app-swap-steps__num { width: 2rem; font-size: 1rem; }
+}
+
 .sds-btn-primary {
   display: inline-flex;
   align-items: center;
@@ -857,7 +904,12 @@ body.sds-apps-page {
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   background: linear-gradient(120deg, var(--sds-violet), var(--sds-amber));
-  color: var(--c-text-inv);
+  /* On-bright, not text-inv. These fills are bright literals that do not flip
+     with the theme (violet/amber here, lime / pink-amber / cyan-green on the
+     inline variants in apps.html), but --c-text-inv does flip — so in light
+     mode a paper label landed on bright lime at 2.8:1. A fill that does not
+     flip needs a label that does not flip. Worst stop is now 4.9:1. */
+  color: var(--c-on-bright);
   font: 700 14px "JetBrains Mono", monospace;
   box-shadow: 0 0 28px rgba(168, 85, 247, 0.32);
   transition: transform 0.2s ease;
@@ -878,6 +930,11 @@ body.sds-apps-page {
   color: var(--sds-cyan);
   font: 700 14px "JetBrains Mono", monospace;
   transition: background 0.2s ease, transform 0.2s ease;
+  /* This button had no fill, so on apps.html it sits directly on the fractal
+     canvas. Over the fractal's bright core its cyan icon measured 3.2-4.2:1 on
+     3 of 3 runs. The fill gives the label and icon a ground of their own; it
+     reads dark on dark and paper on light because --t-void-black flips. */
+  background: rgb(var(--t-void-black) / 0.6);
 }
 
 .sds-btn-secondary:hover {
@@ -903,7 +960,7 @@ body.sds-apps-page {
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(180deg, rgba(5, 5, 5, 0.08), rgba(5, 5, 5, 0.78)),
+    linear-gradient(180deg, rgb(var(--t-void-black) / 0.08), rgb(var(--t-void-black) / 0.78)),
     radial-gradient(circle at 78% 12%, rgba(168, 85, 247, 0.24), transparent 38%);
   pointer-events: none;
 }
@@ -913,8 +970,8 @@ body.sds-apps-page {
   inset: 12px 14px 20px;
   border: 1px solid rgba(168, 85, 247, 0.24);
   border-radius: 12px;
-  background: linear-gradient(135deg, rgba(5, 5, 5, 0.84), rgba(31, 32, 32, 0.72));
-  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.35);
+  background: linear-gradient(135deg, rgb(var(--t-void-black) / 0.84), rgb(var(--t-surface-container) / 0.72));
+  box-shadow: 0 16px 42px rgba(var(--c-shadow-rgb), 0.35);
   overflow: hidden;
 }
 
@@ -923,7 +980,7 @@ body.sds-apps-page {
   display: block;
   height: 20px;
   background: linear-gradient(90deg, rgba(34, 211, 238, 0.18), rgba(168, 85, 247, 0.18));
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(var(--c-veil-rgb), 0.08);
 }
 
 .app-tile__visual-grid {
@@ -937,7 +994,7 @@ body.sds-apps-page {
 .app-tile__visual-row {
   display: block;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(var(--c-veil-rgb), 0.14);
 }
 
 .app-tile__visual-pill {
@@ -1017,7 +1074,7 @@ body.sds-apps-page {
   .sds-hero__floating-wrap:has(.sds-hero__floating-stage:hover) .sds-hero__floating-mark {
     filter:
       drop-shadow(0 0 24px rgba(168, 85, 247, 0.28))
-      drop-shadow(0 24px 54px rgba(0, 0, 0, 0.44));
+      drop-shadow(0 24px 54px rgba(var(--c-shadow-rgb), 0.44));
   }
 
   .sds-hero__floating-stage {
@@ -1062,12 +1119,12 @@ body.sds-apps-page {
     color: var(--sds-white);
     font-size: clamp(0.82rem, 4.4vw, 1.15rem);
     letter-spacing: 0.2em;
-    text-shadow: 0 0 14px rgba(255, 255, 255, 0.28);
+    text-shadow: 0 0 14px rgba(var(--c-veil-rgb), 0.28);
   }
 
   .sds-wordmark__rule {
-    background: rgba(255, 255, 255, 0.92);
-    box-shadow: 0 0 14px rgba(255, 255, 255, 0.24);
+    background: rgba(var(--c-veil-rgb), 0.92);
+    box-shadow: 0 0 14px rgba(var(--c-veil-rgb), 0.24);
   }
 
   .sds-apps-page .sds-hero__brand-mark:not(.sds-hero__brand-mark--physics-captured) {
@@ -1220,7 +1277,7 @@ body.is-apps-ready > :not(#sds-apps-loader) {
     radial-gradient(circle at 18% 22%, rgba(139, 106, 173, 0.07), transparent 42%),
     radial-gradient(circle at 82% 78%, rgba(78, 50, 110, 0.1), transparent 46%),
     radial-gradient(circle at 50% 100%, rgba(184, 147, 90, 0.04), transparent 38%),
-    #050505;
+    rgb(var(--t-void-black));
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -1290,7 +1347,7 @@ body.is-apps-ready > :not(#sds-apps-loader) {
   height: 2px;
   border-radius: 999px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(var(--c-veil-rgb), 0.08);
   box-shadow: 0 0 12px rgba(107, 88, 130, 0.08);
 }
 
@@ -1310,7 +1367,7 @@ body.is-apps-ready > :not(#sds-apps-loader) {
   font-size: 0.68rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(196, 199, 199, 0.72);
+  color: rgb(var(--t-on-surface-variant) / 0.72);
 }
 
 @keyframes sds-loader-ring-pulse {
@@ -1412,7 +1469,7 @@ body.is-apps-ready > :not(#sds-apps-loader) {
     min-height: 2.225rem;
     padding: 0.5rem 1.5rem !important;
     border-radius: 0.5rem !important;
-    color: #fff !important;
+    color: rgb(var(--t-starlight-white)) !important;
     font-family: "JetBrains Mono", ui-monospace, monospace !important;
     font-size: 0.875rem !important;
     font-weight: 500 !important;
@@ -1421,7 +1478,7 @@ body.is-apps-ready > :not(#sds-apps-loader) {
     text-decoration: none !important;
     white-space: nowrap !important;
     margin-left: 0 !important;
-    box-shadow: 0 0 24px rgba(0, 240, 255, 0.18);
+    box-shadow: 0 0 24px rgb(var(--t-electric-cyan) / 0.18);
     transition: transform 0.2s ease;
   }
 
@@ -1504,8 +1561,8 @@ body.is-apps-ready > :not(#sds-apps-loader) {
   margin: 0;
   padding: 0.18rem 0.34rem 0.18rem 0.42rem;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(5, 5, 5, 0.52);
+  border: 1px solid rgba(var(--c-veil-rgb), 0.1);
+  background: rgb(var(--t-void-black) / 0.52);
   backdrop-filter: blur(10px);
   cursor: pointer;
   user-select: none;
@@ -1514,17 +1571,17 @@ body.is-apps-ready > :not(#sds-apps-loader) {
   line-height: 1;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(196, 199, 199, 0.72);
+  color: rgb(var(--t-on-surface-variant) / 0.72);
   transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
 }
 
 .sds-physics-toggle__label:hover {
-  border-color: rgba(0, 240, 255, 0.28);
-  color: rgba(227, 226, 226, 0.88);
+  border-color: rgb(var(--t-electric-cyan) / 0.28);
+  color: rgb(var(--t-on-surface) / 0.88);
 }
 
 .sds-physics-toggle.is-physics-on .sds-physics-toggle__text {
-  color: rgba(0, 240, 255, 0.82);
+  color: rgb(var(--t-electric-cyan) / 0.82);
 }
 
 .sds-physics-toggle__input {
@@ -1545,8 +1602,8 @@ body.is-apps-ready > :not(#sds-apps-loader) {
   width: 1.35rem;
   height: 0.72rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  background: rgba(var(--c-veil-rgb), 0.12);
+  box-shadow: inset 0 0 0 1px rgba(var(--c-veil-rgb), 0.06);
   transition: background 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -1557,15 +1614,15 @@ body.is-apps-ready > :not(#sds-apps-loader) {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
-  background: rgba(196, 199, 199, 0.88);
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.35);
+  background: rgb(var(--t-on-surface-variant) / 0.88);
+  box-shadow: 0 0 6px rgba(var(--c-shadow-rgb), 0.35);
   transform: translateX(0.63rem);
   transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .sds-physics-toggle__input:checked + .sds-physics-toggle__track {
-  background: rgba(0, 240, 255, 0.18);
-  box-shadow: inset 0 0 0 1px rgba(0, 240, 255, 0.24);
+  background: rgb(var(--t-electric-cyan) / 0.18);
+  box-shadow: inset 0 0 0 1px rgb(var(--t-electric-cyan) / 0.24);
 }
 
 .sds-physics-toggle__input:checked + .sds-physics-toggle__track .sds-physics-toggle__thumb {
@@ -1575,7 +1632,7 @@ body.is-apps-ready > :not(#sds-apps-loader) {
 }
 
 .sds-physics-toggle__input:focus-visible + .sds-physics-toggle__track {
-  outline: 1px solid rgba(0, 240, 255, 0.55);
+  outline: 1px solid rgb(var(--t-electric-cyan) / 0.55);
   outline-offset: 2px;
 }
 

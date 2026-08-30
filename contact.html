@@ -2,6 +2,7 @@
 
 <html class="dark" style="background:#050505" lang="en"><head>
 <meta charset="utf-8"/>
+<script id="sds-theme-resolver">/* Pre-paint theme resolver — must stay the first script in <head>. Stamps data-theme on <html> from the stored choice before anything paints, and overwrites the inline dark background attribute. Dark is the brand default when nothing is stored, so a visitor whose OS prefers light still gets the site's intended look until they choose. */(function(){var d=document.documentElement,t;try{t=localStorage.getItem("sds-theme")}catch(e){}if(t!=="light")t="dark";d.setAttribute("data-theme",t);d.classList.toggle("dark",t==="dark");d.style.background=t==="light"?"#f4f2ee":"#050505"})();</script>
 
 <script>/* Head-stamp: nav.css reveals un-stamped pages at 0.2s (its no-logo-script fallback). On heavy pages the bottom-of-body surette-logo.js stamp lands after that, so content flashed in at 0.2s, vanished when the stamp arrived, then faded back in. Stamping before first paint makes JS the only revealer. */document.documentElement.classList.add("sds-logo-loaded");</script>
 <style id="dm-critical-dark-baseline">
@@ -10,6 +11,7 @@
   #__next,#root,.app{background:#050505;min-height:100vh;}
   body>main{min-height:100vh;}
   #page-loader,.sds-apps-loader{background:#050505;}
+html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:#0b0e10;color-scheme:light}html[data-theme="light"] #__next,html[data-theme="light"] #root,html[data-theme="light"] .app{background:#f4f2ee}html[data-theme="light"] #page-loader,html[data-theme="light"] .sds-apps-loader{background:#f4f2ee}
 </style>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
@@ -32,8 +34,8 @@
 <meta name="twitter:title" content="Contact | Surette Data Systems"/>
 <meta name="twitter:description" content="Managed websites, business web apps, hosting, support, and local IT setup for Southwest Florida businesses."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
-<link href="assets/nav.css?v=20260801-scroll-hide3" rel="stylesheet"/>
-<link href="assets/cosmic-web.css?v=20260716-md880" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="assets/nav.css?v=20260829-apps-retired" rel="stylesheet"/>
+<link href="assets/cosmic-web.css?v=20260827-contrast-nav" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
   #sds-logo a.sds-anchor,
   #sds-logo-mobile a.sds-anchor {
@@ -64,10 +66,10 @@
     font-size: 15px !important;
     font-weight: 700 !important;
     letter-spacing: 0.16em !important;
-    color: #ddeeff !important;
+    color: var(--sds-logo-co, #ddeeff) !important;
     line-height: 1 !important;
     text-transform: uppercase !important;
-    text-shadow: 0 0 12px rgba(0, 190, 255, 0.45) !important;
+    text-shadow: var(--sds-logo-glow, 0 0 12px rgba(0, 190, 255, 0.45)) !important;
   }
   #sds-logo .sds-sub,
   #sds-logo-mobile .sds-sub {
@@ -75,17 +77,17 @@
     font-size: 8px !important;
     font-weight: 300 !important;
     letter-spacing: 0.34em !important;
-    color: #00b8df !important;
+    color: var(--sds-logo-sub, #00b8df) !important;
     line-height: 1 !important;
-    opacity: 0.7 !important;
+    opacity: var(--sds-logo-sub-opacity, 0.7) !important;
   }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Plus+Jakarta+Sans:wght@300..800&amp;family=JetBrains+Mono:wght@100..800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <style>
         body {
-            background-color: #050505;
-            color: #e3e2e2;
+            background-color: rgb(var(--t-void-black));
+            color: rgb(var(--t-on-surface));
             overflow-x: hidden;
         }
         .material-symbols-outlined {
@@ -98,16 +100,16 @@
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+                linear-gradient(to right, rgba(var(--c-veil-rgb), 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(var(--c-veil-rgb), 0.05) 1px, transparent 1px);
             background-size: 80px 80px;
             pointer-events: none;
             z-index: -1;
         }
         .glass-card {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(var(--c-veil-rgb), 0.03);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(var(--c-veil-rgb), 0.1);
             position: relative;
         }
         .glass-card::before {
@@ -117,15 +119,15 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+            background: linear-gradient(90deg, rgba(var(--c-veil-rgb), 0.3) 0%, transparent 100%);
         }
-        .neon-glow-cyan { box-shadow: 0 0 15px rgba(0, 240, 255, 0.3); }
-        .neon-glow-purple { box-shadow: 0 0 15px rgba(112, 0, 255, 0.3); }
+        .neon-glow-cyan { box-shadow: 0 0 15px rgb(var(--t-electric-cyan) / 0.3); }
+        .neon-glow-purple { box-shadow: 0 0 15px rgb(var(--t-nebula-purple) / 0.3); }
         .scanning-line {
             position: absolute;
             width: 100%;
             height: 2px;
-            background: linear-gradient(90deg, transparent, #00F0FF, transparent);
+            background: linear-gradient(90deg, transparent, rgb(var(--t-electric-cyan)), transparent);
             animation: scan 4s linear infinite;
             opacity: 0.5;
         }
@@ -140,69 +142,9 @@
         }
         input:focus, textarea:focus, select:focus {
             outline: none;
-            border-bottom: 1px solid #00F0FF !important;
-            box-shadow: 0 4px 12px -2px rgba(0, 240, 255, 0.2);
+            border-bottom: 1px solid rgb(var(--t-electric-cyan)) !important;
+            box-shadow: 0 4px 12px -2px rgb(var(--t-electric-cyan) / 0.2);
         }
-        /* Ghost rail popover */
-        .rail-popover-ghost {
-            visibility: hidden;
-            pointer-events: none;
-            transform: translateY(-50%) translateX(-10px);
-            transition:
-                visibility 0s linear 0.42s,
-                transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .rail-popover-ghost::before {
-            content: '';
-            position: absolute;
-            left: -24px;
-            top: -15%;
-            width: 28px;
-            height: 130%;
-        }
-        .rail-popover-ghost.is-visible {
-            visibility: visible;
-            pointer-events: auto;
-            transform: translateY(-50%) translateX(0);
-            transition:
-                visibility 0s,
-                transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .rail-popover-ghost-inner {
-            position: relative;
-            overflow: hidden;
-            padding: 0.7rem 1.35rem;
-            border-radius: 9999px;
-            background: rgba(8, 10, 14, 0.24);
-            backdrop-filter: blur(40px) saturate(1.5);
-            -webkit-backdrop-filter: blur(40px) saturate(1.5);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            box-shadow:
-                0 0 0 1px rgba(255, 255, 255, 0.03) inset,
-                0 12px 36px rgba(0, 0, 0, 0.2),
-                0 0 56px rgba(112, 0, 255, 0.06);
-            transform: scale(0.94) translateZ(0);
-            transform-origin: left center;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-            will-change: transform;
-            transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .rail-popover-ghost.is-visible .rail-popover-ghost-inner {
-            transform: scale(1) translateZ(0);
-        }
-        .rail-popover-ghost-inner::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            background: linear-gradient(145deg, rgba(0, 240, 255, 0.06) 0%, transparent 42%, rgba(112, 0, 255, 0.05) 100%);
-            pointer-events: none;
-        }
-        .rail-popover-ghost-inner > * { position: relative; z-index: 1; }
-        .rail-popover-ghost .rail-popover-step-label { opacity: 0.72; }
-        .rail-popover-ghost .rail-popover-title { text-shadow: 0 0 28px rgba(255, 255, 255, 0.1); }
-        .rail-popover-ghost .rail-popover-desc { opacity: 0.82; }
     </style>
 <script id="tailwind-config">
         tailwind.config = {
@@ -210,58 +152,59 @@
             theme: {
                 extend: {"screens":{"md":"880px"},
                     "colors": {
-                        "on-background": "#e3e2e2",
-                        "deep-space-grey": "#1A1A1A",
-                        "primary-container": "#050505",
-                        "on-surface": "#e3e2e2",
-                        "void-black": "#050505",
-                        "on-surface-variant": "#c4c7c7",
-                        "surface-container-high": "#292a2a",
-                        "on-tertiary-container": "#00848d",
-                        "surface": "#121414",
-                        "surface-container-low": "#1a1c1c",
-                        "on-tertiary-fixed-variant": "#004f54",
-                        "tertiary": "#00dbe9",
-                        "electric-cyan": "#00F0FF",
-                        "surface-bright": "#383939",
-                        "on-tertiary": "#00363a",
-                        "on-primary": "#313030",
-                        "surface-container-highest": "#343535",
-                        "on-secondary-container": "#ddcdff",
-                        "secondary": "#d1bcff",
-                        "surface-container": "#1f2020",
-                        "background": "#121414",
-                        "outline": "#8e9192",
-                        "surface-container-lowest": "#0d0e0f",
-                        "primary-fixed": "#e5e2e1",
-                        "on-secondary": "#3c0090",
-                        "on-error": "#690005",
-                        "on-primary-fixed": "#1c1b1b",
-                        "on-primary-container": "#797777",
-                        "tertiary-fixed-dim": "#00dbe9",
-                        "on-error-container": "#ffdad6",
-                        "surface-dim": "#121414",
-                        "surface-tint": "#c9c6c5",
-                        "tertiary-container": "#000607",
-                        "on-primary-fixed-variant": "#474646",
-                        "nebula-purple": "#7000FF",
-                        "inverse-primary": "#5f5e5e",
-                        "on-secondary-fixed-variant": "#5700c9",
-                        "secondary-container": "#7000ff",
-                        "error-container": "#93000a",
-                        "tertiary-fixed": "#7df4ff",
-                        "error": "#ffb4ab",
-                        "inverse-on-surface": "#2f3131",
-                        "primary-fixed-dim": "#c9c6c5",
-                        "secondary-fixed-dim": "#d1bcff",
-                        "primary": "#c9c6c5",
-                        "on-secondary-fixed": "#23005b",
-                        "starlight-white": "#FFFFFF",
-                        "surface-variant": "#343535",
-                        "inverse-surface": "#e3e2e2",
-                        "on-tertiary-fixed": "#002022",
-                        "outline-variant": "#444748",
-                        "secondary-fixed": "#e9ddff"
+                        "white": "rgb(var(--t-starlight-white) / <alpha-value>)",
+                        "on-background": "rgb(var(--t-on-background) / <alpha-value>)",
+                        "deep-space-grey": "rgb(var(--t-deep-space-grey) / <alpha-value>)",
+                        "primary-container": "rgb(var(--t-primary-container) / <alpha-value>)",
+                        "on-surface": "rgb(var(--t-on-surface) / <alpha-value>)",
+                        "void-black": "rgb(var(--t-void-black) / <alpha-value>)",
+                        "on-surface-variant": "rgb(var(--t-on-surface-variant) / <alpha-value>)",
+                        "surface-container-high": "rgb(var(--t-surface-container-high) / <alpha-value>)",
+                        "on-tertiary-container": "rgb(var(--t-on-tertiary-container) / <alpha-value>)",
+                        "surface": "rgb(var(--t-surface) / <alpha-value>)",
+                        "surface-container-low": "rgb(var(--t-surface-container-low) / <alpha-value>)",
+                        "on-tertiary-fixed-variant": "rgb(var(--t-on-tertiary-fixed-variant) / <alpha-value>)",
+                        "tertiary": "rgb(var(--t-tertiary) / <alpha-value>)",
+                        "electric-cyan": "rgb(var(--t-electric-cyan) / <alpha-value>)",
+                        "surface-bright": "rgb(var(--t-surface-bright) / <alpha-value>)",
+                        "on-tertiary": "rgb(var(--t-on-tertiary) / <alpha-value>)",
+                        "on-primary": "rgb(var(--t-on-primary) / <alpha-value>)",
+                        "surface-container-highest": "rgb(var(--t-surface-container-highest) / <alpha-value>)",
+                        "on-secondary-container": "rgb(var(--t-on-secondary-container) / <alpha-value>)",
+                        "secondary": "rgb(var(--t-secondary) / <alpha-value>)",
+                        "surface-container": "rgb(var(--t-surface-container) / <alpha-value>)",
+                        "background": "rgb(var(--t-background) / <alpha-value>)",
+                        "outline": "rgb(var(--t-outline) / <alpha-value>)",
+                        "surface-container-lowest": "rgb(var(--t-surface-container-lowest) / <alpha-value>)",
+                        "primary-fixed": "rgb(var(--t-primary-fixed) / <alpha-value>)",
+                        "on-secondary": "rgb(var(--t-on-secondary) / <alpha-value>)",
+                        "on-error": "rgb(var(--t-on-error) / <alpha-value>)",
+                        "on-primary-fixed": "rgb(var(--t-on-primary-fixed) / <alpha-value>)",
+                        "on-primary-container": "rgb(var(--t-on-primary-container) / <alpha-value>)",
+                        "tertiary-fixed-dim": "rgb(var(--t-tertiary-fixed-dim) / <alpha-value>)",
+                        "on-error-container": "rgb(var(--t-on-error-container) / <alpha-value>)",
+                        "surface-dim": "rgb(var(--t-surface-dim) / <alpha-value>)",
+                        "surface-tint": "rgb(var(--t-surface-tint) / <alpha-value>)",
+                        "tertiary-container": "rgb(var(--t-tertiary-container) / <alpha-value>)",
+                        "on-primary-fixed-variant": "rgb(var(--t-on-primary-fixed-variant) / <alpha-value>)",
+                        "nebula-purple": "rgb(var(--t-nebula-purple) / <alpha-value>)",
+                        "inverse-primary": "rgb(var(--t-inverse-primary) / <alpha-value>)",
+                        "on-secondary-fixed-variant": "rgb(var(--t-on-secondary-fixed-variant) / <alpha-value>)",
+                        "secondary-container": "rgb(var(--t-secondary-container) / <alpha-value>)",
+                        "error-container": "rgb(var(--t-error-container) / <alpha-value>)",
+                        "tertiary-fixed": "rgb(var(--t-tertiary-fixed) / <alpha-value>)",
+                        "error": "rgb(var(--t-error) / <alpha-value>)",
+                        "inverse-on-surface": "rgb(var(--t-inverse-on-surface) / <alpha-value>)",
+                        "primary-fixed-dim": "rgb(var(--t-primary-fixed-dim) / <alpha-value>)",
+                        "secondary-fixed-dim": "rgb(var(--t-secondary-fixed-dim) / <alpha-value>)",
+                        "primary": "rgb(var(--t-primary) / <alpha-value>)",
+                        "on-secondary-fixed": "rgb(var(--t-on-secondary-fixed) / <alpha-value>)",
+                        "starlight-white": "rgb(var(--t-starlight-white) / <alpha-value>)",
+                        "surface-variant": "rgb(var(--t-surface-variant) / <alpha-value>)",
+                        "inverse-surface": "rgb(var(--t-inverse-surface) / <alpha-value>)",
+                        "on-tertiary-fixed": "rgb(var(--t-on-tertiary-fixed) / <alpha-value>)",
+                        "outline-variant": "rgb(var(--t-outline-variant) / <alpha-value>)",
+                        "secondary-fixed": "rgb(var(--t-secondary-fixed) / <alpha-value>)"
                     },
                     "borderRadius": {
                         "DEFAULT": "0.125rem",
@@ -302,7 +245,7 @@
     </script>
 </head>
 <body class="font-body-md text-on-surface selection:bg-electric-cyan selection:text-void-black">
-<script src="assets/standard-site-nav.js?v=20260801-scroll-hide3" data-active="contact"></script>
+<script src="assets/standard-site-nav.js?v=20260829-apps-retired" data-active="contact"></script>
 
 <!-- ============================================================ -->
 <!-- DESKTOP LAYOUT (>= md / 768px)                               -->
@@ -343,8 +286,6 @@
 <option value="" disabled selected>Select an option</option>
 <option class="bg-void-black text-on-surface" value="A website for my business">A website for my business</option>
 <option class="bg-void-black text-on-surface" value="Redesign or fix my existing website">Redesign or fix my existing website</option>
-<option class="bg-void-black text-on-surface" value="An online store (live pricing, cart, checkout)">An online store (live pricing, cart, checkout)</option>
-<option class="bg-void-black text-on-surface" value="A custom app or tool to do a specific job">A custom app or tool to do a specific job</option>
 <option class="bg-void-black text-on-surface" value="Something else / not sure yet">Something else / not sure yet</option>
 </select>
 </div>
@@ -358,7 +299,7 @@
 <p class="text-outline/60 text-xs font-label-mono">Up to 5 images, 8 MB each.</p>
 </div>
 <p class="form-submit-error hidden text-red-400 text-xs font-label-mono"></p>
-<button class="group relative py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple font-headline-md text-starlight-white rounded overflow-hidden hover:neon-glow-cyan transition-all duration-300" type="submit">
+<button class="group relative py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple font-headline-md sds-on-accent rounded overflow-hidden hover:neon-glow-cyan transition-all duration-300" type="submit">
 <span class="relative z-10 flex items-center justify-center gap-3">
                             SEND MESSAGE
                             <span class="material-symbols-outlined">arrow_forward</span>
@@ -432,7 +373,7 @@
 </section>
 </div>
 </main>
-<script src="assets/standard-site-footer.js?v=20260716-footer-3line" data-variant="desktop"></script>
+<script src="assets/standard-site-footer.js?v=20260817-cta-r5" data-variant="desktop"></script>
 <div class="fixed top-[20%] right-[-10%] w-[50vw] h-[50vw] bg-nebula-purple/5 blur-[120px] rounded-full z-[-1]"></div>
 <div class="fixed bottom-[10%] left-[-10%] w-[40vw] h-[40vw] bg-electric-cyan/5 blur-[120px] rounded-full z-[-1]"></div>
 </div>
@@ -473,8 +414,6 @@
 <option value="" disabled selected>Select an option</option>
 <option class="bg-void-black text-on-surface" value="A website for my business">A website for my business</option>
 <option class="bg-void-black text-on-surface" value="Redesign or fix my existing website">Redesign or fix my existing website</option>
-<option class="bg-void-black text-on-surface" value="An online store (live pricing, cart, checkout)">An online store (live pricing, cart, checkout)</option>
-<option class="bg-void-black text-on-surface" value="A custom app or tool to do a specific job">A custom app or tool to do a specific job</option>
 <option class="bg-void-black text-on-surface" value="Something else / not sure yet">Something else / not sure yet</option>
 </select>
 </div>
@@ -488,7 +427,7 @@
 <p class="text-outline/60 text-xs font-label-mono">Up to 5 images, 8 MB each.</p>
 </div>
 <p class="form-submit-error hidden text-red-400 text-xs font-label-mono"></p>
-<button class="group relative py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple font-headline-md text-starlight-white rounded overflow-hidden transition-all duration-300 active:scale-[0.98]" type="submit">
+<button class="group relative py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple font-headline-md sds-on-accent rounded overflow-hidden transition-all duration-300 active:scale-[0.98]" type="submit">
 <span class="relative z-10 flex items-center justify-center gap-3">
                     SEND MESSAGE
                     <span class="material-symbols-outlined">arrow_forward</span>
@@ -526,15 +465,13 @@
 </div>
 </div>
 </main>
-<script src="assets/standard-site-footer.js?v=20260716-footer-3line" data-variant="mobile"></script>
+<script src="assets/standard-site-footer.js?v=20260817-cta-r5" data-variant="mobile"></script>
 </div>
 <!-- /MOBILE -->
 
 <script src="assets/supabase-config.js"></script>
 <script type="module" src="assets/site-message-forms.js?v=20260721-lazy-supabase"></script>
-<script src="assets/mobile-services-nav.js?v=20260715-services-merge"></script>
-<script src="assets/account-nav.js?v=20260715-login-highlight"></script>
-<script src="assets/rail.js?v=20260602-rail-active"></script>
-<script src="surette-logo.js?v=20260721-fonts-gate"></script>
+<script src="assets/account-nav.js?v=20260817-cta-r5"></script>
+<script src="surette-logo.js?v=20260817-cta-r5"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
 </body></html>

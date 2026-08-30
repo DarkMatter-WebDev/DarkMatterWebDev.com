@@ -2,6 +2,7 @@
 
 <html class="dark" style="background:#050505" lang="en"><head>
 <meta charset="utf-8"/>
+<script id="sds-theme-resolver">/* Pre-paint theme resolver — must stay the first script in <head>. Stamps data-theme on <html> from the stored choice before anything paints, and overwrites the inline dark background attribute. Dark is the brand default when nothing is stored, so a visitor whose OS prefers light still gets the site's intended look until they choose. */(function(){var d=document.documentElement,t;try{t=localStorage.getItem("sds-theme")}catch(e){}if(t!=="light")t="dark";d.setAttribute("data-theme",t);d.classList.toggle("dark",t==="dark");d.style.background=t==="light"?"#f4f2ee":"#050505"})();</script>
 
 <script>/* Head-stamp: nav.css reveals un-stamped pages at 0.2s (its no-logo-script fallback). On heavy pages the bottom-of-body surette-logo.js stamp lands after that, so content flashed in at 0.2s, vanished when the stamp arrived, then faded back in. Stamping before first paint makes JS the only revealer. */document.documentElement.classList.add("sds-logo-loaded");</script>
 <style id="dm-critical-dark-baseline">
@@ -10,6 +11,7 @@
   #__next,#root,.app{background:#050505;min-height:100vh;}
   body>main{min-height:100vh;}
   #page-loader,.sds-apps-loader{background:#050505;}
+html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:#0b0e10;color-scheme:light}html[data-theme="light"] #__next,html[data-theme="light"] #root,html[data-theme="light"] .app{background:#f4f2ee}html[data-theme="light"] #page-loader,html[data-theme="light"] .sds-apps-loader{background:#f4f2ee}
 </style>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
@@ -32,10 +34,10 @@
 <meta name="twitter:title" content="Websites We've Built | Surette Data Systems"/>
 <meta name="twitter:description" content="Managed websites, business web apps, hosting, support, and local IT setup for Southwest Florida businesses."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
-<link href="assets/nav.css?v=20260801-scroll-hide3" rel="stylesheet"/>
-<link href="assets/cosmic-web.css?v=20260716-md880" rel="stylesheet"/><link href="assets/portfolio-mobile-fixes.css?v=20260717-template-mobile" rel="stylesheet"/>
+<link href="assets/nav.css?v=20260829-apps-retired" rel="stylesheet"/>
+<link href="assets/cosmic-web.css?v=20260827-contrast-nav" rel="stylesheet"/><link href="assets/portfolio-mobile-fixes.css?v=20260817-cta-r5" rel="stylesheet"/>
 <link rel="stylesheet" href="pokecard-dropin/pokecard/pokecard.css">
-<link rel="stylesheet" href="assets/collectible-card.css?v=20260808-spotcalc">
+<link rel="stylesheet" href="assets/collectible-card.css?v=20260817-deepfield">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
   #sds-logo a.sds-anchor,
@@ -67,10 +69,10 @@
     font-size: 15px !important;
     font-weight: 700 !important;
     letter-spacing: 0.16em !important;
-    color: #ddeeff !important;
+    color: var(--sds-logo-co, #ddeeff) !important;
     line-height: 1 !important;
     text-transform: uppercase !important;
-    text-shadow: 0 0 12px rgba(0, 190, 255, 0.45) !important;
+    text-shadow: var(--sds-logo-glow, 0 0 12px rgba(0, 190, 255, 0.45)) !important;
   }
   #sds-logo .sds-sub,
   #sds-logo-mobile .sds-sub {
@@ -78,17 +80,17 @@
     font-size: 8px !important;
     font-weight: 300 !important;
     letter-spacing: 0.34em !important;
-    color: #00b8df !important;
+    color: var(--sds-logo-sub, #00b8df) !important;
     line-height: 1 !important;
-    opacity: 0.7 !important;
+    opacity: var(--sds-logo-sub-opacity, 0.7) !important;
   }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <style>
         body {
-            background-color: #050505;
-            color: #e3e2e2;
+            background-color: rgb(var(--t-void-black));
+            color: rgb(var(--t-on-surface));
             overflow-x: hidden;
         }
         .material-symbols-outlined {
@@ -96,24 +98,24 @@
         }
         .grid-overlay {
             background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+                linear-gradient(rgba(var(--c-veil-rgb), 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(var(--c-veil-rgb), 0.03) 1px, transparent 1px);
             background-size: 80px 80px;
         }
         .glass-panel {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(var(--c-veil-rgb), 0.05);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(var(--c-veil-rgb), 0.1);
         }
         .glass-card {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(var(--c-veil-rgb), 0.03);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(var(--c-veil-rgb), 0.1);
         }
-        .neon-glow-cyan { box-shadow: 0 0 20px rgba(0, 240, 255, 0.15); }
+        .neon-glow-cyan { box-shadow: 0 0 20px rgb(var(--t-electric-cyan) / 0.15); }
         .gradient-text-nebula {
-            background: linear-gradient(135deg, #00F0FF 0%, #7000FF 100%);
+            background: linear-gradient(135deg, rgb(var(--t-electric-cyan)) 0%, rgb(var(--t-nebula-purple)) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -137,8 +139,8 @@
             inset: 9% 3% 5%;
             border-radius: 999px;
             background:
-                radial-gradient(circle at 38% 45%, rgba(0, 240, 255, 0.2), transparent 44%),
-                radial-gradient(circle at 70% 24%, rgba(112, 0, 255, 0.28), transparent 44%);
+                radial-gradient(circle at 38% 45%, rgb(var(--t-electric-cyan) / 0.2), transparent 44%),
+                radial-gradient(circle at 70% 24%, rgb(var(--t-nebula-purple) / 0.28), transparent 44%);
             filter: blur(26px);
             opacity: 0.95;
             z-index: -1;
@@ -149,8 +151,8 @@
             height: auto;
             object-fit: contain;
             filter:
-                drop-shadow(0 0 26px rgba(0, 240, 255, 0.22))
-                drop-shadow(0 24px 54px rgba(0, 0, 0, 0.42));
+                drop-shadow(0 0 26px rgb(var(--t-electric-cyan) / 0.22))
+                drop-shadow(0 24px 54px rgba(var(--c-shadow-rgb), 0.42));
             animation: case-study-block-float 8s ease-in-out infinite;
         }
         @keyframes case-study-block-float {
@@ -161,7 +163,7 @@
            CARDS below); what survives here is only what the "Your Project Here"
            open slot still needs — the surface, the hover, and the CTA row. The
            media/img/badge/price rules went with the last tile.
-           NOTE: app-catalog.html keeps its own copy of the full tile CSS and
+           NOTE: the retired app-catalog.html kept its own copy of the full tile CSS and
            still renders tiles — do not chase these deletions into that page. */
         .portfolio-tile {
             position: relative;
@@ -171,11 +173,11 @@
             overflow: hidden;
             /* Near-opaque surface: the cards sit on the grid/nebula background and
                must read as solid objects, not translucent panes over it. */
-            background: linear-gradient(180deg, rgba(23, 26, 35, 0.93) 0%, rgba(12, 14, 19, 0.96) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.16);
+            background: linear-gradient(180deg, rgb(var(--t-surf-171a23) / 0.93) 0%, rgb(var(--t-surf-0c0e13) / 0.96) 100%);
+            border: 1px solid rgba(var(--c-veil-rgb), 0.16);
             box-shadow:
-                inset 0 1px 0 rgba(255, 255, 255, 0.06),
-                0 16px 38px rgba(0, 0, 0, 0.5);
+                inset 0 1px 0 rgba(var(--c-veil-rgb), 0.06),
+                0 16px 38px rgba(var(--c-shadow-rgb), 0.5);
             text-decoration: none;
             scroll-margin-top: 7rem;
             transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
@@ -186,18 +188,18 @@
         .portfolio-tile:hover,
         .portfolio-tile:focus-visible {
             transform: translateY(-8px);
-            border-color: rgba(0, 240, 255, 0.6);
+            border-color: rgb(var(--t-electric-cyan) / 0.6);
             box-shadow:
-                inset 0 1px 0 rgba(255, 255, 255, 0.09),
-                0 32px 66px rgba(0, 0, 0, 0.62),
-                0 0 52px rgba(112, 0, 255, 0.22);
+                inset 0 1px 0 rgba(var(--c-veil-rgb), 0.09),
+                0 32px 66px rgba(var(--c-shadow-rgb), 0.62),
+                0 0 52px rgb(var(--t-nebula-purple) / 0.22);
             outline: none;
         }
         .portfolio-tile__cta {
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
-            color: #00F0FF;
+            color: rgb(var(--t-electric-cyan));
             font-family: 'JetBrains Mono', monospace;
             font-size: 12px;
             letter-spacing: 0.08em;
@@ -220,15 +222,15 @@
         /* Placeholder slot: deliberately flatter than a real project card. */
         .portfolio-tile--open {
             border-style: dashed;
-            border-color: rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.025);
+            border-color: rgba(var(--c-veil-rgb), 0.2);
+            background: rgba(var(--c-veil-rgb), 0.025);
             box-shadow: none;
             justify-content: center;
         }
         .portfolio-tile--open:hover,
         .portfolio-tile--open:focus-visible {
-            border-color: rgba(0, 240, 255, 0.5);
-            box-shadow: 0 16px 38px rgba(0, 0, 0, 0.4);
+            border-color: rgb(var(--t-electric-cyan) / 0.5);
+            box-shadow: 0 16px 38px rgba(var(--c-shadow-rgb), 0.4);
         }
         /* The phone tile-shrink block that used to live here (badge/price/media
            sizing, forced 0.75rem body and 9px labels) went with the tiles. The
@@ -263,95 +265,35 @@
                 display: block;
             }
         }
-        /* Ghost rail popover */
-        .rail-popover-ghost {
-            visibility: hidden;
-            pointer-events: none;
-            transform: translateY(-50%) translateX(-10px);
-            transition:
-                visibility 0s linear 0.42s,
-                transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .rail-popover-ghost::before {
-            content: '';
-            position: absolute;
-            left: -24px;
-            top: -15%;
-            width: 28px;
-            height: 130%;
-        }
-        .rail-popover-ghost.is-visible {
-            visibility: visible;
-            pointer-events: auto;
-            transform: translateY(-50%) translateX(0);
-            transition:
-                visibility 0s,
-                transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .rail-popover-ghost-inner {
-            position: relative;
-            overflow: hidden;
-            padding: 0.7rem 1.35rem;
-            border-radius: 9999px;
-            background: rgba(8, 10, 14, 0.24);
-            backdrop-filter: blur(40px) saturate(1.5);
-            -webkit-backdrop-filter: blur(40px) saturate(1.5);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            box-shadow:
-                0 0 0 1px rgba(255, 255, 255, 0.03) inset,
-                0 12px 36px rgba(0, 0, 0, 0.2),
-                0 0 56px rgba(112, 0, 255, 0.06);
-            transform: scale(0.94) translateZ(0);
-            transform-origin: left center;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-            will-change: transform;
-            transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .rail-popover-ghost.is-visible .rail-popover-ghost-inner {
-            transform: scale(1) translateZ(0);
-        }
-        .rail-popover-ghost-inner::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            background: linear-gradient(145deg, rgba(0, 240, 255, 0.06) 0%, transparent 42%, rgba(112, 0, 255, 0.05) 100%);
-            pointer-events: none;
-        }
-        .rail-popover-ghost-inner > * { position: relative; z-index: 1; }
-        .rail-popover-ghost .rail-popover-step-label { opacity: 0.72; }
-        .rail-popover-ghost .rail-popover-title { text-shadow: 0 0 28px rgba(255, 255, 255, 0.1); }
-        .rail-popover-ghost .rail-popover-desc { opacity: 0.82; }
         /* Elite build progress */
         .build-progress-track {
             position: relative;
             height: 8px;
             border-radius: 9999px;
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(var(--c-veil-rgb), 0.06);
             overflow: hidden;
-            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35);
+            box-shadow: inset 0 1px 2px rgba(var(--c-shadow-rgb), 0.35);
         }
         .build-progress-fill {
             position: relative;
             height: 100%;
             width: 68%;
             border-radius: 9999px;
-            background: linear-gradient(90deg, #7000FF 0%, #00F0FF 45%, #7000FF 90%);
+            background: linear-gradient(90deg, rgb(var(--t-nebula-purple)) 0%, rgb(var(--t-electric-cyan)) 45%, rgb(var(--t-nebula-purple)) 90%);
             background-size: 200% 100%;
             animation: progress-shimmer 2.4s ease-in-out infinite;
-            box-shadow: 0 0 16px rgba(112, 0, 255, 0.55), 0 0 28px rgba(0, 240, 255, 0.25);
+            box-shadow: 0 0 16px rgb(var(--t-nebula-purple) / 0.55), 0 0 28px rgb(var(--t-electric-cyan) / 0.25);
         }
         .build-progress-fill--green {
-            background: linear-gradient(90deg, #39ff88 0%, #00f0ff 48%, #39ff88 95%);
+            background: linear-gradient(90deg, #39ff88 0%, rgb(var(--t-electric-cyan)) 48%, #39ff88 95%);
             background-size: 200% 100%;
-            box-shadow: 0 0 16px rgba(57, 255, 136, 0.55), 0 0 28px rgba(0, 240, 255, 0.25);
+            box-shadow: 0 0 16px rgba(57, 255, 136, 0.55), 0 0 28px rgb(var(--t-electric-cyan) / 0.25);
         }
         .build-progress-fill::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+            background: linear-gradient(90deg, transparent, rgba(var(--c-veil-rgb), 0.45), transparent);
             animation: progress-sweep 1.8s ease-in-out infinite;
         }
         @keyframes progress-shimmer {
@@ -367,15 +309,15 @@
             animation: status-pulse 2s ease-in-out infinite;
         }
         @keyframes status-pulse {
-            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(112, 0, 255, 0.45); }
-            50% { opacity: 0.85; box-shadow: 0 0 0 6px rgba(112, 0, 255, 0); }
+            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgb(var(--t-nebula-purple) / 0.45); }
+            50% { opacity: 0.85; box-shadow: 0 0 0 6px rgb(var(--t-nebula-purple) / 0); }
         }
         .screenshot-live {
             position: relative;
         }
         .elite-fleet-callout {
-            border: 1px solid rgba(0, 240, 255, 0.25);
-            background: linear-gradient(135deg, rgba(0, 240, 255, 0.06) 0%, rgba(112, 0, 255, 0.08) 100%);
+            border: 1px solid rgb(var(--t-electric-cyan) / 0.25);
+            background: linear-gradient(135deg, rgb(var(--t-electric-cyan) / 0.06) 0%, rgb(var(--t-nebula-purple) / 0.08) 100%);
         }
         .elite-feature-hero {
             display: block;
@@ -394,58 +336,59 @@
         theme: {
           extend: {"screens":{"md":"880px"},
             "colors": {
-                    "on-background": "#e3e2e2",
-                    "deep-space-grey": "#1A1A1A",
-                    "primary-container": "#050505",
-                    "on-surface": "#e3e2e2",
-                    "void-black": "#050505",
-                    "on-surface-variant": "#c4c7c7",
-                    "surface-container-high": "#292a2a",
-                    "on-tertiary-container": "#00848d",
-                    "surface": "#121414",
-                    "surface-container-low": "#1a1c1c",
-                    "on-tertiary-fixed-variant": "#004f54",
-                    "tertiary": "#00dbe9",
-                    "electric-cyan": "#00F0FF",
-                    "surface-bright": "#383939",
-                    "on-tertiary": "#00363a",
-                    "on-primary": "#313030",
-                    "surface-container-highest": "#343535",
-                    "on-secondary-container": "#ddcdff",
-                    "secondary": "#d1bcff",
-                    "surface-container": "#1f2020",
-                    "background": "#121414",
-                    "outline": "#8e9192",
-                    "surface-container-lowest": "#0d0e0f",
-                    "primary-fixed": "#e5e2e1",
-                    "on-secondary": "#3c0090",
-                    "on-error": "#690005",
-                    "on-primary-fixed": "#1c1b1b",
-                    "on-primary-container": "#797777",
-                    "tertiary-fixed-dim": "#00dbe9",
-                    "on-error-container": "#ffdad6",
-                    "surface-dim": "#121414",
-                    "surface-tint": "#c9c6c5",
-                    "tertiary-container": "#000607",
-                    "on-primary-fixed-variant": "#474646",
-                    "nebula-purple": "#7000FF",
-                    "inverse-primary": "#5f5e5e",
-                    "on-secondary-fixed-variant": "#5700c9",
-                    "secondary-container": "#7000ff",
-                    "error-container": "#93000a",
-                    "tertiary-fixed": "#7df4ff",
-                    "error": "#ffb4ab",
-                    "inverse-on-surface": "#2f3131",
-                    "primary-fixed-dim": "#c9c6c5",
-                    "secondary-fixed-dim": "#d1bcff",
-                    "primary": "#c9c6c5",
-                    "on-secondary-fixed": "#23005b",
-                    "starlight-white": "#FFFFFF",
-                    "surface-variant": "#343535",
-                    "inverse-surface": "#e3e2e2",
-                    "on-tertiary-fixed": "#002022",
-                    "outline-variant": "#444748",
-                    "secondary-fixed": "#e9ddff"
+                    "white": "rgb(var(--t-starlight-white) / <alpha-value>)",
+                    "on-background": "rgb(var(--t-on-background) / <alpha-value>)",
+                    "deep-space-grey": "rgb(var(--t-deep-space-grey) / <alpha-value>)",
+                    "primary-container": "rgb(var(--t-primary-container) / <alpha-value>)",
+                    "on-surface": "rgb(var(--t-on-surface) / <alpha-value>)",
+                    "void-black": "rgb(var(--t-void-black) / <alpha-value>)",
+                    "on-surface-variant": "rgb(var(--t-on-surface-variant) / <alpha-value>)",
+                    "surface-container-high": "rgb(var(--t-surface-container-high) / <alpha-value>)",
+                    "on-tertiary-container": "rgb(var(--t-on-tertiary-container) / <alpha-value>)",
+                    "surface": "rgb(var(--t-surface) / <alpha-value>)",
+                    "surface-container-low": "rgb(var(--t-surface-container-low) / <alpha-value>)",
+                    "on-tertiary-fixed-variant": "rgb(var(--t-on-tertiary-fixed-variant) / <alpha-value>)",
+                    "tertiary": "rgb(var(--t-tertiary) / <alpha-value>)",
+                    "electric-cyan": "rgb(var(--t-electric-cyan) / <alpha-value>)",
+                    "surface-bright": "rgb(var(--t-surface-bright) / <alpha-value>)",
+                    "on-tertiary": "rgb(var(--t-on-tertiary) / <alpha-value>)",
+                    "on-primary": "rgb(var(--t-on-primary) / <alpha-value>)",
+                    "surface-container-highest": "rgb(var(--t-surface-container-highest) / <alpha-value>)",
+                    "on-secondary-container": "rgb(var(--t-on-secondary-container) / <alpha-value>)",
+                    "secondary": "rgb(var(--t-secondary) / <alpha-value>)",
+                    "surface-container": "rgb(var(--t-surface-container) / <alpha-value>)",
+                    "background": "rgb(var(--t-background) / <alpha-value>)",
+                    "outline": "rgb(var(--t-outline) / <alpha-value>)",
+                    "surface-container-lowest": "rgb(var(--t-surface-container-lowest) / <alpha-value>)",
+                    "primary-fixed": "rgb(var(--t-primary-fixed) / <alpha-value>)",
+                    "on-secondary": "rgb(var(--t-on-secondary) / <alpha-value>)",
+                    "on-error": "rgb(var(--t-on-error) / <alpha-value>)",
+                    "on-primary-fixed": "rgb(var(--t-on-primary-fixed) / <alpha-value>)",
+                    "on-primary-container": "rgb(var(--t-on-primary-container) / <alpha-value>)",
+                    "tertiary-fixed-dim": "rgb(var(--t-tertiary-fixed-dim) / <alpha-value>)",
+                    "on-error-container": "rgb(var(--t-on-error-container) / <alpha-value>)",
+                    "surface-dim": "rgb(var(--t-surface-dim) / <alpha-value>)",
+                    "surface-tint": "rgb(var(--t-surface-tint) / <alpha-value>)",
+                    "tertiary-container": "rgb(var(--t-tertiary-container) / <alpha-value>)",
+                    "on-primary-fixed-variant": "rgb(var(--t-on-primary-fixed-variant) / <alpha-value>)",
+                    "nebula-purple": "rgb(var(--t-nebula-purple) / <alpha-value>)",
+                    "inverse-primary": "rgb(var(--t-inverse-primary) / <alpha-value>)",
+                    "on-secondary-fixed-variant": "rgb(var(--t-on-secondary-fixed-variant) / <alpha-value>)",
+                    "secondary-container": "rgb(var(--t-secondary-container) / <alpha-value>)",
+                    "error-container": "rgb(var(--t-error-container) / <alpha-value>)",
+                    "tertiary-fixed": "rgb(var(--t-tertiary-fixed) / <alpha-value>)",
+                    "error": "rgb(var(--t-error) / <alpha-value>)",
+                    "inverse-on-surface": "rgb(var(--t-inverse-on-surface) / <alpha-value>)",
+                    "primary-fixed-dim": "rgb(var(--t-primary-fixed-dim) / <alpha-value>)",
+                    "secondary-fixed-dim": "rgb(var(--t-secondary-fixed-dim) / <alpha-value>)",
+                    "primary": "rgb(var(--t-primary) / <alpha-value>)",
+                    "on-secondary-fixed": "rgb(var(--t-on-secondary-fixed) / <alpha-value>)",
+                    "starlight-white": "rgb(var(--t-starlight-white) / <alpha-value>)",
+                    "surface-variant": "rgb(var(--t-surface-variant) / <alpha-value>)",
+                    "inverse-surface": "rgb(var(--t-inverse-surface) / <alpha-value>)",
+                    "on-tertiary-fixed": "rgb(var(--t-on-tertiary-fixed) / <alpha-value>)",
+                    "outline-variant": "rgb(var(--t-outline-variant) / <alpha-value>)",
+                    "secondary-fixed": "rgb(var(--t-secondary-fixed) / <alpha-value>)"
             },
             "borderRadius": {
                     "DEFAULT": "0.125rem",
@@ -486,7 +429,7 @@
     </script>
 </head>
 <body class="font-body-md text-on-surface bg-void-black">
-<script src="assets/standard-site-nav.js?v=20260801-scroll-hide3" data-active="portfolio"></script>
+<script src="assets/standard-site-nav.js?v=20260829-apps-retired" data-active="websites"></script>
 
 <!-- ============================================================ -->
 <!-- DESKTOP LAYOUT (>= md / 768px)                               -->
@@ -503,7 +446,7 @@
 <h4 class="font-label-caps text-label-caps text-electric-cyan mb-4 tracking-[0.2em]">SELECTED WORK</h4>
 <h1 class="font-headline-xl text-headline-xl text-starlight-white mb-8">Websites <span class="gradient-text-nebula">We've Built.</span></h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">Real sites for real businesses and working brands. We start with the building blocks of a strong business foundation, then shape each build to load fast, look sharp, and turn visitors into customers.</p>
-<p class="mt-6 case-studies-hero__template-cta inline-flex items-center gap-2 font-label-mono text-sm font-semibold tracking-wide" style="background:linear-gradient(90deg,#00F0FF,#7000FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Try one of our templates live&nbsp;<span class="material-symbols-outlined" style="-webkit-text-fill-color:#00F0FF;font-size:20px;vertical-align:middle;">arrow_forward</span></p>
+<p class="mt-6 case-studies-hero__template-cta inline-flex items-center gap-2 font-label-mono text-sm font-semibold tracking-wide" style="background:linear-gradient(90deg,var(--t-electric-cyan),var(--t-nebula-purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Try one of our templates live&nbsp;<span class="material-symbols-outlined" style="-webkit-text-fill-color:var(--t-electric-cyan);font-size:20px;vertical-align:middle;">arrow_forward</span></p>
 </div>
 <div class="case-studies-hero__visual">
 <section class="lab-poke-section" aria-label="Website template — sample card">
@@ -942,6 +885,65 @@ Live Au/Ag/Pt prices above the fold prove the product, then hand straight off to
 <div class="poke-glare" aria-hidden="true"></div>
 </div>
 </div>
+<!-- No. 007 Deepfield Gallery. Card-only entry (owner call 2026-08-17): no
+     portfolio-deepfieldgallery.html exists, so the foot carries a single
+     "Live Site" button instead of the Live + Case Study pair the other six use.
+     THIS CARD IS DUPLICATED IN THE PHONE GRID BELOW — edit both or they drift. -->
+<div class="poke-scene tcg-card tcg-card--gallery" data-flip="0">
+<div class="poke-card" role="button" tabindex="0" aria-pressed="false"
+     aria-label="DeepfieldGallery.com case study card. Click or press Enter to flip for full details.">
+<div class="poke-face poke-face--front">
+<div class="poke-plate">
+<div class="poke-top">
+<h3 class="poke-name">DeepfieldGallery<wbr/>.com</h3>
+<span class="tcg-flip-top" aria-hidden="true">Flip<span class="material-symbols-outlined">autorenew</span></span>
+</div>
+<div class="poke-art">
+<img src="assets/portfolio/deepfield-gallery/home.png" alt="Deepfield Gallery live homepage" loading="lazy" decoding="async"/>
+</div>
+<div class="tcg-stat-row"><span class="tcg-stat-pill">EST 110-150 HRS</span></div>
+<div class="poke-stage-line">
+<span>Stage &middot; Curated Commerce</span>
+<span>No. 007</span>
+</div>
+<div class="poke-badges" aria-label="Project type">
+<span class="poke-badge">Web Design</span>
+<span class="poke-badge">E-Commerce</span>
+<span class="poke-badge">Bilingual</span>
+</div>
+<div class="poke-body">
+<span class="attack-name">Objects With Presence</span>
+Art, jewelry, antiques and objects sold one of a kind, with saved items, accounts and a Naples pickup path.
+</div>
+<div class="poke-foot">
+<span class="poke-tag">status &middot; live</span>
+<div class="poke-links">
+<a class="poke-btn poke-btn--primary" href="https://deepfieldgallery.com/" target="_blank" rel="noopener">Live Site</a>
+</div>
+</div>
+</div>
+</div>
+<div class="poke-face poke-face--back">
+<div class="poke-plate">
+<div class="poke-back-inner">
+<h3>DeepfieldGallery.com</h3>
+<p>A curated Naples gallery selling original art, jewelry, antiques and decorative objects &mdash; five collection categories, artist profiles, saved items, accounts, and local pickup beside insured shipping.</p>
+<p><strong>Estimated build: ~110&ndash;150 hours</strong> at our $125/hr shop rate &mdash; a custom online store with accounts, saved items and bilingual entry.</p>
+<div class="back-badges" aria-label="Project type">
+<span class="poke-badge">Web Design</span>
+<span class="poke-badge">E-Commerce</span>
+<span class="poke-badge">Bilingual</span>
+</div>
+<div class="poke-links">
+<a class="poke-btn poke-btn--primary" href="https://deepfieldgallery.com/" target="_blank" rel="noopener">Live Site</a>
+</div>
+<span class="poke-flip-hint">Click / press Enter to flip back</span>
+</div>
+</div>
+</div>
+<div class="poke-glare" aria-hidden="true"></div>
+</div>
+</div>
 <a href="contact.html" class="portfolio-tile portfolio-tile--open tcg-open-slot p-8 gap-4 items-center text-center">
 <span class="material-symbols-outlined text-4xl text-electric-cyan">add_circle</span>
 <h3 class="portfolio-card-title font-headline-md text-headline-md text-starlight-white">Your Project Here</h3>
@@ -954,7 +956,7 @@ Live Au/Ag/Pt prices above the fold prove the product, then hand straight off to
 <!-- Template widget: tablet-only copy (768-1023px). Desktop (>=1024px) keeps
      the widget in the hero above; see .tablet-template-widget CSS. -->
 <div class="tablet-template-widget mb-20">
-<p class="mb-4 inline-flex items-center gap-2 font-label-mono text-sm font-semibold tracking-wide" style="background:linear-gradient(90deg,#00F0FF,#7000FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Try one of our templates live&nbsp;<span class="material-symbols-outlined" style="-webkit-text-fill-color:#00F0FF;font-size:20px;vertical-align:middle;">arrow_forward</span></p>
+<p class="mb-4 inline-flex items-center gap-2 font-label-mono text-sm font-semibold tracking-wide" style="background:linear-gradient(90deg,var(--t-electric-cyan),var(--t-nebula-purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Try one of our templates live&nbsp;<span class="material-symbols-outlined" style="-webkit-text-fill-color:var(--t-electric-cyan);font-size:20px;vertical-align:middle;">arrow_forward</span></p>
 <section class="lab-poke-section" aria-label="Website template — sample card">
 
   <div class="poke-scene" data-flip="0">
@@ -1059,7 +1061,7 @@ Live Au/Ag/Pt prices above the fold prove the product, then hand straight off to
 </div>
 </section>
 </main>
-<script src="assets/standard-site-footer.js?v=20260716-footer-3line" data-variant="desktop"></script>
+<script src="assets/standard-site-footer.js?v=20260817-cta-r5" data-variant="desktop"></script>
 </div>
 <!-- /DESKTOP -->
 
@@ -1446,6 +1448,67 @@ Live Au/Ag/Pt prices above the fold prove the product, then hand straight off to
 </div>
 <span class="tcg-mobile-num" aria-hidden="true">06</span>
 </div>
+<!-- No. 007 Deepfield Gallery — phone copy of the desktop card above.
+     Card 7 is odd, so it takes tcg-mobile-row--odd (card right, chip left).
+     Keep this in sync with the desktop grid. -->
+<div class="tcg-mobile-row tcg-mobile-row--odd tcg-card--gallery">
+<div class="poke-scene tcg-card tcg-card--gallery" data-flip="0">
+<div class="poke-card" role="button" tabindex="0" aria-pressed="false"
+     aria-label="DeepfieldGallery.com case study card. Tap or press Enter to flip for full details.">
+<div class="poke-face poke-face--front">
+<div class="poke-plate">
+<div class="poke-top">
+<h3 class="poke-name">DeepfieldGallery<wbr/>.com</h3>
+<span class="tcg-flip-top" aria-hidden="true">Flip<span class="material-symbols-outlined">autorenew</span></span>
+</div>
+<div class="poke-art">
+<img src="assets/portfolio/deepfield-gallery/home.png" alt="Deepfield Gallery live homepage" loading="lazy" decoding="async"/>
+</div>
+<div class="tcg-stat-row"><span class="tcg-stat-pill">EST 110-150 HRS</span></div>
+<div class="poke-stage-line">
+<span>Stage &middot; Curated Commerce</span>
+<span>No. 007</span>
+</div>
+<div class="poke-badges" aria-label="Project type">
+<span class="poke-badge">Web Design</span>
+<span class="poke-badge">E-Commerce</span>
+<span class="poke-badge">Bilingual</span>
+</div>
+<div class="poke-body">
+<span class="attack-name">Objects With Presence</span>
+Art, jewelry, antiques and objects sold one of a kind, with saved items, accounts and a Naples pickup path.
+</div>
+<div class="poke-foot">
+<span class="poke-tag">status &middot; live</span>
+<div class="poke-links">
+<a class="poke-btn poke-btn--primary" href="https://deepfieldgallery.com/" target="_blank" rel="noopener">Live Site</a>
+</div>
+</div>
+</div>
+</div>
+<div class="poke-face poke-face--back">
+<div class="poke-plate">
+<div class="poke-back-inner">
+<h3>DeepfieldGallery.com</h3>
+<p>A curated Naples gallery selling original art, jewelry, antiques and decorative objects &mdash; five collection categories, artist profiles, saved items, accounts, and local pickup beside insured shipping.</p>
+<p><strong>Estimated build: ~110&ndash;150 hours</strong> at our $125/hr shop rate &mdash; a custom online store with accounts, saved items and bilingual entry.</p>
+<div class="back-badges" aria-label="Project type">
+<span class="poke-badge">Web Design</span>
+<span class="poke-badge">E-Commerce</span>
+<span class="poke-badge">Bilingual</span>
+</div>
+<div class="poke-links">
+<a class="poke-btn poke-btn--primary" href="https://deepfieldgallery.com/" target="_blank" rel="noopener">Live Site</a>
+</div>
+<span class="poke-flip-hint">Tap to flip back</span>
+</div>
+</div>
+</div>
+<div class="poke-glare" aria-hidden="true"></div>
+</div>
+</div>
+<span class="tcg-mobile-num" aria-hidden="true">07</span>
+</div>
 <a href="contact.html" class="portfolio-tile portfolio-tile--open tcg-open-slot p-6 gap-3 items-center text-center active:scale-[0.98]">
 <span class="material-symbols-outlined text-3xl text-electric-cyan">add_circle</span>
 <h3 class="portfolio-card-title font-headline-md text-[18px] text-starlight-white">Your Project Here</h3>
@@ -1456,7 +1519,7 @@ Live Au/Ag/Pt prices above the fold prove the product, then hand straight off to
 
 <!-- Template widget (moved below case studies on mobile) -->
 <div class="mb-10">
-<p class="mb-2 inline-flex items-center gap-1 font-label-mono text-xs font-semibold tracking-wide" style="background:linear-gradient(90deg,#00F0FF,#7000FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Try one of our templates live&nbsp;<span class="material-symbols-outlined" style="-webkit-text-fill-color:#00F0FF;font-size:16px;vertical-align:middle;">arrow_downward</span></p>
+<p class="mb-2 inline-flex items-center gap-1 font-label-mono text-xs font-semibold tracking-wide" style="background:linear-gradient(90deg,var(--t-electric-cyan),var(--t-nebula-purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Try one of our templates live&nbsp;<span class="material-symbols-outlined" style="-webkit-text-fill-color:var(--t-electric-cyan);font-size:16px;vertical-align:middle;">arrow_downward</span></p>
 <section class="lab-poke-section" aria-label="Website template — sample card">
 
   <div class="poke-scene" data-flip="0">
@@ -1556,15 +1619,13 @@ Live Au/Ag/Pt prices above the fold prove the product, then hand straight off to
             </a>
 </div>
 </main>
-<script src="assets/standard-site-footer.js?v=20260716-footer-3line" data-variant="mobile"></script>
+<script src="assets/standard-site-footer.js?v=20260817-cta-r5" data-variant="mobile"></script>
 </div>
 <!-- /MOBILE -->
 
 <script src="pokecard-dropin/pokecard/pokecard.js"></script>
-<script src="assets/mobile-services-nav.js?v=20260715-services-merge"></script>
-<script src="assets/account-nav.js?v=20260715-login-highlight"></script>
-<script src="assets/rail.js?v=20260602-rail-active"></script>
-<script src="assets/portfolio-title-fit.js?v=20260605-title-fit"></script>
-<script src="surette-logo.js?v=20260721-fonts-gate"></script>
+<script src="assets/account-nav.js?v=20260817-cta-r5"></script>
+<script src="assets/portfolio-title-fit.js?v=20260829-apps-retired"></script>
+<script src="surette-logo.js?v=20260817-cta-r5"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
 </body></html>

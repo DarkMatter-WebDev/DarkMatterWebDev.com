@@ -261,7 +261,7 @@
     justify-content: center;
     gap: 6px;
     margin: 14px 0 0;
-    color: #00f0ff;
+    color: rgb(var(--t-electric-cyan));
     font: 700 11px/1.2 "JetBrains Mono", monospace;
     letter-spacing: .12em;
     text-align: center;

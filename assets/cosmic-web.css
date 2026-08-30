@@ -1,10 +1,10 @@
 body {
   position: relative;
-  background-color: #050505;
-  --cosmic-overlay-top: rgba(5, 5, 5, 0.18);
-  --cosmic-overlay-mid: rgba(5, 5, 5, 0.58);
-  --cosmic-accent-a: rgba(0, 240, 255, 0.18);
-  --cosmic-accent-b: rgba(112, 0, 255, 0.18);
+  background-color: rgb(var(--t-void-black));
+  --cosmic-overlay-top: rgb(var(--t-void-black) / 0.18);
+  --cosmic-overlay-mid: rgb(var(--t-void-black) / 0.58);
+  --cosmic-accent-a: rgb(var(--t-electric-cyan) / 0.18);
+  --cosmic-accent-b: rgb(var(--t-nebula-purple) / 0.18);
   --cosmic-opacity: 0.66;
   --cosmic-saturate: 1.12;
   --cosmic-contrast: 1.08;
@@ -21,7 +21,7 @@ body::before {
   height: min(720px, 74vh);
   pointer-events: none;
   background:
-    linear-gradient(180deg, var(--cosmic-overlay-top) 0%, var(--cosmic-overlay-mid) 56%, #050505 100%),
+    linear-gradient(180deg, var(--cosmic-overlay-top) 0%, var(--cosmic-overlay-mid) 56%, var(--cosmic-overlay-end, rgb(var(--t-void-black))) 100%),
     radial-gradient(circle at 68% 18%, var(--cosmic-accent-a), transparent 42%),
     radial-gradient(circle at 20% 46%, var(--cosmic-accent-b), transparent 46%),
     url("cosmic-web-hero.webp") var(--cosmic-position) / cover no-repeat;
@@ -31,6 +31,100 @@ body::before {
     saturate(var(--cosmic-saturate))
     contrast(var(--cosmic-contrast))
     brightness(var(--cosmic-brightness));
+}
+
+/* ── Light theme: the blueprint variant ──────────────────────────────────────
+   cosmic-web-hero.webp is a photograph of a dark cosmic filament web. Inverting
+   it turns bright filaments on black into dark filaments on white — which is
+   already the blueprint look, so light mode reuses the same asset through an
+   invert() rather than shipping a second image.
+
+   THE CATCH, and why the values below look wrong at a glance: filter applies to
+   the WHOLE element, so the gradient overlays composited in the same background
+   shorthand get inverted too. Every colour in this block is therefore specified
+   as its PRE-inversion complement (255 minus each channel) — the salmon and lime
+   accents below actually render as teal and purple. Read them as `255 - x`.
+
+   The alternative was splitting the photo and the overlays onto ::before and
+   ::after, which is cleaner to read but changes how --cosmic-opacity composites
+   over the stack, i.e. it would alter DARK mode. Dark is deliberately untouched
+   here: this whole section is additive, and the only edit to the shared rule was
+   swapping a literal #050505 for var(--cosmic-overlay-end, #050505), which
+   resolves to the same colour when the variable is unset.
+
+   invert() alone, no hue-rotate: with hue-rotate in the chain the complements
+   stop being a simple channel subtraction and become unmaintainable.
+   ─────────────────────────────────────────────────────────────────────────── */
+:root[data-theme="light"] body {
+  background-color: rgb(var(--t-void-black));
+
+  /* → rgba(244, 242, 238, …) after inversion: the page ground */
+  --cosmic-overlay-top: rgba(11, 13, 17, 0.34);
+  --cosmic-overlay-mid: rgba(11, 13, 17, 0.66);
+  --cosmic-overlay-end: #0b0d11;
+
+  /* → soft teal and violet blooms after inversion */
+  --cosmic-accent-a: rgba(255, 146, 128, 0.16);
+  --cosmic-accent-b: rgba(165, 255, 51, 0.14);
+
+  /* Much lighter touch than dark mode: ink on paper wants to sit back, and
+     the inverted photo is high-frequency detail directly behind body copy. */
+  --cosmic-opacity: 0.26;
+  --cosmic-saturate: 0.42;
+  --cosmic-contrast: 0.92;
+  --cosmic-brightness: 1.04;
+}
+
+:root[data-theme="light"] body::before {
+  filter:
+    invert(1)
+    saturate(var(--cosmic-saturate))
+    contrast(var(--cosmic-contrast))
+    brightness(var(--cosmic-brightness));
+}
+
+/* Per-page accent pairs, complemented from their dark counterparts below so
+   light mode keeps the same page-to-page colour identity. */
+:root[data-theme="light"] body.cosmic-tint-consultation {
+  --cosmic-accent-a: rgba(159, 179, 0, 0.30);
+  --cosmic-accent-b: rgba(255, 15, 0, 0.18);
+}
+:root[data-theme="light"] body.cosmic-tint-design {
+  --cosmic-accent-a: rgba(255, 15, 0, 0.32);
+  --cosmic-accent-b: rgba(217, 157, 0, 0.22);
+}
+:root[data-theme="light"] body.cosmic-tint-brand {
+  --cosmic-accent-a: rgba(0, 201, 61, 0.30);
+  --cosmic-accent-b: rgba(0, 78, 178, 0.20);
+}
+:root[data-theme="light"] body.cosmic-tint-hosting {
+  --cosmic-accent-a: rgba(255, 87, 0, 0.30);
+  --cosmic-accent-b: rgba(204, 0, 94, 0.18);
+}
+:root[data-theme="light"] body.cosmic-tint-care {
+  --cosmic-accent-a: rgba(255, 0, 77, 0.30);
+  --cosmic-accent-b: rgba(113, 170, 0, 0.20);
+}
+:root[data-theme="light"] body.cosmic-tint-seo {
+  --cosmic-accent-a: rgba(0, 50, 166, 0.32);
+  --cosmic-accent-b: rgba(255, 15, 0, 0.16);
+}
+:root[data-theme="light"] body.cosmic-tint-apps {
+  --cosmic-accent-a: rgba(125, 255, 0, 0.34);
+  --cosmic-accent-b: rgba(255, 15, 0, 0.18);
+  --cosmic-opacity: 0.29;
+}
+:root[data-theme="light"] body.cosmic-tint-management {
+  --cosmic-accent-a: rgba(255, 15, 0, 0.28);
+  --cosmic-accent-b: rgba(255, 0, 137, 0.22);
+}
+:root[data-theme="light"] body.cosmic-tint-in-home {
+  --cosmic-accent-a: rgba(183, 0, 110, 0.32);
+  --cosmic-accent-b: rgba(0, 75, 163, 0.18);
+}
+:root[data-theme="light"] body.cosmic-tint-office {
+  --cosmic-accent-a: rgba(163, 83, 0, 0.32);
+  --cosmic-accent-b: rgba(255, 15, 0, 0.18);
 }
 
 body > * {
@@ -44,13 +138,13 @@ style {
 
 body.cosmic-tint-consultation {
   --cosmic-accent-a: rgba(96, 76, 255, 0.42);
-  --cosmic-accent-b: rgba(0, 240, 255, 0.24);
+  --cosmic-accent-b: rgb(var(--t-electric-cyan) / 0.24);
   --cosmic-hue: 18deg;
   --cosmic-saturate: 1.34;
 }
 
 body.cosmic-tint-design {
-  --cosmic-accent-a: rgba(0, 240, 255, 0.48);
+  --cosmic-accent-a: rgb(var(--t-electric-cyan) / 0.48);
   --cosmic-accent-b: rgba(38, 98, 255, 0.32);
   --cosmic-hue: 92deg;
   --cosmic-saturate: 1.45;
@@ -80,21 +174,21 @@ body.cosmic-tint-care {
 
 body.cosmic-tint-seo {
   --cosmic-accent-a: rgba(255, 205, 89, 0.48);
-  --cosmic-accent-b: rgba(0, 240, 255, 0.22);
+  --cosmic-accent-b: rgb(var(--t-electric-cyan) / 0.22);
   --cosmic-hue: 292deg;
   --cosmic-saturate: 1.42;
 }
 
 body.cosmic-tint-apps {
   --cosmic-accent-a: rgba(130, 0, 255, 0.54);
-  --cosmic-accent-b: rgba(0, 240, 255, 0.26);
+  --cosmic-accent-b: rgb(var(--t-electric-cyan) / 0.26);
   --cosmic-hue: 0deg;
   --cosmic-opacity: 0.74;
   --cosmic-saturate: 1.48;
 }
 
 body.cosmic-tint-management {
-  --cosmic-accent-a: rgba(0, 240, 255, 0.38);
+  --cosmic-accent-a: rgb(var(--t-electric-cyan) / 0.38);
   --cosmic-accent-b: rgba(0, 255, 118, 0.3);
   --cosmic-hue: 145deg;
   --cosmic-saturate: 1.36;
@@ -110,7 +204,7 @@ body.cosmic-tint-in-home {
 
 body.cosmic-tint-office {
   --cosmic-accent-a: rgba(92, 172, 255, 0.5);
-  --cosmic-accent-b: rgba(0, 240, 255, 0.26);
+  --cosmic-accent-b: rgb(var(--t-electric-cyan) / 0.26);
   --cosmic-hue: 92deg;
   --cosmic-saturate: 1.44;
   --cosmic-position: center 46%;
@@ -120,6 +214,45 @@ body.cosmic-tint-office {
   body::before {
     height: 68vh;
     background-position: center top;
-    opacity: 0.52;
+    /* Was a flat 0.52, which is dark mode's 0.66 scaled down for the phone —
+       but the rule is not theme-scoped, so it also overrode light mode's 0.26
+       and put dark's heavier veil on the light page. The inverted photo then
+       held the paper at ~#bfbdc3 instead of #f4f2ee, and a dozen labels across
+       the portfolio, contact, privacy and app pages landed at 4.0-4.5:1 at
+       390px while passing at 1280px. Scaling the token keeps dark identical
+       (0.66 x 0.79 = 0.52) and takes light to 0.21. */
+    opacity: calc(var(--cosmic-opacity) * 0.79);
   }
+}
+/* ── Page veil ───────────────────────────────────────────────────────────────
+   Fifteen pages paint a fixed veil over the cosmic backdrop so body copy sits
+   on a calm ground toward the foot of the viewport. Its gradient is written
+   inline as a Tailwind arbitrary value in dark literals — rgba(5,5,5,…) down
+   to #050505 — so it never flipped with the theme. In light mode that dropped
+   a near-black wash over a page whose ink stays dark, and whole panels went
+   dark-on-dark: the auction profile measured 1.01:1 on its eyebrow and
+   1.05:1 on its section headings.
+
+   Dark mode keeps the inline gradient untouched. Light mode restates the same
+   shape in paper tones — same job, same fade, correct palette. The rule wins
+   on specificity alone (0,3,0 against the utility's 0,1,0), so no !important.
+
+   Whenever a surface does not flip, nothing layered on it may flip either. */
+:root[data-theme="light"] .sds-cosmic-veil {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(244, 242, 238, 0.48),
+    #f4f2ee 84%
+  );
+}
+
+/* portfolio-seansads.html stacks two accent blooms on top of the same dark
+   fade. Keep the blooms — they are the page's colour identity — and flip only
+   the fade beneath them. Alphas come down because the blooms read stronger on
+   paper than on black. */
+:root[data-theme="light"] .sds-cosmic-veil--tinted {
+  background-image:
+    radial-gradient(circle at top right, rgba(0, 240, 255, 0.10), transparent 34%),
+    radial-gradient(circle at bottom left, rgba(112, 0, 255, 0.10), transparent 38%),
+    linear-gradient(to bottom, rgba(244, 242, 238, 0.35), #f4f2ee 82%);
 }

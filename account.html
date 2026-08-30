@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html class="dark" style="background:#050505" lang="en"><head>
 <meta charset="utf-8"/>
+<script id="sds-theme-resolver">/* Pre-paint theme resolver — must stay the first script in <head>. Stamps data-theme on <html> from the stored choice before anything paints, and overwrites the inline dark background attribute. Dark is the brand default when nothing is stored, so a visitor whose OS prefers light still gets the site's intended look until they choose. */(function(){var d=document.documentElement,t;try{t=localStorage.getItem("sds-theme")}catch(e){}if(t!=="light")t="dark";d.setAttribute("data-theme",t);d.classList.toggle("dark",t==="dark");d.style.background=t==="light"?"#f4f2ee":"#050505"})();</script>
 
 <script>/* Head-stamp: nav.css reveals un-stamped pages at 0.2s (its no-logo-script fallback). On heavy pages the bottom-of-body surette-logo.js stamp lands after that, so content flashed in at 0.2s, vanished when the stamp arrived, then faded back in. Stamping before first paint makes JS the only revealer. */document.documentElement.classList.add("sds-logo-loaded");</script>
 <style id="dm-critical-dark-baseline">
@@ -9,6 +10,7 @@
   #__next,#root,.app{background:#050505;min-height:100vh;}
   body>main{min-height:100vh;}
   #page-loader,.sds-apps-loader{background:#050505;}
+html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:#0b0e10;color-scheme:light}html[data-theme="light"] #__next,html[data-theme="light"] #root,html[data-theme="light"] .app{background:#f4f2ee}html[data-theme="light"] #page-loader,html[data-theme="light"] .sds-apps-loader{background:#f4f2ee}
 </style>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
@@ -32,8 +34,8 @@
 <meta name="twitter:title" content="Client Login | Surette Data Systems"/>
 <meta name="twitter:description" content="Client login for Surette Data Systems accounts, active services, support status, and recurring billing information."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
-<link href="assets/nav.css?v=20260801-scroll-hide3" rel="stylesheet"/>
-<link href="assets/cosmic-web.css?v=20260716-md880" rel="stylesheet"/><link href="assets/client-portal.css?v=20260702-portal-messages" rel="stylesheet"/>
+<link href="assets/nav.css?v=20260829-apps-retired" rel="stylesheet"/>
+<link href="assets/cosmic-web.css?v=20260827-contrast-nav" rel="stylesheet"/><link href="assets/client-portal.css?v=20260829-apps-retired" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
   #sds-logo a.sds-anchor,
@@ -65,10 +67,10 @@
     font-size: 15px !important;
     font-weight: 700 !important;
     letter-spacing: 0.16em !important;
-    color: #ddeeff !important;
+    color: var(--sds-logo-co, #ddeeff) !important;
     line-height: 1 !important;
     text-transform: uppercase !important;
-    text-shadow: 0 0 12px rgba(0, 190, 255, 0.45) !important;
+    text-shadow: var(--sds-logo-glow, 0 0 12px rgba(0, 190, 255, 0.45)) !important;
   }
   #sds-logo .sds-sub,
   #sds-logo-mobile .sds-sub {
@@ -76,17 +78,18 @@
     font-size: 8px !important;
     font-weight: 300 !important;
     letter-spacing: 0.34em !important;
-    color: #00b8df !important;
+    color: var(--sds-logo-sub, #00b8df) !important;
     line-height: 1 !important;
-    opacity: 0.7 !important;
+    opacity: var(--sds-logo-sub-opacity, 0.7) !important;
   }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
-tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors:{"electric-cyan":"#00F0FF","nebula-purple":"#7000FF","void-black":"#050505","starlight-white":"#FFFFFF","surface":"#121414","on-surface-variant":"#c4c7c7","outline":"#8e9192"},fontFamily:{"headline":["Space Grotesk","sans-serif"],"body":["Plus Jakarta Sans","sans-serif"],"mono":["JetBrains Mono","monospace"],"label-mono":["JetBrains Mono","monospace"],"label-caps":["JetBrains Mono","monospace"]},fontSize:{"label-mono":["14px",{lineHeight:"1.4",letterSpacing:"0.05em",fontWeight:"500"}],"label-caps":["12px",{lineHeight:"1.2",letterSpacing:"0.1em",fontWeight:"700"}]}}}};
+tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors:{
+        "white": "rgb(var(--t-starlight-white) / <alpha-value>)","electric-cyan":"rgb(var(--t-electric-cyan) / <alpha-value>)","nebula-purple":"rgb(var(--t-nebula-purple) / <alpha-value>)","void-black":"rgb(var(--t-void-black) / <alpha-value>)","starlight-white":"rgb(var(--t-starlight-white) / <alpha-value>)","surface":"rgb(var(--t-surface) / <alpha-value>)","on-surface-variant":"rgb(var(--t-on-surface-variant) / <alpha-value>)","outline":"rgb(var(--t-outline) / <alpha-value>)"},fontFamily:{"headline":["Space Grotesk","sans-serif"],"body":["Plus Jakarta Sans","sans-serif"],"mono":["JetBrains Mono","monospace"],"label-mono":["JetBrains Mono","monospace"],"label-caps":["JetBrains Mono","monospace"]},fontSize:{"label-mono":["14px",{lineHeight:"1.4",letterSpacing:"0.05em",fontWeight:"500"}],"label-caps":["12px",{lineHeight:"1.2",letterSpacing:"0.1em",fontWeight:"700"}]}}}};
 </script>
 <style>
-body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",sans-serif;overflow-x:hidden}.grid-overlay{position:fixed;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.05) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:-1}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24}.nav-login-link{display:inline-flex;align-items:center;gap:.35rem;color:#00f0ff}
+body{margin:0;background:rgb(var(--t-void-black));color:rgb(var(--t-on-surface));font-family:"Plus Jakarta Sans",sans-serif;overflow-x:hidden}.grid-overlay{position:fixed;inset:0;background-image:linear-gradient(to right,rgba(var(--c-veil-rgb), .05) 1px,transparent 1px),linear-gradient(to bottom,rgba(var(--c-veil-rgb), .05) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:-1}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24}.nav-login-link{display:inline-flex;align-items:center;gap:.35rem;color:rgb(var(--t-electric-cyan))}
 </style>
 <script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/","lil-gui":"https://cdn.jsdelivr.net/npm/lil-gui@0.20.0/dist/lil-gui.esm.js"}}</script>
@@ -94,7 +97,7 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
   /* translate3d/backface/contain promote the background to its own composited
      layer so scrolling never repaints it — same treatment as #nova-bg on the
      homepage. Pairs with fractal.js ignoring mobile height-only resizes. */
-  #canvas-container { position:fixed; inset:0; z-index:1; background:#020205; pointer-events:none; transform:translate3d(0,0,0); backface-visibility:hidden; contain:strict; }
+  #canvas-container { position:fixed; inset:0; z-index:1; background:var(--t-panel-void); pointer-events:none; transform:translate3d(0,0,0); backface-visibility:hidden; contain:strict; }
   #canvas-container canvas { position:absolute !important; top:50%; left:30%; transform:translate3d(-50%,-50%,0); backface-visibility:hidden; pointer-events:none; }
   main.client-portal-shell { position:relative; z-index:2; }
   @media (max-width: 1279px) {
@@ -104,21 +107,28 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
     #fractal-gui-toggle { top:auto !important; bottom:90px; }
     .lil-gui.root { top:auto !important; bottom:122px !important; right:0 !important; max-height:55vh !important; overflow-y:auto !important; }
     main.client-portal-shell { padding-top:15vh; padding-bottom:90px; }
-    .client-portal-card.client-portal-panel[data-auth-panel] { background:transparent !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; box-shadow:none !important; border-color:transparent !important; }
+    /* The auth panel used to drop its fill entirely on phones so the wormhole
+       showed through. But the wormhole's bright plume runs straight across the
+       login copy at this width: "Sign in with your verified email." had a
+       word-sized run of its line sitting fully on ground that fails, and the
+       kicker and heading were little better. Letting the panel keep the same
+       glass fill it already uses above 880px clears all four; the wormhole
+       still reads through the 28% it lets past, and around the card. */
+    .client-portal-card.client-portal-panel[data-auth-panel] { box-shadow:none !important; border-color:transparent !important; }
   }
-  .client-portal-card.client-portal-panel { background:rgba(5,5,5,0.72) !important; backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+  .client-portal-card.client-portal-panel { background:rgb(var(--t-void-black) / 0.72) !important; backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
   #fractal-gui-toggle {
     position:fixed; top:76px; right:14px; z-index:60;
     width:28px; height:28px;
     display:flex; align-items:center; justify-content:center;
-    background:rgba(5,5,5,0.4); border:1px solid rgba(255,255,255,0.06);
-    border-radius:7px; color:rgba(255,255,255,0.18); cursor:pointer;
+    background:rgb(var(--t-void-black) / 0.4); border:1px solid rgba(var(--c-veil-rgb), 0.06);
+    border-radius:7px; color:rgba(var(--c-veil-rgb), 0.6); cursor:pointer;
     backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
     transition:color 0.2s, border-color 0.2s, background 0.2s;
   }
   #fractal-gui-toggle:hover {
-    color:rgba(0,240,255,0.65); border-color:rgba(0,240,255,0.18);
-    background:rgba(5,5,5,0.7);
+    color:rgb(var(--t-electric-cyan) / 0.65); border-color:rgb(var(--t-electric-cyan) / 0.18);
+    background:rgb(var(--t-void-black) / 0.7);
   }
   #fractal-gui-toggle .material-symbols-outlined { font-size:15px; }
   .client-portal-card.client-portal-panel[data-client-intro],
@@ -136,7 +146,7 @@ body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",s
 </style>
 </head>
 <body class="bg-void-black">
-<script src="assets/standard-site-nav.js?v=20260801-scroll-hide3" data-active="account"></script>
+<script src="assets/standard-site-nav.js?v=20260829-apps-retired" data-active="account"></script>
 <div id="canvas-container" aria-hidden="true"></div>
 <div class="fixed inset-0 grid-overlay"></div>
 <button id="fractal-gui-toggle" title="Visual settings" aria-label="Toggle visual settings" onclick="if(window._fractalGUI){window._fractalGUI._hidden?window._fractalGUI.show():window._fractalGUI.hide()}"><span class="material-symbols-outlined">grain</span></button>
@@ -273,11 +283,9 @@ window.DM_CLIENT_PORTAL_COPY = {
   requestSent: "Request sent. We will review it and follow up soon."
 };
 </script>
-<script src="assets/mobile-services-nav.js?v=20260715-services-merge"></script>
-<script src="assets/account-nav.js?v=20260715-login-highlight"></script>
-<script src="assets/rail.js?v=20260602-rail-active"></script>
-<script type="module" src="assets/client-portal.js?v=20260704-netlify-supabase"></script>
-<script src="surette-logo.js?v=20260721-fonts-gate"></script>
+<script src="assets/account-nav.js?v=20260817-cta-r5"></script>
+<script type="module" src="assets/client-portal.js?v=20260829-apps-retired"></script>
+<script src="surette-logo.js?v=20260817-cta-r5"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo'); SuretteLogo.init('sds-logo-mobile'); });</script>
-<script type="module" src="fractal.js?v=20260721-scroll-stutter"></script>
+<script type="module" src="fractal.js?v=20260817-cta-r5"></script>
 </body></html>

@@ -1,6 +1,221 @@
 # Current Status
 
-Last updated: 2026-08-08
+Last updated: 2026-08-27
+
+
+
+
+
+## Product line: websites only (2026-08-27)
+
+- **Packaged apps and stores are withdrawn.** `app-catalog.html`, `app-pricing.html`,
+  `app-checkout.html` and `multichannel-commerce-website.html` are deleted, with 301s in
+  `netlify.toml`. The six app profiles remain as **case studies**; `apps.html` is now a
+  case-study index, not a sales page (repurposed rather than deleted because 17 pages
+  linked to it).
+- **Every sales path was chased down, not just the pages.** The Software nav pill (desktop
+  + hamburger), `data-active="software"` on 7 pages, purchase CTAs, the `websites.html`
+  "Custom business software" card and multichannel card, `pricing.html`'s "Software, not a
+  website" route and its enterprise bullets (custom e-commerce, CRM/ERP/API), the
+  `index.html` meta description (3 occurrences), and **the contact form's project-type
+  options** — the form was still collecting leads for retired work.
+- **One CTA was percent-encoded** (`account.html?next=%2Fapp-checkout...`) and survived a
+  plain href sweep. Search encoded forms too when retiring a funnel.
+
+## Nav breakpoint is 1024px (2026-08-27)
+
+Four pills again after Software was retired. Measured on an interior page: **+76px at
+1120, +41px at 1024, +9px at 960, 0px at 920 and below.** 880 is **not** safe to return
+to — the row abuts the CTA there. The breakpoint lives in 6 `@media` blocks in `nav.css`
+plus `isMobileNavViewport()`, and `.page`'s vertical padding follows it while its
+horizontal gutters stay at 880.
+
+## Self-Hosting Setup and Handoff is live in the docs and on the site (2026-08-27)
+
+- `website_pricing_plan.txt` **§29b**: $450 single/multi-page, $750 with stored form
+  records. Flat per size — setup effort does not scale with page count.
+- Accounts created **in the customer's name**; 14 days of setup support, then $125/hr.
+  §29 was amended, since it previously excluded server configuration outright.
+- Surfaced on `pricing.html` (new route + FAQ + rewritten ownership FAQ),
+  `services/website-design-hosting.html` (full panel) and `websites.html`.
+
+## Light mode had five real defects; the auditor could not see them (2026-08-19)
+
+- **The rule that keeps producing these: a colour LITERAL cannot flip, so anything written as one must be given a light counterpart explicitly.** Three separate mechanisms broke this — a Tailwind arbitrary gradient (`bg-[linear-gradient(...,#050505_84%)]`, 15 pages), two inline `style="background:#050505 / #0a0010"` layers (privacy, terms), and three theme tokens calibrated only against pure paper.
+- **All of them are `position: fixed` or siblings, which is exactly what an ancestor-walk auditor cannot see.** `getComputedStyle` climbs parents; a fixed veil is nobody's parent. That is why 2026-08-18 reported the whole site clean while `auction-house` was rendering its headings at 1.05:1 in light.
+- **Fixes:** `.sds-cosmic-veil` (+ `--tinted` for seansads) in `cosmic-web.css`; `privacy.html` uses `rgb(var(--t-void-black))` and drops its nebula blobs to 0.12 in light; `terms.html` moved its backdrop to `.sds-page-backdrop`; `--t-electric-cyan` light `0 104 121 → 0 94 109`, `--t-ink-39ff14 → #1a5e0e`, `--t-ink-18d96e → #0e612f`; `account.html`'s phone auth panel keeps its glass fill; `.transfer-badge` → `#14490a`.
+- **Dark mode is deliberately unchanged everywhere.** Every fix is either light-scoped or a class hook whose dark branch restates the original literal.
+- **`account.html`'s phone login was a design decision that cost legibility.** The panel fill was dropped below 880px so the wormhole showed through; the plume runs across the login copy. It now uses the same glass it already had above 880px — the animation still reads through and around it.
+- **Signed-in portal views remain unaudited** — the sweep only ever sees the signed-out shell.
+
+## Card visuals are inline SVG, token-driven (2026-08-17)
+
+- `websites.html`'s "What you get" cards use `.wb-viz` — an inline `<svg>` at 16/9, not an image. **Inline keeps them off this page's image budget**, which matters here: its proof cards were once 3.2 MB and were deliberately cut.
+- **Every stroke and fill reads one of four custom properties on `.wb-viz`** — `--wb-line`, `--wb-dim`, `--wb-accent`, `--wb-accent2` — and nothing else. **Never put a hex inside one of these SVGs**: it freezes the illustration to a single theme with no error, exactly like a hardcoded palette colour anywhere else. Verified resolving in both themes.
+- Use `--t-nebula-purple-on`, not raw `--t-nebula-purple`, for SVG *lines*. `#7000FF` is a fill colour; as a stroke on the site's near-blacks it measures 2.91:1.
+- **All three cards must keep the same shape: visual → title → one paragraph → a three-item checklist.** The list is pinned to the card bottom by `.wb-card-list { margin-top: auto }`. The section previously had a list on only the middle card, which left the third ending in a large void because the grid still equalised heights. Tail gap is now a uniform 29px across the row — that is the check to re-run after editing.
+- The "dedicated WhatsApp account" bullet belongs to **Changes handled for you**, not the hosting card. It is a change-request channel.
+
+## Hero scrim is TWO layers (2026-08-17)
+
+- `#hero-tint` on `index.html` stacks, topmost first: the **black gradient** (0.9 / 0.55 / 0.55 / 0.85 top-to-bottom) and beneath it a flat **neutral grey**, `rgb(var(--t-surface-container-highest) / 0.22)`.
+- **The grey is what makes white hero copy readable over the galaxy's bright particles.** Adding more black would not: black scales every pixel proportionally, so bright spots stay bright relative to white text. Grey compresses the range from the top. Measured: white-on-background goes 5.04 → 6.67 at the brightest, 6.61 → 8.31 at bright, while dark areas move only 20.11 → 19.63.
+- The grey reads strongest through the gradient's transparent **35–65% mid band** — which is exactly where the hero copy sits. That is deliberate; do not flatten the gradient to a uniform alpha.
+- **Both layers live in the element's INLINE style.** A stylesheet rule for `background` loses to it without `!important` — same trap as `#nova-bg`'s inline `background:#160016`.
+- **No theme guard is needed.** `#hero-tint` and `#nova-bg` are both `display: none` in light and Nova is never built there, so this is dark-only by construction.
+- One element serves both duplicated trees: it is `position: fixed; inset: 0` at `z-index: 2`, above Nova (1) and below page content (10).
+
+## Featured work = live sites only, on BOTH pages (2026-08-17)
+
+- **Two pages carry the same three featured cards** — `index.html`’s "Recent work" (both duplicated trees) and `websites.html`’s "Recent work" section. They are **Naples Estate Jewelry · SpotCalc.com · Deepfield Gallery**, every one currently live.
+- **Match the SITES across the two pages, not the wording.** `websites.html`’s copy is deliberately longer than the homepage’s — even the Naples entry differs. Keep the trio in sync; let each page keep its own voice. Elite Yacht Detailing and AuctionBuddha were removed because they have been offline since 2026-08-08 and were sending homepage visitors to a dead end.
+- **Rule going forward: this section is proof, so it may only show sites a visitor can actually open.** If one of these three goes offline, swap it out rather than marking it offline — that is what the `casestudies.html` gallery is for.
+- Deepfield's card is the **only external link** in the section (`target="_blank" rel="noopener"`) because it has no detail page.
+- **Image budget is enforced here.** These three were once 3.2 MB and were cut to ~566 KB; they now total **383 KB**. Deepfield uses a purpose-shot `card.jpg` (1200x750, q82, 157 KB) from `scripts/capture-deepfield.js --card`, **not** the 787 KB full capture. Never point this section at a raw `assets/portfolio/**` PNG without checking its weight.
+- Lives in **both** duplicated `index.html` trees — parity check is that each card title appears exactly twice.
+
+## Websites gallery is SEVEN cards (2026-08-17)
+
+- **Deepfield Gallery is No. 007**, `deepfieldgallery.com`, **live**. Palette `.tcg-card--gallery` (acid chartreuse `#d9f97a`). Estimate `EST 110-150 HRS`.
+- **It is the one card with no detail page.** Owner chose card-only, so its foot has a single `Live Site` button instead of the `Live` + `Case Study` pair. If a `portfolio-deepfieldgallery.html` is ever built, add the second button to **both** grids.
+- **Three live sites now**: `naplesestatejewelry.com`, `spotcalc.com`, `deepfieldgallery.com`. The other four gallery entries remain offline with `Ask to View`.
+- `portfolio.html` reads **7 Websites** and a **7-card set** chip. The Apps stat stays 6; the `Est. 15-440 hrs` range still covers everything.
+- **Adding an eighth card:** it goes in both grids, needs a new `--tcg-*` palette distinct from the seven in use, a `tcg-mobile-row--even` wrapper (8 is even), a `collectible-card.css` cache bump, and a re-run of the never-scroll sweep.
+
+## Card-back measurement — what actually detects an over-budget back (2026-08-17)
+
+- **A "true slack" sum of back-face children reads negative on every shipped card** (AuctionBuddha -106, Elite -55, JPSurette -52, Naples -49) because `.poke-back-inner` is a flex column with `margin-top: auto` on `.poke-links` — children heights do not sum to the container. **Do not treat a negative value from that formula as a defect.**
+- **Trust these instead:** `plate.scrollHeight - plate.clientHeight` and the inner-vs-plate height delta. Across all seven cards these read **0** and **-4** identically.
+- **`.poke-plate` is `overflow: hidden`.** An over-budget back therefore **clips silently rather than scrolling**, so a scroll check alone can pass while content is cut off. Check the height delta too.
+- **Lazy images never load in an offscreen iframe.** Set `loading="eager"` and wait before measuring anything involving a front face, or the art reports 0x0 and the layout is not the real one.
+
+## Canvases must be themed in JS — and screenshots DO work (2026-08-17)
+
+- **Every `<canvas>` is invisible to contrast auditing.** `apps.html`'s hero wordmark painted `#ffffff` on the light ground at **1.12:1** (subline `#AAFF00` at 1.1:1) while every sweep reported the page clean, because `getComputedStyle` cannot see inside a canvas. It was found by **taking a screenshot**.
+- **Screenshots work in the preview pane.** They returned reliably this session. The older note that the pane "never composites frames" is wrong as of 2026-08-17 — it fails only when the pane is hidden. **Look at the page as well as measuring it**; measurement alone cannot catch canvas, WebGL, or image-backed text.
+- **The canvas theming pattern:** declare `colorLight` / `introTintsLight` beside the dark values, stash the authored dark values on first apply (`_colorDark`/`_tintsDark`), and swap on the **`sds-themechange`** event that `standard-site-nav.js` fires. `fractal.js` and now `surette-physics-wordmark-canvas.js` both do this. Colours are read at draw time, so a swap needs no rebuild and preserves physics state.
+- **Wordmark light values are measured, not picked:** `#0b0e10` (17.32:1) and `#3f6212` (6.33:1). **Do not lighten the subline** — `#4d7c0f` is the next step toward the dark-mode lime and already fails at 4.47:1.
+- Verified by sampling rendered canvas pixels in both themes; dark still paints `#ffffff` / `#AAFF00` exactly as before.
+
+## `process.html` retired (2026-08-17)
+
+- **The page is deleted.** Netlify 301s `/process.html` and `/es/process.html` → `/websites.html#how-it-works`.
+- **Its content split by audience, not by convenience.** The migration story it carried was explicitly software (`BUSINESS SOFTWARE` tag, "when the project is custom business software"), so it went to **`apps.html#software-process`** — putting it on `websites.html` would have been wrong. Only the *Maintain* detail list was website content, and that went into `websites.html`'s "Hosted, backed up, monitored" card. The rest was duplicate and dropped.
+- **`websites.html#how-it-works` is now a load-bearing anchor** — it is the redirect target, both service pages' "View Our Process" CTAs, and `rail.js`'s `launch` step. Do not rename that id.
+- **`apps.html`'s "View Our Process" button is a same-page anchor now** (`#software-process`), not a cross-page link.
+- **The process ladder is now 3 → 4 → 8**: homepage (hook), `websites.html` (detail), `services/website-design-hosting.html` (full reference). The fourth surface is gone.
+- **Validator baseline dropped to 68** (was 69) — one fewer English page, one fewer expected missing-`es`-mirror.
+- **`assets/rail.js` is deleted (2026-08-17).** It was dead code — no page carried the `#rail-popover` element or `[data-step]` triggers it needed, so it returned immediately on all 13 pages that loaded it. Removed with its 13 script tags and 76 lines of orphaned `.rail-popover-*` CSS across 9 pages.
+  - **There are two unrelated "rails" in this repo. Never sweep on the bare word.** The live one is the Admin Center sidebar under the `client-admin-*` prefix (`client-admin-tabs-rail__brand`, `client-admin-rail-link`, styled in `client-portal.css`); `nav.css`'s "rail" mentions are layout comments about desktop padding. Only `.rail-popover-*` and `rail.js` belonged to the dead process rail.
+  - `[id^="step-"] { scroll-margin-top: 6rem; }` in `index.html` sat directly after the deleted CSS block and was **kept on purpose** — it serves the three homepage process cards.
+
+## Homepage "How it works" — funnls process structure (2026-08-17)
+
+- **Three steps, not four:** `01 Discovery call` → `02 Design & build` → `03 Launch & care`. Modelled directly on funnls.com's block. The retired `Manage` and `Support` cards were never process steps — they were the ongoing service, already covered by the "what we build" cards and the WhatsApp section below. Their content folded into `03`. **Do not add a fourth card**; that reintroduces the overlap.
+- **The headline carries the commitment**, which is what makes the funnls block work: *"From first call to live in about 1–2 weeks."* over an anti-friction subhead.
+- **The 1–2 week figure is the owner's own published One Page estimate** (`websites.html:167`), not an invention, and **its qualifier is load-bearing** — "A One Page site is usually live in 1–2 weeks once content and access are in hand; larger builds run longer." A delivery timeline is a factual claim about the business, the same class as a star rating or a "trusted by N businesses" counter. **Never restate it unqualified, and never raise it without the owner.** The owner was offered the unqualified version on 2026-08-17 and chose the qualified one.
+- Step copy is outcome-focused ("more calls, quotes, and booked work"), per funnls, not deliverable-focused.
+- **Lives in both duplicated trees.** Parity check: `HOW IT WORKS`, `Discovery call`, `Design &amp; build`, `Launch &amp; care`, `live in about 1` must each appear **exactly twice** in `index.html`.
+- Desktop grid is `md:grid-cols-3`. Verified 1920→320px: one row, equal heights, zero overflow; contrast 0 failures in both themes.
+- **The site now has a 3 → 4 → 8 process ladder** — homepage (3, the hook), `websites.html` (4, the detail), `services/website-design-hosting.html` (8, the full reference). This is deliberate progressive disclosure. `process.html` is a fourth surface and is in no nav.
+
+## Navigation & IA — condensed (2026-08-17, supersedes the 2026-08-16 section below)
+
+- **Top-level nav is `Websites · Software · Pricing`** + the icon-only Client Login pill and the "Get started" CTA. No Services dropdown.
+- **`Home` is shown on every page EXCEPT the homepage (2026-08-17)** — as the first desktop pill *and* as the first hamburger-dropdown row. The logo still links home everywhere; this makes the route explicit once you have navigated away, without spending a slot on a self-link. `isHomePage()` in the generator checks **both** `data-active === "home"` **and** the URL, because a page that forgets `data-active` would otherwise render a Home link pointing at itself — and because **Netlify Pretty URLs serve the homepage as `/`, not `/index.html`**, the pattern accepts a bare directory while still not matching extensionless Pretty URLs like `/account`. Homepage dropdown is **5 rows**, every other page **6**.
+- **The phone bottom tab bar keeps Home on every page, on purpose.** It is a tab bar, not a menu: it holds a constant set and marks the current one. Removing a tab on one page would shift the other three under the user's thumb, so the same tap position would hit different destinations depending on the page. Do not "fix" this inconsistency.
+- **Nav width is now the constraint to watch.** The row carries four pills plus the login icon, theme toggle and CTA. Verified fitting with zero overflow down to **880px**, the narrowest width the desktop bar renders at. Adding a fifth pill would need re-measuring there first.
+- **The `Work` item was retired.** It resolved to `portfolio.html`, a two-card interstitial whose cards led to `apps.html` — *already the Software item* — and `casestudies.html`. Three of four nav items showed built work and none predicted which. **Do not reintroduce a portfolio/work/case-studies item as a fourth sibling.**
+- **Galleries hang off their parent service page:** Websites → `websites.html` → `casestudies.html` → 6 detail pages; Software → `apps.html` → `app-catalog.html` → 6 app profiles. Both links already existed (`websites.html:230`, `apps.html:201`), so no content edits were needed.
+- **Pricing covers both product lines.** `pricing.html:466` routes to `app-pricing.html` under "Software, not a website". `app-pricing.html` is still in no menu directly, which is fine — Pricing is its front door.
+- **`portfolio.html` stays live with `data-active="none"` and is deliberately NOT redirected.** It has 6 inbound in-page links (`apps.html`, `index.html` ×2, `pricing.html`, `websites.html`, self) and legitimately serves anyone searching "portfolio". A redirect would strand those links.
+- **Valid `data-active` values are now** `websites`, `software`, `pricing`, `home`, `account`, `contact`, `none`. `work`, `portfolio`, `apps`, and `services` still resolve via `LEGACY_ACTIVE` in the generator — note its `portfolio` entry was repointed from `work` to `websites`.
+- The bottom tab bar was untouched (Home · Websites · Pricing · Contact) — it never carried Work or Software.
+- **funnls.com is the named design reference.** Its four items carry no portfolio at all; the nav follows the visitor's decision path and proof lives inside the pages. Consult it before any IA change. Full rationale and the rejected alternatives are in `project-docs/NAV_RESTRUCTURE_PLAN.md`.
+- → `standard-site-nav.js?v=20260817-nav-condense` (31 pages). Verified 12 pages × 5 widths (1280/1024/880/879/390): zero overflow, desktop row fits at every width, exactly one active pill on all 15 pages checked, zero nav links to `portfolio.html`, no duplicate dropdown destinations. Validator at the 69 baseline.
+
+## Bulk-edit encoding rule (2026-08-17)
+
+**Never bulk-edit `.html` with Windows PowerShell `Get-Content`/`Set-Content`/`Out-File`.** PowerShell 5.1 decodes UTF-8-without-BOM as Windows-1252, so a read-modify-write round-trip mojibakes every curly quote, em-dash and middot. It happened this session across 31 files during a cache-buster bump; it is **silent** (the intended edit lands correctly) and was caught only by the validator jumping 69 → 271. Repaired losslessly by re-encoding UTF-8 → CP1252. Use `[IO.File]::ReadAllText/WriteAllText` with `UTF8Encoding($false,$true)`, the editor's edit tooling, or git-bash `sed` — and **always re-run the validator after a bulk pass**. See DECISIONS.
+
+## Layout system — use it on every new page (2026-08-16)
+
+`assets/nav.css` owns the shared page vocabulary. **Do not invent another page prefix**; that is exactly how `.pr-*` and `.wb-*` drifted apart on nine of twelve shared values before being consolidated.
+
+| Class | Use |
+|---|---|
+| `.sds-wrap` | page container, `min(1240px, 100% - 3rem)` |
+| `.sds-section` | vertical rhythm between sections (88px) |
+| `.sds-eyebrow` | small-caps mono label above a headline |
+| `.sds-h1` / `.sds-h2` / `.sds-h3` | heading scale |
+| `.sds-lead` / `.sds-body` / `.sds-fine` | copy scale; add `.sds-lead--center` to centre |
+| `.sds-card` / `.sds-panel` | surfaces (card has `position: relative` for badges) |
+| `.sds-btn` / `.sds-btn--solid` / `.sds-actions` | buttons and button rows |
+| `.sds-grid-2` / `-3` / `-4` | responsive grids, breaking at the site's 880 line |
+| `.sds-media` | card art, 16/10 cover, top-anchored |
+| `.sds-hero-secondary` | outlined hero action sized to the newsletter row |
+
+Page-specific components still belong in the page. The test: if a second page would want it, it goes in `nav.css`. Current page-local survivors are `pricing.html`'s billing toggle / badge / price block / feature list / route bands / FAQ, and `websites.html`'s proof card / step numeral / icon chip / list.
+
+## Homepage structure (2026-08-16)
+
+- **Order:** hero (with proof strip) → what we build → agentic AI → recent work → local services → process → support → testimonials → newsletter.
+- **All three key pages carry a hero proof strip, each with a different quote** matched to that page's claim — index (managed service), websites (responsiveness), pricing (update turnaround). All three of the site's testimonials are now doing work above the fold instead of only appearing in one section near the bottom of the homepage. Use `.sds-proof--start` on left-aligned heroes (websites) and plain `.sds-proof--hero` on centred ones (index, pricing).
+- **The hero proof strip carries only already-published, attributed proof.** It is a verbatim quote from this page's own testimonials section. **Do not add a star rating or a "trusted by N businesses" counter** unless the owner supplies a verified figure — those are factual claims about the business, not copy.
+- It must stay **above the fold on a 1280×768 laptop**. It was first placed in the hero's bottom band, which put it at `top: 870` — visible only after scrolling, which defeats its purpose. It now sits directly under the hero lead.
+- **Homepage `<title>` and meta are website-first** ("Websites for Southwest Florida Businesses"). They led with "Agentic AI-Powered Business Software" until 2026-08-16 — reordering the page body did not change what search and social shares displayed, so metadata needs updating alongside any positioning change.
+- **The hero stays centred over the Nova WebGL background.** A left-copy/right-visual hero was considered and rejected — it fights a full-bleed animated background. Hero is two-button: `Get started` + `See pricing`.
+- **"What we build" is 2-up (Websites, then Software).** It was a flat 4-card grid; the two local-service cards moved into their own compact "Also local" strip.
+- **That strip is load-bearing for discoverability.** `services/in-home-services.html` and `services/office-network-setup.html` have had **no nav entry** since the Services dropdown was retired in Phase 1. The homepage strip and the footer are their only routes. Do not remove it without giving them a nav home first.
+- **index.html keeps duplicated desktop and mobile trees.** Every content edit must land in both or they drift. After editing, assert parity by counting shared strings (e.g. "WHAT WE BUILD" should appear exactly twice).
+- **Auditing the mobile tree:** `querySelector('.md\\:hidden')` returns the **nav's** injected mobile shell, not page content, and an audit using it silently reports zero cards. Use `document.querySelector('#hero-mobile').closest('.md\\:hidden')`.
+
+## Primary CTA (2026-08-16)
+
+- **"Get started" is the sitewide primary CTA verb** — 21 anchors, including the nav's gradient button. Use it for any primary conversion action on a new page.
+- **Do not convert these**, they mean something specific: `Request Access` (access-by-request apps, decided 2026-08-08), `Request Custom Version`, `Request account deletion`, form submit buttons, and **every collectible-card foot button** (`Ask to View`, `Case Study`, `Open Profile`, `Live Site`, `View Live`) — those are width-constrained and anything past ~105px scrolls AuctionBuddha's card back at 320px.
+- The phone bottom tab bar's **Contact** stays a destination label, like Home/Websites/Pricing. It is a tab, not a call to action.
+
+## Websites story page (2026-08-16)
+
+- **`websites.html` (root)** is the Websites nav destination: what you get, how it works (4 steps), recent work, two ways to buy, also-available strip, closing CTA. **No plan tables** — pricing lives on `pricing.html` (summary) and `services/website-design-hosting.html` (full reference).
+- Its proof cards are **plain links, not the collectible-card component**, on purpose: that component has a fixed 2.5/3.5 ratio and a back face under a documented never-scroll budget, none of which this page needs.
+- Page-scoped CSS uses the `.wb-*` prefix, mirroring `.pr-*` on pricing.html. Phase 5 should promote the shared pieces into `nav.css` rather than letting a third prefix appear.
+- **Watch image weight on new pages.** The obvious portfolio screenshots run 1–2 MB each; this page's three proof cards were 3.2 MB before being swapped to 567 KB of equivalent shots. Check file size before referencing anything from `assets/portfolio/`.
+
+## Website Pricing — two pages (2026-08-16)
+
+- **`pricing.html` (root) is the front door**, linked from the nav. Four cards: Starter $125 · Lead Capture $250 · **Local Business $375–500 (most popular)** · Growth $750, plus a monthly/annual toggle, three escape-hatch bands, and six FAQs.
+- **`services/website-design-hosting.html` keeps its URL** and is now the full-detail reference (H1: "Full Website Pricing Details"), reached from the nav's Websites item and from "Full pricing details" links. Nothing was removed from it.
+- **The two pages must stay consistent.** `website_pricing_plan.txt` is still the single source of truth; a price change there has to land in **both** pages.
+- **The fifth managed plan (Mini, $185) is intentionally not on the front page.** It is still sold and fully documented on the detail page, and the front page's fine print points at it. Dropping it is what produces the four-tier ladder; do not treat its absence as a bug.
+- **Annual prices are real prepaid figures, not monthly × 12** ($1,250 / $2,500 / from $3,750 / from $7,500). Prepaying is discounted, so never compute the annual column — each price element carries its own `data-monthly` / `data-annual` string.
+- Page-scoped CSS uses the `.pr-*` prefix and is entirely token-driven; it was built from `app-catalog.html`'s head (a single-responsive-layout page) so its scaffolding matches a known-good page exactly.
+
+## Navigation & IA (2026-08-16)
+
+- **Top-level nav is `Websites · Software · Work · Pricing` + the Contact CTA.** Client Login is an icon-only pill. There is **no Home item** — the logo carries it, following funnls.com.
+- **No Services dropdown.** Do not reintroduce one; if a local-services entry is ever needed, add a plain item. In-home tech and office network setup are reached from the footer (and, once Phase 4 lands, a homepage strip) — their `data-active` is `none`.
+- **Valid `data-active` values are now** `websites`, `software`, `work`, `pricing`, `home`, `account`, `contact`, `none`. The old `apps`/`portfolio`/`services` still resolve via the `LEGACY_ACTIVE` map in the generator, so an un-remapped page degrades gracefully rather than losing its highlight.
+- **Active state is a filled pill**, `.sds-nav-pill.is-active` in `nav.css`. All pills share a `min-height` so the icon-only Client Login pill does not sit 1.2px short.
+- **`WEBSITES_HREF` and `PRICING_HREF`** at the top of `assets/standard-site-nav.js` are the single place to repoint the two items whose dedicated pages are still being built. They currently resolve to the live pricing page so the nav cannot 404.
+- **`assets/mobile-services-nav.js` is unreferenced and must stay that way.** It identifies the Services tab by regex-testing hrefs for the string "services" — the Websites tab's href (`services/website-design-hosting.html`) matches, so re-adding the script would attach the retired popout to the wrong tab.
+
+## Theming (2026-08-16)
+
+- **The site has two themes.** Dark is the default and is visually unchanged; light is opt-in through a toggle in the shared nav. Choice persists in `localStorage` as `sds-theme` and syncs across open tabs. A visitor with no stored choice gets **dark regardless of `prefers-color-scheme`** — deliberate, see DECISIONS.
+- **How it works: values flip, selectors never do.** `assets/nav.css` defines the whole Tailwind palette as space-separated RGB triplets (`--t-void-black: 5 5 5`) with light values under `:root[data-theme="light"]`. Every page's inline `tailwind.config` reads them as `rgb(var(--t-NAME) / <alpha-value>)`. **The triplet form is mandatory** — `<alpha-value>` only works inside `rgb()`, so storing the palette as hex silently breaks every `/10` `/60` opacity variant.
+- **Never hardcode a palette colour.** A literal defeats the theme with no error. This bit hardest in `nav.css`'s hand-pinned utility fallbacks (`.text-starlight-white` etc.): they exist because injected markup can't rely on the Tailwind CDN, but `nav.css` loads *after* the CDN's style block, so a literal there overrides the correct variable-backed rule. Fourth confirmed bug from the injected-markup/Tailwind interaction.
+- **Pre-paint resolver is load-bearing.** `<script id="sds-theme-resolver">` is the first script in all 34 heads and stamps `data-theme` before anything paints; it also overwrites the `<html>` inline `style` background, which outranks every stylesheet. `#dm-critical-dark-baseline` keeps hex literals on purpose — it runs before `nav.css` defines any variable. **Any new page needs both**, or light mode flashes black on every load.
+- **`starlight-white` does two jobs.** As body/heading text (301 uses) it must flip to ink; on the cyan→purple gradient CTAs (3 uses + the nav CTA) it must stay white. Use `.sds-on-accent` / `--c-on-accent` for the latter.
+- **Veils use channel variables.** `--c-veil-rgb` (white→near-black) and `--c-shadow-rgb` carry each call site's own alpha: `rgba(var(--c-veil-rgb), 0.07)`. Property matters — black used as a *panel fill* must invert, black used as a *shadow* must not; sweeping them together is what left mid-grey panels on the pricing page.
+- **Light text is sized against the darkest light surface** (`--t-surface-container-highest`, `#e5e2db`), not the page ground. Sizing against the ground passes at 4.56:1 there but lands at 4.28:1 on cards, which is where most small label text sits.
+- **The homepage has NO animated background in light mode (2026-08-16).** Nova is gated off, not just hidden: `index.html`'s module wraps the engine in `if (SHOW_NOVA)`, so in light the galaxy is never built and no render loop runs. `#nova-bg` and `#hero-tint` are `display: none !important` — `!important` is required because `#nova-bg` carries an inline `background:#160016` attribute, which outranks stylesheets. Toggling *into* dark on the homepage reloads once, because the engine only initializes at module evaluation. Dark is untouched; the engine text was wrapped, never edited.
+- **Tailwind's stock `white` is overridden in every config** (`"white": "rgb(var(--t-starlight-white) / <alpha-value>)"`). It is a built-in, not part of the custom palette, so it was missed by the first tokenisation pass — 138 usages stayed literally white, including the homepage `<h1>` at 1.12:1 on paper. **Do not try to fix stock colours with a `nav.css` pin:** the Tailwind CDN injects its `<style>` *after* nav.css and emits a hard literal for built-ins, so the CDN wins at equal specificity. The config is the only place that works. (Custom colours seem to pin fine only because both sides resolve to the same variable.)
+- **Backgrounds have a light "blueprint" variant.** `cosmic-web.css` inverts its existing hero photo (`filter: invert(1)`), so every overlay colour in that block is written as a **pre-inversion complement** — the salmon and lime values render as teal and violet. `fractal.js` re-derives fog and particle colours on the `sds-themechange` event, since WebGL can't read CSS variables.
+- **Portal utility pages** (`account-admin/-users/-settings/-created`, `app-checkout`) have no nav, so no toggle — by design. They still honour the stored theme through the head resolver.
+- **`multichannel-commerce-website-test-4.html` is outside the theme system** — it's the unlinked noindex experiment and is already a light cream page. Excluded from every sweep.
+- **Verification is by measurement**, not screenshots (the preview pane doesn't composite frames). `scripts/audit-contrast.js` composites translucent ancestors to resolve real backgrounds. Current: homepage 0 failures / 99 checked, casestudies 0 / 182, pricing 0 / 1,246, dark mode 0 with probes byte-identical to pre-change values.
 
 ## Site State
 

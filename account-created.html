@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html class="dark" style="background:#050505" lang="en"><head>
 <meta charset="utf-8"/>
+<script id="sds-theme-resolver">/* Pre-paint theme resolver — must stay the first script in <head>. Stamps data-theme on <html> from the stored choice before anything paints, and overwrites the inline dark background attribute. Dark is the brand default when nothing is stored, so a visitor whose OS prefers light still gets the site's intended look until they choose. */(function(){var d=document.documentElement,t;try{t=localStorage.getItem("sds-theme")}catch(e){}if(t!=="light")t="dark";d.setAttribute("data-theme",t);d.classList.toggle("dark",t==="dark");d.style.background=t==="light"?"#f4f2ee":"#050505"})();</script>
 
 <style id="dm-critical-dark-baseline">
   html,body{background:#050505;color:#fff;min-height:100%;color-scheme:dark;}
@@ -8,6 +9,7 @@
   #__next,#root,.app{background:#050505;min-height:100vh;}
   body>main{min-height:100vh;}
   #page-loader,.sds-apps-loader{background:#050505;}
+html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:#0b0e10;color-scheme:light}html[data-theme="light"] #__next,html[data-theme="light"] #root,html[data-theme="light"] .app{background:#f4f2ee}html[data-theme="light"] #page-loader,html[data-theme="light"] .sds-apps-loader{background:#f4f2ee}
 </style>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
@@ -28,12 +30,13 @@
 <meta name="twitter:title" content="Check Your Email | Surette Data Systems"/>
 <meta name="twitter:description" content="Confirm your email address before signing in to your Surette Data Systems client account."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
-<link href="assets/nav.css?v=20260801-scroll-hide3" rel="stylesheet"/>
-<link href="assets/cosmic-web.css?v=20260716-md880" rel="stylesheet"/><link href="assets/client-portal.css" rel="stylesheet"/>
+<link href="assets/nav.css?v=20260829-apps-retired" rel="stylesheet"/>
+<link href="assets/cosmic-web.css?v=20260827-contrast-nav" rel="stylesheet"/><link href="assets/client-portal.css?v=20260829-apps-retired" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors:{"electric-cyan":"#00F0FF","nebula-purple":"#7000FF","void-black":"#050505","starlight-white":"#FFFFFF","surface":"#121414","on-surface-variant":"#c4c7c7","outline":"#8e9192"},fontFamily:{"headline":["Space Grotesk","sans-serif"],"body":["Plus Jakarta Sans","sans-serif"],"mono":["JetBrains Mono","monospace"]}}}};</script>
-<style>body{margin:0;background:#050505;color:#e3e2e2;font-family:"Plus Jakarta Sans",sans-serif;overflow-x:hidden}.grid-overlay{position:fixed;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.05) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:-1}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24}</style>
+<script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors:{
+        "white": "rgb(var(--t-starlight-white) / <alpha-value>)","electric-cyan":"rgb(var(--t-electric-cyan) / <alpha-value>)","nebula-purple":"rgb(var(--t-nebula-purple) / <alpha-value>)","void-black":"rgb(var(--t-void-black) / <alpha-value>)","starlight-white":"rgb(var(--t-starlight-white) / <alpha-value>)","surface":"rgb(var(--t-surface) / <alpha-value>)","on-surface-variant":"rgb(var(--t-on-surface-variant) / <alpha-value>)","outline":"rgb(var(--t-outline) / <alpha-value>)"},fontFamily:{"headline":["Space Grotesk","sans-serif"],"body":["Plus Jakarta Sans","sans-serif"],"mono":["JetBrains Mono","monospace"]}}}};</script>
+<style>body{margin:0;background:rgb(var(--t-void-black));color:rgb(var(--t-on-surface));font-family:"Plus Jakarta Sans",sans-serif;overflow-x:hidden}.grid-overlay{position:fixed;inset:0;background-image:linear-gradient(to right,rgba(var(--c-veil-rgb), .05) 1px,transparent 1px),linear-gradient(to bottom,rgba(var(--c-veil-rgb), .05) 1px,transparent 1px);background-size:80px 80px;pointer-events:none;z-index:-1}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24}</style>
 </head>
 <body class="bg-void-black">
 <div class="fixed inset-0 grid-overlay"></div>
@@ -77,5 +80,5 @@ window.DM_CLIENT_PORTAL_COPY = {
   error: "Something went wrong. Please try again."
 };
 </script>
-<script type="module" src="assets/client-portal.js"></script>
+<script type="module" src="assets/client-portal.js?v=20260829-apps-retired"></script>
 </body></html>

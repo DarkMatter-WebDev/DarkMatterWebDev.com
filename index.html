@@ -2,6 +2,7 @@
 
 <html class="dark" style="background:#050505" lang="en"><head>
 <meta charset="utf-8"/>
+<script id="sds-theme-resolver">/* Pre-paint theme resolver — must stay the first script in <head>. Stamps data-theme on <html> from the stored choice before anything paints, and overwrites the inline dark background attribute. Dark is the brand default when nothing is stored, so a visitor whose OS prefers light still gets the site's intended look until they choose. */(function(){var d=document.documentElement,t;try{t=localStorage.getItem("sds-theme")}catch(e){}if(t!=="light")t="dark";d.setAttribute("data-theme",t);d.classList.toggle("dark",t==="dark");d.style.background=t==="light"?"#f4f2ee":"#050505"})();</script>
 
 <script>/* Head-stamp: nav.css reveals un-stamped pages at 0.2s (its no-logo-script fallback). On heavy pages the bottom-of-body surette-logo.js stamp lands after that, so content flashed in at 0.2s, vanished when the stamp arrived, then faded back in. Stamping before first paint makes JS the only revealer. */document.documentElement.classList.add("sds-logo-loaded");</script>
 <style id="dm-critical-dark-baseline">
@@ -10,11 +11,12 @@
   #__next,#root,.app{background:#050505;min-height:100vh;}
   body>main{min-height:100vh;}
   #page-loader,.sds-apps-loader{background:#050505;}
+html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:#0b0e10;color-scheme:light}html[data-theme="light"] #__next,html[data-theme="light"] #root,html[data-theme="light"] .app{background:#f4f2ee}html[data-theme="light"] #page-loader,html[data-theme="light"] .sds-apps-loader{background:#f4f2ee}
 </style>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-<title>Surette Data Systems | Agentic AI-Powered Business Software &middot; Southwest Florida</title>
-<meta name="description" content="Custom agentic AI-powered business software, managed websites, web apps, branding, and on-site tech for Southwest Florida businesses &mdash; built and maintained by Surette Data Systems."/>
+<title>Websites for Southwest Florida Businesses | Surette Data Systems</title>
+<meta name="description" content="Modern websites for Southwest Florida small businesses &mdash; designed, hosted, updated, and supported by one team. Plus on-site tech help when you need hands on the problem."/>
 <link rel="icon" href="/assets/favicon.svg?v=20260716-blur-on" type="image/svg+xml"/>
 <link rel="icon" href="/assets/favicon-32.png?v=20260716-blur-on" sizes="32x32" type="image/png"/>
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=20260716-blur-on"/>
@@ -22,18 +24,18 @@
 <meta name="theme-color" content="#050505"/>
 <meta property="og:site_name" content="Surette Data Systems"/>
 <meta property="og:type" content="website"/>
-<meta property="og:title" content="Surette Data Systems | Agentic AI-Powered Business Software &middot; Southwest Florida"/>
-<meta property="og:description" content="Custom agentic AI-powered business software, managed websites, web apps, branding, and on-site tech for Southwest Florida businesses &mdash; built and maintained by Surette Data Systems."/>
+<meta property="og:title" content="Websites for Southwest Florida Businesses | Surette Data Systems"/>
+<meta property="og:description" content="Modern websites for Southwest Florida small businesses &mdash; designed, hosted, updated, and supported by one team. Plus on-site tech help when you need hands on the problem."/>
 <meta property="og:url" content="https://surettesystems.com/index.html"/>
 <meta property="og:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <meta property="og:image:alt" content="Surette Data Systems &mdash; software, websites, and local tech for Southwest Florida"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Surette Data Systems | Agentic AI-Powered Business Software &middot; Southwest Florida"/>
-<meta name="twitter:description" content="Custom agentic AI-powered business software, managed websites, web apps, branding, and on-site tech for Southwest Florida businesses &mdash; built and maintained by Surette Data Systems."/>
+<meta name="twitter:title" content="Websites for Southwest Florida Businesses | Surette Data Systems"/>
+<meta name="twitter:description" content="Modern websites for Southwest Florida small businesses &mdash; designed, hosted, updated, and supported by one team. Plus on-site tech help when you need hands on the problem."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
-<link href="assets/nav.css?v=20260801-scroll-hide3" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="assets/nav.css?v=20260829-apps-retired" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
   #sds-logo a.sds-anchor,
   #sds-logo-mobile a.sds-anchor {
@@ -64,10 +66,10 @@
     font-size: 15px !important;
     font-weight: 700 !important;
     letter-spacing: 0.16em !important;
-    color: #ddeeff !important;
+    color: var(--sds-logo-co, #ddeeff) !important;
     line-height: 1 !important;
     text-transform: uppercase !important;
-    text-shadow: 0 0 12px rgba(0, 190, 255, 0.45) !important;
+    text-shadow: var(--sds-logo-glow, 0 0 12px rgba(0, 190, 255, 0.45)) !important;
   }
   #sds-logo .sds-sub,
   #sds-logo-mobile .sds-sub {
@@ -75,9 +77,9 @@
     font-size: 8px !important;
     font-weight: 300 !important;
     letter-spacing: 0.34em !important;
-    color: #00b8df !important;
+    color: var(--sds-logo-sub, #00b8df) !important;
     line-height: 1 !important;
-    opacity: 0.7 !important;
+    opacity: var(--sds-logo-sub-opacity, 0.7) !important;
   }
   @media (min-width: 880px) {
     #hero .hero-headline-band {
@@ -108,58 +110,59 @@
             // every responsive utility on the same boundary as the nav.
             "screens": { "md": "880px" },
             "colors": {
-                    "on-background": "#e3e2e2",
-                    "deep-space-grey": "#1A1A1A",
-                    "primary-container": "#050505",
-                    "on-surface": "#e3e2e2",
-                    "void-black": "#050505",
-                    "on-surface-variant": "#c4c7c7",
-                    "surface-container-high": "#292a2a",
-                    "on-tertiary-container": "#00848d",
-                    "surface": "#121414",
-                    "surface-container-low": "#1a1c1c",
-                    "on-tertiary-fixed-variant": "#004f54",
-                    "tertiary": "#00dbe9",
-                    "electric-cyan": "#00F0FF",
-                    "surface-bright": "#383939",
-                    "on-tertiary": "#00363a",
-                    "on-primary": "#313030",
-                    "surface-container-highest": "#343535",
-                    "on-secondary-container": "#ddcdff",
-                    "secondary": "#d1bcff",
-                    "surface-container": "#1f2020",
-                    "background": "#121414",
-                    "outline": "#8e9192",
-                    "surface-container-lowest": "#0d0e0f",
-                    "primary-fixed": "#e5e2e1",
-                    "on-secondary": "#3c0090",
-                    "on-error": "#690005",
-                    "on-primary-fixed": "#1c1b1b",
-                    "on-primary-container": "#797777",
-                    "tertiary-fixed-dim": "#00dbe9",
-                    "on-error-container": "#ffdad6",
-                    "surface-dim": "#121414",
-                    "surface-tint": "#c9c6c5",
-                    "tertiary-container": "#000607",
-                    "on-primary-fixed-variant": "#474646",
-                    "nebula-purple": "#7000FF",
-                    "inverse-primary": "#5f5e5e",
-                    "on-secondary-fixed-variant": "#5700c9",
-                    "secondary-container": "#7000ff",
-                    "error-container": "#93000a",
-                    "tertiary-fixed": "#7df4ff",
-                    "error": "#ffb4ab",
-                    "inverse-on-surface": "#2f3131",
-                    "primary-fixed-dim": "#c9c6c5",
-                    "secondary-fixed-dim": "#d1bcff",
-                    "primary": "#c9c6c5",
-                    "on-secondary-fixed": "#23005b",
-                    "starlight-white": "#FFFFFF",
-                    "surface-variant": "#343535",
-                    "inverse-surface": "#e3e2e2",
-                    "on-tertiary-fixed": "#002022",
-                    "outline-variant": "#444748",
-                    "secondary-fixed": "#e9ddff"
+                    "white": "rgb(var(--t-starlight-white) / <alpha-value>)",
+                    "on-background": "rgb(var(--t-on-background) / <alpha-value>)",
+                    "deep-space-grey": "rgb(var(--t-deep-space-grey) / <alpha-value>)",
+                    "primary-container": "rgb(var(--t-primary-container) / <alpha-value>)",
+                    "on-surface": "rgb(var(--t-on-surface) / <alpha-value>)",
+                    "void-black": "rgb(var(--t-void-black) / <alpha-value>)",
+                    "on-surface-variant": "rgb(var(--t-on-surface-variant) / <alpha-value>)",
+                    "surface-container-high": "rgb(var(--t-surface-container-high) / <alpha-value>)",
+                    "on-tertiary-container": "rgb(var(--t-on-tertiary-container) / <alpha-value>)",
+                    "surface": "rgb(var(--t-surface) / <alpha-value>)",
+                    "surface-container-low": "rgb(var(--t-surface-container-low) / <alpha-value>)",
+                    "on-tertiary-fixed-variant": "rgb(var(--t-on-tertiary-fixed-variant) / <alpha-value>)",
+                    "tertiary": "rgb(var(--t-tertiary) / <alpha-value>)",
+                    "electric-cyan": "rgb(var(--t-electric-cyan) / <alpha-value>)",
+                    "surface-bright": "rgb(var(--t-surface-bright) / <alpha-value>)",
+                    "on-tertiary": "rgb(var(--t-on-tertiary) / <alpha-value>)",
+                    "on-primary": "rgb(var(--t-on-primary) / <alpha-value>)",
+                    "surface-container-highest": "rgb(var(--t-surface-container-highest) / <alpha-value>)",
+                    "on-secondary-container": "rgb(var(--t-on-secondary-container) / <alpha-value>)",
+                    "secondary": "rgb(var(--t-secondary) / <alpha-value>)",
+                    "surface-container": "rgb(var(--t-surface-container) / <alpha-value>)",
+                    "background": "rgb(var(--t-background) / <alpha-value>)",
+                    "outline": "rgb(var(--t-outline) / <alpha-value>)",
+                    "surface-container-lowest": "rgb(var(--t-surface-container-lowest) / <alpha-value>)",
+                    "primary-fixed": "rgb(var(--t-primary-fixed) / <alpha-value>)",
+                    "on-secondary": "rgb(var(--t-on-secondary) / <alpha-value>)",
+                    "on-error": "rgb(var(--t-on-error) / <alpha-value>)",
+                    "on-primary-fixed": "rgb(var(--t-on-primary-fixed) / <alpha-value>)",
+                    "on-primary-container": "rgb(var(--t-on-primary-container) / <alpha-value>)",
+                    "tertiary-fixed-dim": "rgb(var(--t-tertiary-fixed-dim) / <alpha-value>)",
+                    "on-error-container": "rgb(var(--t-on-error-container) / <alpha-value>)",
+                    "surface-dim": "rgb(var(--t-surface-dim) / <alpha-value>)",
+                    "surface-tint": "rgb(var(--t-surface-tint) / <alpha-value>)",
+                    "tertiary-container": "rgb(var(--t-tertiary-container) / <alpha-value>)",
+                    "on-primary-fixed-variant": "rgb(var(--t-on-primary-fixed-variant) / <alpha-value>)",
+                    "nebula-purple": "rgb(var(--t-nebula-purple) / <alpha-value>)",
+                    "inverse-primary": "rgb(var(--t-inverse-primary) / <alpha-value>)",
+                    "on-secondary-fixed-variant": "rgb(var(--t-on-secondary-fixed-variant) / <alpha-value>)",
+                    "secondary-container": "rgb(var(--t-secondary-container) / <alpha-value>)",
+                    "error-container": "rgb(var(--t-error-container) / <alpha-value>)",
+                    "tertiary-fixed": "rgb(var(--t-tertiary-fixed) / <alpha-value>)",
+                    "error": "rgb(var(--t-error) / <alpha-value>)",
+                    "inverse-on-surface": "rgb(var(--t-inverse-on-surface) / <alpha-value>)",
+                    "primary-fixed-dim": "rgb(var(--t-primary-fixed-dim) / <alpha-value>)",
+                    "secondary-fixed-dim": "rgb(var(--t-secondary-fixed-dim) / <alpha-value>)",
+                    "primary": "rgb(var(--t-primary) / <alpha-value>)",
+                    "on-secondary-fixed": "rgb(var(--t-on-secondary-fixed) / <alpha-value>)",
+                    "starlight-white": "rgb(var(--t-starlight-white) / <alpha-value>)",
+                    "surface-variant": "rgb(var(--t-surface-variant) / <alpha-value>)",
+                    "inverse-surface": "rgb(var(--t-inverse-surface) / <alpha-value>)",
+                    "on-tertiary-fixed": "rgb(var(--t-on-tertiary-fixed) / <alpha-value>)",
+                    "outline-variant": "rgb(var(--t-outline-variant) / <alpha-value>)",
+                    "secondary-fixed": "rgb(var(--t-secondary-fixed) / <alpha-value>)"
             },
             "borderRadius": {
                     "DEFAULT": "0.125rem",
@@ -219,6 +222,24 @@
         }
         @supports not (height: 100lvh) {
             #nova-bg { height: 100vh; }
+        }
+        /* Light theme: no animated hero background.
+
+           The module below skips Nova's init entirely in light mode, so
+           #nova-bg is an empty div — but it still carries an inline
+           background:#160016 (deep plum), which would paint a full-viewport
+           dark rectangle behind the page. Inline styles outrank stylesheets,
+           hence !important here.
+
+           #hero-tint goes with it: it is a darkening scrim whose only job is
+           to hold the galaxy back from the headline. With no galaxy it just
+           veils the paper ground. */
+        :root[data-theme="light"] #nova-bg,
+        :root[data-theme="light"] #hero-tint {
+            display: none !important;
+        }
+        :root[data-theme="light"] #nova-bg {
+            background: none !important;
         }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
@@ -285,30 +306,30 @@
             }
         }
         .hero-headline-line-accent {
-            background: linear-gradient(to right, #00F0FF, #7000FF);
+            background: linear-gradient(to right, rgb(var(--t-electric-cyan)), rgb(var(--t-nebula-purple)));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
         .grid-overlay {
             background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+                linear-gradient(to right, rgba(var(--c-veil-rgb), 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(var(--c-veil-rgb), 0.05) 1px, transparent 1px);
             background-size: 80px 80px;
         }
         .glass-card {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(var(--c-veil-rgb), 0.03);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(var(--c-veil-rgb), 0.1);
         }
         .whatsapp-hero-card {
             position: relative;
             overflow: hidden;
             background:
                 radial-gradient(circle at 15% 0%, rgba(37, 211, 102, 0.18), transparent 42%),
-                linear-gradient(145deg, rgba(7, 17, 15, 0.92), rgba(16, 18, 22, 0.86));
+                linear-gradient(145deg, rgb(var(--t-surf-07110f) / 0.92), rgb(var(--t-surf-101216) / 0.86));
             border-color: rgba(37, 211, 102, 0.34);
-            box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35), 0 0 28px rgba(37, 211, 102, 0.12);
+            box-shadow: 0 18px 55px rgba(var(--c-shadow-rgb), 0.35), 0 0 28px rgba(37, 211, 102, 0.12);
         }
         .whatsapp-hero-card::after {
             content: "";
@@ -325,22 +346,22 @@
             width: 2.45rem;
             height: 2.45rem;
             border-radius: 999px;
-            color: #ffffff;
+            color: rgb(var(--t-starlight-white));
             background: #25D366;
             box-shadow: 0 0 24px rgba(37, 211, 102, 0.38);
         }
         .whatsapp-message {
             position: relative;
             z-index: 1;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background: rgba(255, 255, 255, 0.055);
+            border: 1px solid rgba(var(--c-veil-rgb), 0.08);
+            background: rgba(var(--c-veil-rgb), 0.055);
             border-radius: 0.6rem;
             padding: 0.55rem 0.65rem;
         }
         /* Desktop accents */
-        .glow-cyan { box-shadow: 0 0 20px rgba(0, 240, 255, 0.3); }
-        .glow-purple { box-shadow: 0 0 20px rgba(112, 0, 255, 0.3); }
-        .edge-glow { border-image: linear-gradient(to bottom right, rgba(255,255,255,0.2), transparent) 1; }
+        .glow-cyan { box-shadow: 0 0 20px rgb(var(--t-electric-cyan) / 0.3); }
+        .glow-purple { box-shadow: 0 0 20px rgb(var(--t-nebula-purple) / 0.3); }
+        .edge-glow { border-image: linear-gradient(to bottom right, rgba(var(--c-veil-rgb), 0.2), transparent) 1; }
         .nebula-blur { filter: blur(120px); opacity: 0.4; }
         @keyframes pulse-line {
             0% { transform: translateX(-100%); }
@@ -348,7 +369,7 @@
         }
         .animate-pulse-line { animation: pulse-line 3s infinite linear; }
         .scanline {
-            background: linear-gradient(to bottom, transparent, rgba(0, 240, 255, 0.05) 50%, transparent);
+            background: linear-gradient(to bottom, transparent, rgb(var(--t-electric-cyan) / 0.05) 50%, transparent);
             height: 2px;
             width: 100%;
             position: absolute;
@@ -360,8 +381,8 @@
             100% { top: 110%; }
         }
         /* Mobile accents */
-        .neon-border { box-shadow: 0 0 15px rgba(0, 240, 255, 0.3); }
-        .neon-text-glow { text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
+        .neon-border { box-shadow: 0 0 15px rgb(var(--t-electric-cyan) / 0.3); }
+        .neon-text-glow { text-shadow: 0 0 10px rgb(var(--t-electric-cyan) / 0.5); }
         @keyframes pulse-cyan {
             0%, 100% { opacity: 0.5; }
             50% { opacity: 1; }
@@ -385,11 +406,11 @@
             pointer-events: auto;
         }
         .mobile-nav-dropdown-panel {
-            background: rgba(8, 10, 14, 0.96);
+            background: rgb(var(--t-surf-080a0e) / 0.96);
             backdrop-filter: blur(20px) saturate(1.25);
             -webkit-backdrop-filter: blur(20px) saturate(1.25);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.65);
+            border: 1px solid rgba(var(--c-veil-rgb), 0.12);
+            box-shadow: 0 18px 48px rgba(var(--c-shadow-rgb), 0.65);
         }
         #mobile-menu-btn[aria-expanded="true"] .mobile-menu-line-top { width: 1.25rem; }
         #mobile-menu-btn[aria-expanded="true"] .mobile-menu-line-mid { width: 1rem; opacity: 0.9; }
@@ -404,66 +425,6 @@
         .mobile-acc-chevron { transition: transform 0.3s ease; }
         .mobile-acc-toggle[aria-expanded="true"] .mobile-acc-chevron { transform: rotate(180deg); }
         .mobile-acc-toggle[aria-expanded="true"] { color: var(--starlight-white, #fff); }
-        /* Ghost rail popover */
-        .rail-popover-ghost {
-            visibility: hidden;
-            pointer-events: none;
-            transform: translateY(-50%) translateX(-10px);
-            transition:
-                visibility 0s linear 0.42s,
-                transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .rail-popover-ghost::before {
-            content: '';
-            position: absolute;
-            left: -24px;
-            top: -15%;
-            width: 28px;
-            height: 130%;
-        }
-        .rail-popover-ghost.is-visible {
-            visibility: visible;
-            pointer-events: auto;
-            transform: translateY(-50%) translateX(0);
-            transition:
-                visibility 0s,
-                transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .rail-popover-ghost-inner {
-            position: relative;
-            overflow: hidden;
-            padding: 0.7rem 1.35rem;
-            border-radius: 9999px;
-            background: rgba(8, 10, 14, 0.24);
-            backdrop-filter: blur(40px) saturate(1.5);
-            -webkit-backdrop-filter: blur(40px) saturate(1.5);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            box-shadow:
-                0 0 0 1px rgba(255, 255, 255, 0.03) inset,
-                0 12px 36px rgba(0, 0, 0, 0.2),
-                0 0 56px rgba(112, 0, 255, 0.06);
-            transform: scale(0.94) translateZ(0);
-            transform-origin: left center;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-            will-change: transform;
-            transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .rail-popover-ghost.is-visible .rail-popover-ghost-inner {
-            transform: scale(1) translateZ(0);
-        }
-        .rail-popover-ghost-inner::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            background: linear-gradient(145deg, rgba(0, 240, 255, 0.06) 0%, transparent 42%, rgba(112, 0, 255, 0.05) 100%);
-            pointer-events: none;
-        }
-        .rail-popover-ghost-inner > * { position: relative; z-index: 1; }
-        .rail-popover-ghost .rail-popover-step-label { opacity: 0.72; }
-        .rail-popover-ghost .rail-popover-title { text-shadow: 0 0 28px rgba(255, 255, 255, 0.1); }
-        .rail-popover-ghost .rail-popover-desc { opacity: 0.82; }
         [id^="step-"] { scroll-margin-top: 6rem; }
         .sds-newsletter-form {
             display: grid;
@@ -492,6 +453,9 @@
             justify-content: center;
             white-space: nowrap;
         }
+        /* The action row now carries two buttons; allow them to stack rather
+           than squeeze on narrow desktop widths. */
+        .sds-newsletter-action-row { flex-wrap: wrap; }
         .sds-newsletter-row {
             display: grid;
             grid-template-columns: minmax(0, 1fr) auto;
@@ -504,11 +468,11 @@
         }
         .sds-newsletter-input {
             min-width: 0;
-            border: 1px solid rgba(0, 240, 255, 0.28) !important;
+            border: 1px solid rgb(var(--t-electric-cyan) / 0.28) !important;
             border-radius: 0.15rem;
-            background: rgba(0, 0, 0, 0.26) !important;
-            color: #fff !important;
-            caret-color: #00f0ff !important;
+            background: rgba(var(--c-shadow-rgb), 0.26) !important;
+            color: rgb(var(--t-starlight-white)) !important;
+            caret-color: rgb(var(--t-electric-cyan)) !important;
             padding: 0.95rem 1rem;
             font: 500 1rem "Plus Jakarta Sans", sans-serif;
             outline: none;
@@ -517,12 +481,12 @@
             -webkit-appearance: none;
         }
         .sds-newsletter-input::placeholder {
-            color: rgba(227, 226, 226, 0.68);
+            color: rgb(var(--t-on-surface) / 0.68);
         }
         .sds-newsletter-input:focus {
-            background: rgba(0, 0, 0, 0.32) !important;
-            border-color: rgba(0, 240, 255, 0.72) !important;
-            box-shadow: 0 0 0 4px rgba(0, 240, 255, 0.1) !important;
+            background: rgba(var(--c-shadow-rgb), 0.32) !important;
+            border-color: rgb(var(--t-electric-cyan) / 0.72) !important;
+            box-shadow: 0 0 0 4px rgb(var(--t-electric-cyan) / 0.1) !important;
         }
         .sds-newsletter-submit {
             display: inline-flex;
@@ -532,7 +496,13 @@
             border: 0;
             border-radius: 0.55rem;
             padding: 0.9rem 1.05rem;
-            color: #050505;
+            /* This fill half-flipped: #39ff88 is a literal that stays bright in
+               both themes while the cyan stop was a token that darkened, and
+               the label was void-black, which flips to paper. Result was paper
+               text on bright green at 1.19:1 in light mode. A fill that does
+               not flip needs a label that does not flip — so both stops are now
+               literals and the label is --c-on-bright (14.5:1 and 13.7:1). */
+            color: var(--c-on-bright);
             background: linear-gradient(90deg, #39ff88, #00f0ff);
             font: 800 0.72rem "JetBrains Mono", monospace;
             letter-spacing: 0.08em;
@@ -551,15 +521,15 @@
         }
         .sds-newsletter-status {
             min-height: 1.25rem;
-            color: rgba(227, 226, 226, 0.72);
+            color: rgb(var(--t-on-surface) / 0.72);
             font: 700 0.72rem "JetBrains Mono", monospace;
             letter-spacing: 0.04em;
         }
         .sds-newsletter-status.is-success {
-            color: #39ff88;
+            color: var(--t-ink-39ff88);
         }
         .sds-newsletter-status.is-error {
-            color: #ffb4ab;
+            color: var(--t-ink-ffb4ab);
         }
         @media (max-width: 640px) {
             .sds-newsletter-form {
@@ -577,19 +547,28 @@
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/","gsap":"https://unpkg.com/gsap@3.12.5/index.js"}}</script>
 </head>
 <body class="bg-void-black text-on-background font-body-md overflow-x-hidden selection:bg-electric-cyan selection:text-void-black">
-<script src="assets/standard-site-nav.js?v=20260801-scroll-hide3" data-active="home"></script>
+<script src="assets/standard-site-nav.js?v=20260829-apps-retired" data-active="home"></script>
 <!-- Loading overlay &mdash; shown until surette-logo.js fires page reveal -->
 <div id="page-loader" aria-hidden="true">
   <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="23" cy="23" r="19" stroke="rgba(0,240,255,0.12)" stroke-width="3"/>
     <path d="M23 4 A19 19 0 0 1 42 23" stroke="#00f0ff" stroke-width="3" stroke-linecap="round"/>
   </svg>
-  <span style="font-family:Consolas,'Courier New',monospace;font-size:10px;letter-spacing:.22em;color:rgba(0,240,255,0.4);text-transform:uppercase">Loading</span>
+  <span style="font-family:Consolas,'Courier New',monospace;font-size:10px;letter-spacing:.22em;color:rgb(var(--t-electric-cyan));text-transform:uppercase">Loading</span>
 </div>
 <!-- Nova particle background widget mount (replaces former black-hole hero). Occupies the same fixed full-viewport hero slot. -->
 <div id="nova-bg" aria-hidden="true" style="position:fixed;inset:0;z-index:1;overflow:hidden;background:#160016;"></div>
-<!-- Anchored darkening scrim over the Nova background. Fixed to the viewport (sits above #nova-bg at z-1, below all page content at z-10) so it stays put while text scrolls freely. -->
-<div id="hero-tint" aria-hidden="true" style="position:fixed;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to bottom, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0.55) 35%, rgba(5,5,5,0.55) 65%, rgba(5,5,5,0.85) 100%);"></div>
+<!-- Anchored darkening scrim over the Nova background. Fixed to the viewport (sits above #nova-bg at z-1, below all page content at z-10) so it stays put while text scrolls freely.
+     TWO layers, topmost first: the original black gradient, then a flat neutral-grey
+     veil (2026-08-17). The grey is what pulls the galaxy's BRIGHT particles down —
+     the black gradient alone scales everything proportionally, so the bright spots
+     stayed bright relative to the white headline. Because the gradient is most
+     transparent through its 35-65% mid band, the grey reads strongest exactly where
+     the hero copy sits and barely touches the top and bottom.
+     Kept in the inline style on purpose: this element's background is authored
+     inline, and a stylesheet rule would lose to it without !important.
+     Dark-only by construction — the whole element is display:none in light. -->
+<div id="hero-tint" aria-hidden="true" style="position:fixed;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to bottom, rgb(var(--t-void-black) / 0.9) 0%, rgb(var(--t-void-black) / 0.55) 35%, rgb(var(--t-void-black) / 0.55) 65%, rgb(var(--t-void-black) / 0.85) 100%), rgb(var(--t-surface-container-highest) / 0.22);"></div>
 
 <!-- ============================================================ -->
 <!-- DESKTOP LAYOUT (>= md / 768px)                               -->
@@ -604,15 +583,26 @@
 <!-- Hero Section -->
 <section id="hero" class="relative min-h-screen flex flex-col overflow-hidden"><div class="scanline z-[3] pointer-events-none"></div>
 <div class="hero-headline-band relative z-10 w-full mx-auto px-margin-desktop text-center">
-<p class="hero-enter hero-enter-d0 text-on-surface-variant text-xl font-semibold tracking-widest uppercase mb-3 drop-shadow-[0_2px_12px_rgba(0,0,0,0.75)]">Welcome to</p>
-<h1 class="hero-enter hero-enter-d1 hero-headline-wide font-headline-xl font-bold text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.85)]">Surette Data Systems</h1>
-<p class="hero-enter hero-enter-d2 text-on-surface-variant mt-12 drop-shadow-[0_2px_16px_rgba(0,0,0,0.75)] text-2xl font-bold tracking-wide max-w-lg mx-auto">Custom agentic AI-powered business software, web apps, websites, hosting, branding, and on-site tech for Southwest Florida.</p>
+<p class="hero-enter hero-enter-d0 text-on-surface-variant text-xl font-semibold tracking-widest uppercase mb-3 drop-shadow-[0_2px_12px_rgba(var(--c-shadow-rgb), 0.75)]">Welcome to</p>
+<h1 class="hero-enter hero-enter-d1 hero-headline-wide font-headline-xl font-bold text-white drop-shadow-[0_2px_24px_rgba(var(--c-shadow-rgb), 0.85)]">Surette Data Systems</h1>
+<p class="hero-enter hero-enter-d2 text-on-surface-variant mt-12 drop-shadow-[0_2px_16px_rgba(var(--c-shadow-rgb), 0.75)] text-2xl font-bold tracking-wide max-w-lg mx-auto">Websites for Southwest Florida businesses &mdash; designed, hosted, updated, and supported by one team.</p>
+<!-- Proof strip — verbatim client quote from the testimonials section further
+     down this page, surfaced directly under the hero lead so it lands above
+     the fold. No star rating or "trusted by N" counter: unverified claims. -->
+<div class="sds-proof sds-proof--hero">
+<span class="sds-proof__label"><span class="material-symbols-outlined" aria-hidden="true">verified</span>Trusted by local businesses</span>
+<p class="sds-proof__quote">&ldquo;It feels like having our own website department.&rdquo;</p>
+<span class="sds-proof__who">Business Owner &middot; Local Service Business, SWFL</span>
+</div>
 </div>
 <div class="hero-video-stage relative z-0" aria-hidden="true"></div>
 <div class="hero-enter hero-enter-d3 hero-bottom-band relative z-10 w-full max-w-[min(100%,56rem)] mx-auto px-margin-desktop text-center">
 <div class="sds-newsletter-action-row">
 <a href="contact.html" class="sds-newsletter-contact px-12 py-5 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-mono text-label-mono font-bold rounded-lg hover:scale-105 active:scale-95 transition-all glow-cyan">
-                            Contact Us
+                            Get started
+                        </a>
+<a href="pricing.html" class="sds-hero-secondary px-12 py-5 font-label-mono text-label-mono font-bold rounded-lg transition-all">
+                            See pricing
                         </a>
 </div>
 <p class="font-label-mono text-label-mono text-on-surface-variant pt-8 tracking-wide">Southwest Florida &middot; Call or text <a class="text-electric-cyan hover:underline" href="tel:+12394048505">(239) 404-8505</a></p>
@@ -623,26 +613,20 @@
 <div class="max-w-container-max mx-auto">
 <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
 <div class="space-y-4">
-<span class="font-label-caps text-label-caps text-nebula-purple">ONLINE &amp; ON-SITE SERVICES</span>
-<h2 class="font-headline-lg text-headline-lg text-starlight-white">Everything your business needs online and on site</h2>
+<span class="font-label-caps text-label-caps text-electric-cyan">WHAT WE BUILD</span>
+<h2 class="font-headline-lg text-headline-lg text-starlight-white">A website that earns its keep &mdash; and the software behind it</h2>
 </div>
 <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">
-                        Websites, hosting, ongoing care, custom business web apps, complete rebranding, and local tech setup for homes and offices.
+                        Most businesses start with a managed website. When the work outgrows a website, the same team builds the software to run it.
                     </p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 auto-rows-fr gap-gutter">
-<a href="services/website-design-hosting.html" class="group glass-card p-10 rounded-xl hover:border-electric-cyan/40 transition-all duration-500 block h-full"><span class="material-symbols-outlined text-4xl text-electric-cyan mb-6">devices</span>
+<div class="grid grid-cols-1 md:grid-cols-2 auto-rows-fr gap-gutter">
+<a href="websites.html" class="group glass-card p-10 rounded-xl hover:border-electric-cyan/40 transition-all duration-500 block h-full"><span class="material-symbols-outlined text-4xl text-electric-cyan mb-6">devices</span>
 <h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Website Design &amp; Hosting</h3>
 <p class="font-body-md text-body-md text-on-surface-variant">Professional custom websites designed around your brand, plus fast, secure hosting with monitoring and backups &mdash; all handled by someone accountable when a change needs to be made safely.</p></a>
 <a href="apps.html" class="group glass-card p-10 rounded-xl hover:border-electric-cyan/40 transition-all duration-500 block h-full"><span class="material-symbols-outlined text-4xl text-electric-cyan mb-6">code</span>
 <h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Custom Business Web Apps</h3>
 <p class="font-body-md text-body-md text-on-surface-variant">Secure staff logins, customer records, reports, portals, integrations, and agentic AI automations when your business needs more.</p></a>
-<a href="services/in-home-services.html" class="group glass-card p-10 rounded-xl hover:border-electric-cyan/40 transition-all duration-500 block h-full"><span class="material-symbols-outlined text-4xl text-electric-cyan mb-6">home_pin</span>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">In-Home Tech Services</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">On-site help for Wi-Fi, devices, printers, home offices, and the local tech setup that keeps work moving.</p></a>
-<a href="services/office-network-setup.html" class="group glass-card p-10 rounded-xl hover:border-nebula-purple/40 transition-all duration-500 block h-full"><span class="material-symbols-outlined text-4xl text-nebula-purple mb-6">lan</span>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Office Network Setup</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Small office Wi-Fi, workstations, shared printers, network cleanup, and clean handoff notes.</p></a>
 </div>
 </div>
 </section>
@@ -673,38 +657,78 @@
 </div>
 </div>
 </section>
+<!-- Recent Work (Desktop) -->
+<section id="work" class="reveal-up py-24 px-margin-desktop">
+<div class="max-w-container-max mx-auto">
+<div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+<span class="font-label-caps text-label-caps text-electric-cyan">RECENT WORK</span>
+<h2 class="font-headline-lg text-headline-lg text-starlight-white">Websites we&rsquo;ve built</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">
+                        A few of the businesses running on something we designed, built, and still look after.
+                    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 auto-rows-fr gap-gutter">
+<a href="portfolio-naplesestatejewelry.html" class="group glass-card p-0 rounded-xl overflow-hidden block h-full hover:border-electric-cyan/40 border border-transparent transition-all duration-500"><img src="assets/portfolio/naples-estate-jewelry/home-live-20260801.png" alt="Naples Estate Jewelry storefront homepage" loading="lazy" decoding="async" width="1200" height="750" class="sds-media"/><div class="p-7"><p class="font-label-caps text-label-caps text-electric-cyan mb-2">Estate Jewelry &middot; Naples, FL</p><h3 class="font-headline-md text-headline-md text-starlight-white mb-3">Naples Estate Jewelry</h3><p class="font-body-md text-body-md text-on-surface-variant">A live estate jewelry storefront with era and category filters, detailed condition reporting, and a full commerce back office.</p></div></a>
+<a href="portfolio-metalscalc.html" class="group glass-card p-0 rounded-xl overflow-hidden block h-full hover:border-electric-cyan/40 border border-transparent transition-all duration-500"><img src="assets/portfolio/metalscalc/home.png" alt="SpotCalc.com product landing page" loading="lazy" decoding="async" width="1200" height="750" class="sds-media"/><div class="p-7"><p class="font-label-caps text-label-caps text-electric-cyan mb-2">Precious Metals &middot; PWA</p><h3 class="font-headline-md text-headline-md text-starlight-white mb-3">SpotCalc.com</h3><p class="font-body-md text-body-md text-on-surface-variant">A product site and install hub for a precious-metal buying calculator, with live spot prices on load and a one-tap install flow.</p></div></a>
+<a href="https://deepfieldgallery.com/" target="_blank" rel="noopener" class="group glass-card p-0 rounded-xl overflow-hidden block h-full hover:border-electric-cyan/40 border border-transparent transition-all duration-500"><img src="assets/portfolio/deepfield-gallery/card.jpg" alt="Deepfield Gallery live homepage" loading="lazy" decoding="async" width="1200" height="750" class="sds-media"/><div class="p-7"><p class="font-label-caps text-label-caps text-electric-cyan mb-2">Curated Gallery &middot; Naples, FL</p><h3 class="font-headline-md text-headline-md text-starlight-white mb-3">Deepfield Gallery</h3><p class="font-body-md text-body-md text-on-surface-variant">A curated gallery for art, jewelry, antiques, and one-of-a-kind objects, with artist profiles, saved items, and Naples pickup.</p></div></a>
+</div>
+<div class="text-center mt-12">
+<a href="portfolio.html" class="inline-flex items-center justify-center gap-2 px-10 py-4 font-label-caps text-label-caps rounded-lg sds-hero-secondary">See all work</a>
+</div>
+</div>
+</section>
+<!-- Local Services (Desktop) — the homepage route to the two on-site pages,
+     which have had no nav entry since the Services dropdown was retired. -->
+<section id="local-services" class="reveal-up pb-24 px-margin-desktop">
+<div class="max-w-container-max mx-auto">
+<div class="text-center max-w-3xl mx-auto mb-10 space-y-3">
+<span class="font-label-caps text-label-caps text-nebula-purple">ALSO LOCAL</span>
+<h2 class="font-headline-md text-headline-md text-starlight-white">On-site help across Southwest Florida</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 auto-rows-fr gap-gutter">
+<a href="services/in-home-services.html" class="group glass-card p-10 rounded-xl hover:border-electric-cyan/40 transition-all duration-500 block h-full"><span class="material-symbols-outlined text-4xl text-electric-cyan mb-6">home_pin</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">In-Home Tech Services</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">On-site help for Wi-Fi, devices, printers, home offices, and the local tech setup that keeps work moving.</p></a>
+<a href="services/office-network-setup.html" class="group glass-card p-10 rounded-xl hover:border-nebula-purple/40 transition-all duration-500 block h-full"><span class="material-symbols-outlined text-4xl text-nebula-purple mb-6">lan</span>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Office Network Setup</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Small office Wi-Fi, workstations, shared printers, network cleanup, and clean handoff notes.</p></a>
+</div>
+</div>
+</section>
 <!-- How It Works -->
 <section id="process" class="reveal-up py-24 px-margin-desktop overflow-hidden">
 <div class="max-w-container-max mx-auto">
 <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
 <span class="font-label-caps text-label-caps text-electric-cyan">HOW IT WORKS</span>
-<h2 class="font-headline-lg text-headline-lg text-starlight-white">From discovery to ongoing support</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">A straightforward process designed for busy business owners &mdash; not developers.</p>
+<h2 class="font-headline-lg text-headline-lg text-starlight-white">From first call to live in about 1&ndash;2 weeks.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">No drawn-out timelines, no back-and-forth. A One Page site is usually live in 1&ndash;2 weeks once content and access are in hand &mdash; larger builds run longer.</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<!-- Three steps, not four. Modelled on funnls.com's process block: the headline
+     carries the commitment and the steps compress to discovery / build / launch.
+     The old 03 Manage and 04 Support were not process steps at all — they were the
+     ongoing service, which the "what we build" cards and the WhatsApp section
+     directly below already cover. Their content folded into step 03. Keep this at
+     three; a fourth card reintroduces the overlap. The 1–2 week figure is the
+     owner's own published One Page estimate (websites.html) and its qualifier must
+     travel with it — larger Growth and Pro builds run longer. -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
 <div id="step-discover" class="glass-card p-8 rounded-xl text-center hover:border-electric-cyan/30 transition-all">
 <span class="font-label-mono text-label-mono text-electric-cyan mb-4 block">01</span>
 <span class="material-symbols-outlined text-3xl text-nebula-purple mb-4">search</span>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-3">Discovery</h3>
-<p class="font-body-md text-body-md text-on-surface-variant text-sm">We learn about your business, your goals, and what your website needs to accomplish.</p>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-3">Discovery call</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">We learn your business, your customers, and what the website actually needs to do &mdash; then tell you which plan fits.</p>
 </div>
 <div id="step-build" class="glass-card p-8 rounded-xl text-center hover:border-electric-cyan/30 transition-all">
 <span class="font-label-mono text-label-mono text-electric-cyan mb-4 block">02</span>
 <span class="material-symbols-outlined text-3xl text-nebula-purple mb-4">web</span>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-3">Build</h3>
-<p class="font-body-md text-body-md text-on-surface-variant text-sm">We design and launch your professional website &mdash; mobile-friendly, fast, and built to represent your brand.</p>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-3">Design &amp; build</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">We design and build it around one goal: more calls, quotes, and booked work. You send content once and review when it&rsquo;s ready.</p>
 </div>
 <div id="step-manage" class="glass-card p-8 rounded-xl text-center hover:border-electric-cyan/30 transition-all">
 <span class="font-label-mono text-label-mono text-electric-cyan mb-4 block">03</span>
 <span class="material-symbols-outlined text-3xl text-nebula-purple mb-4">cloud_done</span>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-3">Manage</h3>
-<p class="font-body-md text-body-md text-on-surface-variant text-sm">We host, monitor, and secure your website with backups and ongoing maintenance.</p>
-</div>
-<div id="step-support" class="glass-card p-8 rounded-xl text-center hover:border-electric-cyan/30 transition-all">
-<span class="font-label-mono text-label-mono text-electric-cyan mb-4 block">04</span>
-<span class="material-symbols-outlined text-3xl text-nebula-purple mb-4">forum</span>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-3">Support</h3>
-<p class="font-body-md text-body-md text-on-surface-variant text-sm">We set up a dedicated WhatsApp account for your business. Message us there whenever you need changes &mdash; no portals, no hassle.</p>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-3">Launch &amp; care</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">We launch it, then host, monitor, back up, and handle every change you send &mdash; message us on WhatsApp, no portals.</p>
 </div>
 </div>
 </div>
@@ -721,7 +745,7 @@
 <p class="font-body-lg text-body-lg text-on-surface-variant">No support portals. No complicated systems. No forgotten passwords.</p>
 <p class="font-body-md text-body-md text-on-surface-variant">We set up a dedicated WhatsApp account for every client &mdash; message us there whenever you need something changed on your website.</p>
 <a href="https://wa.me/12394048505" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-4 bg-[#25D366]/10 border border-[#25D366]/40 text-starlight-white font-label-mono text-label-mono rounded-lg hover:bg-[#25D366]/20 transition-all">
-<span class="material-symbols-outlined text-[#25D366]">chat</span>
+<span class="material-symbols-outlined sds-whatsapp-text">chat</span>
 Message Us on WhatsApp
 </a>
 </div>
@@ -780,7 +804,7 @@ Message Us on WhatsApp
 </section>
 </main>
 <!-- Footer Shell -->
-<script src="assets/standard-site-footer.js?v=20260716-footer-3line" data-variant="desktop"></script>
+<script src="assets/standard-site-footer.js?v=20260817-cta-r5" data-variant="desktop"></script>
 </div>
 <!-- /DESKTOP -->
 
@@ -793,15 +817,26 @@ Message Us on WhatsApp
 <main class="relative z-10 pt-16 pb-24">
 <!-- Hero Section -->
 <section id="hero-mobile" class="relative min-h-[100vh] flex flex-col overflow-hidden"><div class="hero-headline-band relative z-10 w-full mx-auto px-margin-mobile text-center pt-20">
-<p class="hero-enter hero-enter-d0 text-on-surface-variant text-xl font-semibold tracking-widest uppercase mb-3 drop-shadow-[0_2px_12px_rgba(0,0,0,0.75)]">Welcome to</p>
-<h1 class="hero-enter hero-enter-d1 hero-headline-wide font-headline-xl font-bold text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.85)]">Surette Data Systems</h1>
-<p class="hero-enter hero-enter-d2 font-body-md text-on-surface-variant mt-5 drop-shadow-[0_2px_16px_rgba(0,0,0,0.75)]">Custom agentic AI-powered business software, web apps, websites, hosting, branding, and on-site tech for Southwest Florida.</p>
+<p class="hero-enter hero-enter-d0 text-on-surface-variant text-xl font-semibold tracking-widest uppercase mb-3 drop-shadow-[0_2px_12px_rgba(var(--c-shadow-rgb), 0.75)]">Welcome to</p>
+<h1 class="hero-enter hero-enter-d1 hero-headline-wide font-headline-xl font-bold text-white drop-shadow-[0_2px_24px_rgba(var(--c-shadow-rgb), 0.85)]">Surette Data Systems</h1>
+<p class="hero-enter hero-enter-d2 font-body-md text-on-surface-variant mt-5 drop-shadow-[0_2px_16px_rgba(var(--c-shadow-rgb), 0.75)]">Websites for Southwest Florida businesses &mdash; designed, hosted, updated, and supported by one team.</p>
+<!-- Proof strip — verbatim client quote from the testimonials section further
+     down this page, surfaced directly under the hero lead so it lands above
+     the fold. No star rating or "trusted by N" counter: unverified claims. -->
+<div class="sds-proof sds-proof--hero">
+<span class="sds-proof__label"><span class="material-symbols-outlined" aria-hidden="true">verified</span>Trusted by local businesses</span>
+<p class="sds-proof__quote">&ldquo;It feels like having our own website department.&rdquo;</p>
+<span class="sds-proof__who">Business Owner &middot; Local Service Business, SWFL</span>
+</div>
 </div>
 <div class="hero-video-stage relative z-0" aria-hidden="true"></div>
 <div class="hero-enter hero-enter-d3 hero-bottom-band relative z-10 w-full max-w-xl mx-auto px-margin-mobile text-center pb-8">
 <div class="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-4 pt-8">
-<a href="contact.html" class="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-starlight-white font-label-caps text-label-caps rounded-sm transition-all active:scale-95">
-                            Contact Us
+<a href="contact.html" class="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple sds-on-accent font-label-caps text-label-caps rounded-sm transition-all active:scale-95">
+                            Get started
+                        </a>
+<a href="pricing.html" class="sds-hero-secondary w-full sm:w-auto px-10 py-4 font-label-caps text-label-caps rounded-sm transition-all active:scale-95">
+                            See pricing
                         </a>
 </div>
 <p class="font-label-mono text-label-mono text-on-surface-variant pt-6 tracking-wide">Southwest Florida &middot; <a class="text-electric-cyan hover:underline" href="tel:+12394048505">(239) 404-8505</a></p>
@@ -811,14 +846,12 @@ Message Us on WhatsApp
 <section class="py-16 px-margin-mobile">
 <div class="space-y-8">
 <div class="text-center max-w-xl mx-auto space-y-3">
-<span class="font-label-caps text-label-caps text-nebula-purple">ONLINE &amp; ON-SITE SERVICES</span>
-<h2 class="font-headline-lg text-headline-lg-mobile text-starlight-white">Everything your business needs online and on site</h2>
+<span class="font-label-caps text-label-caps text-electric-cyan">WHAT WE BUILD</span>
+<h2 class="font-headline-lg text-headline-lg-mobile text-starlight-white">A website that earns its keep &mdash; and the software behind it</h2>
 </div>
 <div class="grid grid-cols-1 auto-rows-fr gap-4">
-<a href="services/website-design-hosting.html" class="glass-card p-8 rounded-lg block h-full hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-4">devices</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Website Design &amp; Hosting</h3><p class="font-body-md text-on-surface-variant text-sm">Custom websites built to convert, plus fast, secure, monitored hosting.</p></a>
+<a href="websites.html" class="glass-card p-8 rounded-lg block h-full hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-4">devices</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Website Design &amp; Hosting</h3><p class="font-body-md text-on-surface-variant text-sm">Custom websites built to convert, plus fast, secure, monitored hosting.</p></a>
 <a href="apps.html" class="glass-card p-8 rounded-lg block h-full hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-4">code</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Custom Business Web Apps</h3><p class="font-body-md text-on-surface-variant text-sm">Staff logins, customer records, reports, integrations, and agentic AI automations.</p></a>
-<a href="services/in-home-services.html" class="glass-card p-8 rounded-lg block h-full hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-4">home_pin</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">In-Home Tech Services</h3><p class="font-body-md text-on-surface-variant text-sm">Wi-Fi, devices, printers, smart equipment, and home office setup.</p></a>
-<a href="services/office-network-setup.html" class="glass-card p-8 rounded-lg block h-full hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-nebula-purple text-3xl mb-4">lan</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Office Network Setup</h3><p class="font-body-md text-on-surface-variant text-sm">Small office Wi-Fi, workstations, shared devices, and network cleanup.</p></a>
 </div>
 </div>
 </section>
@@ -837,15 +870,45 @@ Message Us on WhatsApp
 </div>
 </div>
 </section>
+<!-- Recent Work (Mobile) -->
+<section class="py-16 px-margin-mobile">
+<div class="space-y-8">
+<div class="text-center max-w-xl mx-auto space-y-3">
+<span class="font-label-caps text-label-caps text-electric-cyan">RECENT WORK</span>
+<h2 class="font-headline-lg text-headline-lg-mobile text-starlight-white">Websites we&rsquo;ve built</h2>
+</div>
+<div class="grid grid-cols-1 auto-rows-fr gap-4">
+<a href="portfolio-naplesestatejewelry.html" class="group glass-card p-0 rounded-xl overflow-hidden block h-full hover:border-electric-cyan/40 border border-transparent transition-all duration-500"><img src="assets/portfolio/naples-estate-jewelry/home-live-20260801.png" alt="Naples Estate Jewelry storefront homepage" loading="lazy" decoding="async" width="1200" height="750" class="sds-media"/><div class="p-7"><p class="font-label-caps text-label-caps text-electric-cyan mb-2">Estate Jewelry &middot; Naples, FL</p><h3 class="font-headline-md text-headline-md text-starlight-white mb-3">Naples Estate Jewelry</h3><p class="font-body-md text-body-md text-on-surface-variant">A live estate jewelry storefront with era and category filters, detailed condition reporting, and a full commerce back office.</p></div></a>
+<a href="portfolio-metalscalc.html" class="group glass-card p-0 rounded-xl overflow-hidden block h-full hover:border-electric-cyan/40 border border-transparent transition-all duration-500"><img src="assets/portfolio/metalscalc/home.png" alt="SpotCalc.com product landing page" loading="lazy" decoding="async" width="1200" height="750" class="sds-media"/><div class="p-7"><p class="font-label-caps text-label-caps text-electric-cyan mb-2">Precious Metals &middot; PWA</p><h3 class="font-headline-md text-headline-md text-starlight-white mb-3">SpotCalc.com</h3><p class="font-body-md text-body-md text-on-surface-variant">A product site and install hub for a precious-metal buying calculator, with live spot prices on load and a one-tap install flow.</p></div></a>
+<a href="https://deepfieldgallery.com/" target="_blank" rel="noopener" class="group glass-card p-0 rounded-xl overflow-hidden block h-full hover:border-electric-cyan/40 border border-transparent transition-all duration-500"><img src="assets/portfolio/deepfield-gallery/card.jpg" alt="Deepfield Gallery live homepage" loading="lazy" decoding="async" width="1200" height="750" class="sds-media"/><div class="p-7"><p class="font-label-caps text-label-caps text-electric-cyan mb-2">Curated Gallery &middot; Naples, FL</p><h3 class="font-headline-md text-headline-md text-starlight-white mb-3">Deepfield Gallery</h3><p class="font-body-md text-body-md text-on-surface-variant">A curated gallery for art, jewelry, antiques, and one-of-a-kind objects, with artist profiles, saved items, and Naples pickup.</p></div></a>
+</div>
+<div class="text-center">
+<a href="portfolio.html" class="inline-flex items-center justify-center gap-2 w-full px-8 py-4 font-label-caps text-label-caps rounded-lg sds-hero-secondary">See all work</a>
+</div>
+</div>
+</section>
+<!-- Local Services (Mobile) -->
+<section class="py-16 px-margin-mobile">
+<div class="space-y-8">
+<div class="text-center max-w-xl mx-auto space-y-3">
+<span class="font-label-caps text-label-caps text-nebula-purple">ALSO LOCAL</span>
+<h2 class="font-headline-lg text-headline-lg-mobile text-starlight-white">On-site help across Southwest Florida</h2>
+</div>
+<div class="grid grid-cols-1 auto-rows-fr gap-4">
+<a href="services/in-home-services.html" class="glass-card p-8 rounded-lg block h-full hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-4">home_pin</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">In-Home Tech Services</h3><p class="font-body-md text-on-surface-variant text-sm">Wi-Fi, devices, printers, smart equipment, and home office setup.</p></a>
+<a href="services/office-network-setup.html" class="glass-card p-8 rounded-lg block h-full hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-nebula-purple text-3xl mb-4">lan</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Office Network Setup</h3><p class="font-body-md text-on-surface-variant text-sm">Small office Wi-Fi, workstations, shared devices, and network cleanup.</p></a>
+</div>
+</div>
+</section>
 <!-- How It Works (Mobile) -->
 <section class="py-16 px-margin-mobile">
 <div class="space-y-8">
-<div class="text-center space-y-3"><span class="font-label-caps text-label-caps text-electric-cyan">HOW IT WORKS</span><h2 class="font-headline-lg text-headline-lg-mobile text-starlight-white">From discovery to support</h2></div>
+<div class="text-center space-y-3"><span class="font-label-caps text-label-caps text-electric-cyan">HOW IT WORKS</span><h2 class="font-headline-lg text-headline-lg-mobile text-starlight-white">From first call to live in about 1&ndash;2 weeks.</h2><p class="font-body-md text-on-surface-variant text-sm">No drawn-out timelines, no back-and-forth. A One Page site is usually live in 1&ndash;2 weeks once content and access are in hand &mdash; larger builds run longer.</p></div>
+<!-- Mirror of the desktop three-step block above — edit both or they drift. -->
 <div class="grid grid-cols-1 auto-rows-fr gap-4">
-<div class="glass-card p-6 rounded-lg flex gap-4"><span class="font-label-mono text-electric-cyan">01</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">Discovery</h3><p class="font-body-md text-on-surface-variant text-sm">We learn about your business and goals.</p></div></div>
-<div class="glass-card p-6 rounded-lg flex gap-4"><span class="font-label-mono text-electric-cyan">02</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1"><a href="services/website-design-hosting.html" class="hover:text-electric-cyan">Build</a></h3><p class="font-body-md text-on-surface-variant text-sm">We design and launch your professional website.</p></div></div>
-<div class="glass-card p-6 rounded-lg flex gap-4"><span class="font-label-mono text-electric-cyan">03</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">Manage</h3><p class="font-body-md text-on-surface-variant text-sm">We host, monitor, and secure your website.</p></div></div>
-<div class="glass-card p-6 rounded-lg flex gap-4"><span class="font-label-mono text-electric-cyan">04</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1"><a href="services/website-design-hosting.html" class="hover:text-electric-cyan">Support</a></h3><p class="font-body-md text-on-surface-variant text-sm">We set up a dedicated WhatsApp account &mdash; message us there whenever you need changes.</p></div></div>
+<div class="glass-card p-6 rounded-lg flex gap-4"><span class="font-label-mono text-electric-cyan">01</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">Discovery call</h3><p class="font-body-md text-on-surface-variant text-sm">We learn your business, your customers, and what the website needs to do &mdash; then tell you which plan fits.</p></div></div>
+<div class="glass-card p-6 rounded-lg flex gap-4"><span class="font-label-mono text-electric-cyan">02</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1"><a href="services/website-design-hosting.html" class="hover:text-electric-cyan">Design &amp; build</a></h3><p class="font-body-md text-on-surface-variant text-sm">We build it around one goal: more calls, quotes, and booked work. You send content once and review when it&rsquo;s ready.</p></div></div>
+<div class="glass-card p-6 rounded-lg flex gap-4"><span class="font-label-mono text-electric-cyan">03</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1"><a href="services/website-design-hosting.html" class="hover:text-electric-cyan">Launch &amp; care</a></h3><p class="font-body-md text-on-surface-variant text-sm">We launch it, then host, monitor, back up, and handle every change you send &mdash; message us on WhatsApp, no portals.</p></div></div>
 </div>
 </div>
 </section>
@@ -891,14 +954,10 @@ Message Us on WhatsApp
 </section>
 </main>
 <!-- Footer -->
-<script src="assets/standard-site-footer.js?v=20260716-footer-3line" data-variant="mobile"></script>
+<script src="assets/standard-site-footer.js?v=20260817-cta-r5" data-variant="mobile"></script>
 </div>
 <!-- /MOBILE -->
-
-
-<script src="assets/mobile-services-nav.js?v=20260715-services-merge"></script>
-<script src="assets/account-nav.js?v=20260715-login-highlight"></script>
-<script src="assets/rail.js?v=20260602-rail-active"></script>
+<script src="assets/account-nav.js?v=20260817-cta-r5"></script>
 <script type="module">
     import * as THREE from "https://esm.sh/three@0.136.0";
     import { OrbitControls } from "https://esm.sh/three@0.136.0/examples/jsm/controls/OrbitControls";
@@ -939,6 +998,29 @@ Message Us on WhatsApp
        ???  END OF MODIFIABLE VARIABLES  ???
        ============================================================ */
 
+
+    /* ----------------------------------------------------------------
+       Light-theme gate (2026-08-16) — integration code, not engine code.
+
+       In light mode the Nova galaxy is removed entirely, not just hidden:
+       skipping init avoids building and animating 150,000 particles that
+       nobody can see. That is why this is a guard around the engine rather
+       than a `display: none` rule — CSS would hide the canvas but leave the
+       rAF loop and the GPU work running.
+
+       Implemented as a wrap so the engine below stays byte-for-byte
+       unmodified, per the standing rule that only the CONFIG block and the
+       homepage integration may change. The closing brace sits at the very end
+       of this module. A module cannot use top-level `return`, hence the block.
+
+       Do not write a literal script-closing tag anywhere in this file's JS,
+       including inside comments: the HTML parser ends the script element on
+       that byte sequence regardless of JS context, which silently truncates
+       the module and orphans the engine.
+       ---------------------------------------------------------------- */
+    const SHOW_NOVA = document.documentElement.getAttribute("data-theme") !== "light";
+
+    if (SHOW_NOVA) {
 
     /* ----------------------------------------------------------------
        Engine &mdash; DO NOT MODIFY below this line.
@@ -1097,9 +1179,22 @@ Message Us on WhatsApp
       p.rotation.y = t * CONFIG.rotationSpeed;
       renderer.render(scene, camera);
     });
+
+    }  /* end if (SHOW_NOVA) — see the light-theme gate above */
+
+    /* Switching INTO dark on this page needs a reload: the engine only ever
+       initializes at module evaluation, so there is nothing to restart in
+       place without restructuring it into a callable. The reload is scoped as
+       tightly as possible — homepage only, only when Nova was actually
+       skipped, and only in the light→dark direction, so it cannot loop. */
+    window.addEventListener("sds-themechange", function (event) {
+      if (!SHOW_NOVA && event.detail && event.detail.theme === "dark") {
+        window.location.reload();
+      }
+    });
 </script>
 <script src="assets/supabase-config.js"></script>
 <script type="module" src="assets/newsletter-signup.js?v=20260702-homepage-subscribers"></script>
-<script src="surette-logo.js?v=20260721-fonts-gate"></script>
+<script src="surette-logo.js?v=20260817-cta-r5"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
 </body></html>
