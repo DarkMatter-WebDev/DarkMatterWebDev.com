@@ -14,7 +14,7 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Portfolio | Surette Data Systems</title>
-<meta name="description" content="Explore Surette Data Systems websites and past system builds, including custom business software, web apps, websites, e-commerce builds, and portfolio case studies."/>
+<meta name="description" content="Explore Surette Data Systems websites and past project case studies for Southwest Florida businesses."/>
 <link rel="canonical" href="https://surettesystems.com/portfolio.html"/>
 <link rel="icon" href="/assets/favicon.svg?v=20260716-blur-on" type="image/svg+xml"/>
 <link rel="icon" href="/assets/favicon-32.png?v=20260716-blur-on" sizes="32x32" type="image/png"/>
@@ -24,7 +24,7 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
 <meta property="og:site_name" content="Surette Data Systems"/>
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="Portfolio | Surette Data Systems"/>
-<meta property="og:description" content="A gateway to Surette Data Systems apps and websites."/>
+<meta property="og:description" content="A gateway to Surette Data Systems websites and past project case studies."/>
 <meta property="og:url" content="https://surettesystems.com/portfolio.html"/>
 <meta property="og:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
 <meta property="og:image:width" content="1200"/>
@@ -34,8 +34,8 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
 <meta name="twitter:title" content="Portfolio | Surette Data Systems"/>
 <meta name="twitter:description" content="Explore websites and past system builds by Surette Data Systems."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
-<link href="assets/nav.css?v=20260829-no-account" rel="stylesheet"/>
-<link href="assets/cosmic-web.css?v=20260827-contrast-nav" rel="stylesheet"/>
+<link href="assets/nav.css?v=20260830-grid-center" rel="stylesheet"/>
+<link href="assets/cosmic-web.css?v=20260830-tint-cleanup" rel="stylesheet"/>
 <script>
 tailwind = window.tailwind || {};
 tailwind.config = {
@@ -90,6 +90,82 @@ tailwind.config = {
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <style>
+  /* "Systems we've built" case-study cards. Two prior passes still read as
+     plain text blocks — an opaque background alone doesn't say "link,"
+     only an explicit CTA + hover motion does. Dedicated component: icon,
+     eyebrow, title that shifts to the accent colour on hover, and a "View
+     case study" line with an arrow that slides on hover — the same
+     affordance language as .folio-set's "Open the set" CTA just below
+     this grid. */
+  .app-case-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 28px;
+    border-radius: 18px;
+    background: rgb(var(--t-surface-container-low) / 0.72);
+    border: 1px solid var(--c-veil-3);
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  }
+  .app-case-card:hover,
+  .app-case-card:focus-visible {
+    background: rgb(var(--t-surface-container-low) / 0.92);
+    border-color: rgb(var(--t-electric-cyan) / 0.55);
+    box-shadow: 0 22px 48px rgba(var(--c-shadow-rgb), 0.4), 0 0 0 1px rgb(var(--t-electric-cyan) / 0.12);
+    outline: none;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .app-case-card:hover,
+    .app-case-card:focus-visible { transform: translateY(-6px); }
+  }
+  .app-case-card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    background: rgb(var(--t-electric-cyan) / 0.12);
+    color: rgb(var(--t-electric-cyan));
+    font-size: 22px;
+  }
+  .app-case-card__eyebrow {
+    margin-bottom: 8px;
+    color: rgb(var(--t-on-surface-variant));
+  }
+  .app-case-card__title {
+    margin-bottom: 8px;
+    color: rgb(var(--t-starlight-white));
+    transition: color 0.3s ease;
+  }
+  .app-case-card:hover .app-case-card__title,
+  .app-case-card:focus-visible .app-case-card__title {
+    color: rgb(var(--t-electric-cyan));
+  }
+  .app-case-card__desc {
+    flex: 1 0 auto;
+    margin-bottom: 20px;
+    color: rgb(var(--t-on-surface-variant));
+  }
+  .app-case-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: auto;
+    font: 700 11px "JetBrains Mono", monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgb(var(--t-electric-cyan));
+  }
+  .app-case-card__cta .material-symbols-outlined {
+    font-size: 16px;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .app-case-card:hover .app-case-card__cta .material-symbols-outlined,
+  .app-case-card:focus-visible .app-case-card__cta .material-symbols-outlined {
+    transform: translateX(4px);
+  }
   #sds-logo a.sds-anchor,
   #sds-logo-mobile a.sds-anchor {
     display: flex !important;
@@ -170,7 +246,10 @@ tailwind.config = {
   }
   .portfolio-hub-card-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
     gap: clamp(2.5rem, 4.5vw, 3.75rem);
     margin-bottom: clamp(4.5rem, 8vw, 6rem);
   }
@@ -504,31 +583,57 @@ tailwind.config = {
 </div>
 </div>
 </section>
-<section class="portfolio-hub-card-grid" aria-label="Portfolio categories">
-<a class="folio-set folio-set--apps" href="apps.html">
-<span class="folio-set__tab">Set 01 &middot; Software</span>
-<div class="folio-set__frame">
-<div class="folio-set__plate">
-<div class="folio-set__art" aria-hidden="true">
-<span class="folio-set__peek folio-set__peek--b"></span>
-<span class="folio-set__peek folio-set__peek--a"></span>
-<img src="assets/apps/auction/auction-dashboard.webp" alt=""/>
-</div>
-<div class="folio-set__info">
-<h2 class="folio-set__title">Systems we&rsquo;ve built</h2>
-<p class="folio-set__desc">Custom business systems we designed and built for auctions, secondhand dealers, payroll, antique malls, and precious-metal workflows. Case studies of past work &mdash; these are not products for sale.</p>
-<span class="folio-set__chips">
-<span class="folio-set__chip">Software hub</span>
-<span class="folio-set__chip">Gallery inside</span>
-<span class="folio-set__chip">Live demos</span>
-</span>
-<span class="folio-set__cta">Open the hub <span class="material-symbols-outlined">arrow_forward</span></span>
-</div>
-</div>
-</div>
+<section class="mb-16">
+<p class="font-label-caps text-label-caps text-electric-cyan mb-4">Systems we&rsquo;ve built</p>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mb-8">Custom business systems designed and built for auctions, secondhand dealers, payroll, antique malls, and precious-metal workflows &mdash; shown as case studies of past work, not products for sale. Surette Data Systems no longer takes on projects at this scale; the focus today is one-time website builds.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<a href="secondhand-dealer-management-system.html" class="app-case-card">
+<span class="app-case-card__icon material-symbols-outlined" aria-hidden="true">fact_check</span>
+<p class="app-case-card__eyebrow font-label-caps text-label-caps">Compliance Platform</p>
+<h3 class="app-case-card__title font-headline-md text-headline-md">Secondhand Dealer Management System</h3>
+<p class="app-case-card__desc font-body-md text-body-md text-sm">Compliance and business management for Florida-licensed secondhand and precious-metal dealers.</p>
+<span class="app-case-card__cta">View case study <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
 </a>
+<a href="benji-payroll-management-system.html" class="app-case-card">
+<span class="app-case-card__icon material-symbols-outlined" aria-hidden="true">payments</span>
+<p class="app-case-card__eyebrow font-label-caps text-label-caps">Payroll System</p>
+<h3 class="app-case-card__title font-headline-md text-headline-md">Benji Payroll Management System</h3>
+<p class="app-case-card__desc font-body-md text-body-md text-sm">A clean, auditable payroll system replacing spreadsheets and email threads for hourly teams.</p>
+<span class="app-case-card__cta">View case study <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
+</a>
+<a href="auction-house-consignment-store-software.html" class="app-case-card">
+<span class="app-case-card__icon material-symbols-outlined" aria-hidden="true">gavel</span>
+<p class="app-case-card__eyebrow font-label-caps text-label-caps">Auction Software</p>
+<h3 class="app-case-card__title font-headline-md text-headline-md">Auction House &amp; Consignment Store Software</h3>
+<p class="app-case-card__desc font-body-md text-body-md text-sm">Floor sales and live auctions in one system for consignors, inventory, and bidder activity.</p>
+<span class="app-case-card__cta">View case study <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
+</a>
+<a href="antique-mall-vendor-management-system-and-auction-platform.html" class="app-case-card">
+<span class="app-case-card__icon material-symbols-outlined" aria-hidden="true">storefront</span>
+<p class="app-case-card__eyebrow font-label-caps text-label-caps">Marketplace Platform</p>
+<h3 class="app-case-card__title font-headline-md text-headline-md">Antique Mall Vendor &amp; Auction Platform</h3>
+<p class="app-case-card__desc font-body-md text-body-md text-sm">Vendor storefronts, listings, auction discovery, and marketplace browsing for ThirdStreetAuctions.com.</p>
+<span class="app-case-card__cta">View case study <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
+</a>
+<a href="metalscalc-buying-calculator.html" class="app-case-card">
+<span class="app-case-card__icon material-symbols-outlined" aria-hidden="true">calculate</span>
+<p class="app-case-card__eyebrow font-label-caps text-label-caps">Pricing Tool</p>
+<h3 class="app-case-card__title font-headline-md text-headline-md">SpotCalc Buying Calculator</h3>
+<p class="app-case-card__desc font-body-md text-body-md text-sm">From weigh-in to printed offer in under 10 seconds, with live spot pricing and one-tap invoices.</p>
+<span class="app-case-card__cta">View case study <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
+</a>
+<a href="metalspredictor-gold-silver-analyzer.html" class="app-case-card">
+<span class="app-case-card__icon material-symbols-outlined" aria-hidden="true">monitoring</span>
+<p class="app-case-card__eyebrow font-label-caps text-label-caps">Market Analysis</p>
+<h3 class="app-case-card__title font-headline-md text-headline-md">MetalsPredictor Trend Analyzer</h3>
+<p class="app-case-card__desc font-body-md text-body-md text-sm">Live spot prices, candlestick charts, and technical indicators for gold and silver.</p>
+<span class="app-case-card__cta">View case study <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></span>
+</a>
+</div>
+</section>
+<section class="portfolio-hub-card-grid" aria-label="Portfolio categories">
 <a class="folio-set folio-set--web" href="casestudies.html">
-<span class="folio-set__tab">Set 02 &middot; Websites</span>
+<span class="folio-set__tab">Websites</span>
 <div class="folio-set__frame">
 <div class="folio-set__plate">
 <div class="folio-set__art" aria-hidden="true">
@@ -559,7 +664,7 @@ tailwind.config = {
 <a href="contact.html" class="inline-flex items-center justify-center gap-2 px-10 py-4 bg-gradient-to-r from-electric-cyan to-nebula-purple text-void-black font-label-caps text-label-caps rounded-lg font-bold hover:opacity-90 active:scale-95 transition-all"><span class="material-symbols-outlined text-base">send</span>Get started</a>
 </section>
 </main>
-<script src="assets/standard-site-footer.js?v=20260829-no-account"></script>
+<script src="assets/standard-site-footer.js?v=20260830-no-hosting-label"></script>
 <script src="surette-logo.js?v=20260817-cta-r5"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo'); SuretteLogo.init('sds-logo-mobile'); });</script>
 </body>

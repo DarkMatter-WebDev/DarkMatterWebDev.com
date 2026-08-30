@@ -16,7 +16,7 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <title>Website Pricing | Surette Data Systems</title>
-<meta name="description" content="Pay once, own it outright. Custom website builds from $450 &mdash; deployed to your own hosting or a free Netlify account in your name, no monthly fees, no contracts."/>
+<meta name="description" content="Pay once, own it outright. Custom website builds from $650 &mdash; deployed to your own hosting or a free Netlify account in your name, no monthly fees, no contracts."/>
 <link rel="canonical" href="https://surettesystems.com/pricing.html"/>
 <link rel="icon" href="/assets/favicon.svg?v=20260716-blur-on" type="image/svg+xml"/>
 <link rel="icon" href="/assets/favicon-32.png?v=20260716-blur-on" sizes="32x32" type="image/png"/>
@@ -27,19 +27,19 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
 <meta property="og:locale" content="en_US"/>
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="Website Pricing | Surette Data Systems"/>
-<meta property="og:description" content="Pay once, own it outright. Custom website builds from $450 &mdash; deployed to your own hosting or a free Netlify account in your name, no monthly fees, no contracts."/>
+<meta property="og:description" content="Pay once, own it outright. Custom website builds from $650 &mdash; deployed to your own hosting or a free Netlify account in your name, no monthly fees, no contracts."/>
 <meta property="og:url" content="https://surettesystems.com/pricing.html"/>
 <meta property="og:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
-<meta property="og:image:alt" content="Surette Data Systems &mdash; high-tech business software for mobile, web, and desktop"/>
+<meta property="og:image:alt" content="Surette Data Systems &mdash; custom website design for Southwest Florida businesses"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Website Pricing | Surette Data Systems"/>
-<meta name="twitter:description" content="Pay once, own it outright. Custom website builds from $450 &mdash; deployed to your own hosting or a free Netlify account in your name, no monthly fees, no contracts."/>
+<meta name="twitter:description" content="Pay once, own it outright. Custom website builds from $650 &mdash; deployed to your own hosting or a free Netlify account in your name, no monthly fees, no contracts."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
-<meta name="twitter:image:alt" content="Surette Data Systems &mdash; high-tech business software for mobile, web, and desktop"/>
-<link href="assets/nav.css?v=20260829-no-account" rel="stylesheet"/>
-<link href="assets/cosmic-web.css?v=20260827-contrast-nav" rel="stylesheet"/>
+<meta name="twitter:image:alt" content="Surette Data Systems &mdash; custom website design for Southwest Florida businesses"/>
+<link href="assets/nav.css?v=20260830-grid-center" rel="stylesheet"/>
+<link href="assets/cosmic-web.css?v=20260830-tint-cleanup" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
@@ -51,15 +51,26 @@ tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors
 /* ── Build-package ladder ─────────────────────────────────────────────────
    1-up phone / 2-up at the site's 880 line / 3-up above 1100 — six one-time
    build packages, no monthly/annual toggle (retired 2026-08-29). */
+/* Flex, not grid: an odd package count (5) leaves a 2-card trailing row in a
+   3-up grid, which grid always left-aligns to the first N columns (empty 3rd
+   cell shows on the right). Flex-wrap centers a partial row as a group
+   instead — flex-basis reproduces the exact grid column math so a FULL row
+   is pixel-identical to the old grid, and only a partial row's behavior
+   changes. */
 .pr-grid {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
   margin-top: 44px;
 }
+.pr-grid > .sds-card {
+  flex: 0 1 100%;
+  min-width: 0;
+}
 
-@media (min-width: 880px) { .pr-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }}
-@media (min-width: 1100px) { .pr-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }}
+@media (min-width: 880px) { .pr-grid > .sds-card { flex-basis: calc((100% - 20px) / 2); } }
+@media (min-width: 1100px) { .pr-grid > .sds-card { flex-basis: calc((100% - 40px) / 3); } }
 
 .pr-card--featured {
   border-color: rgba(var(--c-primary-rgb), 0.42);
@@ -242,11 +253,11 @@ tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors
 
       <article class="sds-card">
         <h2 class="pr-card__name">Landing Page</h2>
-        <p class="pr-card__blurb">A simple, professional one-page site for a new business.</p>
+        <p class="pr-card__blurb">A simple, professional website for a new business.</p>
         <div class="pr-price">
-          <span class="pr-price__amount">$450</span>
+          <span class="pr-price__amount">$650</span>
         </div>
-        <p class="pr-price__note">1&ndash;3 pages &middot; 1&ndash;2 weeks</p>
+        <p class="pr-price__note">1&ndash;3 pages &middot; typically a few days to 1 week</p>
         <ul class="pr-feat">
           <li><span class="material-symbols-outlined" aria-hidden="true">check</span>1&ndash;3 custom-designed pages</li>
           <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Mobile-friendly, click-to-call &amp; email</li>
@@ -260,9 +271,9 @@ tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors
         <h2 class="pr-card__name">Small Business Website</h2>
         <p class="pr-card__blurb">Several pages, with contact &amp; quote forms so inquiries reach your inbox.</p>
         <div class="pr-price">
-          <span class="pr-price__amount">$750</span>
+          <span class="pr-price__amount">$950</span>
         </div>
-        <p class="pr-price__note">Up to 5 pages &middot; 2&ndash;3 weeks</p>
+        <p class="pr-price__note">Up to 5 pages &middot; typically 1&ndash;1.5 weeks</p>
         <ul class="pr-feat">
           <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Up to 5 custom-designed pages</li>
           <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Contact &amp; quote-request forms, spam protection</li>
@@ -277,9 +288,9 @@ tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors
         <h2 class="pr-card__name">Local Business Website</h2>
         <p class="pr-card__blurb">A complete site for an established local business.</p>
         <div class="pr-price">
-          <span class="pr-price__amount">$1,350</span>
+          <span class="pr-price__amount">$1,550</span>
         </div>
-        <p class="pr-price__note">5&ndash;8 pages &middot; 3&ndash;6 weeks</p>
+        <p class="pr-price__note">5&ndash;8 pages &middot; typically 1.5&ndash;3 weeks</p>
         <ul class="pr-feat">
           <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Lead capture &amp; basic scheduling</li>
           <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Local SEO setup &amp; testimonials</li>
@@ -293,9 +304,9 @@ tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors
         <h2 class="pr-card__name">Growth Website</h2>
         <p class="pr-card__blurb">An advanced structure for businesses focused on search visibility.</p>
         <div class="pr-price">
-          <span class="pr-price__amount">$1,950</span>
+          <span class="pr-price__amount">$2,150</span>
         </div>
-        <p class="pr-price__note">~10&ndash;15 pages &middot; 5&ndash;8 weeks</p>
+        <p class="pr-price__note">~10&ndash;15 pages &middot; typically 2.5&ndash;4 weeks</p>
         <ul class="pr-feat">
           <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Advanced service &amp; location pages</li>
           <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Expanded local SEO &amp; schema markup</li>
@@ -309,9 +320,9 @@ tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors
         <h2 class="pr-card__name">Premium Brand Website</h2>
         <p class="pr-card__blurb">Premium design direction for a business that leads with brand.</p>
         <div class="pr-price">
-          <span class="pr-price__amount">$2,550</span>
+          <span class="pr-price__amount">$2,750</span>
         </div>
-        <p class="pr-price__note">Commonly 8&ndash;15 pages &middot; 6&ndash;10 weeks</p>
+        <p class="pr-price__note">Commonly 8&ndash;15 pages &middot; typically 3&ndash;5 weeks</p>
         <ul class="pr-feat">
           <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Custom visual direction &amp; brand messaging</li>
           <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Advanced conversion structure</li>
@@ -436,7 +447,7 @@ tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors
   </div>
 </main>
 
-<script src="assets/standard-site-footer.js?v=20260829-no-account"></script>
+<script src="assets/standard-site-footer.js?v=20260830-no-hosting-label"></script>
 
 <script src="surette-logo.js?v=20260817-cta-r5"></script>
 <script>document.addEventListener('DOMContentLoaded', function () { SuretteLogo.init('sds-logo'); SuretteLogo.init('sds-logo-mobile'); });</script>

@@ -38,27 +38,15 @@
     en: {
       all: 'All Services',
       online: 'Web & Online Services',
-      local: 'In-Home & Office',
       links: [
-        ['Website Design / Hosting', service('website-design-hosting')],
-        ['Custom Business Web Apps', page('apps.html')]
-      ],
-      localLinks: [
-        ['In-Home Tech Services', service('in-home-services')],
-        ['Office Network Setup', service('office-network-setup')]
+        ['Website Design', service('website-design-hosting')]
       ]
     },
     es: {
       all: 'Todos los Servicios',
       online: 'Servicios Web y en Línea',
-      local: 'A Domicilio y Oficina',
       links: [
-        ['Diseño Web / Hosting', service('website-design-hosting')],
-        ['Aplicaciones Web Empresariales', page('apps.html')]
-      ],
-      localLinks: [
-        ['Servicios Técnicos a Domicilio', service('in-home-services')],
-        ['Configuración de Redes de Oficina', service('office-network-setup')]
+        ['Diseño Web', service('website-design-hosting')]
       ]
     }
   }[lang];
@@ -71,10 +59,6 @@
       '<div class="mobile-services-popout__group">' +
         '<div class="mobile-services-popout__heading"><span class="material-symbols-outlined text-sm">language</span>' + copy.online + '</div>' +
         copy.links.map(function (item) { return '<a href="' + item[1] + '">' + item[0] + '</a>'; }).join('') +
-      '</div>' +
-      '<div class="mobile-services-popout__group">' +
-        '<div class="mobile-services-popout__heading"><span class="material-symbols-outlined text-sm">home_pin</span>' + copy.local + '</div>' +
-        copy.localLinks.map(function (item) { return '<a href="' + item[1] + '">' + item[0] + '</a>'; }).join('') +
       '</div>' +
     '</div>';
   mobileRoot.appendChild(popout);

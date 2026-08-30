@@ -57,9 +57,7 @@
   // Wide screens list every destination; the phone footer drops the two that
   // the bottom tab bar already covers and shortens the rest to fit one row.
   var wideLinks = [
-    ["Website Design / Hosting", "services/website-design-hosting.html"],
-    ["Custom Business Web Apps", "apps.html"],
-    ["In-Home Tech Services", "services/in-home-services.html"],
+    ["Website Design", "services/website-design-hosting.html"],
     ["Portfolio", "portfolio.html"],
     ["Contact", "contact.html"],
     ["Privacy", "privacy.html"],
@@ -68,8 +66,7 @@
   ];
 
   var phoneLinks = [
-    ["Design/Hosting", "services/website-design-hosting.html"],
-    ["Web Apps", "apps.html"],
+    ["Design", "services/website-design-hosting.html"],
     ["Portfolio", "portfolio.html"],
     ["Contact", "contact.html"],
     ["Privacy", "privacy.html"],

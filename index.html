@@ -35,7 +35,7 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
 <meta name="twitter:title" content="Websites for Southwest Florida Businesses | Surette Data Systems"/>
 <meta name="twitter:description" content="Custom websites for Southwest Florida small businesses &mdash; built once, handed off cleanly, no monthly fees. Plus on-site tech help when you need hands on the problem."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
-<link href="assets/nav.css?v=20260829-no-account" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="assets/nav.css?v=20260830-grid-center" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
   #sds-logo a.sds-anchor,
   #sds-logo-mobile a.sds-anchor {
@@ -202,6 +202,27 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
       }
     </script>
 <style>
+        /* Recent Work grid: 3 cards. A real CSS grid always left-aligns an
+           incomplete row to the first column(s) — at the 880-1279px md:2-col
+           band, 3 cards leaves 1 orphaned and left-aligned (row is only
+           complete again at xl:1280px 3-col). Flex + justify-content:center
+           fixes it at every width; flex-basis reproduces the exact grid
+           column math so a full row is pixel-identical to the old grid. */
+        .recent-work-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .recent-work-grid > a {
+            flex: 0 1 100%;
+            min-width: 0;
+        }
+        @media (min-width: 880px) {
+            .recent-work-grid > a { flex-basis: calc((100% - 24px) / 2); }
+        }
+        @media (min-width: 1280px) {
+            .recent-work-grid > a { flex-basis: calc((100% - 48px) / 3); }
+        }
         /* Shared */
         #nova-bg {
             width: 100vw;
@@ -585,13 +606,13 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
 <div class="hero-headline-band relative z-10 w-full mx-auto px-margin-desktop text-center">
 <p class="hero-enter hero-enter-d0 text-on-surface-variant text-xl font-semibold tracking-widest uppercase mb-3 drop-shadow-[0_2px_12px_rgba(var(--c-shadow-rgb), 0.75)]">Welcome to</p>
 <h1 class="hero-enter hero-enter-d1 hero-headline-wide font-headline-xl font-bold text-white drop-shadow-[0_2px_24px_rgba(var(--c-shadow-rgb), 0.85)]">Surette Data Systems</h1>
-<p class="hero-enter hero-enter-d2 text-on-surface-variant mt-12 drop-shadow-[0_2px_16px_rgba(var(--c-shadow-rgb), 0.75)] text-2xl font-bold tracking-wide max-w-lg mx-auto">Websites for Southwest Florida businesses &mdash; designed, hosted, updated, and supported by one team.</p>
+<p class="hero-enter hero-enter-d2 text-on-surface-variant mt-12 drop-shadow-[0_2px_16px_rgba(var(--c-shadow-rgb), 0.75)] text-2xl font-bold tracking-wide max-w-lg mx-auto">Websites for Southwest Florida businesses &mdash; designed, deployed, updated, and supported by one team.</p>
 <!-- Proof strip — verbatim client quote from the testimonials section further
      down this page, surfaced directly under the hero lead so it lands above
      the fold. No star rating or "trusted by N" counter: unverified claims. -->
 <div class="sds-proof sds-proof--hero">
 <span class="sds-proof__label"><span class="material-symbols-outlined" aria-hidden="true">verified</span>Trusted by local businesses</span>
-<p class="sds-proof__quote">&ldquo;It feels like having our own website department.&rdquo;</p>
+<p class="sds-proof__quote">&ldquo;The whole setup was handled for us &mdash; hosting, domain, everything in our name.&rdquo;</p>
 <span class="sds-proof__who">Business Owner &middot; Local Service Business, SWFL</span>
 </div>
 </div>
@@ -614,46 +635,16 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
 <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
 <div class="space-y-4">
 <span class="font-label-caps text-label-caps text-electric-cyan">WHAT WE BUILD</span>
-<h2 class="font-headline-lg text-headline-lg text-starlight-white">A website that earns its keep &mdash; and the software behind it</h2>
+<h2 class="font-headline-lg text-headline-lg text-starlight-white">A website that earns its keep</h2>
 </div>
 <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">
-                        Most businesses start with a website. When the work outgrows a website, the same team builds the software to run it.
+                        Professional, mobile-friendly websites &mdash; designed and built once, then handed off cleanly. No monthly bill, no contract to maintain.
                     </p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 auto-rows-fr gap-gutter">
+<div class="grid grid-cols-1 max-w-md mx-auto gap-gutter">
 <a href="websites.html" class="group glass-card p-10 rounded-xl hover:border-electric-cyan/40 transition-all duration-500 block h-full"><span class="material-symbols-outlined text-4xl text-electric-cyan mb-6">devices</span>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Website Design &amp; Hosting</h3>
+<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Website Design</h3>
 <p class="font-body-md text-body-md text-on-surface-variant">Professional custom websites designed around your brand, built once and handed off cleanly &mdash; deployed to your own hosting or a free Netlify account in your name, no monthly bill.</p></a>
-<a href="apps.html" class="group glass-card p-10 rounded-xl hover:border-electric-cyan/40 transition-all duration-500 block h-full"><span class="material-symbols-outlined text-4xl text-electric-cyan mb-6">code</span>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Custom Business Web Apps</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Secure staff logins, customer records, reports, portals, integrations, and agentic AI automations when your business needs more.</p></a>
-</div>
-</div>
-</section>
-<!-- Agentic AI Explainer -->
-<section id="agentic-ai" class="reveal-up py-24 px-margin-desktop overflow-hidden">
-<div class="max-w-container-max mx-auto">
-<div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
-<span class="font-label-caps text-label-caps text-electric-cyan">AGENTIC AI, EXPLAINED</span>
-<h2 class="font-headline-lg text-headline-lg text-starlight-white">What is agentic AI?</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">Most "AI" tools answer a question and stop there. Agentic AI takes the next step inside your software &mdash; and we build that in from day one.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-<div class="glass-card p-10 rounded-xl hover:border-electric-cyan/40 transition-all duration-500">
-<span class="material-symbols-outlined text-4xl text-electric-cyan mb-6">bolt</span>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Acts, not just answers</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Instead of only summarizing information, an agentic workflow can complete the task &mdash; file the record, send the reminder, or route the request to the right person.</p>
-</div>
-<div class="glass-card p-10 rounded-xl hover:border-nebula-purple/40 transition-all duration-500">
-<span class="material-symbols-outlined text-4xl text-nebula-purple mb-6">hub</span>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Plugs into your workflow</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Agentic automations live inside the software you already use &mdash; your CRM, payroll, inventory, or booking system &mdash; instead of a separate chatbot window.</p>
-</div>
-<div class="glass-card p-10 rounded-xl hover:border-electric-cyan/40 transition-all duration-500">
-<span class="material-symbols-outlined text-4xl text-electric-cyan mb-6">verified_user</span>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Human-checked, always</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">You set the guardrails. Every agentic automation we build includes a review step or an audit trail, so people stay in control of anything that matters.</p>
-</div>
 </div>
 </div>
 </section>
@@ -667,7 +658,7 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
                         A few of the businesses running on something we designed, built, and still look after.
                     </p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 auto-rows-fr gap-gutter">
+<div class="recent-work-grid gap-gutter">
 <a href="portfolio-naplesestatejewelry.html" class="group glass-card p-0 rounded-xl overflow-hidden block h-full hover:border-electric-cyan/40 border border-transparent transition-all duration-500"><img src="assets/portfolio/naples-estate-jewelry/home-live-20260801.png" alt="Naples Estate Jewelry storefront homepage" loading="lazy" decoding="async" width="1200" height="750" class="sds-media"/><div class="p-7"><p class="font-label-caps text-label-caps text-electric-cyan mb-2">Estate Jewelry &middot; Naples, FL</p><h3 class="font-headline-md text-headline-md text-starlight-white mb-3">Naples Estate Jewelry</h3><p class="font-body-md text-body-md text-on-surface-variant">A live estate jewelry storefront with era and category filters, detailed condition reporting, and a full commerce back office.</p></div></a>
 <a href="portfolio-metalscalc.html" class="group glass-card p-0 rounded-xl overflow-hidden block h-full hover:border-electric-cyan/40 border border-transparent transition-all duration-500"><img src="assets/portfolio/metalscalc/home.png" alt="SpotCalc.com product landing page" loading="lazy" decoding="async" width="1200" height="750" class="sds-media"/><div class="p-7"><p class="font-label-caps text-label-caps text-electric-cyan mb-2">Precious Metals &middot; PWA</p><h3 class="font-headline-md text-headline-md text-starlight-white mb-3">SpotCalc.com</h3><p class="font-body-md text-body-md text-on-surface-variant">A product site and install hub for a precious-metal buying calculator, with live spot prices on load and a one-tap install flow.</p></div></a>
 <a href="https://deepfieldgallery.com/" target="_blank" rel="noopener" class="group glass-card p-0 rounded-xl overflow-hidden block h-full hover:border-electric-cyan/40 border border-transparent transition-all duration-500"><img src="assets/portfolio/deepfield-gallery/card.jpg" alt="Deepfield Gallery live homepage" loading="lazy" decoding="async" width="1200" height="750" class="sds-media"/><div class="p-7"><p class="font-label-caps text-label-caps text-electric-cyan mb-2">Curated Gallery &middot; Naples, FL</p><h3 class="font-headline-md text-headline-md text-starlight-white mb-3">Deepfield Gallery</h3><p class="font-body-md text-body-md text-on-surface-variant">A curated gallery for art, jewelry, antiques, and one-of-a-kind objects, with artist profiles, saved items, and Naples pickup.</p></div></a>
@@ -677,40 +668,22 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
 </div>
 </div>
 </section>
-<!-- Local Services (Desktop) — the homepage route to the two on-site pages,
-     which have had no nav entry since the Services dropdown was retired. -->
-<section id="local-services" class="reveal-up pb-24 px-margin-desktop">
-<div class="max-w-container-max mx-auto">
-<div class="text-center max-w-3xl mx-auto mb-10 space-y-3">
-<span class="font-label-caps text-label-caps text-nebula-purple">ALSO LOCAL</span>
-<h2 class="font-headline-md text-headline-md text-starlight-white">On-site help across Southwest Florida</h2>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 auto-rows-fr gap-gutter">
-<a href="services/in-home-services.html" class="group glass-card p-10 rounded-xl hover:border-electric-cyan/40 transition-all duration-500 block h-full"><span class="material-symbols-outlined text-4xl text-electric-cyan mb-6">home_pin</span>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">In-Home Tech Services</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">On-site help for Wi-Fi, devices, printers, home offices, and the local tech setup that keeps work moving.</p></a>
-<a href="services/office-network-setup.html" class="group glass-card p-10 rounded-xl hover:border-nebula-purple/40 transition-all duration-500 block h-full"><span class="material-symbols-outlined text-4xl text-nebula-purple mb-6">lan</span>
-<h3 class="font-headline-md text-headline-md text-starlight-white mb-4">Office Network Setup</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">Small office Wi-Fi, workstations, shared printers, network cleanup, and clean handoff notes.</p></a>
-</div>
-</div>
-</section>
 <!-- How It Works -->
 <section id="process" class="reveal-up py-24 px-margin-desktop overflow-hidden">
 <div class="max-w-container-max mx-auto">
 <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
 <span class="font-label-caps text-label-caps text-electric-cyan">HOW IT WORKS</span>
-<h2 class="font-headline-lg text-headline-lg text-starlight-white">From first call to live in about 1&ndash;2 weeks.</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">No drawn-out timelines, no back-and-forth. A One Page site is usually live in 1&ndash;2 weeks once content and access are in hand &mdash; larger builds run longer.</p>
+<h2 class="font-headline-lg text-headline-lg text-starlight-white">From first call to live in about a week.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">No drawn-out timelines, no back-and-forth. A Landing Page is usually live in a few days to 1 week once content and access are in hand &mdash; larger builds run longer.</p>
 </div>
 <!-- Three steps, not four. Modelled on funnls.com's process block: the headline
      carries the commitment and the steps compress to discovery / build / launch.
      The old 03 Manage and 04 Support were not process steps at all — they were the
      ongoing service, which the "what we build" cards and the WhatsApp section
      directly below already cover. Their content folded into step 03. Keep this at
-     three; a fourth card reintroduces the overlap. The 1–2 week figure is the
-     owner's own published One Page estimate (websites.html) and its qualifier must
-     travel with it — larger Growth and Pro builds run longer. -->
+     three; a fourth card reintroduces the overlap. The few-days-to-1-week figure is
+     the owner's own published Landing Page estimate (websites.html) and its
+     qualifier must travel with it — larger Growth and Premium builds run longer. -->
 <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
 <div id="step-discover" class="glass-card p-8 rounded-xl text-center hover:border-electric-cyan/30 transition-all">
 <span class="font-label-mono text-label-mono text-electric-cyan mb-4 block">01</span>
@@ -728,7 +701,7 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
 <span class="font-label-mono text-label-mono text-electric-cyan mb-4 block">03</span>
 <span class="material-symbols-outlined text-3xl text-nebula-purple mb-4">cloud_done</span>
 <h3 class="font-headline-md text-headline-md text-starlight-white mb-3">Launch &amp; care</h3>
-<p class="font-body-md text-body-md text-on-surface-variant text-sm">We launch it, then host, monitor, back up, and handle every change you send &mdash; message us on WhatsApp, no portals.</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">We launch it on your own hosting, then handle every change you send &mdash; message us on WhatsApp, no portals.</p>
 </div>
 </div>
 </div>
@@ -775,7 +748,7 @@ Message Us on WhatsApp
 <p class="font-label-caps text-[10px] text-outline mt-1">Medical Office &middot; Naples, FL</p>
 </div>
 <div class="glass-card p-8 rounded-xl">
-<p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">"Our website looks professional and we never think about hosting or updates. They handle everything. It feels like having our own website department."</p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">"Our website looks professional, and the whole setup was handled for us &mdash; hosting, domain, everything in our name. When we need something changed, we just send a message and it's done."</p>
 <p class="font-label-mono text-label-mono text-starlight-white">&mdash; Business Owner</p>
 <p class="font-label-caps text-[10px] text-outline mt-1">Local Service Business &middot; Southwest Florida</p>
 </div>
@@ -806,7 +779,7 @@ Message Us on WhatsApp
 </section>
 </main>
 <!-- Footer Shell -->
-<script src="assets/standard-site-footer.js?v=20260829-no-account" data-variant="desktop"></script>
+<script src="assets/standard-site-footer.js?v=20260830-no-hosting-label" data-variant="desktop"></script>
 </div>
 <!-- /DESKTOP -->
 
@@ -821,13 +794,13 @@ Message Us on WhatsApp
 <section id="hero-mobile" class="relative min-h-[100vh] flex flex-col overflow-hidden"><div class="hero-headline-band relative z-10 w-full mx-auto px-margin-mobile text-center pt-20">
 <p class="hero-enter hero-enter-d0 text-on-surface-variant text-xl font-semibold tracking-widest uppercase mb-3 drop-shadow-[0_2px_12px_rgba(var(--c-shadow-rgb), 0.75)]">Welcome to</p>
 <h1 class="hero-enter hero-enter-d1 hero-headline-wide font-headline-xl font-bold text-white drop-shadow-[0_2px_24px_rgba(var(--c-shadow-rgb), 0.85)]">Surette Data Systems</h1>
-<p class="hero-enter hero-enter-d2 font-body-md text-on-surface-variant mt-5 drop-shadow-[0_2px_16px_rgba(var(--c-shadow-rgb), 0.75)]">Websites for Southwest Florida businesses &mdash; designed, hosted, updated, and supported by one team.</p>
+<p class="hero-enter hero-enter-d2 font-body-md text-on-surface-variant mt-5 drop-shadow-[0_2px_16px_rgba(var(--c-shadow-rgb), 0.75)]">Websites for Southwest Florida businesses &mdash; designed, deployed, updated, and supported by one team.</p>
 <!-- Proof strip — verbatim client quote from the testimonials section further
      down this page, surfaced directly under the hero lead so it lands above
      the fold. No star rating or "trusted by N" counter: unverified claims. -->
 <div class="sds-proof sds-proof--hero">
 <span class="sds-proof__label"><span class="material-symbols-outlined" aria-hidden="true">verified</span>Trusted by local businesses</span>
-<p class="sds-proof__quote">&ldquo;It feels like having our own website department.&rdquo;</p>
+<p class="sds-proof__quote">&ldquo;The whole setup was handled for us &mdash; hosting, domain, everything in our name.&rdquo;</p>
 <span class="sds-proof__who">Business Owner &middot; Local Service Business, SWFL</span>
 </div>
 </div>
@@ -849,26 +822,10 @@ Message Us on WhatsApp
 <div class="space-y-8">
 <div class="text-center max-w-xl mx-auto space-y-3">
 <span class="font-label-caps text-label-caps text-electric-cyan">WHAT WE BUILD</span>
-<h2 class="font-headline-lg text-headline-lg-mobile text-starlight-white">A website that earns its keep &mdash; and the software behind it</h2>
+<h2 class="font-headline-lg text-headline-lg-mobile text-starlight-white">A website that earns its keep</h2>
 </div>
 <div class="grid grid-cols-1 auto-rows-fr gap-4">
-<a href="websites.html" class="glass-card p-8 rounded-lg block h-full hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-4">devices</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Website Design &amp; Hosting</h3><p class="font-body-md text-on-surface-variant text-sm">Custom websites built to convert, handed off cleanly &mdash; hosting and domain set up in your own name.</p></a>
-<a href="apps.html" class="glass-card p-8 rounded-lg block h-full hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-4">code</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Custom Business Web Apps</h3><p class="font-body-md text-on-surface-variant text-sm">Staff logins, customer records, reports, integrations, and agentic AI automations.</p></a>
-</div>
-</div>
-</section>
-<!-- Agentic AI Explainer (Mobile) -->
-<section class="py-16 px-margin-mobile">
-<div class="space-y-8">
-<div class="text-center space-y-3">
-<span class="font-label-caps text-label-caps text-electric-cyan">AGENTIC AI, EXPLAINED</span>
-<h2 class="font-headline-lg text-headline-lg-mobile text-starlight-white">What is agentic AI?</h2>
-<p class="font-body-md text-on-surface-variant text-sm">Most "AI" tools answer a question and stop. Agentic AI takes the next step inside your software.</p>
-</div>
-<div class="grid grid-cols-1 auto-rows-fr gap-4">
-<div class="glass-card p-6 rounded-lg flex gap-4"><span class="material-symbols-outlined text-electric-cyan">bolt</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">Acts, not just answers</h3><p class="font-body-md text-on-surface-variant text-sm">Completes the task &mdash; files the record, sends the reminder, routes the request.</p></div></div>
-<div class="glass-card p-6 rounded-lg flex gap-4"><span class="material-symbols-outlined text-nebula-purple">hub</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">Plugs into your workflow</h3><p class="font-body-md text-on-surface-variant text-sm">Lives inside your CRM, payroll, or inventory system &mdash; not a separate chatbot.</p></div></div>
-<div class="glass-card p-6 rounded-lg flex gap-4"><span class="material-symbols-outlined text-electric-cyan">verified_user</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">Human-checked, always</h3><p class="font-body-md text-on-surface-variant text-sm">Every automation includes a review step or audit trail. You stay in control.</p></div></div>
+<a href="websites.html" class="glass-card p-8 rounded-lg block h-full hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-4">devices</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Website Design</h3><p class="font-body-md text-on-surface-variant text-sm">Custom websites built to convert, handed off cleanly &mdash; hosting and domain set up in your own name.</p></a>
 </div>
 </div>
 </section>
@@ -889,28 +846,15 @@ Message Us on WhatsApp
 </div>
 </div>
 </section>
-<!-- Local Services (Mobile) -->
-<section class="py-16 px-margin-mobile">
-<div class="space-y-8">
-<div class="text-center max-w-xl mx-auto space-y-3">
-<span class="font-label-caps text-label-caps text-nebula-purple">ALSO LOCAL</span>
-<h2 class="font-headline-lg text-headline-lg-mobile text-starlight-white">On-site help across Southwest Florida</h2>
-</div>
-<div class="grid grid-cols-1 auto-rows-fr gap-4">
-<a href="services/in-home-services.html" class="glass-card p-8 rounded-lg block h-full hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-electric-cyan text-3xl mb-4">home_pin</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">In-Home Tech Services</h3><p class="font-body-md text-on-surface-variant text-sm">Wi-Fi, devices, printers, smart equipment, and home office setup.</p></a>
-<a href="services/office-network-setup.html" class="glass-card p-8 rounded-lg block h-full hover:border-electric-cyan/30 border border-transparent transition-all"><span class="material-symbols-outlined text-nebula-purple text-3xl mb-4">lan</span><h3 class="font-headline-md text-headline-md text-starlight-white mb-2">Office Network Setup</h3><p class="font-body-md text-on-surface-variant text-sm">Small office Wi-Fi, workstations, shared devices, and network cleanup.</p></a>
-</div>
-</div>
-</section>
 <!-- How It Works (Mobile) -->
 <section class="py-16 px-margin-mobile">
 <div class="space-y-8">
-<div class="text-center space-y-3"><span class="font-label-caps text-label-caps text-electric-cyan">HOW IT WORKS</span><h2 class="font-headline-lg text-headline-lg-mobile text-starlight-white">From first call to live in about 1&ndash;2 weeks.</h2><p class="font-body-md text-on-surface-variant text-sm">No drawn-out timelines, no back-and-forth. A One Page site is usually live in 1&ndash;2 weeks once content and access are in hand &mdash; larger builds run longer.</p></div>
+<div class="text-center space-y-3"><span class="font-label-caps text-label-caps text-electric-cyan">HOW IT WORKS</span><h2 class="font-headline-lg text-headline-lg-mobile text-starlight-white">From first call to live in about a week.</h2><p class="font-body-md text-on-surface-variant text-sm">No drawn-out timelines, no back-and-forth. A Landing Page is usually live in a few days to 1 week once content and access are in hand &mdash; larger builds run longer.</p></div>
 <!-- Mirror of the desktop three-step block above — edit both or they drift. -->
 <div class="grid grid-cols-1 auto-rows-fr gap-4">
 <div class="glass-card p-6 rounded-lg flex gap-4"><span class="font-label-mono text-electric-cyan">01</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1">Discovery call</h3><p class="font-body-md text-on-surface-variant text-sm">We learn your business, your customers, and what the website needs to do &mdash; then tell you which package fits.</p></div></div>
 <div class="glass-card p-6 rounded-lg flex gap-4"><span class="font-label-mono text-electric-cyan">02</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1"><a href="services/website-design-hosting.html" class="hover:text-electric-cyan">Design &amp; build</a></h3><p class="font-body-md text-on-surface-variant text-sm">We build it around one goal: more calls, quotes, and booked work. You send content once and review when it&rsquo;s ready.</p></div></div>
-<div class="glass-card p-6 rounded-lg flex gap-4"><span class="font-label-mono text-electric-cyan">03</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1"><a href="services/website-design-hosting.html" class="hover:text-electric-cyan">Launch &amp; care</a></h3><p class="font-body-md text-on-surface-variant text-sm">We launch it, then host, monitor, back up, and handle every change you send &mdash; message us on WhatsApp, no portals.</p></div></div>
+<div class="glass-card p-6 rounded-lg flex gap-4"><span class="font-label-mono text-electric-cyan">03</span><div><h3 class="font-headline-md text-base text-starlight-white mb-1"><a href="services/website-design-hosting.html" class="hover:text-electric-cyan">Launch &amp; care</a></h3><p class="font-body-md text-on-surface-variant text-sm">We launch it on your own hosting, then handle every change you send &mdash; message us on WhatsApp, no portals.</p></div></div>
 </div>
 </div>
 </section>
@@ -935,7 +879,7 @@ Message Us on WhatsApp
 <div class="text-center"><span class="font-label-caps text-label-caps text-nebula-purple">CLIENT FEEDBACK</span></div>
 <div class="grid grid-cols-1 auto-rows-fr gap-4">
 <div class="glass-card p-8 rounded-lg"><p class="font-body-md text-on-surface-variant text-sm mb-4">"Surette Data Systems responds faster than any web company we've worked with. We send a message, and it's done."</p><p class="font-label-mono text-sm text-starlight-white">&mdash; Practice Manager, Medical Office</p></div>
-<div class="glass-card p-8 rounded-lg"><p class="font-body-md text-on-surface-variant text-sm mb-4">"It feels like having our own website department. They handle everything."</p><p class="font-label-mono text-sm text-starlight-white">&mdash; Business Owner, Southwest Florida</p></div>
+<div class="glass-card p-8 rounded-lg"><p class="font-body-md text-on-surface-variant text-sm mb-4">"The whole setup was handled for us &mdash; hosting, domain, everything in our name. Changes are just a message away."</p><p class="font-label-mono text-sm text-starlight-white">&mdash; Business Owner, Southwest Florida</p></div>
 </div>
 </div>
 </section>
@@ -958,7 +902,7 @@ Message Us on WhatsApp
 </section>
 </main>
 <!-- Footer -->
-<script src="assets/standard-site-footer.js?v=20260829-no-account" data-variant="mobile"></script>
+<script src="assets/standard-site-footer.js?v=20260830-no-hosting-label" data-variant="mobile"></script>
 </div>
 <!-- /MOBILE -->
 <script type="module">
