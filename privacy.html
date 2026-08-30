@@ -34,7 +34,7 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
 <meta name="twitter:title" content="Privacy Policy | Surette Data Systems"/>
 <meta name="twitter:description" content="Privacy Policy for Surette Data Systems &mdash; how we collect, use, and protect your information."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
-<link href="assets/nav.css?v=20260829-apps-retired" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="assets/nav.css?v=20260829-no-account" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style>
   #sds-logo a.sds-anchor,
   #sds-logo-mobile a.sds-anchor {
@@ -285,7 +285,7 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
 </script>
 </head>
 <body class="bg-void-black text-on-background font-body-md overflow-x-hidden selection:bg-electric-cyan selection:text-void-black">
-<script src="assets/standard-site-nav.js?v=20260829-apps-retired" data-active="none"></script>
+<script src="assets/standard-site-nav.js?v=20260829-no-account" data-active="none"></script>
 
 <!-- Atmospheric background elements -->
 <div class="fixed inset-0 z-0" style="background:rgb(var(--t-void-black));"></div>
@@ -320,24 +320,22 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
 
       <h2>1. Who We Are</h2>
       <p>
-        Surette Data Systems provides web design, managed website hosting, website care plans, custom business software, in-home tech services, and office network setup to clients primarily in Southwest Florida. Our website is <a href="https://surettesystems.com">surettesystems.com</a>. You can reach us at <a href="tel:+12394048505">(239) 404-8505</a> or through our <a href="contact.html">contact page</a>.
+        Surette Data Systems provides one-time website builds (deployed to your own hosting, or a free Netlify account set up in your name), in-home tech services, and office network setup to clients primarily in Southwest Florida. Our website is <a href="https://surettesystems.com">surettesystems.com</a>. You can reach us at <a href="tel:+12394048505">(239) 404-8505</a> or through our <a href="contact.html">contact page</a>.
       </p>
 
       <h2>2. What Information We Collect</h2>
       <p>We collect information in the following categories:</p>
       <ul>
-        <li><strong style="color:var(--t-on-surface);">Contact details</strong> &mdash; your name, email address, and phone number, provided when you fill out our contact form or create an account.</li>
-        <li><strong style="color:var(--t-on-surface);">Business information</strong> &mdash; your company name and website URL, which you may provide in your account settings.</li>
-        <li><strong style="color:var(--t-on-surface);">Project details, messages, and optional attachments</strong> &mdash; the content you write in our contact form, consultation form, service checkout form, client portal messages, optional uploaded photos/screenshots, or messages sent via WhatsApp as part of an active care plan.</li>
-        <li><strong style="color:var(--t-on-surface);">Account credentials</strong> &mdash; your email address and a hashed password managed through Supabase authentication when you register for a client account.</li>
+        <li><strong style="color:var(--t-on-surface);">Contact details</strong> &mdash; your name, email address, and phone number, provided when you fill out our contact form.</li>
+        <li><strong style="color:var(--t-on-surface);">Project details, messages, and optional attachments</strong> &mdash; the content you write in our contact form or consultation form, optional uploaded photos/screenshots, or messages sent via WhatsApp about your project.</li>
         <li><strong style="color:var(--t-on-surface);">IP address (via Google Fonts)</strong> &mdash; our pages load fonts from Google Fonts CDN. When your browser requests those fonts, your IP address is sent to Google's servers. This is standard behavior for any site using Google Fonts. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a> for details.</li>
       </ul>
       <p>We do not collect payment card numbers directly. Any payment processing is handled by third-party providers.</p>
 
       <h2>3. How We Collect Information</h2>
       <ul>
-        <li><strong style="color:var(--t-on-surface);">Supabase</strong> &mdash; account registration, login, client profile data, form submissions, client portal messages, and optional form attachments are stored in a Supabase-hosted database/storage system using secure authentication and access policies.</li>
-        <li><strong style="color:var(--t-on-surface);">WhatsApp / Meta</strong> &mdash; care plan clients communicate with us through a dedicated WhatsApp account. Messages sent there are subject to Meta's privacy policies in addition to ours.</li>
+        <li><strong style="color:var(--t-on-surface);">Netlify Forms</strong> &mdash; contact form and newsletter signup submissions, plus optional form attachments, are received and stored through Netlify's form-processing infrastructure.</li>
+        <li><strong style="color:var(--t-on-surface);">WhatsApp / Meta</strong> &mdash; clients may communicate with us through a dedicated WhatsApp account, including for post-launch change requests. Messages sent there are subject to Meta's privacy policies in addition to ours.</li>
         <li><strong style="color:var(--t-on-surface);">Google Fonts CDN</strong> &mdash; font files are loaded directly from Google's servers on each page load.</li>
       </ul>
 
@@ -345,8 +343,7 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
       <p>We use the information we collect to:</p>
       <ul>
         <li>Respond to your inquiries and provide the services you requested.</li>
-        <li>Manage your client account and maintain your service history.</li>
-        <li>Communicate with you about your project, including updates, questions, and ongoing care plan requests.</li>
+        <li>Communicate with you about your project, including updates, questions, and post-launch change requests.</li>
         <li>Send occasional service-related notices (never marketing without your consent).</li>
         <li>Improve our services and website based on how people use them.</li>
         <li>Meet our legal and business record-keeping obligations.</li>
@@ -356,21 +353,20 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
       <h2>5. How We Share Your Information</h2>
       <p>We do not sell or rent your personal data. We share information only in these limited circumstances:</p>
       <ul>
-        <li><strong style="color:var(--t-on-surface);">Service providers</strong> &mdash; Netlify may host static website files, while Supabase processes account, form, message, and attachment data on our behalf. Each has its own privacy and security practices.</li>
+        <li><strong style="color:var(--t-on-surface);">Service providers</strong> &mdash; Netlify hosts static website files and processes form and attachment data on our behalf, and has its own privacy and security practices.</li>
         <li><strong style="color:var(--t-on-surface);">WhatsApp / Meta</strong> &mdash; messages sent through WhatsApp pass through Meta's infrastructure.</li>
         <li><strong style="color:var(--t-on-surface);">Legal requirements</strong> &mdash; we may disclose information if required by law or in response to a valid legal process.</li>
       </ul>
 
       <h2>6. Data Retention</h2>
       <p>
-        We retain your information for as long as your account is active or as needed to provide services to you. After an account is closed or a project ends, we may retain records for a reasonable period for legitimate business purposes such as billing history, legal compliance, or responding to disputes. You can request deletion at any time (see Section 8).
+        We retain your information for as long as needed to provide the services you requested. After a project ends, we may retain records for a reasonable period for legitimate business purposes such as billing history, legal compliance, or responding to disputes. You can request deletion at any time (see Section 8).
       </p>
 
       <h2>7. Security</h2>
       <p>We take reasonable steps to protect your information:</p>
       <ul>
         <li>Our website enforces HTTPS on all connections.</li>
-        <li>Account authentication is handled through Supabase's secure authentication system, which uses industry-standard hashing and session management.</li>
         <li>Form submissions are handled through Netlify's secure form processing infrastructure.</li>
       </ul>
       <p>
@@ -382,7 +378,7 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
       <ul>
         <li><strong style="color:var(--t-on-surface);">Right to know</strong> &mdash; you can ask us what personal information we hold about you.</li>
         <li><strong style="color:var(--t-on-surface);">Right to deletion</strong> &mdash; you can ask us to delete your personal information. We will honor deletion requests except where we are required by law to retain certain records.</li>
-        <li><strong style="color:var(--t-on-surface);">Right to correct</strong> &mdash; if any information we hold about you is inaccurate, you can ask us to correct it. You can also update your account details directly through your client account settings.</li>
+        <li><strong style="color:var(--t-on-surface);">Right to correct</strong> &mdash; if any information we hold about you is inaccurate, you can ask us to correct it.</li>
         <li><strong style="color:var(--t-on-surface);">Right to opt out of sale</strong> &mdash; we do not sell personal data, so there is nothing to opt out of in that regard.</li>
       </ul>
       <p>
@@ -441,7 +437,7 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
 <!-- Powered-by badge -->
 
 <!-- Footer -->
-<script src="assets/standard-site-footer.js?v=20260817-cta-r5" data-variant="desktop"></script>
+<script src="assets/standard-site-footer.js?v=20260829-no-account" data-variant="desktop"></script>
 </div>
 <!-- /DESKTOP -->
 
@@ -472,31 +468,28 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
 
       <h2>1. Who We Are</h2>
       <p>
-        Surette Data Systems provides web design, hosting, care plans, custom business software, and in-home tech services in Southwest Florida. Website: <a href="https://surettesystems.com">surettesystems.com</a>. Contact us at <a href="tel:+12394048505">(239) 404-8505</a> or our <a href="contact.html">contact page</a>.
+        Surette Data Systems provides one-time website builds (deployed to your own hosting, or a free Netlify account set up in your name), and in-home tech services in Southwest Florida. Website: <a href="https://surettesystems.com">surettesystems.com</a>. Contact us at <a href="tel:+12394048505">(239) 404-8505</a> or our <a href="contact.html">contact page</a>.
       </p>
 
       <h2>2. What Information We Collect</h2>
       <ul>
-        <li><strong style="color:var(--t-on-surface);">Contact details</strong> &mdash; name, email, phone (contact form or account registration).</li>
-        <li><strong style="color:var(--t-on-surface);">Business information</strong> &mdash; company name and website URL (account settings).</li>
-        <li><strong style="color:var(--t-on-surface);">Project details, messages, and optional attachments</strong> &mdash; content from contact forms, consultation forms, checkout forms, client portal messages, optional uploaded photos/screenshots, or WhatsApp care plan communications.</li>
-        <li><strong style="color:var(--t-on-surface);">Account credentials</strong> &mdash; email and hashed password via Supabase authentication.</li>
+        <li><strong style="color:var(--t-on-surface);">Contact details</strong> &mdash; name, email, phone (contact form).</li>
+        <li><strong style="color:var(--t-on-surface);">Project details, messages, and optional attachments</strong> &mdash; content from contact forms, consultation forms, optional uploaded photos/screenshots, or WhatsApp project communications.</li>
         <li><strong style="color:var(--t-on-surface);">IP address (Google Fonts)</strong> &mdash; loading fonts from Google's CDN sends your IP to Google. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a>.</li>
       </ul>
       <p>We do not collect payment card numbers directly.</p>
 
       <h2>3. How We Collect Information</h2>
       <ul>
-        <li><strong style="color:var(--t-on-surface);">Supabase</strong> &mdash; account authentication, client profile data, website form submissions, client portal messages, and optional form attachments.</li>
-        <li><strong style="color:var(--t-on-surface);">WhatsApp / Meta</strong> &mdash; care plan client communications. Subject to Meta's policies.</li>
+        <li><strong style="color:var(--t-on-surface);">Netlify Forms</strong> &mdash; website form submissions and optional form attachments.</li>
+        <li><strong style="color:var(--t-on-surface);">WhatsApp / Meta</strong> &mdash; project and post-launch change-request communications. Subject to Meta's policies.</li>
         <li><strong style="color:var(--t-on-surface);">Google Fonts CDN</strong> &mdash; font files loaded from Google's servers on page load.</li>
       </ul>
 
       <h2>4. How We Use Your Information</h2>
       <ul>
         <li>Respond to inquiries and deliver services you requested.</li>
-        <li>Manage your client account and service history.</li>
-        <li>Communicate about your project and ongoing care plan requests.</li>
+        <li>Communicate about your project and post-launch change requests.</li>
         <li>Send service-related notices (no marketing without consent).</li>
         <li>Meet legal and business record-keeping obligations.</li>
       </ul>
@@ -504,20 +497,19 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
 
       <h2>5. How We Share Your Information</h2>
       <ul>
-        <li><strong style="color:var(--t-on-surface);">Service providers</strong> &mdash; Netlify may host static website files; Supabase processes account, form, message, and attachment data on our behalf.</li>
+        <li><strong style="color:var(--t-on-surface);">Service providers</strong> &mdash; Netlify hosts static website files and processes form and attachment data on our behalf.</li>
         <li><strong style="color:var(--t-on-surface);">WhatsApp / Meta</strong> &mdash; messages pass through Meta's infrastructure.</li>
         <li><strong style="color:var(--t-on-surface);">Legal requirements</strong> &mdash; disclosure if required by law.</li>
       </ul>
 
       <h2>6. Data Retention</h2>
       <p>
-        Data is retained while your account is active and for a reasonable period after for business records. You can request deletion at any time.
+        Data is retained as needed to provide services and for a reasonable period after for business records. You can request deletion at any time.
       </p>
 
       <h2>7. Security</h2>
       <ul>
         <li>HTTPS enforced on all connections.</li>
-        <li>Supabase secure authentication with industry-standard hashing.</li>
         <li>Netlify secure form processing.</li>
       </ul>
       <p>No method of transmission is 100% secure. We use commercially reasonable protections.</p>
@@ -526,7 +518,7 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
       <ul>
         <li><strong style="color:var(--t-on-surface);">Right to know</strong> &mdash; ask us what information we hold about you.</li>
         <li><strong style="color:var(--t-on-surface);">Right to deletion</strong> &mdash; ask us to delete your personal information.</li>
-        <li><strong style="color:var(--t-on-surface);">Right to correct</strong> &mdash; ask us to fix inaccurate information, or update your account directly.</li>
+        <li><strong style="color:var(--t-on-surface);">Right to correct</strong> &mdash; ask us to fix inaccurate information.</li>
         <li><strong style="color:var(--t-on-surface);">Right to opt out of sale</strong> &mdash; we don't sell data, so there's nothing to opt out of.</li>
       </ul>
       <p>
@@ -581,11 +573,10 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
 <!-- Powered-by badge -->
 
 <!-- Footer -->
-<script src="assets/standard-site-footer.js?v=20260817-cta-r5" data-variant="mobile"></script>
+<script src="assets/standard-site-footer.js?v=20260829-no-account" data-variant="mobile"></script>
 
 </div>
 <!-- /MOBILE -->
-<script src="assets/account-nav.js?v=20260817-cta-r5"></script>
 <script src="surette-logo.js?v=20260817-cta-r5"></script>
 <script>document.addEventListener('DOMContentLoaded', function() { SuretteLogo.init('sds-logo-mobile'); });</script>
 </body></html>

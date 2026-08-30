@@ -16,7 +16,7 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <title>Website Pricing | Surette Data Systems</title>
-<meta name="description" content="One monthly price covering custom design, managed hosting, maintenance, and support. Website plans from $65/mo."/>
+<meta name="description" content="Pay once, own it outright. Custom website builds from $450 &mdash; deployed to your own hosting or a free Netlify account in your name, no monthly fees, no contracts."/>
 <link rel="canonical" href="https://surettesystems.com/pricing.html"/>
 <link rel="icon" href="/assets/favicon.svg?v=20260716-blur-on" type="image/svg+xml"/>
 <link rel="icon" href="/assets/favicon-32.png?v=20260716-blur-on" sizes="32x32" type="image/png"/>
@@ -27,7 +27,7 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
 <meta property="og:locale" content="en_US"/>
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="Website Pricing | Surette Data Systems"/>
-<meta property="og:description" content="One monthly price covering custom design, managed hosting, maintenance, and support. Website plans from $65/mo."/>
+<meta property="og:description" content="Pay once, own it outright. Custom website builds from $450 &mdash; deployed to your own hosting or a free Netlify account in your name, no monthly fees, no contracts."/>
 <meta property="og:url" content="https://surettesystems.com/pricing.html"/>
 <meta property="og:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
 <meta property="og:image:width" content="1200"/>
@@ -35,10 +35,10 @@ html[data-theme="light"],html[data-theme="light"] body{background:#f4f2ee;color:
 <meta property="og:image:alt" content="Surette Data Systems &mdash; high-tech business software for mobile, web, and desktop"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Website Pricing | Surette Data Systems"/>
-<meta name="twitter:description" content="One monthly price covering custom design, managed hosting, maintenance, and support. Website plans from $65/mo."/>
+<meta name="twitter:description" content="Pay once, own it outright. Custom website builds from $450 &mdash; deployed to your own hosting or a free Netlify account in your name, no monthly fees, no contracts."/>
 <meta name="twitter:image" content="https://surettesystems.com/assets/surette-data-systems-og.png"/>
 <meta name="twitter:image:alt" content="Surette Data Systems &mdash; high-tech business software for mobile, web, and desktop"/>
-<link href="assets/nav.css?v=20260829-apps-retired" rel="stylesheet"/>
+<link href="assets/nav.css?v=20260829-no-account" rel="stylesheet"/>
 <link href="assets/cosmic-web.css?v=20260827-contrast-nav" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -48,53 +48,9 @@ tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors
 </script>
 <style>
 
-/* ── Monthly / annual toggle ─────────────────────────────────────────────── */
-.pr-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin: 30px auto 0;
-  padding: 6px;
-  border: 1px solid var(--c-veil-3);
-  border-radius: 999px;
-  background: var(--c-veil-1);
-}
-
-.pr-toggle__btn {
-  border: 0;
-  border-radius: 999px;
-  padding: 0.5rem 1.1rem;
-  background: transparent;
-  color: rgb(var(--t-on-surface-variant));
-  font: 700 12px "JetBrains Mono", monospace;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: color 0.25s ease, background 0.25s ease;
-}
-
-.pr-toggle__btn[aria-pressed="true"] {
-  background: rgba(var(--c-primary-rgb), 0.14);
-  color: rgb(var(--t-electric-cyan));
-}
-
-/* On paper the cyan tint lightens the ground instead of darkening it, so cyan
-   text on it lands at 4.44:1 — just under AA. Thinner tint, deeper text. Same
-   correction already applied to .pill / .badge in nav.css. */
-:root[data-theme="light"] .pr-toggle__btn[aria-pressed="true"] {
-  background: rgba(var(--c-primary-rgb), 0.07);
-  color: #005766;
-}
-
-.pr-save {
-  font: 700 11px "JetBrains Mono", monospace;
-  letter-spacing: 0.08em;
-  color: rgb(var(--t-tertiary));
-}
-
-/* ── Plan ladder ─────────────────────────────────────────────────────────────
-   1-up phone / 2-up at the site's 880 line / 4-up above 1200. auto-rows-fr
-   keeps the four cards equal height so the CTA row lines up. */
+/* ── Build-package ladder ─────────────────────────────────────────────────
+   1-up phone / 2-up at the site's 880 line / 3-up above 1100 — six one-time
+   build packages, no monthly/annual toggle (retired 2026-08-29). */
 .pr-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -103,7 +59,7 @@ tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors
 }
 
 @media (min-width: 880px) { .pr-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }}
-@media (min-width: 1200px) { .pr-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }}
+@media (min-width: 1100px) { .pr-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }}
 
 .pr-card--featured {
   border-color: rgba(var(--c-primary-rgb), 0.42);
@@ -256,13 +212,10 @@ tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors
   color: rgb(var(--t-starlight-white));
 }
 
-.pr-faq p { margin: 12px 0 0; font-size: 0.9rem; line-height: 1.7; color: rgb(var(--t-on-surface-variant)); }
-
-@media (prefers-reduced-motion: reduce) {
-  .pr-toggle__btn, .pr-cta { transition: none; }}</style>
+.pr-faq p { margin: 12px 0 0; font-size: 0.9rem; line-height: 1.7; color: rgb(var(--t-on-surface-variant)); }</style>
 </head>
 <body class="font-['Plus_Jakarta_Sans',sans-serif] min-h-screen flex flex-col cosmic-page cosmic-tint-services">
-<script src="assets/standard-site-nav.js?v=20260829-apps-retired" data-active="pricing"></script>
+<script src="assets/standard-site-nav.js?v=20260829-no-account" data-active="pricing"></script>
 
 <main class="relative z-10 pt-28 md:pt-32 pb-24">
   <div class="sds-wrap">
@@ -270,14 +223,9 @@ tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors
     <!-- Hero -->
     <header class="text-center">
       <p class="sds-eyebrow">Plans &amp; Pricing</p>
-      <h1 class="sds-h1">One monthly price.<br/>Everything included.</h1>
-      <p class="sds-lead sds-lead--center">Every plan includes custom design, hosting, maintenance, and support. Pick the level that fits your business.</p>
+      <h1 class="sds-h1">Pay once.<br/>Own it outright.</h1>
+      <p class="sds-lead sds-lead--center">Every website is a one-time build &mdash; no monthly hosting bill, no contract to cancel. We deploy it to your own hosting, or a free Netlify account in your name, then hand you the keys.</p>
 
-      <div class="pr-toggle" role="group" aria-label="Billing period">
-        <button type="button" class="pr-toggle__btn" data-bill="monthly" aria-pressed="true">Monthly</button>
-        <button type="button" class="pr-toggle__btn" data-bill="annual" aria-pressed="false">Annual</button>
-      </div>
-      <p class="pr-save" data-annual-hint hidden>Save 2 months when you pay annually.</p>
 <!-- Proof strip — verbatim quote from the testimonials section on index.html,
      with its published attribution. Each page carries the quote that evidences
      ITS claim rather than repeating one. No star rating or "trusted by N"
@@ -289,106 +237,103 @@ tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors
 </div>
     </header>
 
-    <!-- Plan ladder -->
+    <!-- Build packages -->
     <div class="pr-grid">
 
       <article class="sds-card">
-        <h2 class="pr-card__name">One Page</h2>
-        <p class="pr-card__blurb">A simple, professional one-page website.</p>
+        <h2 class="pr-card__name">Landing Page</h2>
+        <p class="pr-card__blurb">A simple, professional one-page site for a new business.</p>
         <div class="pr-price">
-          <span class="pr-price__amount" data-monthly="$65" data-annual="$65">$65</span>
-          <span class="pr-price__unit" data-monthly="/mo" data-annual="/mo">/mo</span>
+          <span class="pr-price__amount">$450</span>
         </div>
-        <p class="pr-price__note" data-monthly="No setup fee" data-annual="Billed annually">No setup fee</p>
+        <p class="pr-price__note">1&ndash;3 pages &middot; 1&ndash;2 weeks</p>
         <ul class="pr-feat">
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Custom one-page website design</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Managed hosting with SSL included</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Mobile-responsive design</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Contact forms &amp; Google Maps</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Reviews &amp; photo galleries</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Basic SEO setup</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Ongoing edits included</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Email support</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>1&ndash;3 custom-designed pages</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Mobile-friendly, click-to-call &amp; email</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Deployed to your hosting, or a free Netlify account in your name</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>1 revision round &middot; 7-day bug-fix period</li>
         </ul>
         <a class="sds-btn" href="contact.html">Get started</a>
       </article>
 
       <article class="sds-card">
-        <h2 class="pr-card__name">Starter</h2>
-        <p class="pr-card__blurb">A professional website with hosting &amp; support essentials.</p>
+        <h2 class="pr-card__name">Small Business Website</h2>
+        <p class="pr-card__blurb">Several pages, with contact &amp; quote forms so inquiries reach your inbox.</p>
         <div class="pr-price">
-          <span class="pr-price__amount" data-monthly="$149" data-annual="$124">$149</span>
-          <span class="pr-price__unit" data-monthly="/mo" data-annual="/mo">/mo</span>
+          <span class="pr-price__amount">$750</span>
         </div>
-        <p class="pr-price__note" data-monthly="No setup fee" data-annual="Billed annually &middot; save 2 months">No setup fee</p>
+        <p class="pr-price__note">Up to 5 pages &middot; 2&ndash;3 weeks</p>
         <ul class="pr-feat">
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Custom-designed website (up to 5 pages)</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Managed hosting with SSL included</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Version history &amp; rollbacks</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Mobile-responsive design</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>On-page SEO basics (meta, headings, sitemap)</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Email support</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Monthly content update (1 request)</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Up to 5 custom-designed pages</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Contact &amp; quote-request forms, spam protection</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Deployed to your hosting, or a free Netlify account in your name</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>1 revision round &middot; 7-day bug-fix period</li>
         </ul>
         <a class="sds-btn" href="contact.html">Get started</a>
       </article>
 
       <article class="sds-card pr-card--featured">
         <span class="pr-badge">Most popular</span>
-        <h2 class="pr-card__name">Growth</h2>
-        <p class="pr-card__blurb">Full-service management for growing businesses.</p>
+        <h2 class="pr-card__name">Local Business Website</h2>
+        <p class="pr-card__blurb">A complete site for an established local business.</p>
         <div class="pr-price">
-          <span class="pr-price__amount" data-monthly="$249" data-annual="$207">$249</span>
-          <span class="pr-price__unit" data-monthly="/mo" data-annual="/mo">/mo</span>
+          <span class="pr-price__amount">$1,350</span>
         </div>
-        <p class="pr-price__note" data-monthly="No setup fee" data-annual="Billed annually &middot; save 2 months">No setup fee</p>
+        <p class="pr-price__note">5&ndash;8 pages &middot; 3&ndash;6 weeks</p>
         <ul class="pr-feat">
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Everything in Starter</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Up to 10 pages</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Conversion intelligence, built in</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>1 hour monthly consultation</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Content &amp; design changes included</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Phone, chat &amp; email support</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Google Analytics setup</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Global CDN hosting included</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Monthly performance check-in</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Lead capture &amp; basic scheduling</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Local SEO setup &amp; testimonials</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Deployed to your hosting, or a free Netlify account in your name</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>2 revision rounds &middot; 14-day bug-fix period</li>
         </ul>
         <a class="sds-btn sds-btn--solid" href="contact.html">Get started</a>
       </article>
 
       <article class="sds-card">
-        <h2 class="pr-card__name">Pro</h2>
-        <p class="pr-card__blurb">Proactive management, SEO, and priority support.</p>
+        <h2 class="pr-card__name">Growth Website</h2>
+        <p class="pr-card__blurb">An advanced structure for businesses focused on search visibility.</p>
         <div class="pr-price">
-          <span class="pr-price__amount" data-monthly="$449" data-annual="$374">$449</span>
-          <span class="pr-price__unit" data-monthly="/mo" data-annual="/mo">/mo</span>
+          <span class="pr-price__amount">$1,950</span>
         </div>
-        <p class="pr-price__note" data-monthly="No setup fee" data-annual="Billed annually &middot; save 2 months">No setup fee</p>
+        <p class="pr-price__note">~10&ndash;15 pages &middot; 5&ndash;8 weeks</p>
         <ul class="pr-feat">
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Everything in Growth</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Up to 20 pages</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>2 hours design/content support</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Quarterly SEO health check</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Priority support queue</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Advanced analytics integration</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Blog management</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Advanced service &amp; location pages</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Expanded local SEO &amp; schema markup</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Deployed to your hosting, or a free Netlify account in your name</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>2&ndash;3 revision rounds &middot; 14&ndash;30 day bug-fix period</li>
+        </ul>
+        <a class="sds-btn" href="contact.html">Get started</a>
+      </article>
+
+      <article class="sds-card">
+        <h2 class="pr-card__name">Premium Brand Website</h2>
+        <p class="pr-card__blurb">Premium design direction for a business that leads with brand.</p>
+        <div class="pr-price">
+          <span class="pr-price__amount">$2,550</span>
+        </div>
+        <p class="pr-price__note">Commonly 8&ndash;15 pages &middot; 6&ndash;10 weeks</p>
+        <ul class="pr-feat">
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Custom visual direction &amp; brand messaging</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Advanced conversion structure</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Deployed to your hosting, or a free Netlify account in your name</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>2&ndash;3 revision rounds &middot; 30-day bug-fix period</li>
         </ul>
         <a class="sds-btn" href="contact.html">Get started</a>
       </article>
 
     </div>
 
-    <!-- Conversion intelligence -->
+    <!-- What's included in every build -->
     <section class="sds-section">
       <div class="sds-panel">
-        <p class="sds-eyebrow">Included on Growth &amp; Pro</p>
-        <h2 class="sds-h2">Conversion intelligence, built in.</h2>
-        <p class="sds-body" style="max-width:52rem">We track how visitors interact with your website and use those insights to guide ongoing improvements to layout, messaging, calls to action, and page structure &mdash; so your site keeps getting better month after month.</p>
+        <p class="sds-eyebrow">Included in every build</p>
+        <h2 class="sds-h2">Deployed and handed to you &mdash; your choice of hosting.</h2>
+        <p class="sds-body" style="max-width:52rem">Already have hosting? We deploy your finished site there. Don&rsquo;t have any? We set up a free, base-tier Netlify account <strong>in your name</strong> and deploy to that instead. Either way, we connect your domain, verify SSL, and hand over every credential with a walkthrough of what lives where and what renews. You are the account holder from day one &mdash; never dependent on a Surette Data Systems account to keep your website online.</p>
         <ul class="pr-cols">
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Visitor behavior tracking</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Layout &amp; messaging refinements</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>CTA performance tuning</li>
-          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Page structure optimization</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Your own hosting, or a free Netlify account in your name</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Domain connected (existing or newly registered)</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>SSL setup &amp; verification</li>
+          <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Every credential handed over, with a walkthrough</li>
         </ul>
       </div>
     </section>
@@ -396,12 +341,12 @@ tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors
     <!-- Setup, timeline, scope -->
     <section class="sds-section">
       <p class="sds-eyebrow">Getting started</p>
-      <h2 class="sds-h2">No upfront cost to get started.</h2>
-      <p class="sds-lead">Most websites launch with no setup fee. We handle the design, build, and launch as part of your monthly plan. For larger or more custom projects, a one-time setup may apply.</p>
+      <h2 class="sds-h2">Fixed price, scoped upfront.</h2>
+      <p class="sds-lead">Every package above is a starting price. We confirm exact scope, price, and timeline in writing before anything starts &mdash; no surprises at handoff.</p>
       <div class="pr-three" style="margin-top:26px">
         <div class="sds-card">
           <h3 class="sds-h3">Standard Build</h3>
-          <p class="sds-body">Included &mdash; no setup, normal timeline.</p>
+          <p class="sds-body">Normal timeline, priced per package above.</p>
         </div>
         <div class="sds-card">
           <h3 class="sds-h3">Fast Track</h3>
@@ -409,9 +354,16 @@ tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors
         </div>
         <div class="sds-card">
           <h3 class="sds-h3">Custom Projects</h3>
-          <p class="sds-body">One-time setup may apply based on scope. We scope it with you upfront.</p>
+          <p class="sds-body">Scope beyond a standard package is quoted upfront before we begin.</p>
         </div>
       </div>
+    </section>
+
+    <!-- Future changes -->
+    <section class="sds-section">
+      <p class="sds-eyebrow">After launch</p>
+      <h2 class="sds-h2">Want something changed later? Just ask.</h2>
+      <p class="sds-lead">There is no plan to sign up for and nothing to cancel. Once your bug-fix period ends, reach out whenever you want something changed &mdash; email, a support form, or the WhatsApp channel set up at handoff &mdash; and we take care of it, billed at <strong>$125/hr</strong> or quoted as a fixed price for a well-defined project. You only pay for the work you ask for.</p>
     </section>
 
     <!-- Enterprise & franchise -->
@@ -434,39 +386,6 @@ tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors
       </div>
     </section>
 
-    <!-- Escape hatches -->
-    <section class="sds-section">
-      <p class="sds-eyebrow">Other ways to buy</p>
-      <h2 class="sds-h2">Not a monthly plan?</h2>
-
-      <div style="margin-top:24px">
-        <div class="pr-route">
-          <div>
-            <h3 class="sds-h3">Prefer to own it outright</h3>
-            <p class="sds-body">One-time website builds, from $1,500. You pay for the build and own it at handoff. Add Self-Hosting Setup and we create every account in your name &mdash; hosting, domain, email, analytics &mdash; then hand you the keys.</p>
-          </div>
-          <a class="sds-btn" href="services/website-design-hosting.html#one-time-builds">See one-time builds</a>
-        </div>
-
-        <div class="pr-route">
-          <div>
-            <h3 class="sds-h3">Own your own hosting</h3>
-            <p class="sds-body">Self-Hosting Setup and Handoff, $450 &mdash; or $750 when your site stores form records. We set up hosting, domain, DNS, SSL, email and analytics in <em>your</em> name, deploy the site, and walk you through it. You are the account holder from day one, so you are never locked in. Setup questions are covered for 14 days; after that it is $125/hr.</p>
-          </div>
-          <a class="sds-btn" href="contact.html">Ask about self-hosting</a>
-        </div>
-
-        <div class="pr-route">
-          <div>
-            <h3 class="sds-h3">Hosting and care only</h3>
-            <p class="sds-body">Already have a site? Care plans cover hosting, backups, monitoring, and a monthly update allowance.</p>
-          </div>
-          <a class="sds-btn" href="services/website-design-hosting.html#care-plans">See care plans</a>
-        </div>
-
-      </div>
-    </section>
-
     <!-- FAQ -->
     <section class="sds-section">
       <p class="sds-eyebrow">Questions</p>
@@ -474,43 +393,39 @@ tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors
 
       <div class="pr-faq">
         <details>
-          <summary>Is there a setup fee?</summary>
-          <p>Most projects launch with no setup fee &mdash; your first website build is included in your monthly plan. For larger or more custom builds, a one-time setup fee may apply, and we will always scope that with you upfront.</p>
+          <summary>Is there a monthly fee?</summary>
+          <p>No. Every website is a one-time build. There is no hosting subscription, no retainer, and nothing that renews with us.</p>
         </details>
         <details>
-          <summary>What if I need more pages?</summary>
-          <p>We can accommodate any size. If your project exceeds the page count in your plan, we will scope a custom quote &mdash; no surprises.</p>
-        </details>
-        <details>
-          <summary>Can I set up my own hosting instead?</summary>
-          <p>Yes. Add Self-Hosting Setup and Handoff to any one-time build &mdash; $450, or $750 if your site stores form records. We create the hosting, domain, DNS, SSL, business email and analytics accounts in your name, deploy the site, hand over every credential, and walk you through it. You pay those providers directly, typically a few dollars a month. Setup questions are covered for 14 days; after that it is billed at $125 per hour. You can still hand it back to us on a care plan later if you would rather not run it.</p>
-        </details>
-        <details>
-          <summary>Can I cancel anytime?</summary>
-          <p>Yes. There are no long-term contracts. Cancel anytime &mdash; no penalties, no hassle.</p>
+          <summary>Is hosting included?</summary>
+          <p>Yes. If you already have hosting, we deploy your site there. If not, we set up a free, base-tier Netlify account in your own name and deploy to that &mdash; either way, it&rsquo;s included at no extra charge. You pay for a domain and any hosting costs beyond Netlify&rsquo;s free tier directly, typically a few dollars a month or less.</p>
         </details>
         <details>
           <summary>Do I own my website?</summary>
-          <p>That depends on which route you take, and the difference is deliberate. On a monthly plan this is a fully managed service: your site stays live, supported, and continuously maintained as part of your subscription, and we hold the hosting account because hosting is part of what you are paying for. On a one-time build you own the finished website outright &mdash; and if you add Self-Hosting Setup, every account is created in <em>your</em> name, so you are the account holder and can move on without us. Either way, your own content &mdash; your logo, photos, text, and business information &mdash; is always yours.</p>
+          <p>Yes, outright, once the project is paid in full. You also own the hosting and domain accounts &mdash; they are created in your name at launch, not ours, so you are never locked in to us.</p>
         </details>
         <details>
-          <summary>What&rsquo;s included in &lsquo;support&rsquo;?</summary>
-          <p>Content updates, design tweaks, troubleshooting, and third-party integration help &mdash; anything related to keeping your site running and looking great. One Page and Starter are email support; Growth adds phone and chat; Pro adds a priority queue.</p>
+          <summary>What if I need more pages than my package includes?</summary>
+          <p>We can accommodate any size. If your project exceeds the page count in a package, we will scope a custom quote &mdash; no surprises.</p>
         </details>
         <details>
-          <summary>Can I pay annually instead?</summary>
-          <p>Yes. Paying annually saves you two months on Starter, Growth, and Pro &mdash; $124, $207, and $374 a month respectively instead of $149, $249, and $449. One Page stays $65 either way.</p>
+          <summary>What happens if I want something changed six months from now?</summary>
+          <p>You reach out &mdash; email, a support form, or the WhatsApp channel set up at handoff &mdash; and we scope it. Simple requests are billed at $125/hr; well-defined projects like a new page or a redesign can be quoted as a fixed price. There is no plan to sign up for and nothing to cancel.</p>
+        </details>
+        <details>
+          <summary>What&rsquo;s covered right after launch?</summary>
+          <p>Every package includes a post-launch bug-fix period (7&ndash;30 days depending on the package) where we fix anything included in scope that isn&rsquo;t working as intended, at no charge. New features, new content, and third-party issues are handled as a normal paid request afterward.</p>
         </details>
       </div>
 
-      <p class="sds-fine">Prices shown are starting prices and the plan summaries above are condensed. Third-party costs &mdash; domain registration and renewal, business email hosting, premium plugins or themes, paid fonts, stock photography, scheduling and CRM platforms, e-commerce and payment-processing fees &mdash; may be billed separately. One-time build packages, care plans, update and revision policies, ownership and renewal terms, and the complete FAQ live on the details page. Final scope, pricing, and terms are governed by the signed service agreement or project proposal.</p>
+      <p class="sds-fine">Prices shown are starting prices and the package summaries above are condensed. Third-party costs &mdash; domain registration and renewal, business email hosting, premium plugins or themes, paid fonts, stock photography, scheduling and CRM platforms, and payment-processing fees &mdash; are billed separately by those providers. Full package details, add-ons, and the complete FAQ live on the details page. Final scope, pricing, and terms are governed by the signed service agreement or project proposal.</p>
     </section>
 
     <!-- Final CTA -->
     <section class="sds-section">
       <div class="sds-panel" style="text-align:center">
-        <h2 class="sds-h2">Not sure which plan fits?</h2>
-        <p class="sds-body" style="max-width:40rem;margin:0 auto 22px">Tell us about the business and we will point you at the smallest plan that does the job.</p>
+        <h2 class="sds-h2">Not sure which package fits?</h2>
+        <p class="sds-body" style="max-width:40rem;margin:0 auto 22px">Tell us about the business and we will point you at the smallest package that does the job.</p>
         <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
           <a class="sds-btn sds-btn--solid" href="contact.html">Get started</a>
           <a class="sds-btn" href="services/website-design-hosting.html">Full pricing details</a>
@@ -521,39 +436,8 @@ tailwind.config={darkMode:"class",theme:{extend:{"screens":{"md":"880px"},colors
   </div>
 </main>
 
-<script src="assets/standard-site-footer.js?v=20260817-cta-r5"></script>
+<script src="assets/standard-site-footer.js?v=20260829-no-account"></script>
 
-<script>
-/* Monthly / annual toggle.
-
-   Each price element carries its own data-monthly and data-annual strings, so
-   switching is a text swap with no arithmetic here. Annual is billed for the
-   year but shown as an effective monthly rate, discounted by two months
-   (10/12 of the monthly price, rounded down to the dollar). One Page is the
-   exception and carries no annual discount, so both attributes read $65 —
-   deriving the figures in JS would silently discount it. */
-(function () {
-  var buttons = document.querySelectorAll("[data-bill]");
-  var hint = document.querySelector("[data-annual-hint]");
-  if (!buttons.length) return;
-
-  function apply(mode) {
-    document.querySelectorAll("[data-" + mode + "]").forEach(function (el) {
-      el.textContent = el.getAttribute("data-" + mode);
-    });
-    buttons.forEach(function (b) {
-      b.setAttribute("aria-pressed", b.getAttribute("data-bill") === mode ? "true" : "false");
-    });
-    if (hint) hint.hidden = mode !== "annual";
-  }
-
-  buttons.forEach(function (b) {
-    b.addEventListener("click", function () { apply(b.getAttribute("data-bill")); });
-  });
-})();
-</script>
-
-<script src="assets/account-nav.js?v=20260817-cta-r5"></script>
 <script src="surette-logo.js?v=20260817-cta-r5"></script>
 <script>document.addEventListener('DOMContentLoaded', function () { SuretteLogo.init('sds-logo'); SuretteLogo.init('sds-logo-mobile'); });</script>
 </body>

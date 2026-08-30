@@ -1,4 +1,10 @@
-# Static site — no build step. Netlify serves the repo root as-is.
+# Static site — no build step. This working copy is NOT what Netlify deploys
+# from — the owner manually copies files into a separate GitHub Desktop repo
+# folder, which is what Netlify is actually connected to. So publish stays
+# "." here: this netlify.toml (and the CONTENTS of staging/, flattened into
+# that repo's root, not staging/ as a nested subfolder) both get copied over
+# together. staging/ is a local curation step, not a folder that gets pushed
+# as-is. See DECISIONS.md (2026-08-30) for what staging/ contains and why.
 [build]
   publish = "."
   command = ""
@@ -174,5 +180,41 @@
 [[redirects]]
   from = "/multichannel-commerce-website.html"
   to = "/websites.html"
+  status = 301
+  force = true
+
+# ─── Retired account system and client login (2026-08-29) ──────────────────
+# The client portal, Admin Center, and login are gone entirely. Public forms
+# (contact, consultation, newsletter) still work — they submit via Netlify
+# Forms now (Supabase was removed from the site entirely on 2026-08-30) —
+# there is just no in-site page left to sign into. 301 rather than 404
+# because these URLs were public and may be bookmarked.
+[[redirects]]
+  from = "/account.html"
+  to = "/contact.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/account-admin.html"
+  to = "/contact.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/account-users.html"
+  to = "/contact.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/account-settings.html"
+  to = "/contact.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/account-created.html"
+  to = "/contact.html"
   status = 301
   force = true

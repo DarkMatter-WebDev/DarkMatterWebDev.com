@@ -60,7 +60,6 @@
         services: "Servicios",
         apps: "Apps",
         portfolio: "Portfolio",
-        login: "Acceso",
         contact: "Comenzar",   // gradient CTA verb (bottom tab bar keeps "Contacto")
         work: "Trabajo",
         websites: "Sitios Web",
@@ -78,7 +77,6 @@
         services: "Services",
         apps: "Apps",
         portfolio: "Portfolio",
-        login: "Client Login",
         contact: "Get started", // gradient CTA verb (bottom tab bar keeps "Contact")
         work: "Work",
         websites: "Websites",
@@ -105,9 +103,6 @@
   // from forgetting that. font-label-mono/text-label-mono are safe because
   // nav.css pins them too.
   function desktopClass(key) {
-    if (key === "account") {
-      return "dm-account-link-desktop sds-nav-pill sds-nav-pill--icon font-label-mono text-label-mono";
-    }
     if (key === active) {
       return "sds-nav-pill is-active font-label-mono text-label-mono";
     }
@@ -122,9 +117,6 @@
   }
 
   function mobileMenuLinkClass(key) {
-    if (key === "account") {
-      return "dm-account-link-mobile flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-starlight-white hover:bg-white/5 font-label-mono text-sm transition-colors";
-    }
     if (key === active) {
       return "flex items-center gap-3 px-4 py-3 text-electric-cyan bg-electric-cyan/5 font-label-mono text-sm";
     }
@@ -236,14 +228,6 @@
     '" href="' + u(PRICING_HREF) + '">' +
     copy.pricing +
     '</a>' +
-    // Client Login is icon-only on desktop now, matching what the phone header
-    // has always done. That frees the slot Pricing took, and keeps the portal
-    // reachable without spending a word on it in a five-item bar.
-    '<a class="' +
-    desktopClass("account") +
-    '" href="' + u("account.html") + '" aria-label="' + copy.login + '" title="' + copy.login + '">' +
-    '<span class="material-symbols-outlined text-base">account_circle</span>' +
-    '</a>' +
     themeToggleHtml("desktop") +
     (langAlt ? '<div class="lang-switch flex items-center gap-1.5 font-label-mono text-label-mono shrink-0">' + langToggleHtml() + "</div>" : "") +
     // sds-on-accent, not text-starlight-white: this label sits on the
@@ -281,7 +265,6 @@
     // Work row removed 2026-08-17 alongside the desktop pill — see the comment
     // in the desktop block above for why.
     '<a href="' + u(PRICING_HREF) + '" class="' + mobileMenuLinkClass("pricing") + '"><span class="material-symbols-outlined text-lg">sell</span>' + copy.pricing + '</a>' +
-    '<a href="' + u("account.html") + '" class="' + mobileMenuLinkClass("account") + '"><span class="material-symbols-outlined text-lg">account_circle</span>' + copy.login + '</a>' +
     // One contact entry only: the gradient CTA (mirrors the desktop nav's
     // Contact Us button). The plain "Contact" row it sat next to was redundant
     // with it AND with the bottom tab bar's Contact item, which keeps the
@@ -465,9 +448,8 @@
      load. Kept in the nav module rather than its own file because the toggle
      ships with the nav — nowhere the toggle exists is this script absent.
 
-     Portal utility pages (account-admin/-users/-settings/-created,
-     app-checkout) intentionally load no nav, so they get no toggle. They still
-     honour the stored theme through the head resolver, which is the whole
+     A page that intentionally loads no nav also gets no toggle. It still
+     honours the stored theme through the head resolver, which is the whole
      point of resolving it there instead of here.
      ────────────────────────────────────────────────────────────────────────── */
   var THEME_KEY = "sds-theme";

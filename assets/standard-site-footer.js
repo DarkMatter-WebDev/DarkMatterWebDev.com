@@ -62,7 +62,6 @@
     ["In-Home Tech Services", "services/in-home-services.html"],
     ["Portfolio", "portfolio.html"],
     ["Contact", "contact.html"],
-    ["Client Login", "account.html"],
     ["Privacy", "privacy.html"],
     ["Terms", "terms.html"],
     ["Accessibility", "accessibility.html"]

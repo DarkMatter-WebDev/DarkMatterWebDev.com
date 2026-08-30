@@ -210,11 +210,6 @@
   --c-whatsapp:        #25D366;
   --c-whatsapp-text:   #25D366;
 
-  /* Mobile header account icon (injected inline by assets/account-nav.js, so
-     it must be a variable — an inline style outranks any rule here). */
-  --sds-acct-in:       rgb(var(--t-electric-cyan));
-  --sds-acct-out:      rgb(var(--t-on-surface-variant));
-
   /* ── Page panel surfaces ───────────────────────────────────────────────
      A handful of pages painted their own dark panels with bespoke hexes
      rather than a palette colour. Each keeps its EXACT original value on the
@@ -632,10 +627,9 @@
    .style.opacity = '1') after DOMContentLoaded + 2 rAFs — at which point both
    logo canvases are mounted and the nav is at its full painted size.
 
-   Portal/utility pages that do NOT load surette-logo.js (account-settings,
-   account-created, app-checkout):
-   they never get .sds-logo-loaded, so the CSS animation below fires at 200ms.
-   Those pages have no SDS logo canvas, so there's nothing to hide.
+   A page that does NOT load surette-logo.js never gets .sds-logo-loaded, so
+   the CSS animation below fires at 200ms instead. Such a page has no SDS
+   logo canvas, so there's nothing to hide.
    ─────────────────────────────────────────────────────────────────────────── */
 @keyframes dm-page-show { to { opacity: 1; } }
 
@@ -1612,17 +1606,6 @@ nav .hidden.md\:flex,
   border-color: rgba(var(--c-primary-rgb), 0.35);
 }
 
-/* Client Login is icon-only on desktop now, so it needs a square-ish tap
-   target rather than the text pill's horizontal padding. */
-.sds-nav-pill--icon {
-  padding: 0.45rem 0.5rem;
-}
-
-.sds-nav-pill--icon .material-symbols-outlined {
-  font-size: 1.15rem;
-  line-height: 1;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .sds-nav-pill { transition: none; }
 }
@@ -1634,7 +1617,7 @@ nav .hidden.md\:flex,
    Nothing here may become a utility class.
    ─────────────────────────────────────────────────────────────────────────── */
 
-/* Desktop: icon button sitting between Client Login and the Contact CTA. */
+/* Desktop: icon button sitting between the Pricing pill and the Contact CTA. */
 .sds-theme-toggle {
   display: inline-flex;
   align-items: center;
@@ -2404,16 +2387,3 @@ nav .hidden.md\:flex,
 .footer-meta { display:flex; flex-wrap:wrap; align-items:center; gap:5px 9px; }
 .footer-meta-sep { opacity:.45; }
 .footer-meta a[href^="tel:"], .footer-meta a[href^="mailto:"] { white-space:nowrap; }
-
-/* ── "Client Login" nav link ─────────────────────────────────────────────────
-   Signed-out is a normal (non-highlighted) nav link; account-nav.js adds
-   .is-signed-in only once an actual session is detected. Previously this
-   link was hardcoded cyan/highlighted unconditionally, which read as "the
-   user is logged in" even when they weren't. Not scoped to a media query —
-   the desktop/mobile variants are only ever visible in their own nav anyway.
-   !important guards against Tailwind's CDN-JIT utility classes winning a
-   cascade tie on dynamically injected markup (a recurring issue on this
-   site — see CHANGELOG for the color-utility-fallback fixes). */
-.dm-account-link-desktop.is-signed-in { color: rgb(var(--t-electric-cyan)) !important; }
-.dm-account-link-desktop.is-signed-in:hover { color: rgb(var(--t-starlight-white)) !important; }
-.dm-account-link-mobile.is-signed-in { color: rgb(var(--t-electric-cyan)) !important; background-color: rgb(var(--t-electric-cyan) / 0.05) !important; }
